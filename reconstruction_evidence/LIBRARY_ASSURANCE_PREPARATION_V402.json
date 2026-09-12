@@ -1,0 +1,372 @@
+{
+  "scope": "LIBRARY_PREPARATION_ONLY",
+  "production_authorized": false,
+  "source_contract_sha256": "dba312aa6a63b0d1b0c207a0a10a2bf051d4576f6d11ce3c7732f1ee97a90210",
+  "requirements": [
+    {
+      "id": "REQ-01",
+      "statement": "Entrada y reanudación NEW/EXISTING sin dañar cambios existentes; LIB-R01/R08, T2801.",
+      "priority": "must",
+      "source": {
+        "label": "IMPL",
+        "reference": "specs/library-maintenance/spec.md"
+      },
+      "acceptance_test_ids": [
+        "TEST-01",
+        "TEST-06",
+        "TEST-08"
+      ]
+    },
+    {
+      "id": "REQ-02",
+      "statement": "Procedencia/admisión verificables, no equivalencia por fama; LIB-R02/R07, T2801/T2803.",
+      "priority": "must",
+      "source": {
+        "label": "IMPL",
+        "reference": "specs/library-maintenance/spec.md"
+      },
+      "acceptance_test_ids": [
+        "TEST-02",
+        "TEST-03",
+        "TEST-38",
+        "TEST-39"
+      ]
+    },
+    {
+      "id": "REQ-03",
+      "statement": "Fallos diagnosticables y recuperación segura; LIB-R06, T2803/T2809.",
+      "priority": "must",
+      "source": {
+        "label": "IMPL",
+        "reference": "specs/library-maintenance/spec.md"
+      },
+      "acceptance_test_ids": [
+        "TEST-03",
+        "TEST-04",
+        "TEST-05",
+        "TEST-06",
+        "TEST-10",
+        "TEST-11",
+        "TEST-12",
+        "TEST-13",
+        "TEST-25",
+        "TEST-26",
+        "TEST-27",
+        "TEST-28",
+        "TEST-29",
+        "TEST-30",
+        "TEST-31",
+        "TEST-32",
+        "TEST-33",
+        "TEST-34",
+        "TEST-35",
+        "TEST-36",
+        "TEST-37",
+        "TEST-38",
+        "TEST-39"
+      ]
+    },
+    {
+      "id": "REQ-04",
+      "statement": "Distribución reproducible con instrucciones utilizables, sin heredar aprobaciones; LIB-R09, T2810.",
+      "priority": "must",
+      "source": {
+        "label": "IMPL",
+        "reference": "specs/library-maintenance/spec.md"
+      },
+      "acceptance_test_ids": [
+        "TEST-07",
+        "TEST-08",
+        "TEST-25",
+        "TEST-26",
+        "TEST-27",
+        "TEST-28",
+        "TEST-29",
+        "TEST-30",
+        "TEST-31",
+        "TEST-32",
+        "TEST-33",
+        "TEST-34",
+        "TEST-35",
+        "TEST-36",
+        "TEST-37",
+        "TEST-38",
+        "TEST-39"
+      ]
+    },
+    {
+      "id": "REQ-05",
+      "statement": "Capacidad reusable de entrenamiento/adaptación de modelos por proyecto: NEW sin historial; EXISTING con fuente privada gobernada; originales y derivados separados, entrenamiento explícito, evaluación independiente y promoción; LIB-R10 V366, T2805/T2807 con T2803/T2806.",
+      "priority": "must",
+      "source": {
+        "label": "IMPL",
+        "reference": "specs/library-maintenance/spec.md"
+      },
+      "acceptance_test_ids": [
+        "TEST-09"
+      ]
+    },
+    {
+      "id": "REQ-06",
+      "statement": "Cumplir los nueve criterios de biblioteca/infra READY y orden A–C indicados explícitamente por el usuario en V402; producción live no es aceptación de esta tarea.",
+      "priority": "must",
+      "source": {
+        "label": "IMPL",
+        "reference": "reconstruction_evidence/LIBRARY_INFRA_SCOPE_V402.md"
+      },
+      "acceptance_test_ids": [
+        "TEST-01",
+        "TEST-02",
+        "TEST-03",
+        "TEST-07"
+      ]
+    }
+  ],
+  "implementation_assurance": {
+    "provenance": "MIXED",
+    "risk_tier": "high",
+    "method_source_ids": [
+      "nasa-systems-engineering-handbook",
+      "nist-ssdf-1.1",
+      "google-sre-release-engineering",
+      "microsoft-sdl"
+    ],
+    "source_lock_refs": [
+      "PROJECT_EXTERNAL_SOURCE_LOCK.md"
+    ],
+    "dimensions": [
+      {
+        "id": "functional_correctness",
+        "disposition": "REQUIRED",
+        "verification_refs": [
+          "TEST-01",
+          "TEST-09",
+          "TEST-10",
+          "TEST-11",
+          "TEST-25",
+          "TEST-26",
+          "TEST-27",
+          "TEST-28",
+          "TEST-29",
+          "TEST-30",
+          "TEST-31",
+          "TEST-32",
+          "TEST-33",
+          "TEST-34",
+          "TEST-35",
+          "TEST-36",
+          "TEST-37",
+          "TEST-39",
+          "TEST-40",
+          "TEST-41",
+          "TEST-43",
+          "TEST-46",
+          "TEST-47",
+          "TEST-48",
+          "TEST-05"
+        ],
+        "reason": ""
+      },
+      {
+        "id": "integration_contracts",
+        "disposition": "REQUIRED",
+        "verification_refs": [
+          "TEST-02",
+          "TEST-09",
+          "TEST-25",
+          "TEST-26",
+          "TEST-27",
+          "TEST-28",
+          "TEST-29",
+          "TEST-30",
+          "TEST-31",
+          "TEST-32",
+          "TEST-33",
+          "TEST-34",
+          "TEST-35",
+          "TEST-36",
+          "TEST-37",
+          "TEST-38",
+          "TEST-39",
+          "TEST-40",
+          "TEST-41",
+          "TEST-48",
+          "TEST-05"
+        ],
+        "reason": ""
+      },
+      {
+        "id": "security_privacy",
+        "disposition": "REQUIRED",
+        "verification_refs": [
+          "TEST-03",
+          "TEST-09",
+          "TEST-11",
+          "TEST-25",
+          "TEST-26",
+          "TEST-27",
+          "TEST-28",
+          "TEST-29",
+          "TEST-30",
+          "TEST-31",
+          "TEST-32",
+          "TEST-34",
+          "TEST-35",
+          "TEST-36",
+          "TEST-37",
+          "TEST-38",
+          "TEST-39",
+          "TEST-40",
+          "TEST-41",
+          "TEST-42",
+          "TEST-48",
+          "TEST-05"
+        ],
+        "reason": ""
+      },
+      {
+        "id": "resilience_failure",
+        "disposition": "REQUIRED",
+        "verification_refs": [
+          "TEST-04",
+          "TEST-11",
+          "TEST-25",
+          "TEST-26",
+          "TEST-27",
+          "TEST-28",
+          "TEST-29",
+          "TEST-30",
+          "TEST-31",
+          "TEST-32",
+          "TEST-33",
+          "TEST-35",
+          "TEST-36",
+          "TEST-39",
+          "TEST-41",
+          "TEST-46",
+          "TEST-47",
+          "TEST-48",
+          "TEST-05"
+        ],
+        "reason": ""
+      },
+      {
+        "id": "performance_efficiency",
+        "disposition": "REQUIRED",
+        "verification_refs": [
+          "BENCH-01",
+          "TEST-38",
+          "TEST-39",
+          "TEST-40",
+          "TEST-41",
+          "BENCH-02",
+          "TEST-05"
+        ],
+        "reason": ""
+      },
+      {
+        "id": "operability_observability",
+        "disposition": "REQUIRED",
+        "verification_refs": [
+          "TEST-05",
+          "TEST-11",
+          "TEST-25",
+          "TEST-26",
+          "TEST-27",
+          "TEST-28",
+          "TEST-29",
+          "TEST-30",
+          "TEST-31",
+          "TEST-32",
+          "TEST-33",
+          "TEST-34",
+          "TEST-35",
+          "TEST-36",
+          "TEST-37",
+          "TEST-39",
+          "TEST-41",
+          "TEST-09"
+        ],
+        "reason": ""
+      },
+      {
+        "id": "recovery_rollback",
+        "disposition": "REQUIRED",
+        "verification_refs": [
+          "TEST-06",
+          "TEST-25",
+          "TEST-26",
+          "TEST-27",
+          "TEST-28",
+          "TEST-29",
+          "TEST-30",
+          "TEST-31",
+          "TEST-32",
+          "TEST-35",
+          "TEST-36",
+          "TEST-38",
+          "TEST-39",
+          "TEST-48",
+          "TEST-09"
+        ],
+        "reason": ""
+      },
+      {
+        "id": "release_supply_chain",
+        "disposition": "REQUIRED",
+        "verification_refs": [
+          "TEST-07",
+          "TEST-38",
+          "TEST-39"
+        ],
+        "reason": ""
+      },
+      {
+        "id": "usability_accessibility",
+        "disposition": "REQUIRED",
+        "verification_refs": [
+          "TEST-08",
+          "TEST-25",
+          "TEST-26",
+          "TEST-27",
+          "TEST-28",
+          "TEST-29",
+          "TEST-30",
+          "TEST-31",
+          "TEST-32",
+          "TEST-46",
+          "TEST-47",
+          "TEST-48"
+        ],
+        "reason": ""
+      }
+    ],
+    "artifact_evidence_ids": [
+      "EVID-85",
+      "EVID-86",
+      "EVID-99",
+      "EVID-100",
+      "EVID-101",
+      "EVID-102",
+      "EVID-103",
+      "EVID-104",
+      "EVID-105",
+      "EVID-106",
+      "EVID-107"
+    ],
+    "release_evidence_ids": [],
+    "blockers": [
+      "Preparación integral T2801/FAIL384 pendiente; readiness sigue BLOCKED y no se hereda aceptación de un consumer.",
+      "TEST02/FAIL385:21cores mantienen su admisión y42fuentes idénticas aV374; faltan equivalencias/integraciones por owner. Auditoría estrecha no cierra integración.",
+      "TEST03:seguridad/procedencia/licencias del grafo activo y tooling restantes. V393 excluyó Sharp del perfil web; Daybreak/V386 diferido no significa DLL instalada ni fix. GO_OBSERVABILITY_CORE0.3.3 es CANDIDATE separado; TEST05/V372 usa otro runtime.",
+      "Journeys completos T2802-T2809 conservan condiciones no demostradas; reutilizar cierres V372-V393 por identidad y alcance, sin confundir referencia con aceptación productiva.",
+      "TEST07/T2810:artefacto final exacto, SCA/notices/SBOM, firma/verificación y aceptación release-bound pendientes tras gates materiales."
+    ],
+    "status": "blocked"
+  },
+  "limitations": [
+    "No business-source promotion",
+    "T2801 release remains pending",
+    "Live production readiness remains a separate project decision"
+  ]
+}

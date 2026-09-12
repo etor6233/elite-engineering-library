@@ -1,0 +1,148 @@
+{
+  "assurance": {
+    "path": "reconstruction_evidence/LIBRARY_ASSURANCE_PREPARATION_V402.json",
+    "sha256": "43b7a3b9de934a17677098989aa743beba4a10ac85cf0e86a2bb1a87086d80e3"
+  },
+  "authority_decisions": {
+    "path": "PROJECT_AUTHORITY_MAP.md",
+    "sha256": "5347450c1c8d87e58c92fff2707005fffee73ca7fe92c9dccbb419f3b7d5d23a"
+  },
+  "blockers": [
+    {
+      "affected_controls": [
+        "T2801",
+        "T2802"
+      ],
+      "id": "authored-business-owners",
+      "kind": "SOURCE_PROVENANCE",
+      "resolution_plan": {
+        "path": "reconstruction_evidence/LIBRARY_READINESS_PREPARATION_V402.md",
+        "sha256": "f64a63fe3f5e370cc79973191e74fbbb5418c7749d4718212ce2d048521a0170"
+      },
+      "status": "OPEN"
+    },
+    {
+      "affected_controls": [
+        "T2803",
+        "T2810"
+      ],
+      "id": "current-dependency-admission",
+      "kind": "DEPENDENCY_ADMISSION",
+      "resolution_plan": {
+        "path": "reconstruction_evidence/LIBRARY_READINESS_PREPARATION_V402.md",
+        "sha256": "f64a63fe3f5e370cc79973191e74fbbb5418c7749d4718212ce2d048521a0170"
+      },
+      "status": "OPEN"
+    },
+    {
+      "affected_controls": [
+        "T2802",
+        "T2803",
+        "T2804",
+        "T2805",
+        "T2806",
+        "T2807",
+        "T2808",
+        "T2809",
+        "T2810",
+        "ARCA_INFRA"
+      ],
+      "id": "remaining-connected-system",
+      "kind": "MISSING_EVIDENCE",
+      "resolution_plan": {
+        "path": "reconstruction_evidence/LIBRARY_READINESS_PREPARATION_V402.md",
+        "sha256": "f64a63fe3f5e370cc79973191e74fbbb5418c7749d4718212ce2d048521a0170"
+      },
+      "status": "OPEN"
+    }
+  ],
+  "controls": {
+    "ARCA_INFRA": {
+      "receipt": null,
+      "status": "PENDING"
+    },
+    "T2801": {
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_READINESS_PREPARATION_RECEIPT_V402.json",
+        "sha256": "87c8a8b2e2a2537ae6d4a49434885d3285136bd8d5f194db0ef9907ef2fe6522"
+      },
+      "status": "PREPARATION_PROVEN"
+    },
+    "T2802": {
+      "receipt": null,
+      "status": "PENDING"
+    },
+    "T2803": {
+      "receipt": null,
+      "status": "PENDING"
+    },
+    "T2804": {
+      "receipt": null,
+      "status": "PENDING"
+    },
+    "T2805": {
+      "receipt": null,
+      "status": "PENDING"
+    },
+    "T2806": {
+      "receipt": null,
+      "status": "PENDING"
+    },
+    "T2807": {
+      "receipt": null,
+      "status": "PENDING"
+    },
+    "T2808": {
+      "receipt": null,
+      "status": "PENDING"
+    },
+    "T2809": {
+      "receipt": null,
+      "status": "PENDING"
+    },
+    "T2810": {
+      "receipt": null,
+      "status": "PENDING"
+    }
+  },
+  "deferred": [
+    {
+      "code_complete": false,
+      "control": "T2803",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_READINESS_PREPARATION_V402.md",
+        "sha256": "f64a63fe3f5e370cc79973191e74fbbb5418c7749d4718212ce2d048521a0170"
+      },
+      "id": "daybreak-libxml2",
+      "kind": "DAYBREAK_LIBXML2",
+      "local_receipt": null,
+      "reason": "Explicit user ACCESS_BLOCKED exclusion, last and deferred",
+      "trigger": "New explicit user task for this branch and permitted access"
+    }
+  ],
+  "notices": {
+    "path": "THIRD_PARTY_NOTICES.md",
+    "sha256": "2043d6c6c35ce85726451a2dfaaa41d06b33c41e6bbd75a8cd7d9c6d8459763d"
+  },
+  "plan": {
+    "path": "reconstruction_evidence/LIBRARY_READINESS_PREPARATION_V402.md",
+    "sha256": "f64a63fe3f5e370cc79973191e74fbbb5418c7749d4718212ce2d048521a0170"
+  },
+  "production_authorized": false,
+  "reference": null,
+  "request": {
+    "path": "reconstruction_evidence/LIBRARY_INFRA_SCOPE_V402.md",
+    "sha256": "0ddbc9820caa12cadde12eb7f53cd3b237e046925f4e437e5e12598ebd7bfb1d"
+  },
+  "revision": "V402-library-preparation-1",
+  "schema": "elite-library-infrastructure-readiness/v1",
+  "scope": "LIBRARY_INFRASTRUCTURE",
+  "source_lock": {
+    "path": "PROJECT_EXTERNAL_SOURCE_LOCK.md",
+    "sha256": "2ecb2d026e7fa3c0399bb3c98460e5f5ceb3e4ea15bf0d4b99621f57bc02b34a"
+  },
+  "tooling": {
+    "path": "reconstruction_evidence/PNPM_ZIP_CONTAINMENT_V401.md",
+    "sha256": "dacf2feacc1fd543524c3120b2c4809a6ef6f171ffd464b21f4e2cdd53028418"
+  }
+}

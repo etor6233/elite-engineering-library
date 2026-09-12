@@ -1,0 +1,1601 @@
+{
+  "schema_version": 1,
+  "status": "CANDIDATE_ASSURANCE_NOT_FINAL_ADMISSION",
+  "created_at": "2026-09-12T00:37:43.590025+00:00",
+  "scope": "V402 connected payment/initial handover/commercial receipt/SDK recovery/customer checkout delta",
+  "tests_executed_by_this_task": 0,
+  "canonical_mutations": false,
+  "composition_mutations": false,
+  "frozen_revision_verified": true,
+  "files": [
+    {
+      "path": ".env.example",
+      "snapshot_sha256": "26b31cd5fc1b71a195daceee5c07b4facbb6d484bcc8e81e2ba8964267770e7e",
+      "exists": true,
+      "role_and_provenance": "Configuración, locks o documentación; AUTHORED metadata glue, licencias de terceros conservadas",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "04c46dc2096f11e9a0cd7cc11a810b15196a4d9a11fe4b3a849afa1bc9265ea8"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "abae5daa900750857503b42f02d3d3438d1dfa793018f8d1a72c2035f1f140b4"
+        },
+        {
+          "manifest": "handover-host-manifest.json",
+          "declared_sha256": "04c46dc2096f11e9a0cd7cc11a810b15196a4d9a11fe4b3a849afa1bc9265ea8"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "cmd/electromobility-api/handover.go",
+      "snapshot_sha256": "fbd676682d373518ac9a2bf9825957a866e3cd1f96379b7c6add2cbea4b30a22",
+      "exists": true,
+      "role_and_provenance": "Montaje de runtime/handlers y validación de configuración; AUTHORED wiring glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "a88ff64cd10a9dd955df5652d7f4edb9a0a83776a71569089974db0392dcde6d"
+        },
+        {
+          "manifest": "handover-host-manifest.json",
+          "declared_sha256": "a88ff64cd10a9dd955df5652d7f4edb9a0a83776a71569089974db0392dcde6d"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "cmd/electromobility-api/handover_test.go",
+      "snapshot_sha256": "ec95742ca6b10f946562c1da44370253f1465896d1c3f83d54b396ea608813f4",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "ec95742ca6b10f946562c1da44370253f1465896d1c3f83d54b396ea608813f4"
+        },
+        {
+          "manifest": "handover-host-manifest.json",
+          "declared_sha256": "ec95742ca6b10f946562c1da44370253f1465896d1c3f83d54b396ea608813f4"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "cmd/electromobility-api/main.go",
+      "snapshot_sha256": "0b726aab72cc2f2e033c658b699e5cf70b381e1499379980eead6f15f2b0235a",
+      "exists": true,
+      "role_and_provenance": "Montaje de runtime/handlers y validación de configuración; AUTHORED wiring glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "79d30e6b90d66ec7613134ac40ba6c94a46f97c7b3da4a2a18395ca206111858"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "896289236430fc66e55167979b2b5ab6111d1856aeecd037b090b6f906343071"
+        },
+        {
+          "manifest": "handover-host-manifest.json",
+          "declared_sha256": "79d30e6b90d66ec7613134ac40ba6c94a46f97c7b3da4a2a18395ca206111858"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "cmd/electromobility-api/payment.go",
+      "snapshot_sha256": "5e58c03b1def8995e9b8ccbb61c8c1b60d5527099b47831a61deb05fd3a7b35c",
+      "exists": true,
+      "role_and_provenance": "Montaje de runtime/handlers y validación de configuración; AUTHORED wiring glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "c10a075a1309e998de30ac2d5563b76a95952d43eec5e8d5b2f4c6bf71ad1bcb"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "c10a075a1309e998de30ac2d5563b76a95952d43eec5e8d5b2f4c6bf71ad1bcb"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "cmd/electromobility-api/payment_test.go",
+      "snapshot_sha256": "a739eb14741686ebbec43e3b750fc8eb4a8229463ae321c7d30e3a4e32fda974",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "a739eb14741686ebbec43e3b750fc8eb4a8229463ae321c7d30e3a4e32fda974"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "a739eb14741686ebbec43e3b750fc8eb4a8229463ae321c7d30e3a4e32fda974"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "db/migrations/0055_payment_provider_observation.down.sql",
+      "snapshot_sha256": "8184300a02e5bed5d1c804bc2b93b834eb2c34d7ee0307519c36dc6ae30e2735",
+      "exists": true,
+      "role_and_provenance": "Persistencia, constraints e idempotencia de proyecciones; AUTHORED schema glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "8184300a02e5bed5d1c804bc2b93b834eb2c34d7ee0307519c36dc6ae30e2735"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "db/migrations/0055_payment_provider_observation.up.sql",
+      "snapshot_sha256": "8cdf10bc792d38d8750f81344d2a42070d75a091744d65f55756018cd1377b8c",
+      "exists": true,
+      "role_and_provenance": "Persistencia, constraints e idempotencia de proyecciones; AUTHORED schema glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "8cdf10bc792d38d8750f81344d2a42070d75a091744d65f55756018cd1377b8c"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "db/migrations/0056_initial_handover.down.sql",
+      "snapshot_sha256": "eb5f6d41bc17ea421a69077eb0f4cfef47fee3942b32c7785d98bd90a9687a6b",
+      "exists": true,
+      "role_and_provenance": "Persistencia, constraints e idempotencia de proyecciones; AUTHORED schema glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "eb5f6d41bc17ea421a69077eb0f4cfef47fee3942b32c7785d98bd90a9687a6b"
+        },
+        {
+          "manifest": "handover-agent/payment-connected-result.json",
+          "declared_sha256": "eb5f6d41bc17ea421a69077eb0f4cfef47fee3942b32c7785d98bd90a9687a6b"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "db/migrations/0056_initial_handover.up.sql",
+      "snapshot_sha256": "500631f966f393a39ad8078fc9e7b5ce63af69b9c992124bb31ba15a8cdb8962",
+      "exists": true,
+      "role_and_provenance": "Persistencia, constraints e idempotencia de proyecciones; AUTHORED schema glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "500631f966f393a39ad8078fc9e7b5ce63af69b9c992124bb31ba15a8cdb8962"
+        },
+        {
+          "manifest": "handover-agent/payment-connected-result.json",
+          "declared_sha256": "500631f966f393a39ad8078fc9e7b5ce63af69b9c992124bb31ba15a8cdb8962"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "db/migrations/0057_commercial_release.down.sql",
+      "snapshot_sha256": "2e3d61b2935649744d90c397d5fa908875ffbf1f3e25d1486563132211729fe4",
+      "exists": true,
+      "role_and_provenance": "Persistencia, constraints e idempotencia de proyecciones; AUTHORED schema glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "commercial-release-manifest.json",
+          "declared_sha256": "2e3d61b2935649744d90c397d5fa908875ffbf1f3e25d1486563132211729fe4"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "db/migrations/0057_commercial_release.up.sql",
+      "snapshot_sha256": "f258bb182d8f61ea636a29bc52ba0dc4ab4e3aa66043a9927bb3ce2154597baa",
+      "exists": true,
+      "role_and_provenance": "Persistencia, constraints e idempotencia de proyecciones; AUTHORED schema glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "commercial-release-manifest.json",
+          "declared_sha256": "f258bb182d8f61ea636a29bc52ba0dc4ab4e3aa66043a9927bb3ce2154597baa"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "docs/commercial-release.md",
+      "snapshot_sha256": "9ebaa9b8a2f618dcb09e0771aa61eebce6f14636474b6b66d504c22e40f43239",
+      "exists": true,
+      "role_and_provenance": "Configuración, locks o documentación; AUTHORED metadata glue, licencias de terceros conservadas",
+      "historical_manifest_refs": [
+        {
+          "manifest": "commercial-release-manifest.json",
+          "declared_sha256": "9ebaa9b8a2f618dcb09e0771aa61eebce6f14636474b6b66d504c22e40f43239"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "docs/handover-host-activation.md",
+      "snapshot_sha256": "d452ce00db30dde395d6a7d5d2707876aff05facb679c48a8bb5bd942c454c66",
+      "exists": true,
+      "role_and_provenance": "Configuración, locks o documentación; AUTHORED metadata glue, licencias de terceros conservadas",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "8aeb39e6bf2310d5e0973b79578f0416d5e1ba2890089ff701d2da5de35cf8e9"
+        },
+        {
+          "manifest": "handover-host-manifest.json",
+          "declared_sha256": "8aeb39e6bf2310d5e0973b79578f0416d5e1ba2890089ff701d2da5de35cf8e9"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "docs/handover-profile.md",
+      "snapshot_sha256": "e730cb3c39b23516e13229641628d39d9391b028d28be2738ddd1ec8a56319e9",
+      "exists": true,
+      "role_and_provenance": "Configuración, locks o documentación; AUTHORED metadata glue, licencias de terceros conservadas",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "e730cb3c39b23516e13229641628d39d9391b028d28be2738ddd1ec8a56319e9"
+        },
+        {
+          "manifest": "handover-agent/payment-connected-result.json",
+          "declared_sha256": "e730cb3c39b23516e13229641628d39d9391b028d28be2738ddd1ec8a56319e9"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "docs/initial-handover-reference.md",
+      "snapshot_sha256": "f6ae20dd9b368ff87cd150f285af78bb0a17d52fcc1d3eb9be3ac54a4df3c621",
+      "exists": true,
+      "role_and_provenance": "Configuración, locks o documentación; AUTHORED metadata glue, licencias de terceros conservadas",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "f6ae20dd9b368ff87cd150f285af78bb0a17d52fcc1d3eb9be3ac54a4df3c621"
+        },
+        {
+          "manifest": "handover-agent/payment-connected-result.json",
+          "declared_sha256": "f6ae20dd9b368ff87cd150f285af78bb0a17d52fcc1d3eb9be3ac54a4df3c621"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "docs/payment-callback-reference.md",
+      "snapshot_sha256": "5e18ffa19bc05e45ef427eedb86954a479784dba5689c9c8796287e89b10489f",
+      "exists": true,
+      "role_and_provenance": "Configuración, locks o documentación; AUTHORED metadata glue, licencias de terceros conservadas",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "a894434530303a7aed9cc50b0f4991a8474261f75723ad8f96c99d01196e69ce"
+        },
+        {
+          "manifest": "handover-agent/payment-connected-result.json",
+          "declared_sha256": "a894434530303a7aed9cc50b0f4991a8474261f75723ad8f96c99d01196e69ce"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "docs/payment-hosted-checkout.md",
+      "snapshot_sha256": "cc6df9d0f86d76f4d4ee3eb308a75a35d321c6966910fc40905b9e6039de9e11",
+      "exists": true,
+      "role_and_provenance": "Configuración, locks o documentación; AUTHORED metadata glue, licencias de terceros conservadas",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "cc6df9d0f86d76f4d4ee3eb308a75a35d321c6966910fc40905b9e6039de9e11"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "cc6df9d0f86d76f4d4ee3eb308a75a35d321c6966910fc40905b9e6039de9e11"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "go.mod",
+      "snapshot_sha256": "45f6843699be85cf99ecbecac2eb41b2dcfedd6483cf38cd61e95db80c6b2e66",
+      "exists": true,
+      "role_and_provenance": "Configuración, locks o documentación; AUTHORED metadata glue, licencias de terceros conservadas",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "3fd541fcfab6d70b7cc2b561b0ea0eb4eea603885ba3653f0e0b959020e0540d"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "go.sum",
+      "snapshot_sha256": "72eaa4679c14f54cfd95bd7cd9243c4dd836c12a4629a6f9fa461b5cd9be2d81",
+      "exists": true,
+      "role_and_provenance": "Configuración, locks o documentación; AUTHORED metadata glue, licencias de terceros conservadas",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "72eaa4679c14f54cfd95bd7cd9243c4dd836c12a4629a6f9fa461b5cd9be2d81"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/franchisejourney/commercial_release.go",
+      "snapshot_sha256": "1971f0d99a7e68ec0d41171ae77967b71c7153b07225845a1d7fee7d565c5607",
+      "exists": true,
+      "role_and_provenance": "Contratos, activación hash-locked y orquestación de owner existente; AUTHORED composition glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "commercial-release-manifest.json",
+          "declared_sha256": "1971f0d99a7e68ec0d41171ae77967b71c7153b07225845a1d7fee7d565c5607"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/franchisejourney/commercial_release_test.go",
+      "snapshot_sha256": "2c8cac2695aa38bbb7199223a7b0e0fc97497d40624833d119d19ffcf4e7dabc",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "commercial-release-manifest.json",
+          "declared_sha256": "2c8cac2695aa38bbb7199223a7b0e0fc97497d40624833d119d19ffcf4e7dabc"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/franchisejourney/handover_preparation.go",
+      "snapshot_sha256": "4fa99592c9877938cac35f98235075c24361deb6f9b59051636f07502cee37b5",
+      "exists": true,
+      "role_and_provenance": "Contratos, activación hash-locked y orquestación de owner existente; AUTHORED composition glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "4fa99592c9877938cac35f98235075c24361deb6f9b59051636f07502cee37b5"
+        },
+        {
+          "manifest": "handover-agent/payment-connected-result.json",
+          "declared_sha256": "4fa99592c9877938cac35f98235075c24361deb6f9b59051636f07502cee37b5"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/franchisejourney/handover_preparation_test.go",
+      "snapshot_sha256": "ab1c83aa726d99cf6f1ce4a4fd57a91ddfb84491a45bb785dda1535d374b5fc9",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "ab1c83aa726d99cf6f1ce4a4fd57a91ddfb84491a45bb785dda1535d374b5fc9"
+        },
+        {
+          "manifest": "handover-agent/payment-connected-result.json",
+          "declared_sha256": "ab1c83aa726d99cf6f1ce4a4fd57a91ddfb84491a45bb785dda1535d374b5fc9"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/franchisejourney/handover_profile.go",
+      "snapshot_sha256": "6c34bf0f19d54a115184821a6a68082828fb1a6dfad2fbe48df9e7d2e74c27ab",
+      "exists": true,
+      "role_and_provenance": "Contratos, activación hash-locked y orquestación de owner existente; AUTHORED composition glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "06eef395eb64f07fa15e44456020b7426f944214af62813834d2871bf102b4ed"
+        },
+        {
+          "manifest": "handover-agent/payment-connected-result.json",
+          "declared_sha256": "06eef395eb64f07fa15e44456020b7426f944214af62813834d2871bf102b4ed"
+        },
+        {
+          "manifest": "commercial-release-manifest.json",
+          "declared_sha256": "6c34bf0f19d54a115184821a6a68082828fb1a6dfad2fbe48df9e7d2e74c27ab"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/franchisejourney/handover_profile_fuzz_test.go",
+      "snapshot_sha256": "6053a13ae143e627169020944aad358ba2430456591e964e7f2f60498eb3bc97",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "checkout-policy-fuzz-agent/result.json",
+          "declared_sha256": "6053a13ae143e627169020944aad358ba2430456591e964e7f2f60498eb3bc97"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/franchisejourney/handover_profile_test.go",
+      "snapshot_sha256": "75ea6db0c29b095fb5daa810eb7595835f05e46a4fba46bc1c6b01cda91de0ce",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "75ea6db0c29b095fb5daa810eb7595835f05e46a4fba46bc1c6b01cda91de0ce"
+        },
+        {
+          "manifest": "handover-agent/payment-connected-result.json",
+          "declared_sha256": "75ea6db0c29b095fb5daa810eb7595835f05e46a4fba46bc1c6b01cda91de0ce"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/paymentbridge/checkout.go",
+      "snapshot_sha256": "4da77f0226c3c018d5553d98f35ee464bc0dc2c7ec64be49931d523816ae30ea",
+      "exists": true,
+      "role_and_provenance": "DTO, selección de SDK, worker/fence y validación del transporte; AUTHORED integration glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "4da77f0226c3c018d5553d98f35ee464bc0dc2c7ec64be49931d523816ae30ea"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/paymentbridge/customer_checkout.go",
+      "snapshot_sha256": "1238275631751549d8a44c6b7f390a856644c35c80ac76723cbc05227bdb60b7",
+      "exists": true,
+      "role_and_provenance": "DTO, selección de SDK, worker/fence y validación del transporte; AUTHORED integration glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "cb1cccaac8449ec1c9f7295f6cac049da710ea526c894d251db2ab58dbfe8af7"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "cb1cccaac8449ec1c9f7295f6cac049da710ea526c894d251db2ab58dbfe8af7"
+        },
+        {
+          "manifest": "checkout-policy-fuzz-agent/result.json",
+          "declared_sha256": "1238275631751549d8a44c6b7f390a856644c35c80ac76723cbc05227bdb60b7"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/paymentbridge/customer_checkout_fuzz_test.go",
+      "snapshot_sha256": "183585b941bc6e2e59740320fe716bedf1b1359552f27e34f78393f2c17e968c",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "checkout-policy-fuzz-agent/result.json",
+          "declared_sha256": "183585b941bc6e2e59740320fe716bedf1b1359552f27e34f78393f2c17e968c"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/paymentbridge/sdk_checkout_recovery.go",
+      "snapshot_sha256": "f2f3566eedeef4481ef41744d64bd1d21d83652a420285d987f24a8078d3c89f",
+      "exists": true,
+      "role_and_provenance": "DTO, selección de SDK, worker/fence y validación del transporte; AUTHORED integration glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "mp-recovery-agent/result.json",
+          "declared_sha256": "f2f3566eedeef4481ef41744d64bd1d21d83652a420285d987f24a8078d3c89f"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/paymentbridge/sdk_driver.go",
+      "snapshot_sha256": "fc26f4bdae3576b5cafd7e90f6d101a8ae4ae7582a696110a7bfe79993e02b17",
+      "exists": true,
+      "role_and_provenance": "DTO, selección de SDK, worker/fence y validación del transporte; AUTHORED integration glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "fc26f4bdae3576b5cafd7e90f6d101a8ae4ae7582a696110a7bfe79993e02b17"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "fc26f4bdae3576b5cafd7e90f6d101a8ae4ae7582a696110a7bfe79993e02b17"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/paymentbridge/sdk_driver_test.go",
+      "snapshot_sha256": "39aee9de29bcb33db266a00ab5502237867ff53ed4333e0c0cd7f553ab451144",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "39aee9de29bcb33db266a00ab5502237867ff53ed4333e0c0cd7f553ab451144"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "39aee9de29bcb33db266a00ab5502237867ff53ed4333e0c0cd7f553ab451144"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/paymentbridge/webhook.go",
+      "snapshot_sha256": "2dc4f478994076dab3a47e35c44af7b05c4be2b013cf3081de9ac822e1c6d001",
+      "exists": true,
+      "role_and_provenance": "DTO, selección de SDK, worker/fence y validación del transporte; AUTHORED integration glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "2dc4f478994076dab3a47e35c44af7b05c4be2b013cf3081de9ac822e1c6d001"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "2dc4f478994076dab3a47e35c44af7b05c4be2b013cf3081de9ac822e1c6d001"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/paymentbridge/webhook_test.go",
+      "snapshot_sha256": "5f57fd0684d1f2fe933eaeff636e2d41d9fb9578f8daebc9a6cd9a6878f9edb0",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "5f57fd0684d1f2fe933eaeff636e2d41d9fb9578f8daebc9a6cd9a6878f9edb0"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "5f57fd0684d1f2fe933eaeff636e2d41d9fb9578f8daebc9a6cd9a6878f9edb0"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/httpapi/commerce.go",
+      "snapshot_sha256": "5ba7a61bd62b41d03514b392062d02cdad514c7d017940f140add1779c430809",
+      "exists": true,
+      "role_and_provenance": "Binding HTTP, autorización y cierre de bypass manual; AUTHORED delta glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "4fbda17a95c4c6441b1a749d6fa8e59cdfd03a51dc359def3e47ce73fe0626d8"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "4fbda17a95c4c6441b1a749d6fa8e59cdfd03a51dc359def3e47ce73fe0626d8"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/httpapi/commercial_release.go",
+      "snapshot_sha256": "fa821602e9794279a35969ca0e6960196b78027809ca3a5fd7e5c99ff6127dd0",
+      "exists": true,
+      "role_and_provenance": "Binding HTTP, autorización y cierre de bypass manual; AUTHORED delta glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "commercial-release-manifest.json",
+          "declared_sha256": "fa821602e9794279a35969ca0e6960196b78027809ca3a5fd7e5c99ff6127dd0"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/httpapi/commercial_release_test.go",
+      "snapshot_sha256": "c538bf9c6f9be6bbca4340663417ab6247d7c8a6bb7b014f4fead0a2834d56a8",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "commercial-release-manifest.json",
+          "declared_sha256": "c538bf9c6f9be6bbca4340663417ab6247d7c8a6bb7b014f4fead0a2834d56a8"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/httpapi/handover_preparation.go",
+      "snapshot_sha256": "0f34a467f979ac331f68e71fb60261a90504b805113bbdd01919c0ef2db9843f",
+      "exists": true,
+      "role_and_provenance": "Binding HTTP, autorización y cierre de bypass manual; AUTHORED delta glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "0f34a467f979ac331f68e71fb60261a90504b805113bbdd01919c0ef2db9843f"
+        },
+        {
+          "manifest": "handover-agent/payment-connected-result.json",
+          "declared_sha256": "0f34a467f979ac331f68e71fb60261a90504b805113bbdd01919c0ef2db9843f"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/httpapi/handover_preparation_test.go",
+      "snapshot_sha256": "461e9e3294c21972289ec59b0a74ddcb5cfb0419af8b278c2b20164282108435",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "461e9e3294c21972289ec59b0a74ddcb5cfb0419af8b278c2b20164282108435"
+        },
+        {
+          "manifest": "handover-agent/payment-connected-result.json",
+          "declared_sha256": "461e9e3294c21972289ec59b0a74ddcb5cfb0419af8b278c2b20164282108435"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/httpapi/payment_checkout.go",
+      "snapshot_sha256": "9f4f08f9f594f9cd9ca8b7206a9e29e8b94321aab7b387b7dd55f4e193e5d2bd",
+      "exists": true,
+      "role_and_provenance": "Binding HTTP, autorización y cierre de bypass manual; AUTHORED delta glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "9f4f08f9f594f9cd9ca8b7206a9e29e8b94321aab7b387b7dd55f4e193e5d2bd"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "9f4f08f9f594f9cd9ca8b7206a9e29e8b94321aab7b387b7dd55f4e193e5d2bd"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/httpapi/payment_checkout_test.go",
+      "snapshot_sha256": "74bb67bcbb279fe1c6b43a3cc36f9f68f7f2073545e2c82c5f72e81b9a415655",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "74bb67bcbb279fe1c6b43a3cc36f9f68f7f2073545e2c82c5f72e81b9a415655"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "74bb67bcbb279fe1c6b43a3cc36f9f68f7f2073545e2c82c5f72e81b9a415655"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/httpapi/payment_observation_authority_test.go",
+      "snapshot_sha256": "51ccf68a05177c18017bfff0ef37f2cf6d16d96cfddd1c83c32b9dff0b62d34a",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "root current delta; frozen-run receipt pending",
+          "declared_sha256": null
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/postgres/commercial_release.go",
+      "snapshot_sha256": "a084b79f6b4874197c54e9adba884ef5a4a9bb37fe03a22fbbbc46acdabaf0ef",
+      "exists": true,
+      "role_and_provenance": "Composición transaccional de owners existentes/observaciones; AUTHORED delta glue, provenance del baseline conservada",
+      "historical_manifest_refs": [
+        {
+          "manifest": "commercial-release-manifest.json",
+          "declared_sha256": "a084b79f6b4874197c54e9adba884ef5a4a9bb37fe03a22fbbbc46acdabaf0ef"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/postgres/commercial_release_connected_integration_test.go",
+      "snapshot_sha256": "c29a4a094941c2571025d8c9ef03aec25f8385fcf70fed7e196429f8b5c73f83",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "commercial-release-manifest.json",
+          "declared_sha256": "c29a4a094941c2571025d8c9ef03aec25f8385fcf70fed7e196429f8b5c73f83"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/postgres/commercial_release_integration_test.go",
+      "snapshot_sha256": "b1a5de13ac5a2fb8e50520a12a5e9bee5b869e63dd3f05386ab6abcf2366b0b9",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "commercial-release-manifest.json",
+          "declared_sha256": "b1a5de13ac5a2fb8e50520a12a5e9bee5b869e63dd3f05386ab6abcf2366b0b9"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/postgres/handover_preparation.go",
+      "snapshot_sha256": "9da7d25451ff5fbad7c2270cf3ae71b331c4a3fc88b1852442b0b4785b7c27b1",
+      "exists": true,
+      "role_and_provenance": "Composición transaccional de owners existentes/observaciones; AUTHORED delta glue, provenance del baseline conservada",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "9da7d25451ff5fbad7c2270cf3ae71b331c4a3fc88b1852442b0b4785b7c27b1"
+        },
+        {
+          "manifest": "handover-agent/payment-connected-result.json",
+          "declared_sha256": "9da7d25451ff5fbad7c2270cf3ae71b331c4a3fc88b1852442b0b4785b7c27b1"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/postgres/handover_preparation_integration_test.go",
+      "snapshot_sha256": "f6e5a4c8571d66a01b14fe61189782e87a4d484b1bd535f48ac2495d99efe509",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "f6e5a4c8571d66a01b14fe61189782e87a4d484b1bd535f48ac2495d99efe509"
+        },
+        {
+          "manifest": "handover-agent/payment-connected-result.json",
+          "declared_sha256": "f6e5a4c8571d66a01b14fe61189782e87a4d484b1bd535f48ac2495d99efe509"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/postgres/outbound_delivery.go",
+      "snapshot_sha256": "e7161276b124f7bb1a5c0666df59d33b9c0663beb8a8b22d65d47b20ce26a257",
+      "exists": true,
+      "role_and_provenance": "Composición transaccional de owners existentes/observaciones; AUTHORED delta glue, provenance del baseline conservada",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "e7161276b124f7bb1a5c0666df59d33b9c0663beb8a8b22d65d47b20ce26a257"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/postgres/payment_callback_checkout_recovery.go",
+      "snapshot_sha256": "365239d0421552a769c242bf6e4c73c4c12213020560b518fdc80653ed7797c3",
+      "exists": true,
+      "role_and_provenance": "Composición transaccional de owners existentes/observaciones; AUTHORED delta glue, provenance del baseline conservada",
+      "historical_manifest_refs": [
+        {
+          "manifest": "mp-recovery-agent/result.json",
+          "declared_sha256": "365239d0421552a769c242bf6e4c73c4c12213020560b518fdc80653ed7797c3"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/postgres/payment_callback_processor.go",
+      "snapshot_sha256": "e7fe432c2d5c492a817b39cf0828f699955e37cb3d15acf35e4f5987188b884b",
+      "exists": true,
+      "role_and_provenance": "Composición transaccional de owners existentes/observaciones; AUTHORED delta glue, provenance del baseline conservada",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "e7fe432c2d5c492a817b39cf0828f699955e37cb3d15acf35e4f5987188b884b"
+        },
+        {
+          "manifest": "handover-agent/payment-connected-result.json",
+          "declared_sha256": "e7fe432c2d5c492a817b39cf0828f699955e37cb3d15acf35e4f5987188b884b"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/postgres/payment_checkout.go",
+      "snapshot_sha256": "d6aeaa87260bdedcda029c87118c0e8802f978e74a5e7134bcaac34e43dcc274",
+      "exists": true,
+      "role_and_provenance": "Composición transaccional de owners existentes/observaciones; AUTHORED delta glue, provenance del baseline conservada",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "d6aeaa87260bdedcda029c87118c0e8802f978e74a5e7134bcaac34e43dcc274"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/postgres/payment_checkout_integration_test.go",
+      "snapshot_sha256": "7a104fbe2d840a8031bffd1ae724935fccae9aa5077ff685f62b9738fda71765",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "7a104fbe2d840a8031bffd1ae724935fccae9aa5077ff685f62b9738fda71765"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/postgres/payment_checkout_read.go",
+      "snapshot_sha256": "c05f4b63f75e16bbb9180e937e82b4ce88a4434c92c71bfa2fecace8b7264ec8",
+      "exists": true,
+      "role_and_provenance": "Composición transaccional de owners existentes/observaciones; AUTHORED delta glue, provenance del baseline conservada",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "c05f4b63f75e16bbb9180e937e82b4ce88a4434c92c71bfa2fecace8b7264ec8"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "c05f4b63f75e16bbb9180e937e82b4ce88a4434c92c71bfa2fecace8b7264ec8"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/postgres/payment_checkout_read_integration_test.go",
+      "snapshot_sha256": "44bf43ec7dd3d97d755994965d3c5ad43018f82abc021207d66501e9630ffe34",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "44bf43ec7dd3d97d755994965d3c5ad43018f82abc021207d66501e9630ffe34"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "44bf43ec7dd3d97d755994965d3c5ad43018f82abc021207d66501e9630ffe34"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/postgres/payment_checkout_recovery_integration_test.go",
+      "snapshot_sha256": "6874b569386e8a7192c8bb3e05f8e39dafdbb23250bd12cb78a628906c757329",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "mp-recovery-agent/result.json",
+          "declared_sha256": "6874b569386e8a7192c8bb3e05f8e39dafdbb23250bd12cb78a628906c757329"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/postgres/payment_connected_integration_test.go",
+      "snapshot_sha256": "3e91c0e323360965b6bb284a6df95c4c8d40d355a060a29f655570419a7aed04",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "3e91c0e323360965b6bb284a6df95c4c8d40d355a060a29f655570419a7aed04"
+        },
+        {
+          "manifest": "handover-agent/payment-connected-result.json",
+          "declared_sha256": "3e91c0e323360965b6bb284a6df95c4c8d40d355a060a29f655570419a7aed04"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/postgres/payment_dispatch_fence.go",
+      "snapshot_sha256": "401c49f162c825e0b7f203a485eaed32388ab8b8f7d75c4214dab7530a4c565a",
+      "exists": true,
+      "role_and_provenance": "Composición transaccional de owners existentes/observaciones; AUTHORED delta glue, provenance del baseline conservada",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "401c49f162c825e0b7f203a485eaed32388ab8b8f7d75c4214dab7530a4c565a"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "internal/platform/postgres/providerintegration.go",
+      "snapshot_sha256": "77fd3573d0cf246ec068af19757a8cb58c148d977e874088f31681cb104b8dbd",
+      "exists": true,
+      "role_and_provenance": "Composición transaccional de owners existentes/observaciones; AUTHORED delta glue, provenance del baseline conservada",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "77fd3573d0cf246ec068af19757a8cb58c148d977e874088f31681cb104b8dbd"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "official_payment_webhooks/README.md",
+      "snapshot_sha256": "63d63590cf39c65efa80488bf8aaf2ffb71ad2ba46fa47d1ebaf8e12a846bbaf",
+      "exists": true,
+      "role_and_provenance": "Configuración, locks o documentación; AUTHORED metadata glue, licencias de terceros conservadas",
+      "historical_manifest_refs": [
+        {
+          "manifest": "sdk-recovery-candidate-manifest.json",
+          "declared_sha256": "63d63590cf39c65efa80488bf8aaf2ffb71ad2ba46fa47d1ebaf8e12a846bbaf"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "official_payment_webhooks/go.mod",
+      "snapshot_sha256": "fc6106ab8e8e4ab2dde71a6210e5d4b31cc674e62088947e29eb8e025387b141",
+      "exists": true,
+      "role_and_provenance": "Configuración, locks o documentación; AUTHORED metadata glue, licencias de terceros conservadas",
+      "historical_manifest_refs": [
+        {
+          "manifest": "sdk-recovery-candidate-manifest.json",
+          "declared_sha256": "fc6106ab8e8e4ab2dde71a6210e5d4b31cc674e62088947e29eb8e025387b141"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "official_payment_webhooks/go.sum",
+      "snapshot_sha256": "6f564169198e386498d553a0c9a1e7bce16b619d4e88d640429ad1f3ff74dc06",
+      "exists": true,
+      "role_and_provenance": "Configuración, locks o documentación; AUTHORED metadata glue, licencias de terceros conservadas",
+      "historical_manifest_refs": [
+        {
+          "manifest": "sdk-recovery-candidate-manifest.json",
+          "declared_sha256": "6f564169198e386498d553a0c9a1e7bce16b619d4e88d640429ad1f3ff74dc06"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "official_payment_webhooks/officialpayments/checkout.go",
+      "snapshot_sha256": "1533b728ca09a06016aa8e0c7b2828cb9ea630b9b3f1bab6834f2d70999b5338",
+      "exists": true,
+      "role_and_provenance": "Adaptación de DTO/llamadas SDK y verificación de identidad; AUTHORED glue, SDK separado DEPENDENCY_PIN",
+      "historical_manifest_refs": [
+        {
+          "manifest": "sdk-recovery-candidate-manifest.json",
+          "declared_sha256": "1533b728ca09a06016aa8e0c7b2828cb9ea630b9b3f1bab6834f2d70999b5338"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "official_payment_webhooks/officialpayments/checkout_test.go",
+      "snapshot_sha256": "754bef6d11f6d66574cf5555b95c111ed35cc70d69cbe44242797dfb7f21efa3",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "sdk-recovery-candidate-manifest.json",
+          "declared_sha256": "754bef6d11f6d66574cf5555b95c111ed35cc70d69cbe44242797dfb7f21efa3"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "official_payment_webhooks/officialpayments/client.go",
+      "snapshot_sha256": "9afae1052d458ab227a748b1a9f79c59e2dba1d91607bbd9cb17ab4132324c41",
+      "exists": true,
+      "role_and_provenance": "Adaptación de DTO/llamadas SDK y verificación de identidad; AUTHORED glue, SDK separado DEPENDENCY_PIN",
+      "historical_manifest_refs": [
+        {
+          "manifest": "sdk-recovery-candidate-manifest.json",
+          "declared_sha256": "9afae1052d458ab227a748b1a9f79c59e2dba1d91607bbd9cb17ab4132324c41"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "official_payment_webhooks/officialpayments/client_test.go",
+      "snapshot_sha256": "6f0f8596f193a91e8063ef88ce2f5ebd54d5bbce10645145961fa38b1872c2d5",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "sdk-recovery-candidate-manifest.json",
+          "declared_sha256": "6f0f8596f193a91e8063ef88ce2f5ebd54d5bbce10645145961fa38b1872c2d5"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "official_payment_webhooks/officialpayments/notification.go",
+      "snapshot_sha256": "11ad6b9441b06c474ff2e5e7862c6fd118347b24d5993db8311b2ec631752da9",
+      "exists": true,
+      "role_and_provenance": "Adaptación de DTO/llamadas SDK y verificación de identidad; AUTHORED glue, SDK separado DEPENDENCY_PIN",
+      "historical_manifest_refs": [
+        {
+          "manifest": "sdk-recovery-candidate-manifest.json",
+          "declared_sha256": "11ad6b9441b06c474ff2e5e7862c6fd118347b24d5993db8311b2ec631752da9"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "official_payment_webhooks/officialpayments/preference_recovery.go",
+      "snapshot_sha256": "fd3dad0004905048125f0017a3e0efd0733aa782628c624303f0f1a12941d6a8",
+      "exists": true,
+      "role_and_provenance": "Adaptación de DTO/llamadas SDK y verificación de identidad; AUTHORED glue, SDK separado DEPENDENCY_PIN",
+      "historical_manifest_refs": [
+        {
+          "manifest": "sdk-recovery-candidate-manifest.json",
+          "declared_sha256": "fd3dad0004905048125f0017a3e0efd0733aa782628c624303f0f1a12941d6a8"
+        },
+        {
+          "manifest": "mp-recovery-agent/result.json",
+          "declared_sha256": "fd3dad0004905048125f0017a3e0efd0733aa782628c624303f0f1a12941d6a8"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "official_payment_webhooks/officialpayments/retrieve.go",
+      "snapshot_sha256": "5148b8b7d9195cb300bbdba3b4b6f16f7b161958770b2a395d214a12cae22b26",
+      "exists": true,
+      "role_and_provenance": "Adaptación de DTO/llamadas SDK y verificación de identidad; AUTHORED glue, SDK separado DEPENDENCY_PIN",
+      "historical_manifest_refs": [
+        {
+          "manifest": "sdk-recovery-candidate-manifest.json",
+          "declared_sha256": "5148b8b7d9195cb300bbdba3b4b6f16f7b161958770b2a395d214a12cae22b26"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "official_payment_webhooks/officialpayments/retrieve_test.go",
+      "snapshot_sha256": "0a6b926e852f8a5480f953dbf8c79df0622c70ab2b20f6405ed5f341c3da6913",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "sdk-recovery-candidate-manifest.json",
+          "declared_sha256": "0a6b926e852f8a5480f953dbf8c79df0622c70ab2b20f6405ed5f341c3da6913"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "official_payment_webhooks/officialpayments/verifier.go",
+      "snapshot_sha256": "64ba006387b43979648306f4b0acb0e4de3db7ea152f33f69ea0becd6ed74eac",
+      "exists": true,
+      "role_and_provenance": "Adaptación de DTO/llamadas SDK y verificación de identidad; AUTHORED glue, SDK separado DEPENDENCY_PIN",
+      "historical_manifest_refs": [
+        {
+          "manifest": "sdk-recovery-candidate-manifest.json",
+          "declared_sha256": "64ba006387b43979648306f4b0acb0e4de3db7ea152f33f69ea0becd6ed74eac"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "official_payment_webhooks/officialpayments/verifier_test.go",
+      "snapshot_sha256": "e924989d2efbe1a3c2be3ecbbbc72a5bf4367e5e5b63e4a73902a6afea1b1939",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "sdk-recovery-candidate-manifest.json",
+          "declared_sha256": "e924989d2efbe1a3c2be3ecbbbc72a5bf4367e5e5b63e4a73902a6afea1b1939"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "return_refund_worker/docs/COMMERCE_PROVIDER_ALIAS.md",
+      "snapshot_sha256": "21d6e4003b6c911acdf690288114d1737e5af419296f15fa769792969dbe3e94",
+      "exists": true,
+      "role_and_provenance": "Configuración, locks o documentación; AUTHORED metadata glue, licencias de terceros conservadas",
+      "historical_manifest_refs": [
+        {
+          "manifest": "refund-alias-manifest.json",
+          "declared_sha256": "21d6e4003b6c911acdf690288114d1737e5af419296f15fa769792969dbe3e94"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "return_refund_worker/internal/refundworker/postgres.go",
+      "snapshot_sha256": "06a0915c86c29d30516ad05a4ab283a1f4f38624224e7a7736e5737230648ae3",
+      "exists": true,
+      "role_and_provenance": "Delta de compatibilidad de alias de proveedor; AUTHORED glue, baseline del owner conservado",
+      "historical_manifest_refs": [
+        {
+          "manifest": "refund-alias-manifest.json",
+          "declared_sha256": "06a0915c86c29d30516ad05a4ab283a1f4f38624224e7a7736e5737230648ae3"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "return_refund_worker/internal/refundworker/postgres_integration_test.go",
+      "snapshot_sha256": "f20113caa74aadd0a3fb28b94ecaf45c6cc49656dd2e7376bafd054b694e5d13",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "refund-alias-manifest.json",
+          "declared_sha256": "f20113caa74aadd0a3fb28b94ecaf45c6cc49656dd2e7376bafd054b694e5d13"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "return_refund_worker/internal/refundworker/provider_alias_integration_test.go",
+      "snapshot_sha256": "4a3a9d2b9ef20ac08006926b3ed48a5d7009171f14dcc700f8e46cf906626fc9",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "refund-alias-manifest.json",
+          "declared_sha256": "4a3a9d2b9ef20ac08006926b3ed48a5d7009171f14dcc700f8e46cf906626fc9"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "src/app/api/enterprise/checkout/route.test.ts",
+      "snapshot_sha256": "1d9535a7f844b93ddec8c9de31f89907b7822981a68f33a8d2f5c70eccd1a7be",
+      "exists": true,
+      "role_and_provenance": "Oráculos, fixtures y pruebas de frontera; AUTHORED verification glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "1d9535a7f844b93ddec8c9de31f89907b7822981a68f33a8d2f5c70eccd1a7be"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "1d9535a7f844b93ddec8c9de31f89907b7822981a68f33a8d2f5c70eccd1a7be"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "src/app/api/enterprise/checkout/route.ts",
+      "snapshot_sha256": "0dd98ce24feb982692b6dec6696c638caded8435d2c0bc3ec1b94fc94603ed6a",
+      "exists": true,
+      "role_and_provenance": "UI/BFF hacia operaciones y permisos existentes; AUTHORED UI binding glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "0dd98ce24feb982692b6dec6696c638caded8435d2c0bc3ec1b94fc94603ed6a"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "0dd98ce24feb982692b6dec6696c638caded8435d2c0bc3ec1b94fc94603ed6a"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "src/app/customer/page.tsx",
+      "snapshot_sha256": "277bcdfaeb46cf0482fabbc83be1d6b0b7330667583c611753bac2411c0f6cee",
+      "exists": true,
+      "role_and_provenance": "UI/BFF hacia operaciones y permisos existentes; AUTHORED UI binding glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "277bcdfaeb46cf0482fabbc83be1d6b0b7330667583c611753bac2411c0f6cee"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "277bcdfaeb46cf0482fabbc83be1d6b0b7330667583c611753bac2411c0f6cee"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "src/components/customer-checkout-actions.tsx",
+      "snapshot_sha256": "153b13fa7a9296e8d56014763c1a5cec44951b15da5f8e6cec79703e74388568",
+      "exists": true,
+      "role_and_provenance": "UI/BFF hacia operaciones y permisos existentes; AUTHORED UI binding glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "153b13fa7a9296e8d56014763c1a5cec44951b15da5f8e6cec79703e74388568"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "153b13fa7a9296e8d56014763c1a5cec44951b15da5f8e6cec79703e74388568"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "src/platform/payments/checkout.ts",
+      "snapshot_sha256": "512077333c00084c0fd256fc177a6c9c48f28c2b71df222cc0a5af3b5af7448f",
+      "exists": true,
+      "role_and_provenance": "UI/BFF hacia operaciones y permisos existentes; AUTHORED UI binding glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "512077333c00084c0fd256fc177a6c9c48f28c2b71df222cc0a5af3b5af7448f"
+        },
+        {
+          "manifest": "payment-wiring-manifest.json",
+          "declared_sha256": "512077333c00084c0fd256fc177a6c9c48f28c2b71df222cc0a5af3b5af7448f"
+        }
+      ],
+      "frozen_revision_verified": true
+    },
+    {
+      "path": "tools/materialize_handover_profile.py",
+      "snapshot_sha256": "a24c419c5e85c59d1e05aa172d6c477be773bd3f57b99e1eebb2aa5541241df1",
+      "exists": true,
+      "role_and_provenance": "Materialización determinista de configuración admitida; AUTHORED tooling glue",
+      "historical_manifest_refs": [
+        {
+          "manifest": "connected-pack-candidate-manifest.json",
+          "declared_sha256": "d98d7bb0111b5074d117b9361b7c9901d746b9b25bef70c49180a7e88c15cbfc"
+        },
+        {
+          "manifest": "handover-agent/payment-connected-result.json",
+          "declared_sha256": "d98d7bb0111b5074d117b9361b7c9901d746b9b25bef70c49180a7e88c15cbfc"
+        },
+        {
+          "manifest": "commercial-release-manifest.json",
+          "declared_sha256": "a24c419c5e85c59d1e05aa172d6c477be773bd3f57b99e1eebb2aa5541241df1"
+        }
+      ],
+      "frozen_revision_verified": true
+    }
+  ],
+  "evidence": [
+    {
+      "id": "EV01",
+      "relative_path": "payment-source-receipts-complete.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\payment-source-receipts-complete.json",
+      "sha256": "ea8a210a7d96ff61e9b36ade2764df791f9acceb6e2d04bcf2e348651f8505c7"
+    },
+    {
+      "id": "EV02",
+      "relative_path": "payment-sdk-final-result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\payment-sdk-final-result.json",
+      "sha256": "48fe4802c7eeb9522284ae46890d8ecd023429e7908b3cff2ba73453afc29773"
+    },
+    {
+      "id": "EV03",
+      "relative_path": "payment-logger-result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\payment-logger-result.json",
+      "sha256": "a948997537d479a60368d270eaee7c95e91c8ccea9ecd019fca3600fb6715360"
+    },
+    {
+      "id": "EV04",
+      "relative_path": "payment-sdk-driver-result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\payment-sdk-driver-result.json",
+      "sha256": "4035ed65c1a7dc152a3db42ec52cf4a39214749cc3881f3d21a1dcb125c5c3d8"
+    },
+    {
+      "id": "EV05",
+      "relative_path": "payment-sdk-osv.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\payment-sdk-osv.json",
+      "sha256": "01b8c26c57808538d47521d42f2ff3d93f78cae489d480f97c08a60c98b9d200"
+    },
+    {
+      "id": "EV06",
+      "relative_path": "payment-bridge-test-result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\payment-bridge-test-result.json",
+      "sha256": "a355bb0d045d9ee467280a0ab2ad892ec19211ebfe618a12022106bebe2c407d"
+    },
+    {
+      "id": "EV07",
+      "relative_path": "payment-wiring-go-result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\payment-wiring-go-result.json",
+      "sha256": "ed744ced2b072bc73f2f7b1946415aa4bcdf6391004ec569024cd64b7f58d2f8"
+    },
+    {
+      "id": "EV08",
+      "relative_path": "payment-wiring-web-result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\payment-wiring-web-result.json",
+      "sha256": "ac0124e49bc3200a9025ea0d5757b3de8a0b97a6834ba54abc840d48cac0f5da"
+    },
+    {
+      "id": "EV09",
+      "relative_path": "payment-reader-pg-read1/result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\payment-reader-pg-read1\\result.json",
+      "sha256": "b2474da1ba7dedadf634f59fd2a055f32e858ee155a12bb2ee84dfb853c3518d"
+    },
+    {
+      "id": "EV10",
+      "relative_path": "payment-pg-semantic-red/result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\payment-pg-semantic-red\\result.json",
+      "sha256": "9b1f8ce82786c3af2d6ec1c5ba841bbcb6006521f582df409af95c4b8bb8c8bf"
+    },
+    {
+      "id": "EV11",
+      "relative_path": "payment-pg-semantic-red/connected.log",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\payment-pg-semantic-red\\connected.log",
+      "sha256": "af7f8aa5ba9464a8b8c9c143e0aa3b004cfcf762bd9f02a71dd712d4a40538f1"
+    },
+    {
+      "id": "EV12",
+      "relative_path": "payment-pg-semantic-green2/result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\payment-pg-semantic-green2\\result.json",
+      "sha256": "3d6ff283e5a57dcb950f21e0d66162ded79f3ecbd03c0f34210c2234a0dbd290"
+    },
+    {
+      "id": "EV13",
+      "relative_path": "payment-pg-semantic-green2/connected.log",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\payment-pg-semantic-green2\\connected.log",
+      "sha256": "4b3dd3d582187f96c8141186b58f2ebd6759f066dd4c7c818a35ef95c9a205a9"
+    },
+    {
+      "id": "EV14",
+      "relative_path": "payment-pg-admission/result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\payment-pg-admission\\result.json",
+      "sha256": "3cf7b733ce3d879bd2533d6b591df792efe668fa81a83703f37d4debbeea319d"
+    },
+    {
+      "id": "EV15",
+      "relative_path": "payment-pg-deadline-filter/result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\payment-pg-deadline-filter\\result.json",
+      "sha256": "afdc75db2e22800aa047ef983d30472222a4b881ca1d58a8b240917e1421b1b6"
+    },
+    {
+      "id": "EV16",
+      "relative_path": "handover-agent/connected-run3-mp/result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-agent\\connected-run3-mp\\result.json",
+      "sha256": "c45fd6f1d67c38084230ce6351b5142d60b001214de50e5cb9f47d005a433dd1"
+    },
+    {
+      "id": "EV17",
+      "relative_path": "handover-agent/connected-run5-profile-binding/result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-agent\\connected-run5-profile-binding\\result.json",
+      "sha256": "ebf3a4c7edfb33da94add3422d7d918098193bcae8825b88a4f523bc64e48bac"
+    },
+    {
+      "id": "EV18",
+      "relative_path": "mp-recovery-agent/source-lock.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\mp-recovery-agent\\source-lock.json",
+      "sha256": "3e59288a17ab6e8e2fd2b5ddced1fe961e8f940cb3301f8f2d33785a1516814a"
+    },
+    {
+      "id": "EV19",
+      "relative_path": "mp-recovery-agent/run1/result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\mp-recovery-agent\\run1\\result.json",
+      "sha256": "612622a4b50bf2c0bebec9acb9ebc0cfeaf60d8afa577265497741e6bde196fe"
+    },
+    {
+      "id": "EV20",
+      "relative_path": "commercial-release-pg-final-scoped/result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\commercial-release-pg-final-scoped\\result.json",
+      "sha256": "e7302dd778d8e14b6bd70d8ab35479f80aaf906f5e597bbb8ebe71fc574e97a9"
+    },
+    {
+      "id": "EV21",
+      "relative_path": "commercial-release-pg-final-scoped/connected.log",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\commercial-release-pg-final-scoped\\connected.log",
+      "sha256": "9110e4581ae9a1b965ddca49743392dbacbf29af898a69c6cc5aa3764bc3392b"
+    },
+    {
+      "id": "EV22",
+      "relative_path": "commercial-release-official-pg-final/result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\commercial-release-official-pg-final\\result.json",
+      "sha256": "75b21466a48f989fda29776d3efeed43c081cc05b84d1aa2b8149e4c70c3d1e7"
+    },
+    {
+      "id": "EV23",
+      "relative_path": "commercial-release-official-pg-final/connected.log",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\commercial-release-official-pg-final\\connected.log",
+      "sha256": "8fb80b9cc011bd3d090946f0337b85b518ae1b90b0a49d878ed9e6ce11a6b790"
+    },
+    {
+      "id": "EV24",
+      "relative_path": "commercial-release-failure-lesson.md",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\commercial-release-failure-lesson.md",
+      "sha256": "c32b182ec3cca8df53ba3cd43667388934f2bca420eb0d2f0d5c4f4b078a2e05"
+    },
+    {
+      "id": "EV25",
+      "relative_path": "refund-alias-pg-2/result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\refund-alias-pg-2\\result.json",
+      "sha256": "c402425d90e1cee64ade3cbdd999545bc98eb77e8d91cad8bc14dd5ecc5388ea"
+    },
+    {
+      "id": "EV26",
+      "relative_path": "checkout-policy-fuzz-agent/checkout-run1/execution-receipt.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\checkout-policy-fuzz-agent\\checkout-run1\\execution-receipt.json",
+      "sha256": "f8e8e91884407beb0e955378e9d9ec29ab7f2cecd58641d48c8c43fd685522f6"
+    },
+    {
+      "id": "EV27",
+      "relative_path": "checkout-policy-fuzz-agent/checkout-run2/gate-receipt.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\checkout-policy-fuzz-agent\\checkout-run2\\gate-receipt.json",
+      "sha256": "44542de3fa14e02f0a5ef00b00e5873a7206043e1996feccd02c5c05dfc05c40"
+    },
+    {
+      "id": "EV28",
+      "relative_path": "checkout-policy-fuzz-agent/profile-run2/gate-receipt.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\checkout-policy-fuzz-agent\\profile-run2\\gate-receipt.json",
+      "sha256": "f2e3900ac113b1fb258b3639dea292e2acdb508df4d4bc368c21fd037c53622a"
+    },
+    {
+      "id": "EV29",
+      "relative_path": "checkout-policy-fuzz-agent/PROJECT_FAILURE_LESSONS.md",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\checkout-policy-fuzz-agent\\PROJECT_FAILURE_LESSONS.md",
+      "sha256": "b93c3653a4af31d912415888135655a57ea18f0df947300ee404ff0899ed4860"
+    },
+    {
+      "id": "EV30",
+      "relative_path": "connected-pack-candidate-manifest.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\connected-pack-candidate-manifest.json",
+      "sha256": "789d3142b5bd05574b288d02de5da22a8226af84bb15ddf94a363e0a440c0914"
+    },
+    {
+      "id": "EV31",
+      "relative_path": "sdk-recovery-candidate-manifest.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\sdk-recovery-candidate-manifest.json",
+      "sha256": "f0822cf4f10d815e08e7513a0d9879cef4dad64a54d96f9b8c885a810e5730d6"
+    },
+    {
+      "id": "EV32",
+      "relative_path": "payment-wiring-manifest.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\payment-wiring-manifest.json",
+      "sha256": "11402de4c2d32ebb46f51030068cd8c5797a203571a10f05782cf0df52ba9dd7"
+    },
+    {
+      "id": "EV33",
+      "relative_path": "handover-host-manifest.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-host-manifest.json",
+      "sha256": "1967e4d145f87213a145b55f3164ddeb1b40ca498110d734ddfa3410e92f4168"
+    },
+    {
+      "id": "EV34",
+      "relative_path": "handover-agent/payment-connected-result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-agent\\payment-connected-result.json",
+      "sha256": "5cf582f839d142466836b1a29b52a30b9260041068c9fc73f65325d32e86005b"
+    },
+    {
+      "id": "EV35",
+      "relative_path": "commercial-release-manifest.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\commercial-release-manifest.json",
+      "sha256": "9650840fc2a38ef7cdb9944b840cac1ad2d1c6e8bb0475d77b946e69effc44ea"
+    },
+    {
+      "id": "EV36",
+      "relative_path": "mp-recovery-agent/result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\mp-recovery-agent\\result.json",
+      "sha256": "ddb721a8eb92afd03d969e2031ab6b3d88108e005c5f26050a0d7266c5070c54"
+    },
+    {
+      "id": "EV37",
+      "relative_path": "checkout-policy-fuzz-agent/result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\checkout-policy-fuzz-agent\\result.json",
+      "sha256": "cf5a0f39cac6be3546f19f9e1dc624b350a9236578ffc98536657bb12fb7a2ce"
+    },
+    {
+      "id": "EV38",
+      "relative_path": "refund-alias-manifest.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\refund-alias-manifest.json",
+      "sha256": "90bfb623d516c22b34edc4d2137811e43ac8a62e96894fea2b9f2154b04de52e"
+    },
+    {
+      "id": "EV39",
+      "relative_path": "connected-frozen-reconstruction.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\connected-frozen-reconstruction.json",
+      "sha256": "9a8664d562f805d55fd4a076e8c17895e8cd223e1639c5aef437227c7383fbf3"
+    },
+    {
+      "id": "EV40",
+      "relative_path": "connected-frozen-pg-final1/result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\connected-frozen-pg-final1\\result.json",
+      "sha256": "176a0a354aea0e4d613d63b22b0736d99098850bd59fc55d95ef6aa19d71b06f"
+    },
+    {
+      "id": "EV41",
+      "relative_path": "connected-frozen-pg-final1/connected.log",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\connected-frozen-pg-final1\\connected.log",
+      "sha256": "a4f691fd4fd048b8cac1c7b903ba9797fe2a04c70a5ec0b72ddbf6529c29e2ae"
+    },
+    {
+      "id": "EV42",
+      "relative_path": "connected-frozen-pg-final2/result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\connected-frozen-pg-final2\\result.json",
+      "sha256": "b47bde8727143ea90eeb18f67c694e0ee860abb208f4fe7e227704004ce0b422"
+    },
+    {
+      "id": "EV43",
+      "relative_path": "connected-frozen-pg-final2/connected.log",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\connected-frozen-pg-final2\\connected.log",
+      "sha256": "8d7533d73bd87d6c15bd1a658abff3e8c758e0f8fa018f8bd92cac29b2fd8970"
+    },
+    {
+      "id": "EV44",
+      "relative_path": "connected-frozen-pg-final2/affected-unit-host.log",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\connected-frozen-pg-final2\\affected-unit-host.log",
+      "sha256": "004fd337dcee3a8decdd4ba256a8c35442944dcc20783fb0f92673166ac55ca5"
+    },
+    {
+      "id": "EV45",
+      "relative_path": "connected-frozen-unit-final/result.json",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\connected-frozen-unit-final\\result.json",
+      "sha256": "4bf013eb754b219f6ca5b91bb88f984f6cfd2fc9e53553d8cf57f5caa14ea4e8"
+    },
+    {
+      "id": "EV46",
+      "relative_path": "connected-frozen-unit-final/run.log",
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\connected-frozen-unit-final\\run.log",
+      "sha256": "1731129e053e1b7de8c0bf2092d27fb1074ddeba73d9ae982ec21bbda8334678"
+    }
+  ],
+  "authorities": [
+    {
+      "path": "C:\\Users\\NL\\Desktop\\Public Elite Codes\\PUBLIC_CODE_ARCHITECTURE_ADMISSION_STANDARD.md",
+      "sha256": "20213a10c129f78ff6cdb2d7312de5feaa6cfd637e9a63fcc8627a35abe131c6"
+    },
+    {
+      "path": "C:\\Users\\NL\\Desktop\\Public Elite Codes\\ENGINEERING_EXECUTION_PLAYBOOK.md",
+      "sha256": "438006acb05c670bf8df9191038ff06fb395828735c887bfeb2972c74cb95680"
+    },
+    {
+      "path": "C:\\Users\\NL\\Desktop\\Public Elite Codes\\reconstruction_evidence\\LIBRARY_INFRA_SCOPE_V402.md",
+      "sha256": "0ddbc9820caa12cadde12eb7f53cd3b237e046925f4e437e5e12598ebd7bfb1d"
+    },
+    {
+      "path": "C:\\Users\\NL\\Desktop\\Public Elite Codes\\markdown_system\\PAYMENT_WEBHOOK_ADAPTERS_PACK_PLAN.md",
+      "sha256": "69112093d358ade4ef5161b7b60f1ba7ee83d395d65cf21f56a684076007da70"
+    }
+  ],
+  "gate_decision": "G4 local connected delta proven on frozen composition by enumerated receipts; G5-G8 final assurance/release remain open. No aggregate unit no-skip PASS, no global admission or T2802 closure.",
+  "supersession": "Historical manifests remain unchanged. Existing final2 PostgreSQL receipt and enumerated unit PASS evidence bind the frozen bytes. FAIL812/813 harness failures are retained explicitly.",
+  "frozen_revision_scope": "82 inventoried delta files match reconstructed outputs and frozen files; 915-file reconstruction receipt kept separately",
+  "frozen_reference": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\connected-frozen-reference",
+  "frozen_pg": {
+    "status": "PASS",
+    "top_level_tests": 16,
+    "no_tests_skipped": true,
+    "postgres_exited": true
+  },
+  "frozen_units": {
+    "executed_tests_passed": [
+      "TestSDKDriverMercadoPagoProbesAccountBeforeHostedCheckout",
+      "TestCommercialReleaseRequiresExplicitVersionedEffect",
+      "TestHandoverPreparationRequiresExplicitExactReferenceContract",
+      "TestHandoverPreparationRequestBindsActorAndObservation",
+      "TestHandoverPreparationRejectsInvalidInputsBeforeRepository",
+      "TestHandoverProfileBindsAlgorithmRevisionModeAndScope",
+      "TestHandoverProfileRejectsAlteredMissingAndUnsupportedPolicy",
+      "TestPaymentRequestsDisabledWithoutSelection",
+      "TestCommercialReleaseHTTPAuthorizationAndHistoricalReplay",
+      "TestAcceptHandoverHashesExactCommandAndBindsIdentity",
+      "TestInitialHandoverHTTPBindsPrincipalAndRecovery",
+      "TestInitialHandoverHTTPRejectsForgedInputsAndUnauthorizedScope",
+      "TestInitialHandoverHTTPUnconfiguredModuleAndErrors",
+      "TestPaymentRequestsCannotLeaveConfiguredHostScope",
+      "TestCustomerCheckoutHTTPAuthorizationAndProviderURL",
+      "TestProviderObservationOwnsFinancialTransitions",
+      "TestBusinessPolicyHostReferenceAndCompleteFile",
+      "TestBusinessPolicyHostRejectsIncompleteInvalidAndMissingFile",
+      "TestCommercialReleaseHostRequiresSelectedEffect",
+      "TestHandoverHostDisabledDoesNotNeedPaymentOrProfile",
+      "TestHandoverHostBindsMaterializedProfileToPaymentScope",
+      "TestHandoverHostRejectsIncompleteOrMismatchedActivation",
+      "TestPaymentRequestSelection",
+      "TestPaymentHostDisabledDoesNotRequireSecrets",
+      "TestPaymentHostRejectsIncompleteConfiguration"
+    ],
+    "top_level_tests_passed": 25,
+    "go_exit_code": 0,
+    "skipped_tests": [
+      "TestPaymentHTTPDurableReplayPostgres"
+    ],
+    "aggregate_no_skip_gate": "FAIL",
+    "lesson": "FAIL813 harness selection; no credit for skipped historic PostgreSQL test",
+    "postgres_repeated": false
+  }
+}

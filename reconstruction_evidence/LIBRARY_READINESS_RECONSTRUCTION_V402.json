@@ -1,0 +1,70 @@
+{
+  "file_count": 11,
+  "files": [
+    {
+      "path": "project_readiness_gate/library-readiness.template.json",
+      "sha256": "ccfc2c4ec1f51db802ec3ef65c0050682527fd4865a415aac38eb652edc40508"
+    },
+    {
+      "path": "project_readiness_gate/project-advisory-catalog.json",
+      "sha256": "d5c336bf2c493e334ecc253aac5ed3d9e7c90d0ebd09fb78120da0c28bff6015"
+    },
+    {
+      "path": "project_readiness_gate/project-readiness.template.json",
+      "sha256": "09cbbb9fdeefcbba7f8c09a1da9f558a0b81b834e3745bba2f1691aa160dd79c"
+    },
+    {
+      "path": "project_readiness_gate/README.md",
+      "sha256": "90c69ee86499b450b1ca1c81f9c81cc278b06982d157eca8ac8e164b607b2b3a"
+    },
+    {
+      "path": "project_readiness_gate/render_consumer_profile.py",
+      "sha256": "16978a72f46428f083062fa61062d37d806baefd4ae53d5fe8f8cd9694a2d53a"
+    },
+    {
+      "path": "project_readiness_gate/render_project_advisory.py",
+      "sha256": "3b287f648be48baca56677de831d933d36410c14d3e2200a955fa96ca6df2105"
+    },
+    {
+      "path": "project_readiness_gate/test_render_project_advisory.py",
+      "sha256": "25cb15e2d5ee4b41f52f57280db4b30eb599cd86367502c8a696608a6e4fbe93"
+    },
+    {
+      "path": "project_readiness_gate/test_validate_library_readiness.py",
+      "sha256": "a104fe2b7c0db52166ef1c2022b96531f7153f5f9007afe0d0438f87bc343a90"
+    },
+    {
+      "path": "project_readiness_gate/test_validate_project_readiness.py",
+      "sha256": "56b1bcdc2ed3fee71093c409bf2540519f6ebf9ce46422d9f5e0d9c26a2c299c"
+    },
+    {
+      "path": "project_readiness_gate/validate_library_readiness.py",
+      "sha256": "80a77f41aea74fa43e03f83a11a211795312d21cf9439d8b36e14c5801b0ad8e"
+    },
+    {
+      "path": "project_readiness_gate/validate_project_readiness.py",
+      "sha256": "d3b3c69b78cde3a3857c0713d1ee30c8ed217206aa3637fd38cf96efacde312b"
+    }
+  ],
+  "pack": {
+    "path": "implementation_packs/PROJECT_START_READINESS_VALIDATOR.md",
+    "sha256": "77b011558bebdb71da1261c0e084f7348d6207e9db8bafcf84608ac7344e14de"
+  },
+  "pack_id": "PROJECT-START-READINESS-VALIDATOR",
+  "production_authorized": false,
+  "result": "PASS",
+  "revision": "V402-library-preparation-1",
+  "schema": "elite-exact-pack-reconstruction/v1",
+  "scope": "VALIDATOR_GLUE_ONLY",
+  "tests": {
+    "count": 102,
+    "existing": 75,
+    "log": {
+      "path": "reconstruction_evidence/LIBRARY_READINESS_TESTS_V402.log",
+      "sha256": "c6ce6a3efb380b602569a4a0c062523b7a2c4be82a2256b50b5f3a250da2bc1d"
+    },
+    "new": 27,
+    "result": "PASS"
+  },
+  "version": "0.7.0"
+}

@@ -1,0 +1,62 @@
+{
+  "assertions": [
+    "102 validator tests passed; 75 default project tests preserved",
+    "11 canonical reconstructed files exactly match the tested candidate",
+    "Preparation preserves source/dependency/integration blockers with explicit resolution plans",
+    "The local scope does not authorize production or complete T2801 release",
+    "Assurance is an immutable preparation snapshot; linking gate evidence into the evolving contract cannot create a hash cycle"
+  ],
+  "command": "python -X utf8 -B -m unittest discover -s candidate/project_readiness_gate -p test_*.py -v; materialize_markdown_pack.ps1 -PackFile implementation_packs/PROJECT_START_READINESS_VALIDATOR.md -Destination rebuilt-canonical; python -X utf8 -B prepare-record.py",
+  "control": "T2801",
+  "exit_code": 0,
+  "inputs": [
+    {
+      "path": "reconstruction_evidence/LIBRARY_INFRA_SCOPE_V402.md",
+      "sha256": "0ddbc9820caa12cadde12eb7f53cd3b237e046925f4e437e5e12598ebd7bfb1d"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_READINESS_PREPARATION_V402.md",
+      "sha256": "f64a63fe3f5e370cc79973191e74fbbb5418c7749d4718212ce2d048521a0170"
+    },
+    {
+      "path": "PROJECT_AUTHORITY_MAP.md",
+      "sha256": "5347450c1c8d87e58c92fff2707005fffee73ca7fe92c9dccbb419f3b7d5d23a"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_ASSURANCE_PREPARATION_V402.json",
+      "sha256": "43b7a3b9de934a17677098989aa743beba4a10ac85cf0e86a2bb1a87086d80e3"
+    },
+    {
+      "path": "reconstruction_evidence/PNPM_ZIP_CONTAINMENT_V401.md",
+      "sha256": "dacf2feacc1fd543524c3120b2c4809a6ef6f171ffd464b21f4e2cdd53028418"
+    },
+    {
+      "path": "PROJECT_EXTERNAL_SOURCE_LOCK.md",
+      "sha256": "2ecb2d026e7fa3c0399bb3c98460e5f5ceb3e4ea15bf0d4b99621f57bc02b34a"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "sha256": "2043d6c6c35ce85726451a2dfaaa41d06b33c41e6bbd75a8cd7d9c6d8459763d"
+    },
+    {
+      "path": "implementation_packs/PROJECT_START_READINESS_VALIDATOR.md",
+      "sha256": "77b011558bebdb71da1261c0e084f7348d6207e9db8bafcf84608ac7344e14de"
+    }
+  ],
+  "inventory_sha256": null,
+  "live_effects_performed": false,
+  "outcome": "PASS",
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/LIBRARY_READINESS_TESTS_V402.log",
+      "sha256": "c6ce6a3efb380b602569a4a0c062523b7a2c4be82a2256b50b5f3a250da2bc1d"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_READINESS_RECONSTRUCTION_V402.json",
+      "sha256": "394812376e74266dc37eb2220c4a8e3e0364cc2d96cb320fb088a285473a2bfc"
+    }
+  ],
+  "revision": "V402-library-preparation-1",
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES"
+}

@@ -1,0 +1,2134 @@
+{
+  "schema_version": "1.0.0",
+  "revision": 278,
+  "project": {
+    "id": "elite-library-maintenance",
+    "mode": "EXISTING",
+    "rigor": "HIGH"
+  },
+  "phase": "IMPLEMENTATION",
+  "status": "BLOCKED",
+  "baseline": {
+    "kind": "EXISTING",
+    "captured_at": "2026-09-07T13:35:06Z",
+    "inventory_ref": "inventory",
+    "delta_scope_ref": "roadmap"
+  },
+  "links": {
+    "readiness_record": "library-readiness",
+    "readiness_report": "library-readiness-report",
+    "engineering_contract": "engineering-contract",
+    "constitution": "constitution",
+    "spec": "spec",
+    "plan": "maintenance-plan",
+    "tasks": "roadmap",
+    "convergence": null,
+    "failure_ledger": "failures",
+    "dependency_record": "dependencies",
+    "freshness_record": "freshness",
+    "monitoring_record": "monitoring",
+    "production_admission": null
+  },
+  "active_slice": {
+    "id": "library-connected-commerce",
+    "objective": "Complete SDK payment callback/reconciliation and initial handover with traced business derivations in an external local reference",
+    "journey_ids": [
+      "quote-order-payment-handover"
+    ],
+    "capability_ids": [
+      "commerce",
+      "payment",
+      "delivery"
+    ],
+    "task_ids": [
+      "T2802"
+    ]
+  },
+  "task_progress": {
+    "pending": [
+      "T2803",
+      "T2804",
+      "T2805",
+      "T2806",
+      "T2807",
+      "T2808",
+      "T2810"
+    ],
+    "in_progress": [
+      "T2802"
+    ],
+    "blocked": [
+      "T2801",
+      "T2809"
+    ],
+    "completed": [
+      "T2800"
+    ]
+  },
+  "context": {
+    "summary": "V402 communications/FX published:178packs/1797blocks; franchise82/1032 exact. WhatsApp signed inbox/runtime/human approval/fenced send/status plus real browser and renewable OIDC service identity. Meta Page scheduled host and FX conversion receipts connected. Six affected profiles rebuilt; three Go profiles compile product/test packages with zero tests credited. FAIL819/820/821 corrected; global TEST02/03/07 and broader gates remain open.",
+    "must_read_refs": [
+      "v402",
+      "v402-preparation",
+      "v402-provenance",
+      "v402-integration",
+      "v401",
+      "v400",
+      "v374",
+      "v293",
+      "roadmap",
+      "engineering-contract",
+      "failures",
+      "dependencies"
+    ],
+    "reuse_without_reload_refs": [
+      "v321",
+      "v320",
+      "v319",
+      "node-gate-owner",
+      "v318",
+      "monitoring",
+      "v317",
+      "v316",
+      "v315",
+      "secrets-guide",
+      "v314",
+      "v313",
+      "v311",
+      "v310",
+      "v309",
+      "v308",
+      "v307",
+      "v306",
+      "v305",
+      "v304",
+      "v303",
+      "v302",
+      "v301",
+      "v300",
+      "commerce-owner",
+      "oidc-owner",
+      "inventory",
+      "v278",
+      "v279",
+      "bridge-owner",
+      "capability-contract",
+      "v281",
+      "v280",
+      "v282",
+      "protocol",
+      "v283",
+      "v284",
+      "v285",
+      "v286",
+      "v287",
+      "v288",
+      "v289",
+      "v290",
+      "v291",
+      "v292",
+      "v294",
+      "v295",
+      "v296",
+      "v297",
+      "v298",
+      "v299",
+      "native-monitoring-profile",
+      "runtime-freshness-contract",
+      "node-gate-plan",
+      "lighthouse-owner",
+      "legacy-web-owner",
+      "upstream-acquisition-owner",
+      "observability-owner",
+      "v322",
+      "v323",
+      "v324",
+      "v325",
+      "v341",
+      "v340",
+      "v339",
+      "v338",
+      "v337",
+      "v336",
+      "v335",
+      "v334",
+      "pnpm-selection-owner",
+      "pnpm-selection-plan",
+      "v333",
+      "v332",
+      "v331",
+      "v330",
+      "v312",
+      "portal-owner",
+      "browser-owner",
+      "quote-owner",
+      "v329",
+      "official-profiles",
+      "portable-archive",
+      "maintenance-tests",
+      "v352",
+      "v351",
+      "v350",
+      "v349",
+      "v348",
+      "v347",
+      "v346",
+      "v345",
+      "v344",
+      "v343",
+      "v342",
+      "refund-owner",
+      "whatsapp-owner",
+      "operations-owner",
+      "runtime-tool-lock",
+      "v354",
+      "v353",
+      "loyalty-owner",
+      "giftcards-owner",
+      "v355",
+      "reminders-owner",
+      "v356",
+      "promotions-owner",
+      "payroll-owner",
+      "v357",
+      "referrals-owner",
+      "v358",
+      "reviews-owner",
+      "waitlist-owner",
+      "v359",
+      "onboarding-owner",
+      "warranty-owner",
+      "v360",
+      "surveys-owner",
+      "marketing-owner",
+      "v361",
+      "pos-owner",
+      "slo-owner",
+      "v362",
+      "dashboards-owner",
+      "helpcenter-owner",
+      "v385",
+      "v384",
+      "v383",
+      "v382",
+      "v381",
+      "v380",
+      "v379",
+      "v378",
+      "v377",
+      "v376",
+      "v373",
+      "v372"
+    ]
+  },
+  "open": {
+    "blockers": [
+      "Readiness/authority map/implementation_assurance integral no demostrados; engineering contract existe con plan PASS y assurance BLOCKED.",
+      "GO-OBSERVABILITY-CORE0.3.0 CANDIDATE: contador V291, logger V292 e histograma V301 corregidos; politica target,race,integracion,exportacion,retencion,carga y operacion sin demostrar.",
+      "V300 lectura/recuperacion de handover corregidas; falta creador inicial/frontend y regla comercial de liberacion ya preguntada. Cobro/proveedor/callback/reconciliacion y cierre stock/pedido/transporte pendientes. Firefox423 previo sigue abierto.",
+      "V295 credenciales: target/IdP/proveedores sin elegir y documentacion completa Meta leads/TikTok/ML inaccesible; custodia DEV probada no es gestor productivo. ARCA diferida, dependencias fiscales no habilitadas.",
+      "FAIL532: pnpm native full-license/build/SBOM/CRT evidence incomplete. Metadata signatures and source-lock SCA do not admit all native bytes; no production or redistribution promotion.",
+      "V393: active BFF omits unused Sharp/native closure and disables image optimization; remaining vendored/native SBOM/security and tooling admission are still incomplete. Historical Sharp redistribution/reproduction remains gated if that pipeline is reconsidered.",
+      "V386: user-reported Daybreak restriction. Further libxml2 vulnerability validation ACCESS_BLOCKED by user direction; no TEST03/07 promotion. Continue independent TEST02 owner integration."
+    ],
+    "failure_ids": [
+      "FAIL-20260907-384",
+      "FAIL-20260907-385",
+      "FAIL-20260907-405",
+      "FAIL-20260907-423",
+      "FAIL-20260908-532",
+      "FAIL-20260910-735",
+      "FAIL-20260910-742"
+    ]
+  },
+  "next_action": "Continue T2802 source-backed accounting FX posting and gift/loyalty tender integration; agents close durable portal refresh/logout and role onboarding/evaluation. Reuse exact unchanged tests. Then finish remaining local domain/document/AI/delivery/ops/release gates, ARCA penultimate and Daybreak last deferred as ordered.",
+  "release": {
+    "target": "NONE",
+    "id": null,
+    "digest": null,
+    "status": "NONE",
+    "evidence_refs": []
+  },
+  "evidence": [
+    {
+      "id": "inventory",
+      "kind": "inventory",
+      "path": "README.md",
+      "sha256": "0e55d8534bf3ccf716e0a00e5fb106656208f72ed76a168fbf4d38f5cd991e7f",
+      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "roadmap",
+      "kind": "delta_scope",
+      "path": "REUSABLE_CODE_READINESS_ROADMAP.md",
+      "sha256": "8afe6cabe26ac419e2b971354c1540a1dbf7758a9cd91c1760bef4933d228cd2",
+      "produced_at": "2026-09-11T23:40:57.105630Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "failures",
+      "kind": "failure_ledger",
+      "path": "PROJECT_FAILURE_LESSONS.md",
+      "sha256": "3cc8c7831a646efdfc25b9e15842b94b84aabe9613536fa75244b40fba04c7dd",
+      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "protocol",
+      "kind": "protocol",
+      "path": "AGENT_SYSTEM_START.md",
+      "sha256": "fb2072c9eb53cac3868163dc54b3990dc048d5e237e8a22887bc5a8f97ecd38d",
+      "produced_at": "2026-09-10T17:05:52.216641Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v278",
+      "kind": "historical_test_report",
+      "path": "reconstruction_evidence/WHATSAPP_HOST_OPERATOR_HISTORY_V278.md",
+      "sha256": "3754b95d1d5f6a57bbb895717002d0ce1f25135f0667350cfbd3b6eec38643a7",
+      "produced_at": "2026-09-07T13:35:06Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v279",
+      "kind": "maintenance_audit",
+      "path": "reconstruction_evidence/LIBRARY_CONTINUITY_REPAIR_V279.md",
+      "sha256": "58eedd1fd23dfa0d3b2e594641b2e6f31b02be9fcda026f7897fa679b24e0edb",
+      "produced_at": "2026-09-07T13:39:55Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "whatsapp-owner",
+      "kind": "canonical_pack_owner",
+      "path": "implementation_packs/PYTHON_META_WHATSAPP_CLOUD_ADAPTER.md",
+      "sha256": "bd152a408efdcbcf68a53a9cb904c8c34183137691e7482f89683662426735b3",
+      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "portal-owner",
+      "kind": "canonical_pack_owner",
+      "path": "implementation_packs/TYPESCRIPT_FRANCHISE_JOURNEY_PORTALS.md",
+      "sha256": "4b8f9c82a655ef14fd501c38de95ca4a7812c10c09202974ad68db577a7ba611",
+      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "browser-owner",
+      "kind": "canonical_pack_owner",
+      "path": "implementation_packs/MICROSOFT_PLAYWRIGHT_BROWSER_GATE.md",
+      "sha256": "f3d2d68eb073a2417549f40087c2897a38299047bd224c4c96bb24ba8fd8c74e",
+      "produced_at": "2026-09-11T18:52:42.007008Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "bridge-owner",
+      "kind": "canonical_pack_owner",
+      "path": "implementation_packs/TYPESCRIPT_GO_API_WEB_BRIDGE.md",
+      "sha256": "39e29ea3fb5479ecb726fe6abaac4e0be08ab1b4ce51e6af4b120300adbc1fb4",
+      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v280",
+      "path": "reconstruction_evidence/CONNECTED_COVERAGE_AUDIT_V280.md",
+      "kind": "adversarial_audit",
+      "sha256": "34b771c241ab06cbc4a1c9bd4bcbeec7def3190e103ff3b5cf56ac65f21b1003",
+      "produced_at": "2026-09-07T14:15:13Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "observability-owner",
+      "path": "implementation_packs/GO_OBSERVABILITY_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "fab3317ce4e85fe49b69217d7642b2630d8f1f042d5a25ccef35b58f097ae681",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "capability-contract",
+      "path": "markdown_system/TOTAL_SYSTEM_CAPABILITY_CONTRACT.md",
+      "kind": "normative_inventory",
+      "sha256": "20e74dfdbe499cb532616f9b7d9044a99b4c5564fc55fbf5e6a85c862c0aaaab",
+      "produced_at": "2026-09-07T14:15:13Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v281",
+      "path": "reconstruction_evidence/OFFICIAL_STRUCTURED_LOGGING_AUDIT_V281.md",
+      "kind": "official_source_audit",
+      "sha256": "ce644c852cae7602e996e9f1f519244907dacfeb5af2db14dcd7a77c1dda25f4",
+      "produced_at": "2026-09-07T14:30:00Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "readiness-record",
+      "path": "PROJECT_READINESS_RECORD.md",
+      "kind": "readiness_record",
+      "sha256": "e19c29bd5209014a394e114cd0e3c48a3e32bc6ff057d59363ea17240bb59b86",
+      "produced_at": "2026-09-11T23:16:31.267556Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "readiness-report",
+      "path": "PROJECT_READINESS_REPORT.json",
+      "kind": "readiness_report",
+      "sha256": "ef1471c0a081c68008de10fb316807640517d4fcf52426fb9727f6d345a10daf",
+      "produced_at": "2026-09-11T23:16:31.267556Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "readiness-input",
+      "path": "PROJECT_READINESS_GATE.json",
+      "kind": "readiness_input",
+      "sha256": "99e3f08d4b0aa4f70650ca8bbf4a52eaa4b287bffeb91b970a9aa5ae5358d500",
+      "produced_at": "2026-09-11T23:16:31.267556Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "advisory-a",
+      "path": "PROJECT_ADVISORY_A.md",
+      "kind": "advisory",
+      "sha256": "2a04dd2e301ead57c7c7593fa056419b7706026b1f171a1d777b638260163b8e",
+      "produced_at": "2026-09-07T14:39:01Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v282",
+      "path": "reconstruction_evidence/MAINTENANCE_READINESS_BOUNDARY_V282.md",
+      "kind": "maintenance_audit",
+      "sha256": "68196ad3ee2fa4ec8b48c090e415bf7a9c3ef8a3eae41f658136b8e6c7cc30c9",
+      "produced_at": "2026-09-07T14:39:01Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "library-verifier",
+      "path": "VERIFY_LIBRARY.ps1",
+      "kind": "maintenance_control",
+      "sha256": "092a0311b48cb404e7cdbae096210f88618265cee446178915ef368fd10c1d4d",
+      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "portable-archive",
+      "path": "CREATE_PORTABLE_ARCHIVE.ps1",
+      "kind": "maintenance_control",
+      "sha256": "12d4973627a5771193bb4a2d77f390f186422944097f5ebbc27792dac48f9b0c",
+      "produced_at": "2026-09-08T16:48:10.174578Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "maintenance-tests",
+      "path": "markdown_system/test_library_maintenance_state.ps1",
+      "kind": "regression_tests",
+      "sha256": "9750688f7c2697e881c615603321dcc28cb57c438a1cea5711d70b66773f985b",
+      "produced_at": "2026-09-08T16:48:10.174578Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v283",
+      "path": "reconstruction_evidence/READINESS_CLI_CONTRACT_REPAIR_V283.md",
+      "kind": "maintenance_audit",
+      "sha256": "698c5d45bb84620e25abfbd50e1846109097864d2a7fb672e337ff54b0d83d03",
+      "produced_at": "2026-09-07T14:54:09Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "constitution",
+      "path": ".specify/memory/constitution.md",
+      "kind": "constitution",
+      "sha256": "d0b273c8b8eaec8a6bfad28c7873b647a37a893e826fc02eb16c611ae4c66866",
+      "produced_at": "2026-09-11T23:40:57.105630Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "spec",
+      "path": "specs/library-maintenance/spec.md",
+      "kind": "spec",
+      "sha256": "3261d3076262bd0f219de6bbd835c58c621cdea61bf3c98ca74b20d8438dadd3",
+      "produced_at": "2026-09-11T23:40:57.105630Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "maintenance-plan",
+      "path": "specs/library-maintenance/plan.md",
+      "kind": "plan",
+      "sha256": "195b60f797cc4f8c12c976f0e0a8fca22b1a831f65c88c16c0eee689c3d7967d",
+      "produced_at": "2026-09-11T23:40:57.105630Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "blueprint",
+      "path": "PROJECT_BLUEPRINT.md",
+      "kind": "blueprint",
+      "sha256": "2546c8c1881b6add22fd72d31f3f26039587d2be6aee19e5bbffba3d85e9fb6b",
+      "produced_at": "2026-09-11T23:40:57.105630Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "authority-map",
+      "path": "PROJECT_AUTHORITY_MAP.md",
+      "kind": "authority_map",
+      "sha256": "5347450c1c8d87e58c92fff2707005fffee73ca7fe92c9dccbb419f3b7d5d23a",
+      "produced_at": "2026-09-11T17:44:39.827581Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "source-lock",
+      "path": "PROJECT_EXTERNAL_SOURCE_LOCK.md",
+      "kind": "source_lock",
+      "sha256": "2ecb2d026e7fa3c0399bb3c98460e5f5ceb3e4ea15bf0d4b99621f57bc02b34a",
+      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "pack-plan",
+      "path": "PROJECT_PACK_PLAN.md",
+      "kind": "pack_plan",
+      "sha256": "273ec767aad973772b1140abb8a7632664a5304b10f161c750e2ab7652c58580",
+      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "advisory-b",
+      "path": "PROJECT_ADVISORY_B.md",
+      "kind": "advisory",
+      "sha256": "a53c34192f5961b660cb00c4c4ebc23a86929928c706afc4aa6d9937a84e397c",
+      "produced_at": "2026-09-07T14:54:09Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "readiness-owner",
+      "path": "implementation_packs/PROJECT_START_READINESS_VALIDATOR.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "77b011558bebdb71da1261c0e084f7348d6207e9db8bafcf84608ac7344e14de",
+      "produced_at": "2026-09-11T23:40:57.105630Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v284",
+      "path": "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+      "kind": "maintenance_audit",
+      "sha256": "6b08393261f0738ece44f2609372faea49222fd47d46d1773c08d3f95ebbc5df",
+      "produced_at": "2026-09-07T15:02:11Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "agent-bridge-installer",
+      "path": "INSTALL_AGENT_BRIDGE.ps1",
+      "kind": "maintenance_control",
+      "sha256": "fe32bf216ea48e9f218dbcf3075161bef445a82bd498bea3f14429d172a12a4b",
+      "produced_at": "2026-09-07T15:02:11Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "agent-bridge-tests",
+      "path": "markdown_system/test_install_agent_bridge.ps1",
+      "kind": "regression_tests",
+      "sha256": "265995c5efc49d98374fdb645b51ef49f859629e79d414f7cdf3ce42fd963d1f",
+      "produced_at": "2026-09-07T15:02:11Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "agent-bridge-safety-tests",
+      "path": "markdown_system/test_agent_bridge_safety.ps1",
+      "kind": "regression_tests",
+      "sha256": "127eb65145b5aee53b12c68349d0378261e1e51378e751a6bdfc13b682e48387",
+      "produced_at": "2026-09-07T15:02:11Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v285",
+      "path": "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md",
+      "kind": "maintenance_audit",
+      "sha256": "78d5df0fb9459942c46b7dc90b790685a962e36a30f9d8b83fe24ed773d8779c",
+      "produced_at": "2026-09-07T15:21:16Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "dependencies",
+      "path": "PROJECT_DEPENDENCY_UPDATE_RECORD.md",
+      "kind": "dependency_record",
+      "sha256": "e863e4cd8ffcccc653684ab9c3fbd11c178390f6f194a12763b042cc174e094f",
+      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "freshness",
+      "path": "PROJECT_AUTHORITY_FRESHNESS_RECORD.md",
+      "kind": "freshness_record",
+      "sha256": "6de6a5167b5c81e38707481c4437d24cadc81fbf9deb513d35852061a3b6deea",
+      "produced_at": "2026-09-11T23:40:57.105630Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "monitoring",
+      "path": "PROJECT_VULNERABILITY_MONITORING_RECORD.md",
+      "kind": "monitoring_record",
+      "sha256": "b9e87612a9ea2bfd2aaf2b430adc2e3aecb54cc265d2c87035338e7a2661a3a9",
+      "produced_at": "2026-09-10T17:58:35.890402Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "official-profiles",
+      "path": "PROJECT_OFFICIAL_SOURCE_PROFILE_RECORD.md",
+      "kind": "source_profile_record",
+      "sha256": "1f1f0c26a79e42fe0e0dcb87167b372309c98df20edf7f78539e0ba5f3317e94",
+      "produced_at": "2026-09-11T20:28:04.341373Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "compositor-owner",
+      "path": "implementation_packs/MARKDOWN_COMPOSITOR_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "a8505384bb3f9085d36f21f1b6471fe24cbd17b054fa87f82f1d24b7007ce9d5",
+      "produced_at": "2026-09-07T15:15:15Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "executable-runner",
+      "path": "VERIFY_EXECUTABLE_LIBRARY.ps1",
+      "kind": "maintenance_control",
+      "sha256": "be9a1319bed5c545e3fee0b13c7e475b58c79e7116b0d87b83739b3e5e5685f4",
+      "produced_at": "2026-09-11T23:40:57.105630Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "sha256": "52e48369d5c144c017ab8a5995042204e5aa24fda2f76727d339725302063633",
+      "id": "v286",
+      "path": "reconstruction_evidence/ISOLATED_TOOLCHAIN_RESOLUTION_V286.md",
+      "kind": "maintenance_audit",
+      "produced_at": "2026-09-07T15:50:27Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "sha256": "61b106c6bd8b2a32c06601e71880f97087875baed301034c9ce482bb9c913989",
+      "id": "toolchain-tests",
+      "path": "markdown_system/test_toolchain_resolution.ps1",
+      "kind": "regression_tests",
+      "produced_at": "2026-09-08T07:16:11.451913+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v287",
+      "sha256": "6f1c285db0f801009c1dff139f92234070477719903368d3c04cc8fa19cbea65",
+      "path": "reconstruction_evidence/AGENT_ENTRY_LIFECYCLE_V287.md",
+      "kind": "maintenance_audit",
+      "produced_at": "2026-09-07T16:00:18Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "entry-lifecycle-tests",
+      "sha256": "158b9268658736db55a06ae4f22574827478b56cde1211aa1e76636b1feff21f",
+      "path": "markdown_system/test_agent_entry_lifecycle.ps1",
+      "kind": "regression_tests",
+      "produced_at": "2026-09-07T16:00:18Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "advisory-c",
+      "sha256": "51645f549651915eac1002ad5ecf19ff7f9dfc4efe4106994e563a7cd932d8f7",
+      "path": "PROJECT_ADVISORY_C.md",
+      "kind": "advisory",
+      "produced_at": "2026-09-07T16:00:18Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "path": "reconstruction_evidence/CHAT_HISTORY_LEARNING_AUDIT_V288.md",
+      "sha256": "a136d2e49d45204fd427b05e1485c3bd39a4c7a9049abe528bc05f9b3b3ed28d",
+      "id": "v288",
+      "kind": "official_source_audit",
+      "produced_at": "2026-09-07T16:11:06Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "path": "AI_ENGINEERING_MASTER_MAP.md",
+      "sha256": "5f144a4e0588f4f00c88e4b389e394bd0093808ed9f9ed3fe5087b3006fe1705",
+      "id": "ai-master-map",
+      "kind": "authority_router",
+      "produced_at": "2026-09-11T22:44:16.520986Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "engineering-contract",
+      "path": "PROJECT_ENGINEERING_CONTRACT.json",
+      "kind": "engineering_contract",
+      "sha256": "452a2e59bc423ab560c88ce90d35541a20dbbd2325d692c836eee0fbc565d75d",
+      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "advisory-d",
+      "path": "PROJECT_ADVISORY_D.md",
+      "kind": "advisory",
+      "sha256": "1119f31c5085584724576dbb6f06c2afecf0b3093cc5b01712d701a50a1281e0",
+      "produced_at": "2026-09-07T16:32:09Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v289",
+      "path": "reconstruction_evidence/MAINTENANCE_ASSURANCE_RAW_BOUNDARY_V289.md",
+      "kind": "maintenance_audit",
+      "sha256": "2103d1c2ba02beba7f023bdd1883dd23256472a73bd78097c02192860bc3247b",
+      "produced_at": "2026-09-07T16:32:09Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v290",
+      "path": "reconstruction_evidence/TOOLING_COMPOSITION_CLOSURE_V290.md",
+      "kind": "maintenance_audit",
+      "sha256": "19f02a79a94c5baa8478c6a02bcea572e932cb85ba39df04ba3168288cc7a2ba",
+      "produced_at": "2026-09-07T16:38:40Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v291",
+      "path": "reconstruction_evidence/COUNTER_MONOTONIC_REPAIR_V291.md",
+      "kind": "corrective_maintenance_evidence",
+      "sha256": "423bf8e0707663b0c1761730a9ce11121ea31fd7e53b242256cf2332b3a7cdac",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v292",
+      "path": "reconstruction_evidence/PRIVACY_POLICY_LOGGER_REPAIR_V292.md",
+      "kind": "corrective_maintenance_evidence",
+      "sha256": "be444f0c3f5646ed883d7a6ed6d04ed6123b5e2272019b5c9abe0f4c75584ac8",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v293",
+      "path": "reconstruction_evidence/CORE_OWNER_RECONCILIATION_V293.md",
+      "kind": "maintenance_audit",
+      "sha256": "b892a4f63b1decdba3d47727e6c7c55cea59c5e400e4b8ecb1236e58baeb1f05",
+      "produced_at": "2026-09-07T17:15:21.353Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "gap-map",
+      "path": "markdown_system/FRANCHISE_GAP_MAP.md",
+      "kind": "coverage_map",
+      "sha256": "16773c9b52410ed8ec101112738db51ae8a3f714c27daa5dd6888d0486d18270",
+      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "path": "reconstruction_evidence/QUOTE_ACCEPTANCE_CONNECTED_V294.md",
+      "sha256": "0b86b6c5c28d28355e363079f7f0bf5f6bc2db3348bcc54782e440b25f955dcf",
+      "id": "v294",
+      "kind": "maintenance_audit",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "path": "implementation_packs/GO_FRANCHISE_CUSTOMER_JOURNEY_API.md",
+      "sha256": "c4989e27c5ad7881362819ede39b8127019b119c4a5509e9c3d22d26b4d0cc78",
+      "id": "quote-owner",
+      "kind": "canonical_pack_owner",
+      "produced_at": "2026-09-08T16:24:45.157061Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v295",
+      "path": "reconstruction_evidence/CREDENTIAL_PREPARATION_V295.md",
+      "kind": "corrective_maintenance_evidence",
+      "sha256": "cb0711999a91d6bf27650f798f99736b4605de141838e221ec697f6dad3aad36",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "secrets-guide",
+      "path": "markdown_system/PROJECT_SECRETS_TEMPLATE.md",
+      "kind": "operational_guide",
+      "sha256": "e1470213e388d90a2c5fc7ddcb7576278dec4450fa37e28c0992f7e695b2789d",
+      "produced_at": "2026-09-07T16:39:09.766246-03:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "local-secrets-tool",
+      "path": "markdown_system/project_local_secrets.ps1",
+      "kind": "canonical_utility",
+      "sha256": "dce3afbc35e6748d8fef824ef3e52adcb490d54dbbe393b33edb5db0c9edea20",
+      "produced_at": "2026-09-07T15:18:47.7717727-03:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "composition-owner",
+      "path": "implementation_packs/GO_ELECTROMOBILITY_APPLICATION.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "46f80eae954e4a58b58fcb1d329fd5cea075f69b7cea29e309dca17558da58d2",
+      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v296",
+      "path": "reconstruction_evidence/ORDER_STOCK_CONNECTED_V296.md",
+      "kind": "connected_journey_evidence",
+      "sha256": "fc60d700045b52a70c942665a99fe69b26e7b62f43f79dcaf3a647aaf5b57541",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "commerce-owner",
+      "path": "implementation_packs/GO_COMMERCE_PRICING_PAYMENT_API.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "d84ca5e9fb7f6ea6f2e28cb0479ff105c17bdacdd45dd5677a2cd19d69509fcd",
+      "produced_at": "2026-09-12T00:07:37.182067Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v297",
+      "path": "reconstruction_evidence/PAYMENT_INTENT_RECOVERY_V297.md",
+      "kind": "integration_test_report",
+      "sha256": "fbeec2007681d5dbe38f028c6d2fba581100d70c747a0f7f76bbc670b1ac4778",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v298",
+      "path": "reconstruction_evidence/PAYMENT_REQUEST_PORTAL_V298.md",
+      "kind": "connected_journey_evidence",
+      "sha256": "1096ee8996625a6fcb4b9cd704fb69613882d453157d7fe0b7e125f10f1d1bdf",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v299",
+      "kind": "verification_report",
+      "path": "reconstruction_evidence/DELIVERY_RELATIONAL_SCOPE_V299.md",
+      "sha256": "e9fb30165d19c124c1247fcfbfc10093ed6cbb26fbf4fe60936c12e3d46732e7",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "Go-PG-local-regression-and-browser-no-production"
+    },
+    {
+      "id": "v300",
+      "kind": "verification_report",
+      "path": "reconstruction_evidence/DELIVERY_READ_RECOVERY_V300.md",
+      "sha256": "5d0b86c4b5568ab996a8a5586c59697bd07917584f4e2d726fb78c1f1e7e50f0",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "Go-PG-browser-local-regression-no-production"
+    },
+    {
+      "id": "v301",
+      "kind": "verification_report",
+      "path": "reconstruction_evidence/HISTOGRAM_BOUNDARY_REPAIR_V301.md",
+      "sha256": "59b6555e1370e9b6ed70e9f4b30ef108ee3015557a86075dd1c903b21710cb0b",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "Go-local-candidate-repair-not-production"
+    },
+    {
+      "id": "v302",
+      "kind": "verification_report",
+      "path": "reconstruction_evidence/OPERATOR_SECTIONS_RECOVERY_V302.md",
+      "sha256": "d60db3c3365ced64701fafb0d0b96e7be2eebe9eb42ab0c913c051d4135141ba",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "Go-PG-browser-local-role-read-recovery-not-production"
+    },
+    {
+      "id": "v303",
+      "kind": "verification_report",
+      "path": "reconstruction_evidence/DELIVERY_EXCEPTION_RECOVERY_V303.md",
+      "sha256": "584a2bcae7926810ec83e7dfaf32b31f3ed89f1d66bbcfb036c8fd8c686bbceb",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "Go-PG-browser-local-exception-resolution-not-production"
+    },
+    {
+      "id": "v304",
+      "kind": "maintenance_audit",
+      "path": "reconstruction_evidence/LEAD_COMMAND_RECOVERY_V304.md",
+      "sha256": "c439dc51440fb02d06740824b9b626a71ab0ee7f5a305ff2ac3a007c14506fc6",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v305",
+      "kind": "maintenance_audit",
+      "path": "reconstruction_evidence/AVAILABILITY_CANCELLATION_RECOVERY_V305.md",
+      "sha256": "e8433bc32b059bdd7395d6d368a817fb44500e941bf7ac5158a8add9095c2a2c",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v306",
+      "path": "reconstruction_evidence/QUOTE_CREATION_RECOVERY_V306.md",
+      "kind": "maintenance_audit",
+      "sha256": "134bc465abe4102cab78ac89c79e1863677d555ef6ffc5a06bdf93cecad3bda9",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "oidc-owner",
+      "path": "implementation_packs/TYPESCRIPT_OIDC_PORTAL_ADAPTER.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "d1bd265c3fc461bb4814fc94f78b8232a0c0f6c0b41f628be77c873edbcb954b",
+      "produced_at": "2026-09-12T00:55:54.098739Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v307",
+      "path": "reconstruction_evidence/AVAILABILITY_CREATION_RECOVERY_V307.md",
+      "kind": "maintenance_audit",
+      "sha256": "5ceb3e947bb43a5965c17f8cb55dccc0f00a397358929d7a20c0f1afa402f4e4",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v308",
+      "path": "reconstruction_evidence/RESOURCE_CREATION_RECOVERY_V308.md",
+      "kind": "maintenance_audit",
+      "sha256": "23da1e82d1191d9571af60cc9ab6602a626fc7bd3a60fb1b4a7c3130b20a5ce2",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v309",
+      "path": "reconstruction_evidence/SLOT_CREATION_RECOVERY_V309.md",
+      "kind": "maintenance_audit",
+      "sha256": "fcede01fdca5109717d98e616c767872c6bc6260c2b75ff72058a75f84dcbedb",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v310",
+      "path": "reconstruction_evidence/CHECKLIST_PUBLICATION_RECOVERY_V310.md",
+      "kind": "maintenance_audit",
+      "sha256": "7c928bc9b9a4241e1c2e4f85570f5e173301371bf22fc7dd06677fed8a061603",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v311",
+      "path": "reconstruction_evidence/CHECKLIST_COMPLETION_RECOVERY_V311.md",
+      "kind": "maintenance_audit",
+      "sha256": "7c138fc6e0acc9ae5672f957c0794a0d01a4fcca13f26565dbdff8a552d35048",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v312",
+      "path": "reconstruction_evidence/RETURN_OPERATIONS_RECOVERY_V312.md",
+      "kind": "maintenance_audit",
+      "sha256": "0c418ebaee3cc1da1fd304250cff349897e88fbb896c205039cca641fe8349c2",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v313",
+      "path": "reconstruction_evidence/COMPOSITION_DEPENDENCY_SECURITY_V313.md",
+      "kind": "maintenance_audit",
+      "sha256": "570590e8d2dc6954ac01b1283dd5e45c129cc420e8c8705930eeb0e74382d740",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v314",
+      "path": "reconstruction_evidence/HTTP_HOST_SHUTDOWN_V314.md",
+      "kind": "maintenance_audit",
+      "sha256": "a202a43e6a2d167b0ceeb29523f233bd82bc8cf8989fff745246c9e25a01c43c",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v315",
+      "path": "reconstruction_evidence/OPERATIONAL_EVIDENCE_GATE_V315.md",
+      "kind": "maintenance_audit",
+      "sha256": "c177471922bd9677b65a82c98358bdf8ec4ad67d87bed9f5c7c2be393322bb2e",
+      "produced_at": "2026-09-08T04:18:20.863452+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v316",
+      "path": "reconstruction_evidence/OUTBOX_GENERATION_FENCING_V316.md",
+      "kind": "maintenance_audit",
+      "sha256": "0da3f3ca4c2215e87c6c34162ee86484e08fbdc91ec928856586391a9066fff9",
+      "produced_at": "2026-09-08T05:21:39.296365+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v317",
+      "path": "reconstruction_evidence/TOOLCHAIN_IDENTITY_AND_RUNTIME_SCA_V317.md",
+      "kind": "maintenance_audit",
+      "sha256": "a0def32d097ac6b4bc017d0b7310b78a9f2dc7ac5e4ef738321fd546a1427650",
+      "produced_at": "2026-09-08T05:23:13.024243+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v318",
+      "path": "reconstruction_evidence/REFUND_HOST_LOG_PRIVACY_V318.md",
+      "kind": "maintenance_audit",
+      "sha256": "4ff7076a59b8bc90db3827fa7d16d77799c9dce4efce2f7bba2912ac137dcc56",
+      "produced_at": "2026-09-08T05:26:09.225984+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v319",
+      "path": "reconstruction_evidence/NODE_RUNTIME_SECURITY_V319.md",
+      "kind": "maintenance_audit",
+      "sha256": "87d6f1a9536107d7895d29a14bbbbea0d6270d0ccaa6b8199b15e85bbe6dede7",
+      "produced_at": "2026-09-08T06:12:48.487023+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "runtime-tool-lock",
+      "path": "markdown_system/OFFICIAL_MAINTENANCE_TOOL_ARTIFACT_LOCK.md",
+      "kind": "maintenance_audit",
+      "sha256": "cdaa82e654f4e49dbbdb3ba5cabed274e532fa0c695ae75ba68fc16bce8836e4",
+      "produced_at": "2026-09-08T08:09:54.730076+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "native-monitoring-profile",
+      "path": "markdown_system/ZERO_COST_VULNERABILITY_MONITORING_PROFILE.md",
+      "kind": "maintenance_audit",
+      "sha256": "85de9c224413c77f5017120ce5ff533b145e4d1f28ef1691559b1e1778953f95",
+      "produced_at": "2026-09-08T06:41:16.787637+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "runtime-freshness-contract",
+      "path": "markdown_system/AUTHORITY_FRESHNESS_AND_SELF_CORRECTION_CONTRACT.md",
+      "kind": "maintenance_audit",
+      "sha256": "e2b69c28a367124214f2ed26d22b546bb686a4e848053dd325aa378e8210218b",
+      "produced_at": "2026-09-08T06:09:36.318715+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v320",
+      "path": "reconstruction_evidence/NODE_OFFICIAL_ADVISORY_GATE_V320.md",
+      "kind": "maintenance_audit",
+      "sha256": "fff4786fd6c0725461ba3263b6e3badc9abe06cf5199fc8fb2ff7373573dd73a",
+      "produced_at": "2026-09-08T06:53:39.942006+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "node-gate-owner",
+      "path": "implementation_packs/NODE_OFFICIAL_RUNTIME_ADVISORY_GATE.md",
+      "kind": "maintenance_audit",
+      "sha256": "f8e7b6af0048f6022a9a8a538cb108b4518abcb66a6e43b6858b7872a0812276",
+      "produced_at": "2026-09-08T06:41:16.787637+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "node-gate-plan",
+      "path": "markdown_system/NODE_OFFICIAL_RUNTIME_ADVISORY_PACK_PLAN.md",
+      "kind": "maintenance_audit",
+      "sha256": "303004565c9e81ecd4ccc8c91789653e6fbecf2c3d6813c52fd1cf2d9a231b2f",
+      "produced_at": "2026-09-08T06:41:16.787637+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v321",
+      "path": "reconstruction_evidence/PNPM_BUNDLE_SECURITY_V321.md",
+      "kind": "maintenance_audit",
+      "sha256": "038c41d520319139646d767ed420da63f69b225f9996c4665a8eb7c17388b389",
+      "produced_at": "2026-09-08T07:22:54.841836+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "lighthouse-owner",
+      "path": "implementation_packs/GOOGLE_LIGHTHOUSE_WEB_QUALITY_GATE.md",
+      "kind": "maintenance_audit",
+      "sha256": "2d9f4742402dcbdcf6aecd49cb55eb0697998417bd3797cbf5a9c2d6f00221f5",
+      "produced_at": "2026-09-08T07:16:11.451913+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "legacy-web-owner",
+      "path": "implementation_packs/TYPESCRIPT_ENTERPRISE_WEB_GOLDEN_PATH.md",
+      "kind": "maintenance_audit",
+      "sha256": "7c0c6b9d51104136edd72539aa4b54f0be068ccea4d5d75d5d8bc814ce99f99a",
+      "produced_at": "2026-09-08T07:16:11.451913+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v322",
+      "path": "reconstruction_evidence/GOVERNED_MAINTENANCE_ACQUISITION_V322.md",
+      "kind": "maintenance_audit",
+      "sha256": "f9bfbddb33137495e4debbc3b3bcd62f9685da0400b9ae8ae6898b74d249ac69",
+      "produced_at": "2026-09-08T07:59:56.940540+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "upstream-acquisition-owner",
+      "path": "implementation_packs/OFFICIAL_UPSTREAM_ACQUISITION_CORE.md",
+      "kind": "maintenance_audit",
+      "sha256": "26d33385b77f3c710667de7f00b526b96bdc9b75115ab566080679221031367a",
+      "produced_at": "2026-09-11T20:28:04.341373Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v323",
+      "path": "reconstruction_evidence/PNPM_NATIVE_COVERAGE_V323.md",
+      "kind": "maintenance_audit",
+      "sha256": "f634f62851a0b4e74705650fb1aefc089c03a120cf6b89e99e97b35a2abc5a1a",
+      "produced_at": "2026-09-08T08:15:48.513009+00:00",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v324",
+      "path": "reconstruction_evidence/UTF8_CHECKPOINT_RECOVERY_V324.md",
+      "kind": "corrective_maintenance_evidence",
+      "sha256": "d896655bc461c308de62972b1f4b17f362564911c148b1f2d6a30e1820d8054e",
+      "produced_at": "2026-09-08T08:27:05.879027Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v325",
+      "path": "reconstruction_evidence/FIREFOX_LIFECYCLE_AND_CONTINUITY_V325.md",
+      "kind": "maintenance_audit",
+      "sha256": "e5c170ab294e669e8e2e2e34e808257b72c10dca00f90aea25baefdbb70dd1aa",
+      "produced_at": "2026-09-08T14:08:38.321807Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v326",
+      "path": "reconstruction_evidence/ENTRY_LATENCY_AND_INTERRUPTION_V326.md",
+      "kind": "maintenance_audit",
+      "sha256": "4e9fecc31a1aba672de11b7baf3157ed60b44860fd393cbc8f58b92732f0a786",
+      "produced_at": "2026-09-08T14:29:11.129644Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v327",
+      "path": "reconstruction_evidence/CLI_ENTRY_DIAGNOSTICS_V327.md",
+      "kind": "maintenance_audit",
+      "sha256": "a6ab7e72050fcc6e596488a1d9e85f61f030e7d9e1dd352015299930be5707fe",
+      "produced_at": "2026-09-08T14:56:25.977264Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "entry-guide",
+      "path": "markdown_system/PROJECT_ENTRY_CLI_GUIDE.md",
+      "kind": "operator_guide",
+      "sha256": "c6ecff9e199d1e67405e3abfc9e640ed5d3c2b77f3f075278e8533f6747e26fc",
+      "produced_at": "2026-09-09T15:06:45.442685Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "execution-owner",
+      "path": "implementation_packs/ENGINEERING_EXECUTION_VALIDATOR.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "368c4f9d0c328353634e3dc0738e0d300f225013b9c7a769628b971d0c854808",
+      "produced_at": "2026-09-08T14:51:05.207264Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v328",
+      "path": "reconstruction_evidence/READINESS_REPORT_PUBLICATION_V328.md",
+      "kind": "maintenance_audit",
+      "sha256": "2983e86a71b3f4862dc71139490a38ad9a79ca6bc76f421d802c97329f6786db",
+      "produced_at": "2026-09-08T15:15:58.207699Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v329",
+      "path": "reconstruction_evidence/AUTHORITY_MAP_GAP_V329.md",
+      "kind": "maintenance_research",
+      "sha256": "bc3ade6e85ef3838962c65779738f4ad3b0f387f13cc45b57ab6649dd0a0ff08",
+      "produced_at": "2026-09-08T15:42:39.906201Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v330",
+      "path": "reconstruction_evidence/RETURN_MULTITAB_VERIFICATION_V330.md",
+      "kind": "connected_regression_evidence",
+      "sha256": "cf165810c6a2af3b494608cff4178f70d9b85dc43e41a852f454e0d8b736d1fa",
+      "produced_at": "2026-09-08T16:08:24.055787Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v331",
+      "path": "reconstruction_evidence/RETURN_SESSION_BOUNDARIES_V331.md",
+      "kind": "connected_security_regression",
+      "sha256": "8aba88fcb5cdec0b495d278d481727ec3a6770db97224d2a62f5f15004ab18d1",
+      "produced_at": "2026-09-08T16:28:30.165035Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v332",
+      "path": "reconstruction_evidence/PORTABLE_ARCHIVE_PUBLICATION_V332.md",
+      "kind": "corrective_packaging_evidence",
+      "sha256": "cdaed63e562ab9de6ca1d7292eade17c94d1c0ca1c4a94d25d4ce4c0ef3c968d",
+      "produced_at": "2026-09-08T16:52:24.079417Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v333",
+      "path": "reconstruction_evidence/PNPM_NATIVE_SELECTION_V333.md",
+      "kind": "candidate_native_selection_evidence",
+      "sha256": "8da687ad236736d92e8f7842ec1074941d55bd8dc634468fd8578ef26a4fedaf",
+      "produced_at": "2026-09-08T17:10:42.296875Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v334",
+      "path": "reconstruction_evidence/PNPM_SELECTION_GATE_V334.md",
+      "kind": "canonical_tooling_evidence",
+      "sha256": "28c3a26c6f3a45d9f20d2f3d30992fa290d59fcc0a0b4f8cfd381eb4ac7e812e",
+      "produced_at": "2026-09-08T17:36:50.252866Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "pnpm-selection-owner",
+      "path": "implementation_packs/PNPM_ARTIFACT_SELECTION_GATE.md",
+      "kind": "authored_candidate_projection_owner",
+      "sha256": "c7799b3eae550f8b50e83c786fc3d4e70686df9a0d5a686a73795fd3ec34a66a",
+      "produced_at": "2026-09-11T23:16:31.267556Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "pnpm-selection-plan",
+      "path": "markdown_system/PNPM_ARTIFACT_SELECTION_PACK_PLAN.md",
+      "kind": "projection_tooling_plan",
+      "sha256": "35df7dd828b53f7e826bdfd5aa61d8882ba7980d935ae468aba2ac7d9459982b",
+      "produced_at": "2026-09-11T23:16:31.267556Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v335",
+      "path": "reconstruction_evidence/PNPM_CONSUMER_ROUTING_V335.md",
+      "kind": "canonical_routing_tooling_evidence",
+      "sha256": "6d29bd699a2572ef808d8606b20e7563a92f14684373827c9a6d747f7a4eca3e",
+      "produced_at": "2026-09-08T17:57:45.267411Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v336",
+      "path": "reconstruction_evidence/PNPM_CACHE_FRESHNESS_V336.md",
+      "kind": "isolated_cache_policy_qualification",
+      "sha256": "2d8d5dbeb712f36e21b99c19e234b09c862f59e8bad21f4968fb00831c163a9c",
+      "produced_at": "2026-09-08T18:14:49.886118Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v337",
+      "path": "reconstruction_evidence/PNPM_LIFECYCLE_LICENSE_V337.md",
+      "kind": "exact_package_license_and_tooling_evidence",
+      "sha256": "e0193d22915e598f2e3b3269bb8cc22df947ed70b501d48fac4324c45f3385cc",
+      "produced_at": "2026-09-08T18:44:44.226922Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v338",
+      "path": "reconstruction_evidence/PNPM_NOTICE_COVERAGE_V338.md",
+      "kind": "selected_notice_coverage_evidence",
+      "sha256": "7ba52aa673260f09804de20627f6b4e69a81b8eb4e3ea2bf05efda8a0fd1a946",
+      "produced_at": "2026-09-08T18:54:28.601520Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v339",
+      "path": "reconstruction_evidence/PNPM_NESTED_LICENSE_SOURCES_V339.md",
+      "kind": "nested_source_notice_evidence",
+      "sha256": "5f895c21bea60181b9391b20073ca3fdcb75e372fe39427f7af8c9f750c93a6a",
+      "produced_at": "2026-09-08T19:12:25.930610Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v340",
+      "path": "reconstruction_evidence/PNPM_YARN_UNDICI_NOTICES_V340.md",
+      "kind": "versioned_source_notice_evidence",
+      "sha256": "965db1e4f7b29f525587ac450b4fc5000d9797c35c6ae8bfa10bf005f2157b15",
+      "produced_at": "2026-09-08T19:22:51.946072Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v341",
+      "path": "reconstruction_evidence/PNPM_SCOPED_SOURCE_CORRESPONDENCE_V341.md",
+      "kind": "scoped_source_correspondence",
+      "sha256": "3fd3623ed0b05d9ce45007b69e207541c19f86f61f3b8e3eca42745ea146f45c",
+      "produced_at": "2026-09-08T19:59:56.453751Z",
+      "producer": "agent-observed-local-analysis-not-production-certification"
+    },
+    {
+      "id": "v342",
+      "path": "reconstruction_evidence/OBSERVABILITY_DELIVERY_INTEGRATION_V342.md",
+      "kind": "corrective_observability_integration",
+      "sha256": "966235bcd5efd9bf2e94c165201083984bcd24ba76ecdffa54953d1e84c8fdb2",
+      "produced_at": "2026-09-08T21:10:46.217205Z",
+      "producer": "agent-observed-canonical-rebuild-and-local-runtime-tests"
+    },
+    {
+      "id": "v343",
+      "path": "reconstruction_evidence/WHATSAPP_STATUS_REPORTER_V343.md",
+      "kind": "status_reporter_integration",
+      "sha256": "76790438959f795369bb8ab85c49d7fdd2d45c6ba7e2445e8835f85dc74cf61b",
+      "produced_at": "2026-09-08T23:04:29.666566Z",
+      "producer": "agent-observed-canonical-composition-and-local-worker-tests"
+    },
+    {
+      "id": "v344",
+      "path": "reconstruction_evidence/REFUND_HOST_REPORT_DELIVERY_V344.md",
+      "kind": "refund_host_report_delivery",
+      "sha256": "0672bbf7d61a11d24f6ad3cf897a070c08c8ac43ac4999d5670816a9ca00cf75",
+      "produced_at": "2026-09-08T23:27:00.986838Z",
+      "producer": "agent-observed-red-green-runtime-subprocess-and-canonical-rebuild"
+    },
+    {
+      "id": "refund-owner",
+      "kind": "canonical_pack_owner",
+      "path": "implementation_packs/GO_OFFICIAL_RETURN_REFUND_WORKER.md",
+      "sha256": "64cbc8f96c95c5b42a58e24516741bdc9cf42ce3ab46c2912c112725a1fff460",
+      "produced_at": "2026-09-12T00:07:37.182067Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "operations-owner",
+      "kind": "canonical_pack_owner",
+      "path": "implementation_packs/SECURE_OPERATIONS_DELIVERY_CORE.md",
+      "sha256": "3dc0b1179c3659d5803a63482ed6ac808cbcf9d8ce8910ba88992be24fdde697",
+      "produced_at": "2026-09-10T16:07:24.502902Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v345",
+      "path": "reconstruction_evidence/OPERATIONAL_PROCESS_BOUNDARY_V345.md",
+      "kind": "finite_operational_process_boundary",
+      "sha256": "195ea4f7fe9ab7f9bd7a786e027ff5be9dfe43ca4bea42867f3c5a0d6a51a5af",
+      "produced_at": "2026-09-08T23:52:20.263195Z",
+      "producer": "agent-observed-real-child-tests-and-canonical-reconstruction"
+    },
+    {
+      "id": "v346",
+      "path": "reconstruction_evidence/NATIVE_SUPERVISOR_IO_QUALIFICATION_V346.md",
+      "kind": "native_supervisor_io_qualification",
+      "sha256": "5911529715d7335121393da0e126f4ea6738c076d7006b6e00664c3806d8cfa2",
+      "produced_at": "2026-09-09T01:19:04.290607Z",
+      "producer": "agent-observed-real-native-process-tests-and-canonical-rebuild"
+    },
+    {
+      "id": "v347",
+      "path": "reconstruction_evidence/GOVERNED_NATIVE_LAUNCH_V347.md",
+      "kind": "governed_native_launch_qualification",
+      "sha256": "9b6bf8defb6692cc8c91c8aee212f3df51ef9e6da714514c98b12fb83088ef78",
+      "produced_at": "2026-09-09T01:36:29.006256Z",
+      "producer": "agent-observed-real-file-process-tests-and-canonical-rebuild"
+    },
+    {
+      "id": "v348",
+      "path": "reconstruction_evidence/NATIVE_GRACEFUL_SHUTDOWN_V348.md",
+      "kind": "native_graceful_shutdown_qualification",
+      "sha256": "6a75b5eea6d0ba85d1e77331d77c5b58f8eb72447c817f58139e6edab402f2c3",
+      "produced_at": "2026-09-09T01:57:49.393715Z",
+      "producer": "agent-observed-real-event-process-tests-and-canonical-rebuild"
+    },
+    {
+      "id": "v349",
+      "path": "reconstruction_evidence/NATIVE_RESULT_PUBLICATION_V349.md",
+      "kind": "native_result_publication_qualification",
+      "sha256": "8eb6ee6a1b5211684625fc505e89e67e8a295869cacd4cc3f4922be14bfdb038",
+      "produced_at": "2026-09-09T02:20:54.384419Z",
+      "producer": "agent-observed-real-process-crash-publication-and-canonical-rebuild"
+    },
+    {
+      "id": "v350",
+      "path": "reconstruction_evidence/NATIVE_WORKER_LIFECYCLE_V350.md",
+      "kind": "native_worker_lifecycle_qualification",
+      "sha256": "2422a0bf38f2be8bccdb2ece2276e31926057e0841c40eabdc97d269a378bc15",
+      "produced_at": "2026-09-09T14:18:54.250061Z",
+      "producer": "agent-observed-real-host-processor-native-lifecycle-with-synthetic-domain"
+    },
+    {
+      "id": "v351",
+      "path": "reconstruction_evidence/NATIVE_POSTGRES_LIFECYCLE_V351.md",
+      "kind": "native_postgres_lifecycle_qualification",
+      "sha256": "1acda7b02c86c1f1b913b19f393fd52d45945d1a36cf851eb3a2f317fe8654e1",
+      "produced_at": "2026-09-09T15:01:11.058136Z",
+      "producer": "agent-observed-canonical-native-startup-postgres-controlled-restart"
+    },
+    {
+      "id": "v352",
+      "path": "reconstruction_evidence/PORTABLE_CANDIDATE_ACCEPTANCE_V352.md",
+      "kind": "portable_candidate_acceptance",
+      "sha256": "dcc0ba32799de1fcdd661097e6d4b0716c5ce2dace3de959719a628d8f59faa9",
+      "produced_at": "2026-09-09T15:24:57.725782Z",
+      "producer": "agent-observed-acceptance-order-correction"
+    },
+    {
+      "id": "v353",
+      "path": "reconstruction_evidence/ACCEPTANCE_REAUDIT_FX_BOUNDARY_V353.md",
+      "kind": "acceptance_reaudit_fx_boundary",
+      "sha256": "d29effc5acfe64d179606eca60e7e8d79dc4ff95956903b50f066ef926020ff8",
+      "produced_at": "2026-09-09T15:44:32.351857Z",
+      "producer": "agent-observed-red-green-canonical-rebuild-and-independent-rational-fuzz"
+    },
+    {
+      "id": "v354",
+      "path": "reconstruction_evidence/CREDIT_CORE_ISOLATION_V354.md",
+      "kind": "credit_core_isolation_qualification",
+      "sha256": "4f6ac4ec724b8cffb51f46d66179bd690968f8b466c85a7c42ecb289e753d1b4",
+      "produced_at": "2026-09-09T16:02:40.248665Z",
+      "producer": "agent-observed-red-green-canonical-rebuild-model-fuzz"
+    },
+    {
+      "id": "loyalty-owner",
+      "path": "implementation_packs/GO_LOYALTY_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "001a1eb4dbc47b2aa1f564ba648c15b586ebd731f6071f0676c38f74618f5b24",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "giftcards-owner",
+      "path": "implementation_packs/GO_GIFT_CARDS_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "f885c813feda3fb78bf75291cef76b23ab85e23396b8fff5c94e3f488e66d453",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v355",
+      "path": "reconstruction_evidence/REMINDER_TENANT_API_V355.md",
+      "kind": "reminder_tenant_api_qualification",
+      "sha256": "5c556f6e624d16a84f952565705c4994fd626f739ab6a1dde10e17484f7b0b9e",
+      "produced_at": "2026-09-09T16:38:49.850705Z",
+      "producer": "agent-observed-source-and-tests-not-production-certification"
+    },
+    {
+      "id": "reminders-owner",
+      "path": "implementation_packs/GO_REMINDERS_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "267837d492c81538dea6f0bb0cac6cf5a5be18a4396298db8acd05708ad47a91",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-source-and-tests-not-production-certification"
+    },
+    {
+      "id": "waitlist-owner",
+      "path": "implementation_packs/GO_WAITLIST_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "d80a1f623c6933fde10d4c3c1d0933072d3c767441db042f5df27b5f06ae6845",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-source-and-tests-not-production-certification"
+    },
+    {
+      "id": "v356",
+      "path": "reconstruction_evidence/BASIS_POINT_ARITHMETIC_V356.md",
+      "kind": "basis_point_arithmetic_qualification",
+      "sha256": "6afcd07ac0f6b11e571763b6a73524ec7343d646569ede644998e4eaef901521",
+      "produced_at": "2026-09-09T17:20:52.088589Z",
+      "producer": "agent-observed-source-and-tests-not-financial-admission"
+    },
+    {
+      "id": "promotions-owner",
+      "path": "implementation_packs/GO_PROMOTIONS_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "79f76aec4fc7dd5776ad9b8e85a8cfeb05179e251d83fa7bbcb5075eb1a72412",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-source-and-tests-not-financial-admission"
+    },
+    {
+      "id": "payroll-owner",
+      "path": "implementation_packs/GO_PAYROLL_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "4510fb7d4f1a672b64fadc62c77c470f775b1c1be6fd158a08bbe0655ef9d059",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-source-and-tests-not-financial-admission"
+    },
+    {
+      "id": "v357",
+      "path": "reconstruction_evidence/REFERRAL_IDENTITY_ISOLATION_V357.md",
+      "kind": "referral_identity_qualification",
+      "sha256": "ab42e77fa629c03cd7dd1ed9c2cdab0900dc21cba45577336bd019e7ad3fa842",
+      "produced_at": "2026-09-09T17:34:19.355458Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "referrals-owner",
+      "path": "implementation_packs/GO_REFERRALS_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "98c52e351453046d3c684f791630634d4b9b5db23a7ee710c3c794e3b5f2688a",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "v358",
+      "path": "reconstruction_evidence/MODERATION_WAITLIST_ISOLATION_V358.md",
+      "kind": "moderation_waitlist_isolation_qualification",
+      "sha256": "49496730c1af59e9ce8e6f8e9e8a017e7ef1cdfb29e9510cbd94ab1ee2be303e",
+      "produced_at": "2026-09-09T17:45:51.918336Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "reviews-owner",
+      "path": "implementation_packs/GO_REVIEWS_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "d5cb5b438e1cccc6dbb6c6d913b84da687fe86591044cc25f0a9b869da325ee9",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "v359",
+      "path": "reconstruction_evidence/ONBOARDING_CLAIM_ISOLATION_V359.md",
+      "kind": "onboarding_claim_isolation_qualification",
+      "sha256": "793c46f667860f8b67fd75b4d84356d9a6507a63653de09a0b026410a6a06fce",
+      "produced_at": "2026-09-09T17:57:54.513081Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "onboarding-owner",
+      "path": "implementation_packs/GO_ONBOARDING_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "cd249cafc4f753ac328de11f5692ab7ecbad4679ad6304e5bd9ab5945407d6ac",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "warranty-owner",
+      "path": "implementation_packs/GO_WARRANTY_CLAIMS_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "acd508e61b9325564af1a1981f2a29a51bcec7f8400936a122f5b65a055d9696",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "v360",
+      "path": "reconstruction_evidence/SURVEY_CAMPAIGN_SCOPE_V360.md",
+      "kind": "survey_campaign_scope_qualification",
+      "sha256": "d2f897037eb337984d68e0b3e5532a11a60e19a33b177340366c9e335bf33313",
+      "produced_at": "2026-09-09T18:11:36.679507Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "surveys-owner",
+      "path": "implementation_packs/GO_SURVEYS_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "8a03eb00d9bdabae1772830a855ba1a330773c091ae24be5dab8843ea4ac926c",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "marketing-owner",
+      "path": "implementation_packs/GO_MARKETING_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "d8cc6c006c3bb739e1350eb9619b39fc6d3cd6154f74c8b5dbb39d047b126d80",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "v361",
+      "path": "reconstruction_evidence/POS_SLO_BOUNDARIES_AND_DOCKER_SCOPE_V361.md",
+      "kind": "pos_slo_numeric_qualification",
+      "sha256": "653d349a82d70e5621c539720a3e06b02599aaaae4d06d756b7bf3e3dbbd694b",
+      "produced_at": "2026-09-09T18:30:44.496452Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "pos-owner",
+      "path": "implementation_packs/GO_POS_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "340e5f461d975258827961da1330b16f0620259b0e7ff9546799462d0700155b",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "slo-owner",
+      "path": "implementation_packs/GO_SLO_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "ca27fa75c2e20c2de18552ad5b5cac03f695efbd35c7fc2a77f9a4f9a21efe81",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "v362",
+      "path": "reconstruction_evidence/DASHBOARD_HELP_BOUNDARIES_V362.md",
+      "kind": "dashboard_help_boundary_qualification",
+      "sha256": "e9b63edb491cfbd5bf5995f5d9a1fdcbb62ff01f3cd948877f8445036129c51d",
+      "produced_at": "2026-09-09T18:44:41.120001Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "dashboards-owner",
+      "path": "implementation_packs/GO_DASHBOARDS_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "cb17f0d2093ce54d3fc554de5119b4ed51dda5076355189a79f5d5379cd5c00e",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "helpcenter-owner",
+      "path": "implementation_packs/GO_HELP_CENTER_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "7669198e3df9d82e4fa76ddb53ec730ac642a6133ffae1ed93547e8e1d60d47e",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "v363",
+      "path": "reconstruction_evidence/PUBLIC_CORE_SCOPE_V363.md",
+      "kind": "public_core_scope_qualification",
+      "sha256": "fffdba254c56ca5a4eedfec5faddbd7f1fd4e6d624ad4a8694cc129a9ff6c25c",
+      "produced_at": "2026-09-09T19:03:30.119392Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "i18n-owner",
+      "path": "implementation_packs/GO_I18N_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "6eb6c2b27f0f0d7506787eefc4f37192356a4d054934430c0ae6785b1211a8e7",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "seo-owner",
+      "path": "implementation_packs/GO_SEO_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "8fb03f30829698ba859f96340837092f1cf8790de51e8605e6a77a499416109e",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "social-owner",
+      "path": "implementation_packs/GO_SOCIAL_POSTING_CORE.md",
+      "kind": "canonical_pack_owner",
+      "sha256": "2bb5438f96951fee8951882b7a7398ee8736fe912c0751ed30d73e440b7d2831",
+      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "producer": "agent-observed-source-and-tests-not-production-admission"
+    },
+    {
+      "id": "v364",
+      "path": "reconstruction_evidence/YARN_EMBEDDED_ASSET_PROVENANCE_V364.md",
+      "kind": "yarn_embedded_source_qualification",
+      "sha256": "72c4e4b57f25094cfb7c749d54e4f9b0f017021b3ed92a1ac2cbe6414ccef5ce",
+      "produced_at": "2026-09-09T19:25:38.175723Z",
+      "producer": "agent-observed-byte-and-syntax-correspondence-not-admission"
+    },
+    {
+      "id": "v365",
+      "path": "reconstruction_evidence/CORE_COMPATIBILITY_AUDIT_V365.md",
+      "kind": "core_compatibility_and_current_suite_audit",
+      "sha256": "728ac768a70cb63eedb85956960eff72cc114ab99a751f36f3020ed4c85b3af0",
+      "produced_at": "2026-09-09T20:01:06.949336Z",
+      "producer": "agent-observed-reconstruction-and-tests-not-admission"
+    },
+    {
+      "id": "v366",
+      "path": "reconstruction_evidence/HISTORY_TRAINING_SCOPE_CORRECTION_V366.md",
+      "kind": "consumer_training_scope_correction",
+      "sha256": "2c64dafe1b6d2a4b0f90741779610d852d92e757611a6bf742c6a3a4e445eb4b",
+      "produced_at": "2026-09-09T20:31:15.428736Z",
+      "producer": "user-clarification-and-authored-contract-not-training-admission"
+    },
+    {
+      "id": "history-training-contract",
+      "path": "markdown_system/PROJECT_HISTORY_MODEL_TRAINING_CONTRACT.md",
+      "kind": "normative_consumer_training_scope",
+      "sha256": "3eed8a07661192c161278696f86b4be1ea47262488e10ed7710c6dde6c5078cc",
+      "produced_at": "2026-09-10T15:07:33.634823Z",
+      "producer": "user-clarification-and-authored-contract-not-training-admission"
+    },
+    {
+      "id": "v367",
+      "path": "reconstruction_evidence/HISTORY_TRAINING_SOURCE_RESEARCH_V367.md",
+      "kind": "training_source_discovery",
+      "sha256": "afe15ce3e0ef9031d44cc199dcd27715fe36e1529b6bf3a01de9f110b360dec8",
+      "produced_at": "2026-09-09T20:51:08.076054Z",
+      "producer": "official-metadata-research-and-capability-gap-validator"
+    },
+    {
+      "id": "v368",
+      "path": "reconstruction_evidence/TRAINING_SOURCE_IDENTITY_AND_CLOSURE_V368.md",
+      "kind": "training_source_identity_and_functional_closure_scope",
+      "sha256": "4c6b1640d28aa853aba017a9dcef06db417da092a9fd7c6c52845492fa1a7455",
+      "produced_at": "2026-09-09T21:01:13.459081Z",
+      "producer": "official-metadata-comparison-and-scope-clarification"
+    },
+    {
+      "id": "v369",
+      "path": "reconstruction_evidence/TRAINING_SOURCE_ACQUISITION_V369.md",
+      "kind": "governed_training_source_acquisition_and_inspection",
+      "sha256": "91d5f701ef8ec076d3ae69a6f861e4577e3311ebf4bd39ed2c8a56006d8ea2f6",
+      "produced_at": "2026-09-09T21:29:53.566659Z",
+      "producer": "reconstructed-acquisition-core-and-bounded-inspection"
+    },
+    {
+      "id": "v370",
+      "path": "reconstruction_evidence/TRAINING_DEPENDENCY_GRAPH_V370.md",
+      "kind": "training_dependency_graph_metadata_qualification",
+      "sha256": "6b3889887c59633a2b90b5eb18225753bbf4c8eef5905212296954304d2ed743",
+      "produced_at": "2026-09-09T21:57:37.825782Z",
+      "producer": "official-metadata-and-pip-resolver-probes"
+    },
+    {
+      "id": "v371",
+      "path": "reconstruction_evidence/TRAINING_WHEEL_QUARANTINE_V371.md",
+      "kind": "governed_wheel_quarantine_inspection_and_security_triage",
+      "sha256": "c0c36e52b3db9a60c529e16677da943fd4f195137a8733d7eccb83e8d2f69d02",
+      "produced_at": "2026-09-09T22:39:25.572265Z",
+      "producer": "reconstructed-acquisition-core-bounded-inspection-osv"
+    },
+    {
+      "id": "v372",
+      "path": "reconstruction_evidence/INTEGRATED_TELEMETRY_CONTROL_V372.md",
+      "kind": "actual_reference_integrated_telemetry_qualification",
+      "sha256": "e82626180349fad47ef8d8ecc604d12027998863128b3c0f37cce71ca1f50f21",
+      "produced_at": "2026-09-10T05:14:34.825819Z",
+      "producer": "reconstructed-reference-host-collector-prometheus-runtime"
+    },
+    {
+      "id": "v373-sdk",
+      "path": "reconstruction_evidence/HISTORY_TRAINING_SDK_QUALIFICATION_V373.md",
+      "kind": "training_pipeline_qualification",
+      "sha256": "01ced1c242f852de2e314c446c8ed00dcac58ae393fa243f928fbcd48db1336d",
+      "produced_at": "2026-09-10T14:37:48.485634+00:00",
+      "producer": "canonical-authored-pipeline-and-official-sdk-qualification"
+    },
+    {
+      "id": "v373-gap",
+      "path": "reconstruction_evidence/HISTORY_TRAINING_SDK_GAP_V373.md",
+      "kind": "training_pipeline_qualification",
+      "sha256": "be5058cbc0f7b1d8f1ef4d36d511e86592a0f570dab285b667fdf18efa1a2ea6",
+      "produced_at": "2026-09-10T14:43:34.375074Z",
+      "producer": "canonical-authored-pipeline-and-official-sdk-qualification"
+    },
+    {
+      "id": "v373",
+      "path": "reconstruction_evidence/HISTORY_MODEL_TRAINING_CONTROL_V373.md",
+      "kind": "training_pipeline_qualification",
+      "sha256": "d5fad645b4b595b691601921d7fd98154797d65c9b50b925e36237b4f2887e6c",
+      "produced_at": "2026-09-10T15:07:33.634823Z",
+      "producer": "canonical-authored-pipeline-and-official-sdk-qualification"
+    },
+    {
+      "id": "history-training-owner",
+      "path": "implementation_packs/HISTORY_MODEL_TRAINING_PIPELINE.md",
+      "kind": "training_pipeline_qualification",
+      "sha256": "0a05c6a372f7974b32062070a6e3d79d58b67475833874259d86867af7d14efc",
+      "produced_at": "2026-09-10T15:00:49.237342Z",
+      "producer": "canonical-authored-pipeline-and-official-sdk-qualification"
+    },
+    {
+      "id": "history-training-plan",
+      "path": "markdown_system/HISTORY_MODEL_TRAINING_PACK_PLAN.md",
+      "kind": "training_pipeline_qualification",
+      "sha256": "743fb9db0f15096b1209dabc90faa01f0a4797caa74c378da2790c8ffa28852b",
+      "produced_at": "2026-09-10T14:37:48.485634+00:00",
+      "producer": "canonical-authored-pipeline-and-official-sdk-qualification"
+    },
+    {
+      "id": "v374",
+      "path": "reconstruction_evidence/CORE_CLAIM_ADMISSION_V374.md",
+      "kind": "core_claim_admission_audit",
+      "sha256": "26eca8f36241bd3bc2197b93128315fdb03ca495764201ca5a7638cca04be271",
+      "produced_at": "2026-09-10T16:14:52.911593Z",
+      "producer": "actual-canonical-reconstruction-primary-source-comparison"
+    },
+    {
+      "id": "v375",
+      "path": "reconstruction_evidence/HTTP_SLI_ALERT_INTEGRATION_V375.md",
+      "kind": "http_reference_qualification",
+      "sha256": "f6081139c6158a40b6cedb6147f3f3effe48cb48b9bab4d0b3bbe7da7b2bd42c",
+      "produced_at": "2026-09-10T17:17:27.178385Z",
+      "producer": "actual-canonical-rebuild-and-finite-synthetic-runtime"
+    },
+    {
+      "id": "http-reference-owner",
+      "path": "implementation_packs/GO_HTTP_METRICS_REFERENCE.md",
+      "kind": "http_reference_qualification",
+      "sha256": "fd149ac383f417fac5da8e5928acfcade6a7b21db8d5805451093a4881b3abbe",
+      "produced_at": "2026-09-11T22:53:25.149157Z",
+      "producer": "actual-canonical-rebuild-and-finite-synthetic-runtime"
+    },
+    {
+      "id": "http-reference-plan",
+      "path": "markdown_system/HTTP_METRICS_REFERENCE_PACK_PLAN.md",
+      "kind": "http_reference_qualification",
+      "sha256": "b362a209856e3a53c8d7c686a57ff1c56f055320665cdae3e9f47c739814cca1",
+      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "producer": "actual-canonical-rebuild-and-finite-synthetic-runtime"
+    },
+    {
+      "id": "continuity-shortcuts",
+      "path": "markdown_system/CONTINUITY_EXECUTION_SHORTCUTS.md",
+      "kind": "http_reference_qualification",
+      "sha256": "c7035c8de6cda5c889c6fc59af874112e7438a11183d00ecc1a62f0ba5533173",
+      "produced_at": "2026-09-11T19:01:52.510358Z",
+      "producer": "actual-canonical-rebuild-and-finite-synthetic-runtime"
+    },
+    {
+      "id": "v376",
+      "path": "reconstruction_evidence/NEXT_SHARP_SECURITY_REPAIR_V376.md",
+      "kind": "dependency_repair_evidence",
+      "sha256": "586a92e93cebcde4fffb63657a798122f53b1a6566b247f4ee3cb28757a6a436",
+      "produced_at": "2026-09-10T17:58:35.890402Z",
+      "producer": "actual-artifact-signature-graph-and-connected-runtime-qualification"
+    },
+    {
+      "id": "v377",
+      "path": "reconstruction_evidence/PUBLIC_WEB_METADATA_INTEGRATION_V377.md",
+      "kind": "public_metadata_integration",
+      "sha256": "6724514bfd4bf871c35b9d1bfa27b5bacb67ae03cf1d4388b7046ce185468288",
+      "produced_at": "2026-09-10T18:31:08.708418Z",
+      "producer": "actual-canonical-http-and-browser-qualification"
+    },
+    {
+      "id": "v378",
+      "path": "reconstruction_evidence/PUBLIC_JOURNEY_LOCALIZATION_V378.md",
+      "kind": "public_journey_localization",
+      "sha256": "c64b8dbf02921b1c396c10f0f7820bd35c1de090d46d6e16c1c82306b37cc445",
+      "produced_at": "2026-09-10T20:48:19.549548Z",
+      "producer": "actual-browser-postgres-and-http-qualification"
+    },
+    {
+      "id": "v379",
+      "path": "reconstruction_evidence/VERSIONED_JOURNEY_HELP_V379.md",
+      "kind": "versioned_operational_help",
+      "sha256": "f3459c53cb30240fff5091f4c1c3c406b426f8068c1fdc0e1c7d7ed0f8782f9e",
+      "produced_at": "2026-09-10T21:18:10.958627Z",
+      "producer": "actual-next-jwe-browser-qualification"
+    },
+    {
+      "id": "v380",
+      "path": "reconstruction_evidence/VERSIONED_HELP_ROLE_COVERAGE_V380.md",
+      "kind": "complete_existing_help_coverage",
+      "sha256": "c3cc62711c9cf54f93ae6e2747fd1acb643a7718f66bf240b847110b8c30da8d",
+      "produced_at": "2026-09-10T23:19:50.444663Z",
+      "producer": "actual-next-jwe-browser-and-source-parity"
+    },
+    {
+      "id": "v381",
+      "path": "reconstruction_evidence/ROLE_WORKSPACE_INTEGRATION_V381.md",
+      "kind": "role_workspace_integration",
+      "sha256": "09cd8040458938845d22cc6c9781ddd74e67fd415ddcc259000b9f77556133a1",
+      "produced_at": "2026-09-11T03:12:55.700814Z",
+      "producer": "actual-next-jwe-browser-and-source-parity"
+    },
+    {
+      "id": "v382",
+      "path": "reconstruction_evidence/PRIVATE_PORTAL_READS_V382.md",
+      "kind": "private_portal_read_qualification",
+      "sha256": "66aa7fa92be45757532a558a118065a18c01ca4a19f197aba4c28b48b088ffe2",
+      "produced_at": "2026-09-11T14:08:31.798810Z",
+      "producer": "actual-go-jwks-postgres-browser-and-source-parity"
+    },
+    {
+      "id": "v383",
+      "path": "reconstruction_evidence/PRIVATE_READ_RECOVERY_V383.md",
+      "kind": "private_read_recovery_qualification",
+      "sha256": "be928bb3332664877cec5e86127d8c0f64d1084f8af1c1e59c48b83c55370e58",
+      "produced_at": "2026-09-11T14:34:09.504218Z",
+      "producer": "actual-go-jwks-postgres-browser-and-source-parity"
+    },
+    {
+      "id": "v384",
+      "path": "reconstruction_evidence/SHARP_NATIVE_INPUT_CORRESPONDENCE_V384.md",
+      "kind": "native_input_correspondence",
+      "sha256": "f3f4226d1fa925f952e5db08193b160eb322a463a59d362df63d8bf50fde8f04",
+      "produced_at": "2026-09-11T14:59:29.628432Z",
+      "producer": "official-source-signature-and-byte-verification"
+    },
+    {
+      "id": "v385",
+      "path": "reconstruction_evidence/MXE_NATIVE_ORIGIN_V385.md",
+      "kind": "native_origin_correspondence",
+      "sha256": "38eabec90e45c15a8c14805c0259678014f5b44bdd148683822d10dbae7757c1",
+      "produced_at": "2026-09-11T15:27:17.003752Z",
+      "producer": "official-source-blob-and-artifact-byte-verification"
+    },
+    {
+      "id": "v386",
+      "kind": "maintenance_access_block",
+      "path": "reconstruction_evidence/NATIVE_QUALIFICATION_ACCESS_BLOCK_V386.md",
+      "sha256": "1f8ee2d62c9fc049707e42b850c1761684e2bf9690986297e67b231e07cc13d3",
+      "produced_at": "2026-09-11T16:12:49.559241Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v387",
+      "kind": "connected_read_integration",
+      "path": "reconstruction_evidence/PRIVATE_PORTAL_PAGINATION_V387.md",
+      "sha256": "8ea9dff7eeb5b28be4ee7d0a23ba6c2bdc047aab24f07c2e1da9c81534300261",
+      "produced_at": "2026-09-11T16:41:45.923147Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v388",
+      "kind": "connected_read_integration",
+      "path": "reconstruction_evidence/ADMIN_PORTAL_PAGINATION_V388.md",
+      "sha256": "ca11e657b1a46982ebb5efc4a951605ada339edf99017dbe3b217e95600bfa25",
+      "produced_at": "2026-09-11T16:41:45.923147Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v389",
+      "kind": "connected_read_integration",
+      "path": "reconstruction_evidence/CUSTOMER_APPOINTMENT_TIMEZONE_V389.md",
+      "sha256": "c6f1891e998063fd0175c6035d32120d9352616e80ba35a4d57dca3d1057e13f",
+      "produced_at": "2026-09-11T17:24:28.177353Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v390",
+      "kind": "connected_mutation_recovery",
+      "path": "reconstruction_evidence/CUSTOMER_CANCELLATION_RECOVERY_V390.md",
+      "sha256": "7d1504e8d3980ff8249c29e8cf486417490922bdda84993ca7178cf95500297d",
+      "produced_at": "2026-09-11T17:49:10.016304Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v391",
+      "path": "reconstruction_evidence/MAINTENANCE_READINESS_RECONCILIATION_V391.md",
+      "kind": "maintenance_evidence",
+      "sha256": "934b1bd95d8946c2b3411cbbcff75495dac03ae5295da2c8d0e7cbe3cd5ffe7d",
+      "produced_at": "2026-09-11T18:10:46.510984Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "advisory-e",
+      "path": "PROJECT_ADVISORY_E.md",
+      "kind": "maintenance_evidence",
+      "sha256": "3bc9a208e4cbbcd27c9d4843a5f5855819b824d822bf0658b2356a635fb5a7e9",
+      "produced_at": "2026-09-11T18:01:03.549372Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "advisory-f",
+      "path": "PROJECT_ADVISORY_F.md",
+      "kind": "maintenance_evidence",
+      "sha256": "85afb9b30884b0e432a965ff8ae7374d99472decaaf9d0ccf5c2be6b20c7ca00",
+      "produced_at": "2026-09-11T18:01:03.549372Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "advisory-g",
+      "path": "PROJECT_ADVISORY_G.md",
+      "kind": "maintenance_evidence",
+      "sha256": "885e37ed58370fc5f39bc8f26de1b4310d2004461ca0f8260e7e5640a6f52c32",
+      "produced_at": "2026-09-11T18:01:03.549372Z",
+      "producer": "agent-observed-file-hash-not-production-certification"
+    },
+    {
+      "id": "v392",
+      "path": "reconstruction_evidence/CURRENT_PORTABLE_CANDIDATE_ACCEPTANCE_V392.md",
+      "kind": "candidate_acceptance",
+      "sha256": "678c0abc25a6b960c8ba8b873614e75c62177ff371a0fdb0d75d4cfe340227b0",
+      "produced_at": "2026-09-11T18:10:46.347646Z",
+      "producer": "actual-local-candidate-execution-not-production-certification"
+    },
+    {
+      "id": "v393",
+      "path": "reconstruction_evidence/OPTIONAL_IMAGE_DEPENDENCY_CONTAINMENT_V393.md",
+      "kind": "dependency_containment",
+      "sha256": "a32d864d1cfcb211a39f186a0ccdd2fedddee61a5486432bfcc671cb3b570741",
+      "produced_at": "2026-09-11T19:01:52.510358Z",
+      "producer": "exact-artifact-parity-and-connected-regression-not-whole-security-admission"
+    },
+    {
+      "id": "v394",
+      "path": "reconstruction_evidence/PNPM_CURRENT_ROUTING_NOTICES_V394.md",
+      "kind": "tooling_repair",
+      "sha256": "cc5dd1d134701cc72e566d2551b563998effa278ab13cea27db658cecee7626f",
+      "produced_at": "2026-09-11T19:56:01.366570Z",
+      "producer": "canonical-rebuild-and-real-consumer-recipe-verification"
+    },
+    {
+      "id": "v395",
+      "path": "reconstruction_evidence/QRCODE_VENDOR_NOTICE_DELIVERY_V395.md",
+      "kind": "license_notice_delivery",
+      "sha256": "21c6b24591da113f9d5b5c5adcb52d97c504f5fc4c850eba35b7d1cdfdd1c227",
+      "produced_at": "2026-09-11T19:56:01.366570Z",
+      "producer": "fixed-source-header-full-permission-and-three-real-delivery-verifications"
+    },
+    {
+      "id": "v396",
+      "path": "reconstruction_evidence/SEMVER_ORIGINAL_LICENSE_DELIVERY_V396.md",
+      "kind": "original_license_delivery",
+      "sha256": "ed642d77adcce5ceb396382a25211f9eccff6f7a864b00229d093db42ca9ce21",
+      "produced_at": "2026-09-11T20:35:33.499635Z",
+      "producer": "exact-npm-quarantine-original-license-and-three-real-recipe-verifications"
+    },
+    {
+      "id": "v397",
+      "path": "reconstruction_evidence/PNPM_RETAINED_NOTICE_DELIVERY_V397.md",
+      "kind": "retained_notice_delivery",
+      "sha256": "3f7e5df7bfa7543f1ff42c953e901a00c03ad5a21cfea55f08c38004341587f6",
+      "produced_at": "2026-09-11T20:52:38.846353Z",
+      "producer": "pinned47catalogue-independent141copies-and-real-recipe-negative-probes"
+    },
+    {
+      "id": "v398",
+      "path": "reconstruction_evidence/NEXT_PATH_MPL_SOURCE_DELIVERY_V398.md",
+      "kind": "mpl_source_delivery",
+      "sha256": "14aeb5395353efb6703bd08a9af5e134bf3abdf9e430d18749cb7147a7c7c708",
+      "produced_at": "2026-09-11T21:11:21.865145Z",
+      "producer": "fixed-source-blob-ast-and-independent9copies-with-real-negative-probes"
+    },
+    {
+      "id": "v399",
+      "path": "reconstruction_evidence/CURRENT_CLOSURE_BOUNDARIES_V399.md",
+      "kind": "closure_boundary_reconciliation",
+      "sha256": "2bae61f85f33792d019a32b6a88a69522705cfd185dc2437393be89cf9ad6c0d",
+      "produced_at": "2026-09-11T21:52:11.187884Z",
+      "producer": "current-source-hash-comparison-and-assurance-reconciliation"
+    },
+    {
+      "id": "v400",
+      "path": "reconstruction_evidence/CONNECTED_CUSTOMER_SURVEYS_V400.md",
+      "kind": "connected_customer_survey_reference",
+      "sha256": "29970739d1d1e8d77a22c12619677f4fd0dcb491a6149b2c07ddcb394c4f2ca9",
+      "produced_at": "2026-09-11T22:53:25.149157Z",
+      "producer": "connected-http-oidc-postgres-browser-retention-fuzz"
+    },
+    {
+      "id": "v401",
+      "path": "reconstruction_evidence/PNPM_ZIP_CONTAINMENT_V401.md",
+      "kind": "pnpm_zip_containment",
+      "sha256": "dacf2feacc1fd543524c3120b2c4809a6ef6f171ffd464b21f4e2cdd53028418",
+      "produced_at": "2026-09-11T23:17:18.875957Z",
+      "producer": "canonical-transform-boundary-sca-three-frozen-consumers"
+    },
+    {
+      "id": "v402",
+      "path": "reconstruction_evidence/LIBRARY_INFRA_SCOPE_V402.md",
+      "kind": "scope",
+      "sha256": "0ddbc9820caa12cadde12eb7f53cd3b237e046925f4e437e5e12598ebd7bfb1d",
+      "produced_at": "2026-09-11T23:40:39.436985Z",
+      "producer": "V402 explicit user scope and canonical validator plus source inspection"
+    },
+    {
+      "id": "library-readiness",
+      "path": "PROJECT_LIBRARY_READINESS_GATE.json",
+      "kind": "readiness_record",
+      "sha256": "b996f3c84ddb623d83a46d9423063242d331d8cacc458165f0b691aa765b169a",
+      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "producer": "V402 explicit user scope and canonical validator plus source inspection"
+    },
+    {
+      "id": "library-readiness-report",
+      "path": "reconstruction_evidence/LIBRARY_READINESS_PREPARATION_REPORT_V402.json",
+      "kind": "readiness_report",
+      "sha256": "a7872ffc739bbcbe69f9434d7013f4c4daa9c9cbb52b1e6456869b82f7698f6f",
+      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "producer": "V402 explicit user scope and canonical validator plus source inspection"
+    },
+    {
+      "id": "v402-preparation",
+      "path": "reconstruction_evidence/LIBRARY_READINESS_PREPARATION_V402.md",
+      "kind": "library_preparation",
+      "sha256": "f64a63fe3f5e370cc79973191e74fbbb5418c7749d4718212ce2d048521a0170",
+      "produced_at": "2026-09-11T23:40:39.436985Z",
+      "producer": "V402 explicit user scope and canonical validator plus source inspection"
+    },
+    {
+      "id": "v402-provenance",
+      "path": "reconstruction_evidence/LIBRARY_PROVENANCE_GAPS_V402.md",
+      "kind": "source_gap_audit",
+      "sha256": "50867f74f289b5f8639e4edeb38afac758debc6b8f7c1e593dd82e2fc398fa8e",
+      "produced_at": "2026-09-11T23:40:39.436985Z",
+      "producer": "V402 explicit user scope and canonical validator plus source inspection"
+    },
+    {
+      "id": "v402-integration",
+      "path": "reconstruction_evidence/LIBRARY_INTEGRATION_GAPS_V402.md",
+      "kind": "integration_gap_audit",
+      "sha256": "7078087635202f78bb980bddbef900306feeae547671ab6a7d4a6049c32a207a",
+      "produced_at": "2026-09-11T23:40:39.436985Z",
+      "producer": "V402 explicit user scope and canonical validator plus source inspection"
+    },
+    {
+      "id": "evid-109",
+      "path": "reconstruction_evidence/BC_EXACT_AMOUNT_ADAPTATION_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "ddb43950c42562048927febf09877ed30f76d7a619410ae19e5973a165ad0e62",
+      "produced_at": "2026-09-12T00:07:22.575817Z",
+      "producer": "Narrow BC-derived amount/balance/reversal, real callers, bounded fuzz and23exact rebuilt outputs; remaining business provenance unpromoted"
+    },
+    {
+      "id": "evid-110",
+      "path": "reconstruction_evidence/REFUND_PROVIDER_ALIAS_COMPATIBILITY_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "61df8bf53421634180bd0d126a15e1dd9e9bfbd50ac8effb8e94616d867b27aa",
+      "produced_at": "2026-09-12T00:07:22.575817Z",
+      "producer": "Refund provider alias mapping with real PG/SDK fixtures and25exact rebuilt files"
+    },
+    {
+      "id": "evid-111",
+      "path": "reconstruction_evidence/PAYMENT_SDK_RECONCILIATION_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "0f2c9be1cbb5d34840ec8d779cdbfde210278131454e02297b801d6205127e7c",
+      "produced_at": "2026-09-12T00:07:22.575817Z",
+      "producer": "Official dependency-pinned hosted checkout and payment GET adapter0.3.0; SDK transport tests and source/SCA/12file reconstruction"
+    },
+    {
+      "id": "evid-112",
+      "path": "reconstruction_evidence/PAYMENT_PERSISTENCE_PROGRESS_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "9a773fa769549d930734fdb689028cdf84d6ff020a1851cc59e2b6694c8542a4",
+      "produced_at": "2026-09-12T00:07:22.575817Z",
+      "producer": "Payment persistence candidate regression corrections and atomic scope/dispatch admission; staging, not whole connected release"
+    },
+    {
+      "id": "evid-113",
+      "path": "reconstruction_evidence/BC_SALES_CONTRACT_ADAPTATION_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "9521e375e7aaee14ee8c17b8a3af2e6ad99bd2763552946872bf2d4abb95e1d9",
+      "produced_at": "2026-09-12T00:41:45.435454Z",
+      "producer": "V402 exact source, reconstruction and focused runtime receipts; claim and remaining gates in the linked artifact"
+    },
+    {
+      "id": "evid-114",
+      "path": "reconstruction_evidence/BUSINESS_POLICY_PROFILE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "671fc76aba4c5f3d92008aea4dfe385f8620fc39cb6ea5295d164b383c4639a5",
+      "produced_at": "2026-09-12T00:41:45.435454Z",
+      "producer": "V402 exact source, reconstruction and focused runtime receipts; claim and remaining gates in the linked artifact"
+    },
+    {
+      "id": "evid-115",
+      "path": "reconstruction_evidence/CONNECTED_PAYMENT_HANDOVER_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "288994c86be3f797ff3b27ac2831c4368452ac3583c774a7eaeb8e5affa5fae2",
+      "produced_at": "2026-09-12T00:41:45.435454Z",
+      "producer": "V402 exact source, reconstruction and focused runtime receipts; claim and remaining gates in the linked artifact"
+    },
+    {
+      "id": "evid-116",
+      "path": "reconstruction_evidence/CONNECTED_DELTA_ASSURANCE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "734da8551196755b5934e3b2dba28764bcd4ffe69b0879e6794cacca6655e43f",
+      "produced_at": "2026-09-12T00:41:45.435454Z",
+      "producer": "V402 exact source, reconstruction and focused runtime receipts; claim and remaining gates in the linked artifact"
+    },
+    {
+      "id": "evid-117",
+      "path": "reconstruction_evidence/HANDOVER_BROWSER_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "4f81def7578814f24c539f2870c0f5edb9448e7413acde3ac88c94033fcce637",
+      "produced_at": "2026-09-12T00:55:53.835585Z",
+      "producer": "Delivery browser/BFF/Go/PostgreSQL,65 focused tests and933 exact files; other roles and broader gates remain open"
+    },
+    {
+      "id": "evid-118",
+      "path": "reconstruction_evidence/FACTORY_BROWSER_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "82eba2d9521b04a31778f846b759689cca26af2374c84aad76174a163323ca3e",
+      "produced_at": "2026-09-12T01:07:29.503405Z",
+      "producer": "Factory browser/BFF/Go/PostgreSQL,18 focused tests and943 exact files; concurrent-state observation without false receipt"
+    },
+    {
+      "id": "evid-119",
+      "path": "reconstruction_evidence/BACKEND_DEPENDENCY_CLOSURE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "63a932de03105a1b2324e670713953ad12f104daccd3261b90980d80e919ab70",
+      "produced_at": "2026-09-12T01:37:30.540465Z",
+      "producer": "Independent backend checkout dependency correction; historical39/531build and current composition follow-up"
+    },
+    {
+      "id": "evid-120",
+      "path": "reconstruction_evidence/EXACT_FX_SNAPSHOT_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "45c613ea847a4bd6f97341c94660dd1d86a91bfed3899ed2134ea076d7349a2e",
+      "produced_at": "2026-09-12T01:37:30.540465Z",
+      "producer": "Exact sourced FX snapshot conversion receipt, official revisions and connected PG; no journal posting claim"
+    },
+    {
+      "id": "evid-121",
+      "path": "reconstruction_evidence/COMMUNICATIONS_RUNTIME_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "988e11bb9a60b6a1ffe1f14264d49aaf941c1ddc396c16ce1c2874c3c4386dda",
+      "produced_at": "2026-09-12T01:37:30.540465Z",
+      "producer": "Connected WhatsApp human browser/PG, renewable OIDC service identity and Meta Page host;1032 exact franchise outputs"
+    }
+  ]
+}

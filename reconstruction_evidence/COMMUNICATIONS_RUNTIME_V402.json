@@ -1,0 +1,104 @@
+{
+  "scope": "LOCAL_INFRASTRUCTURE_INCREMENT",
+  "franchise": {
+    "packs": 82,
+    "files": 1032
+  },
+  "evidence": [
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\whatsapp-connected-final-manifest.json",
+      "sha256": "db136d8d32e4c8c4e65ba444149fc17176459db45efb81c421f0167961702171"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\whatsapp-connected-final-receipt.json",
+      "sha256": "4b787388c416430e259e9dfc253c31bf9ab4dee7161e08b40368555cb68c9069"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\whatsapp-browser-final-manifest.json",
+      "sha256": "61cb936cd1925392b3c531d9c083cdcec98d7f03e3255bb4463b4648aa264c89"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\whatsapp-browser-final-receipt.json",
+      "sha256": "b371e4a4a99fdb88e525cb1bd075b89f5d9dc537d5af1ef86b7308f15b0b149f"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\WHATSAPP_CONNECTED_ASSURANCE_V402.candidate.md",
+      "sha256": "7210ce9254e5502720a1d4d51a2d334d23a00190676215e5d19f154aa1eb2cc7"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\whatsapp-payload-lf-rebind.json",
+      "sha256": "9db2fb4f515f0985fd4466dd0d4b41b65d0f189af4ebafd4a414b16d64328128"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\connected-communications-host-gates.json",
+      "sha256": "3a89fae8b67a1f097dcd552d7144319d078a95c145da9fb221b6048b54f080fd"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\whatsapp-host-broker-connected.log",
+      "sha256": "77d7d67d47725cbf7ccac4ca75547d2c0801ef578e2e6b18241bb6a25e833f61"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\oidc-service-manifest.json",
+      "sha256": "b40a1efedef643bc29d34dfa057e37f3ba98bc89dc5714c592ac473ecc4606c4"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\social-connected-manifest.json",
+      "sha256": "964893452f0e74d619a07a6e4132db55364fbddb9739492060d92f17ef5c0b51"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\social-connected-evidence.md",
+      "sha256": "b652784ea84c6022b4d8ad059f894d04c0676aa1a49615ec06a3ad539d307bfe"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\communications-package-result.json",
+      "sha256": "bb74f702ae877e17c81b3c0cfe7492bc646ab421812129721c6ddb847671a5ec"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\communications-composition-stage.json",
+      "sha256": "d355da38570168bc9f7cfa5ce19b63fd6838dbdf48ab7af7a8dcfc56c0f46329"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\communications-reconstruction.json",
+      "sha256": "9c08438a62bfcfd32df138557cdfbaca77b0329274d16e1f3ea382d8926671c5"
+    }
+  ],
+  "rebuilds": [
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\communications-rebuilds\\enterprise_backend-closure.json",
+      "sha256": "4444e821a44cfdf3be879d81439c6a2162207ca6f53048477cb43eddf89cdb44"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\communications-rebuilds\\enterprise_backend-closure-compile.json",
+      "sha256": "258b84d73049340372fffeec25e575d96b626f60f290cdf0b4b4689cb7fa839c"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\communications-rebuilds\\enterprise_web.json",
+      "sha256": "27342baac432a24333962b4aea96123e8dd88300b1b72f5fa1ae6f012b957895"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\communications-rebuilds\\franchise_complete.json",
+      "sha256": "9f59b93f1ab3322e50926cb3b27a2f6f1d257448ce8501790e3db103c66d0f5d"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\communications-rebuilds\\franchise_complete-compile.json",
+      "sha256": "8d31c2a7f2e84385c599e149806e0569afed75b452d25c084e59f6824c8ecd5f"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\communications-rebuilds\\franchise_serverless-closure.json",
+      "sha256": "71fba25790ec9e0aa3f33711bb6a8dab923a3502286e014d4b2ce345e0a441e2"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\communications-rebuilds\\franchise_serverless-closure-compile.json",
+      "sha256": "4a261d7d84f5e9c98a46993dd78574fc3c5b585531595dff466ae5f352d5f5c0"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\communications-rebuilds\\http_metrics_reference.json",
+      "sha256": "d093a53bdd7d224e7e1ebfb851d444da9ca6b0b47a79a25fcb40822a44467267"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\communications-rebuilds\\meta_whatsapp_cloud.json",
+      "sha256": "8b8d7109291715145d16b48afc3230d6614ea26cee3c5e1c2ee54df198e5fa79"
+    }
+  ],
+  "overall_ready": false
+}

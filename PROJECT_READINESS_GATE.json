@@ -1,0 +1,846 @@
+{
+  "schema": "elite-project-readiness-gate/v2",
+  "project": {
+    "id": "elite-library-maintenance",
+    "owner": "usuario solicitante",
+    "status": "DISCOVERY",
+    "platform_mode": "BLOCK",
+    "risk_tier": "HIGH",
+    "data_classification": "INTERNAL",
+    "updated_at": "2026-09-08T08:27:05.879027Z"
+  },
+  "rounds": {
+    "A": {
+      "status": "ANSWERED",
+      "evidence": [
+        "PROJECT_READINESS_RECORD.md",
+        "PROJECT_BLUEPRINT.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "advisory_prompt_ref": "PROJECT_ADVISORY_A.md"
+    },
+    "B": {
+      "status": "ANSWERED",
+      "evidence": [
+        "PROJECT_READINESS_RECORD.md",
+        "specs/library-maintenance/spec.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "advisory_prompt_ref": "PROJECT_ADVISORY_B.md"
+    },
+    "C": {
+      "status": "ANSWERED",
+      "evidence": [
+        "PROJECT_READINESS_RECORD.md",
+        "specs/library-maintenance/spec.md",
+        "PROJECT_BLUEPRINT.md"
+      ],
+      "advisory_prompt_ref": "PROJECT_ADVISORY_C.md"
+    },
+    "D": {
+      "status": "ANSWERED",
+      "evidence": [
+        "PROJECT_BLUEPRINT.md",
+        "specs/library-maintenance/spec.md",
+        "PROJECT_READINESS_RECORD.md"
+      ],
+      "advisory_prompt_ref": "PROJECT_ADVISORY_D.md"
+    },
+    "E": {
+      "status": "ANSWERED",
+      "evidence": [
+        "PROJECT_BLUEPRINT.md",
+        "specs/library-maintenance/spec.md",
+        "PROJECT_OFFICIAL_SOURCE_PROFILE_RECORD.md",
+        "PROJECT_READINESS_RECORD.md"
+      ],
+      "advisory_prompt_ref": "PROJECT_ADVISORY_E.md"
+    },
+    "F": {
+      "status": "ANSWERED",
+      "evidence": [
+        "PROJECT_BLUEPRINT.md",
+        "specs/library-maintenance/spec.md",
+        "markdown_system/PROJECT_ENTRY_CLI_GUIDE.md",
+        "reconstruction_evidence/PORTABLE_CANDIDATE_ACCEPTANCE_V352.md",
+        "reconstruction_evidence/ACCEPTANCE_REAUDIT_FX_BOUNDARY_V353.md",
+        "PROJECT_READINESS_RECORD.md"
+      ],
+      "advisory_prompt_ref": "PROJECT_ADVISORY_F.md"
+    },
+    "G": {
+      "status": "BLOCKED",
+      "evidence": [
+        "PROJECT_DEPENDENCY_UPDATE_RECORD.md",
+        "PROJECT_FAILURE_LESSONS.md",
+        "reconstruction_evidence/NATIVE_QUALIFICATION_ACCESS_BLOCK_V386.md"
+      ],
+      "advisory_prompt_ref": "PROJECT_ADVISORY_G.md"
+    },
+    "H": {
+      "status": "BLOCKED",
+      "evidence": [
+        "PROJECT_READINESS_RECORD.md",
+        "reconstruction_evidence/PNPM_ZIP_CONTAINMENT_V401.md"
+      ],
+      "advisory_prompt_ref": "PROJECT_ADVISORY_H.md"
+    }
+  },
+  "blockers": {
+    "critical_unknowns": [
+      "MAINTENANCE_READINESS_AND_ASSURANCE_NOT_PROVEN",
+      "CAPABILITY_EVIDENCE_RECONCILIATION_PENDING"
+    ],
+    "required_access_not_proven": [],
+    "open_high_or_critical_failures": [
+      "FAIL-20260907-384",
+      "FAIL-20260907-385"
+    ],
+    "open_dependency_blockers": [
+      "FAIL-20260908-532",
+      "FAIL-20260911-804"
+    ],
+    "stale_or_conflicted_authorities": []
+  },
+  "first_vertical_slice": {
+    "id": "maintenance-entry",
+    "journeys": [
+      "NEW materializar y verificar",
+      "EXISTING baseline delta y reanudacion",
+      "fallo corregir reconstruir",
+      "distribuir sin heredar aprobaciones"
+    ],
+    "connected_journey_ids": [],
+    "invariants": [
+      "procedencia explicita",
+      "no colisiones ni sobrescritura ajena",
+      "historial conservado",
+      "no promotion por estructura"
+    ],
+    "acceptance_test_refs": [
+      "specs/library-maintenance/spec.md"
+    ],
+    "rollback_recovery_ref": "specs/library-maintenance/plan.md"
+  },
+  "capabilities": [
+    {
+      "id": "PRD-INTAKE",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Requisitos y alcance existentes del usuario; falta aceptación completa del cierre.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de PRD-INTAKE antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "ARCH-DOMAIN",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Owners, invariantes y separación fuente/staging de la biblioteca.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de ARCH-DOMAIN antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "REPO-SCM",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Preservación y colaboración mediante archivos y checkpoints; sin Git obligatorio.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de REPO-SCM antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "CONTRACTS",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Contratos exactos de plan, pack, readiness y eventos.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de CONTRACTS antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "RUNTIME",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "PowerShell/Python ejecutan las herramientas; versión observada no equivale a grafo validado.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de RUNTIME antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "WEB-PUBLIC",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "El tooling de preparación es CLI, no publica una web. T2804 conserva la web de franquicia.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "WEB-PORTALS",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Este mantenimiento no abre sesiones de clientes o franquiciados; T2804 conserva sus portales.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "MOBILE",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "No se instala una app móvil para materializar Markdown; reevaluar por journey de producto.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "DESKTOP",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "La herramienta CLI no es una app desktop distribuida; no confundir host Windows con ese producto.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "EMBEDDED-IOT",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "No se opera hardware ni firmware desde este slice; T2802 conserva su evaluación si aplica al negocio.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "API-BACKEND",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "El primer slice no expone HTTP/RPC. El backend de franquicia sigue bajo T2802.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "DOMAIN-MODULES",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Reglas de admisión, selección, materialización y conservación de evidencia.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de DOMAIN-MODULES antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "IDENTITY",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Identidad del operador local y del firmante del release; no se exige inventar un IdP web.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de IDENTITY antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "AUTHORIZATION",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Autoridad del usuario y límites de filesystem/efectos externos.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de AUTHORIZATION antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "SECRETS-PKI",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "El cierre T2810 exige firma y custodia separada; aún no se creó ni autorizó una clave.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de SECRETS-PKI antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "TX-DATABASE",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "El estado de preparación es filesystem; no se sustituye ni elimina PostgreSQL del producto.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "CACHE",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "No hay cache de negocio en este slice; caches de herramientas no autorizan un servicio adicional.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "SEARCH",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "La búsqueda local del agente no despliega un motor de búsqueda del producto.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "OBJECT-STORAGE",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "No se provisiona storage remoto en preparación; archivos locales y ZIP tienen owners de backup/release.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "OUTBOX-INBOX",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "No hay commit de negocio más efecto remoto; el historial local no se presenta como outbox productivo.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "JOBS-WORKFLOWS",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "No se crea worker persistente; tareas del agente son ejecuciones acotadas. Scheduling futuro requiere autorización.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "BROKER-STREAMING",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "No se justifica un broker para preparar archivos locales.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "INTEGRATIONS",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "No se llama a APIs de negocio; consultas públicas de autoridad no son adapters productivos. T2805 conserva integraciones.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "PAYMENTS",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Sin cobros o refunds reales en mantenimiento; T2802/T2805 conservan los journeys.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "MARKETPLACES",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Sin publicar catálogo ni órdenes reales; T2805 conserva adapters y reconciliación.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "ADS-ATTRIBUTION",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "No se crean campañas o tracking del negocio; T2805 conserva atribución y consentimientos.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "NOTIFICATIONS",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "No se envían mensajes externos desde preparación; T2805/T2809 conservan delivery y alertas.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "DATA-INGEST",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Leer Markdown para materializar código no acredita ingestión de datos empresariales; T2806 conserva documentos.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "ANALYTICS-BI",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Métricas de tests no son un warehouse de negocio; reporting sigue en T2802/T2804.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "ML-AI",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "El tooling no ejecuta inferencia; usar un agente externo no implementa una plataforma de modelos. T2807 permanece.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "RAG-AGENTS",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "No se despliega un runtime RAG; instrucciones para el agente son DOCS-OPS. T2807 permanece.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "GPU-ACCEL",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "No se requieren kernels o GPU para estos validators.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "NETWORK-EDGE",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Sin endpoints remotos propios ni CDN/WAF; HTTPS de consultas no configura el edge productivo.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "CONTAINERS",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Las herramientas de preparación se ejecutan nativamente; no se cambia la estrategia del producto.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "ORCHESTRATION",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "No se despliega un scheduler de workloads para componer archivos.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "IAC-CLOUD",
+      "classification": "NONE_WITH_REASON",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "No se crea cloud en este slice; IaC del producto y release mantienen sus gates.",
+      "implementation_refs": [],
+      "test_refs": [],
+      "rollback_recovery_ref": "",
+      "blocking_conditions": []
+    },
+    {
+      "id": "CI",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Verificadores locales reproducibles; no requiere CI hospedado ni consumo de Actions.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de CI antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "CD-RELEASE",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Entrega portable exacta y verificable al terminar; todavía no producida.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de CD-RELEASE antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "SUPPLY-CHAIN",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Revisiones, hashes, licencias, SBOM y admisión por claim.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de SUPPLY-CHAIN antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "OBSERVABILITY",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Resultados de comandos, fallos y evidencia del mantenimiento; no sustituye T2809 productivo.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de OBSERVABILITY antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "SLO-INCIDENT",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Diagnóstico, recuperación y lecciones, con límites de continuidad definidos.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de SLO-INCIDENT antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "PERFORMANCE",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Medición de arranque y contexto del agente; no inferir velocidad de negocio.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de PERFORMANCE antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "SECURITY-APPSEC",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Threat model y regresiones sobre entradas/paths/artefactos no confiables.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de SECURITY-APPSEC antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "PRIVACY-COMPLIANCE",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "No divulgar secretos o documentos privados al distribuir la biblioteca.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de PRIVACY-COMPLIANCE antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "BACKUP-DR",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Restaurar fuente e historial y reconstruir desde un snapshot independiente.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de BACKUP-DR antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "COST-FINOPS",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "No crear servicios de pago, campañas ni automatizaciones sin autoridad específica.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de COST-FINOPS antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "TEST-PLATFORM",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Tests del código exacto, negativos, reconstrucción y recorridos conectados.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de TEST-PLATFORM antes de cierre; ver roadmap T2801-T2810."
+      ]
+    },
+    {
+      "id": "DOCS-OPS",
+      "classification": "REQUIRED",
+      "owner": "agente_de_mantenimiento",
+      "reason_or_trigger": "Ayuda, protocolos, soporte, capacitación y recuperación ligados a versión.",
+      "implementation_refs": [
+        "PROJECT_PACK_PLAN.md",
+        "specs/library-maintenance/spec.md"
+      ],
+      "test_refs": [
+        "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+        "reconstruction_evidence/MAINTENANCE_ENTRY_AND_SCOPE_V285.md"
+      ],
+      "rollback_recovery_ref": "specs/library-maintenance/plan.md",
+      "blocking_conditions": [
+        "Evidencia parcial: completar assurance y recorrido conectado de DOCS-OPS antes de cierre; ver roadmap T2801-T2810."
+      ]
+    }
+  ],
+  "connected_journeys": [],
+  "documents": {
+    "required": false,
+    "decision_record": "",
+    "corpus_ground_truth_status": "NOT_APPLICABLE",
+    "automatic_storage_requested": false,
+    "field_evaluation_evidence": [],
+    "security_evidence": [],
+    "classes": []
+  },
+  "integrations": [],
+  "sources": {
+    "lock_path": "PROJECT_EXTERNAL_SOURCE_LOCK.md",
+    "status": "BLOCKED",
+    "exact_revisions": false,
+    "licenses_notices_resolved": false,
+    "moving_references": [],
+    "product_provenance_modes": []
+  },
+  "dependencies": {
+    "status": "BLOCKED",
+    "evidence": [
+      "PROJECT_DEPENDENCY_UPDATE_RECORD.md"
+    ],
+    "eol_policy": false,
+    "locks": false,
+    "rollback": false
+  },
+  "authorities": {
+    "status": "BLOCKED",
+    "evidence": [
+      "PROJECT_AUTHORITY_FRESHNESS_RECORD.md"
+    ],
+    "conflicts": []
+  },
+  "operations": {
+    "security_privacy": {
+      "status": "BLOCKED",
+      "evidence": []
+    },
+    "slo_performance_capacity_cost": {
+      "status": "BLOCKED",
+      "evidence": []
+    },
+    "backup_restore_dr": {
+      "status": "BLOCKED",
+      "evidence": []
+    },
+    "deployment_canary_rollback": {
+      "status": "BLOCKED",
+      "evidence": []
+    },
+    "monitoring_incident_response": {
+      "status": "BLOCKED",
+      "evidence": [
+        "PROJECT_VULNERABILITY_MONITORING_RECORD.md"
+      ]
+    }
+  },
+  "pack_plan": {
+    "path": "PROJECT_PACK_PLAN.md",
+    "status": "PROVEN",
+    "collision_check": true,
+    "rollback_defined": true,
+    "evidence": [
+      "reconstruction_evidence/TOOLING_COMPOSITION_CLOSURE_V290.md",
+      "reconstruction_evidence/AGENT_ENTRY_LIFECYCLE_V287.md",
+      "reconstruction_evidence/AGENT_BRIDGE_BOUNDARY_RECOVERY_V284.md",
+      "specs/library-maintenance/plan.md"
+    ]
+  }
+}

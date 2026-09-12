@@ -1,0 +1,284 @@
+{
+  "schema": "elite.handover-browser-delta.v1",
+  "scope": "T2804_LOCAL_BROWSER_BFF_BACKEND_POSTGRES",
+  "state": "PASS_CANDIDATE_FOR_ROOT_INTEGRATION",
+  "candidate_root": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-browser-candidate",
+  "verified_composition": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-ui-reference",
+  "source_files": [
+    {
+      "path": "docs/handover-browser-gate.md",
+      "action": "CREATE",
+      "before_sha256": null,
+      "sha256": "eafa5a9f3494f72402820968e993f0997fd0a09bedea0c28c3a261c7c07b0ffe",
+      "canonical_owners": [],
+      "owner_note": "Root to assign to connected handover UI/composition gate pack; new or not yet published file",
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "internal/platform/postgres/handover_browser_integration_test.go",
+      "action": "CREATE",
+      "before_sha256": null,
+      "sha256": "89c29d58d19d5aef6a2013a90cbc7aaa0c3e86a473c4e1a77660ea1b7f2da47e",
+      "canonical_owners": [],
+      "owner_note": "Root to assign to connected handover UI/composition gate pack; new or not yet published file",
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "microsoft_playwright_browser_gate/tests/handover-connected.spec.mjs",
+      "action": "CREATE",
+      "before_sha256": null,
+      "sha256": "e5d8281a373df5acbe2bac45e687261990538e1a6979a94dee1ceb6641b905e3",
+      "canonical_owners": [],
+      "owner_note": "Root to assign to connected handover UI/composition gate pack; new or not yet published file",
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "src/app/admin/page.tsx",
+      "action": "MODIFY",
+      "before_sha256": "cfa32d36822be1ead4378f0b3136e2181297374faba2b391dcebaf3f9458e3c2",
+      "sha256": "bdfd769fe1ce515beb10acb3a3f4e36efff13e9c418a10560914d1ad0544354b",
+      "canonical_owners": [
+        "implementation_packs/TYPESCRIPT_ENTERPRISE_WEB_GOLDEN_PATH.md",
+        "implementation_packs/TYPESCRIPT_GO_API_WEB_BRIDGE.md"
+      ],
+      "owner_note": null,
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "src/app/api/enterprise/handovers/bounded-body.test.ts",
+      "action": "CREATE",
+      "before_sha256": null,
+      "sha256": "f1593b49a45932a473ad422d1a72517d156d447f8de4af694450f2a6a4a70af8",
+      "canonical_owners": [],
+      "owner_note": "Root to assign to connected handover UI/composition gate pack; new or not yet published file",
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "src/app/api/enterprise/handovers/route.ts",
+      "action": "MODIFY",
+      "before_sha256": "f2b3b7ee7a33f83a93423efe583702b5c948966fef06a29b8db0b9c56fc1ad96",
+      "sha256": "4590749b6ab64dbd32f26ab358def8a3dea4f5fe2ab5a141458e57a3a4029084",
+      "canonical_owners": [],
+      "owner_note": "Root to assign to connected handover UI/composition gate pack; new or not yet published file",
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "src/app/customer/handovers/page.tsx",
+      "action": "MODIFY",
+      "before_sha256": "836b56e83748ec6e0063f7c8bb2111801ae20b5f72cca6fcce65d9b9c585046d",
+      "sha256": "6ad96bad6ffada0391299a30fc3f4e67a503fe9c7eded13ad45c50c49f29dc3f",
+      "canonical_owners": [
+        "implementation_packs/TYPESCRIPT_FRANCHISE_JOURNEY_PORTALS.md"
+      ],
+      "owner_note": null,
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "src/app/customer/page.tsx",
+      "action": "MODIFY",
+      "before_sha256": "277bcdfaeb46cf0482fabbc83be1d6b0b7330667583c611753bac2411c0f6cee",
+      "sha256": "00e6a23cf3b7cca2588912e7ed7ad541312784ea05a57870a0b1dca1829ba8cb",
+      "canonical_owners": [
+        "implementation_packs/TYPESCRIPT_ENTERPRISE_WEB_GOLDEN_PATH.md",
+        "implementation_packs/TYPESCRIPT_GO_API_WEB_BRIDGE.md"
+      ],
+      "owner_note": null,
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "src/app/factory/page.tsx",
+      "action": "MODIFY",
+      "before_sha256": "c2aa3463d897d42d66d89d38d4e1ebf9c2db50bf1a32efd4458a997964d3e679",
+      "sha256": "57091998f13202ba8b29ccf50b219f7af5b7c82083cd48a12b05e4e430181ec1",
+      "canonical_owners": [
+        "implementation_packs/TYPESCRIPT_ENTERPRISE_WEB_GOLDEN_PATH.md",
+        "implementation_packs/TYPESCRIPT_GO_API_WEB_BRIDGE.md"
+      ],
+      "owner_note": null,
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "src/components/customer-handover-actions.tsx",
+      "action": "MODIFY",
+      "before_sha256": "c1f264d9a83d58f7c34976e8479b107ef8b1d472357123ebd97c9b87f380e5af",
+      "sha256": "d61fad94d921f2af87f38498471b99d6e5db570d9d8db5121b2965e06ac50f54",
+      "canonical_owners": [
+        "implementation_packs/TYPESCRIPT_FRANCHISE_JOURNEY_PORTALS.md"
+      ],
+      "owner_note": null,
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "src/components/handover-operations-panel.tsx",
+      "action": "MODIFY",
+      "before_sha256": "6d5b0ef407a3b2143c080b8542385f6a50c0553d5ecfd216f57ac27e8c1a01d3",
+      "sha256": "de101dd96d631cf52e46178ac9198c254eec4ba83e1a24b47f14dc4a046af8e0",
+      "canonical_owners": [],
+      "owner_note": "Root to assign to connected handover UI/composition gate pack; new or not yet published file",
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "src/platform/handovers/customer-dates.test.ts",
+      "action": "CREATE",
+      "before_sha256": null,
+      "sha256": "e833faa06efcddb89def0ff0ab2c11c885f0d66fbbc42955e34b17179f51f7ac",
+      "canonical_owners": [],
+      "owner_note": "Root to assign to connected handover UI/composition gate pack; new or not yet published file",
+      "provenance": "AUTHORED"
+    }
+  ],
+  "file_counts": {
+    "modified": 7,
+    "new": 5,
+    "total": 12
+  },
+  "base_ui_manifest": {
+    "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-ui-manifest.json",
+    "sha256": "cafd0e91c484f533bed41c30fb48a9b4328631e249a42a32d6ae28ddce93bc1d"
+  },
+  "gates": {
+    "next_production_build_with_typescript": "PASS_WEBPACK",
+    "existing_page_direct_calls": 42,
+    "focused_bff_stream_and_dates_tests": 23,
+    "browser_postgres": "PASS",
+    "skipped": 0,
+    "postgres_stopped": true
+  },
+  "browser_scope": {
+    "playwright": "1.62.1",
+    "chromium_revision": "1234",
+    "project": "chromium-desktop",
+    "mobile_viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "page_errors": 0,
+    "horizontal_overflow": false,
+    "four_browser_claim": false
+  },
+  "effects": {
+    "preparations": 1,
+    "acceptances": 1,
+    "commercial_receipts": 1,
+    "commercial_outbox_events": 1,
+    "acceptance_http_attempts": 2,
+    "acceptance_http_attempts_reason": "One negative unrelated customer, then one successful bound customer",
+    "api_post_counts": {
+      "/v1/customer/handovers/0fdc261e-3a8d-44d5-87ad-117533048773/accept": 2,
+      "/v1/franchise/handovers/0fdc261e-3a8d-44d5-87ad-117533048773/commercial-release": 1,
+      "/v1/franchise/handovers/0fdc261e-3a8d-44d5-87ad-117533048773/complete-checklist": 1,
+      "/v1/franchise/orders/order/handover": 1
+    },
+    "after_callback_current_eligible": false,
+    "after_refund_get_current_eligible": false,
+    "physical_shipment": false,
+    "stock_or_money_mutation_by_release": false
+  },
+  "identity_scope": "Generated local JWE sessions with actual RS256/JWKS bearer verification; hosted IdP login not claimed",
+  "provider_scope": "Existing pinned official Stripe SDK and loopback HTTP fixture; signed callback and official GET reconciliation, no live credentials",
+  "provenance": {
+    "new_code": "AUTHORED integration/test/frontend glue",
+    "new_dependencies": [],
+    "notices_change_required": false,
+    "borrowed_local_patterns": [
+      "src/app/api/enterprise/surveys/route.ts boundedBody",
+      "server locale/timezone appointment formatter",
+      "internal/platform/httpapi/franchisejourney_test.go confirmationTestIssuer"
+    ]
+  },
+  "evidence": [
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-browser-next-final2-build.log",
+      "sha256": "222990791371f7550c25d6869f8107c9b3ef0dc1b9d82b1e19f732f434f6ccac"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-browser-pageprops-tests.log",
+      "sha256": "125f0cac15e32a301b73b4d9c136778cc03a18083e5caa732b4e111566f28e98"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-browser-final-delta-tests.log",
+      "sha256": "4d6791aa0e4e68c481eafae5cda6489f37a329d0737203ce5ad74966bdcf6a7c"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-browser-pg-final\\result.json",
+      "sha256": "912f8ebb079829a6d660ee812db86b7cec66ef70b87e3cab3566f06c6cc0b130"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-browser-pg-final\\connected.log",
+      "sha256": "13547137baa056c904a53433389e5a7b032befd905a0faf969520e6fad7a8d57"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-ui-reference\\handover-browser-artifacts-3876666801\\browser.log",
+      "sha256": "c81af9cf602a4089ad8259791123de980c73d10884579379d5e3037ab2256207"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-ui-reference\\handover-browser-artifacts-3876666801\\next.log",
+      "sha256": "fb969768bd1a146777696382aa41e7c002c8eaffb3fb75b122494fb2a477a422"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-ui-reference\\handover-browser-artifacts-3876666801\\profile.json",
+      "sha256": "b9a47e806999b81dfca79d940ad786ae9ddf9d1d5de3bf17793156c97ee7a03c"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-ui-reference\\handover-browser-artifacts-3876666801\\api-post-counts.json",
+      "sha256": "c30853aa3c72387200540f8360997eac70677e5a6296c9c1274c07507fb93aff"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-browser-runtime-lock.json",
+      "sha256": "242c109cb13f0daf6ce343d1c61dd80a57c5f7c5778b468da1490ae949c2af6c"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-browser-failure-lessons.md",
+      "sha256": "12bf216c0524dd65cd98f4063e6709b349c03cae5702a49d5b9c8b19f5137c9d"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-ui-reference\\handover-browser-artifacts-3876666801\\browsers\\handover-connected-operato-aaa6b-real-BFF-API-and-PostgreSQL-chromium-desktop\\handover-recovered-mobile.png",
+      "sha256": "4d1b8f17f179c987bed9e377a3d6f5447b8af5ef2246e90633e32721f321e110"
+    }
+  ],
+  "retained_failed_history": [
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-browser-next-build.log",
+      "sha256": "e091be6acaa45e052e2ef4ea28b19aa0ee2ea5c744a8cfd9a183001cc4e4820f"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-browser-next-standard-build.log",
+      "sha256": "f73830c11929cda092077bb59252b78cb28cf0b038959883e650d25cca400e58"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-browser-next-final-build.log",
+      "sha256": "ec80d89b328d408a18499b7dd1daa3a04ed84f3f11026184a0710af5ce5d15ef"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-browser-pg-first\\result.json",
+      "sha256": "1ccfa349b7db298c45d10f183f3474a5b10c715981eb69baf16aa2e247b03298"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-browser-pg-first\\connected.log",
+      "sha256": "5e1874f7d362a49e2d4844668bec45abaf8b77a78d5adbe0d6d9c7204c062112"
+    }
+  ],
+  "execution_helpers": [
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\run-handover-browser-pg.py",
+      "sha256": "c6bbdebe7486ff80dd37a2e2d77a9503ffef98392d28e7276f482675e144e4b9"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\run-payment-pg.py",
+      "sha256": "b7786787740626b0627064ff78c74042daf1d28a6fc330dfb2acfe112fcca0a4"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\finish-handover-browser-build.py",
+      "sha256": "8c70180d81cb21affbab73944b5317f0c753a5b5bc6f8b90e04220ceabb4041c"
+    }
+  ],
+  "excluded_generated_artifacts": [
+    "node_modules",
+    ".next",
+    "handover-browser-webpack-generated-before",
+    "browser videos/traces/screenshots as product source"
+  ],
+  "production_claim": false,
+  "canonical_changed_by_this_delta": false,
+  "integration_note": "Apply after the 16-file handover-ui overlay using before_sha256 for seven modified files. Root already owns the main HandoverContextModule registration; no main file in this delta. Reused payment_connected_integration_test.go must remain in the reference composition."
+}

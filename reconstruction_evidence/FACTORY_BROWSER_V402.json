@@ -1,0 +1,259 @@
+{
+  "schema": "elite.factory-browser-delta.v1",
+  "state": "PASS_CANDIDATE_FOR_ROOT_INTEGRATION",
+  "scope": "T2804_FACTORY_OPERATIONAL_TRACKING_LOCAL",
+  "candidate_root": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-browser-candidate",
+  "verified_composition": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-browser-reference",
+  "source_files": [
+    {
+      "path": "docs/factory-operator-flow.md",
+      "action": "CREATE",
+      "before_sha256": null,
+      "sha256": "5b9fb61ec11c58a5e1bb5d61216e773b8f00d9d0c98773e16063f435465f43c2",
+      "canonical_owners": [],
+      "target_owner": "Root to assign connected factory UI/read/browser fixture blocks",
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "internal/enterprisequery/factory_unit.go",
+      "action": "CREATE",
+      "before_sha256": null,
+      "sha256": "b7120e937c46fcd408d6dd1de0615764b731456c7e456dc0167a9bd43b4f42b6",
+      "canonical_owners": [],
+      "target_owner": "Root to assign connected factory UI/read/browser fixture blocks",
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "internal/platform/httpapi/enterprisequery.go",
+      "action": "MODIFY",
+      "before_sha256": "8742fdbe746d0f8c687eeeef5ccd5cb4326c7f7731c4b41d6130d83b291e0a1c",
+      "sha256": "4a0f955754f95e2196cc931a780e45840eb65e999118fd26925ad243d6526dec",
+      "canonical_owners": [
+        "implementation_packs/GO_ENTERPRISE_QUERY_API.md"
+      ],
+      "target_owner": "existing owner(s)",
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "internal/platform/httpapi/factory_unit_query.go",
+      "action": "CREATE",
+      "before_sha256": null,
+      "sha256": "074278e5faef009a037c1f729698d1792674164c99b16161f1a4b24969353de7",
+      "canonical_owners": [],
+      "target_owner": "Root to assign connected factory UI/read/browser fixture blocks",
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "internal/platform/postgres/factory_browser_integration_test.go",
+      "action": "CREATE",
+      "before_sha256": null,
+      "sha256": "382770a2782237428c3447d057b97083426f1094ee3e5bc69e41864510d58914",
+      "canonical_owners": [],
+      "target_owner": "Root to assign connected factory UI/read/browser fixture blocks",
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "internal/platform/postgres/factory_unit_query.go",
+      "action": "CREATE",
+      "before_sha256": null,
+      "sha256": "d17e3cf3d679906a5725ad5aec5b3f2b7d92dc5bdc456bd61a34ccbb3032695b",
+      "canonical_owners": [],
+      "target_owner": "Root to assign connected factory UI/read/browser fixture blocks",
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "microsoft_playwright_browser_gate/tests/factory-connected.spec.mjs",
+      "action": "CREATE",
+      "before_sha256": null,
+      "sha256": "d456d1752f1eace33cbf5d34063d29e123bd272cb09b083b3f3dbf484dd52fdf",
+      "canonical_owners": [],
+      "target_owner": "Root to assign connected factory UI/read/browser fixture blocks",
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "src/app/api/enterprise/factory/route.test.ts",
+      "action": "CREATE",
+      "before_sha256": null,
+      "sha256": "7f581709cea725507924d04870e5d81fef0a6339b08531f03fbb648aac66b65f",
+      "canonical_owners": [],
+      "target_owner": "Root to assign connected factory UI/read/browser fixture blocks",
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "src/app/api/enterprise/factory/route.ts",
+      "action": "CREATE",
+      "before_sha256": null,
+      "sha256": "7f3d5a6be9739efcfc2b65985428cf89b8de5acc621aba71cda21834205c8b36",
+      "canonical_owners": [],
+      "target_owner": "Root to assign connected factory UI/read/browser fixture blocks",
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "src/app/factory/page.tsx",
+      "action": "MODIFY",
+      "before_sha256": "57091998f13202ba8b29ccf50b219f7af5b7c82083cd48a12b05e4e430181ec1",
+      "sha256": "927f3b474d0de5e72d76e0ea329f9efbce2ccb0286523d4ac46036307b51c512",
+      "canonical_owners": [
+        "implementation_packs/TYPESCRIPT_ENTERPRISE_WEB_GOLDEN_PATH.md",
+        "implementation_packs/TYPESCRIPT_GO_API_WEB_BRIDGE.md"
+      ],
+      "target_owner": "existing owner(s)",
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "src/components/factory-unit-actions.tsx",
+      "action": "CREATE",
+      "before_sha256": null,
+      "sha256": "a58e5e091eb784f58c78d21f7b9b3c1e4664f73f07184a94558086d8c2dfaa32",
+      "canonical_owners": [],
+      "target_owner": "Root to assign connected factory UI/read/browser fixture blocks",
+      "provenance": "AUTHORED"
+    },
+    {
+      "path": "src/platform/factory/contracts.ts",
+      "action": "CREATE",
+      "before_sha256": null,
+      "sha256": "5c8bba603a068e010b5eb280fe60043a6b012b31caeae547006a40788854306e",
+      "canonical_owners": [],
+      "target_owner": "Root to assign connected factory UI/read/browser fixture blocks",
+      "provenance": "AUTHORED"
+    }
+  ],
+  "file_counts": {
+    "new": 10,
+    "modified": 2,
+    "total": 12
+  },
+  "base": {
+    "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-browser-manifest.json",
+    "sha256": "1231ce2c2d0b89221baba60e2c3ac5b88aa4dfd7f5a4ebe61f39e443a2198d87"
+  },
+  "gates": {
+    "bff_tests": 18,
+    "next_production_build_typescript": "PASS_WEBPACK",
+    "go_compile": "PASS_NO_TESTS_EXECUTED",
+    "go_vet": "PASS",
+    "browser_go_postgres": "PASS",
+    "browser_project": "chromium-desktop",
+    "mobile_viewport": [
+      390,
+      844
+    ],
+    "page_errors": 0,
+    "skipped": 0,
+    "postgres_stopped": true
+  },
+  "claims": {
+    "existing_factory_graph_origin": "AUTHORED",
+    "new_business_logic": false,
+    "new_dependencies": [],
+    "new_host_module": false,
+    "state_and_outbox_effect": true,
+    "backend_transition_posts": 1,
+    "assembly_events": 1,
+    "competing_quality_events": 1,
+    "observed_recovery_state": "quality",
+    "recovery_attributes_request": false,
+    "idempotency_receipt_claim": false,
+    "stock_money_mutation": false,
+    "production_authorized": false,
+    "people_training_complete": false
+  },
+  "evidence": [
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-browser-bff-tests.log",
+      "sha256": "a5550ae0c51bd3539e1a4dc73ef65567726756ad446330af2b24636a4ec04de7"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-browser-next-build.log",
+      "sha256": "b1735affa54404059be9d403e94cf2bc524c87e5079ff12b5dbe5e565d37106a"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-browser-go-compile.log",
+      "sha256": "f185e981ef4268395adf2ccb236e07a1f7d20e47d8d617d17f0691d059b2a52b"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-browser-go-vet.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-browser-pg-final\\result.json",
+      "sha256": "759f464b5643bdb5e9c13bd465548c6707fb43bcc518bb213c5e94188a687f90"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-browser-pg-final\\connected.log",
+      "sha256": "9fb35ca962e964bc5fcf815ec08df7f1ec03b22abc87fe885492379c72bd9b29"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-browser-reference\\factory-browser-artifacts-3007714589\\browser.log",
+      "sha256": "55909bedc3f9bbf9f7aca0337205f85d36b745e10a7688b274bfb3e5df601579"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-browser-reference\\factory-browser-artifacts-3007714589\\next.log",
+      "sha256": "7c819986a11ca683ff6ff21575fb39d47a31ce6b59b9c4da6a115173462db772"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-browser-reference\\factory-browser-artifacts-3007714589\\api-post-counts.json",
+      "sha256": "b6050b07b3bb2c335a8d80ec6354a3131bf2fcc553195ce3122211d38294eeaa"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\handover-browser-runtime-lock.json",
+      "sha256": "242c109cb13f0daf6ce343d1c61dd80a57c5f7c5778b468da1490ae949c2af6c"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-role-inventory.md",
+      "sha256": "43d3e26ab037ccdce06af217e1d8dbf07f48ac0fad6cb11fd0c1bb95b41a4ce2"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-browser-reference\\factory-browser-artifacts-3007714589\\browsers\\factory-connected-factory--61c2d-real-BFF-API-and-PostgreSQL-chromium-desktop\\factory-recovered-mobile.png",
+      "sha256": "c0a1c256ed82a930a49e17cb8546e8acb31ba45def8ea210f4d96070962af9a8"
+    }
+  ],
+  "reused_sources": [
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-browser-reference\\internal\\operations\\service.go",
+      "sha256": "26ffcd62aad45d010c96806161ccf8fa9a4198bc9120e3294277c21cb58b2d80"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-browser-reference\\internal\\platform\\postgres\\operations.go",
+      "sha256": "44245e35f8244a99f269aa64ef2d5bd988d29dd50ed96a8a7a0bba793ac2b17b"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-browser-reference\\internal\\platform\\httpapi\\operations.go",
+      "sha256": "f7d8fa60640549c31d74f403c2886f19cad7a428d4b62a12e1be261dc4bbd4a7"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-browser-reference\\internal\\platform\\postgres\\operations_integration_test.go",
+      "sha256": "f64f3fc4fa648ceb7d94e69fa0e35a3685baf8184b0f9264ad4ae4ef9e5149cb"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-browser-reference\\internal\\platform\\postgres\\enterprisequery_integration_test.go",
+      "sha256": "c2712335a1a10e5206dfa0557e9d5385865499756ad7a1f625742cfc82330c8d"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-browser-reference\\internal\\platform\\postgres\\handover_browser_integration_test.go",
+      "sha256": "89c29d58d19d5aef6a2013a90cbc7aaa0c3e86a473c4e1a77660ea1b7f2da47e"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\factory-browser-reference\\microsoft_playwright_browser_gate\\playwright.config.mjs",
+      "sha256": "23abf8c48048c142c4fc232d496444d526903e711aff8bef1ab1f8ba17b8e621"
+    }
+  ],
+  "execution_helpers": [
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\gate-factory-browser.py",
+      "sha256": "63365f07b98cf8b52c258dde437d36307ff95ff96d37de211488910e76097bd8"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\run-factory-browser-pg.py",
+      "sha256": "b622b02c0d0aa512cee2c0473cdd5c72ab8177e44abd081ff6193c6e9d0aba1f"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\run-payment-pg.py",
+      "sha256": "b7786787740626b0627064ff78c74042daf1d28a6fc330dfb2acfe112fcca0a4"
+    }
+  ],
+  "failed_gates": [],
+  "canonical_changed_by_subagent": false,
+  "integration": "Apply after handover-browser delta. Prehashes provided for EnterpriseQueryModule registration and factory page. No operations domain or write SQL changed. Exact read is mounted by the existing EnterpriseQueryModule."
+}

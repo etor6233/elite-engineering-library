@@ -1,0 +1,2695 @@
+{
+  "schema_version": "1.1.0",
+  "project": {
+    "id": "elite-library-maintenance",
+    "name": "Cierre verificable de Elite Engineering Library",
+    "objective": "Infraestructura de biblioteca READY para uso, con referencia externa exacta y evidencia local/sandbox; ARCA infra penúltima y Daybreak último diferido. No producción live.",
+    "owners": [
+      "Usuario solicitante: decisiones materiales",
+      "Agente: mantenimiento dentro de autoridad concedida"
+    ],
+    "scope": [
+      "T2801–T2810 bajo los nueve criterios y orden explícitos de LIBRARY_INFRA_SCOPE_V402.md",
+      "Código, contratos, wiring, reconciliación y pruebas locales completos antes de CONDITIONED por credenciales",
+      "AUTHORED sólo glue inevitable; negocio exige fuente oficial fijada VERBATIM/DEPENDENCY_PIN/ADAPTED y G0–G8"
+    ],
+    "out_of_scope": [
+      "Producción live, secretos, CUIT, cuentas o gasto del usuario durante este cierre",
+      "Investigar o desbloquear Daybreak/libxml2; sólo expediente diferido al final",
+      "Atribuir código AUTHORED a empresas o ocultar código incompleto como condición de credenciales"
+    ],
+    "status": "blocked"
+  },
+  "evidence_policy": {
+    "claim_labels": [
+      "SPEC",
+      "ACADEMIC",
+      "CODE",
+      "PROD",
+      "MEASURED",
+      "IMPL",
+      "OPEN"
+    ],
+    "passed_requires_evidence": true,
+    "hash_algorithm": "sha256"
+  },
+  "implementation_assurance": {
+    "provenance": "MIXED",
+    "risk_tier": "high",
+    "method_source_ids": [
+      "nasa-systems-engineering-handbook",
+      "nist-ssdf-1.1",
+      "google-sre-release-engineering",
+      "microsoft-sdl"
+    ],
+    "source_lock_refs": [
+      "PROJECT_EXTERNAL_SOURCE_LOCK.md"
+    ],
+    "dimensions": [
+      {
+        "id": "functional_correctness",
+        "disposition": "REQUIRED",
+        "verification_refs": [
+          "TEST-01",
+          "TEST-09",
+          "TEST-10",
+          "TEST-11",
+          "TEST-25",
+          "TEST-26",
+          "TEST-27",
+          "TEST-28",
+          "TEST-29",
+          "TEST-30",
+          "TEST-31",
+          "TEST-32",
+          "TEST-33",
+          "TEST-34",
+          "TEST-35",
+          "TEST-36",
+          "TEST-37",
+          "TEST-39",
+          "TEST-40",
+          "TEST-41",
+          "TEST-43",
+          "TEST-46",
+          "TEST-47",
+          "TEST-48",
+          "TEST-05"
+        ],
+        "reason": ""
+      },
+      {
+        "id": "integration_contracts",
+        "disposition": "REQUIRED",
+        "verification_refs": [
+          "TEST-02",
+          "TEST-09",
+          "TEST-25",
+          "TEST-26",
+          "TEST-27",
+          "TEST-28",
+          "TEST-29",
+          "TEST-30",
+          "TEST-31",
+          "TEST-32",
+          "TEST-33",
+          "TEST-34",
+          "TEST-35",
+          "TEST-36",
+          "TEST-37",
+          "TEST-38",
+          "TEST-39",
+          "TEST-40",
+          "TEST-41",
+          "TEST-48",
+          "TEST-05"
+        ],
+        "reason": ""
+      },
+      {
+        "id": "security_privacy",
+        "disposition": "REQUIRED",
+        "verification_refs": [
+          "TEST-03",
+          "TEST-09",
+          "TEST-11",
+          "TEST-25",
+          "TEST-26",
+          "TEST-27",
+          "TEST-28",
+          "TEST-29",
+          "TEST-30",
+          "TEST-31",
+          "TEST-32",
+          "TEST-34",
+          "TEST-35",
+          "TEST-36",
+          "TEST-37",
+          "TEST-38",
+          "TEST-39",
+          "TEST-40",
+          "TEST-41",
+          "TEST-42",
+          "TEST-48",
+          "TEST-05"
+        ],
+        "reason": ""
+      },
+      {
+        "id": "resilience_failure",
+        "disposition": "REQUIRED",
+        "verification_refs": [
+          "TEST-04",
+          "TEST-11",
+          "TEST-25",
+          "TEST-26",
+          "TEST-27",
+          "TEST-28",
+          "TEST-29",
+          "TEST-30",
+          "TEST-31",
+          "TEST-32",
+          "TEST-33",
+          "TEST-35",
+          "TEST-36",
+          "TEST-39",
+          "TEST-41",
+          "TEST-46",
+          "TEST-47",
+          "TEST-48",
+          "TEST-05"
+        ],
+        "reason": ""
+      },
+      {
+        "id": "performance_efficiency",
+        "disposition": "REQUIRED",
+        "verification_refs": [
+          "BENCH-01",
+          "TEST-38",
+          "TEST-39",
+          "TEST-40",
+          "TEST-41",
+          "BENCH-02",
+          "TEST-05"
+        ],
+        "reason": ""
+      },
+      {
+        "id": "operability_observability",
+        "disposition": "REQUIRED",
+        "verification_refs": [
+          "TEST-05",
+          "TEST-11",
+          "TEST-25",
+          "TEST-26",
+          "TEST-27",
+          "TEST-28",
+          "TEST-29",
+          "TEST-30",
+          "TEST-31",
+          "TEST-32",
+          "TEST-33",
+          "TEST-34",
+          "TEST-35",
+          "TEST-36",
+          "TEST-37",
+          "TEST-39",
+          "TEST-41",
+          "TEST-09"
+        ],
+        "reason": ""
+      },
+      {
+        "id": "recovery_rollback",
+        "disposition": "REQUIRED",
+        "verification_refs": [
+          "TEST-06",
+          "TEST-25",
+          "TEST-26",
+          "TEST-27",
+          "TEST-28",
+          "TEST-29",
+          "TEST-30",
+          "TEST-31",
+          "TEST-32",
+          "TEST-35",
+          "TEST-36",
+          "TEST-38",
+          "TEST-39",
+          "TEST-48",
+          "TEST-09"
+        ],
+        "reason": ""
+      },
+      {
+        "id": "release_supply_chain",
+        "disposition": "REQUIRED",
+        "verification_refs": [
+          "TEST-07",
+          "TEST-38",
+          "TEST-39"
+        ],
+        "reason": ""
+      },
+      {
+        "id": "usability_accessibility",
+        "disposition": "REQUIRED",
+        "verification_refs": [
+          "TEST-08",
+          "TEST-25",
+          "TEST-26",
+          "TEST-27",
+          "TEST-28",
+          "TEST-29",
+          "TEST-30",
+          "TEST-31",
+          "TEST-32",
+          "TEST-46",
+          "TEST-47",
+          "TEST-48"
+        ],
+        "reason": ""
+      }
+    ],
+    "artifact_evidence_ids": [
+      "EVID-85",
+      "EVID-86",
+      "EVID-99",
+      "EVID-100",
+      "EVID-101",
+      "EVID-102",
+      "EVID-103",
+      "EVID-104",
+      "EVID-105",
+      "EVID-106",
+      "EVID-107",
+      "EVID-108",
+      "EVID-109",
+      "EVID-110",
+      "EVID-111",
+      "EVID-112",
+      "EVID-113",
+      "EVID-114",
+      "EVID-115",
+      "EVID-116",
+      "EVID-117",
+      "EVID-118",
+      "EVID-119",
+      "EVID-120",
+      "EVID-121"
+    ],
+    "release_evidence_ids": [],
+    "blockers": [
+      "Preparación integral T2801/FAIL384 pendiente; readiness sigue BLOCKED y no se hereda aceptación de un consumer.",
+      "TEST02/FAIL385:21cores mantienen su admisión y42fuentes idénticas aV374; faltan equivalencias/integraciones por owner. Auditoría estrecha no cierra integración.",
+      "TEST03:seguridad/procedencia/licencias del grafo activo y tooling restantes. V393 excluyó Sharp del perfil web; Daybreak/V386 diferido no significa DLL instalada ni fix. GO_OBSERVABILITY_CORE0.3.3 es CANDIDATE separado; TEST05/V372 usa otro runtime.",
+      "Journeys completos T2802-T2809 conservan condiciones no demostradas; reutilizar cierres V372-V393 por identidad y alcance, sin confundir referencia con aceptación productiva.",
+      "TEST07/T2810:artefacto final exacto, SCA/notices/SBOM, firma/verificación y aceptación release-bound pendientes tras gates materiales."
+    ],
+    "status": "blocked"
+  },
+  "requirements": [
+    {
+      "id": "REQ-01",
+      "statement": "Entrada y reanudación NEW/EXISTING sin dañar cambios existentes; LIB-R01/R08, T2801.",
+      "priority": "must",
+      "source": {
+        "label": "IMPL",
+        "reference": "specs/library-maintenance/spec.md"
+      },
+      "acceptance_test_ids": [
+        "TEST-01",
+        "TEST-06",
+        "TEST-08"
+      ]
+    },
+    {
+      "id": "REQ-02",
+      "statement": "Procedencia/admisión verificables, no equivalencia por fama; LIB-R02/R07, T2801/T2803.",
+      "priority": "must",
+      "source": {
+        "label": "IMPL",
+        "reference": "specs/library-maintenance/spec.md"
+      },
+      "acceptance_test_ids": [
+        "TEST-02",
+        "TEST-03",
+        "TEST-38",
+        "TEST-39"
+      ]
+    },
+    {
+      "id": "REQ-03",
+      "statement": "Fallos diagnosticables y recuperación segura; LIB-R06, T2803/T2809.",
+      "priority": "must",
+      "source": {
+        "label": "IMPL",
+        "reference": "specs/library-maintenance/spec.md"
+      },
+      "acceptance_test_ids": [
+        "TEST-03",
+        "TEST-04",
+        "TEST-05",
+        "TEST-06",
+        "TEST-10",
+        "TEST-11",
+        "TEST-12",
+        "TEST-13",
+        "TEST-25",
+        "TEST-26",
+        "TEST-27",
+        "TEST-28",
+        "TEST-29",
+        "TEST-30",
+        "TEST-31",
+        "TEST-32",
+        "TEST-33",
+        "TEST-34",
+        "TEST-35",
+        "TEST-36",
+        "TEST-37",
+        "TEST-38",
+        "TEST-39"
+      ]
+    },
+    {
+      "id": "REQ-04",
+      "statement": "Distribución reproducible con instrucciones utilizables, sin heredar aprobaciones; LIB-R09, T2810.",
+      "priority": "must",
+      "source": {
+        "label": "IMPL",
+        "reference": "specs/library-maintenance/spec.md"
+      },
+      "acceptance_test_ids": [
+        "TEST-07",
+        "TEST-08",
+        "TEST-25",
+        "TEST-26",
+        "TEST-27",
+        "TEST-28",
+        "TEST-29",
+        "TEST-30",
+        "TEST-31",
+        "TEST-32",
+        "TEST-33",
+        "TEST-34",
+        "TEST-35",
+        "TEST-36",
+        "TEST-37",
+        "TEST-38",
+        "TEST-39"
+      ]
+    },
+    {
+      "id": "REQ-05",
+      "statement": "Capacidad reusable de entrenamiento/adaptación de modelos por proyecto: NEW sin historial; EXISTING con fuente privada gobernada; originales y derivados separados, entrenamiento explícito, evaluación independiente y promoción; LIB-R10 V366, T2805/T2807 con T2803/T2806.",
+      "priority": "must",
+      "source": {
+        "label": "IMPL",
+        "reference": "specs/library-maintenance/spec.md"
+      },
+      "acceptance_test_ids": [
+        "TEST-09"
+      ]
+    },
+    {
+      "id": "REQ-06",
+      "statement": "Cumplir los nueve criterios de biblioteca/infra READY y orden A–C indicados explícitamente por el usuario en V402; producción live no es aceptación de esta tarea.",
+      "priority": "must",
+      "source": {
+        "label": "IMPL",
+        "reference": "reconstruction_evidence/LIBRARY_INFRA_SCOPE_V402.md"
+      },
+      "acceptance_test_ids": [
+        "TEST-01",
+        "TEST-02",
+        "TEST-03",
+        "TEST-07"
+      ]
+    }
+  ],
+  "quality_scenarios": [
+    {
+      "id": "QS-01",
+      "source": "Agente en proyecto EXISTING",
+      "stimulus": "Colisión o alteración de artefacto al reanudar",
+      "environment": "Tooling local aislado",
+      "artifact": "Compositor/bridge/checkpoint",
+      "response": "Rechazar sin sobrescritura ajena y explicar recuperación",
+      "measure": "Exit no cero esperado, hashes originales y cadena sin modificación no autorizada"
+    },
+    {
+      "id": "QS-02",
+      "source": "Importación histórica solicitada por el usuario",
+      "stimulus": "Contenido desconocido, duplicado o ambiguo",
+      "environment": "Corpus autorizado futuro; ningún chat privado usado en este mantenimiento",
+      "artifact": "Importador admitido y derivados versionados pendientes",
+      "response": "Conservar fuente; separar hechos e interpretación; cero efectos live",
+      "measure": "Comparación byte a byte, lineage por derivación y ausencia de jobs/envíos/tools"
+    }
+  ],
+  "architecture": {
+    "context": "Owners Markdown existentes -> materialización en staging -> herramientas/verificadores -> evidencia -> checkpoint. No subsistema paralelo.",
+    "components": [
+      {
+        "name": "Biblioteca canónica",
+        "responsibility": "Mapas, packs, locks, fuentes y owners del roadmap"
+      },
+      {
+        "name": "Tooling materializado",
+        "responsibility": "Componer/verificar sin modificar producto ajeno"
+      },
+      {
+        "name": "Expediente local",
+        "responsibility": "Cursor compacto y evidencia; excluido del ZIP portable"
+      }
+    ],
+    "data_flows": [
+      {
+        "from": "Markdown fijado",
+        "to": "Tooling staging",
+        "data": "Archivos y receipt",
+        "trust_boundary": true
+      },
+      {
+        "from": "Tooling",
+        "to": "Expediente local",
+        "data": "Resultados, hashes, fallos y eventos",
+        "trust_boundary": true
+      },
+      {
+        "from": "Histórico autorizado futuro",
+        "to": "Derivado revisado futuro",
+        "data": "Original separado e interpretación trazable, no live inbox",
+        "trust_boundary": true
+      }
+    ],
+    "decisions": [
+      {
+        "id": "ADR-01",
+        "status": "accepted",
+        "context": "Continuidad del plan del usuario sin rediseño ni gates ficticios",
+        "options": [
+          "Reutilizar owners y pruebas existentes por claim",
+          "Crear otro plan/runtime paralelo"
+        ],
+        "decision": "Mantener roadmap único y añadir trazabilidad requisito-prueba-evidencia en el contrato canónico",
+        "consequences": [
+          "No sustituye readiness ni aceptación de producto",
+          "No nuevas dependencias o coste"
+        ],
+        "rollback_trigger": "Contradicción con owner canónico: registrar fallo y corregir el delta, sin reescribir evidencia"
+      }
+    ]
+  },
+  "contracts": {
+    "api": [
+      {
+        "name": "CLI de validación",
+        "input": "Contrato/estado y nivel explícito",
+        "output": "Resultado y diagnóstico",
+        "errors": [
+          "plan válido no equivale a evidence aprobado",
+          "evidence incompleto debe salir distinto de cero"
+        ]
+      }
+    ],
+    "data": [
+      {
+        "entity": "evidencia",
+        "owner": "Roadmap/expediente existente",
+        "invariants": [
+          "Path y SHA-256, claim estrecho y estado honesto",
+          "Original raw no se reescribe por normalización; retención y acceso deben definirse",
+          "Un hash demuestra identidad de bytes, no verdad semántica ni exhaustividad del proveedor"
+        ]
+      }
+    ],
+    "lifecycle": [
+      {
+        "state": "blocked",
+        "allowed": [
+          "plan validado sin promoción",
+          "evidence sólo después de pruebas y artefacto/release exactos"
+        ]
+      }
+    ]
+  },
+  "risks": [
+    {
+      "id": "RISK-01",
+      "failure_or_threat": "Promover por estructura/reputación o incorporar código incompatible",
+      "impact": "high",
+      "likelihood": "high",
+      "controls": [
+        "Admisión oficial por claim",
+        "evidence gate no reemplazable por plan PASS"
+      ],
+      "test_ids": [
+        "TEST-02",
+        "TEST-03",
+        "TEST-07"
+      ],
+      "residual": "21 cores y gates del perfil siguen abiertos"
+    },
+    {
+      "id": "RISK-02",
+      "failure_or_threat": "Perder cambios, filtrar datos o reenviar históricos",
+      "impact": "high",
+      "likelihood": "medium",
+      "controls": [
+        "Aislamiento por proyecto/contacto",
+        "Preservación del original y no backfill al runtime live",
+        "Fallo y recuperación trazables",
+        "Dataset/training/eval/runtime separados; entrenamiento y egress sólo con perfil autorizado del proyecto"
+      ],
+      "test_ids": [
+        "TEST-01",
+        "TEST-04",
+        "TEST-05",
+        "TEST-06",
+        "TEST-09"
+      ],
+      "residual": "Falta capacidad reusable admitida de importación/entrenamiento y cierre observabilidad; datos/calidad reales requieren validación del consumer."
+    }
+  ],
+  "slos": [
+    {
+      "id": "SLO-01",
+      "indicator": "Integridad del recorrido de mantenimiento ensayado",
+      "objective": "Cero sobrescrituras ajenas y cero promociones sin evidencia en cada ensayo",
+      "window": "Cada ejecución y candidato de release",
+      "budget": "Cero tolerancia en estas invariantes; no es disponibilidad de producción",
+      "measurement": "Hashes before/after, eventos y salidas de negativos; tiempos locales separados"
+    }
+  ],
+  "tests": [
+    {
+      "id": "TEST-01",
+      "level": "system",
+      "requirement_ids": [
+        "REQ-01"
+      ],
+      "setup": "Fixtures sintéticos NEW/EXISTING, PowerShell 7.6.5 y Python 3.14.4; V287.",
+      "action": "Ejecutar markdown_system/test_agent_entry_lifecycle.ps1 -KeepEvidence.",
+      "oracle": "55 checks; 28 procesos; negativos esperados; bytes y eventos preservados. No demuestra producto ni release.",
+      "status": "passed",
+      "evidence_ids": [
+        "EVID-01"
+      ]
+    },
+    {
+      "id": "TEST-02",
+      "level": "contract",
+      "requirement_ids": [
+        "REQ-02"
+      ],
+      "setup": "21 cores identificados en V280 y sus locks/claims exactos.",
+      "action": "Comparar contratos, cobertura y condiciones por core con fuentes oficiales admitidas; ejecutar suites correspondientes.",
+      "oracle": "Cada claim tiene fuente estrecha, licencia, revisión, limitaciones y prueba; ningún CANDIDATE promovido por reputación.",
+      "status": "blocked",
+      "evidence_ids": [
+        "EVID-63",
+        "EVID-64",
+        "EVID-65",
+        "EVID-66",
+        "EVID-67",
+        "EVID-68",
+        "EVID-69",
+        "EVID-70",
+        "EVID-71",
+        "EVID-72",
+        "EVID-73",
+        "EVID-75",
+        "EVID-86",
+        "EVID-87",
+        "EVID-89",
+        "EVID-90",
+        "EVID-91",
+        "EVID-92",
+        "EVID-93",
+        "EVID-94",
+        "EVID-95",
+        "EVID-106"
+      ]
+    },
+    {
+      "id": "TEST-03",
+      "level": "security",
+      "requirement_ids": [
+        "REQ-02",
+        "REQ-03"
+      ],
+      "setup": "Tooling y grafo exactos del candidato; equivalencia 385 abierta; privacidad local 386 corregida V292, integración pendiente.",
+      "action": "Ejecutar SCA, límites de rutas, datos sensibles y trust boundaries según T2803.",
+      "oracle": "Sin findings bloqueantes ni PII en observabilidad; no reutilizar un PASS histórico sobre un grafo diferente.",
+      "status": "blocked",
+      "evidence_ids": [
+        "EVID-64",
+        "EVID-65",
+        "EVID-67",
+        "EVID-68",
+        "EVID-69",
+        "EVID-70",
+        "EVID-71",
+        "EVID-72",
+        "EVID-73",
+        "EVID-74",
+        "EVID-81",
+        "EVID-87",
+        "EVID-88",
+        "EVID-89",
+        "EVID-90",
+        "EVID-95",
+        "EVID-96",
+        "EVID-97",
+        "EVID-99",
+        "EVID-100",
+        "EVID-101",
+        "EVID-102",
+        "EVID-103",
+        "EVID-104",
+        "EVID-106",
+        "EVID-107"
+      ]
+    },
+    {
+      "id": "TEST-04",
+      "level": "fault",
+      "requirement_ids": [
+        "REQ-03"
+      ],
+      "setup": "Manifest/checkpoint y materializador directo canónicos; fixtures EXISTING con archivo/BOM previo y destinos aislados.",
+      "action": "Inyectar12fronteras:4checkpoint y8materializer, con errores/parcialidad y terminación de hijos; preservar bytes, rechazar reentrada inválida y reconstruir/reanudar en procesos nuevos. V332 adds canonical publisher collisions/write faults/concurrent pairs and deterministic ZIP fixtures.",
+      "oracle": "Original/BOM/evento previo/evidencia/salida parcial conservados;15/15archivos reconstruidos y2eventos válidos sin duplicado. No bridge crash atomicity, writers concurrentes, power loss, release final ni target restore.",
+      "status": "passed",
+      "evidence_ids": [
+        "EVID-36",
+        "EVID-42"
+      ]
+    },
+    {
+      "id": "TEST-05",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03"
+      ],
+      "setup": "Eventos y métricas del recorrido CLI y futuro montaje runtime T2809. V372: montaje ejecutado del main real y CLI canónicos con PostgreSQL nuevo propio, Collector/Prometheus oficiales reconstruidos y configuración mTLS fijada.",
+      "action": "Probar correlación, diagnóstico comprensible, redacción, monotonicidad y señales de fallo del sink. V342 verifies isolated HTTP/file reference32requests/64records and closed-sink failure; actual runtime mounting remains pending. V343 adds concrete reporter and local PostgreSQL-worker/TCP tests; actual service target remains pending. V372 supersedes those runtime pendings: actual main/CLI integration,25logs/25traces/250metric points, mTLS negatives, DB/sink alerts and recovery, no replay,2000observations/8instances, rotation/expiry/restart and all owned processes stopped. Full Preflight195 and exact reconstruction pass; reference maintenance scope only.",
+      "oracle": "Verifica privacidad/operación integrada del target; reutiliza TEST-10 contador y TEST-11 política local sin confundirlos con exportación, retención o salud del sink.",
+      "status": "passed",
+      "evidence_ids": [
+        "EVID-52",
+        "EVID-53",
+        "EVID-54",
+        "EVID-55",
+        "EVID-56",
+        "EVID-57",
+        "EVID-58",
+        "EVID-59",
+        "EVID-60",
+        "EVID-61",
+        "EVID-82"
+      ]
+    },
+    {
+      "id": "TEST-06",
+      "level": "recovery",
+      "requirement_ids": [
+        "REQ-01",
+        "REQ-03"
+      ],
+      "setup": "Release candidato y snapshot previo de instalación NEW/EXISTING. V352: candidato completo148 SHA-256 0590588c4ab139e86e581b13c1db561f9342462646105c109f190aeefc755085; guía0.1.2 y tooling extraídos del mismo archivo, proyectos sintéticos. Cualquier payload futuro requiere contraste/revalidación.",
+      "action": "Probar fallo parcial, restauración exacta y reanudación desde el artefacto distribuido.",
+      "oracle": "Archivo previo y cadena de eventos preservados; recuperación medible; no extrapolar a PostgreSQL/PITR.",
+      "status": "passed",
+      "evidence_ids": [
+        "EVID-62",
+        "EVID-63",
+        "EVID-98"
+      ]
+    },
+    {
+      "id": "TEST-07",
+      "level": "system",
+      "requirement_ids": [
+        "REQ-04"
+      ],
+      "setup": "Artefacto exacto candidato; portable signed release gate y fuentes fijadas.",
+      "action": "Dos builds independientes, comparación byte a byte, SCA, notices/SBOM, firma y verificación independiente.",
+      "oracle": "ZIP reproducible y sin expedientes locales ni aprobaciones heredadas; sólo después de cerrar gates materiales.",
+      "status": "blocked",
+      "evidence_ids": [
+        "EVID-74",
+        "EVID-88",
+        "EVID-99",
+        "EVID-100",
+        "EVID-101",
+        "EVID-102",
+        "EVID-103",
+        "EVID-104"
+      ]
+    },
+    {
+      "id": "TEST-08",
+      "level": "usability",
+      "requirement_ids": [
+        "REQ-01",
+        "REQ-04"
+      ],
+      "setup": "Usuario/agente NEW/EXISTING y guía/CLI de la misma revisión. V352: candidato completo148 SHA-256 0590588c4ab139e86e581b13c1db561f9342462646105c109f190aeefc755085; guía0.1.2 y tooling extraídos del mismo archivo, proyectos sintéticos. Cualquier payload futuro requiere contraste/revalidación.",
+      "action": "Recorrer selección, diagnóstico de entrada incompleta, ayuda y recuperación con artefacto exacto.",
+      "oracle": "Instrucciones ejecutables y errores accionables; versión de ayuda consistente; sin lectura masiva innecesaria.",
+      "status": "passed",
+      "evidence_ids": [
+        "EVID-62",
+        "EVID-63",
+        "EVID-98"
+      ]
+    },
+    {
+      "id": "TEST-09",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-05"
+      ],
+      "setup": "Biblioteca: código/fixtures admitidos para NEW sin historial y EXISTING con perfil de entrenamiento; pipeline implementado y verificado en el perfil de referencia documentado en EVID-85. Corpus real y contrato del canal pertenecen al proyecto consumidor; no son datos requeridos de este mantenimiento.",
+      "action": "Verificar ramas NEW/EXISTING, originales y derivados con lineage/aislamiento, importación sin envíos/tools, perfil de entrenamiento obligatorio, train/validation/eval independientes, job explícito y promoción fail-closed. En el consumer, validar además fuente/corpus autorizados, entrenamiento reproducible y calidad/costo/seguridad del modelo antes de runtime.",
+      "oracle": "NEW inicia sin historial ni entrenamiento automático. EXISTING no importa ni entrena sin condiciones demostradas. Cero modificación del original por transformaciones, efectos de backfill, mezcla entre tenants o subida implícita. RAG/memoria/evals no cuentan como entrenamiento; candidatos no se despliegan sin evaluación/aceptación/rollback. Los fixtures no acreditan calidad del corpus/modelo real ni se heredan aprobaciones.",
+      "status": "passed",
+      "evidence_ids": [
+        "EVID-76",
+        "EVID-77",
+        "EVID-78",
+        "EVID-79",
+        "EVID-80",
+        "EVID-81",
+        "EVID-83",
+        "EVID-84",
+        "EVID-85"
+      ]
+    },
+    {
+      "id": "TEST-10",
+      "level": "unit",
+      "requirement_ids": [
+        "REQ-03"
+      ],
+      "setup": "GO-OBSERVABILITY-CORE 0.1.1 aislado, Go 1.26.7, bytes reconstruidos.",
+      "action": "Negativos/overflow/concurrencia, oráculo big.Int y fuzz nativo acotado; vet/build.",
+      "oracle": "Rechazo sin mutación/panic; contador monotónico. No prueba privacidad, race ni operación.",
+      "evidence_ids": [
+        "EVID-02"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-11",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03"
+      ],
+      "setup": "GO-OBSERVABILITY-CORE 0.2.0 aislado, política sintética cerrada, Go 1.26.7 JSONHandler y reconstrucción2/2.",
+      "action": "Baseline tres exposiciones, política→TryEmit→JSON real, negativos/snapshot/concurrencia/errores y fuzz dos targets; vet/build.",
+      "oracle": "Eventos aprobados llegan íntegros; entradas no admitidas no llegan al sink ni aparecen en errores. No prueba política empresarial, exportación, race, SCA ni operación target.",
+      "evidence_ids": [
+        "EVID-03",
+        "EVID-52"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-12",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03"
+      ],
+      "setup": "V294 reconstrucción canónica 67/742, PostgreSQL18.6/52 migraciones, Next/BFF/OIDC/JWKS sintéticos reales.",
+      "action": "4 proyectos navegador x3 fases: aceptación, concurrencia, duplicados, permisos, respuesta perdida, GET503 y reinicio Next/recreación API/pool.",
+      "oracle": "Pedido único y referencias durables, 3 pedidos/3 aceptaciones/6 eventos por tenant; rechazo no crea pedidos. No prueba stock/pago/entrega, WCAG integral, proveedor ni producción.",
+      "evidence_ids": [
+        "EVID-04"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-13",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03"
+      ],
+      "setup": "V294 mismos pedidos del navegador, Commerce PostgreSQL existente; fixture sintético sin worker.",
+      "action": "Dos pedidos compiten por stock; clave/importe/moneda/org de solicitud pago; lectura con pool nuevo y snapshot antes/después de reinicio PostgreSQL.",
+      "oracle": "Una reserva y una solicitud created, dos eventos asociados; snapshot idéntico. No UI operativa, ACL HTTP Commerce, cobro, proveedor, PITR ni DR.",
+      "evidence_ids": [
+        "EVID-04"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-14",
+      "level": "unit",
+      "requirement_ids": [
+        "REQ-02",
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V295 perfil67/743 reconstruido, main1.9.1 y custodia Windows AUTHORED, sin credenciales reales.",
+      "action": "18 escenarios Go de config/ARCA; 16 checks DPAPI/inyeccion/negativos; contraste 69 bindings y rebuild3/3, vet/build.",
+      "oracle": "Rutas fiscales ausentes al diferir; configuracion invalida rechazada sin secretos; custodia e hijo limitados. No provee IdP/PG live, cloud, permisos de cuentas ni adapter completo.",
+      "evidence_ids": [
+        "EVID-05"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-15",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V296 perfil67/743, 11/11 archivos reconstruidos, PG18.6/52 migraciones y sesiones OIDC sinteticas.",
+      "action": "24 fases/4 navegadores: cotizacion previa y reserva HTTP, respuesta perdida, permisos, concurrencia, lectura503 y reinicio; proyeccion PG scoped y snapshot tras reinicio PG.",
+      "oracle": "Dos reservas y eventos con actor por tenant; 200/409 en carrera, sin duplicar; GET recupera efecto durable. Pago/entrega solo lectura; no proveedor, cobro, handover inicial ni produccion.",
+      "evidence_ids": [
+        "EVID-06"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-16",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V297 perfil67/745 reconstruido7/7, PG18.6 con53 migraciones desde cero; principal HTTP sintetico, sin proveedor.",
+      "action": "Replay16, creacion concurrente16, scopes/intent409, outbox fallido atomico, reconexion y snapshot PG tras reinicio; migracion up/down/up y down incompatible.",
+      "oracle": "Un intento/evento por clave e intencion, actor autenticado transferido, mismas referencias durables tras reconexion; no proveedor, UI/BFF/OIDC nuevo ni cobro.",
+      "evidence_ids": [
+        "EVID-07"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-17",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V298 perfil67/745, 12/12 archivos reconstruidos, schema53 PG18.6 existente, issuer RS256/JWKS local y Next build exacto.",
+      "action": "36 fases/4 navegadores incluyendo12 pago/desactivado/reinicio: UUID retenido, storage sin acceso, respuesta perdida post-commit, carrera8 claves, permisos/forgery, monto server-side y snapshot PG tras restart. Ruta previa nuevo key202 reproducido y corregido409.",
+      "oracle": "Dos intents/eventos actor payment por tenant, un exito/siete409 en carrera, mismo key recupera ID; sin provider externo, cobro ni entrega inicial.105 web y Go/PG/vet/build PASS.",
+      "evidence_ids": [
+        "EVID-08"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-18",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V299 Journey0.10.5 recompuesto2/2, PG18.6/schema53 existente, fixtures aislados; web V298 sin cambios verificada70 archivos.",
+      "action": "Doce negativos relacionales en cuatro operaciones; locks55P03,16 aceptaciones concurrentes, fallo de outbox y pool nuevo. Repetido3 veces;36 fases browser de regresion V298, Go test/vet/build.",
+      "oracle": "Relaciones incoherentes no dejan efectos; una aceptacion/evento, quince conflictos, rollback conserva presented/version2. No creador inicial, politica financiera, cobro ni nuevo frontend de entrega.",
+      "evidence_ids": [
+        "EVID-09"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-19",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V300 Journey0.10.6/Commerce0.6.1/portales0.13.1/gate0.1.11 recompuestos7/7; PG18.6/schema53, issuer local y web construido.",
+      "action": "Siete negativos de lectura, snapshot concurrente y recuperacion; PG3 veces, HTTP redactado,48 fases browser/4 proyectos, perdida post-commit de aceptacion y rechazo, Go test/vet/build y105 tests web PASS/1 SKIP.",
+      "oracle": "Sin resultados parciales ni reenvios ante incertidumbre. GET recupera accepted/rejected version3, una excepcion y un evento por accion. Fixtures iniciales no prueban creador ordinario, liberacion, cobro ni produccion.",
+      "evidence_ids": [
+        "EVID-10"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-20",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V301, candidato aislado observabilidad0.3.0, Go1.26.7 offline; dos bloques recompuestos con SHA exacto. Fuera del perfil integral.",
+      "action": "Cuatro defectos de histograma reproducidos;24 tests/17 semillas repetidos3, fuzz3 targets10s, vet/build; compositor rechaza CANDIDATE sin crear destino.",
+      "oracle": "Overflow no oculta tails; datos/config invalidos y overflow rechazan sin mutacion; snapshots coherentes. No readmision, race ni observabilidad operativa por este PASS.",
+      "evidence_ids": [
+        "EVID-11"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-21",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V302 fuente canónica4/4 recompuesta; Next construido, Go1.26.7, PostgreSQL18.6 sintético, cuatro proyectos Playwright.",
+      "action": "Baseline UI rojo; matriz52 fases y agenda4,105 web PASS/1 SKIP, Go test/vet/build. Rol, consulta503, recuperación GET, permisos HTTP y cero efectos prohibidos.",
+      "oracle": "Cuatro roles sólo acceden a secciones permitidas; pedidos sobreviven fallo independiente, sin detalle privado ni POST de recuperación; HTTP403 y cero checklist. FAIL457 sigue abierto.",
+      "evidence_ids": [
+        "EVID-12"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-22",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V303 fuente canónica4/4 recompuesta, Next construido, Go1.26.7/PostgreSQL18.6/OIDC sintético, Playwright cuatro proyectos.",
+      "action": "Rojo post-commit V302; tres resoluciones por proyecto con respuesta perdida, JSON vacío, consulta503, storage ausente, carrera200/409, replay/permisos.56 fases, agenda4, Go/web/build.",
+      "oracle": "Resoluciones3, sucesor1, autorizaciones2 y eventos3 por tenant; marker sin notas, consulta sin reenvío y estado recuperado. No efectos downstream completados ni readmisión del sender genérico FAIL457.",
+      "evidence_ids": [
+        "EVID-13"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-23",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V304 fuente canónica8/8, web construida, Go/PostgreSQL local e issuer sintético, cuatro proyectos Playwright.",
+      "action": "Asignación y tres transiciones de lead; respuesta perdida, JSON vacío, consulta503, storage sin POST, concurrencia200/409, permisos/actor falsificado y rollback outbox.60 fases más agenda4, PostgreSQL3 y Go/web.",
+      "oracle": "Lead lost/version5, cuatro eventos con actor HTTP por tenant, consulta sin reenvío y ausencia de actualización parcial; métodos sin actor rechazados. No readmisión del sender restante ni producción.",
+      "evidence_ids": [
+        "EVID-14"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-24",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V305 seis archivos canónicos recompuestos; misma web y backend verificados por SHA. PostgreSQL18.6/OIDC local y Playwright cuatro proyectos.",
+      "action": "Cancelación working/unavailable y rechazo por cita activa; pérdida/JSON/GET503/storage/carrera/permisos. Coherencia publicación/reserva con jornada actual; carreras cancel/block-v-book.64 fases, agenda4, focales10/PG3 y Go/web.",
+      "oracle": "Cuatro cancelaciones/version2/eventos con actor por tenant, quinta active/version1 sin evento; dos cupos retirados y dos reservas HTTP rechazadas sin efectos. Lock cooperativo evita éxito simultáneo de reserva y bloqueo/cancelación en las pruebas; no producción.",
+      "evidence_ids": [
+        "EVID-15"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-25",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V306: cotización con clave UI/BFF/HTTP, actor autenticado y consulta scoped.",
+      "action": "68 fases/4 proyectos; respuesta perdida, JSON, storage0POST, replay/divergencia, PG3 y agenda4; rebuild11/11.",
+      "oracle": "3 cotizaciones/keys/eventos/actores por proyecto; snapshot reiniciado idéntico; no reemisión automática ni producción.",
+      "evidence_ids": [
+        "EVID-16"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-26",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V307: alta de intervalos con referencia durable y preparación explícita tras consulta.",
+      "action": "72 fases/4;110 web PASS/1 SKIP; carrera8, PG3, aislamiento, corrupción, rollback y reinicio; rebuild9/9.",
+      "oracle": "1 creación/7 replay en carrera;3 intervalos/keys/eventos/actores por proyecto; cancelado no resucita, sin cambios de agenda.",
+      "evidence_ids": [
+        "EVID-17"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-27",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V308: alta de recursos con actor y consulta del estado/habilidades vigentes.",
+      "action": "76 fases/4 más agenda4;111 web PASS/1 SKIP; PG3 carrera8/rollback/aislamiento; rebuild9/9 y reinicio.",
+      "oracle": "1 creación/7 replay;3 recursos/keys/eventos/actores y6 habilidades por proyecto; recurso inactivo no se reactiva.",
+      "evidence_ids": [
+        "EVID-18"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-28",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V309 nueve archivos canónicos recompuestos; UI/BFF/HTTP/PG con fixtures y jornadas explícitas.",
+      "action": "80 fases/4 proyectos, agenda4,112 web PASS/1 SKIP, PG3 carrera8/atomicidad/lectura llena y cerrada; reinicio real del cluster sintético.",
+      "oracle": "1 creación/7 replay concurrentes;3 cupos/keys/eventos/actores por proyecto. Lookup recupera2/2 ocupado y cerrado sin reabrir ni depender del listado público. Rebuild9/9; no cambios comerciales ni producción.",
+      "evidence_ids": [
+        "EVID-19"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-29",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V310 diez archivos canónicos recompuestos; UI/BFF/HTTP/PG con fixtures sintéticos.",
+      "action": "84 fases/4 proyectos,agenda4,113 web PASS/1 SKIP,PG3 carrera8/atomicidad/inmutabilidad; reinicio real del cluster sintético.",
+      "oracle": "1 publicación/7 conflictos concurrentes;3 versiones/6 ítems/3 eventos/3 actores por proyecto. Consulta exacta confirma contenido por huella, conserva versión previa y bloqueo si diverge. Rebuild10/10; no cambios comerciales ni producción.",
+      "evidence_ids": [
+        "EVID-20"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-30",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V311 diez archivos canónicos recompuestos; fixtures explícitos de entregas prepared, UI/BFF/HTTP/PG.",
+      "action": "88 fases/4 proyectos,agenda4,114 web PASS/1 SKIP,PG3 carrera8/atomicidad/inmutabilidad/estado posterior; reinicio real del cluster sintético.",
+      "oracle": "1 completado/7 conflictos concurrentes;3 entregas/6 respuestas/3 eventos/3 actores por proyecto. Consulta exacta compara huella y conserva actor/fecha aunque estado actual sea accepted/rejected. Rebuild10/10; sin regla comercial nueva ni producción.",
+      "evidence_ids": [
+        "EVID-21"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-31",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V312 diez archivos recompuestos; PostgreSQL sintético, portal/BFF/HTTP, kit Go fuzz separado admitido.",
+      "action": "92 fases/4 proyectos,agenda4,115 web PASS/1 SKIP,11 tests PG3; carrera8/atomicidad/inmutabilidad/identidad fuera lista100; fuzz10s y restart real.",
+      "oracle": "3 recepciones/3 decisiones/11 solicitudes/6 eventos por proyecto; receive y decide concurrentes1 éxito/7 conflictos. Scope cruzado0efectos, consulta conserva actor/evidencia incluso sin lista. Rebuild10/10 y snapshot idéntico; ningún efecto downstream ejecutado.",
+      "evidence_ids": [
+        "EVID-22"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-32",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V313 reconstrucción67/745; dos módulos Go oficiales actualizados, cinco archivos canónicos y proyecciones SCA trazables.",
+      "action": "OSV2.5.1 source+Python wheels+Go graph; norm red/green, upstream tests, Go test/vet/build/verify,PG3,92 fases/4+agenda4, equivalencia binaria y fuzz10s.",
+      "oracle": "GO-2026-5970/6179/6180 resueltos en locks; scan21 fuentes/465 ocurrencias/347 paquetes/0findings.47 wheels verificadas,134 requisitos compatibles.5/5 rebuild y2/2 binarios idénticos entre candidate1 y sucesor; aislamiento de refund probado. No runtime/deploy/security integral.",
+      "evidence_ids": [
+        "EVID-23"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-33",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V314 core0.4.3/app1.9.3 compuestos67/745; TCP loopback sin DB ni provider.",
+      "action": "Reproducir salida prematura, verificar drenaje/respuesta/admisión/deadline/listener/startup, ciclos inválidos y Go test/vet/build.",
+      "oracle": "Red falla por retorno antes del drenaje; cinco tests raíz x3 PASS en ambos árboles,4/4 reconstrucción. Deadline fuerza cierre y devuelve fallo; listener error preservado tras respuesta. No señales OS/target/hijacked.",
+      "evidence_ids": [
+        "EVID-24"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-34",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V315 SECURE-OPS-DELIVERY-CORE1.1.2 compuestos67/745; fixtures de presencia sin pruebas productivas.",
+      "action": "Reproducir28 bypass de referencias y error de acceso, verificar12 tests y4 invocaciones CLI; rebuild canónico2/2.",
+      "oracle": "Ambos modos exigen rutas SBOM/provenance; files rechaza ausencia/directorio/escape/NUL/acceso, completo PASS de presencia. CLI2errores exactos al omitir ambos; no aprobación semántica.",
+      "evidence_ids": [
+        "EVID-25"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-35",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V316 core0.4.4/workers0.3.1 compuestos67/745; dos DB dedicadas con fundación0001 y publisher sintético.",
+      "action": "Seis rojos SQL de expiración/generación/row lock y tres publisher; RemainingLease y retry real de store con clave estable;33 pruebas por árbol,4/4 rebuild y Go gates.",
+      "oracle": "Confirmar/reprogramar sólo con generación y lease vigente tras lock; publisher sin presupuesto no se ejecuta. PostgreSQL conserva retry y2 publicados al reintentar con EventID estable/gen1→2. No exactly-once remoto ni supervisor.",
+      "evidence_ids": [
+        "EVID-26"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-36",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V317 composición67/745, Go1.26.7 observado y árbol íntegro, DBs loopback, web exacto y Playwright0.1.23.",
+      "action": "Verificar identidad de dos runtimes y V313 binaries; OSV stdlib/toolchain con control negativo; Go/web/fuzz/PG y92 fases+agenda4; reconstruir el test sincronizado.",
+      "oracle": "Identidad y atribución exacta sólo por receipts;2 paquetes OSV por versión,0matches y control2/41;33outbox+15HTTP+33PG+6refund,115web/1skip,92browser+4agenda y467038fuzz. Esperar GET RSC antes de cambiar cookies,6POST y lector rechazado.",
+      "evidence_ids": [
+        "EVID-27"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-37",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V318 refund0.1.3 aislado, Go1.26.7 observado y DB sintética exclusiva; causas privadas sintéticas.",
+      "action": "Reproducir divulgación en startup real y log de Step; corregir salida a códigos fijos;6tests por árbol,6PostgreSQL y3/3 rebuild con Go gates.",
+      "oracle": "No llamar Error() ni imprimir marcador privado; preservar exit1, códigos operativos fijos e idle silencioso. Binario final replica el probe original sin divulgación. Retry y resultados durables intactos.",
+      "evidence_ids": [
+        "EVID-28",
+        "EVID-54",
+        "EVID-55"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-38",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-02",
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V319 Windows aislado; Node24.20.0 firmado e independiente, Go1.26.7 observado, pnpm11.19.0 exacto, PostgreSQL sintético.",
+      "action": "Contrastar advisories/identidades; rechazar alias OSV y ZIP npm afectado; dos composiciones frozen/web/build/92browser+agenda4; negativos de checker; retorno local y paridad.",
+      "oracle": "22CVEs del control Node,0 del candidato en snapshots exactos; ZIP145/4/9 rechazado; controles vacíos/timeout no se admiten como gate;2selecciones115PASS/1SKIP,23fases por4proyectos+agenda4;746/746;256GET/8arranques sin regresión local.",
+      "evidence_ids": [
+        "EVID-29"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-39",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-02",
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V320 adapter offline separado; Node24.20.0/license exactos, semver tarball53files y snapshots oficiales194avisos vigentes.",
+      "action": "Preservar matching oficial, limitar lectura/ejecución, reproducir bridge sustituido y artefacto diferente;30tests sobre selección final/rebuilt,4CLI,10/10 identidad y SCA CLI2/0.",
+      "oracle": "Vacío/alteración/stale/future/env hostil/licencias faltantes no producen PASS; timeout/output real finitos, causa privada estática y receipt no sobrescrito; control vulnerable del motor true, currentNodePASS; G0–G8 instancia ready=true sin monitor/producción.",
+      "evidence_ids": [
+        "EVID-30"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-40",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-02",
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V321 exact pnpm11.19.0 baseline and11.25.0 candidate, Node24.20.0 standalone, unchanged application locks and public fixtures.",
+      "action": "Audit compiled inventories/source-lock/signatures/provenance/licenses; fix3active consumers and offline metadata recovery,46routing checks,115web+1skip/build pertree,92browser+agenda4/runtime4/policy5,8install comparisons and746file parity.",
+      "oracle": "Baseline471/1 rejected, candidate473/0 and2signed attestations/4negatives; no ignore/policy bypass/lock drift; exact sources rebuild and local perf guards pass. Native/profile/target gates remain separate.",
+      "evidence_ids": [
+        "EVID-31"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-41",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-02",
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V322 reconstructed official acquisition core0.4.78; synthetic public fixtures and local PowerShell7.6.5.",
+      "action": "17profiles/7negatives,9lock negatives,65opaque transport checks,37file byte parity and five16MiB bounded SHA256 streams. Actual profile acquisition3sources/PRESENT10immutable outputs and integrated151step preflight.",
+      "oracle": "Empty legacy cache and false negative oracle rejected; exact licenses survive CRLF/no-final-newline; tamper, bindings, partial outputs, redirect, cancellation and junctions fail closed. Narrow maintenance transport only; actual governed acquisition passes and library161/1453/757/52 with151steps passes; global preflight/readiness remain BLOCKED.",
+      "evidence_ids": [
+        "EVID-32"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-42",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-02",
+        "REQ-03",
+        "REQ-04"
+      ],
+      "setup": "V323 existing pnpm11.25 native bytes, exact public source manifests and isolated Sigstore4.1.1 verifier under Node24.20.0.",
+      "action": "Compare six native hashes and four embedded Rust revisions; scan75exact Cargo identities, verify8signed statements with9negatives and cross-check18RustSec/fourofficial std advisories. V333 evaluates native-excluded candidate442/455files with12frozen installs,115tests/build and fresh473identity scan; original admission stays blocked. V334 canonical four-file selection gate,17tests twice, real443file parity, narrow G0-G8 tooling qualification. V334 affected consumers: four connected browser projects and five real Lighthouse audits PASS; integrated153steps PASS. Tooling-only admission remains distinct. V335 six-file routing tooling,43tests/rebuild,3final isolated offline installs and115tests/build; runtime admission unchanged.",
+      "oracle": "Source-lock identity set exact/0advisories and signed metadata valid; missing native binary/build/full-license/CRT evidence remains BLOCKED, never converted to runtime admission.",
+      "evidence_ids": [
+        "EVID-33",
+        "EVID-43",
+        "EVID-44",
+        "EVID-45",
+        "EVID-46",
+        "EVID-47",
+        "EVID-48",
+        "EVID-49",
+        "EVID-50",
+        "EVID-51"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-43",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-01",
+        "REQ-03"
+      ],
+      "setup": "Fresh canonical execution kit, preserved root JSON/event bytes and exact reversible per-field audit.",
+      "action": "Restore209strings, retain77events, round-trip Unicode through load/checkpoint/event APIs and run15unique regressions with UTF-8 enabled and disabled.",
+      "oracle": "Exact string/byte recovery, unchanged prior events, explicit encoding, all15tests pass in both modes; readiness and native blockers remain.",
+      "evidence_ids": [
+        "EVID-34"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-44",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-01",
+        "REQ-03"
+      ],
+      "setup": "Existing pinned Node/Playwright/Firefox, local synthetic fixtures, fresh portal materialization and isolated tool routing.",
+      "action": "Run48context closures and20cold launches with traces/video, inspect packaged runtime path and compare20portal files against current tested composition.",
+      "oracle": "68cases pass with zero retries; FAIL423 remains unresolved;20files byte-identical confirm only existing FAIL457 closure, no broader task promotion.",
+      "evidence_ids": [
+        "EVID-35"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-45",
+      "level": "fault",
+      "requirement_ids": [
+        "REQ-01",
+        "REQ-03"
+      ],
+      "setup": "Fresh canonical execution kit and synthetic EXISTING fixtures with preserved valid first event and evidence.",
+      "action": "Inject before-write/partial-write errors and child exits mid-write/after fsync, inspect actual resume outcomes and recover only known fixture bytes.",
+      "oracle": "Incomplete log rejects without append; full event survives response loss and duplicate rejects; four final chains preserve first event/evidence and contain exactly two events. Not materializer/bridge concurrency or power loss.",
+      "evidence_ids": [
+        "EVID-36"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-46",
+      "level": "integration",
+      "requirement_ids": [
+        "REQ-01",
+        "REQ-03"
+      ],
+      "setup": "Canonical EXECUTION-VALIDATOR1.3.1 and verbatim guide blocks; isolated NEW/EXISTING plus synthetic prior checkpoint.",
+      "action": "Reproduce CLI failures on1.3.0, run27tests on1.3.1; execute13guide commands/8helps, reconstruct15files and compose23.",
+      "oracle": "OS/Unicode input errors return BLOCKED/2 without traceback or mutation; originals/history preserved, exact15file parity. Not final-release usability, human acceptance or automatic authority-map generation.",
+      "evidence_ids": [
+        "EVID-37"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-47",
+      "level": "recovery",
+      "requirement_ids": [
+        "REQ-01",
+        "REQ-03"
+      ],
+      "setup": "Readiness0.6.2 reconstructed from Markdown; synthetic CLI/report fixtures and unchanged real intake.",
+      "action": "Run75tests with malformed inputs/I/O/report collision and3pairs of publishers; compare8files/6unchanged/domain function, root42blockers and guide13commands/8helps.",
+      "oracle": "Controlled rejection without fabricated report or overwrite; exactly one complete report per race; domain decisions and real42blockers unchanged. No power-loss, hostile-directory, final-release usability or product admission proof.",
+      "evidence_ids": [
+        "EVID-38"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "TEST-48",
+      "level": "recovery",
+      "requirement_ids": [
+        "REQ-01",
+        "REQ-03"
+      ],
+      "setup": "Reconstructed existing return flow; four Playwright projects, shared authenticated context, separate tab storage and synthetic PostgreSQL tenants.",
+      "action": "Six two-page races per browser, identical/divergent intent, two lost post-commit responses, reload/GET and opener-copy recovery. V331 changes session through reader/no-cookie/other-organization/other-operator and restores original reference for both actions.",
+      "oracle": "Exactly200/409 and two UI POST per race; winning immutable evidence/actor only; divergent digest stays blocked; independent markers and no GET/continue writes. Narrow existing-flow verification, not cross-tab locking, downstream execution or human acceptance. Require12denials/2authorized shared reads/2restorations per browser and correct storage scope read; not external IdP revocation.",
+      "evidence_ids": [
+        "EVID-40",
+        "EVID-41"
+      ],
+      "status": "passed"
+    }
+  ],
+  "benchmarks": [
+    {
+      "id": "BENCH-01",
+      "hypothesis": "La entrada por mapas y materialización selectiva reduce trabajo repetido sin perder controles",
+      "environment": {
+        "os": "Windows local",
+        "toolchains": "PowerShell 7.6.5/Python 3.14.4 en V287; registrar exactos en nueva medición",
+        "hardware": "No caracterizado; pendiente para comparación"
+      },
+      "workload": {
+        "baseline": "Ensayo comparable pendiente",
+        "candidate": "NEW/EXISTING de maintenance-entry más contexto efectivo de agente"
+      },
+      "correctness_gate": "TEST-01 debe pasar antes de comparar; no extrapolar tiempos de procesos a tiempo de construcción del negocio",
+      "metrics": [
+        "Tiempo total y por etapa",
+        "Lecturas/bytes de contexto",
+        "Tokens sólo si medibles",
+        "Reintentos y errores"
+      ],
+      "baseline": "OPEN: falta comparación controlada",
+      "candidate": "V287 observó 9507/8997 ms de procesos; no constituye benchmark comparativo ni medición de tokens; V326/BENCH-02 mide latencia del tooling, no prueba todavía reducción de trabajo/tokens del agente.",
+      "evidence_ids": [],
+      "status": "planned"
+    },
+    {
+      "id": "BENCH-02",
+      "hypothesis": "La misma entrada verificable conserva sus controles en raíz y copia exacta; medir la latencia por etapa sin inferir speedup de ubicación ni tiempo de negocio.",
+      "environment": {
+        "os": "Windows11Pro build26200",
+        "toolchains": "PowerShell7.6.5 / Python3.14.4; hashes y manifestV326",
+        "hardware": "Intel Core Ultra9 285K,24cores/24threads,205372039168bytesRAM,planBalanced; sin aislamiento térmico/afinidad"
+      },
+      "workload": {
+        "baseline": "Harness canónico sobre raíz completa;1warmup+5muestras",
+        "candidate": "Mismo harness/13archivos byte-idénticos;1warmup+5muestras intercaladas"
+      },
+      "correctness_gate": "55checks/28procesos por ejecución;8negativos esperados, originales/BOM/eventos intactos, readinessBLOCKED/NONE conservado.",
+      "metrics": [
+        "Wall harness,ms",
+        "Suma de procesos por etapa,ms",
+        "Reanudación,ms",
+        "Inventario de bytes; no tokens/coste"
+      ],
+      "baseline": "Mediana wall9994.7816ms;entryNEW2019ms/EXISTING2276ms;resume120/131ms.",
+      "candidate": "Mediana wall10028.2927ms;entryNEW2001ms/EXISTING2177ms;resume129/122ms. Sin speedup demostrado.",
+      "evidence_ids": [
+        "EVID-36"
+      ],
+      "status": "passed"
+    }
+  ],
+  "release": {
+    "artifact_identity": {
+      "source_revision": "OPEN: no Git obligatorio; manifest SHA exacto pendiente",
+      "build_digest": "OPEN",
+      "config_version": "Contrato mantenimiento V289",
+      "schema_version": "1.1.0"
+    },
+    "compatibility": [
+      "NEW/EXISTING sin aprobaciones heredadas",
+      "Perfil 67 packs/742 archivos no modificado"
+    ],
+    "rollout": [
+      "Validar delta local",
+      "Probar artefacto exacto y reconstrucción independiente",
+      "Distribuir únicamente tras gates T2810"
+    ],
+    "gates": [
+      "Plan válido",
+      "Assurance evidence proven",
+      "Readiness material resuelto",
+      "Gates T2802-T2810 por alcance real"
+    ],
+    "rollback": "Preservar snapshot previo y original, restaurar sólo cambios propios verificados y repetir gates; no reset destructivo"
+  },
+  "operations": {
+    "observability": [
+      "Salidas legibles, hashes, tiempos y eventos; no datos privados en logs"
+    ],
+    "alerts": [
+      "Todo fallo no esperado se registra inmediatamente; 384/385 y acceso 405 abiertos. 386/387 corregidos localmente; observabilidad no admitida para producción."
+    ],
+    "runbooks": [
+      "markdown_system/AGENT_ERROR_RECOVERY_PROTOCOL.md",
+      "markdown_system/FAILURE_LEARNING_CONTRACT.md"
+    ],
+    "backup_restore": "Snapshot y cadena local; validar restore del artefacto. No sustituye PostgreSQL/PITR del target."
+  },
+  "codex": {
+    "authority_docs": [
+      "AGENT_SYSTEM_START.md",
+      "ENGINEERING_EXECUTION_PLAYBOOK.md",
+      "PUBLIC_CODE_ARCHITECTURE_ADMISSION_STANDARD.md",
+      "REUSABLE_CODE_READINESS_ROADMAP.md"
+    ],
+    "task_contract": "Este contrato es trazabilidad sobre los owners, no segundo plan. Consultar delta y evidencias por hash; no releer todo indiscriminadamente.",
+    "deliverables": [
+      "Cierres reales del roadmap con regresiones",
+      "Fuente canónica y evidencia reconstruible",
+      "ZIP final sólo tras aceptación"
+    ],
+    "forbidden_assumptions": [
+      "No inferir canal/corpus/consentimiento ni credenciales",
+      "No afirmar precisión semántica perfecta ni todas las conversaciones disponibles",
+      "No presentar AUTHORED como código Microsoft/Google/NASA",
+      "No afirmar coste cero, tokens ahorrados o producción por esta validación"
+    ]
+  },
+  "evidence": [
+    {
+      "id": "EVID-01",
+      "path": "reconstruction_evidence/AGENT_ENTRY_LIFECYCLE_V287.md",
+      "sha256": "6f1c285db0f801009c1dff139f92234070477719903368d3c04cc8fa19cbea65",
+      "claim": "Reporte histórico V287: 55 checks entrada CLI NEW/EXISTING y copia limpia; referencias a receipts originales. No prueba de release ni de negocio.",
+      "generated_at": "2026-09-07",
+      "tool": "markdown_system/test_agent_entry_lifecycle.ps1",
+      "environment": "PowerShell 7.6.5 / Python 3.14.4 / Windows, fixtures sintéticos",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-02",
+      "path": "reconstruction_evidence/COUNTER_MONOTONIC_REPAIR_V291.md",
+      "sha256": "423bf8e0707663b0c1761730a9ce11121ea31fd7e53b242256cf2332b3a7cdac",
+      "claim": "Corrección local de contador FAIL-387, reconstrucción2/2 y pruebas focales; CANDIDATE permanece.",
+      "generated_at": "2026-09-07",
+      "tool": "Go (atribución histórica exacta retirada; ver V317), go test/vet/build y GO-NATIVE-FUZZ-GATE 0.1.0",
+      "environment": "Windows, módulo local sin dependencias, GOMAXPROCS=2 en fuzz",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-03",
+      "path": "reconstruction_evidence/PRIVACY_POLICY_LOGGER_REPAIR_V292.md",
+      "sha256": "be444f0c3f5646ed883d7a6ed6d04ed6123b5e2272019b5c9abe0f4c75584ac8",
+      "claim": "Corrección local FAIL-386 bajo política cerrada, JSON oficial Go y reconstrucción2/2; CANDIDATE permanece.",
+      "generated_at": "2026-09-07",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) test/vet/build y GO-NATIVE-FUZZ-GATE 0.1.0",
+      "environment": "Windows, módulo aislado sin dependencias nuevas, fixtures sintéticos",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-04",
+      "path": "reconstruction_evidence/QUOTE_ACCEPTANCE_CONNECTED_V294.md",
+      "sha256": "0b86b6c5c28d28355e363079f7f0bf5f6bc2db3348bcc54782e440b25f955dcf",
+      "claim": "V294 aceptación browser→pedido único, UX/GET/ayuda y continuación repositorio stock/payment-created; reinicio PostgreSQL idéntico. No proveedor/cobro/UI operativa; FAIL423 abierto.",
+      "generated_at": "2026-09-07",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / Playwright1.62.1 / Next exact lock",
+      "environment": "Windows, PostgreSQL18.6, fixture sintético loopback",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-05",
+      "path": "reconstruction_evidence/CREDENTIAL_PREPARATION_V295.md",
+      "sha256": "cb0711999a91d6bf27650f798f99736b4605de141838e221ec697f6dad3aad36",
+      "claim": "Guia contrastada, ARCA diferida y custodia DEV Windows verificadas localmente; selecciones/acceso oficial/target y journeys pendientes.",
+      "generated_at": "2026-09-07",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / PowerShell7.6.5 / Microsoft DPAPI",
+      "environment": "Windows local, datos sinteticos; sin proveedor live",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-06",
+      "path": "reconstruction_evidence/ORDER_STOCK_CONNECTED_V296.md",
+      "sha256": "fc60d700045b52a70c942665a99fe69b26e7b62f43f79dcaf3a647aaf5b57541",
+      "claim": "Reserva operativa por UI/HTTP autorizada y auditada, recuperacion GET/concurrencia/reinicio; pago y entrega siguen pendientes.",
+      "generated_at": "2026-09-07",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / PostgreSQL18.6 / Playwright1.62.1 / Next lock",
+      "environment": "Windows loopback aislado, datos sinteticos, sin proveedores",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-07",
+      "path": "reconstruction_evidence/PAYMENT_INTENT_RECOVERY_V297.md",
+      "sha256": "fbeec2007681d5dbe38f028c6d2fba581100d70c747a0f7f76bbc670b1ac4778",
+      "claim": "Recibo idempotente local y referencias pendientes, concurrencia/atomicidad/scopes/reconexion/reinicio probados; no recorrido UI de cobro ni produccion.",
+      "generated_at": "2026-09-07",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / PostgreSQL18.6 / pgx5.10.0",
+      "environment": "Windows loopback, datos sinteticos, sin proveedor",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-08",
+      "path": "reconstruction_evidence/PAYMENT_REQUEST_PORTAL_V298.md",
+      "sha256": "1096ee8996625a6fcb4b9cd704fb69613882d453157d7fe0b7e125f10f1d1bdf",
+      "claim": "Solicitud local desde UI/BFF/HTTP/OIDC/PG con exclusion compartida, configuracion cerrada, ayuda y recuperacion. No cobro/provider/live ni entrega inicial.",
+      "generated_at": "2026-09-07",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / PostgreSQL18.6 / Playwright1.62.1 / Next lock",
+      "environment": "Windows loopback, datos sinteticos, issuer local; no cuentas externas",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-09",
+      "path": "reconstruction_evidence/DELIVERY_RELATIONAL_SCOPE_V299.md",
+      "sha256": "e9fb30165d19c124c1247fcfbfc10093ed6cbb26fbf4fe60936c12e3d46732e7",
+      "claim": "Defensa relacional transaccional de handover probada; cierre local de defecto, no entrega inicial ni produccion.",
+      "generated_at": "2026-09-07",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / PostgreSQL18.6 / pgx5.10.0 / Playwright1.62.1",
+      "environment": "Windows loopback, datos sinteticos, web V298 reutilizada por hash, sin servicios externos",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-10",
+      "path": "reconstruction_evidence/DELIVERY_READ_RECOVERY_V300.md",
+      "sha256": "5d0b86c4b5568ab996a8a5586c59697bd07917584f4e2d726fb78c1f1e7e50f0",
+      "claim": "Lectura relacional coherente y recuperacion de resultado incierto de entrega demostradas localmente; no creador inicial ni produccion.",
+      "generated_at": "2026-09-07",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / PostgreSQL18.6 / Next16.3.2 / Playwright1.62.1",
+      "environment": "Windows loopback, issuer y datos sinteticos; backend real y web reconstruidos, sin efectos externos",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-11",
+      "path": "reconstruction_evidence/HISTOGRAM_BOUNDARY_REPAIR_V301.md",
+      "sha256": "59b6555e1370e9b6ed70e9f4b30ef108ee3015557a86075dd1c903b21710cb0b",
+      "claim": "Cuatro defectos del histograma corregidos y reconstruidos, sin promover el candidato ni afirmar integracion productiva.",
+      "generated_at": "2026-09-07",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / GO_NATIVE_FUZZ_GATE0.1.0 / PowerShell7",
+      "environment": "Windows local, modulo aislado, entradas sinteticas, CGO deshabilitado; sin servicios externos",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-12",
+      "path": "reconstruction_evidence/OPERATOR_SECTIONS_RECOVERY_V302.md",
+      "sha256": "d60db3c3365ced64701fafb0d0b96e7be2eebe9eb42ab0c913c051d4135141ba",
+      "claim": "Permisos de secciones y recuperación de consultas probados localmente; no sender de comandos, creador inicial ni operación productiva.",
+      "generated_at": "2026-09-07",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / PostgreSQL18.6 / Next16.3.2 / Playwright1.62.1",
+      "environment": "Windows loopback, issuer y datos sintéticos, composición canónica sin servicios externos",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-13",
+      "path": "reconstruction_evidence/DELIVERY_EXCEPTION_RECOVERY_V303.md",
+      "sha256": "584a2bcae7926810ec83e7dfaf32b31f3ed89f1d66bbcfb036c8fd8c686bbceb",
+      "claim": "Tres decisiones de resolución de discrepancias conectadas y recuperables localmente; no cierre del sender genérico ni producto.",
+      "generated_at": "2026-09-07",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / PostgreSQL18.6 / Next16.3.2 / Playwright1.62.1",
+      "environment": "Windows loopback, datos y OIDC sintéticos, fuente canónica y web compilada, sin efectos externos",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-14",
+      "path": "reconstruction_evidence/LEAD_COMMAND_RECOVERY_V304.md",
+      "sha256": "c439dc51440fb02d06740824b9b626a71ab0ee7f5a305ff2ac3a007c14506fc6",
+      "claim": "Asignación y estados de lead recuperables con actor HTTP y atomicidad local demostrados; no cierre de comandos restantes ni producción.",
+      "generated_at": "2026-09-07",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / PostgreSQL18.6 / Next16.3.2 / Playwright1.62.1",
+      "environment": "Windows loopback, datos y OIDC sintéticos, fuente canónica y web compilada, sin efectos externos",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-15",
+      "path": "reconstruction_evidence/AVAILABILITY_CANCELLATION_RECOVERY_V305.md",
+      "sha256": "e8433bc32b059bdd7395d6d368a817fb44500e941bf7ac5158a8add9095c2a2c",
+      "claim": "Cancelación de disponibilidad recuperable y coherencia de cupos/reservas en owners locales demostradas; no agenda completa ni readmisión de otros comandos.",
+      "generated_at": "2026-09-07",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / PostgreSQL18.6 / Next16.3.2 / Playwright1.62.1",
+      "environment": "Windows loopback, datos y OIDC sintéticos, fuente canónica y web compilada, sin efectos externos",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-16",
+      "path": "reconstruction_evidence/QUOTE_CREATION_RECOVERY_V306.md",
+      "sha256": "134bc465abe4102cab78ac89c79e1863677d555ef6ffc5a06bdf93cecad3bda9",
+      "claim": "V306: cotización con clave UI/BFF/HTTP, actor autenticado y consulta scoped. 3 cotizaciones/keys/eventos/actores por proyecto; snapshot reiniciado idéntico; no reemisión automática ni producción. No cierre integral, multi-tab, SCA, carga, restore/PITR ni target productivo.",
+      "generated_at": "2026-09-08",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / PostgreSQL18.6 / Next16.3.2 / Playwright1.62.1",
+      "environment": "Windows loopback, fixtures sintéticos, packs canónicos, sin efectos externos",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-17",
+      "path": "reconstruction_evidence/AVAILABILITY_CREATION_RECOVERY_V307.md",
+      "sha256": "5ceb3e947bb43a5965c17f8cb55dccc0f00a397358929d7a20c0f1afa402f4e4",
+      "claim": "V307: alta de intervalos con referencia durable y preparación explícita tras consulta. 1 creación/7 replay en carrera;3 intervalos/keys/eventos/actores por proyecto; cancelado no resucita, sin cambios de agenda. No cierre integral, multi-tab, SCA, carga, restore/PITR ni target productivo.",
+      "generated_at": "2026-09-08",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / PostgreSQL18.6 / Next16.3.2 / Playwright1.62.1",
+      "environment": "Windows loopback, fixtures sintéticos, packs canónicos, sin efectos externos",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-18",
+      "path": "reconstruction_evidence/RESOURCE_CREATION_RECOVERY_V308.md",
+      "sha256": "23da1e82d1191d9571af60cc9ab6602a626fc7bd3a60fb1b4a7c3130b20a5ce2",
+      "claim": "V308: alta de recursos con actor y consulta del estado/habilidades vigentes. 1 creación/7 replay;3 recursos/keys/eventos/actores y6 habilidades por proyecto; recurso inactivo no se reactiva. No cierre integral, multi-tab, SCA, carga, restore/PITR ni target productivo.",
+      "generated_at": "2026-09-08",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / PostgreSQL18.6 / Next16.3.2 / Playwright1.62.1",
+      "environment": "Windows loopback, fixtures sintéticos, packs canónicos, sin efectos externos",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-19",
+      "path": "reconstruction_evidence/SLOT_CREATION_RECOVERY_V309.md",
+      "sha256": "fcede01fdca5109717d98e616c767872c6bc6260c2b75ff72058a75f84dcbedb",
+      "claim": "Publicación idempotente y recuperación scoped de capacidad con actor atómico; no agenda completa, multi-tab, SCA/carga/restore del target ni readmisión de checklist/retornos.",
+      "generated_at": "2026-09-08",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / PostgreSQL18.6 / Next16.3.2 / Playwright1.62.1",
+      "environment": "Windows loopback, fixtures sintéticos y packs canónicos, sin efectos externos",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-20",
+      "path": "reconstruction_evidence/CHECKLIST_PUBLICATION_RECOVERY_V310.md",
+      "sha256": "7c928bc9b9a4241e1c2e4f85570f5e173301371bf22fc7dd06677fed8a061603",
+      "claim": "Publicación y recuperación exacta de checklist inmutable con actor atómico; no flujo completo de entrega/retornos, multi-tab, SCA/carga/restore del target ni aceptación de negocio.",
+      "generated_at": "2026-09-08",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / PostgreSQL18.6 / Next16.3.2 / Playwright1.62.1",
+      "environment": "Windows loopback, fixtures sintéticos y packs canónicos, sin efectos externos",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-21",
+      "path": "reconstruction_evidence/CHECKLIST_COMPLETION_RECOVERY_V311.md",
+      "sha256": "7c138fc6e0acc9ae5672f957c0794a0d01a4fcca13f26565dbdff8a552d35048",
+      "claim": "Recuperación exacta de checklist completada con respuestas/actor inmutables y estado actual; no regla de creación de entrega, retornos completos, multi-tab, SCA/carga/restore del target ni aceptación de negocio.",
+      "generated_at": "2026-09-08",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / PostgreSQL18.6 / Next16.3.2 / Playwright1.62.1",
+      "environment": "Windows loopback, fixtures sintéticos y packs canónicos, sin efectos externos",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-22",
+      "path": "reconstruction_evidence/RETURN_OPERATIONS_RECOVERY_V312.md",
+      "sha256": "0c418ebaee3cc1da1fd304250cff349897e88fbb896c205039cca641fe8349c2",
+      "claim": "Recuperación exacta de recepción/decisión de devoluciones, scope completo y evidencia inmutable; no ejecución downstream, multi-tab, SCA/DAST/carga/restore target ni aceptación de negocio.",
+      "generated_at": "2026-09-08",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / PostgreSQL18.6 / Next16.3.2 / Playwright1.62.1 / GO_NATIVE_FUZZ_GATE0.1.0",
+      "environment": "Windows loopback, fixtures sintéticos y packs canónicos, sin efectos externos",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-23",
+      "path": "reconstruction_evidence/COMPOSITION_DEPENDENCY_SECURITY_V313.md",
+      "sha256": "570590e8d2dc6954ac01b1283dd5e45c129cc420e8c8705930eeb0e74382d740",
+      "claim": "Actualización de dependencias fijadas y cobertura de graphs/pins de la composición; no binarios externos, stdlib/runtime, monitoreo persistente, SAST/DAST/carga ni autorización productiva.",
+      "generated_at": "2026-09-08",
+      "tool": "OSV2.5.1 exact / Go1.26.8 (buildinfo V313; corregido V317) / PostgreSQL18.6 / CPython3.14.4 / Playwright1.62.1",
+      "environment": "Windows loopback y fuentes oficiales; sin instalación de wheels, cuentas, mensajes, deploy o scheduled task",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-24",
+      "path": "reconstruction_evidence/HTTP_HOST_SHUTDOWN_V314.md",
+      "sha256": "a202a43e6a2d167b0ceeb29523f233bd82bc8cf8989fff745246c9e25a01c43c",
+      "claim": "Espera y deadline del drenaje HTTP compartido por ambos hosts; no prueba supervisor, señal OS real, transacción de negocio, race ni operabilidad integral.",
+      "generated_at": "2026-09-08",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / net/http TCP / compositor canónico",
+      "environment": "Windows loopback; sin DB, secretos, provider, deploy o scheduler",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-25",
+      "path": "reconstruction_evidence/OPERATIONAL_EVIDENCE_GATE_V315.md",
+      "sha256": "c177471922bd9677b65a82c98358bdf8ec4ad67d87bed9f5c7c2be393322bb2e",
+      "claim": "Control de referencias y presencia del gate operativo; no contenido, hashes, firmas, frescura ni admisión productiva.",
+      "generated_at": "2026-09-08",
+      "tool": "CPython3.14.4 / unittest / CLI / compositor canónico",
+      "environment": "Windows temporal aislado, fixtures de archivos y PermissionError inyectado; sin secretos ni efectos externos",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-26",
+      "path": "reconstruction_evidence/OUTBOX_GENERATION_FENCING_V316.md",
+      "sha256": "0da3f3ca4c2215e87c6c34162ee86484e08fbdc91ec928856586391a9066fff9",
+      "claim": "Fencing de estado local del outbox y presupuesto cooperativo del publisher; no efecto remoto exactly-once, supervisor, alertas, retención ni producción.",
+      "generated_at": "2026-09-08",
+      "tool": "Go (atribución histórica exacta retirada; ver V317) / PostgreSQL18.6 / compositor canónico",
+      "environment": "Windows loopback, dos bases exclusivas, publisher sintético; sin cuentas ni datos reales",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-27",
+      "path": "reconstruction_evidence/TOOLCHAIN_IDENTITY_AND_RUNTIME_SCA_V317.md",
+      "sha256": "a0def32d097ac6b4bc017d0b7310b78a9f2dc7ac5e4ef738321fd546a1427650",
+      "claim": "Identidad Go y cobertura suplementaria stdlib/toolchain; revalidación del head y sincronización de harness. No certifica snapshots históricos, otros runtimes, monitor ni producción.",
+      "generated_at": "2026-09-08",
+      "tool": "Go1.26.7 observado / OSV2.5.1 / Node24.14.1 / pnpm11.19.0 / Playwright1.62.1 / PostgreSQL18.6",
+      "environment": "Windows loopback con datos sintéticos; sin providers live",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-28",
+      "path": "reconstruction_evidence/REFUND_HOST_LOG_PRIVACY_V318.md",
+      "sha256": "4ff7076a59b8bc90db3827fa7d16d77799c9dce4efce2f7bba2912ac137dcc56",
+      "claim": "Privacidad de salida explícita del host refund; no prueba logs de terceros, delivery/retención/alertas, supervisor o producción.",
+      "generated_at": "2026-09-08",
+      "tool": "Go1.26.7 observado / PostgreSQL18.6 / compositor canónico",
+      "environment": "Windows loopback, procesos hijos con entorno mínimo y datos sintéticos",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-29",
+      "path": "reconstruction_evidence/NODE_RUNTIME_SECURITY_V319.md",
+      "sha256": "87d6f1a9536107d7895d29a14bbbbea0d6270d0ccaa6b8199b15e85bbe6dede7",
+      "claim": "Identidad y evaluación acotada de Node24.20.0 independiente; rechazo del ZIP y cobertura falsa. No SCA integral, reusable checker, monitoring ni promoción.",
+      "generated_at": "2026-09-08",
+      "tool": "Node24.20.0/Go1.26.7 observados;pnpm11.19.0;OSV2.5.1;Playwright1.62.1;PostgreSQL18.6",
+      "environment": "Windows loopback, fixtures y artefactos aislados; sin datos reales/providers/scheduler",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-30",
+      "path": "reconstruction_evidence/NODE_OFFICIAL_ADVISORY_GATE_V320.md",
+      "sha256": "fff4786fd6c0725461ba3263b6e3badc9abe06cf5199fc8fb2ff7373573dd73a",
+      "claim": "Adapter acotado del motor oficial Node para instancia Windows exacta y snapshots vigentes; no CLI raw, SCA integral ni monitor/producción.",
+      "generated_at": "2026-09-08",
+      "tool": "CPython3.14.4/Node24.20.0/OSV2.5.1 observados; official checker1.6.1+semver7.8.5; compositor",
+      "environment": "Windows temporal aislado, fuentes y fixtures públicos, sin providers/datos reales ni instalación global",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-31",
+      "path": "reconstruction_evidence/PNPM_BUNDLE_SECURITY_V321.md",
+      "sha256": "038c41d520319139646d767ed420da63f69b225f9996c4665a8eb7c17388b389",
+      "claim": "Local package-manager security regression and source reconstruction; no complete acquisition-profile/native/monitoring/production admission.",
+      "generated_at": "2026-09-08",
+      "tool": "Node24.20.0/pnpm11.25.0/Go1.26.7/OSV2.5.1/Sigstore4.1.1, exact artifacts and logs",
+      "environment": "Windows isolated public fixtures, PostgreSQL18.6, four cached Playwright projects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-32",
+      "path": "reconstruction_evidence/GOVERNED_MAINTENANCE_ACQUISITION_V322.md",
+      "sha256": "f9bfbddb33137495e4debbc3b3bcd62f9685da0400b9ae8ae6898b74d249ac69",
+      "claim": "Governed local maintenance acquisition and byte-preserving transport with actual receipts; no runtime execution, full native coverage or production admission.",
+      "generated_at": "2026-09-08",
+      "tool": "PowerShell7.6.5 / Python3.14.4 / canonical compositor",
+      "environment": "Windows local synthetic fixtures, public source metadata; no private data or provider effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-33",
+      "path": "reconstruction_evidence/PNPM_NATIVE_COVERAGE_V323.md",
+      "sha256": "f634f62851a0b4e74705650fb1aefc089c03a120cf6b89e99e97b35a2abc5a1a",
+      "claim": "Native dependency source-lock and signed metadata audit; full native/runtime/redistribution admission remains blocked.",
+      "generated_at": "2026-09-08",
+      "tool": "OSV2.5.1 / Node24.20.0 / Sigstore4.1.1 / Python3.14.4 / PowerShell metadata inspection",
+      "environment": "Local public tooling and read-only official metadata; no native execution or provider effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-34",
+      "path": "reconstruction_evidence/UTF8_CHECKPOINT_RECOVERY_V324.md",
+      "sha256": "d896655bc461c308de62972b1f4b17f362564911c148b1f2d6a30e1820d8054e",
+      "claim": "Local checkpoint text recovery and regression; no product readiness or production admission.",
+      "generated_at": "2026-09-08",
+      "tool": "Python3.14.4 / EXECUTION-VALIDATOR1.3.0",
+      "environment": "Windows local synthetic fixtures and preserved maintenance records",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-35",
+      "path": "reconstruction_evidence/FIREFOX_LIFECYCLE_AND_CONTINUITY_V325.md",
+      "sha256": "e5c170ab294e669e8e2e2e34e808257b72c10dca00f90aea25baefdbb70dd1aa",
+      "claim": "Bounded Firefox non-reproduction, current portal parity and cursor reconciliation; not a Firefox fix or full readiness.",
+      "generated_at": "2026-09-08",
+      "tool": "Node24.20.0 / Microsoft Playwright1.62.1 / Firefox153.0 rev1538 / PowerShell7.6.5",
+      "environment": "Windows local synthetic fixtures; no provider effects or private data",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-36",
+      "path": "reconstruction_evidence/ENTRY_LATENCY_AND_INTERRUPTION_V326.md",
+      "sha256": "4e9fecc31a1aba672de11b7baf3157ed60b44860fd393cbc8f58b92732f0a786",
+      "claim": "Controlled tooling latency and synthetic checkpoint interruption/recovery; not global completion, token savings or full recovery readiness.",
+      "generated_at": "2026-09-08",
+      "tool": "PowerShell7.6.5 / Python3.14.4 / EXECUTION-VALIDATOR1.3.0",
+      "environment": "Windows local, synthetic NEW/EXISTING; immutable thirteen-file source copy, no network or provider effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-37",
+      "path": "reconstruction_evidence/CLI_ENTRY_DIAGNOSTICS_V327.md",
+      "sha256": "a6ab7e72050fcc6e596488a1d9e85f61f030e7d9e1dd352015299930be5707fe",
+      "claim": "Canonical CLI diagnostic repair and executable entry/recovery guidance; not final release or product readiness.",
+      "generated_at": "2026-09-08",
+      "tool": "Python3.14.4 / PowerShell7.6.5 / EXECUTION-VALIDATOR1.3.1",
+      "environment": "Windows local isolated synthetic fixtures; no network or provider effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-38",
+      "path": "reconstruction_evidence/READINESS_REPORT_PUBLICATION_V328.md",
+      "sha256": "2983e86a71b3f4862dc71139490a38ad9a79ca6bc76f421d802c97329f6786db",
+      "claim": "Readiness input diagnosis and exclusive publication repair; not product readiness or final-release acceptance.",
+      "generated_at": "2026-09-08",
+      "tool": "Python3.14.4 / PowerShell7.6.5 / readiness0.6.2",
+      "environment": "Local isolated Windows fixtures; no provider effects or new dependencies",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-39",
+      "path": "reconstruction_evidence/AUTHORITY_MAP_GAP_V329.md",
+      "sha256": "bc3ade6e85ef3838962c65779738f4ad3b0f387f13cc45b57ab6649dd0a0ff08",
+      "claim": "Bounded official-method fit research and authority-map acceptance contract; no implemented generator or product admission.",
+      "generated_at": "2026-09-08",
+      "tool": "CAPABILITY-GAP-RESOLUTION-GATE0.1.0 / Python3.14.4 / official documentation read-only",
+      "environment": "Local maintenance records and public documentation; no upstream code acquisition, execution or provider effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-40",
+      "path": "reconstruction_evidence/RETURN_MULTITAB_VERIFICATION_V330.md",
+      "sha256": "cf165810c6a2af3b494608cff4178f70d9b85dc43e41a852f454e0d8b736d1fa",
+      "claim": "Existing return operations preserve durable uniqueness and intent-matched recovery across tabs in four browser projects; tests-only delta.",
+      "generated_at": "2026-09-08",
+      "tool": "Go1.26.7 / Node24.20.0 / Playwright1.62.1 / PostgreSQL18.6",
+      "environment": "Synthetic loopback fixture, existing Next build with source parity, canonical reconstruction; no providers or product promotion",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-41",
+      "path": "reconstruction_evidence/RETURN_SESSION_BOUNDARIES_V331.md",
+      "sha256": "8aba88fcb5cdec0b495d278d481727ec3a6770db97224d2a62f5f15004ab18d1",
+      "claim": "Existing return recovery respects fixture session permissions, organization and operator storage scopes; no global readiness or completion percentage.",
+      "generated_at": "2026-09-08",
+      "tool": "Go1.26.7 / Node24.20.0 / Playwright1.62.1 / PostgreSQL18.6",
+      "environment": "Local synthetic cookie/JWT/JWKS and PostgreSQL; unchanged product build, two AUTHORED tests reconstructed",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-42",
+      "path": "reconstruction_evidence/PORTABLE_ARCHIVE_PUBLICATION_V332.md",
+      "sha256": "cdaed63e562ab9de6ca1d7292eade17c94d1c0ca1c4a94d25d4ce4c0ef3c968d",
+      "claim": "Portable publisher collision/normal-exception safety and deterministic synthetic ZIP; not final signed release or power-loss proof.",
+      "generated_at": "2026-09-08",
+      "tool": "PowerShell7.6.5 / System.IO.Compression / canonical AST regressions",
+      "environment": "Local synthetic fixtures and clean three-file copy; no complete library archive or external publication",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-43",
+      "path": "reconstruction_evidence/PNPM_NATIVE_SELECTION_V333.md",
+      "sha256": "8da687ad236736d92e8f7842ec1074941d55bd8dc634468fd8578ef26a4fedaf",
+      "claim": "Candidate physical native exclusion and focal compatibility; not canonical runtime admission or release.",
+      "generated_at": "2026-09-08",
+      "tool": "Exact pnpm11.25/Node24.20/OSV2.5.1, local selection/probes",
+      "environment": "Isolated local candidates, public dependency scan, no provider effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-44",
+      "path": "reconstruction_evidence/PNPM_SELECTION_GATE_V334.md",
+      "sha256": "28c3a26c6f3a45d9f20d2f3d30992fa290d59fcc0a0b4f8cfd381eb4ac7e812e",
+      "claim": "Canonical exact candidate projection tooling; not pnpm runtime or redistribution admission",
+      "generated_at": "2026-09-08",
+      "tool": "CPython3.14.4/PowerShell7.6.5 canonical materializer",
+      "environment": "Local Windows, pinned artifact and acquisition receipt, no native execution",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-45",
+      "path": "reconstruction_evidence/PNPM_CONSUMER_ROUTING_V335.md",
+      "sha256": "6d29bd699a2572ef808d8606b20e7563a92f14684373827c9a6d747f7a4eca3e",
+      "claim": "Canonical pinned consumer recipe tooling and isolated candidate evaluation; no runtime or redistribution admission",
+      "generated_at": "2026-09-08",
+      "tool": "CPython3.14.4 / Node24.20 / pnpm11.25 exact / canonical materializer",
+      "environment": "Windows isolated candidate copies; no provider effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-46",
+      "path": "reconstruction_evidence/PNPM_CACHE_FRESHNESS_V336.md",
+      "sha256": "2d8d5dbeb712f36e21b99c19e234b09c862f59e8bad21f4968fb00831c163a9c",
+      "claim": "Exact three-consumer cache refresh and cold offline policy replay; no runtime/license admission",
+      "generated_at": "2026-09-08",
+      "tool": "Pinned pnpm11.25/Node24.20; CPython3.14.4 metadata receipt audit",
+      "environment": "Windows isolated metadata/cache/consumer destinations; public metadata GET only",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-47",
+      "path": "reconstruction_evidence/PNPM_LIFECYCLE_LICENSE_V337.md",
+      "sha256": "e0193d22915e598f2e3b3269bb8cc22df947ed70b501d48fac4324c45f3385cc",
+      "claim": "Governed exact npm-lifecycle licence inspection and scoped opaque transport extension; no runtime admission",
+      "generated_at": "2026-09-08",
+      "tool": "PowerShell7.6.5; CPython3.14.4; Node24.20 builtin signature verify",
+      "environment": "isolated Windows acquisition, no package execution",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-48",
+      "path": "reconstruction_evidence/PNPM_NOTICE_COVERAGE_V338.md",
+      "sha256": "7ba52aa673260f09804de20627f6b4e69a81b8eb4e3ea2bf05efda8a0fd1a946",
+      "claim": "Selected pnpm notice evidence, nested-work gaps and draft collection; no runtime or redistribution admission",
+      "generated_at": "2026-09-08",
+      "tool": "CPython3.14.4 read-only research and independent reconciliation",
+      "environment": "Windows fixed442file projection; no package execution",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-49",
+      "path": "reconstruction_evidence/PNPM_NESTED_LICENSE_SOURCES_V339.md",
+      "sha256": "5f895c21bea60181b9391b20073ca3fdcb75e372fe39427f7af8c9f750c93a6a",
+      "claim": "Fixed nested-source/notice evidence and39-text draft; no complete runtime SBOM or redistribution admission",
+      "generated_at": "2026-09-08",
+      "tool": "CPython3.14.4 hashes, Git blob comparison, TOML/JSON reads",
+      "environment": "Windows read-only metadata/document inspection; selected442files unchanged",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-50",
+      "path": "reconstruction_evidence/PNPM_YARN_UNDICI_NOTICES_V340.md",
+      "sha256": "965db1e4f7b29f525587ac450b4fc5000d9797c35c6ae8bfa10bf005f2157b15",
+      "claim": "Versioned Undici source parity and Yarn tagged notice evidence; registry binding and runtime admission remain open",
+      "generated_at": "2026-09-08",
+      "tool": "CPython3.14.4 bounded metadata/document reads and hash/Gitblob comparison",
+      "environment": "Windows; no package execution;442selected files unchanged",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-51",
+      "path": "reconstruction_evidence/PNPM_SCOPED_SOURCE_CORRESPONDENCE_V341.md",
+      "sha256": "3fd3623ed0b05d9ce45007b69e207541c19f86f61f3b8e3eca42745ea146f45c",
+      "claim": "Five scoped Undici7 AST correspondences and guarded remaining-scope count; not complete module or runtime admission",
+      "generated_at": "2026-09-08",
+      "tool": "Existing Acorn8.14.0/Node24.20.0 and CPython3.14.4; local analysis harness",
+      "environment": "Windows; no upstream source executed; selected442payload unchanged",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-52",
+      "path": "reconstruction_evidence/OBSERVABILITY_DELIVERY_INTEGRATION_V342.md",
+      "sha256": "966235bcd5efd9bf2e94c165201083984bcd24ba76ecdffa54953d1e84c8fdb2",
+      "claim": "Corrected explicit writer delivery boundary and isolated HTTP/file telemetry integration; actual runtime operations remain open",
+      "generated_at": "2026-09-08",
+      "tool": "Go1.26.7 test/vet/build; GO-NATIVE-FUZZ-GATE0.1.0; canonical block reconstruction",
+      "environment": "Windows local HTTP and files; synthetic markers; no providers or product expansion",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-53",
+      "path": "reconstruction_evidence/WHATSAPP_STATUS_REPORTER_V343.md",
+      "sha256": "76790438959f795369bb8ab85c49d7fdd2d45c6ba7e2445e8835f85dc74cf61b",
+      "claim": "Concrete bounded status reporter, real local worker TCP and post-commit report-loss recovery; full Go/fuzz/vet/build and exact reconstruction; service target remains open",
+      "generated_at": "2026-09-08",
+      "tool": "Go1.26.7 test/vet/build; GO-NATIVE-FUZZ-GATE0.1.0; Markdown compositor; SHA-256",
+      "environment": "Windows local PostgreSQL53 migrations and loopback TCP; synthetic fixtures",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-54",
+      "path": "reconstruction_evidence/REFUND_HOST_REPORT_DELIVERY_V344.md",
+      "sha256": "0672bbf7d61a11d24f6ad3cf897a070c08c8ac43ac4999d5670816a9ca00cf75",
+      "claim": "Actual refund host stops on failed report writes; privacy and durable business code preserved; supervisor target remains open",
+      "generated_at": "2026-09-08",
+      "tool": "Go1.26.7 tests/vet/build; finite native fuzz; actual subprocess/binary; clean reconstruction",
+      "environment": "Local synthetic step/sink/HTTP SDK fixtures; no PG/live provider configuration",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-55",
+      "path": "reconstruction_evidence/OPERATIONAL_PROCESS_BOUNDARY_V345.md",
+      "sha256": "195ea4f7fe9ab7f9bd7a786e027ff5be9dfe43ca4bea42867f3c5a0d6a51a5af",
+      "claim": "Finite operational child capture/deadline and private-error correction; full service supervision remains conditioned",
+      "generated_at": "2026-09-08",
+      "tool": "CPython3.14.4 unittest; real subprocess; canonical and67/746composition",
+      "environment": "Windows local synthetic children and refund binary without DB/provider configuration",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-56",
+      "path": "reconstruction_evidence/NATIVE_SUPERVISOR_IO_QUALIFICATION_V346.md",
+      "sha256": "5911529715d7335121393da0e126f4ea6738c076d7006b6e00664c3806d8cfa2",
+      "claim": "Native job-owned bounded I/O and resource qualification; full service-supervisor remains conditioned",
+      "generated_at": "2026-09-08",
+      "tool": "CPython3.14.4 unittest and real Win32 process/job/pipe/allocation probes; exact canonical rebuild",
+      "environment": "Windows x64 build26200 local synthetic processes; no service registration/provider/DB",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-57",
+      "path": "reconstruction_evidence/GOVERNED_NATIVE_LAUNCH_V347.md",
+      "sha256": "9b6bf8defb6692cc8c91c8aee212f3df51ef9e6da714514c98b12fb83088ef78",
+      "claim": "Held main-image identity and governed launch profile qualification; full service admission still conditioned",
+      "generated_at": "2026-09-08",
+      "tool": "CPython3.14.4 Win32 real file/process probes and unittest; canonical rebuild",
+      "environment": "Windows x64 local synthetic processes/files; no provider or service registration",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-58",
+      "path": "reconstruction_evidence/NATIVE_GRACEFUL_SHUTDOWN_V348.md",
+      "sha256": "6a75b5eea6d0ba85d1e77331d77c5b58f8eb72447c817f58139e6edab402f2c3",
+      "claim": "Trusted-worker stop/grace protocol qualification; lifecycle-only observation and full service admission conditioned",
+      "generated_at": "2026-09-08",
+      "tool": "CPython3.14.4 real Win32 events/jobs/processes, unittest and canonical reconstruction",
+      "environment": "Windows x64 synthetic owned processes/files; no service registration/provider effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-59",
+      "path": "reconstruction_evidence/NATIVE_RESULT_PUBLICATION_V349.md",
+      "sha256": "8eb6ee6a1b5211684625fc505e89e67e8a295869cacd4cc3f4922be14bfdb038",
+      "claim": "Local native result publication/process-crash reconciliation; full service/storage admission conditioned",
+      "generated_at": "2026-09-08",
+      "tool": "CPython3.14.4 real Win32 file/process probes, unittest and exact canonical reconstruction",
+      "environment": "Windows x64 trusted local synthetic store/processes; no power-cycle/provider/service registration",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-60",
+      "path": "reconstruction_evidence/NATIVE_WORKER_LIFECYCLE_V350.md",
+      "sha256": "2422a0bf38f2be8bccdb2ece2276e31926057e0841c40eabdc97d269a378bc15",
+      "claim": "Native lifecycle mounted in canonical refund host/processor with synthetic domain only; production integration conditioned",
+      "generated_at": "2026-09-09",
+      "tool": "Go1.26.7 CPython3.14.4 Win32 native probes, finite fuzz and exact canonical rebuild",
+      "environment": "Windows x64; real child processes, synthetic Store/Provider; no PostgreSQL/provider/network effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-61",
+      "path": "reconstruction_evidence/NATIVE_POSTGRES_LIFECYCLE_V351.md",
+      "sha256": "1acda7b02c86c1f1b913b19f393fd52d45945d1a36cf851eb3a2f317fe8654e1",
+      "claim": "Native startup and canonical PostgreSQL-backed refund lifecycle with synthetic provider, eleven cases/restart PASS; service admission conditioned",
+      "generated_at": "2026-09-09",
+      "tool": "Go1.26.7 PostgreSQL18.6 CPython3.14.4 native qualification and exact rebuild",
+      "environment": "Windows x64; owned loopback PostgreSQL, synthetic domain/provider; no external accounts",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-62",
+      "path": "reconstruction_evidence/PORTABLE_CANDIDATE_ACCEPTANCE_V352.md",
+      "sha256": "dcc0ba32799de1fcdd661097e6d4b0716c5ce2dace3de959719a628d8f59faa9",
+      "claim": "TEST06 recovery and TEST08 CLI usability passed on exact complete internal portable candidate148; final release remains blocked and changed payload requires revalidation",
+      "generated_at": "2026-09-09",
+      "tool": "PowerShell7.6.5 Python3.14.4; real packager/extracted verifier/guide/installer/checkpoint and OS sharing-lock injection",
+      "environment": "Windows local; complete archive SHA 0590588c4ab139e86e581b13c1db561f9342462646105c109f190aeefc755085; synthetic NEW/EXISTING; no external effects or final release",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-63",
+      "path": "reconstruction_evidence/ACCEPTANCE_REAUDIT_FX_BOUNDARY_V353.md",
+      "sha256": "d29effc5acfe64d179606eca60e7e8d79dc4ff95956903b50f066ef926020ff8",
+      "claim": "Partial TEST02: FX numeric boundary defect reproduced and corrected with canonical rebuild and rational-oracle fuzz; prior exact candidate148 acceptance independently repeated; no complete core admission or changed release approval",
+      "generated_at": "2026-09-09",
+      "tool": "Go1.26.7 Python3.14.4 PowerShell7.6.5; canonical rebuild/test/vet/build and GO_NATIVE_FUZZ_GATE",
+      "environment": "Windows local; synthetic numeric inputs and NEW/EXISTING fixtures; no external financial/provider effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-64",
+      "path": "reconstruction_evidence/CREDIT_CORE_ISOLATION_V354.md",
+      "sha256": "4f6ac4ec724b8cffb51f46d66179bd690968f8b466c85a7c42ecb289e753d1b4",
+      "claim": "Partial TEST02/03 credit-core boundary and identity repair; four canonical files, red-green/model/concurrency qualification. No complete admission or new release approval",
+      "generated_at": "2026-09-09",
+      "tool": "Go1.26.7 test/vet/build, canonical PowerShell materialization and GO_NATIVE_FUZZ_GATE",
+      "environment": "Windows local synthetic accounts; final fuzz GOMAXPROCS4 GOFLAGS-parallel4; first24worker deadline preserved; no financial/provider effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-65",
+      "path": "reconstruction_evidence/REMINDER_TENANT_API_V355.md",
+      "sha256": "5c556f6e624d16a84f952565705c4994fd626f739ab6a1dde10e17484f7b0b9e",
+      "claim": "Partial TEST02/03: explicit tenant reminder API fixes global read/ack and ID collision; legacy callers rejected; no delivery, persistence or complete admission",
+      "generated_at": "2026-09-09",
+      "tool": "Go1.26.7 test/vet/build, canonical rebuild, GO_NATIVE_FUZZ_GATE",
+      "environment": "Windows local synthetic tenant/time; GOMAXPROCS4 GOFLAGS-parallel4; no provider/network effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-66",
+      "path": "reconstruction_evidence/BASIS_POINT_ARITHMETIC_V356.md",
+      "sha256": "6afcd07ac0f6b11e571763b6a73524ec7343d646569ede644998e4eaef901521",
+      "claim": "Partial TEST02 promotions/payroll arithmetic corrected and qualified against exact integer oracle; no financial or production admission",
+      "generated_at": "2026-09-09",
+      "tool": "Go1.26.7 test/vet/build; canonical materializer and GO_NATIVE_FUZZ_GATE",
+      "environment": "Windows local synthetic integer amounts/rules;4workers; no financial/provider effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-67",
+      "path": "reconstruction_evidence/REFERRAL_IDENTITY_ISOLATION_V357.md",
+      "sha256": "ab42e77fa629c03cd7dd1ed9c2cdab0900dc21cba45577336bd019e7ad3fa842",
+      "claim": "Partial TEST02/03 referral identity corrected, public-API red/green and independent state model; no production admission",
+      "generated_at": "2026-09-09",
+      "tool": "Go1.26.7 test/vet/build; canonical materializer; GO_NATIVE_FUZZ_GATE",
+      "environment": "Windows local synthetic identities;4workers; no provider effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-68",
+      "path": "reconstruction_evidence/MODERATION_WAITLIST_ISOLATION_V358.md",
+      "sha256": "49496730c1af59e9ce8e6f8e9e8a017e7ef1cdfb29e9510cbd94ab1ee2be303e",
+      "claim": "Partial TEST02/03 reviews/waitlist tuple isolation and independent moderation/FIFO models; no production admission",
+      "generated_at": "2026-09-09",
+      "tool": "Go1.26.7 test/vet/build; canonical rebuild and GO_NATIVE_FUZZ_GATE",
+      "environment": "Windows local synthetic identities;4workers; no provider effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-69",
+      "path": "reconstruction_evidence/ONBOARDING_CLAIM_ISOLATION_V359.md",
+      "sha256": "793c46f667860f8b67fd75b4d84356d9a6507a63653de09a0b026410a6a06fce",
+      "claim": "Partial TEST02/03 onboarding/warranty isolation and independent progress/lifecycle models; no production admission",
+      "generated_at": "2026-09-09",
+      "tool": "Go1.26.7 test/vet/build; canonical reconstruction and GO_NATIVE_FUZZ_GATE",
+      "environment": "Windows local synthetic identities;4workers; no real activation/refund",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-70",
+      "path": "reconstruction_evidence/SURVEY_CAMPAIGN_SCOPE_V360.md",
+      "sha256": "d2f897037eb337984d68e0b3e5532a11a60e19a33b177340366c9e335bf33313",
+      "claim": "Partial TEST02/03 survey tuple isolation and marketing scoped API/copy ownership; no dispatch or production admission",
+      "generated_at": "2026-09-09",
+      "tool": "Go1.26.7 test/vet/build; canonical reconstruction; legacy compile-negative; GO_NATIVE_FUZZ_GATE",
+      "environment": "Windows synthetic identities and acknowledgements,4workers; no provider effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-71",
+      "path": "reconstruction_evidence/POS_SLO_BOUNDARIES_AND_DOCKER_SCOPE_V361.md",
+      "sha256": "653d349a82d70e5621c539720a3e06b02599aaaae4d06d756b7bf3e3dbbd694b",
+      "claim": "Partial TEST02/03 checked POS arithmetic/ownership and finite SLO target; Docker scope clarified from native PG receipt, no new target admission",
+      "generated_at": "2026-09-09",
+      "tool": "Go1.26.7 test/vet/build; canonical reconstruction; legacy compile-negative; GO_NATIVE_FUZZ_GATE; local receipt SHA audit",
+      "environment": "Windows synthetic sales/events,4workers; no payment/alert/container effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-72",
+      "path": "reconstruction_evidence/DASHBOARD_HELP_BOUNDARIES_V362.md",
+      "sha256": "e9b63edb491cfbd5bf5995f5d9a1fdcbb62ff01f3cd948877f8445036129c51d",
+      "claim": "Partial TEST02/03: valid dashboard month, article tuple isolation and bounded version; local search/KPI scope corrected, no production admission",
+      "generated_at": "2026-09-09",
+      "tool": "Go1.26.7 test/vet/build; canonical reconstruction; GO_NATIVE_FUZZ_GATE and exact/nested-map models",
+      "environment": "Windows synthetic KPI/article data,4workers; no external publication/search/provider",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-73",
+      "path": "reconstruction_evidence/PUBLIC_CORE_SCOPE_V363.md",
+      "sha256": "fffdba254c56ca5a4eedfec5faddbd7f1fd4e6d624ad4a8694cc129a9ff6c25c",
+      "claim": "Partial TEST02/03: i18n/SEO/social boundary repairs, 21owner census and isolated observability regression; no full admission/equivalence",
+      "generated_at": "2026-09-09",
+      "tool": "Go1.26.7 test/vet/build; canonical reconstruction; legacy compile negatives; GO_NATIVE_FUZZ_GATE; official documentation review",
+      "environment": "Windows synthetic catalog/URLs/posts,4workers; no external publication/URL fetch",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-74",
+      "path": "reconstruction_evidence/YARN_EMBEDDED_ASSET_PROVENANCE_V364.md",
+      "sha256": "72c4e4b57f25094cfb7c749d54e4f9b0f017021b3ed92a1ac2cbe6414ccef5ce",
+      "claim": "Partial TEST03/07: exact embedded Yarn ESM asset and5scoped AST functions; not full package binding or redistribution admission",
+      "generated_at": "2026-09-09",
+      "tool": "Existing Node24.20.0/Acorn8.14.0; Brotli data extraction, Git blob and independent byte checks",
+      "environment": "Windows local existing primary evidence; no package execution or acquisition",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-75",
+      "path": "reconstruction_evidence/CORE_COMPATIBILITY_AUDIT_V365.md",
+      "sha256": "728ac768a70cb63eedb85956960eff72cc114ab99a751f36f3020ed4c85b3af0",
+      "claim": "Partial TEST02:21core suite/coverage and six compatibility metadata corrections; no enterprise equivalence or admission",
+      "generated_at": "2026-09-09",
+      "tool": "Go1.26.7 test -json/-coverprofile,vet,build,list-deps; canonical reconstruction and exact-source digests",
+      "environment": "Windows isolated stdlib-only analysis; no new runtime, external effects or production composition",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-76",
+      "path": "reconstruction_evidence/HISTORY_TRAINING_SCOPE_CORRECTION_V366.md",
+      "sha256": "2c64dafe1b6d2a4b0f90741779610d852d92e757611a6bf742c6a3a4e445eb4b",
+      "claim": "User-authorized correction of LIB-R10/REQ05/TEST09 ownership and explicit training purpose; not executable capability or completed test",
+      "generated_at": "2026-09-09",
+      "tool": "Contract diff and unchanged-source hashes; execution validator",
+      "environment": "Library maintenance, no customer corpus/model/training job",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-77",
+      "path": "reconstruction_evidence/HISTORY_TRAINING_SOURCE_RESEARCH_V367.md",
+      "sha256": "afe15ce3e0ef9031d44cc199dcd27715fe36e1529b6bf3a01de9f110b360dec8",
+      "claim": "Official training source discovery: pinned metadata, static paths and real gap rejection; no training capability admission or full SCA",
+      "generated_at": "2026-09-09",
+      "tool": "Primary source reads, registry/GitHub/OSV metadata and reconstructed capability gap validator",
+      "environment": "Library maintenance; no private dataset, code acquisition, installed framework or training job",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-78",
+      "path": "reconstruction_evidence/TRAINING_SOURCE_IDENTITY_AND_CLOSURE_V368.md",
+      "sha256": "4c6b1640d28aa853aba017a9dcef06db417da092a9fd7c6c52845492fa1a7455",
+      "claim": "Complete Git-metadata identity comparison of TRL1.11/1.12, only VERSION changed; clarification of functional library closure; not artifact/runtime admission",
+      "generated_at": "2026-09-09",
+      "tool": "Official GitHub commit/tree/compare metadata and local comparison",
+      "environment": "Library maintenance; no source archive acquisition, installed trainer or private corpus",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-79",
+      "path": "reconstruction_evidence/TRAINING_SOURCE_ACQUISITION_V369.md",
+      "sha256": "91d5f701ef8ec076d3ae69a6f861e4577e3311ebf4bd39ed2c8a56006d8ea2f6",
+      "claim": "Governed opaque training-source acquisition, archive/license/Git correspondence and98transport checks; not training runtime or pipeline admission",
+      "generated_at": "2026-09-09",
+      "tool": "Reconstructed acquisition core0.4.80, bounded TAR inspection and metadata/Git blob comparison",
+      "environment": "Windows library maintenance, no framework installed/executed or private corpus/model",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-80",
+      "path": "reconstruction_evidence/TRAINING_DEPENDENCY_GRAPH_V370.md",
+      "sha256": "6b3889887c59633a2b90b5eb18225753bbf4c8eef5905212296954304d2ed743",
+      "claim": "59-distribution candidate graph/103active edges,59hash-verified metadata,pip resolution+2negatives,OSV package query; no binary/runtime/training admission",
+      "generated_at": "2026-09-09",
+      "tool": "pip26.0.1 dry-run over upstream metadata plus official registry/OSV/provenance probes",
+      "environment": "WindowsCPython3.14.4; no model/corpus/wheels/install/framework execution",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-81",
+      "path": "reconstruction_evidence/TRAINING_WHEEL_QUARANTINE_V371.md",
+      "sha256": "c0c36e52b3db9a60c529e16677da943fd4f195137a8733d7eccb83e8d2f69d02",
+      "claim": "Governed quarantine transport and59actual wheel inspections; embedded component advisories and official fix candidate, not runtime/training/security admission",
+      "generated_at": "2026-09-09",
+      "tool": "Reconstructed acquisition core0.4.81, bounded ZIP/RECORD inspection and OSV official advisory triage",
+      "environment": "Windows maintenance, no frameworks installed/executed or private corpus/model",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-82",
+      "path": "reconstruction_evidence/INTEGRATED_TELEMETRY_CONTROL_V372.md",
+      "sha256": "e82626180349fad47ef8d8ecc604d12027998863128b3c0f37cce71ca1f50f21",
+      "claim": "Actual reference main/CLI integrated telemetry, mutual TLS, three signals, alerts, bounded load/retention and recovery; canonical Preflight195 passed all executed steps. Closes only TEST05 in library maintenance scope, not production or integral security acceptance.",
+      "generated_at": "2026-09-10",
+      "tool": "Reconstructed refund0.1.5/reference0.1.0 and official-source minimal Collector0.160.0/Prometheus3.14.0",
+      "environment": "Trusted Windows x64, Go1.26.8, Python3.14, fresh owned PostgreSQL18.6, synthetic reference data only",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-83",
+      "path": "reconstruction_evidence/HISTORY_TRAINING_SDK_QUALIFICATION_V373.md",
+      "sha256": "01ced1c242f852de2e314c446c8ed00dcac58ae393fa243f928fbcd48db1336d",
+      "claim": "V373 SDK/pipeline scope qualification; final TEST09 closure only as explicitly recorded, no consumer or integral security admission",
+      "generated_at": "2026-09-10",
+      "tool": "Canonical reconstruction, policy/native gates and actual official SFT qualification",
+      "environment": "Trusted Windows x64; synthetic fixture only",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-84",
+      "path": "reconstruction_evidence/HISTORY_TRAINING_SDK_GAP_V373.md",
+      "sha256": "be5058cbc0f7b1d8f1ef4d36d511e86592a0f570dab285b667fdf18efa1a2ea6",
+      "claim": "V373 SDK/pipeline scope qualification; final TEST09 closure only as explicitly recorded, no consumer or integral security admission",
+      "generated_at": "2026-09-10",
+      "tool": "Canonical reconstruction, policy/native gates and actual official SFT qualification",
+      "environment": "Trusted Windows x64; synthetic fixture only",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-85",
+      "path": "reconstruction_evidence/HISTORY_MODEL_TRAINING_CONTROL_V373.md",
+      "sha256": "d5fad645b4b595b691601921d7fd98154797d65c9b50b925e36237b4f2887e6c",
+      "claim": "TEST09 library closure: actual reusable NEW/EXISTING pipeline,27policy regressions,58wheel clean bootstrap, actual SFT/evaluation/13negative/timeout, immutable audit and empty/existing-baseline local rollback; final Preflight200160executed steps PASS. No consumer corpus/model quality, full security or deployment inheritance.",
+      "generated_at": "2026-09-10",
+      "tool": "Canonical reconstruction, policy/native gates and actual official SFT qualification",
+      "environment": "Trusted Windows x64; synthetic fixture only",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-86",
+      "path": "reconstruction_evidence/CORE_CLAIM_ADMISSION_V374.md",
+      "sha256": "26eca8f36241bd3bc2197b93128315fdb03ca495764201ca5a7638cca04be271",
+      "claim": "V374 source/reference audit of21cores,228tests,23final fuzz campaigns,20core composition, candidate rejection and13binding negatives; fullPreflight202160executed steps PASS. Checkpoint203 premature TEST02 promotion is retracted by204: FAIL385 integration remains open and TEST02 remains blocked. Successor207 additionally fixes the low-traffic alert denominator in SECUREOPS1.1.4 with canonical9scenarios/13assertions and fullPreflight206162steps/55compositions PASS; whole TEST02 remains blocked.",
+      "generated_at": "2026-09-10",
+      "tool": "Canonical Go1.26.8 reconstruction/fuzz, primary-source comparisons and PowerShell compositor",
+      "environment": "Windows x64, trusted private synthetic reference only; no providers or consumer data",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-87",
+      "path": "reconstruction_evidence/HTTP_SLI_ALERT_INTEGRATION_V375.md",
+      "sha256": "f6081139c6158a40b6cedb6147f3f3effe48cb48b9bab4d0b3bbe7da7b2bd42c",
+      "claim": "Actual HTTP/PostgreSQL metrics, sparse canonical alert, repair/replay and byte-identical complete-profile rebuild; narrow reference only,45/48 unchanged",
+      "generated_at": "2026-09-10",
+      "tool": "Official OTel/Prometheus, Go1.26.8, canonical compositor, finite Python harness",
+      "environment": "Trusted local Windows x64; owned synthetic PostgreSQL reference",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-88",
+      "path": "reconstruction_evidence/NEXT_SHARP_SECURITY_REPAIR_V376.md",
+      "sha256": "586a92e93cebcde4fffb63657a798122f53b1a6566b247f4ee3cb28757a6a436",
+      "claim": "Exact Next/Sharp advisory repair, authenticated artifacts, declared graph SCA and connected browser regressions; whole controls and native admission remain blocked",
+      "generated_at": "2026-09-10",
+      "tool": "Canonical materializer, exact Node/pnpm/Go, Sigstore, OSV and finite PostgreSQL/browser harness",
+      "environment": "Owned synthetic local Windows x64; no providers or consumer data",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-89",
+      "path": "reconstruction_evidence/PUBLIC_WEB_METADATA_INTEGRATION_V377.md",
+      "sha256": "6724514bfd4bf871c35b9d1bfa27b5bacb67ae03cf1d4388b7046ce185468288",
+      "claim": "Actual public metadata HTTP integration,137tests,three runtime configurations and current per-browser qualification; original Firefox teardown failure retained, whole controls unchanged",
+      "generated_at": "2026-09-10",
+      "tool": "Exact Next16.3.4, canonical materializer, Python HTTP probe and Go/PostgreSQL/Playwright",
+      "environment": "Synthetic isolated Windows x64; no publishing, providers or customer data",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-90",
+      "path": "reconstruction_evidence/PUBLIC_JOURNEY_LOCALIZATION_V378.md",
+      "sha256": "c64b8dbf02921b1c396c10f0f7820bd35c1de090d46d6e16c1c82306b37cc445",
+      "claim": "Actual localized public journey,12browser/configuration cases and exact durable lead/appointment effects, without broader control promotion",
+      "generated_at": "2026-09-10",
+      "tool": "Exact Node/Next/Intl, Go/PostgreSQL/Playwright and canonical materializer",
+      "environment": "Synthetic owned loopback Windows x64",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-91",
+      "path": "reconstruction_evidence/VERSIONED_JOURNEY_HELP_V379.md",
+      "sha256": "f3459c53cb30240fff5091f4c1c3c406b426f8068c1fdc0e1c7d7ed0f8782f9e",
+      "claim": "Actual read-only versioned operational help with role filtering, session and browser recovery, without CMS/training or whole control promotion",
+      "generated_at": "2026-09-10",
+      "tool": "Exact Node/Next/JWE, Go stdlib TLS fixture, Playwright and canonical materializer",
+      "environment": "Synthetic owned HTTPS loopback Windows x64",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-92",
+      "path": "reconstruction_evidence/VERSIONED_HELP_ROLE_COVERAGE_V380.md",
+      "sha256": "c3cc62711c9cf54f93ae6e2747fd1acb643a7718f66bf240b847110b8c30da8d",
+      "claim": "All15existing versioned guides indexed with exact role/source coverage and browser recovery; no broader CMS/training/control promotion",
+      "generated_at": "2026-09-10",
+      "tool": "Next/JWE, Playwright, React SSR, exact canonical materializer and source parity",
+      "environment": "Synthetic owned HTTPS loopback Windows x64",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-93",
+      "path": "reconstruction_evidence/ROLE_WORKSPACE_INTEGRATION_V381.md",
+      "sha256": "09cd8040458938845d22cc6c9781ddd74e67fd415ddcc259000b9f77556133a1",
+      "claim": "Session-filtered role workspace integrated and browser-qualified; no employee activation/training/control promotion",
+      "generated_at": "2026-09-11",
+      "tool": "Next/JWE, Playwright, exact canonical reconstruction and artifact parity",
+      "environment": "Synthetic owned HTTPS loopback Windows x64",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-94",
+      "path": "reconstruction_evidence/PRIVATE_PORTAL_READS_V382.md",
+      "sha256": "66aa7fa92be45757532a558a118065a18c01ca4a19f197aba4c28b48b088ffe2",
+      "claim": "Private portal read permission and minor-unit display repair with actual Go/JWKS/PostgreSQL/browser evidence; no full-control promotion",
+      "generated_at": "2026-09-11",
+      "tool": "Next/JWE, Playwright, actual Go/JWKS/PostgreSQL, exact formatter extraction and canonical reconstruction",
+      "environment": "Synthetic owned loopback Windows x64",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-95",
+      "path": "reconstruction_evidence/PRIVATE_READ_RECOVERY_V383.md",
+      "sha256": "be928bb3332664877cec5e86127d8c0f64d1084f8af1c1e59c48b83c55370e58",
+      "claim": "Private read denial and explicit GET recovery in three portals with actual Go/JWKS/PostgreSQL/browser evidence; no full-control promotion",
+      "generated_at": "2026-09-11",
+      "tool": "Next/JWE, Playwright, actual Go/JWKS/PostgreSQL and canonical reconstruction",
+      "environment": "Synthetic owned loopback Windows x64",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-96",
+      "path": "reconstruction_evidence/SHARP_NATIVE_INPUT_CORRESPONDENCE_V384.md",
+      "sha256": "f3f4226d1fa925f952e5db08193b160eb322a463a59d362df63d8bf50fde8f04",
+      "claim": "Signed native build-input DLL/version/notice correspondence and governed opaque acquisition; no full native security or redistribution admission",
+      "generated_at": "2026-09-11",
+      "tool": "Official Git blob inspection, npm/Sigstore verification, bounded opaque acquisition and exact archive/installed byte comparison",
+      "environment": "Owned Windows x64 quarantine, no new runtime execution",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-97",
+      "path": "reconstruction_evidence/MXE_NATIVE_ORIGIN_V385.md",
+      "sha256": "38eabec90e45c15a8c14805c0259678014f5b44bdd148683822d10dbae7757c1",
+      "claim": "Exact MXE ZIP/DLL/version/license correspondence and28component recipe checksums; no historical reproducible build/full native admission",
+      "generated_at": "2026-09-11",
+      "tool": "Pinned Git blobs, bounded governed artifact acquisition and ZIP byte comparison",
+      "environment": "Owned Windows x64 read-only native quarantine",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-98",
+      "path": "reconstruction_evidence/CURRENT_PORTABLE_CANDIDATE_ACCEPTANCE_V392.md",
+      "sha256": "678c0abc25a6b960c8ba8b873614e75c62177ff371a0fdb0d75d4cfe340227b0",
+      "claim": "TEST06/08 revalidated on exact internal candidate247; deterministic packaging, actual guide/installer and rollback; no TEST07 or production approval",
+      "generated_at": "2026-09-11T18:10:46.347646Z",
+      "tool": "Existing canonical packager, extracted guide/bridge/validators and preserved V352 acceptance harness",
+      "environment": "Local Windows, synthetic NEW/EXISTING, no external business effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-99",
+      "path": "reconstruction_evidence/OPTIONAL_IMAGE_DEPENDENCY_CONTAINMENT_V393.md",
+      "sha256": "a32d864d1cfcb211a39f186a0ccdd2fedddee61a5486432bfcc671cb3b570741",
+      "claim": "Unused optional image closure omitted with exact remaining artifacts, frozen install, full connected regression and canonical rebuild; whole controls remain blocked",
+      "generated_at": "2026-09-11",
+      "tool": "Pinned pnpm/Node/Go, official OSV API, actual browsers/PostgreSQL and canonical materializer",
+      "environment": "Isolated local Windows x64 and synthetic loopback data",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-100",
+      "path": "reconstruction_evidence/PNPM_CURRENT_ROUTING_NOTICES_V394.md",
+      "sha256": "cc5dd1d134701cc72e566d2551b563998effa278ab13cea27db658cecee7626f",
+      "claim": "Current pinned consumer routing repair and five-package supplemental notice with verified local delivery; no whole runtime/license admission",
+      "generated_at": "2026-09-11",
+      "tool": "Canonical materializer, strict recipe verifier, actual pinned projection and Windows unit/mutation tests",
+      "environment": "Owned local Windows; no pnpm execution or external effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-101",
+      "path": "reconstruction_evidence/QRCODE_VENDOR_NOTICE_DELIVERY_V395.md",
+      "sha256": "21c6b24591da113f9d5b5c5adcb52d97c504f5fc4c850eba35b7d1cdfdd1c227",
+      "claim": "Complete QRCode vendor author/permission notice delivered and tamper-checked in three local recipes; no whole pnpm license/runtime admission",
+      "generated_at": "2026-09-11",
+      "tool": "Fixed Git blobs, OSI permission text, canonical materializer and actual pinned recipe verification",
+      "environment": "Owned Windows local evidence and isolated fresh consumers; no pnpm execution",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-102",
+      "path": "reconstruction_evidence/SEMVER_ORIGINAL_LICENSE_DELIVERY_V396.md",
+      "sha256": "ed642d77adcce5ceb396382a25211f9eccff6f7a864b00229d093db42ca9ce21",
+      "claim": "Original semver-utils dual-license file acquired in exact quarantine and delivered under full MIT option in three verified local recipes; no whole pnpm admission",
+      "generated_at": "2026-09-11",
+      "tool": "Official npm metadata/SHA512 quarantine, bounded original-member inspection, canonical materialization and actual recipe verification",
+      "environment": "Owned Windows isolated evidence, expired registry key explicitly recorded; new recipes not executed",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-103",
+      "path": "reconstruction_evidence/PNPM_RETAINED_NOTICE_DELIVERY_V397.md",
+      "sha256": "3f7e5df7bfa7543f1ff42c953e901a00c03ad5a21cfea55f08c38004341587f6",
+      "claim": "All47previously retained notice/text copies delivered verbatim to3current recipes, preserving research qualifiers; no complete license or source/relinking clearance",
+      "generated_at": "2026-09-11",
+      "tool": "Pinned catalogue, canonical materializer,82tests and independent141copy delivery inspection",
+      "environment": "Owned Windows local evidence; no package execution, runtime replacement or external distribution",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-104",
+      "path": "reconstruction_evidence/NEXT_PATH_MPL_SOURCE_DELIVERY_V398.md",
+      "sha256": "14aeb5395353efb6703bd08a9af5e134bf3abdf9e430d18749cb7147a7c7c708",
+      "claim": "Original next-path source, manifest and complete MPL delivered to3recipes; structural correspondence under explicit adapters only, no runtime or whole-bundle clearance",
+      "generated_at": "2026-09-11",
+      "tool": "Fixed Git source/blob receipts, Acorn structural comparison, canonical materializer,90tests and9copy independent inspection",
+      "environment": "Owned Windows local evidence; no next-path execution, runtime replacement or external distribution",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-105",
+      "path": "reconstruction_evidence/CURRENT_CLOSURE_BOUNDARIES_V399.md",
+      "sha256": "2bae61f85f33792d019a32b6a88a69522705cfd185dc2437393be89cf9ad6c0d",
+      "claim": "Current closure boundaries reconciled;21packs/42sources unchanged from V374, no functional or security promotion",
+      "generated_at": "2026-09-11",
+      "tool": "Exact SHA256 source and pack comparison; existing contract and primary local receipts",
+      "environment": "Read-only local audit; no runtime suite, provider effect or release",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-106",
+      "path": "reconstruction_evidence/CONNECTED_CUSTOMER_SURVEYS_V400.md",
+      "sha256": "29970739d1d1e8d77a22c12619677f4fd0dcb491a6149b2c07ddcb394c4f2ca9",
+      "claim": "Connected customer survey reference: scoped PostgreSQL/OIDC/browser recovery and bounded retention; CONDITIONED, no full control promotion",
+      "generated_at": "2026-09-11",
+      "tool": "Go1.26.8/PostgreSQL18.6/Next16.3.4/Playwright/fuzz",
+      "environment": "Owned disposable local fixture, synthetic only",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-107",
+      "path": "reconstruction_evidence/PNPM_ZIP_CONTAINMENT_V401.md",
+      "sha256": "dacf2feacc1fd543524c3120b2c4809a6ef6f171ffd464b21f4e2cdd53028418",
+      "claim": "Exact pnpm ZIP-removal containment with bounded no-IO boundary and three real frozen offline installs; no whole runtime admission",
+      "generated_at": "2026-09-11",
+      "tool": "Canonical9file materialization, Node24.20.0, OSV2.5.1, three offline consumers and actual Preflight function",
+      "environment": "Isolated local maintenance; three initial installs offline; first Next dispatch downloaded71, corrected dispatch offline;12571installed files identical; no provider or production",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-108",
+      "path": "reconstruction_evidence/LIBRARY_READINESS_PREPARATION_V402.md",
+      "sha256": "f64a63fe3f5e370cc79973191e74fbbb5418c7749d4718212ce2d048521a0170",
+      "claim": "Explicit library-preparation gate with102 tests and11 exact rebuilt files; remaining source/dependency/integration gaps preserved; no final release or production approval",
+      "generated_at": "2026-09-11",
+      "tool": "PROJECT-START-READINESS-VALIDATOR0.7.0, exact canonical materialization",
+      "environment": "Local library maintenance, synthetic validator fixtures; no live effects",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-109",
+      "path": "reconstruction_evidence/BC_EXACT_AMOUNT_ADAPTATION_V402.md",
+      "sha256": "ddb43950c42562048927febf09877ed30f76d7a619410ae19e5973a165ad0e62",
+      "claim": "Narrow BC-derived amount/balance/reversal, real callers, bounded fuzz and23exact rebuilt outputs; remaining business provenance unpromoted",
+      "generated_at": "2026-09-11",
+      "tool": "Fixed runtime and exact source/artifact receipts detailed in evidence",
+      "environment": "Owned local library maintenance and synthetic fixtures, no live accounts or production",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-110",
+      "path": "reconstruction_evidence/REFUND_PROVIDER_ALIAS_COMPATIBILITY_V402.md",
+      "sha256": "61df8bf53421634180bd0d126a15e1dd9e9bfbd50ac8effb8e94616d867b27aa",
+      "claim": "Refund provider alias mapping with real PG/SDK fixtures and25exact rebuilt files",
+      "generated_at": "2026-09-11",
+      "tool": "Fixed runtime and exact source/artifact receipts detailed in evidence",
+      "environment": "Owned local library maintenance and synthetic fixtures, no live accounts or production",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-111",
+      "path": "reconstruction_evidence/PAYMENT_SDK_RECONCILIATION_V402.md",
+      "sha256": "0f2c9be1cbb5d34840ec8d779cdbfde210278131454e02297b801d6205127e7c",
+      "claim": "Official dependency-pinned hosted checkout and payment GET adapter0.3.0; SDK transport tests and source/SCA/12file reconstruction",
+      "generated_at": "2026-09-11",
+      "tool": "Fixed runtime and exact source/artifact receipts detailed in evidence",
+      "environment": "Owned local library maintenance and synthetic fixtures, no live accounts or production",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-112",
+      "path": "reconstruction_evidence/PAYMENT_PERSISTENCE_PROGRESS_V402.md",
+      "sha256": "9a773fa769549d930734fdb689028cdf84d6ff020a1851cc59e2b6694c8542a4",
+      "claim": "Payment persistence candidate regression corrections and atomic scope/dispatch admission; staging, not whole connected release",
+      "generated_at": "2026-09-11",
+      "tool": "Fixed runtime and exact source/artifact receipts detailed in evidence",
+      "environment": "Owned local library maintenance and synthetic fixtures, no live accounts or production",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-113",
+      "path": "reconstruction_evidence/BC_SALES_CONTRACT_ADAPTATION_V402.md",
+      "sha256": "9521e375e7aaee14ee8c17b8a3af2e6ad99bd2763552946872bf2d4abb95e1d9",
+      "claim": "Narrow official BC sales derivation, caller proof and47exact outputs; no whole-core equivalence",
+      "generated_at": "2026-09-11",
+      "tool": "Fixed runtime and exact source/artifact receipts detailed in evidence",
+      "environment": "Owned local library infrastructure, synthetic provider fixtures, no live accounts or production",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-114",
+      "path": "reconstruction_evidence/BUSINESS_POLICY_PROFILE_V402.md",
+      "sha256": "671fc76aba4c5f3d92008aea4dfe385f8620fc39cb6ea5295d164b383c4639a5",
+      "claim": "Immutable configuration and exact shared host binding; policy/Commerce/Journey reconstruction and own tests",
+      "generated_at": "2026-09-11",
+      "tool": "Fixed runtime and exact source/artifact receipts detailed in evidence",
+      "environment": "Owned local library infrastructure, synthetic provider fixtures, no live accounts or production",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-115",
+      "path": "reconstruction_evidence/CONNECTED_PAYMENT_HANDOVER_V402.md",
+      "sha256": "288994c86be3f797ff3b27ac2831c4368452ac3583c774a7eaeb8e5affa5fae2",
+      "claim": "77pack/915file exact reference;16connected PG tests,25enumerated unit/host cases, bounded fuzz, fixedSDK recovery and durable commercial receipt; broader gates remain open",
+      "generated_at": "2026-09-11",
+      "tool": "Fixed runtime and exact source/artifact receipts detailed in evidence",
+      "environment": "Owned local library infrastructure, synthetic provider fixtures, no live accounts or production",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-116",
+      "path": "reconstruction_evidence/CONNECTED_DELTA_ASSURANCE_V402.md",
+      "sha256": "734da8551196755b5934e3b2dba28764bcd4ffe69b0879e6794cacca6655e43f",
+      "claim": "82file source/role assurance and46receipts; G4 local proven, G5â€“G8 broader gates explicit, histories and one out-of-scope skip preserved",
+      "generated_at": "2026-09-11",
+      "tool": "Fixed runtime and exact source/artifact receipts detailed in evidence",
+      "environment": "Owned local library infrastructure, synthetic provider fixtures, no live accounts or production",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-117",
+      "path": "reconstruction_evidence/HANDOVER_BROWSER_V402.md",
+      "sha256": "4f81def7578814f24c539f2870c0f5edb9448e7413acde3ac88c94033fcce637",
+      "claim": "Delivery browser/BFF/Go/PostgreSQL,65 focused tests and933 exact files; other roles and broader gates remain open",
+      "generated_at": "2026-09-11",
+      "tool": "Fixed runtime and exact source/artifact receipts detailed in evidence",
+      "environment": "Owned local library infrastructure, synthetic provider fixtures, no live accounts or production",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-118",
+      "path": "reconstruction_evidence/FACTORY_BROWSER_V402.md",
+      "sha256": "82eba2d9521b04a31778f846b759689cca26af2374c84aad76174a163323ca3e",
+      "claim": "Factory browser/BFF/Go/PostgreSQL,18 focused tests and943 exact files; concurrent-state observation without false receipt",
+      "generated_at": "2026-09-11",
+      "tool": "Fixed runtime and exact source/artifact receipts detailed in evidence",
+      "environment": "Owned local library infrastructure, synthetic provider fixtures, no live accounts or production",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-119",
+      "path": "reconstruction_evidence/BACKEND_DEPENDENCY_CLOSURE_V402.md",
+      "sha256": "63a932de03105a1b2324e670713953ad12f104daccd3261b90980d80e919ab70",
+      "claim": "Independent backend checkout dependency correction; historical39/531build and current composition follow-up",
+      "generated_at": "2026-09-11",
+      "tool": "Fixed runtime and exact source/artifact receipts detailed in evidence",
+      "environment": "Owned local library infrastructure, synthetic provider fixtures, no live accounts or production",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-120",
+      "path": "reconstruction_evidence/EXACT_FX_SNAPSHOT_V402.md",
+      "sha256": "45c613ea847a4bd6f97341c94660dd1d86a91bfed3899ed2134ea076d7349a2e",
+      "claim": "Exact sourced FX snapshot conversion receipt, official revisions and connected PG; no journal posting claim",
+      "generated_at": "2026-09-11",
+      "tool": "Fixed runtime and exact source/artifact receipts detailed in evidence",
+      "environment": "Owned local library infrastructure, synthetic provider fixtures, no live accounts or production",
+      "status": "captured"
+    },
+    {
+      "id": "EVID-121",
+      "path": "reconstruction_evidence/COMMUNICATIONS_RUNTIME_V402.md",
+      "sha256": "988e11bb9a60b6a1ffe1f14264d49aaf941c1ddc396c16ce1c2874c3c4386dda",
+      "claim": "Connected WhatsApp human browser/PG, renewable OIDC service identity and Meta Page host;1032 exact franchise outputs",
+      "generated_at": "2026-09-11",
+      "tool": "Fixed runtime and exact source/artifact receipts detailed in evidence",
+      "environment": "Owned local library infrastructure, synthetic provider fixtures, no live accounts or production",
+      "status": "captured"
+    }
+  ]
+}
