@@ -1,3 +1,20 @@
+# Franchise gap map — lectura por alcance
+
+## Referencia local V402 aceptada
+
+**READY_FOR_LIBRARY_USE / LIBRARY_INFRASTRUCTURE / LOCAL_FIXTURES**, ejecución337 COMPLETE. T2801–T2810 y ARCA_INFRA: PROVEN_LOCAL; TEST02/03/07 PASS en el alcance local y 48/48 controles. Producción no autorizada. El gate de producto permanece DISCOVERY/BLOCK y Daybreak/libxml2 ACCESS_BLOCKED diferido.
+
+Este estado corresponde a los [artefactos V402 identificados por SHA](../README.md#dos-zips-cuál-usar-para-qué). El pulido público no incorpora los cambios de implementación pendientes de publicación. El [expediente de gates](../reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md) fija el límite. El bloque superior del gap map canónico ligado al checkpoint337 permanece sin modificar.
+
+## Registro histórico conservado
+
+> **HISTÓRICO — NO VIGENTE — no usar para estado actual**
+>
+> Todo el contenido desplegable siguiente, incluidas sus tablas, porcentajes, expresiones «actual/vigente», T280x pendientes y siguientes acciones, conserva el estado de su revisión original. No reabre ni sustituye el cierre local337.
+
+<details>
+<summary>HISTÓRICO — NO VIGENTE — no usar para estado actual</summary>
+
 # Franchise Gap Map — cobertura conectada y brechas reales
 
 Estado vigente V401 / checkpoint272, 2026-09-11. Owner: roadmap sección10.
@@ -462,3 +479,5 @@ V402 delivery browser closure: initial preparation→existing checklist→custom
 V402 factory operational tracking now has actual scoped UI→BFF→Go→PG effect and concurrent-state recovery. Source writer/domain unchanged. This does not close stock/supply/QC/full factory operations. Resource employee/contractor creation already exists but is narrower than general people/IdP provisioning; training/evaluation remains open. See FACTORY_BROWSER_V402.md.
 
 V402 connected increment: WhatsApp raw inbox→scoped runtime→human proposal/review→fenced send→status/recovery and real browser closed locally, including renewable service identity and explicit host. Facebook Page text publishing has a dedicated scheduled/reviewed SDK host with GET-only recovery; broader networks are not inferred. FX snapshot conversion receipt is wired and proven, but does not yet post a journal. T2807 durable model budget, user-portal identity lifecycle, broader domain/T2804 and current global security/operations remain open. Six affected plans reconstruct exactly; franchise82/1032. See COMMUNICATIONS_RUNTIME_V402.md.
+
+</details>

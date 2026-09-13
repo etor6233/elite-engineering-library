@@ -1,14 +1,22 @@
-# START_FRANCHISE — arrancar una franquicia desde cero
+# START_FRANCHISE — arrancar desde la copia elegida
 
-La fuente canónica permanece en esta carpeta y el producto se materializa en un destino separado. La aceptación de infraestructura se consulta en `PROJECT_LIBRARY_READINESS_GATE.json`, modo `LIBRARY_INFRASTRUCTURE`, nivel `release`: el resultado exigido es `READY_FOR_LIBRARY_USE`. `READY_FOR_LIBRARY_WORK` sólo autoriza continuar mantenimiento; ninguno autoriza producción. El contrato vigente es `reconstruction_evidence/LIBRARY_INFRA_SCOPE_V402.md`. Esta guía no constituye una declaración de HECHO mientras ese gate no pase.
+## Qué está listo / Qué NO está listo
+
+La **referencia local V402** está `READY_FOR_LIBRARY_USE`, ejecución337 COMPLETE, en `LIBRARY_INFRASTRUCTURE / LOCAL_FIXTURES`. El gate de producto `PROJECT_READINESS_GATE.json` conserva `DISCOVERY` y `platform_mode=BLOCK`; no se lo promueve ni se transfieren las aprobaciones del mantenimiento al target.
+
+Para reutilizar exactamente el perfil aceptado, extraer el ZIP de biblioteca distribution336 de la [tabla única de artefactos](README.md#dos-zips-cuál-usar-para-qué). El ZIP firmado de producto sirve para verificar y usar la referencia local. Los comandos siguientes se ejecutan desde la raíz de la copia elegida; un checkout público anterior con este pulido documental no equivale a la instantánea V402.
+
+El Preflight genérico permanece BLOCKED por pnpm general rechazado y Docker ausente. La referencia V402 se probó con el instalador restringido y PostgreSQL nativo admitidos. Live y aceptación del target siguen pendientes; ARCA está completa en infraestructura/fixtures y espera credenciales para conectarse. Daybreak/libxml2 sigue diferido. El checklist de cuentas queda vacío: no se pide ningún secreto en este pulido.
+
+En la instalación local, abrir `Desktop/Elite Franchise Reference V402/START_REFERENCE_V402.md` y `qualification/FINAL_LIBRARY_READY_V402.json` dentro de esa carpeta. La [separación de gates](reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md) explica FAIL384 y las fuentes. Ningún paso siguiente obliga a reabrir el mantenimiento337 ya completo; aplica al proyecto consumidor y a la revisión que elija.
 
 ## Paso 0 — Separar biblioteca y producto
 
 Conservá la biblioteca en una ubicación estable y elegí un destino de producto separado. No hace falta Git. Ejemplo PowerShell 7 para una carpeta nueva:
 
 ```powershell
-$libraryPath = 'C:\Users\NL\Desktop\Public Elite Codes'
-$projectPath = 'C:\Users\NL\Desktop\Mi Franquicia'
+$libraryPath = (Get-Location).ProviderPath # Ejecutar desde la raíz de la copia elegida.
+$projectPath = Join-Path (Split-Path -Parent $libraryPath) 'Mi Franquicia'
 New-Item -ItemType Directory -Path $projectPath -ErrorAction Stop
 ```
 
@@ -38,7 +46,7 @@ decile:
    existe exige inventario/delta y en cada retorno carga sólo el contexto necesario.
 4. **Referencia local** → materializa y verifica con fixtures, sin cuentas del usuario. El modo `LIBRARY_INFRASTRUCTURE` se usa para la biblioteca; el readiness `PROJECT` sigue aplicando al target y no hereda autorización productiva.
 5. **Composición** (`markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md`) → su bloque JSON fija el inventario y las versiones; el recibo del compositor debe coincidir con la revisión aceptada. No usar cifras históricas como inventario ni llamar productivo al resultado local.
-6. **Migraciones y gates de esa revisión** → `go test ./...`, `go vet`, `go build`, PostgreSQL real y frontend con runtime admitido por digest. El pnpm publicado 11.25.0 está rechazado según V401; el candidato ZIP-disabled conserva alcance limitado. No sustituirlo por una versión de PATH ni usar una instalación con red para ignorar el gate.
+6. **Migraciones y gates de esa revisión** → `go test ./...`, `go vet`, `go build`, PostgreSQL real y frontend con runtime admitido por digest. El pnpm publicado 11.25.0 está rechazado según V401; en la referencia V402, la receta local restringida ya fue probada en sus builds aceptados. Este commit documental no actualiza el runtime del snapshot público. No sustituirlo por una versión de PATH ni usar una instalación con red para ignorar el gate.
 7. **Vertical slice** end-to-end (captación → lead/contacto → catálogo → pedido/pago o agenda → respuesta/handoff → auditoría/recovery), checkpoint con hashes/evidencia y después expansión por vertical.
 
 Antes de implementar, leer `markdown_system/POST_DEEPSEEK_FRANCHISE_REAUDIT_2026-09-04.md` y su sucesor de alcance V402. Para materializar desde el plan exacto, ambos destinos del ejemplo siguiente deben estar ausentes:

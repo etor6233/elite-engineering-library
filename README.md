@@ -2,6 +2,32 @@
 
 Biblioteca Markdown portable para que Codex, Claude Code u otro agente diseñe, componga y materialice sistemas verificables sin imponer un backend TypeScript ni copiar código público sin admisión.
 
+## V402: referencia local READY_FOR_LIBRARY_USE
+
+**READY_FOR_LIBRARY_USE / LIBRARY_INFRASTRUCTURE / LOCAL_FIXTURES** corresponde al cierre local V402: ejecución **337 COMPLETE**, T2801–T2810 y ARCA_INFRA **PROVEN_LOCAL**, 48/48 controles de ese alcance. `production_authorized=false`.
+
+**Alcance de este repositorio público:** este commit sólo publica higiene documental sobre el snapshot `21064b36cdbca720bbc9c02791f7d7b45d683a9f`. No publica los cambios de implementación que ya estaban pendientes en la carpeta canónica local. Por tanto, el checkout público no se presenta como los bytes de la composición V402 aceptada: para esa composición, usar la instantánea de biblioteca identificada abajo. Los registros anteriores de este repo conservan su revisión histórica.
+
+### Qué está listo / Qué NO está listo
+
+- **Listo en la referencia local:** perfil de 116 packs / 1.653 archivos, integración con fixtures, reconstrucción independiente, producto firmado y ensayos locales de recuperación y materialización NEW/EXISTING.
+- **Producto/target:** `PROJECT_READINESS_GATE.json` conserva `DISCOVERY` y `platform_mode=BLOCK`. No hereda el READY de biblioteca ni autorización para construir o desplegar un producto real.
+- **Preflight genérico:** `BLOCKED` para pnpm general y Docker. El pnpm general está rechazado por admisión de seguridad; Docker está ausente. La referencia ya probada usa el instalador restringido y PostgreSQL nativo admitidos. No se afirma PASS del diagnóstico general.
+- **Live:** proveedores condicionados a credenciales; reglas, jurisdicción y aceptación operativa pertenecen al target. El checklist de cuentas permanece vacío. ARCA tiene infraestructura/fixtures completos; Daybreak/libxml2 sigue `ACCESS_BLOCKED`, diferido sin investigación.
+
+### Dos ZIPs: cuál usar para qué
+
+| Artefacto inmutable | Cuál usar para qué | SHA-256 del ZIP completo |
+|---|---|---|
+| `elite-library-v402-source330-meta331-distribution336.zip` | Biblioteca portable: extraer y materializar el perfil aceptado en otro destino. Es la instantánea del cierre original. | `cd24757744d01dbc37b666495d659f76824a8a680015eee469187e975542591f` |
+| `signed-release-v402-r330/artifact.zip` | Producto de referencia: verificar con su firma, manifiestos y política de confianza externa; usar en el alcance local/fixtures demostrado. | `dba7978d04d08dc2eedb112524708e220ba18cccf86c3a2142f8b1556ed1bf76` |
+
+Son artefactos locales distintos. Este commit no los adjunta, regenera, reempaqueta ni cambia sus SHA. La carpeta durable está en `Desktop/Elite Franchise Reference V402`; dentro están `START_REFERENCE_V402.md` y `qualification/FINAL_LIBRARY_READY_V402.json`. Estas rutas son locales, no enlaces de descarga de GitHub. El recibo final tiene SHA-256 `01cc08637802fc01af8edca825eae0fc3d8b99e2dc9bb508528c957b1e41e5c5`.
+
+**árbol post-pulido ≠ bytes del ZIP de cierre; el ZIP sigue siendo la instantánea canónica del READY original**.
+
+Leer el [expediente de gates y alcance](reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md), la [guía de arranque](START_FRANCHISE.md) y el [gap map con historia delimitada](markdown_system/FRANCHISE_GAP_MAP.md). El flujo es bridge → START_FRANCHISE → verify sobre la copia exacta elegida. No se afirma BENCH01, ahorro de tokens ni una franquicia en menos de una semana.
+
 ## Requisito de tooling
 
 La biblioteca se puede leer sin instalar runtimes. Sus scripts de bootstrap y distribución requieren **PowerShell 7 o posterior** (`pwsh`); no son compatibles con Windows PowerShell 5.1. Los validadores de readiness y continuidad requieren además **Python 3.14+**, aunque aún no exista producto. Pueden usarse ejecutables aislados ya disponibles; no hace falta una instalación global. Los runtimes de producto —Go, PostgreSQL, Python, .NET para WCF, Node/pnpm u otros— se instalan sólo cuando los packs o fuentes seleccionados los requieren. Kiota 1.35.0 dispone de lane Windows x64 autocontenida verificada y no necesita .NET SDK para ese uso estrecho.
@@ -64,7 +90,7 @@ En Linux/macOS el mismo comando usa separadores POSIX:
 pwsh -NoProfile -File ./VERIFY_LIBRARY.ps1
 ```
 
-## Qué contiene
+## Contenido del snapshot público base — histórico
 
 - conocimiento y mapas de autoridad;
 - contrato de blueprint y cobertura de 48 superficies;
@@ -86,7 +112,7 @@ pwsh -NoProfile -File ./VERIFY_LIBRARY.ps1
 - instalador de bridge Codex/Claude sin Git y Skill Codex de carga progresiva, con preservación, idempotencia, límite de contexto y regresiones negativas;
 - evidencia histórica separada de los claims vigentes.
 
-El estado vigente se encuentra en `markdown_system/MARKDOWN_SYSTEM_READINESS.md`. `READY_FOR_PROJECT_BOOTSTRAP` significa que la biblioteca puede iniciar y acelerar un proyecto; la admisión productiva depende siempre del país, reglas de negocio, proveedor, IdP, infraestructura, carga, datos y artefacto concreto.
+El router `markdown_system/MARKDOWN_SYSTEM_READINESS.md` conserva el alcance de bootstrap del snapshot público base. Para el cierre local V402 manda la sección de gates anterior y su expediente; no trasladar estados históricos a esa aceptación. `READY_FOR_PROJECT_BOOTSTRAP` significa que la biblioteca puede iniciar y acelerar un proyecto; la admisión productiva depende siempre del país, reglas de negocio, proveedor, IdP, infraestructura, carga, datos y artefacto concreto.
 
 ## Crear una copia portable
 
