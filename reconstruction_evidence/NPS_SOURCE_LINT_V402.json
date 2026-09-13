@@ -1,0 +1,11 @@
+{
+  "files": {
+    "internal/customerfeedback/service.go": "cb0f53d269c2a7059c50a0a7c12c4bdb53ca123e015508cbd1ddc32ad64f6620",
+    "internal/platform/httpapi/customerfeedback_metrics.go": "f8d95a258c391142f6a5db22797cd3fbfb23342506715f4b26c7703c2d2d6144",
+    "internal/posthognps/nps.go": "0132848b6af8b978e739726fc2f57e04df8d65e7b62814e472e0a95d134c032f",
+    "internal/posthognps/nps_fuzz_test.go": "4b75d99b116377ac26896c399f720b9a3ad2cd7d0bf3b2706cb356b60e9f429d",
+    "internal/posthognps/nps_test.go": "3e606d755bab78d6d8efab67c868258c200e81edb42da72b3c19c346f31afb8b"
+  },
+  "findings": [],
+  "no_whole_scanner_or_native_suite_rerun": true
+}

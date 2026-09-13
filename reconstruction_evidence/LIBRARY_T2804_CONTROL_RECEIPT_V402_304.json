@@ -1,0 +1,40 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2804",
+  "outcome": "PASS",
+  "command": "C:/Python314/python.exe -X utf8 -B C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\record-marketplace-checkpoint304.py; exact1387 source correspondence, no unchanged journey reruns",
+  "exit_code": 0,
+  "assertions": [
+    "Prior T2804 PROVEN_LOCAL roles/effects/CMS/21guides/5curricula/KPIs/private es-en evidence preserved by the immutable303receipt input",
+    "1387 current outputs exact;1370 previous unchanged,9 marketplace-owner revisions,8 new AUTHORED files. All other owner and frontend files remain exact. Initial source PNG/media/creation source/API/PG proof passes; T2805 content/feed/comms remains open.",
+    "No role UI or preexisting role endpoint/migration output changed. The new provider infrastructure is separately scoped in T2805 and is not used to invent a global readiness claim."
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "ab3b270ef1c26893d33e204ba645aa1cd3672a115d8a67b0d90fd41839485305"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_T2804_CONTROL_RECEIPT_V402_303.json",
+      "sha256": "a20e2a9ea30d717529ccf02ebb3826db95313fc939d84ff755185bf4f0d35976"
+    },
+    {
+      "path": "reconstruction_evidence/MARKETPLACE_INITIAL_RELEASE_V402.json",
+      "sha256": "76bb2677af4468d3219bf81e7725e2d96deac7e0fac12f561f441972efde41f3"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/MARKETPLACE_INITIAL_RELEASE_V402.md",
+      "sha256": "733a8bcee51128ecd3db63acc57e7c6441e591961935aff4772fe17fecbdca99"
+    },
+    {
+      "path": "reconstruction_evidence/MARKETPLACE_INITIAL_RELEASE_V402.json",
+      "sha256": "76bb2677af4468d3219bf81e7725e2d96deac7e0fac12f561f441972efde41f3"
+    }
+  ],
+  "inventory_sha256": "e207344950a7223d52680e159759571146c3f9b2d7c3b0587417507105a9b45f",
+  "live_effects_performed": false
+}

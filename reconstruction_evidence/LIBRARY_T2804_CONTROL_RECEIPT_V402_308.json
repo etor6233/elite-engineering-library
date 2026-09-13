@@ -1,0 +1,40 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2804",
+  "outcome": "PASS",
+  "command": "C:/Python314/python.exe -X utf8 -B C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\record-campaign-checkpoint308.py; exact1451 source correspondence, no unchanged journey reruns",
+  "exit_code": 0,
+  "assertions": [
+    "Prior T2804 PROVEN_LOCAL roles/effects/CMS/21guides/5curricula/KPIs/private es-en evidence preserved by the immutable307receipt input",
+    "1451 current outputs exact;1428 previous unchanged,7 reviewed optional schedule/source/host/doc changes,16 new AUTHORED campaign binding files. Two profiles exact; campaigns/partial decisions/source suppression/quote-order/host/rollback/appointment compatibility/fuzz PASS. Selected T2805 closed local; T2803 next.",
+    "Role UI and domain handlers unchanged; shared approval/WhatsApp glue reviewed and delta tests passed. Scheduled infrastructure remains a narrow T2805 claim, without global readiness promotion."
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "8bf8536ba1aa282f80c5456ded48c66877b2b3e3e69c3f6620eb237a255103c0"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_T2804_CONTROL_RECEIPT_V402_307.json",
+      "sha256": "f11e0f6d22085d919a208e0d97da8c0395ac8077673c64bfe6d05317b52b35bb"
+    },
+    {
+      "path": "reconstruction_evidence/CAMPAIGN_CONNECTED_RELEASE_V402.json",
+      "sha256": "ebf150e7956832e474623de0807684faf8cc00ed3319219d214411f4e6dae415"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/CAMPAIGN_CONNECTED_RELEASE_V402.md",
+      "sha256": "4fc7deec96b3ddc0442e04adffe5c00263e0c5597eb2398e83233728e61e611d"
+    },
+    {
+      "path": "reconstruction_evidence/CAMPAIGN_CONNECTED_RELEASE_V402.json",
+      "sha256": "ebf150e7956832e474623de0807684faf8cc00ed3319219d214411f4e6dae415"
+    }
+  ],
+  "inventory_sha256": "938c563a981984d7217355040f05f8b9708923e56bee3044f3af4b002baf547f",
+  "live_effects_performed": false
+}

@@ -1,0 +1,507 @@
+{
+  "schema": "elite-library-signed-reference-acceptance/v1",
+  "scope": "V402-source330-metadata331-local",
+  "state": "PASS",
+  "production_authorized": false,
+  "verification": {
+    "artifact_bytes": 325826657,
+    "artifact_files": 4744,
+    "artifact_inventory_sha256": "b6ed8adea3c569ed8d1086367c7ca7f566282fee39facd53d7c5734d310e508a",
+    "artifact_zip_sha256": "dba7978d04d08dc2eedb112524708e220ba18cccf86c3a2142f8b1556ed1bf76",
+    "independent_external_policy_sha256": "4333abf0eb3481ff2eaf337665843161e73f79bb32f7683fe3c40a71e9f04927",
+    "production_authorized": false,
+    "qualified_for_final_acceptance": true,
+    "release_files": {
+      "RELEASE_RECEIPT.json": "5216b3f60301bb92f26041d926c40241125d9a24ef28b6fc7bc5e8341500cf03",
+      "SBOM.spdx.json": "ce5915cb4f4098a9e2a0f6da879ec8c97564a5853f2330f75bd08a9625556776",
+      "THIRD_PARTY_NOTICES.txt": "9c7de890641f7098867d39e82f3cdc852c1627797e2e536270c851864b7a7f0e",
+      "allowed_signers": "4333abf0eb3481ff2eaf337665843161e73f79bb32f7683fe3c40a71e9f04927",
+      "artifact.manifest.json": "3c0cad50a554e7ccc31876535c63e9267c0acc83b2b775ac28283e5ac01a7d02",
+      "artifact.zip": "dba7978d04d08dc2eedb112524708e220ba18cccf86c3a2142f8b1556ed1bf76",
+      "osv.json": "d3d22fbcae26dd87f8ff5c336e5eef8b26f6b7d7d2568a3d9b66151c71dccc6f",
+      "provenance.intoto.json": "6784a93e857c00b21282b63cd15329cbfb26c4c52dc590396664fd5722dae4db",
+      "provenance.intoto.json.sig": "34efac7b8c1b9de52e1e7d23351b222be208edadca35e917091adf4244dd63bd",
+      "source.manifest.json": "f8b8022b7e8a1910d3081f3b9f0f4f4b648f74c8c135ebd4efe2128370b252f1"
+    },
+    "sbom_complete": true,
+    "sbom_packages": 437,
+    "sbom_unique_identities": 335,
+    "sca_findings": 0,
+    "sca_package_records": 454,
+    "scope": "LOCAL_FIXTURES",
+    "seconds": 139.176,
+    "source_inventory_sha256": "9929cf8b15302fa3179bf97456d688517b8bbeb9caab6b5ffa96d88fc2afed5c",
+    "state": "PASS",
+    "two_actual_build_receipts": true,
+    "verification_log_sha256": "7d3cc33eb84bedf834e2dda69c3088e51957733c67e4404526d5882674cce248"
+  },
+  "current_runtime": {
+    "accounts_used": false,
+    "live_effects": false,
+    "scope": "LOCAL_FIXTURES",
+    "seconds": 17.099,
+    "state": "PASS",
+    "steps": [
+      {
+        "migrations": 84,
+        "source": "activation329/result.json",
+        "step": "previous-fresh-migration-proof-reused"
+      },
+      {
+        "receipt": {
+          "candidate": {
+            "inventory": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\qualification\\artifact330-inventory.json",
+            "inventory_sha256": "b6ed8adea3c569ed8d1086367c7ca7f566282fee39facd53d7c5734d310e508a",
+            "root": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\artifact-v402-r330",
+            "source_sha256": "9929cf8b15302fa3179bf97456d688517b8bbeb9caab6b5ffa96d88fc2afed5c"
+          },
+          "health": {
+            "api": {
+              "body_sha256": "6489d6d7a33c5d40e18fc61eeb6c34c341279ee61816394dde5189aa4ad8fae5",
+              "status": 200
+            },
+            "web": {
+              "body_sha256": "7bc9eb16933b5ac8abcdd67af0f172030d3c4b2e413c33376e4b28a09006b1c4",
+              "status": 200
+            }
+          },
+          "migration_action": "NONE",
+          "previous": null,
+          "schema": "elite-local-activation/v1",
+          "state": "ACTIVE",
+          "stopped_previous": null
+        },
+        "step": "activate-current-signed330"
+      },
+      {
+        "durable_rows": 1,
+        "same_order": true,
+        "step": "replay-current-after-prior-recovery"
+      },
+      {
+        "evidence": "activation329-qualified330.json",
+        "launcher_source_unchanged_from_qualified330_delta": true,
+        "same_api_binary_as_qualified329": true,
+        "step": "rollback-evidence-inheritance"
+      },
+      {
+        "receipt": {
+          "exit_code": 0,
+          "observed_peak_job_bytes": 214351872,
+          "shutdown_state": "EXITED_DURING_GRACE",
+          "status": "CANCELLED",
+          "stderr_sha256": "0d6402bf4781c0b3bbb860f9e49bdfa931764d192711771ba92d9c721c309c71",
+          "stdout_sha256": "2e4bf9521b1d37ef13092a5bcf5fdab1d09465e85f5dbabb77c5e0363a07d4f8",
+          "tree_empty": true
+        },
+        "step": "stop"
+      }
+    ]
+  },
+  "runtime_recovery_inheritance": {
+    "state": "PASS",
+    "scope": "LOCAL_FIXTURES",
+    "current_binary_source_revision": 329,
+    "launcher_delta_revision": 330,
+    "steps": [
+      {
+        "migrations": 84,
+        "source": "activation329/result.json",
+        "step": "previous-fresh-migration-proof-reused"
+      },
+      {
+        "receipt": {
+          "candidate": {
+            "inventory": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\qualification\\artifact329-inventory.json",
+            "inventory_sha256": "0f279c61d7287bf57c5b0ce641c97f3cf7ddd3f82fba813baba197901a056e04",
+            "root": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\artifact-v402-r329",
+            "source_sha256": "f8fd12c76bd1d243593ba379a5a6d215e17c8122175ab746992b3ad443841861"
+          },
+          "health": {
+            "api": {
+              "body_sha256": "6489d6d7a33c5d40e18fc61eeb6c34c341279ee61816394dde5189aa4ad8fae5",
+              "status": 200
+            },
+            "web": {
+              "body_sha256": "fab50b7923c2f495019495cc1a062b3eb73368da4c98e5d161fb1983688420d0",
+              "status": 200
+            }
+          },
+          "migration_action": "NONE",
+          "previous": null,
+          "schema": "elite-local-activation/v1",
+          "state": "ACTIVE",
+          "stopped_previous": null
+        },
+        "step": "activate"
+      },
+      {
+        "receipt": {
+          "candidate": {
+            "inventory": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\local-delivery\\build-final-a\\artifact-inventory.json",
+            "inventory_sha256": "637588441ab04a297037088931d2e193a1b22304eedab9dd8537ddfcbc7f1409",
+            "root": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\local-delivery\\build-final-a\\artifact",
+            "source_sha256": "f286ee230fd7907bd934fb546d2194e2bbb4a076bea5c1babcfdae2087958dd0"
+          },
+          "health": {
+            "api": {
+              "body_sha256": "6489d6d7a33c5d40e18fc61eeb6c34c341279ee61816394dde5189aa4ad8fae5",
+              "status": 200
+            },
+            "web": {
+              "body_sha256": "af55d32f16b74762b15d67d48738e05f7deabd8b3840cc40000935a262c4421f",
+              "status": 200
+            }
+          },
+          "migration_action": "NONE",
+          "previous": {
+            "inventory": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\qualification\\artifact329-inventory.json",
+            "inventory_sha256": "0f279c61d7287bf57c5b0ce641c97f3cf7ddd3f82fba813baba197901a056e04",
+            "root": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\artifact-v402-r329",
+            "source_sha256": "f8fd12c76bd1d243593ba379a5a6d215e17c8122175ab746992b3ad443841861"
+          },
+          "schema": "elite-local-activation/v1",
+          "state": "ACTIVE",
+          "stopped_previous": {
+            "exit_code": 0,
+            "observed_peak_job_bytes": 215457792,
+            "shutdown_state": "EXITED_DURING_GRACE",
+            "status": "CANCELLED",
+            "stderr_sha256": "42350ad6bfbfd8777430db8c28d8f3d65c6ad10a43be39dec41569b36e70e966",
+            "stdout_sha256": "1074382112f2913b48bb38abd77fbdb586fd1ea598e4f9ce5bfe9c4fda6e6ecb",
+            "tree_empty": true
+          }
+        },
+        "step": "manual-rollback-previous-binary"
+      },
+      {
+        "receipt": {
+          "candidate": {
+            "inventory": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\qualification\\artifact329-inventory.json",
+            "inventory_sha256": "0f279c61d7287bf57c5b0ce641c97f3cf7ddd3f82fba813baba197901a056e04",
+            "root": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\artifact-v402-r329",
+            "source_sha256": "f8fd12c76bd1d243593ba379a5a6d215e17c8122175ab746992b3ad443841861"
+          },
+          "health": {
+            "api": {
+              "body_sha256": "6489d6d7a33c5d40e18fc61eeb6c34c341279ee61816394dde5189aa4ad8fae5",
+              "status": 200
+            },
+            "web": {
+              "body_sha256": "b3a9e48a534ab7e464a129eea12d443e17eb01c922caf1bef6c98d783ad2a5ad",
+              "status": 200
+            }
+          },
+          "migration_action": "NONE",
+          "previous": {
+            "inventory": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\local-delivery\\build-final-a\\artifact-inventory.json",
+            "inventory_sha256": "637588441ab04a297037088931d2e193a1b22304eedab9dd8537ddfcbc7f1409",
+            "root": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\local-delivery\\build-final-a\\artifact",
+            "source_sha256": "f286ee230fd7907bd934fb546d2194e2bbb4a076bea5c1babcfdae2087958dd0"
+          },
+          "schema": "elite-local-activation/v1",
+          "state": "ACTIVE",
+          "stopped_previous": {
+            "exit_code": 0,
+            "observed_peak_job_bytes": 212525056,
+            "shutdown_state": "EXITED_DURING_GRACE",
+            "status": "CANCELLED",
+            "stderr_sha256": "4dd2ad6846ad1312ec9d28ed338bd15d1764bdde407535e50d9470e1c54b0f0e",
+            "stdout_sha256": "6e3857d3c46e79e6fee9c4fb8b72abd16c2513820df0530dc78dcb59a1e2a900",
+            "tree_empty": true
+          }
+        },
+        "step": "redeploy-current"
+      },
+      {
+        "pointer_restored": true,
+        "step": "failed-candidate-rollback"
+      },
+      {
+        "receipt": {
+          "exit_code": 0,
+          "observed_peak_job_bytes": 213757952,
+          "shutdown_state": "EXITED_DURING_GRACE",
+          "status": "CANCELLED",
+          "stderr_sha256": "520de8dd50df96777927df77b88081e47f182dedfaaaa34014272913ab1ae0d5",
+          "stdout_sha256": "ec789bf4b98b5b61529e281a2d8830a06f647fcce335dba55e3786c535b2249c",
+          "tree_empty": true
+        },
+        "step": "failure-stop"
+      },
+      {
+        "migrations": 84,
+        "source": "activation329/result.json",
+        "step": "previous-fresh-migration-proof-reused"
+      },
+      {
+        "health": {
+          "api": {
+            "body_sha256": "6489d6d7a33c5d40e18fc61eeb6c34c341279ee61816394dde5189aa4ad8fae5",
+            "status": 200
+          },
+          "web": {
+            "body_sha256": "caa692fd9e36f679d178cf08280aa9ade218bc3d5227feb26d3e2fc03fa992be",
+            "status": 200
+          }
+        },
+        "step": "recover-committed-pointer-after-stop"
+      },
+      {
+        "durable_rows": 1,
+        "same_order": true,
+        "step": "replay-after-recovery"
+      },
+      {
+        "receipt": {
+          "exit_code": 0,
+          "observed_peak_job_bytes": 213356544,
+          "shutdown_state": "EXITED_DURING_GRACE",
+          "status": "CANCELLED",
+          "stderr_sha256": "49e38116e836aa8e64df6a47bab8986e64072aea82793a037f24045d9f3e4272",
+          "stdout_sha256": "9ffcfb9dc74d840313ec7e195c03b2defde746c0e127ea366199839855eee15a",
+          "tree_empty": true
+        },
+        "step": "stop"
+      }
+    ],
+    "seconds": 235.749,
+    "resumed_without_repeating_completed_steps": true,
+    "harness_correction": "Fresh fixture token; original219.814second run correctly received401 after120second token expiry. Expiry policy unchanged.",
+    "accounts_used": false,
+    "live_effects": false,
+    "receipts": {
+      "activation329-fixed330\\result.json": "dc91f009e7798b6a308a242cd5f2615b07115f9ab91d637ba426f6d0de655417",
+      "activation329-resume330\\result.json": "82d3f10b4b9d5d324ece58c2d7a45ba66cb61ed459b613a5cab58088faaafc2b"
+    }
+  },
+  "signed_build": {
+    "exit_code": 0,
+    "seconds": 817.482,
+    "log_sha256": "71d645950aac8da065504038516512b9ff61b9298c77411d83959df93f9396d1",
+    "release_present": true
+  },
+  "durable_inputs": {
+    "state": "PASS_BYTE_EXACT_LOCAL_PRESERVATION",
+    "root": "C:\\Users\\NL\\AppData\\Local\\EliteEngineeringInputs\\V402",
+    "inputs": [
+      {
+        "input": "go",
+        "files": 15036,
+        "bytes": 235911553,
+        "seconds": 285.974,
+        "file_inventory_sha256": "535dc6cc894422f04c3f498450270aad91462af51d9a13c5af20d884fed08574"
+      },
+      {
+        "input": "node",
+        "files": 2,
+        "bytes": 93542003,
+        "seconds": 1.121,
+        "file_inventory_sha256": "6bf894c77f0fa9a08d8fce58de73a444e925fb0b86d45cde74945905e5c5eb8c"
+      },
+      {
+        "input": "dotnet-sdk",
+        "files": 5577,
+        "bytes": 807115876,
+        "seconds": 73.191,
+        "file_inventory_sha256": "5c046bd086a126c03feaab23ac4f773eae3f3170e9b6c1cf3c2fb47899f42830"
+      },
+      {
+        "input": "svcutil-original.nupkg",
+        "files": 1,
+        "bytes": 17915141,
+        "seconds": 0.065,
+        "file_inventory_sha256": "6df3bfff21d41b84b0cda81ae5e59b238aaf02ed9e6e8a427ce0894a13c1f126"
+      },
+      {
+        "input": "svcutil-patches",
+        "files": 9,
+        "bytes": 3625920,
+        "seconds": 0.151,
+        "file_inventory_sha256": "021cdceed6c291a05e4cbcd7d21a667f509cabacfac8048de0f403b4fdef32c1"
+      },
+      {
+        "input": "wsdl",
+        "files": 4,
+        "bytes": 81094,
+        "seconds": 0.063,
+        "file_inventory_sha256": "256df7b2d573f1a58e22313c2ff2f5f86316682eb7f10b0970aab392515f5d0f"
+      },
+      {
+        "input": "fiscal-runtime-feed",
+        "files": 5,
+        "bytes": 4559945,
+        "seconds": 0.099,
+        "file_inventory_sha256": "15f52ad1c48ed945e05a6a26d9b31c5e50c4814e95f288d5f9fa776257dfd1fa"
+      },
+      {
+        "input": "private-installer-projection",
+        "files": 443,
+        "bytes": 18282834,
+        "seconds": 17.705,
+        "file_inventory_sha256": "dbc1c3e198ca569849a871a30da485cb30b5b10f55c69b09423a4cb5b30cb738"
+      },
+      {
+        "input": "private-installer-contained",
+        "files": 445,
+        "bytes": 18366896,
+        "seconds": 6.469,
+        "file_inventory_sha256": "edf83700e6b7b87150bc4a967996f9ed1002ae609a86bcb2b814f6ea0f201e2b"
+      },
+      {
+        "input": "private-installer-acquisition.json",
+        "files": 1,
+        "bytes": 1270,
+        "seconds": 0.011,
+        "file_inventory_sha256": "a224ea74b7248b7cbc19a294cb7d00fd405ed32be127f2980427fe9931f44cc1"
+      }
+    ],
+    "private_installer_redistributed": false,
+    "existing_signed_source_config_modified": false,
+    "stable_existing_go_mod_cache": "C:/Users/NL/go/pkg/mod",
+    "stable_existing_node_store": "C:\\Users\\NL\\AppData\\Local\\pnpm\\store",
+    "note": "Local machine build inputs preserved outside Temp. Exact original admission/locks still apply; installer bundle remains private and excluded from release ZIP. Copy template only to a new independent materialization and set an absent run_root."
+  },
+  "operational_inputs": {
+    "binaries": [
+      {
+        "bytes": 51707904,
+        "name": "elite-otelcol",
+        "sha256": "40482c27d43ddd5fae9d47939da889a0416cb3102e17c3b7832e9c5d7c9570a3"
+      },
+      {
+        "bytes": 140342784,
+        "name": "prometheus",
+        "sha256": "b64d74caa4531929f1a4021b3ef06fbfaa04347a4f2944ba29eed2a3a08b3d87"
+      },
+      {
+        "bytes": 117974528,
+        "name": "promtool",
+        "sha256": "2d8428b4e7480a08e6c9b24c0e180669281192a361d92f63a3ba1421165eddf5"
+      },
+      {
+        "bytes": 17196032,
+        "name": "refund-host",
+        "sha256": "972f596b6b5ee35d294df75f6ecb7dcab40c0a44186a497c73fa5d93f8770fa0"
+      },
+      {
+        "bytes": 9433600,
+        "name": "telemetry-reference",
+        "sha256": "a84ff065e1666101d161f8915169ef0ff155702f47c4f037b2a4ce2044bef7a6"
+      },
+      {
+        "bytes": 10266624,
+        "name": "postgres",
+        "sha256": "af5b897cb69c9ce692a4a15ecd022b540db85db1add0f66d2b9f0697be2451a0"
+      },
+      {
+        "bytes": 246784,
+        "name": "initdb",
+        "sha256": "68195f0c6f22694660ba86d914ae8c74bcd38e71eb342f98e065b1962311142e"
+      },
+      {
+        "bytes": 133120,
+        "name": "pg_ctl",
+        "sha256": "552049183df455921657c8e498e9745e8508bf77d2c2e5cb9c21b2cbdc798822"
+      },
+      {
+        "bytes": 653824,
+        "name": "psql",
+        "sha256": "1e23b7f9ac7649b4717ada9b1f4e1b5b66c343937b6a91583f63528b96a61503"
+      }
+    ],
+    "new_runtime_lock": "C:\\Users\\NL\\AppData\\Local\\EliteEngineeringInputs\\V402\\reference-ops\\reference-runtime-lock.json",
+    "new_runtime_lock_sha256": "1ba1cd0f406357de7c2d210c6f53ed7a749e92fd1362580296c09eca3f5f38bb",
+    "only_locator_fields_changed": true,
+    "original_runtime_lock_sha256": "30ede7ec41dd3df06e20043f18dc34987e5aff569783d35c8c64355497b6668e",
+    "osv_sha256": "25e42f5ef6711fd8c0fb45390972205891dd44c6bd02ac93f0f63e8e98d9bfb6",
+    "postgresql_files": 54,
+    "postgresql_inventory_sha256": "20ce5402ad236079d1c7cee4e177bbf0513f74b1dd623f08a3f17cdbfa6e93ee",
+    "redistributed_in_product_zip": false,
+    "runtime_files_changed": false,
+    "scope": "Previously qualified operational inputs; no new native admission or investigation",
+    "seconds": 4.782,
+    "state": "PASS_BYTE_EXACT_LOCAL_PRESERVATION"
+  },
+  "new_existing": {
+    "state": "FAIL",
+    "exit_code": 1,
+    "preflight_seconds": 53.631,
+    "preflight_log_sha256": "1cffa4279876c8a532b490c588734b06e2a97634b631cbb125d6aa4d9657b8e7",
+    "earlier_failure_log_sha256": "15ff13f872ba21f231273268c2c61a70660ac683964a0c61b08d304e089e2b52",
+    "bridge_replay_unchanged": true,
+    "existing_fixture_preserved": true,
+    "existing_destination_rejected_without_mutation": true,
+    "current_source_files": 1653,
+    "live_access_proven": false,
+    "new_source_receipt": "durable-materialization.json",
+    "existing_steps": [
+      {
+        "step": "bridge-existing-idempotent",
+        "seconds": 0.837,
+        "exit_code": 0,
+        "log_sha256": "8c9b355a6cd185e04259b89d75c92bc514e8c4bb23264a5bf31bb4de1ffad499"
+      },
+      {
+        "step": "bridge-existing-project",
+        "seconds": 0.735,
+        "exit_code": 0,
+        "log_sha256": "50cfc625896efd05f8e1672a78589cabbcbba84684c02d7d7d0f303526c3ac19"
+      },
+      {
+        "step": "compose-existing-project-staging",
+        "seconds": 11.747,
+        "exit_code": 0,
+        "log_sha256": "1451b926c44b9c3d6da1392ff11c6f3d2565e923af1149624629eca582d0b968"
+      },
+      {
+        "step": "reject-existing-destination",
+        "seconds": 7.099,
+        "exit_code": 1,
+        "log_sha256": "898ce66eb8e3d81a6c30c97c92ce3b303f00404d2b8db4716447b2f71f4ee2b0"
+      }
+    ]
+  },
+  "new_existing_note": "NEW/EXISTING/preservation steps passed; its historical Preflight failure975 is preserved. Final Preflight/distribution acceptance is recorded separately.",
+  "receipts": [
+    {
+      "path": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\qualification\\independent-verification330.json",
+      "sha256": "ee1369eb6586d3892c2fbb5e2964a0696a951a64880ad34eaf25a84bf6b951d9"
+    },
+    {
+      "path": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\qualification\\activation330\\result.json",
+      "sha256": "0f5bc23405e58e4a0dc1d1be680522f2a829a8f7b0e1fa5101554152a1c51032"
+    },
+    {
+      "path": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\qualification\\activation329-qualified330.json",
+      "sha256": "9f950fe697bfb66da95d5a79e500e966818ecc3cb03bcb64d8d92dd64c9e2d26"
+    },
+    {
+      "path": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\qualification\\signed-release330-result.json",
+      "sha256": "3714dac97da24c4cd103430e4b2b39028543b562a0101634e8c328df11907e54"
+    },
+    {
+      "path": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\qualification\\exact-reference330.json",
+      "sha256": "d1a0a82fa23377f6f3a00df663c4849fe6579f8c6a8d9a50d255bed15ef49ad6"
+    }
+  ],
+  "private_installer_or_signing_key_in_artifact": false,
+  "notice_env_735": {
+    "license": "MIT",
+    "manifest": "node_modules/.pnpm/@next+env@16.3.4/node_modules/@next/env/package.json",
+    "name": "@next/env",
+    "notice_refs": [
+      "licenses/reference/next-MIT.txt",
+      "licenses/reference/dotenv-LICENSE.txt",
+      "licenses/reference/dotenv-expand-LICENSE.txt"
+    ],
+    "sha256": "229045587b8f7898b12126f99fadd1021c8c928f207f92f22146908d46899b5b",
+    "source_basis": "Next fixed source package16.3.4 MIT and declared embedded dotenv16.3.1/dotenv-expand10.0.0 BSD notices.",
+    "texts": {
+      "licenses/reference/dotenv-LICENSE.txt": "74b629b24865e1e83c5277ee84590b7937644d6fd959d0c7bdce758676cd2ced",
+      "licenses/reference/dotenv-expand-LICENSE.txt": "3726b9470c3a6b54e1ebcc1d802d37089b5a5fc97273b52b2cee578a4421ec45",
+      "licenses/reference/next-MIT.txt": "ee765244e2d59f5234d474f62e0766fa0c8b99af967fdd4c0cb8dcb0c76ea224"
+    },
+    "version": "16.3.4"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "state": "PASS_LOCAL",
+  "files": {
+    "portable_release_evidence_gate/build_release.ps1": "dab8ff56d0f8fb3e056c47e73e23ac54efae672ef01c5511c438d4b0e2141fc3",
+    "portable_release_evidence_gate/verify_release.ps1": "78a80d7abb4428d457bd29e05641cbbfc0d299551ecabc419bb07a208c1c846c",
+    "portable_release_evidence_gate/test_release_contract.py": "214b6f6204ba83ae5167a712752a3752060e559cb36e2b9c520b4b6c00c209d4"
+  },
+  "findings": [
+    {
+      "id": 1,
+      "rule": "DS197836",
+      "path": "portable_release_evidence_gate/build_release.ps1",
+      "line": 119,
+      "source_line_sha256": "977c9217b09e47aa86e462f74eb5fd4acee214b896662b8665268c4768ec79a7",
+      "disposition": "REVIEWED_NOT_BLOCKING",
+      "reason": "SHA256 binds actual artifact/evidence files or compared signed digest fields; no password derivation/entropy/security-key claim. Python cases are explicitly synthetic verifier fixtures."
+    },
+    {
+      "id": 2,
+      "rule": "DS197836",
+      "path": "portable_release_evidence_gate/test_release_contract.py",
+      "line": 58,
+      "source_line_sha256": "804f21b90ea18a64d22d2965523a0be7ae035d3f203a6617ceb591b5626a5168",
+      "disposition": "REVIEWED_NOT_BLOCKING",
+      "reason": "SHA256 binds actual artifact/evidence files or compared signed digest fields; no password derivation/entropy/security-key claim. Python cases are explicitly synthetic verifier fixtures."
+    },
+    {
+      "id": 3,
+      "rule": "DS197836",
+      "path": "portable_release_evidence_gate/build_release.ps1",
+      "line": 113,
+      "source_line_sha256": "9666ee073467b75fbc256158996a03b9d157df4cb78cc761a2db4843a332d50f",
+      "disposition": "REVIEWED_NOT_BLOCKING",
+      "reason": "SHA256 binds actual artifact/evidence files or compared signed digest fields; no password derivation/entropy/security-key claim. Python cases are explicitly synthetic verifier fixtures."
+    },
+    {
+      "id": 4,
+      "rule": "DS197836",
+      "path": "portable_release_evidence_gate/verify_release.ps1",
+      "line": 28,
+      "source_line_sha256": "a6853566aa81b2a24a007ac88eb555c963e1bbb3eec2d480cbd45f1f99a9986c",
+      "disposition": "REVIEWED_NOT_BLOCKING",
+      "reason": "SHA256 binds actual artifact/evidence files or compared signed digest fields; no password derivation/entropy/security-key claim. Python cases are explicitly synthetic verifier fixtures."
+    },
+    {
+      "id": 5,
+      "rule": "DS197836",
+      "path": "portable_release_evidence_gate/test_release_contract.py",
+      "line": 55,
+      "source_line_sha256": "d72f045d94f1254ba5c60459b4fced851672843d5a67cb072424d7e16362ce3a",
+      "disposition": "REVIEWED_NOT_BLOCKING",
+      "reason": "SHA256 binds actual artifact/evidence files or compared signed digest fields; no password derivation/entropy/security-key claim. Python cases are explicitly synthetic verifier fixtures."
+    },
+    {
+      "id": 6,
+      "rule": "DS173237",
+      "path": "portable_release_evidence_gate/build_release.ps1",
+      "line": 12,
+      "source_line_sha256": "91f267563f4b02f943a67fc56bcab70522948cd68d63d6cbaa71f46a99e63a97",
+      "disposition": "REVIEWED_NOT_BLOCKING",
+      "reason": "Pinned public OSV2.5.1 SHA256, not a token or signing key."
+    }
+  ],
+  "untriaged": 0,
+  "new_blockers": 0,
+  "scope": "Security lint only; no native/offensive investigation."
+}

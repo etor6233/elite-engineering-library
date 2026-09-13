@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "capability_id": "CUSTOMER-SURVEY-NPS",
+  "requirement_ref": "nps-candidate/docs/posthog-nps.md",
+  "observed_at": "2026-09-13T14:59:40.942698+00:00",
+  "max_age_days": 30,
+  "authority_refs": [
+    "nps-admission-proof.json"
+  ],
+  "source_searches": [
+    {
+      "search_id": "posthog-official-fixed-source",
+      "query": "Official current and released PostHog NPS implementation and matching tests/license",
+      "official_domains": [
+        "github.com",
+        "raw.githubusercontent.com"
+      ],
+      "executed_at": "2026-09-13T14:59:40.942698+00:00",
+      "evidence_refs": [
+        "nps-source-receipts.json",
+        "discovery-receipt.json",
+        "released-source-candidates.json"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "candidate_id": "posthog-nps-go-bounded",
+      "origin_kind": "OFFICIAL_CODE",
+      "provenance": "ADAPTED",
+      "source_url": "https://github.com/PostHog/posthog/tree/6fafbb9081bd15e79448af5650e02a4f9ea435cc",
+      "claim": "Pure grouped-count NPS arithmetic with declared int64/numeric API translation",
+      "non_claims": [
+        "PostHog product or analytics certification",
+        "Production or privacy acceptance",
+        "Whole upstream test suite"
+      ],
+      "status": "REUSABLE_PACK",
+      "immutable_revision": "6fafbb9081bd15e79448af5650e02a4f9ea435cc",
+      "artifact_sha256": "4e1d41a8a4c81d8381017440408c223f4e37bfc4338694dc4b82034ba037bb63",
+      "artifact_ref": "nps-pack-qualification/implementation_packs/GO_CUSTOMER_SURVEY_API.md",
+      "license_expression": "MIT",
+      "license_evidence_ref": "posthog-quarantine/LICENSE",
+      "gates": {
+        "G0": "PASS",
+        "G1": "PASS",
+        "G2": "PASS",
+        "G3": "PASS",
+        "G4": "PASS",
+        "G5": "PASS",
+        "G6": "PASS",
+        "G7": "PASS",
+        "G8": "PASS"
+      }
+    }
+  ],
+  "decision": {
+    "state": "USE_REUSABLE_PACK",
+    "selected_candidate_id": "posthog-nps-go-bounded",
+    "reason": "Exact released implementation, original assertions and qualified bounded translation; product caller remains separately verified.",
+    "canonical_updates": [
+      "nps-pack-qualification/implementation_packs/GO_CUSTOMER_SURVEY_API.md",
+      "nps-candidate/third_party/posthog-nps/source-lock.json",
+      "nps-candidate/docs/posthog-nps.md"
+    ],
+    "blockers": [],
+    "exhaustion": null
+  }
+}

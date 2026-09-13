@@ -4,12 +4,12 @@
 
 ```yaml
 pack_id: "GO-EXACT-FX-SNAPSHOT-ACCOUNTING"
-pack_version: "0.1.0"
+pack_version: "0.2.0"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
   admission: CONDITIONED
-claim: "Supplied immutable direct-base FX snapshot, exact dated conversion and scoped historical accounting receipt with shared idempotency/outbox, HTTP and explicit host activation. Local candidate; no ledger posting, live feed, AL runtime equivalence or global release approval."
+claim: "Immutable direct-base FX snapshot and exact dated conversion, plus typed durable draft binding to the existing accounting posting/reversal lifecycle. Scoped HTTP, shared idempotency/outbox and explicit host. No live feed, automatic valuation policy, AL runtime or global release approval."
 stacks: ["Go 1.26.8", "PostgreSQL 18.6", "pgx 5.10.0"]
 compatible_with: ["Reference composition with accounting0011, platform idempotency/outbox, verified identity and handoverBrowserIssuer test fixture"]
 incompatible_with: ["Relational-currency graphs", "Binary64 monetary boundary", "Unreviewed or expired source snapshots", "GO-FX-CORE as conversion authority"]
@@ -18,15 +18,15 @@ upstream_sources: ["https://github.com/microsoft/BCApps/tree/2eae56d704a1fd035d1
 verified_at: "2026-09-12"
 ```
 
-## 2. Applicability and admission
+## 2. Applicability
 
 Use only the declared direct-base profile. ExchangeExact and FindLast are ADAPTED from fixed BCApps methods. RoundMinor is AUTHORED exact representation/rounding glue under an explicitly selected mathematical profile, with the official documentation discrepancy recorded. The source/notice lock and derivation are materialized below. Remaining snapshot/accounting/HTTP/host/test code is AUTHORED integration glue. Supplied data is hash-bound, not certified as an economic rate recommendation.
 
 Local snapshot/oracle/host/fuzz, actual HTTP/RS256/JWKS/PostgreSQL concurrency/recovery/expiry, vet/build and exact materialization gates pass. G5-G8 global composition SCA/security/release remain pending the root frozen-composition gates; no current zero-SCA claim is made here. No new Go dependency is introduced. Future live/target acceptance is separate.
 
-## 3. Composition
+## 3. Architecture contract
 
-The selected accounting owner remains singular. Migration0061 adds immutable snapshots and conversion receipts, reusing the existing accounting immutability trigger and platform idempotency/outbox. No journal or money posting is added. The existing application owner must include the provided selectedFXConversionModule call and optional environment/notice overlays recorded separately by prehash. They are excluded from this pack to avoid duplicate main/environment ownership. The shared exact Microsoft MIT notice may already be materialized and must remain byte-identical.
+The selected accounting owner remains singular. Migration0061 adds immutable snapshots and conversion receipts, reusing the existing accounting immutability trigger and platform idempotency/outbox. Migration0065 adds an immutable conversion-to-journal binding. The existing accounting owner supplies the draft writer in the same transaction and retains its separate posting/reversal permissions and algorithms. No parallel ledger is introduced. The existing application owner must include the provided selectedFXConversionModule call and optional environment/notice overlays recorded separately by prehash. They are excluded from this pack to avoid duplicate main/environment ownership. The shared exact Microsoft MIT notice may already be materialized and must remain byte-identical.
 
 ## 4. Exact file manifest
 
@@ -54,6 +54,13 @@ CREATE internal/platform/postgres/fx_connected_integration_test.go
 CREATE internal/platform/postgres/fx_conversion.go
 CREATE licenses/Microsoft-BCApps-MIT.txt
 CREATE tools/generate_fx_rounding_oracle.py
+CREATE internal/accounting/fx_journal.go
+CREATE internal/platform/postgres/fx_journal.go
+CREATE internal/platform/httpapi/fx_journal.go
+CREATE internal/platform/postgres/fx_journal_integration_test.go
+CREATE db/migrations/0065_fx_journal_receipt.up.sql
+CREATE db/migrations/0065_fx_journal_receipt.down.sql
+CREATE docs/fx-journal-runtime.md
 ```
 
 ## 5. Materialization blocks
@@ -565,14 +572,15 @@ operation: CREATE
 provenance: AUTHORED
 source: "local integration glue; see docs/provenance/BC_FX_DERIVATION.md"
 license: "LicenseRef-Workspace-Owner"
-sha256: "1f855979bc844426da227258b0544cfb102d62b2f7e7e2173895daa4b4762e6f"
+sha256: "60b863c71f2e39501f35540f10761075487d3bbd0e23bd0d46a06c0d14e69dfa"
 variables: []
 secrets_allowed: false
 ```
 ````go
 package accounting
 
-// AUTHORED conversion-receipt glue. This owner never posts a journal or money.
+// AUTHORED conversion-receipt glue. RecordConversion creates only a receipt.
+// PrepareJournal binds that receipt to the existing separate posting lifecycle.
 import (
 	"context"
 	"crypto/sha256"
@@ -606,6 +614,8 @@ type FXReceipt struct {
 type FXRepository interface {
 	RecordFXConversion(context.Context, string, string, string, string, FXCommand, *bcfx.Snapshot, string) (FXReceipt, bool, error)
 	FXConversionResult(context.Context, string, string, string, string) (FXReceipt, error)
+	PrepareFXJournal(context.Context, string, string, string, string, string, FXJournalCommand, string) (FXJournalResult, bool, error)
+	FXJournalResult(context.Context, string, string, string, string) (FXJournalResult, error)
 }
 type FXService struct {
 	repository FXRepository
@@ -5785,14 +5795,15 @@ operation: CREATE
 provenance: AUTHORED
 source: "local integration glue; see docs/provenance/BC_FX_DERIVATION.md"
 license: "LicenseRef-Workspace-Owner"
-sha256: "d0e2d18e3b10a3dca83ef45bd0432154f6ef261531d72beea142b3f44dcac7bb"
+sha256: "9da7fb9aeea6bdc906b70cdcec478dd852e96b8db755824f9cbc4f39b0367afc"
 variables: []
 secrets_allowed: false
 ```
 ````go
 package httpapi
 
-// AUTHORED authenticated adapter for conversion receipts; no journal endpoints.
+// AUTHORED authenticated conversion and draft-binding routes.
+// The existing accounting endpoints retain posting and reversal authority.
 import (
 	"elite.local/enterprise/internal/accounting"
 	"elite.local/enterprise/internal/bcfx"
@@ -5808,6 +5819,8 @@ func (m FXConversionModule) Register(mux *http.ServeMux, verifier identity.Verif
 	a := fxAPI{m.Service, verifier}
 	mux.HandleFunc("POST /v1/accounting/fx/conversions", a.record)
 	mux.HandleFunc("GET /v1/accounting/fx/conversions/result", a.result)
+	mux.HandleFunc("POST /v1/accounting/fx/journals", a.prepareJournal)
+	mux.HandleFunc("GET /v1/accounting/fx/journals/result", a.journalResult)
 }
 
 type fxAPI struct {
@@ -6344,3 +6357,763 @@ document = {"oracle": "Python decimal 200 digits, ROUND_HALF_UP, independent of 
 with args.output.open("x", encoding="utf-8", newline="\n") as stream:
     stream.write(json.dumps(document, indent=2) + "\n")
 ````
+
+V402 composed delta: Connect the immutable FX conversion to the existing draft writer; preserve posting/reversal, explicit actor/account/period selection and no corporate authorship. Evidence FX_JOURNAL_CONNECTION_V402.md.
+
+### FILE: `internal/accounting/fx_journal.go`
+
+```yaml
+block_id: "GO-EXACT-FX-SNAPSHOT-ACCOUNTING:internal/accounting/fx_journal.go:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "typed transaction, authorization, HTTP and verification glue around the existing source-admitted FX and accounting owners; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "dfe80352679004ad25108e6c575fca7b30839660b78db4020dd2c68bc326f114"
+variables: []
+secrets_allowed: false
+```
+
+````go
+package accounting
+
+// AUTHORED binding of an existing immutable conversion to existing accounting.
+// The accountant selects accounts; this adapter selects no business/fiscal rule.
+import (
+	"context"
+	"crypto/sha256"
+	"encoding/hex"
+	"encoding/json"
+	"time"
+	"unicode/utf8"
+)
+
+type FXJournalCommand struct {
+	OrganizationID       string `json:"organization_id"`
+	ConversionID         string `json:"conversion_id"`
+	ConversionRequestKey string `json:"conversion_request_key"`
+	PeriodID             string `json:"period_id"`
+	DebitAccount         string `json:"debit_account"`
+	CreditAccount        string `json:"credit_account"`
+	Description          string `json:"description"`
+	IdempotencyKey       string `json:"-"`
+}
+type FXJournalReceipt struct {
+	JournalID      string    `json:"journal_id"`
+	ConversionID   string    `json:"conversion_id"`
+	OrganizationID string    `json:"organization_id"`
+	RequestedBy    string    `json:"requested_by"`
+	RequestKey     string    `json:"request_key"`
+	PeriodID       string    `json:"period_id"`
+	PostingDate    string    `json:"posting_date"`
+	Currency       string    `json:"currency"`
+	AmountMinor    int64     `json:"amount_minor,string"`
+	DebitAccount   string    `json:"debit_account"`
+	CreditAccount  string    `json:"credit_account"`
+	Description    string    `json:"description"`
+	RecordedAt     time.Time `json:"recorded_at"`
+	Effect         string    `json:"effect"`
+}
+type FXJournalResult struct {
+	Receipt        FXJournalReceipt `json:"receipt"`
+	CurrentStatus  string           `json:"current_status"`
+	CurrentVersion int64            `json:"current_version"`
+}
+
+func (s *FXService) PrepareJournal(ctx context.Context, tenant, actor string, c FXJournalCommand) (FXJournalResult, bool, error) {
+	if s == nil || !s.snapshot.Allows(tenant, c.OrganizationID) || len(actor) < 1 || len(actor) > 256 || !fxKey.MatchString(c.IdempotencyKey) || !fxKey.MatchString(c.ConversionRequestKey) || len(c.ConversionID) < 1 || len(c.ConversionID) > 128 || len(c.PeriodID) < 1 || len(c.PeriodID) > 128 || !codePattern.MatchString(c.DebitAccount) || !codePattern.MatchString(c.CreditAccount) || !utf8.ValidString(c.Description) || len(c.Description) > 250 {
+		return FXJournalResult{}, false, ErrInvalid
+	}
+	raw, err := json.Marshal(struct {
+		Tenant, Actor string
+		Command       FXJournalCommand
+	}{tenant, actor, c})
+	if err != nil {
+		return FXJournalResult{}, false, ErrInvalid
+	}
+	hash := sha256.Sum256(raw)
+	return s.repository.PrepareFXJournal(ctx, tenant, actor, s.ids.New(), s.ids.New(), s.ids.New(), c, hex.EncodeToString(hash[:]))
+}
+func (s *FXService) JournalResult(ctx context.Context, tenant, organization, actor, key string) (FXJournalResult, error) {
+	if s == nil || !s.snapshot.Allows(tenant, organization) || len(actor) < 1 || len(actor) > 256 || !fxKey.MatchString(key) {
+		return FXJournalResult{}, ErrInvalid
+	}
+	return s.repository.FXJournalResult(ctx, tenant, organization, actor, key)
+}
+````
+
+### FILE: `internal/platform/postgres/fx_journal.go`
+
+```yaml
+block_id: "GO-EXACT-FX-SNAPSHOT-ACCOUNTING:internal/platform/postgres/fx_journal.go:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "typed transaction, authorization, HTTP and verification glue around the existing source-admitted FX and accounting owners; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "5f05998186adcc1d4a5b94f1b2b8b48c09ab1f3072fd810d9b483c6972c8dec3"
+variables: []
+secrets_allowed: false
+```
+
+````go
+package postgres
+
+// AUTHORED atomic linkage to the existing draft writer. Conversion, posting and
+// reversal algorithms remain with their admitted existing owners.
+import (
+	"context"
+	"encoding/json"
+	"errors"
+	"time"
+
+	"elite.local/enterprise/internal/accounting"
+	"elite.local/enterprise/internal/bcamounts"
+	"github.com/jackc/pgx/v5"
+)
+
+func readFXJournal(ctx context.Context, q fxReader, tenant, organization, actor, key string) (accounting.FXJournalResult, string, error) {
+	var out accounting.FXJournalResult
+	var raw []byte
+	var hash, requestHash, journal, conversion, currency, period, sourceType, sourceID string
+	var amount, credit int64
+	var date time.Time
+	err := q.QueryRow(ctx, `select r.receipt_raw,r.receipt_sha256_hex,r.request_sha256_hex,r.journal_id,r.conversion_id,j.status,j.version,j.currency,j.period_id,j.posting_date,j.total_debit_minor_units,j.total_credit_minor_units,j.source_type,j.source_id from accounting.fx_journal_receipt r join accounting.journal j on j.tenant_id=r.tenant_id and j.journal_id=r.journal_id and j.organization_id=r.organization_id where r.tenant_id=$1 and r.organization_id=$2 and r.requested_by_subject=$3 and r.request_key=$4`, tenant, organization, actor, key).Scan(&raw, &hash, &requestHash, &journal, &conversion, &out.CurrentStatus, &out.CurrentVersion, &currency, &period, &date, &amount, &credit, &sourceType, &sourceID)
+	if errors.Is(err, pgx.ErrNoRows) {
+		return out, "", accounting.ErrFXNotFound
+	}
+	if err != nil {
+		return out, "", err
+	}
+	if fxHash(raw) != hash || json.Unmarshal(raw, &out.Receipt) != nil {
+		return accounting.FXJournalResult{}, "", accounting.ErrConflict
+	}
+	r := out.Receipt
+	if r.JournalID != journal || r.ConversionID != conversion || r.OrganizationID != organization || r.RequestedBy != actor || r.RequestKey != key || r.Effect != "FX_JOURNAL_PREPARED" || r.AmountMinor != amount || amount != credit || r.Currency != currency || r.PeriodID != period || r.PostingDate != date.Format("2006-01-02") || sourceType != "FX_CONVERSION" || sourceID != conversion {
+		return accounting.FXJournalResult{}, "", accounting.ErrConflict
+	}
+	return out, requestHash, nil
+}
+func (r *Accounting) FXJournalResult(ctx context.Context, tenant, organization, actor, key string) (accounting.FXJournalResult, error) {
+	out, _, err := readFXJournal(ctx, r.pool, tenant, organization, actor, key)
+	return out, err
+}
+
+func (r *Accounting) PrepareFXJournal(ctx context.Context, tenant, actor, journalID, journalEvent, bindingEvent string, c accounting.FXJournalCommand, hash string) (accounting.FXJournalResult, bool, error) {
+	var empty accounting.FXJournalResult
+	tx, err := r.pool.BeginTx(ctx, pgx.TxOptions{IsoLevel: pgx.ReadCommitted})
+	if err != nil {
+		return empty, false, err
+	}
+	defer tx.Rollback(ctx)
+	if prior, saved, e := readFXJournal(ctx, tx, tenant, c.OrganizationID, actor, c.IdempotencyKey); e == nil {
+		if saved != hash {
+			return empty, false, accounting.ErrConflict
+		}
+		return prior, true, tx.Commit(ctx)
+	} else if !errors.Is(e, accounting.ErrFXNotFound) {
+		return empty, false, e
+	}
+	claim, err := tx.Exec(ctx, `insert into platform.idempotency_record(tenant_id,scope,idempotency_key,request_sha256_hex,status,locked_until,expires_at) values($1,'accounting-fx-journal',$2,$3,'processing',clock_timestamp()+interval '30 seconds',clock_timestamp()+interval '24 hours') on conflict do nothing`, tenant, c.IdempotencyKey, hash)
+	if err != nil {
+		return empty, false, accountingConflict(err)
+	}
+	if claim.RowsAffected() == 0 {
+		var saved string
+		if e := tx.QueryRow(ctx, `select request_sha256_hex from platform.idempotency_record where tenant_id=$1 and scope='accounting-fx-journal' and idempotency_key=$2`, tenant, c.IdempotencyKey).Scan(&saved); e != nil || saved != hash {
+			return empty, false, accounting.ErrConflict
+		}
+		prior, saved, e := readFXJournal(ctx, tx, tenant, c.OrganizationID, actor, c.IdempotencyKey)
+		if e != nil || saved != hash {
+			return empty, false, accounting.ErrConflict
+		}
+		return prior, true, tx.Commit(ctx)
+	}
+	var conversionID string
+	if err = tx.QueryRow(ctx, `select c.conversion_id from accounting.fx_conversion_receipt c join org.organization o on o.tenant_id=c.tenant_id and o.organization_id=c.organization_id where c.tenant_id=$1 and c.organization_id=$2 and c.requested_by_subject=$3 and c.request_key=$4 and c.conversion_id=$5 and o.status='active' for update of c for share of o`, tenant, c.OrganizationID, actor, c.ConversionRequestKey, c.ConversionID).Scan(&conversionID); err != nil {
+		return empty, false, accounting.ErrConflict
+	}
+	conversion, _, err := readFXReceipt(ctx, tx, tenant, c.OrganizationID, actor, c.ConversionRequestKey)
+	if err != nil {
+		return empty, false, err
+	}
+	if conversion.ID != conversionID || conversion.Conversion.ToCurrency != conversion.Snapshot.LocalCurrency || conversion.Conversion.InputMinor <= 0 || bcamounts.CheckBalance(conversion.Conversion.OutputMinor, conversion.Conversion.OutputMinor) != nil {
+		return empty, false, accounting.ErrConflict
+	}
+	var used bool
+	if err = tx.QueryRow(ctx, `select exists(select 1 from accounting.fx_journal_receipt where tenant_id=$1 and conversion_id=$2)`, tenant, conversionID).Scan(&used); err != nil {
+		return empty, false, err
+	}
+	if used {
+		return empty, false, accounting.ErrConflict
+	}
+	date, err := time.Parse("2006-01-02", conversion.Conversion.ConversionDate)
+	if err != nil {
+		return empty, false, accounting.ErrConflict
+	}
+	amount := conversion.Conversion.OutputMinor
+	journal := accounting.Journal{ID: journalID, OrganizationID: c.OrganizationID, PeriodID: c.PeriodID, SourceType: "FX_CONVERSION", SourceID: conversionID, Currency: conversion.Conversion.ToCurrency, PostingDate: date, Status: "draft", Version: 1, TotalDebitMinorUnits: amount, TotalCreditMinorUnits: amount, Lines: []accounting.Line{{LineNo: 1, AccountCode: c.DebitAccount, Description: c.Description, DebitMinorUnits: amount}, {LineNo: 2, AccountCode: c.CreditAccount, Description: c.Description, CreditMinorUnits: amount}}}
+	if err = createJournalInTx(ctx, tx, tenant, journalEvent, journal); err != nil {
+		return empty, false, err
+	}
+	var now time.Time
+	if err = tx.QueryRow(ctx, `select clock_timestamp()`).Scan(&now); err != nil {
+		return empty, false, err
+	}
+	receipt := accounting.FXJournalReceipt{JournalID: journalID, ConversionID: conversionID, OrganizationID: c.OrganizationID, RequestedBy: actor, RequestKey: c.IdempotencyKey, PeriodID: c.PeriodID, PostingDate: conversion.Conversion.ConversionDate, Currency: journal.Currency, AmountMinor: amount, DebitAccount: c.DebitAccount, CreditAccount: c.CreditAccount, Description: c.Description, RecordedAt: now.UTC(), Effect: "FX_JOURNAL_PREPARED"}
+	raw, err := json.Marshal(receipt)
+	if err != nil || len(raw) > 16384 {
+		return empty, false, accounting.ErrInvalid
+	}
+	_, err = tx.Exec(ctx, `insert into accounting.fx_journal_receipt(tenant_id,organization_id,conversion_id,journal_id,requested_by_subject,request_key,request_sha256_hex,receipt_raw,receipt_sha256_hex,recorded_at) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`, tenant, c.OrganizationID, conversionID, journalID, actor, c.IdempotencyKey, hash, raw, fxHash(raw), now)
+	if err != nil {
+		return empty, false, accountingConflict(err)
+	}
+	_, err = tx.Exec(ctx, `insert into platform.outbox_event(tenant_id,event_id,aggregate_type,aggregate_id,aggregate_version,event_type,schema_version,occurred_at,payload) values($1,$2,'journal',$3,1,'fx-journal.prepared',1,$4,$5)`, tenant, bindingEvent, journalID, now, raw)
+	if err != nil {
+		return empty, false, accountingConflict(err)
+	}
+	done, err := tx.Exec(ctx, `update platform.idempotency_record set status='completed',response_code=201,response_body=jsonb_build_object('journal_id',$3::text),resource_type='fx-journal',resource_id=$3,locked_until=null where tenant_id=$1 and scope='accounting-fx-journal' and idempotency_key=$2 and status='processing'`, tenant, c.IdempotencyKey, journalID)
+	if err != nil {
+		return empty, false, accountingConflict(err)
+	}
+	if done.RowsAffected() != 1 {
+		return empty, false, accounting.ErrConflict
+	}
+	if err = tx.Commit(ctx); err != nil {
+		return empty, false, accountingConflict(err)
+	}
+	return accounting.FXJournalResult{Receipt: receipt, CurrentStatus: "draft", CurrentVersion: 1}, false, nil
+}
+````
+
+### FILE: `internal/platform/httpapi/fx_journal.go`
+
+```yaml
+block_id: "GO-EXACT-FX-SNAPSHOT-ACCOUNTING:internal/platform/httpapi/fx_journal.go:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "typed transaction, authorization, HTTP and verification glue around the existing source-admitted FX and accounting owners; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "1153dce4e0214feeb794e5deb04a546e7b748e2c8fd11cd36d4c70a33b31bcf7"
+variables: []
+secrets_allowed: false
+```
+
+````go
+package httpapi
+
+// AUTHORED typed HTTP binding. Existing posting/reversal endpoints keep authority.
+import (
+	"elite.local/enterprise/internal/accounting"
+	"elite.local/enterprise/internal/bcfx"
+	"io"
+	"net/http"
+)
+
+func (a fxAPI) prepareJournal(w http.ResponseWriter, r *http.Request) {
+	p, ok := a.principal(w, r, "accounting:write")
+	if !ok {
+		return
+	}
+	if r.Header.Get("Content-Type") != "application/json" {
+		writeProblem(w, 415, "UNSUPPORTED_MEDIA_TYPE", "JSON required")
+		return
+	}
+	if len(r.Header.Values("Idempotency-Key")) != 1 {
+		writeProblem(w, 400, "INVALID_KEY", "one request key required")
+		return
+	}
+	raw, err := io.ReadAll(http.MaxBytesReader(w, r.Body, 4096))
+	if err != nil {
+		writeProblem(w, 413, "BODY_TOO_LARGE", "bounded JSON required")
+		return
+	}
+	var c accounting.FXJournalCommand
+	if bcfx.DecodeExactJSON(raw, &c) != nil {
+		writeProblem(w, 400, "INVALID_REQUEST", "exact FX journal request required")
+		return
+	}
+	c.IdempotencyKey = r.Header.Get("Idempotency-Key")
+	if !accountingOrg(w, p, c.OrganizationID) {
+		return
+	}
+	result, replay, err := a.service.PrepareJournal(r.Context(), p.TenantID, p.Subject, c)
+	if err != nil {
+		fxProblem(w, err)
+		return
+	}
+	w.Header().Set("Cache-Control", "no-store")
+	if replay {
+		w.Header().Set("Idempotent-Replay", "true")
+	}
+	writeJSON(w, 201, result)
+}
+func (a fxAPI) journalResult(w http.ResponseWriter, r *http.Request) {
+	p, ok := a.principal(w, r, "accounting:read")
+	if !ok {
+		return
+	}
+	q := r.URL.Query()
+	if len(q) != 1 || len(q["organization_id"]) != 1 || len(r.Header.Values("Idempotency-Key")) != 1 {
+		writeProblem(w, 400, "INVALID_QUERY", "exact organization and request key required")
+		return
+	}
+	org := q.Get("organization_id")
+	if !accountingOrg(w, p, org) {
+		return
+	}
+	result, err := a.service.JournalResult(r.Context(), p.TenantID, org, p.Subject, r.Header.Get("Idempotency-Key"))
+	if err != nil {
+		fxProblem(w, err)
+		return
+	}
+	w.Header().Set("Cache-Control", "no-store")
+	writeJSON(w, 200, result)
+}
+````
+
+### FILE: `internal/platform/postgres/fx_journal_integration_test.go`
+
+```yaml
+block_id: "GO-EXACT-FX-SNAPSHOT-ACCOUNTING:internal/platform/postgres/fx_journal_integration_test.go:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "typed transaction, authorization, HTTP and verification glue around the existing source-admitted FX and accounting owners; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "249983207f974d5486a699b74086ea96d6a857f3fc83bc3ebcd23f4d53c96525"
+variables: []
+secrets_allowed: false
+```
+
+````go
+package postgres_test
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"io"
+	"net/http"
+	"net/http/httptest"
+	"net/url"
+	"os"
+	"strings"
+	"sync"
+	"testing"
+	"time"
+
+	"elite.local/enterprise/internal/accounting"
+	"elite.local/enterprise/internal/platform/httpapi"
+	db "elite.local/enterprise/internal/platform/postgres"
+	"elite.local/enterprise/internal/platform/randomid"
+	"github.com/jackc/pgx/v5/pgxpool"
+)
+
+func TestFXJournalConnectedPostingRecoveryAndReversal(t *testing.T) {
+	rawURL := os.Getenv("FX_CONNECTED_DB_URL")
+	if rawURL == "" {
+		t.Skip("explicit local FX fixture required")
+	}
+	u, e := url.Parse(rawURL)
+	if e != nil || u.Hostname() != "127.0.0.1" || !strings.HasPrefix(u.Path, "/elite_fx_") {
+		t.Fatal("owned loopback FX database required")
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 45*time.Second)
+	defer cancel()
+	pool, e := pgxpool.New(ctx, rawURL)
+	if e != nil {
+		t.Fatal(e)
+	}
+	defer pool.Close()
+	ids := randomid.Generator{}
+	tenant := ids.New()
+	if _, e = pool.Exec(ctx, `insert into platform.tenant(tenant_id,tenant_code,legal_name,display_name)values($1,'fx-journal','Fixture','Fixture')`, tenant); e != nil {
+		t.Fatal(e)
+	}
+	if _, e = pool.Exec(ctx, `insert into org.organization(tenant_id,organization_id,organization_code,display_name,organization_type)values($1,'store','store','Store','store'),($1,'other','other','Other','store')`, tenant); e != nil {
+		t.Fatal(e)
+	}
+	repo := db.NewAccounting(pool)
+	ledger := accounting.NewService(repo, ids)
+	fx, e := accounting.NewFXService(repo, ids, fxConnectedSnapshot(t, tenant, nil))
+	if e != nil {
+		t.Fatal(e)
+	}
+	for _, account := range []accounting.Account{{Code: "FX_ASSET", Name: "Fixture asset", Type: "asset"}, {Code: "FX_CLEARING", Name: "Fixture clearing", Type: "liability"}} {
+		if _, e = ledger.CreateAccount(ctx, tenant, account); e != nil {
+			t.Fatal(e)
+		}
+	}
+	period, e := ledger.OpenPeriod(ctx, tenant, accounting.Period{StartsOn: time.Date(2026, 1, 1, 0, 0, 0, 0, time.UTC), EndsOn: time.Date(2027, 1, 1, 0, 0, 0, 0, time.UTC)})
+	if e != nil {
+		t.Fatal(e)
+	}
+	verifier, token := handoverBrowserIssuer(t)
+	mux := http.NewServeMux()
+	httpapi.FXConversionModule{Service: fx}.Register(mux, verifier)
+	httpapi.AccountingModule{Service: ledger}.Register(mux, verifier)
+	server := httptest.NewServer(mux)
+	defer server.Close()
+	good := token("accountant", tenant, []string{"accounting:write", "accounting:read"}, []string{"store"})
+	other := token("other", tenant, []string{"accounting:write", "accounting:read"}, []string{"store"})
+	readonly := token("reader", tenant, []string{"accounting:read"}, []string{"store"})
+	foreign := token("foreign", tenant, []string{"accounting:write", "accounting:read"}, []string{"other"})
+	controller := token("controller", tenant, []string{"accounting:post", "accounting:reverse", "accounting:read"}, []string{"store"})
+	request := func(method, path, key, bearer, body string) (int, http.Header, []byte) {
+		r, e := http.NewRequestWithContext(ctx, method, server.URL+path, strings.NewReader(body))
+		if e != nil {
+			t.Error(e)
+			return 0, nil, nil
+		}
+		r.Header.Set("Authorization", "Bearer "+bearer)
+		r.Header.Set("Content-Type", "application/json")
+		if key != "" {
+			r.Header.Set("Idempotency-Key", key)
+		}
+		response, e := server.Client().Do(r)
+		if e != nil {
+			t.Error(e)
+			return 0, nil, nil
+		}
+		defer response.Body.Close()
+		raw, e := io.ReadAll(response.Body)
+		if e != nil {
+			t.Error(e)
+		}
+		return response.StatusCode, response.Header, raw
+	}
+	conversion := func(key, to string, amount int64) accounting.FXReceipt {
+		body := fmt.Sprintf(`{"organization_id":"store","from_currency":"EUR","to_currency":%q,"amount_minor":"%d","conversion_date":"2026-01-01"}`, to, amount)
+		status, _, raw := request("POST", "/v1/accounting/fx/conversions", key, good, body)
+		var out accounting.FXReceipt
+		if status != 201 || json.Unmarshal(raw, &out) != nil {
+			t.Fatalf("conversion %d %s", status, raw)
+		}
+		return out
+	}
+	command := func(receipt accounting.FXReceipt) accounting.FXJournalCommand {
+		return accounting.FXJournalCommand{OrganizationID: "store", ConversionID: receipt.ID, ConversionRequestKey: receipt.RequestKey, PeriodID: period.ID, DebitAccount: "FX_ASSET", CreditAccount: "FX_CLEARING", Description: "Synthetic fixture conversion"}
+	}
+	encode := func(v any) string {
+		raw, e := json.Marshal(v)
+		if e != nil {
+			t.Fatal(e)
+		}
+		return string(raw)
+	}
+	converted := conversion("fx-journal-conversion-01", "USD", 1000)
+	if converted.Conversion.OutputMinor != 1250 {
+		t.Fatal("independent fixture amount", converted)
+	}
+	c := command(converted)
+	body := encode(c)
+	key := "fx-journal-prepare-0001"
+	var group sync.WaitGroup
+	results := make(chan accounting.FXJournalResult, 12)
+	for range 12 {
+		group.Add(1)
+		go func() {
+			defer group.Done()
+			status, _, raw := request("POST", "/v1/accounting/fx/journals", key, good, body)
+			var result accounting.FXJournalResult
+			if status != 201 || json.Unmarshal(raw, &result) != nil {
+				t.Errorf("prepare %d %s", status, raw)
+				return
+			}
+			results <- result
+		}()
+	}
+	group.Wait()
+	close(results)
+	var initial accounting.FXJournalResult
+	count := 0
+	for result := range results {
+		count++
+		if initial.Receipt.JournalID == "" {
+			initial = result
+		}
+		if encode(result) != encode(initial) {
+			t.Fatal("concurrent draft receipts differ")
+		}
+	}
+	if count != 12 || initial.CurrentStatus != "draft" || initial.Receipt.AmountMinor != 1250 || initial.Receipt.Currency != "USD" || initial.Receipt.PostingDate != "2026-01-01" || initial.Receipt.Effect != "FX_JOURNAL_PREPARED" {
+		t.Fatal("draft receipt", initial, count)
+	}
+	resultPath := "/v1/accounting/fx/journals/result?organization_id=store"
+	status, headers, recovered := request("GET", resultPath, key, good, "")
+	if status != 200 || headers.Get("Cache-Control") != "no-store" || strings.TrimSpace(string(recovered)) != encode(initial) {
+		t.Fatal("lost prepare response recovery", status, string(recovered))
+	}
+	var n int
+	if e = pool.QueryRow(ctx, `select count(*) from accounting.journal where tenant_id=$1`, tenant).Scan(&n); e != nil || n != 1 {
+		t.Fatal("journal count", n, e)
+	}
+	if e = pool.QueryRow(ctx, `select count(*) from accounting.entry where tenant_id=$1`, tenant).Scan(&n); e != nil || n != 0 {
+		t.Fatal("draft posted by preparation", n, e)
+	}
+	for _, tc := range []struct {
+		method, path, key, bearer, body string
+		want                            int
+	}{
+		{"POST", "/v1/accounting/fx/journals", key, good, strings.Replace(body, "FX_ASSET", "FX_CLEARING", 1), 409},
+		{"POST", "/v1/accounting/fx/journals", key, other, body, 409},
+		{"GET", resultPath, key, other, "", 404},
+		{"POST", "/v1/accounting/fx/journals", "fx-journal-no-scope-01", readonly, body, 403},
+		{"POST", "/v1/accounting/fx/journals", "fx-journal-foreign-01", foreign, body, 403},
+		{"POST", "/v1/accounting/fx/journals", "fx-journal-reuse-0001", good, body, 409},
+		{"POST", "/v1/accounting/fx/journals", "fx-journal-inject-01", good, strings.Replace(body, "{", `{"amount_minor":"1",`, 1), 400},
+		{"POST", "/v1/accounting/fx/journals", "fx-journal-duplicate-01", good, strings.Replace(body, "{", `{"organization_id":"store",`, 1), 400},
+	} {
+		status, _, raw := request(tc.method, tc.path, tc.key, tc.bearer, tc.body)
+		if status != tc.want {
+			t.Errorf("negative wanted%d got%d %s", tc.want, status, raw)
+		}
+	}
+	forged := accounting.Journal{OrganizationID: "store", PeriodID: period.ID, SourceType: "FX_CONVERSION", SourceID: "forged", Currency: "USD", PostingDate: period.StartsOn, Lines: []accounting.Line{{LineNo: 1, AccountCode: "FX_ASSET", DebitMinorUnits: 1250}, {LineNo: 2, AccountCode: "FX_CLEARING", CreditMinorUnits: 1250}}}
+	status, _, raw := request("POST", "/v1/accounting/journals", "", good, encode(forged))
+	if status != 400 {
+		t.Fatal("generic source spoof", status, string(raw))
+	}
+	for i, tc := range []struct {
+		to     string
+		amount int64
+	}{{"GBP", 1000}, {"USD", 0}, {"USD", -1000}} {
+		receipt := conversion(fmt.Sprintf("fx-journal-negative-%02d", i), tc.to, tc.amount)
+		status, _, raw := request("POST", "/v1/accounting/fx/journals", fmt.Sprintf("fx-journal-reject-%03d", i), good, encode(command(receipt)))
+		if status != 409 {
+			t.Errorf("invalid journal conversion %d %s", status, raw)
+		}
+	}
+	unused := conversion("fx-journal-rollback-conv", "USD", 1500)
+	badCommand := command(unused)
+	badCommand.DebitAccount = "MISSING_ACCOUNT"
+	status, _, raw = request("POST", "/v1/accounting/fx/journals", "fx-journal-invalid-account", good, encode(badCommand))
+	if status != 409 {
+		t.Fatal("invalid account", status, string(raw))
+	}
+	if e = pool.QueryRow(ctx, `select count(*) from accounting.journal where tenant_id=$1 and source_id=$2`, tenant, unused.ID).Scan(&n); e != nil || n != 0 {
+		t.Fatal("orphan after account rejection", n, e)
+	}
+	// Block the actual shared outbox while the existing draft writer is running.
+	blocker, e := pool.Begin(ctx)
+	if e != nil {
+		t.Fatal(e)
+	}
+	if _, e = blocker.Exec(ctx, `lock table platform.outbox_event in access exclusive mode`); e != nil {
+		t.Fatal(e)
+	}
+	blockedCtx, blockedCancel := context.WithTimeout(ctx, 150*time.Millisecond)
+	bounded := command(unused)
+	bounded.IdempotencyKey = "fx-journal-outbox-cancel"
+	_, _, blockedErr := fx.PrepareJournal(blockedCtx, tenant, "accountant", bounded)
+	blockedCancel()
+	if e = blocker.Rollback(ctx); e != nil {
+		t.Fatal(e)
+	}
+	if blockedErr == nil {
+		t.Fatal("blocked write committed")
+	}
+	if e = pool.QueryRow(ctx, `select count(*) from accounting.journal where tenant_id=$1 and source_id=$2`, tenant, unused.ID).Scan(&n); e != nil || n != 0 {
+		t.Fatal("orphan after outbox cancellation", n, e)
+	}
+	if e = pool.QueryRow(ctx, `select count(*) from platform.idempotency_record where tenant_id=$1 and scope='accounting-fx-journal' and idempotency_key=$2`, tenant, bounded.IdempotencyKey).Scan(&n); e != nil || n != 0 {
+		t.Fatal("orphan idempotency", n, e)
+	}
+	// Post/reverse through the existing separately authorized accounting endpoints.
+	postPath := "/v1/accounting/journals/" + initial.Receipt.JournalID + "/post"
+	postBody := `{"organization_id":"store","expected_version":1}`
+	status, _, raw = request("POST", postPath, "", good, postBody)
+	if status != 403 {
+		t.Fatal("write permission posted journal", status, string(raw))
+	}
+	status, _, raw = request("POST", postPath, "", controller, postBody)
+	if status != 200 {
+		t.Fatal("post", status, string(raw))
+	}
+	status, _, raw = request("GET", resultPath, key, good, "")
+	var posted accounting.FXJournalResult
+	if status != 200 || json.Unmarshal(raw, &posted) != nil || posted.CurrentStatus != "posted" || posted.CurrentVersion != 2 || encode(posted.Receipt) != encode(initial.Receipt) {
+		t.Fatal("post response lost; current projection", status, string(raw))
+	}
+	status, _, raw = request("GET", "/v1/accounting/trial-balance?organization_id=store&period_id="+url.QueryEscape(period.ID), "", controller, "")
+	var balance []accounting.Balance
+	if status != 200 || json.Unmarshal(raw, &balance) != nil || len(balance) != 2 {
+		t.Fatal("trial balance", status, string(raw))
+	}
+	for _, line := range balance {
+		if line.NetMinorUnits != 1250 && line.NetMinorUnits != -1250 {
+			t.Fatal("converted posting amount", balance)
+		}
+	}
+	status, _, raw = request("POST", "/v1/accounting/journals/"+initial.Receipt.JournalID+"/reverse", "", controller, `{"organization_id":"store","expected_version":2,"reason":"Synthetic fixture reversal"}`)
+	if status != 201 {
+		t.Fatal("reverse", status, string(raw))
+	}
+	status, _, raw = request("GET", resultPath, key, good, "")
+	var reversed accounting.FXJournalResult
+	if status != 200 || json.Unmarshal(raw, &reversed) != nil || reversed.CurrentStatus != "reversed" || reversed.CurrentVersion != 3 || encode(reversed.Receipt) != encode(initial.Receipt) {
+		t.Fatal("historical/current split", status, string(raw))
+	}
+	status, _, raw = request("GET", "/v1/accounting/trial-balance?organization_id=store&period_id="+url.QueryEscape(period.ID), "", controller, "")
+	if status != 200 || json.Unmarshal(raw, &balance) != nil {
+		t.Fatal("reversed balance")
+	}
+	for _, line := range balance {
+		if line.NetMinorUnits != 0 {
+			t.Fatal("reversal not neutral", balance)
+		}
+	}
+	if _, e = pool.Exec(ctx, `delete from platform.idempotency_record where tenant_id=$1 and scope='accounting-fx-journal' and idempotency_key=$2`, tenant, key); e != nil {
+		t.Fatal(e)
+	}
+	status, headers, raw = request("POST", "/v1/accounting/fx/journals", key, good, body)
+	if status != 201 || headers.Get("Idempotent-Replay") != "true" || strings.TrimSpace(string(raw)) != encode(reversed) {
+		t.Fatal("retained receipt replay", status, string(raw))
+	}
+	if _, e = pool.Exec(ctx, `update accounting.fx_journal_receipt set requested_by_subject='other' where tenant_id=$1`, tenant); e == nil {
+		t.Fatal("mutable FX journal receipt")
+	}
+	// A closed period prevents new FX preparation through the same existing writer.
+	if _, e = ledger.ClosePeriod(ctx, tenant, period.ID, 1); e != nil {
+		t.Fatal(e)
+	}
+	status, _, raw = request("POST", "/v1/accounting/fx/journals", "fx-journal-closed-period", good, encode(command(unused)))
+	if status != 409 {
+		t.Fatal("closed period", status, string(raw))
+	}
+	if e = pool.QueryRow(ctx, `select count(*) from accounting.journal where tenant_id=$1`, tenant).Scan(&n); e != nil || n != 2 {
+		t.Fatal("expected original and reversal only", n, e)
+	}
+	if e = pool.QueryRow(ctx, `select count(*) from accounting.entry where tenant_id=$1`, tenant).Scan(&n); e != nil || n != 4 {
+		t.Fatal("expected four immutable entries", n, e)
+	}
+}
+````
+
+### FILE: `db/migrations/0065_fx_journal_receipt.up.sql`
+
+```yaml
+block_id: "GO-EXACT-FX-SNAPSHOT-ACCOUNTING:db/migrations/0065_fx_journal_receipt.up.sql:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "typed transaction, authorization, HTTP and verification glue around the existing source-admitted FX and accounting owners; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "f0c415554e8267d7125c4836b3cff45b43df41f50b706bdee4e686c64b47cb57"
+variables: []
+secrets_allowed: false
+```
+
+````sql
+begin;
+-- AUTHORED relationship/receipt at the existing accounting owner, not a ledger.
+create table accounting.fx_journal_receipt(
+ tenant_id uuid not null,
+ organization_id text not null,
+ conversion_id text not null,
+ journal_id text not null,
+ requested_by_subject text not null check(length(requested_by_subject) between 1 and 256),
+ request_key text not null check(request_key ~ '^[A-Za-z0-9_-]{16,128}$'),
+ request_sha256_hex text not null check(request_sha256_hex ~ '^[0-9a-f]{64}$'),
+ receipt_raw bytea not null check(octet_length(receipt_raw) between 1 and 16384),
+ receipt_sha256_hex text not null check(receipt_sha256_hex ~ '^[0-9a-f]{64}$'),
+ recorded_at timestamptz not null,
+ primary key(tenant_id,conversion_id),
+ unique(tenant_id,request_key),
+ unique(tenant_id,journal_id),
+ foreign key(tenant_id,organization_id) references org.organization(tenant_id,organization_id),
+ foreign key(tenant_id,conversion_id) references accounting.fx_conversion_receipt(tenant_id,conversion_id),
+ foreign key(tenant_id,journal_id) references accounting.journal(tenant_id,journal_id)
+);
+create trigger fx_journal_receipt_immutable before update or delete on accounting.fx_journal_receipt for each row execute function accounting.prevent_posted_history_mutation();
+commit;
+````
+
+### FILE: `db/migrations/0065_fx_journal_receipt.down.sql`
+
+```yaml
+block_id: "GO-EXACT-FX-SNAPSHOT-ACCOUNTING:db/migrations/0065_fx_journal_receipt.down.sql:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "typed transaction, authorization, HTTP and verification glue around the existing source-admitted FX and accounting owners; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "b6cb77d1929a4e5ce20595c95766aa191cdf72f92c93b7f8a770e9b3adb855b3"
+variables: []
+secrets_allowed: false
+```
+
+````sql
+begin;
+do $$ begin
+ if exists(select 1 from accounting.fx_journal_receipt) then
+  raise exception 'FX journal receipts exist; preserve accounting history';
+ end if;
+end $$;
+drop table accounting.fx_journal_receipt;
+commit;
+````
+
+### FILE: `docs/fx-journal-runtime.md`
+
+```yaml
+block_id: "GO-EXACT-FX-SNAPSHOT-ACCOUNTING:docs/fx-journal-runtime.md:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "typed transaction, authorization, HTTP and verification glue around the existing source-admitted FX and accounting owners; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "88aeccfcdaaac54223a9bab4cd134f7d9b19f265c372e732697c790a11eda8fb"
+variables: []
+secrets_allowed: false
+```
+
+````markdown
+# FX conversion to accounting journal
+
+This optional module uses one immutable direct-base conversion receipt and the existing accounting draft, posting and reversal writer. Enable the existing hash-bound FX profile; no additional account or service credential is introduced. AUTHORED code binds admitted owners and selects no account, exchange-rate feed, gain/loss, tax or valuation policy.
+
+An accountant with accounting:write creates a conversion using POST /v1/accounting/fx/conversions and retains its request key and returned ID. POST /v1/accounting/fx/journals then accepts organization_id, conversion_id, conversion_request_key, period_id, debit_account, credit_account and description, with a fresh Idempotency-Key. The actor must own the conversion receipt. Both input and output must be positive; output currency must equal the snapshot local currency. Accounts and period are supplied explicitly. The amount and date come from the immutable receipt and cannot be overridden in this request.
+
+Preparation creates one balanced draft journal, its immutable binding, shared idempotency record and outbox events in one PostgreSQL transaction. It creates no posted ledger entries. One conversion receipt backs at most one journal; after reversal a new accounting operation requires a new conversion receipt. The generic journal creation endpoint reserves source_type FX_CONVERSION for this typed path. The conversion receipt remains CONVERSION_RECEIPT_ONLY. The new receipt remains FX_JOURNAL_PREPARED even after posting or reversal.
+
+If the response is lost, GET /v1/accounting/fx/journals/result?organization_id=... with the same Idempotency-Key retrieves the original receipt plus current_status/current_version. It requires accounting:read and the same actor and organization. Exact replay survives expiry/removal of the transient idempotency row. A changed request, actor or second request key for an already bound conversion is rejected. Never infer current posting from the historical receipt effect.
+
+Post and reverse through the existing accounting endpoints and their separate accounting:post/accounting:reverse permissions and expected version. No posting authorization is granted by preparing a draft. Use the existing trial balance and journal queries to inspect the result. The demonstrated fixture converts EUR 1000 minor units to USD 1250, prepares a draft, explicitly posts, reverses through the existing writer, and returns net zero in the trial balance.
+
+Migration 0065 follows accounting0011 and FX0061. Downgrade refuses to remove nonempty FX journal history. Roll back application deployment while preserving the schema and immutable rows; do not erase receipts to force a downgrade. Retention follows the existing accounting owner, not the short-lived idempotency table. Other currencies, zero/negative conversions, remeasurement and automatic realized/unrealized FX gains are outside this adapter's claim and require an explicit source-admitted policy if selected later.
+
+Evidence: reconstruction_evidence/FX_JOURNAL_CONNECTION_V402.md in the source library binds actual HTTP/RS256/JWKS/PostgreSQL concurrency, recovery, permission, invalid input, outbox-cancellation rollback, posting and reversal tests, exact reconstruction and unchanged upstream arithmetic. Global composition security/SCA, delivery and production acceptance are separate gates.
+````
+
+## 6. Configuration surface
+
+Read config/fx/reference-profile.json and reference-rates.json with the exact
+selected SHA; docs/fx-conversion-runtime.md describes supported direct-base,
+dated snapshots and explicitly configured rounding. No live rate is inferred.
+Accounts/period and authorized actor are required by docs/fx-journal-runtime.md.
+
+## 7. Dependency bill
+
+No added Go module. Selected Go1.26.8 math/big, pgx5.10.0 and PostgreSQL18.6
+provide representation/persistence. The fixed BCApps source lock, adaptation
+and notices are in docs/provenance/BC_FX_SOURCE_LOCK.json and its adjacent files.
+The complete composition supplies identity and the existing accounting owner.
+
+## 8. Apply order
+
+Compose with accounting0011, identity, shared idempotency/outbox and the existing
+host, then apply0061 and0065 in order. Journal preparation is separate from
+authorized posting/reversal. Preserve immutable conversion/journal history;
+nonempty downgrade is rejected. Application rollback keeps that schema/history.
+
+## 9. Verification
+
+The original source/oracle/fuzz and connected HTTP/JWKS/PostgreSQL concurrency,
+expiry, replay, outbox-rollback, posting and reversal results remain governed by
+FX_JOURNAL_CONNECTION_V402.md and the current T2802 control receipt. Rebuild
+the selected composition and compare its exact manifest before use. Outer
+documentation repair321 changes no executable, fixture, schema or source hash.
+
+## 10. Reconstruction evidence
+
+Current reference319 contains every declared selected payload byte unchanged
+by this heading repair. Existing source/target receipts retain their original
+revision and narrow scope. Global signed release acceptance remains T2810;
+no source algorithm or production approval is created by a documentation change.

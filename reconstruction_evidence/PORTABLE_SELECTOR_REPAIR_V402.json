@@ -1,0 +1,124 @@
+{
+  "schema": "elite-portable-selector-repair/v1",
+  "state": "PASS_PORTABLE_SELECTION_AND_FULL_LIBRARY_VERIFY",
+  "scope": "LIBRARY_INFRASTRUCTURE",
+  "revision": 321,
+  "product_payload_files_unchanged": 1591,
+  "packs": 205,
+  "materialized_blocks": 2308,
+  "provenance_counts": {
+    "AUTHORED": 1999,
+    "ADAPTED": 161,
+    "VERBATIM": 148
+  },
+  "checks": {
+    "public-path-scan": {
+      "sha256": "8879019147c6d187660042b71461a73072f660c3265696132011d608e92b28bf",
+      "result": {
+        "offenders": [],
+        "selected_files": 1129
+      }
+    },
+    "pack-contract-scan": {
+      "sha256": "4f24028e185a45bdd10f121f3ba7c1db6881c16c0cc6374e1d626ff1e180144f",
+      "result": {
+        "packs": 205,
+        "failures": []
+      }
+    },
+    "core-audit-check": {
+      "sha256": "13c52528cb11d88670d029dfff7ae76eaff48ae6a445644fe63f37f124dbbd1e",
+      "result": {
+        "changed_pack": "GO-HELP-CENTER-CORE",
+        "negative_cases": 13,
+        "current_rows": 21,
+        "state": "PASS",
+        "unchanged_packs": 20,
+        "domain_suites_rerun": 0
+      }
+    },
+    "public-path-correction": {
+      "sha256": "0315a9fed3160464a4e44ac6bcaf992de6c8ac8434fd3eb28254ad679da2c574",
+      "result": {
+        "state": "PORTABLE_LOCATORS_REPLACED",
+        "changes": [
+          {
+            "path": "reconstruction_evidence/CONNECTED_DELTA_ASSURANCE_V402.md",
+            "before_sha256": "734da8551196755b5934e3b2dba28764bcd4ffe69b0879e6794cacca6655e43f",
+            "after_sha256": "09f5170810ca9618a6651e2147e87d1606981f4c14942f17290b1873ac90d0cc",
+            "original": "Temp/elite-v402-library-infra/portable-release\\public-paths-original\\reconstruction_evidence\\CONNECTED_DELTA_ASSURANCE_V402.md"
+          },
+          {
+            "path": "reconstruction_evidence/PAYMENT_SDK_RECONCILIATION_V402.md",
+            "before_sha256": "0f2c9be1cbb5d34840ec8d779cdbfde210278131454e02297b801d6205127e7c",
+            "after_sha256": "97c151f6eb1034ae4370659a77d826eec715048d92b58d375e64288c75530430",
+            "original": "Temp/elite-v402-library-infra/portable-release\\public-paths-original\\reconstruction_evidence\\PAYMENT_SDK_RECONCILIATION_V402.md"
+          },
+          {
+            "path": "START_FRANCHISE.md",
+            "before_sha256": "94012d822aa9ff44607dfccd05a546bc865a6870eaa0ff0857959726be809739",
+            "after_sha256": "3c52f97d1490fb7e35f4e211fcb364e567a5a777638cb87e4b86cdf4949b447b",
+            "original": "Temp/elite-v402-library-infra/portable-release\\public-paths-original\\START_FRANCHISE.md"
+          }
+        ]
+      }
+    },
+    "pack-contract-correction": {
+      "sha256": "cb6e13a16bff5865b4977b8bffbb23a37ea1072224e2eeac28c661f93613cc06",
+      "result": {
+        "state": "OUTER_DOCUMENTATION_CORRECTED",
+        "changes": [
+          {
+            "path": "implementation_packs/GO_BUSINESS_POLICY_PROFILE.md",
+            "before_sha256": "14a7b31e2043c6403627b23518211b80aaac8c11567e3d30c931e2e75bc0d30b",
+            "after_sha256": "14dacedf7157c3ab326938e82e389bd1ae3b53d1c43e5fd18b6e6619b24027c4",
+            "payloads_unchanged": 10
+          },
+          {
+            "path": "implementation_packs/GO_EXACT_FX_SNAPSHOT_ACCOUNTING.md",
+            "before_sha256": "f4ef71bb4b947b7b9c276fa209df0041bfc22a4fc27b87f5f14c3572d3d0127d",
+            "after_sha256": "5e8d50ff1493244e13049f5b02fd5d47b544b0dec4ce372433b525235421a37d",
+            "payloads_unchanged": 30
+          },
+          {
+            "path": "implementation_packs/GO_OIDC_SERVICE_TOKEN_BROKER.md",
+            "before_sha256": "3f094d015ea49ee0b7e18f872f7fe9052bc6e93ba3d52a98b2509c5478d70433",
+            "after_sha256": "2c381603023c06751c0fb3a9e6a89000570a46adf034099a4638bb9ea78052dd",
+            "payloads_unchanged": 11
+          },
+          {
+            "path": "implementation_packs/PYTHON_OFFICIAL_META_PAGE_WRITE_ADAPTER.md",
+            "before_sha256": "5814678b092ee8bc115c211df0e74e28095164c05ebbe2c609c20bb2f049aa91",
+            "after_sha256": "d5a9722f93493c62dcbb43f9aa937bcf05e9c8dc461e1b5fed5d0c40a2cb52e7",
+            "payloads_unchanged": 7
+          }
+        ]
+      }
+    }
+  },
+  "selector_cases": 43,
+  "maintenance_distribution_cases": 50,
+  "core_audit_negative_cases": 13,
+  "unchanged_domain_suites_rerun": 0,
+  "historical_failures_preserved": [
+    "verify321",
+    "verify321b",
+    "verify321c",
+    "verify321d",
+    "verify321e"
+  ],
+  "history_and_native_scope": "No Git mutation, source attribution change, provider activity or native investigation.",
+  "full_gate": {
+    "state": "PASS",
+    "exit_code": 0,
+    "seconds": 123.208,
+    "log_sha256": "651a5534617445404deba0f7fcf5f380295175986fcf9eb56e9c321a2c116c01",
+    "source_scope": "frozen public source snapshot, local project approvals excluded",
+    "no_domain_suite_rerun": true,
+    "invocation": "pwsh -NoProfile -File PUBLIC_SOURCE_SNAPSHOT/VERIFY_LIBRARY.ps1",
+    "input_snapshot_sha256": "6324f43671a00a19f3aef51a0cf8e350758fdd3b7b483eb80fb855cff5dcd9da",
+    "metadata_after_run": "Outcome/evidence/map bookkeeping published after successful gate; scripts, packs and plans byte-identical to tested snapshot. Final release archives receive their own exact manifest and verification.",
+    "profiles": 56,
+    "markdown_files": 956
+  }
+}

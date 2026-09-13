@@ -11,7 +11,7 @@ and functional qualification before reuse; V321 does not transfer their PASS.
 
 ```yaml
 pack_id: "TS-ENTERPRISE-WEB"
-pack_version: "0.2.1"
+pack_version: "0.2.4"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -128,38 +128,96 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "88a2012dcfda29a521cf5b9fd4402b52ac84753241cd9f639ecc77b5d96ecf78"
+sha256: "43fae1630727b68baf1c7a7e2e25a1b889e07028ab3adf5c00e81fd1c52cdf7f"
 variables: []
 secrets_allowed: false
 ```
 
 ````dotenv
-# Local development uses embedded PostgreSQL-compatible PGlite.
-DATABASE_URL=file://pglite
+# Non-secret business presentation configuration. The file name is resolved
+# inside ./config; arbitrary paths are rejected.
 BUSINESS_CONFIG_FILE=business.example.json
 
-# Demo identity is strictly local. Production refuses it.
-ALLOW_DEMO_IDENTITY=true
-APP_ENV=development
+# API business policy: both absent selects the embedded hash-locked reference.
+# A custom file requires its exact SHA-256 from the reviewed deployment lock.
+# These are non-secret fields; incomplete or invalid configuration stops startup.
+BUSINESS_POLICY_PROFILE_FILE=
+BUSINESS_POLICY_PROFILE_SHA256=
 
-# Production examples:
-# APP_ENV=production
-# DATABASE_URL=postgresql://user:password@host:5432/database
-# OIDC_ISSUER=https://identity.example.com/realms/business
-# OIDC_CLIENT_ID=enterprise-platform
-# OIDC_CLIENT_SECRET_REF=secret-manager://oidc/client-secret
-# OIDC_AUDIENCE=enterprise-platform
-# OIDC_JWKS_URI=https://identity.example.com/realms/business/protocol/openid-connect/certs
-APP_BASE_URL=https://app.example.com
+# Public origin registered at the identity provider. Production requires HTTPS.
+APP_BASE_URL=http://localhost:3000
 AUTH_SESSION_SECRET=replace-with-at-least-32-random-characters
 OIDC_ISSUER=https://identity.example.com
 OIDC_CLIENT_ID=enterprise-web
 OIDC_CLIENT_SECRET=inject-from-secret-manager
-OIDC_AUDIENCE=enterprise-api
-OIDC_JWKS_URI=https://identity.example.com/.well-known/jwks.json
+
+# The BFF is the only browser-facing caller. The Go service remains the
+# transactional/domain backend and validates every access token again.
 ENTERPRISE_API_BASE_URL=https://api.example.com
 ENTERPRISE_TENANT_CODE=example-tenant
 ENTERPRISE_ORGANIZATION_CODE=example-store
+
+# Hosted payment infrastructure: disabled until its complete account scope is
+# configured. No value below is a credential or authorization for a live charge.
+PAYMENT_CHECKOUT_ENABLED=false
+PAYMENT_TENANT_ID=
+PAYMENT_ORGANIZATION_ID=
+PAYMENT_CONNECTION_ID=
+# stripe | mercadopago (Argentina Checkout Pro lane)
+PAYMENT_REQUEST_PROVIDER=
+PAYMENT_ACCOUNT_REF=
+PAYMENT_CURRENCY=
+PAYMENT_MINOR_UNIT_EXPONENT=
+# Explicit true | false when enabled; false selects provider sandbox/test mode.
+PAYMENT_LIVE_MODE=
+PAYMENT_SUCCESS_URL=
+PAYMENT_CANCEL_URL=
+# MercadoPago only: https://<public-api-origin>/v1/payment-provider/webhook
+PAYMENT_NOTIFICATION_URL=
+PAYMENT_DISPLAY_NAME=
+PAYMENT_WORKER_ID=
+# Inject through the environment/secret manager when the owner chooses to start.
+PAYMENT_PROVIDER_SECRET=
+PAYMENT_WEBHOOK_SECRET=
+PAYMENT_OUTBOUND_HMAC_KEY_BASE64=
+
+# Initial handover: explicit, non-secret materialized profile activation.
+# These values must match the profile receipt and the active payment scope.
+HANDOVER_ENABLED=false
+HANDOVER_PROFILE_FILE=
+HANDOVER_PROFILE_ID=
+HANDOVER_PROFILE_REVISION=
+HANDOVER_PROFILE_SHA256=
+# Tenant, organization, provider, connection, account and mode are taken from
+# the prepared payment runtime and must match the hash-locked profile document.
+
+# Optional exact supplied-snapshot FX conversion receipts; no journal posting.
+FX_ENABLED=false
+FX_PROFILE_FILE=
+FX_RATES_FILE=
+FX_PROFILE_ID=
+FX_PROFILE_REVISION=
+FX_PROFILE_SHA256=
+FX_TENANT_ID=
+FX_ORGANIZATION_ID=
+FX_LOCAL_CURRENCY=
+
+# Connected WhatsApp host: configure the exact private profile and external secret files.
+WHATSAPP_ENABLED=false
+WHATSAPP_HOST_PROFILE_FILE=
+WHATSAPP_HOST_PROFILE_SHA256=
+WHATSAPP_ACCESS_TOKEN_FILE=
+WHATSAPP_APP_SECRET_FILE=
+WHATSAPP_VERIFY_TOKEN_FILE=
+WHATSAPP_SERVICE_TOKEN_FILE=
+# Choose the token file above OR an OIDC client-credentials broker below.
+WHATSAPP_SERVICE_IDENTITY_PROFILE_FILE=
+WHATSAPP_SERVICE_IDENTITY_PROFILE_SHA256=
+WHATSAPP_SERVICE_CLIENT_SECRET_FILE=
+WHATSAPP_CONTACT_HMAC_KEY_HEX_FILE=
+LLM_API_KEY_FILE=
+WHATSAPP_COLLECTOR_CLIENT_CERT_FILE=
+WHATSAPP_COLLECTOR_CLIENT_KEY_FILE=
 ````
 
 ### FILE: `.gitignore`
@@ -298,7 +356,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "9e73ad1267c7c9e6207b05fc4f0f8d5bde0c2737684a51324cf2f1c351b0d43f"
+sha256: "d62b7497f655dfe5a271631093aedf61c68dbaf1b1309ddb6e710344c905a2b9"
 variables: []
 secrets_allowed: false
 ```
@@ -318,84 +376,324 @@ secrets_allowed: false
       "code": "AR",
       "name": "Argentina",
       "currency": "ARS",
-      "locales": ["es-AR"],
+      "locales": [
+        "es-AR"
+      ],
       "timeZone": "America/Argentina/Buenos_Aires",
       "taxMode": "external"
     }
   ],
   "organizationTypes": [
-    {"id": "hq", "label": "Casa central", "allowedParents": []},
-    {"id": "franchise", "label": "Franquicia", "allowedParents": ["hq"]},
-    {"id": "branch", "label": "Sucursal", "allowedParents": ["franchise", "hq"]},
-    {"id": "factory", "label": "Fábrica", "allowedParents": ["hq"]},
-    {"id": "supplier", "label": "Proveedor", "allowedParents": ["hq"]}
+    {
+      "id": "hq",
+      "label": "Casa central",
+      "allowedParents": []
+    },
+    {
+      "id": "franchise",
+      "label": "Franquicia",
+      "allowedParents": [
+        "hq"
+      ]
+    },
+    {
+      "id": "branch",
+      "label": "Sucursal",
+      "allowedParents": [
+        "franchise",
+        "hq"
+      ]
+    },
+    {
+      "id": "factory",
+      "label": "Fábrica",
+      "allowedParents": [
+        "hq"
+      ]
+    },
+    {
+      "id": "supplier",
+      "label": "Proveedor",
+      "allowedParents": [
+        "hq"
+      ]
+    }
   ],
   "roles": [
-    {"id": "hq_admin", "label": "Administrador central", "permissions": ["*"]},
-    {"id": "branch_manager", "label": "Responsable de sucursal", "permissions": ["catalog:read", "lead:read", "lead:assign", "inventory:read", "inventory:reserve", "order:read", "order:transition"]},
-    {"id": "sales", "label": "Ventas", "permissions": ["catalog:read", "lead:read", "lead:update", "inventory:read", "order:create", "order:read"]},
-    {"id": "factory_operator", "label": "Operador de fábrica", "permissions": ["procurement:read", "procurement:transition", "shipment:create"]},
-    {"id": "customer", "label": "Cliente", "permissions": ["catalog:read", "own:order:read", "own:service:read"]}
+    {
+      "id": "hq_admin",
+      "label": "Administrador central",
+      "permissions": [
+        "*"
+      ]
+    },
+    {
+      "id": "branch_manager",
+      "label": "Responsable de sucursal",
+      "permissions": [
+        "admin:read",
+        "lead:read",
+        "lead:assign",
+        "lead:update",
+        "quote:write",
+        "catalog:write",
+        "pricing:write",
+        "order:create",
+        "order:write",
+        "inventory:allocate",
+        "payment:create",
+        "payment:write",
+        "service:write",
+        "communication:write"
+      ]
+    },
+    {
+      "id": "sales",
+      "label": "Ventas",
+      "permissions": [
+        "admin:read",
+        "lead:read",
+        "lead:assign",
+        "lead:update",
+        "quote:write",
+        "catalog:write",
+        "order:create",
+        "order:write",
+        "payment:create"
+      ]
+    },
+    {
+      "id": "factory_operator",
+      "label": "Operador de fábrica",
+      "permissions": [
+        "factory:read",
+        "procurement:write",
+        "factory:write",
+        "inventory:write",
+        "logistics:write"
+      ]
+    },
+    {
+      "id": "customer",
+      "label": "Cliente",
+      "permissions": [
+        "customer:self"
+      ]
+    }
   ],
   "modules": {
-    "catalog": {"enabled": true},
-    "crm": {"enabled": true},
-    "procurement": {"enabled": true},
-    "inventory": {"enabled": true},
-    "orders": {"enabled": true},
-    "payments": {"enabled": true},
-    "fulfillment": {"enabled": true},
-    "service": {"enabled": true},
-    "documents": {"enabled": true},
-    "integrations": {"enabled": true}
+    "catalog": {
+      "enabled": true
+    },
+    "crm": {
+      "enabled": true
+    },
+    "procurement": {
+      "enabled": true
+    },
+    "inventory": {
+      "enabled": true
+    },
+    "orders": {
+      "enabled": true
+    },
+    "payments": {
+      "enabled": true
+    },
+    "fulfillment": {
+      "enabled": true
+    },
+    "service": {
+      "enabled": true
+    },
+    "documents": {
+      "enabled": true
+    },
+    "integrations": {
+      "enabled": true
+    }
   },
   "workflows": {
     "lead": {
       "initial": "new",
-      "states": ["new", "assigned", "qualified", "converted", "lost"],
+      "states": [
+        "new",
+        "contacted",
+        "qualified",
+        "converted",
+        "lost"
+      ],
       "transitions": [
-        {"from": "new", "to": "assigned", "permission": "lead:assign"},
-        {"from": "assigned", "to": "qualified", "permission": "lead:update"},
-        {"from": "qualified", "to": "converted", "permission": "lead:update"},
-        {"from": "assigned", "to": "lost", "permission": "lead:update"},
-        {"from": "qualified", "to": "lost", "permission": "lead:update"}
+        {
+          "from": "new",
+          "to": "contacted",
+          "permission": "lead:update"
+        },
+        {
+          "from": "contacted",
+          "to": "qualified",
+          "permission": "lead:update"
+        },
+        {
+          "from": "qualified",
+          "to": "converted",
+          "permission": "lead:update"
+        },
+        {
+          "from": "contacted",
+          "to": "lost",
+          "permission": "lead:update"
+        },
+        {
+          "from": "qualified",
+          "to": "lost",
+          "permission": "lead:update"
+        }
       ]
     },
     "order": {
       "initial": "draft",
-      "states": ["draft", "placed", "confirmed", "paid", "allocated", "delivered", "cancelled"],
+      "states": [
+        "draft",
+        "placed",
+        "confirmed",
+        "paid",
+        "allocated",
+        "delivered",
+        "cancelled"
+      ],
       "transitions": [
-        {"from": "draft", "to": "placed", "permission": "order:create"},
-        {"from": "placed", "to": "confirmed", "permission": "order:transition"},
-        {"from": "confirmed", "to": "paid", "permission": "payment:reconcile"},
-        {"from": "paid", "to": "allocated", "permission": "inventory:reserve"},
-        {"from": "allocated", "to": "delivered", "permission": "order:transition"},
-        {"from": "draft", "to": "cancelled", "permission": "order:transition"},
-        {"from": "placed", "to": "cancelled", "permission": "order:transition"}
+        {
+          "from": "draft",
+          "to": "placed",
+          "permission": "order:create"
+        },
+        {
+          "from": "placed",
+          "to": "confirmed",
+          "permission": "order:transition"
+        },
+        {
+          "from": "confirmed",
+          "to": "paid",
+          "permission": "payment:reconcile"
+        },
+        {
+          "from": "paid",
+          "to": "allocated",
+          "permission": "inventory:reserve"
+        },
+        {
+          "from": "allocated",
+          "to": "delivered",
+          "permission": "order:transition"
+        },
+        {
+          "from": "draft",
+          "to": "cancelled",
+          "permission": "order:transition"
+        },
+        {
+          "from": "placed",
+          "to": "cancelled",
+          "permission": "order:transition"
+        }
       ]
     }
   },
   "customFields": {
     "lead": [
-      {"id": "preferred_vehicle_use", "label": "Uso principal", "type": "select", "required": false, "options": ["urban", "delivery", "recreation", "fleet"]}
+      {
+        "id": "preferred_vehicle_use",
+        "label": "Uso principal",
+        "type": "select",
+        "required": false,
+        "options": [
+          "urban",
+          "delivery",
+          "recreation",
+          "fleet"
+        ]
+      }
     ],
     "catalog_model": [
-      {"id": "estimated_range_km", "label": "Autonomía estimada (km)", "type": "number", "required": true}
+      {
+        "id": "estimated_range_km",
+        "label": "Autonomía estimada (km)",
+        "type": "number",
+        "required": true
+      }
     ]
   },
   "integrations": [
-    {"id": "mercado_pago", "provider": "mercado_pago", "enabled": false, "mode": "sandbox", "capabilities": ["payments"], "credentialRefEnv": "MERCADO_PAGO_CREDENTIAL_REF"},
-    {"id": "amazon_sp_api", "provider": "amazon_sp_api", "enabled": false, "mode": "sandbox", "capabilities": ["catalog", "orders", "fulfillment"], "credentialRefEnv": "AMAZON_SP_API_CREDENTIAL_REF"},
-    {"id": "mercado_libre", "provider": "mercado_libre", "enabled": false, "mode": "sandbox", "capabilities": ["catalog", "orders", "fulfillment"], "credentialRefEnv": "MERCADO_LIBRE_CREDENTIAL_REF"},
-    {"id": "google_ads", "provider": "google_ads", "enabled": false, "mode": "sandbox", "capabilities": ["ads", "conversions"], "credentialRefEnv": "GOOGLE_ADS_CREDENTIAL_REF"},
-    {"id": "meta_ads", "provider": "meta_ads", "enabled": false, "mode": "sandbox", "capabilities": ["ads", "conversions"], "credentialRefEnv": "META_ADS_CREDENTIAL_REF"}
+    {
+      "id": "mercado_pago",
+      "provider": "mercado_pago",
+      "enabled": false,
+      "mode": "sandbox",
+      "capabilities": [
+        "payments"
+      ],
+      "credentialRefEnv": "MERCADO_PAGO_CREDENTIAL_REF"
+    },
+    {
+      "id": "amazon_sp_api",
+      "provider": "amazon_sp_api",
+      "enabled": false,
+      "mode": "sandbox",
+      "capabilities": [
+        "catalog",
+        "orders",
+        "fulfillment"
+      ],
+      "credentialRefEnv": "AMAZON_SP_API_CREDENTIAL_REF"
+    },
+    {
+      "id": "mercado_libre",
+      "provider": "mercado_libre",
+      "enabled": false,
+      "mode": "sandbox",
+      "capabilities": [
+        "catalog",
+        "orders",
+        "fulfillment"
+      ],
+      "credentialRefEnv": "MERCADO_LIBRE_CREDENTIAL_REF"
+    },
+    {
+      "id": "google_ads",
+      "provider": "google_ads",
+      "enabled": false,
+      "mode": "sandbox",
+      "capabilities": [
+        "ads",
+        "conversions"
+      ],
+      "credentialRefEnv": "GOOGLE_ADS_CREDENTIAL_REF"
+    },
+    {
+      "id": "meta_ads",
+      "provider": "meta_ads",
+      "enabled": false,
+      "mode": "sandbox",
+      "capabilities": [
+        "ads",
+        "conversions"
+      ],
+      "credentialRefEnv": "META_ADS_CREDENTIAL_REF"
+    }
   ],
   "features": {
     "public_catalog": true,
     "lead_capture": true,
     "customer_portal": true,
     "factory_portal": true,
-    "vehicle_telemetry": false
+    "vehicle_telemetry": false,
+    "training_portal": false,
+    "catalog_editor": false,
+    "supply_portal": false,
+    "warranty_portal": false,
+    "network_portal": false
   }
 }
 ````
@@ -467,7 +765,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "1862ac4bbbc5192d4bf562161df66ea547ed3e67173100656ab606ae9797db2b"
+sha256: "f2b3bca04d1bfe583daae1e1f798c92ec24bb6693bd88d0a09ba6802dee362a8"
 variables: []
 secrets_allowed: false
 ```
@@ -475,8 +773,6 @@ secrets_allowed: false
 ````typescript
 /// <reference types="next" />
 /// <reference types="next/image-types/global" />
-import "./.next/types/routes.d.ts";
-import "./.next/types/root-params.d.ts";
 
 // NOTE: This file should not be edited
 // see https://nextjs.org/docs/app/api-reference/config/typescript for more information.
@@ -490,7 +786,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "d56644b2a9cebf8c8e58120abc1805596d681c08c714286971ae562f4d5e6c6a"
+sha256: "311db84ef23a12a0c56191b21ee782224e782e71e2b25f04a77f435924d11a7a"
 variables: []
 secrets_allowed: false
 ```
@@ -499,10 +795,18 @@ secrets_allowed: false
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "standalone",
+  generateBuildId: async () => {
+    const id = process.env.ELITE_SOURCE_SHA256;
+    if (!id) return null;
+    if (!/^[0-9a-f]{64}$/.test(id)) throw new Error("ELITE_SOURCE_SHA256 must bind the source inventory");
+    return id;
+  },
   poweredByHeader: false,
   typedRoutes: true,
-  // Native/WASM database drivers must retain Node's module realm on the server.
-  serverExternalPackages: ["@electric-sql/pglite", "pg"],
+  // This reference does not transform images at runtime. Re-admit an image
+  // pipeline and its dependencies before enabling the built-in optimizer.
+  images: { unoptimized: true },
   async headers() {
     return [
       {
@@ -512,8 +816,7 @@ const nextConfig: NextConfig = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
           { key: "X-Frame-Options", value: "DENY" },
-          { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
-          { key: "Content-Security-Policy", value: "base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests" }
+          { key: "Cross-Origin-Opener-Policy", value: "same-origin" }
         ]
       }
     ];
@@ -531,56 +834,46 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "79eb0dc6d31106aaa0d426390262d1240e41635548d2e098182966dfd188b68d"
+sha256: "acc4e4bd62c13cf48e071e933266d82d067cab849f92474d71a533ebf6508951"
 variables: []
 secrets_allowed: false
 ```
 
 ````json
 {
-  "name": "elite-configurable-enterprise-platform",
-  "version": "0.1.0",
+  "name": "elite-enterprise-web-bff",
+  "version": "0.4.0",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@11.19.0",
+  "packageManager": "pnpm@11.25.0",
   "engines": {
     "node": ">=24.0.0"
   },
   "scripts": {
     "dev": "next dev",
-    "dev:ready": "pnpm bootstrap && next dev",
     "build": "next build",
     "start": "next start",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "config:check": "tsx scripts/verify-config.ts",
-    "readiness:baseline": "tsx scripts/check-readiness.ts baseline",
-    "readiness:production": "tsx scripts/check-readiness.ts production",
-    "db:migrate": "tsx scripts/migrate.ts",
-    "db:seed": "tsx scripts/seed.ts",
-    "outbox:once": "tsx scripts/dispatch-outbox.ts",
     "licenses:report": "pnpm licenses list --prod --json",
-    "bootstrap": "pnpm config:check && pnpm db:migrate && pnpm db:seed",
-    "verify": "pnpm config:check && pnpm readiness:baseline && pnpm typecheck && pnpm test && pnpm build"
+    "verify": "pnpm typecheck && pnpm test && pnpm build"
   },
   "dependencies": {
-    "@electric-sql/pglite": "0.5.7",
     "jose": "6.2.10",
-    "next": "16.3.2",
+    "next": "16.3.4",
     "openid-client": "6.8.5",
-    "pg": "8.23.0",
     "react": "19.2.8",
     "react-dom": "19.2.8",
+    "safevalues": "1.2.0",
     "server-only": "0.0.1",
     "zod": "4.4.3"
   },
   "devDependencies": {
     "@types/node": "26.2.0",
-    "@types/pg": "8.23.1",
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.5",
-    "tsx": "4.23.12",
+    "csp_evaluator": "1.1.8",
     "typescript": "7.0.2",
     "vitest": "4.1.11"
   }
@@ -595,7 +888,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "048413eae77d24fdeb89982894238203d538d60358d3b6abe6b1373e0afb2e0f"
+sha256: "d6c73eb82a56c7e8d21ee89ffb402d0adb2f0c15db9c33bb8ec7035775119928"
 variables: []
 secrets_allowed: false
 ```
@@ -611,27 +904,24 @@ importers:
 
   .:
     dependencies:
-      '@electric-sql/pglite':
-        specifier: 0.5.7
-        version: 0.5.7
       jose:
         specifier: 6.2.10
         version: 6.2.10
       next:
-        specifier: 16.3.2
-        version: 16.3.2(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        specifier: 16.3.4
+        version: 16.3.4(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       openid-client:
         specifier: 6.8.5
         version: 6.8.5
-      pg:
-        specifier: 8.23.0
-        version: 8.23.0
       react:
         specifier: 19.2.8
         version: 19.2.8
       react-dom:
         specifier: 19.2.8
         version: 19.2.8(react@19.2.8)
+      safevalues:
+        specifier: 1.2.0
+        version: 1.2.0
       server-only:
         specifier: 0.0.1
         version: 0.0.1
@@ -642,405 +932,78 @@ importers:
       '@types/node':
         specifier: 26.2.0
         version: 26.2.0
-      '@types/pg':
-        specifier: 8.23.1
-        version: 8.23.1
       '@types/react':
         specifier: 19.2.18
         version: 19.2.18
       '@types/react-dom':
         specifier: 19.2.5
         version: 19.2.5(@types/react@19.2.18)
-      tsx:
-        specifier: 4.23.12
-        version: 4.23.12
+      csp_evaluator:
+        specifier: 1.1.8
+        version: 1.1.8
       typescript:
         specifier: 7.0.2
         version: 7.0.2
       vitest:
         specifier: 4.1.11
-        version: 4.1.11(@types/node@26.2.0)(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(tsx@4.23.12))
+        version: 4.1.11(@types/node@26.2.0)(vite@8.2.2(@types/node@26.2.0))
 
 packages:
-
-  '@electric-sql/pglite@0.5.7':
-    resolution: {integrity: sha512-6WBks0NFO6YUhGP03mCNkbJuVFWwrZPrzZ/vsnAPnsCD28pybdZ+yoTrlLlWFoZst3kdaju5pxIslV/jrr36nQ==}
-
-  '@emnapi/runtime@1.11.3':
-    resolution: {integrity: sha512-Xz4Tpyki7XyrpbUK1jR1AhdAdaXyhhY4lZ3neLodmhpuWfy2PAQN5B46sAiU4liOXGLkHypn/qU+jvfWSCYYLA==}
-
-  '@esbuild/aix-ppc64@0.28.2':
-    resolution: {integrity: sha512-XExcO+dvLKvVtNTibSTBej1NCAbaGhWn9Ww1ZPx80qsahhPFe/8jgWP0IchNe0F3HwkU7n8ejhH8bjonqht8mQ==}
-    engines: {node: '>=18'}
-    cpu: [ppc64]
-    os: [aix]
-
-  '@esbuild/android-arm64@0.28.2':
-    resolution: {integrity: sha512-5YfKeeI8qWfBZIX+u2xZC3Zlb3Os/gLS2sbEKM+I4ZOcsWmHS2WLysCcQZDAFRslDUU5Oiq44gf6PYN1vGwG5A==}
-    engines: {node: '>=18'}
-    cpu: [arm64]
-    os: [android]
-
-  '@esbuild/android-arm@0.28.2':
-    resolution: {integrity: sha512-kXXoiPVVGQcnIYGOeaovwOURpniDBpSq4A03qkQ+BMQqtGG6HYap3xne9C1O1yo4TR3qxlCX5IqqmX6fFo2Lqg==}
-    engines: {node: '>=18'}
-    cpu: [arm]
-    os: [android]
-
-  '@esbuild/android-x64@0.28.2':
-    resolution: {integrity: sha512-O387ite7SzUyCcy3JQX4P4bLtEA7bLLkx+esve5JHnyYfNTxcVpXZo9jhdB0lTKN44gztELTdU7nS8Nr16Fs1Q==}
-    engines: {node: '>=18'}
-    cpu: [x64]
-    os: [android]
-
-  '@esbuild/darwin-arm64@0.28.2':
-    resolution: {integrity: sha512-n4KqkOQrraxHJcgjM1RvwbigfQKIKJVpM7xp+KsxiyUSrRdIXnt73VhrPAx0fV44hgfmIVKjxMN9J1t5jySVkw==}
-    engines: {node: '>=18'}
-    cpu: [arm64]
-    os: [darwin]
-
-  '@esbuild/darwin-x64@0.28.2':
-    resolution: {integrity: sha512-uq6suIWYP37qzGddBKPw5QEQPi6HiLGsO7UmkpfyaYNQ3D+rN6w6WfwH+nuqcGXWvawGwxOEroO4YGnFh95azw==}
-    engines: {node: '>=18'}
-    cpu: [x64]
-    os: [darwin]
-
-  '@esbuild/freebsd-arm64@0.28.2':
-    resolution: {integrity: sha512-n+I0BTSRIoy+d6RPKnEVwql5UwBJolytvY4mAOIEJorKlqgPII8ix6slVVrfZ5Tnj7glIZvloylbB/EJPMWEXw==}
-    engines: {node: '>=18'}
-    cpu: [arm64]
-    os: [freebsd]
-
-  '@esbuild/freebsd-x64@0.28.2':
-    resolution: {integrity: sha512-78XJTJkvPs0kz2w61301PJjXl4g7q3JqiYMZ/M/yVI73EHBrCRTgkhu9oqG7vPqq+a/yadEW8aD+agKlk5xrmg==}
-    engines: {node: '>=18'}
-    cpu: [x64]
-    os: [freebsd]
-
-  '@esbuild/linux-arm64@0.28.2':
-    resolution: {integrity: sha512-pW4AC0P3it8c7do9MVM4p51FzHzdM/TZrerurgRcHJ2WTa1VQ1CIq18xncfpBJw4ojkiZZrKW2yIBWBP92j6Ug==}
-    engines: {node: '>=18'}
-    cpu: [arm64]
-    os: [linux]
-
-  '@esbuild/linux-arm@0.28.2':
-    resolution: {integrity: sha512-XlDnu2q5yoqems+xay6wSAcg9DDD7K9RLKZEBOMZm3ckNpJBvOX20tSfby8KfrrhINDyv9V2YVZKY/SpoGJI8w==}
-    engines: {node: '>=18'}
-    cpu: [arm]
-    os: [linux]
-
-  '@esbuild/linux-ia32@0.28.2':
-    resolution: {integrity: sha512-CYbnj78HsIeA+DhgUKgFCfvNsTHFhMMrinUrMZpDXJXKN8T3XViTZ/+wtHeVxEWY8ewSzTFN+nRmSwO2tZaLUQ==}
-    engines: {node: '>=18'}
-    cpu: [ia32]
-    os: [linux]
-
-  '@esbuild/linux-loong64@0.28.2':
-    resolution: {integrity: sha512-buwkd8nsph4R+ajRvw0qM5Hja/TXQow3ptzWO2EbG/cqcIkHloRrdlBtQlshyYGTNFvfkfJ5tpPLVkY4DtsPfQ==}
-    engines: {node: '>=18'}
-    cpu: [loong64]
-    os: [linux]
-
-  '@esbuild/linux-mips64el@0.28.2':
-    resolution: {integrity: sha512-ZVykbDyk7519VwiNb9Lcj9m8XM6v5V9uKPvrEMkkEedVewf+0itkhahp4HDpgERXhwLRpWFypsGbG/J8s0QjJA==}
-    engines: {node: '>=18'}
-    cpu: [mips64el]
-    os: [linux]
-
-  '@esbuild/linux-ppc64@0.28.2':
-    resolution: {integrity: sha512-CAXl+Dtd9UUuJd8pKKdwh6MLm3MUMiqMPmhZ3tTSXPqfyQ3vDl6R5hZdZ/kYojK4ofXtdfSv1tFq8XzWx3heNQ==}
-    engines: {node: '>=18'}
-    cpu: [ppc64]
-    os: [linux]
-
-  '@esbuild/linux-riscv64@0.28.2':
-    resolution: {integrity: sha512-GeXCej4IQtU1B+QlDV8W/RRvbzI3O/Stss+/bCXv4lZls5WGRtu2a+3JkA3i4qIUlMXpcHebWpF8AkJhATowuA==}
-    engines: {node: '>=18'}
-    cpu: [riscv64]
-    os: [linux]
-
-  '@esbuild/linux-s390x@0.28.2':
-    resolution: {integrity: sha512-3H1weTYZPxt/WOhByszQZybS9w5lKzUn1FDMsgEChbHWQwHYQQRfBxgCcZvPhjHfKyJjIievvMmEUawJrdY9Dg==}
-    engines: {node: '>=18'}
-    cpu: [s390x]
-    os: [linux]
-
-  '@esbuild/linux-x64@0.28.2':
-    resolution: {integrity: sha512-4xTZr1FUmSoQW4XIWmit3tzQrUTZM+N3P0XV8xROKYF50XfI7xeO90+1bZvNwxIufQ9hDQVRJH5YhgPVF8A/HQ==}
-    engines: {node: '>=18'}
-    cpu: [x64]
-    os: [linux]
-
-  '@esbuild/netbsd-arm64@0.28.2':
-    resolution: {integrity: sha512-sSATRjPeDBg3pdgHoQfoYBob11Kk1FGa9lui5RIHZCoCkJa9QKlvl3/vKz2usCmYYjs7ymJR/2Nnsqe+Hjt5nw==}
-    engines: {node: '>=18'}
-    cpu: [arm64]
-    os: [netbsd]
-
-  '@esbuild/netbsd-x64@0.28.2':
-    resolution: {integrity: sha512-lqnzCV+mM0gIADaKihiCg6ifgfU2L3h5E33rNQBN1Y4MaVGnzryzmvvf7UHxprpQdE8hpqLolJ9Rl+SkIRDpyw==}
-    engines: {node: '>=18'}
-    cpu: [x64]
-    os: [netbsd]
-
-  '@esbuild/openbsd-arm64@0.28.2':
-    resolution: {integrity: sha512-AL2qJILH7lNjrDmCQDvdxMfAUIv8KMNZOvrwAQ8i8//ntL9FflhOyMJ8OZSMBb8/AWXe3/5v5S20y3zCoZWKoQ==}
-    engines: {node: '>=18'}
-    cpu: [arm64]
-    os: [openbsd]
-
-  '@esbuild/openbsd-x64@0.28.2':
-    resolution: {integrity: sha512-QtiuPytchRyC4rwUKhexJdQKvDuZ6hWloi3igqPQNUJCS1/v9EiO3UTOXR6A3FoMo4fnAKbWJdqaIwhOzh8qEw==}
-    engines: {node: '>=18'}
-    cpu: [x64]
-    os: [openbsd]
-
-  '@esbuild/openharmony-arm64@0.28.2':
-    resolution: {integrity: sha512-WkhYDmpTjLvGlScA1rwjRUmhl4k8oXR3cIbtqWmELgU/dFeHHlEllxDvdWcNJV9rbzCexB5vz8gtNewWLgCT7Q==}
-    engines: {node: '>=18'}
-    cpu: [arm64]
-    os: [openharmony]
-
-  '@esbuild/sunos-x64@0.28.2':
-    resolution: {integrity: sha512-GPMSkTOtMnv2U2F8gxe4Io6qmVs+YKyp832Etqqxr0hFngmXQ3rzwytelm3GIn7T4VviRUlf3sOgBOiTdvaf7g==}
-    engines: {node: '>=18'}
-    cpu: [x64]
-    os: [sunos]
-
-  '@esbuild/win32-arm64@0.28.2':
-    resolution: {integrity: sha512-PIhhEkE9uPBleRBrQEJpUn7MBnibZzbGzYWPmY3x+YoVg/95zbjB4CxPPOQ8l5tYYM4mMaCthF8/1DIfBQQyWQ==}
-    engines: {node: '>=18'}
-    cpu: [arm64]
-    os: [win32]
-
-  '@esbuild/win32-ia32@0.28.2':
-    resolution: {integrity: sha512-YmJbfTlvU7Sdn9BB+4PRES4oB6pxgS37MAONj+hBr/cpXS1aBPKXxNnDbu+QCWPj0o9dgyxeq79g6c5P8KeuYA==}
-    engines: {node: '>=18'}
-    cpu: [ia32]
-    os: [win32]
-
-  '@esbuild/win32-x64@0.28.2':
-    resolution: {integrity: sha512-5ebpxr3nWMzrL/rnUI755Jkuee0bHL/Gq0WTF9lvcpv73wAp5eu8MfBUgWK9bhWvZjj7yX8etf/8tI8Ney695g==}
-    engines: {node: '>=18'}
-    cpu: [x64]
-    os: [win32]
-
-  '@img/colour@1.1.0':
-    resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
-    engines: {node: '>=18'}
-
-  '@img/sharp-darwin-arm64@0.35.3':
-    resolution: {integrity: sha512-RMnFX7YQsMoh7lWfcM4NEHHymBX/rLuKNPVM84XE9ONPcaSCDgE7CHIHpSgPcO2xcRthgBy1HfNO319mwhIAkg==}
-    engines: {node: '>=20.9.0'}
-    cpu: [arm64]
-    os: [darwin]
-
-  '@img/sharp-darwin-x64@0.35.3':
-    resolution: {integrity: sha512-Xo+5uFBtLN0BKqieTxiFzFPQAUlBbbH5iBKyRX/z1JrbnYsHTfKJnUfL8+p2TPXr1pXqao4eeL4Rl144uDpK9w==}
-    engines: {node: '>=20.9.0'}
-    cpu: [x64]
-    os: [darwin]
-
-  '@img/sharp-freebsd-wasm32@0.35.3':
-    resolution: {integrity: sha512-lUxcqWIj2wMQ9BrwNjngcr1gWUr5xgaGThBRqPPalIC2n67Cqj1uPh8NnA/ZhAg8hUbKl+kVHKwgUIwe6ZYPrg==}
-    engines: {node: '>=20.9.0'}
-    os: [freebsd]
-
-  '@img/sharp-libvips-darwin-arm64@1.3.2':
-    resolution: {integrity: sha512-9J6ypZFpQBj4YnePGoq/S38w6nz+vqg5WZLrLGY4YuSemdMq47GMLBPO42MzwdGwpg/agZ7xzZcFHa48xlywfg==}
-    cpu: [arm64]
-    os: [darwin]
-
-  '@img/sharp-libvips-darwin-x64@1.3.2':
-    resolution: {integrity: sha512-m2pW1n6cns9VaubNwsZ+c3CRYjxNQWgJ5gPlnL1nbBcpkBvFm6SCFN5o0psFHI8w9n11NKhFkeEDns98tiqbEw==}
-    cpu: [x64]
-    os: [darwin]
-
-  '@img/sharp-libvips-linux-arm64@1.3.2':
-    resolution: {integrity: sha512-dqVSFynCox4C/J8kT16V7SIFAns0IjgLwkvYT7p8LQVmJ5OS5b6tI9IGflxTeuBS//zXeFIUbwt5dwxyZ17cnA==}
-    cpu: [arm64]
-    os: [linux]
-    libc: [glibc]
-
-  '@img/sharp-libvips-linux-arm@1.3.2':
-    resolution: {integrity: sha512-1eMLzy92I4J6rmi4mAT8yC3HxOtniyGELlzGbNMLLeqe052ahFQ0h6LFq+lh5DsDIdYViIDst08abvSbcEdLXQ==}
-    cpu: [arm]
-    os: [linux]
-    libc: [glibc]
-
-  '@img/sharp-libvips-linux-ppc64@1.3.2':
-    resolution: {integrity: sha512-3z0NHDxD6n5I9gc05U1eW1AyRm+Gznzq3naMrthPNqE6oYykcogW0l/jfpJdjYnuNl8R7yI9pNbE1XiUeyq0Aw==}
-    cpu: [ppc64]
-    os: [linux]
-    libc: [glibc]
-
-  '@img/sharp-libvips-linux-riscv64@1.3.2':
-    resolution: {integrity: sha512-bsb4rI+NldGOsXuej2r8OdSS8+zXDVaCWxyWrcv6kneTOlgAHtZABRzBBCwdsPiD90J4myNJuHpg6kA20ImW/w==}
-    cpu: [riscv64]
-    os: [linux]
-    libc: [glibc]
-
-  '@img/sharp-libvips-linux-s390x@1.3.2':
-    resolution: {integrity: sha512-/ABshyj8gCpyIrNXnHn4LorDJ0HHm1VhXPBlxZ8zAtfVPAaSafXPGn+sUSIRiwaSBy0mmFjSjiXI5mkcwdChKQ==}
-    cpu: [s390x]
-    os: [linux]
-    libc: [glibc]
-
-  '@img/sharp-libvips-linux-x64@1.3.2':
-    resolution: {integrity: sha512-ITPEtgffGJ0S6G9dRyw/366tJQqFRcHWPHhC+Stpg3Z8AEMrDrTr2lhdz4f/Y/HMbRh//7Z5mBzEpVdi62Oc3w==}
-    cpu: [x64]
-    os: [linux]
-    libc: [glibc]
-
-  '@img/sharp-libvips-linuxmusl-arm64@1.3.2':
-    resolution: {integrity: sha512-zE9EdiUzUmg5mDT5a1rk5fYJ6GWPloTwWBYDS14naqHsL+EaMpDj1AWnpLgh3u0YCORv2Tt50wrcrpYqkP97Kw==}
-    cpu: [arm64]
-    os: [linux]
-    libc: [musl]
-
-  '@img/sharp-libvips-linuxmusl-x64@1.3.2':
-    resolution: {integrity: sha512-m0lrLiUt+lBYnCFr8qV/65yMR4E/c7/wf78I5eKTdkEakFAlZ9QlzEM3QIhhAwVeUhLAHLcCq7a7Vszq/oFNZQ==}
-    cpu: [x64]
-    os: [linux]
-    libc: [musl]
-
-  '@img/sharp-linux-arm64@0.35.3':
-    resolution: {integrity: sha512-QgKDspHPnrU+GQ55XPhGwyhC8acLVOOSyAvo1oVfFmrIXLkDNmGWzAfDZ4xK8oSA1qBQrALcHX0G5UZni/SuFQ==}
-    engines: {node: '>=20.9.0'}
-    cpu: [arm64]
-    os: [linux]
-    libc: [glibc]
-
-  '@img/sharp-linux-arm@0.35.3':
-    resolution: {integrity: sha512-affVWCTLooy8TSxbDx2qkzuDeaWLNVBA+P//FNBirHsXpP2fuBhk5AuboYUnrDnzoXes8GFjpTx0SBFOCRg+FA==}
-    engines: {node: '>=20.9.0'}
-    cpu: [arm]
-    os: [linux]
-    libc: [glibc]
-
-  '@img/sharp-linux-ppc64@0.35.3':
-    resolution: {integrity: sha512-sMd8rDxmpLOwv/7N44klFjOD5DUO7FLdjiXDI0hoxYaf7Ar262dQIEkosE98bps+5HPLtp/EvNqeqQtOycP/IA==}
-    engines: {node: '>=20.9.0'}
-    cpu: [ppc64]
-    os: [linux]
-    libc: [glibc]
-
-  '@img/sharp-linux-riscv64@0.35.3':
-    resolution: {integrity: sha512-0Eob78yjlYPfL5vMNWAW55l3R9Y6BQS/gOfe0ZcP9mEz9ohhKSt4im1hayiknXgf8AWrFqMvJcKIdmLmEe7yeQ==}
-    engines: {node: '>=20.9.0'}
-    cpu: [riscv64]
-    os: [linux]
-    libc: [glibc]
-
-  '@img/sharp-linux-s390x@0.35.3':
-    resolution: {integrity: sha512-KgAxQ0DxpNOq1rG2t5cgTgShJFGSuU7XO45cqC+1NVOuZnP6tlgZRuSYOfNupGkHID0o3cJOsw4DVeJpMovcGw==}
-    engines: {node: '>=20.9.0'}
-    cpu: [s390x]
-    os: [linux]
-    libc: [glibc]
-
-  '@img/sharp-linux-x64@0.35.3':
-    resolution: {integrity: sha512-8pqvxubL2PGdhlPy6GLqzDYMUjyRmKAwKHYKixpdJYBUK7PJ0C029XdsnpFIdgRZG68fZiGdHVWcKPvtiPB4cA==}
-    engines: {node: '>=20.9.0'}
-    cpu: [x64]
-    os: [linux]
-    libc: [glibc]
-
-  '@img/sharp-linuxmusl-arm64@0.35.3':
-    resolution: {integrity: sha512-Vz0iQjzzcSX3HCbfwFfCSG/9SCIqyO0mH2sXyiHaAYfBk0cRsCWXRyQYX0ovCK/PAQBbTzQ0dsPQHh5MAFL59w==}
-    engines: {node: '>=20.9.0'}
-    cpu: [arm64]
-    os: [linux]
-    libc: [musl]
-
-  '@img/sharp-linuxmusl-x64@0.35.3':
-    resolution: {integrity: sha512-6O1NPKcDVj9QEdg7Hx549EX8U0rp6yXQERqru6yRN7fGBn32UvIRJUlWnk+8xDCiG76hXVBbX82NZ/ZKr0euIg==}
-    engines: {node: '>=20.9.0'}
-    cpu: [x64]
-    os: [linux]
-    libc: [musl]
-
-  '@img/sharp-wasm32@0.35.3':
-    resolution: {integrity: sha512-cZ0XkcYGpHZkqW6iCkqTcmUC0CD9DhD5d/qeZlZkfRBn6GnHniZXLUo5+9xw8Iv76YE6LQFN9YNBlKREcCG76w==}
-    engines: {node: '>=20.9.0'}
-
-  '@img/sharp-webcontainers-wasm32@0.35.3':
-    resolution: {integrity: sha512-2rnq7bX3NzeR2T4YWgz8qiG4h3TSdMe+vN1iQXpJleSJ3SM5zQ8Fy2SyyXAWlbxpEZ2Y+Z4u1BePgJEYbSy80Q==}
-    engines: {node: '>=20.9.0'}
-    cpu: [wasm32]
-
-  '@img/sharp-win32-arm64@0.35.3':
-    resolution: {integrity: sha512-4bPwFdMbeC4JQ8L8LOyWp6nsHcboP5fxkp6iPOXz2Vg49R42TuMs2whkJ5OAP4/Ul035qOzy0AecOF9VOscn4w==}
-    engines: {node: '>=20.9.0'}
-    cpu: [arm64]
-    os: [win32]
-
-  '@img/sharp-win32-ia32@0.35.3':
-    resolution: {integrity: sha512-r53mXsBN6lFUDiST764SvgwUdHAqM4rPAiDzAmf4fLoB6X/rkfyTrLCg6+g17wJJiCmB3JYgHuUldCWUIRFSXw==}
-    engines: {node: ^20.9.0}
-    cpu: [ia32]
-    os: [win32]
-
-  '@img/sharp-win32-x64@0.35.3':
-    resolution: {integrity: sha512-D4y1vNeZrIIJCN+uHaWVtH86B+aCrdMYYjicy9pXHvbGZeGYLLSd3wdVuC37FxVXlU1ARsk84eKWfWMXGYEqvA==}
-    engines: {node: '>=20.9.0'}
-    cpu: [x64]
-    os: [win32]
 
   '@jridgewell/sourcemap-codec@1.5.5':
     resolution: {integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==}
 
-  '@next/env@16.3.2':
-    resolution: {integrity: sha512-8k4YoG8cM7LWlkfzGNYCRBbFNlernLiMw4s0btVl+CmmWqn3VpYypA72/5Feb1UWdxe6tHqr5KHP4p4Y4m9luA==}
+  '@next/env@16.3.4':
+    resolution: {integrity: sha512-cjWZnUUa6jZq2kFaNe/ZyJdZonOZ/QoN0Zka2nz/FLOrfx14pQuM9c5RaSVkWMqgdt4ksgPAMWPyHSs/CyV48Q==}
 
-  '@next/swc-darwin-arm64@16.3.2':
-    resolution: {integrity: sha512-ib5Llm93YCKoKWDh6ZaHq6QWTuOZ2bRkSnUwMmX8dsRIOkBNL1vVlSiUKSfixPL9SSh9pvukzqajk/klkn5vqg==}
+  '@next/swc-darwin-arm64@16.3.4':
+    resolution: {integrity: sha512-iBr3I5LZNk5/bgl5//iTgD2tcym14MX0Xo7fD//u9dYAEgGzza1y9oywluPtf74YnOswVdH1908aK9xVz7zQTw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
 
-  '@next/swc-darwin-x64@16.3.2':
-    resolution: {integrity: sha512-qd98fX2+I5nYJDioW2o7nSjoxM5KvWdeDefM80igia4+C/qSIEhH4MhTE+hO/7qKM7W37/Mq+dOWp8UePSyLHw==}
+  '@next/swc-darwin-x64@16.3.4':
+    resolution: {integrity: sha512-2dpiSyl2Jw/NrBPaU2MAKGSa+2MR82pJIn4Sm5Rjr+gxAeuh0z158Su3Z2O8zn7UNNq+ej4bToed6RcRN/Lydg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
 
-  '@next/swc-linux-arm64-gnu@16.3.2':
-    resolution: {integrity: sha512-vqsgb6FAOzcrCccsLXiKtAy5t8EzO+uOazuFaSkQxeY0tNONG3vpHYy8pyBafcI5SNFPTeyard6yTr6SzNGo2A==}
+  '@next/swc-linux-arm64-gnu@16.3.4':
+    resolution: {integrity: sha512-+t+U8HZT+fApePCS5h89CSH3datz29MkzyfCn+6fpsZBG/oiEOhINcb9rtkv6sdpToLGFn2e6146NzaKCXkqrA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
 
-  '@next/swc-linux-arm64-musl@16.3.2':
-    resolution: {integrity: sha512-xIe1eujfHUB2XcxHGddxJyu6TJRPjC5NpIkQYB/32ESkt5VkQyIAjmLRS38c+s6QY+qjtY/4KarVDzXRuD7lZQ==}
+  '@next/swc-linux-arm64-musl@16.3.4':
+    resolution: {integrity: sha512-mx03GNs1ocQA5JQ4FxDMmIsNkdrZh8cuezKCrId28e5/gIPU/l7Kcy2+vmCCzdjnnmXJy+iOAu+7K0QppO6Urg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
     libc: [musl]
 
-  '@next/swc-linux-x64-gnu@16.3.2':
-    resolution: {integrity: sha512-Fe0SA2j8X0kmc3aveuHD7UktO3AE2+mH3LguP60vGbz7u0z+MrDXbeb5iZFYAwR7EzzzXJ2Yk966w9mGTFMqfA==}
+  '@next/swc-linux-x64-gnu@16.3.4':
+    resolution: {integrity: sha512-YIhGY6fSMfha52bnVxnzc9zaVBzJg+cqQTOD8tXIBSx4fuv0pVMxQTE0PaS59YhnMOiYiG09IMwxJAf/CFm/Dw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
 
-  '@next/swc-linux-x64-musl@16.3.2':
-    resolution: {integrity: sha512-TFBipb+gyesI/2Ve4zVu7kGltBWN/R466G5/1gtt2lECfc22G1pjkTxu68Q9aFcOaXiRGTQfvDbQQFe7mYgxiQ==}
+  '@next/swc-linux-x64-musl@16.3.4':
+    resolution: {integrity: sha512-+eaaX6axpDb0yF1GCpiERe6njplvdC+nks/fKfcHu3XPGRrald8P3/X7yv7QLdjA51knnxwl9pxdIJsg+w1L+Q==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
     libc: [musl]
 
-  '@next/swc-win32-arm64-msvc@16.3.2':
-    resolution: {integrity: sha512-rVtmnNpBYIosDnKD/96dKxFsJnwnn1WRGG/HioSe8XCm2ksSHNrd2R6+hSjvTBxeMNhJ9pYeu/90cWB1nQLuNA==}
+  '@next/swc-win32-arm64-msvc@16.3.4':
+    resolution: {integrity: sha512-0jcXW7Xs/uzICrmgV3MhDYDeRy++1CqnpDIerlPIqYO4bhzB4WNbX/aRnQclustsAyTkFKB0z6rbcjmNg5tR8A==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
 
-  '@next/swc-win32-x64-msvc@16.3.2':
-    resolution: {integrity: sha512-H4Y2o2/JcHu8LtwzD5CXfHhwxwz8gfsx2HXDEw46Mtev5xHnEmB7HNtZtmriw5ReUOjRtcDqo7XSbU01FT9NlA==}
+  '@next/swc-win32-x64-msvc@16.3.4':
+    resolution: {integrity: sha512-vvBzwu1pYQCp92maZCFCIw/XgOTMR5tur9GjakwIo2cmwRTMKajRZZDS9+e4KsUZWKu1E007WUeAFXRRjZeuzw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -1164,9 +1127,6 @@ packages:
 
   '@types/node@26.2.0':
     resolution: {integrity: sha512-5IviulTZeRNp2vAJ514cc/HUlY5nZ9fCbq9DMyC52BrhFZACo3nI0R7qBxhQmo/d27NFe96ur/b7Wwxklda+kg==}
-
-  '@types/pg@8.23.1':
-    resolution: {integrity: sha512-fKVHpikPdg4GKks3JuLEhvwSyvwzF23hnabPy6DD8ljVbC7+6J5dQzdv4arV6jqq57djnMgs1HKBxX4P8aBI3A==}
 
   '@types/react-dom@19.2.5':
     resolution: {integrity: sha512-fMPwH9v7r/pp43yUd2/Mbiex5KouJwwR3dzHkhLREUC6764VyDsqxhAxv6OFEYR1RhjOyD1naqba8ECDBe7ZQg==}
@@ -1347,6 +1307,9 @@ packages:
   convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
 
+  csp_evaluator@1.1.8:
+    resolution: {integrity: sha512-EwOnfYuNbTytvbMKsLixTrRgnjOa0WZCxGy8A9nnSYAicrdwn+T/epU/yjgymmOxlgKnvH+8wXt+7p/8ak5Feg==}
+
   csstype@3.2.3:
     resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
 
@@ -1356,11 +1319,6 @@ packages:
 
   es-module-lexer@2.3.2:
     resolution: {integrity: sha512-poHGpORABojJJucnV9KbOavETW8lBVnphkW77ER5/BQ5Fz7oXSoCNek7IH3vR5nRjdsEz926ibFYX8KtLQmdyw==}
-
-  esbuild@0.28.2:
-    resolution: {integrity: sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==}
-    engines: {node: '>=18'}
-    hasBin: true
 
   estree-walker@3.0.3:
     resolution: {integrity: sha512-7RUKfXgSMMkzt6ZuXmqapOurLGPPfgj6l9uRZ7lRGolvk0y2yocc35LdcxKC5PQZdn2DMqioAQ2NoWcrTKmm6g==}
@@ -1468,8 +1426,8 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  next@16.3.2:
-    resolution: {integrity: sha512-/ZCaubUy17Lld1SiPWxuPbCk2ihqAxF2QNQaPZeEaEb7t1I58qhsJN187D7AfpapHAqUPXH0f/thtdW9dWgWFg==}
+  next@16.3.4:
+    resolution: {integrity: sha512-/Ztf6CeRH+ejEXUrYtqI4gkS66eFIHuSwqi60RgcpWKodxFZx2/dqVCMKBwILfAHXQ+F1b1vAudgj3mnxqtoIA==}
     engines: {node: '>=20.9.0'}
     hasBin: true
     peerDependencies:
@@ -1502,40 +1460,6 @@ packages:
   pathe@2.0.3:
     resolution: {integrity: sha512-WUjGcAqP1gQacoQe+OBJsFA7Ld4DyXuUIjZ5cc75cLHvJ7dtNsTugphxIADwspS+AraAUePCKrSVtPLFj/F88w==}
 
-  pg-cloudflare@1.4.0:
-    resolution: {integrity: sha512-Vo7z/6rrQYxpNRylp4Tlob2elzbh+N/MOQbxFVWCxS7oEx6jF53GTJFxK2WWpKuBRkmiin4Mt+xofFDjx09R0A==}
-
-  pg-connection-string@2.14.0:
-    resolution: {integrity: sha512-XwWDGcLRGCXAR8F/AM5bG7Q+A3Wm2s6QeEjlOKZLlH3UYcguiqCWKyWXVag5TLTIjR7oOJUY8kcADaZgWPyLeg==}
-
-  pg-int8@1.0.1:
-    resolution: {integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==}
-    engines: {node: '>=4.0.0'}
-
-  pg-pool@3.14.0:
-    resolution: {integrity: sha512-gKtPkFdQPU3DksooVLi9LsjZxrsBUZIpa+7aVx+LV5pNh0KzP4Zleud2po+ConrxbuXGBJ6Hfer6hdgpIBpBaw==}
-    peerDependencies:
-      pg: '>=8.0'
-
-  pg-protocol@1.16.0:
-    resolution: {integrity: sha512-sILXutLVjCLjcDuOmvhX5e2Z4cS5qG/6Bu3VkpFwdf/633ElGLpEh9bgmuI5I4sqKqkifQiGyiCcx1HdtrK7tg==}
-
-  pg-types@2.2.0:
-    resolution: {integrity: sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==}
-    engines: {node: '>=4'}
-
-  pg@8.23.0:
-    resolution: {integrity: sha512-Ip2EQCngowJLGOfCwkFhPXU7/ljlhn6Rxlmy4XYfL2Y+vyRM59+8uR2xqRWKdYmbXmxCFOAmKxBuSUCdF34qLg==}
-    engines: {node: '>= 16.0.0'}
-    peerDependencies:
-      pg-native: '>=3.0.1'
-    peerDependenciesMeta:
-      pg-native:
-        optional: true
-
-  pgpass@1.0.5:
-    resolution: {integrity: sha512-FdW9r/jQZhSeohs1Z3sI1yxFQNFvMcnmfuj4WBMUTxOrAyLMaTcE1aAMBiTlbMNaXvBCQuVi0R7hd8udDSP7ug==}
-
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
@@ -1551,22 +1475,6 @@ packages:
     resolution: {integrity: sha512-u82N74LFzG8ca+dD8puPnplTXoGH4fTPpVGuIbt36G3qvNlkvfD0lEAZSxaly3KX8TS/L1A1gsCEmvKmBcVbkQ==}
     engines: {node: ^10 || ^12 || >=14}
 
-  postgres-array@2.0.0:
-    resolution: {integrity: sha512-VpZrUqU5A69eQyW2c5CA1jtLecCsN2U/bD6VilrFDWq5+5UIEVO7nazS3TEcHf1zuPYO/sqGvUvW62g86RXZuA==}
-    engines: {node: '>=4'}
-
-  postgres-bytea@1.0.1:
-    resolution: {integrity: sha512-5+5HqXnsZPE65IJZSMkZtURARZelel2oXUEO8rH83VS/hxH5vv1uHquPg5wZs8yMAfdv971IU+kcPUczi7NVBQ==}
-    engines: {node: '>=0.10.0'}
-
-  postgres-date@1.0.7:
-    resolution: {integrity: sha512-suDmjLVQg78nMK2UZ454hAG+OAW+HQPZ6n++TNDUX+L0+uUlLywnoxJKDou51Zm+zTCjrCl0Nq6J9C5hP9vK/Q==}
-    engines: {node: '>=0.10.0'}
-
-  postgres-interval@1.2.0:
-    resolution: {integrity: sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ==}
-    engines: {node: '>=0.10.0'}
-
   react-dom@19.2.8:
     resolution: {integrity: sha512-rVprimfGBG3DR+Tq0IQG2DT5PxKth1WIGDmj5yPmlzr4YBe7uyE+Du4oVqTDXZSHGGGXRtTJEGSSePyQCMBglQ==}
     peerDependencies:
@@ -1581,25 +1489,14 @@ packages:
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
 
+  safevalues@1.2.0:
+    resolution: {integrity: sha512-zIsuhjYvJCjfsfjoim2ab6gLKFYAnTiDSJGh0cC3T44L/4kNLL90hBG2BzrXPrHA3f8Ms8FSJ1mljKH5dVR1cw==}
+
   scheduler@0.27.0:
     resolution: {integrity: sha512-eNv+WrVbKu1f3vbYJT/xtiF5syA5HPIMtf9IgY/nKg0sWqzAUEvqY/xm7OcZc/qafLx/iO9FgOmeSAp4v5ti/Q==}
 
-  semver@7.8.5:
-    resolution: {integrity: sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==}
-    engines: {node: '>=10'}
-    hasBin: true
-
   server-only@0.0.1:
     resolution: {integrity: sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA==}
-
-  sharp@0.35.3:
-    resolution: {integrity: sha512-ej0zVHuZGHCiABXcNxeYhpRnPNPAcvbG8RMdBAhDAxLKkCRVSpK3Iyu7qbqw3JMzoj0REeM6f3tJLtVwl0023Q==}
-    engines: {node: '>=20.9.0'}
-    peerDependencies:
-      '@types/node': '*'
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
 
   siginfo@2.0.0:
     resolution: {integrity: sha512-ybx0WO1/8bSBLEWXZvEd7gMW3Sn3JFlW3TvX1nREbDLRNQNaeNN8WK0meBwPdAaOI7TtRRRJn/Es1zhrrCHu7g==}
@@ -1607,10 +1504,6 @@ packages:
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
-
-  split2@4.2.0:
-    resolution: {integrity: sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg==}
-    engines: {node: '>= 10.x'}
 
   stackback@0.0.2:
     resolution: {integrity: sha512-1XMJE5fQo1jGH6Y/7ebnwPOBEkIEnT4QF32d5R1+VXdXveM0IBMJt8zfaxX1P3QhVwrYe+576+jkANtSS2mBbw==}
@@ -1648,11 +1541,6 @@ packages:
 
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
-
-  tsx@4.23.12:
-    resolution: {integrity: sha512-FDf4L4sYzKtzWYhU/Xm0AQFdTjdIxNo9ElTf2mxXM6k8YMHXzYUe4yODVaXP4V9uMFbVg8c0qyBccK2OOxb45Q==}
-    engines: {node: '>=18.0.0'}
-    hasBin: true
 
   typescript@7.0.2:
     resolution: {integrity: sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA==}
@@ -1751,233 +1639,40 @@ packages:
     engines: {node: '>=8'}
     hasBin: true
 
-  xtend@4.0.2:
-    resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
-    engines: {node: '>=0.4'}
-
   zod@4.4.3:
     resolution: {integrity: sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ==}
 
+ignoredOptionalDependencies:
+  - sharp
+
 snapshots:
-
-  '@electric-sql/pglite@0.5.7': {}
-
-  '@emnapi/runtime@1.11.3':
-    dependencies:
-      tslib: 2.8.1
-    optional: true
-
-  '@esbuild/aix-ppc64@0.28.2':
-    optional: true
-
-  '@esbuild/android-arm64@0.28.2':
-    optional: true
-
-  '@esbuild/android-arm@0.28.2':
-    optional: true
-
-  '@esbuild/android-x64@0.28.2':
-    optional: true
-
-  '@esbuild/darwin-arm64@0.28.2':
-    optional: true
-
-  '@esbuild/darwin-x64@0.28.2':
-    optional: true
-
-  '@esbuild/freebsd-arm64@0.28.2':
-    optional: true
-
-  '@esbuild/freebsd-x64@0.28.2':
-    optional: true
-
-  '@esbuild/linux-arm64@0.28.2':
-    optional: true
-
-  '@esbuild/linux-arm@0.28.2':
-    optional: true
-
-  '@esbuild/linux-ia32@0.28.2':
-    optional: true
-
-  '@esbuild/linux-loong64@0.28.2':
-    optional: true
-
-  '@esbuild/linux-mips64el@0.28.2':
-    optional: true
-
-  '@esbuild/linux-ppc64@0.28.2':
-    optional: true
-
-  '@esbuild/linux-riscv64@0.28.2':
-    optional: true
-
-  '@esbuild/linux-s390x@0.28.2':
-    optional: true
-
-  '@esbuild/linux-x64@0.28.2':
-    optional: true
-
-  '@esbuild/netbsd-arm64@0.28.2':
-    optional: true
-
-  '@esbuild/netbsd-x64@0.28.2':
-    optional: true
-
-  '@esbuild/openbsd-arm64@0.28.2':
-    optional: true
-
-  '@esbuild/openbsd-x64@0.28.2':
-    optional: true
-
-  '@esbuild/openharmony-arm64@0.28.2':
-    optional: true
-
-  '@esbuild/sunos-x64@0.28.2':
-    optional: true
-
-  '@esbuild/win32-arm64@0.28.2':
-    optional: true
-
-  '@esbuild/win32-ia32@0.28.2':
-    optional: true
-
-  '@esbuild/win32-x64@0.28.2':
-    optional: true
-
-  '@img/colour@1.1.0':
-    optional: true
-
-  '@img/sharp-darwin-arm64@0.35.3':
-    optionalDependencies:
-      '@img/sharp-libvips-darwin-arm64': 1.3.2
-    optional: true
-
-  '@img/sharp-darwin-x64@0.35.3':
-    optionalDependencies:
-      '@img/sharp-libvips-darwin-x64': 1.3.2
-    optional: true
-
-  '@img/sharp-freebsd-wasm32@0.35.3':
-    dependencies:
-      '@img/sharp-wasm32': 0.35.3
-    optional: true
-
-  '@img/sharp-libvips-darwin-arm64@1.3.2':
-    optional: true
-
-  '@img/sharp-libvips-darwin-x64@1.3.2':
-    optional: true
-
-  '@img/sharp-libvips-linux-arm64@1.3.2':
-    optional: true
-
-  '@img/sharp-libvips-linux-arm@1.3.2':
-    optional: true
-
-  '@img/sharp-libvips-linux-ppc64@1.3.2':
-    optional: true
-
-  '@img/sharp-libvips-linux-riscv64@1.3.2':
-    optional: true
-
-  '@img/sharp-libvips-linux-s390x@1.3.2':
-    optional: true
-
-  '@img/sharp-libvips-linux-x64@1.3.2':
-    optional: true
-
-  '@img/sharp-libvips-linuxmusl-arm64@1.3.2':
-    optional: true
-
-  '@img/sharp-libvips-linuxmusl-x64@1.3.2':
-    optional: true
-
-  '@img/sharp-linux-arm64@0.35.3':
-    optionalDependencies:
-      '@img/sharp-libvips-linux-arm64': 1.3.2
-    optional: true
-
-  '@img/sharp-linux-arm@0.35.3':
-    optionalDependencies:
-      '@img/sharp-libvips-linux-arm': 1.3.2
-    optional: true
-
-  '@img/sharp-linux-ppc64@0.35.3':
-    optionalDependencies:
-      '@img/sharp-libvips-linux-ppc64': 1.3.2
-    optional: true
-
-  '@img/sharp-linux-riscv64@0.35.3':
-    optionalDependencies:
-      '@img/sharp-libvips-linux-riscv64': 1.3.2
-    optional: true
-
-  '@img/sharp-linux-s390x@0.35.3':
-    optionalDependencies:
-      '@img/sharp-libvips-linux-s390x': 1.3.2
-    optional: true
-
-  '@img/sharp-linux-x64@0.35.3':
-    optionalDependencies:
-      '@img/sharp-libvips-linux-x64': 1.3.2
-    optional: true
-
-  '@img/sharp-linuxmusl-arm64@0.35.3':
-    optionalDependencies:
-      '@img/sharp-libvips-linuxmusl-arm64': 1.3.2
-    optional: true
-
-  '@img/sharp-linuxmusl-x64@0.35.3':
-    optionalDependencies:
-      '@img/sharp-libvips-linuxmusl-x64': 1.3.2
-    optional: true
-
-  '@img/sharp-wasm32@0.35.3':
-    dependencies:
-      '@emnapi/runtime': 1.11.3
-    optional: true
-
-  '@img/sharp-webcontainers-wasm32@0.35.3':
-    dependencies:
-      '@img/sharp-wasm32': 0.35.3
-    optional: true
-
-  '@img/sharp-win32-arm64@0.35.3':
-    optional: true
-
-  '@img/sharp-win32-ia32@0.35.3':
-    optional: true
-
-  '@img/sharp-win32-x64@0.35.3':
-    optional: true
 
   '@jridgewell/sourcemap-codec@1.5.5': {}
 
-  '@next/env@16.3.2': {}
+  '@next/env@16.3.4': {}
 
-  '@next/swc-darwin-arm64@16.3.2':
+  '@next/swc-darwin-arm64@16.3.4':
     optional: true
 
-  '@next/swc-darwin-x64@16.3.2':
+  '@next/swc-darwin-x64@16.3.4':
     optional: true
 
-  '@next/swc-linux-arm64-gnu@16.3.2':
+  '@next/swc-linux-arm64-gnu@16.3.4':
     optional: true
 
-  '@next/swc-linux-arm64-musl@16.3.2':
+  '@next/swc-linux-arm64-musl@16.3.4':
     optional: true
 
-  '@next/swc-linux-x64-gnu@16.3.2':
+  '@next/swc-linux-x64-gnu@16.3.4':
     optional: true
 
-  '@next/swc-linux-x64-musl@16.3.2':
+  '@next/swc-linux-x64-musl@16.3.4':
     optional: true
 
-  '@next/swc-win32-arm64-msvc@16.3.2':
+  '@next/swc-win32-arm64-msvc@16.3.4':
     optional: true
 
-  '@next/swc-win32-x64-msvc@16.3.2':
+  '@next/swc-win32-x64-msvc@16.3.4':
     optional: true
 
   '@oxc-project/types@0.146.0': {}
@@ -2047,12 +1742,6 @@ snapshots:
   '@types/node@26.2.0':
     dependencies:
       undici-types: 8.3.0
-
-  '@types/pg@8.23.1':
-    dependencies:
-      '@types/node': 26.2.0
-      pg-protocol: 1.16.0
-      pg-types: 2.2.0
 
   '@types/react-dom@19.2.5(@types/react@19.2.18)':
     dependencies:
@@ -2131,13 +1820,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.1
 
-  '@vitest/mocker@4.1.11(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(tsx@4.23.12))':
+  '@vitest/mocker@4.1.11(vite@8.2.2(@types/node@26.2.0))':
     dependencies:
       '@vitest/spy': 4.1.11
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(tsx@4.23.12)
+      vite: 8.2.2(@types/node@26.2.0)
 
   '@vitest/pretty-format@4.1.11':
     dependencies:
@@ -2175,40 +1864,13 @@ snapshots:
 
   convert-source-map@2.0.0: {}
 
+  csp_evaluator@1.1.8: {}
+
   csstype@3.2.3: {}
 
   detect-libc@2.1.2: {}
 
   es-module-lexer@2.3.2: {}
-
-  esbuild@0.28.2:
-    optionalDependencies:
-      '@esbuild/aix-ppc64': 0.28.2
-      '@esbuild/android-arm': 0.28.2
-      '@esbuild/android-arm64': 0.28.2
-      '@esbuild/android-x64': 0.28.2
-      '@esbuild/darwin-arm64': 0.28.2
-      '@esbuild/darwin-x64': 0.28.2
-      '@esbuild/freebsd-arm64': 0.28.2
-      '@esbuild/freebsd-x64': 0.28.2
-      '@esbuild/linux-arm': 0.28.2
-      '@esbuild/linux-arm64': 0.28.2
-      '@esbuild/linux-ia32': 0.28.2
-      '@esbuild/linux-loong64': 0.28.2
-      '@esbuild/linux-mips64el': 0.28.2
-      '@esbuild/linux-ppc64': 0.28.2
-      '@esbuild/linux-riscv64': 0.28.2
-      '@esbuild/linux-s390x': 0.28.2
-      '@esbuild/linux-x64': 0.28.2
-      '@esbuild/netbsd-arm64': 0.28.2
-      '@esbuild/netbsd-x64': 0.28.2
-      '@esbuild/openbsd-arm64': 0.28.2
-      '@esbuild/openbsd-x64': 0.28.2
-      '@esbuild/openharmony-arm64': 0.28.2
-      '@esbuild/sunos-x64': 0.28.2
-      '@esbuild/win32-arm64': 0.28.2
-      '@esbuild/win32-ia32': 0.28.2
-      '@esbuild/win32-x64': 0.28.2
 
   estree-walker@3.0.3:
     dependencies:
@@ -2280,9 +1942,9 @@ snapshots:
 
   nanoid@3.3.18: {}
 
-  next@16.3.2(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
+  next@16.3.4(@types/node@26.2.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
     dependencies:
-      '@next/env': 16.3.2
+      '@next/env': 16.3.4
       '@swc/helpers': 0.5.23
       baseline-browser-mapping: 2.11.18
       caniuse-lite: 1.0.30001809
@@ -2291,15 +1953,14 @@ snapshots:
       react-dom: 19.2.8(react@19.2.8)
       styled-jsx: 5.1.6(react@19.2.8)
     optionalDependencies:
-      '@next/swc-darwin-arm64': 16.3.2
-      '@next/swc-darwin-x64': 16.3.2
-      '@next/swc-linux-arm64-gnu': 16.3.2
-      '@next/swc-linux-arm64-musl': 16.3.2
-      '@next/swc-linux-x64-gnu': 16.3.2
-      '@next/swc-linux-x64-musl': 16.3.2
-      '@next/swc-win32-arm64-msvc': 16.3.2
-      '@next/swc-win32-x64-msvc': 16.3.2
-      sharp: 0.35.3(@types/node@26.2.0)
+      '@next/swc-darwin-arm64': 16.3.4
+      '@next/swc-darwin-x64': 16.3.4
+      '@next/swc-linux-arm64-gnu': 16.3.4
+      '@next/swc-linux-arm64-musl': 16.3.4
+      '@next/swc-linux-x64-gnu': 16.3.4
+      '@next/swc-linux-x64-musl': 16.3.4
+      '@next/swc-win32-arm64-msvc': 16.3.4
+      '@next/swc-win32-x64-msvc': 16.3.4
     transitivePeerDependencies:
       - '@babel/core'
       - '@types/node'
@@ -2316,41 +1977,6 @@ snapshots:
 
   pathe@2.0.3: {}
 
-  pg-cloudflare@1.4.0:
-    optional: true
-
-  pg-connection-string@2.14.0: {}
-
-  pg-int8@1.0.1: {}
-
-  pg-pool@3.14.0(pg@8.23.0):
-    dependencies:
-      pg: 8.23.0
-
-  pg-protocol@1.16.0: {}
-
-  pg-types@2.2.0:
-    dependencies:
-      pg-int8: 1.0.1
-      postgres-array: 2.0.0
-      postgres-bytea: 1.0.1
-      postgres-date: 1.0.7
-      postgres-interval: 1.2.0
-
-  pg@8.23.0:
-    dependencies:
-      pg-connection-string: 2.14.0
-      pg-pool: 3.14.0(pg@8.23.0)
-      pg-protocol: 1.16.0
-      pg-types: 2.2.0
-      pgpass: 1.0.5
-    optionalDependencies:
-      pg-cloudflare: 1.4.0
-
-  pgpass@1.0.5:
-    dependencies:
-      split2: 4.2.0
-
   picocolors@1.1.1: {}
 
   picomatch@4.0.5: {}
@@ -2366,16 +1992,6 @@ snapshots:
       nanoid: 3.3.18
       picocolors: 1.1.1
       source-map-js: 1.2.1
-
-  postgres-array@2.0.0: {}
-
-  postgres-bytea@1.0.1: {}
-
-  postgres-date@1.0.7: {}
-
-  postgres-interval@1.2.0:
-    dependencies:
-      xtend: 4.0.2
 
   react-dom@19.2.8(react@19.2.8):
     dependencies:
@@ -2405,52 +2021,15 @@ snapshots:
       '@rolldown/binding-win32-arm64-msvc': 1.2.5
       '@rolldown/binding-win32-x64-msvc': 1.2.5
 
+  safevalues@1.2.0: {}
+
   scheduler@0.27.0: {}
 
-  semver@7.8.5:
-    optional: true
-
   server-only@0.0.1: {}
-
-  sharp@0.35.3(@types/node@26.2.0):
-    dependencies:
-      '@img/colour': 1.1.0
-      detect-libc: 2.1.2
-      semver: 7.8.5
-    optionalDependencies:
-      '@img/sharp-darwin-arm64': 0.35.3
-      '@img/sharp-darwin-x64': 0.35.3
-      '@img/sharp-freebsd-wasm32': 0.35.3
-      '@img/sharp-libvips-darwin-arm64': 1.3.2
-      '@img/sharp-libvips-darwin-x64': 1.3.2
-      '@img/sharp-libvips-linux-arm': 1.3.2
-      '@img/sharp-libvips-linux-arm64': 1.3.2
-      '@img/sharp-libvips-linux-ppc64': 1.3.2
-      '@img/sharp-libvips-linux-riscv64': 1.3.2
-      '@img/sharp-libvips-linux-s390x': 1.3.2
-      '@img/sharp-libvips-linux-x64': 1.3.2
-      '@img/sharp-libvips-linuxmusl-arm64': 1.3.2
-      '@img/sharp-libvips-linuxmusl-x64': 1.3.2
-      '@img/sharp-linux-arm': 0.35.3
-      '@img/sharp-linux-arm64': 0.35.3
-      '@img/sharp-linux-ppc64': 0.35.3
-      '@img/sharp-linux-riscv64': 0.35.3
-      '@img/sharp-linux-s390x': 0.35.3
-      '@img/sharp-linux-x64': 0.35.3
-      '@img/sharp-linuxmusl-arm64': 0.35.3
-      '@img/sharp-linuxmusl-x64': 0.35.3
-      '@img/sharp-webcontainers-wasm32': 0.35.3
-      '@img/sharp-win32-arm64': 0.35.3
-      '@img/sharp-win32-ia32': 0.35.3
-      '@img/sharp-win32-x64': 0.35.3
-      '@types/node': 26.2.0
-    optional: true
 
   siginfo@2.0.0: {}
 
   source-map-js@1.2.1: {}
-
-  split2@4.2.0: {}
 
   stackback@0.0.2: {}
 
@@ -2473,12 +2052,6 @@ snapshots:
   tinyrainbow@3.1.1: {}
 
   tslib@2.8.1: {}
-
-  tsx@4.23.12:
-    dependencies:
-      esbuild: 0.28.2
-    optionalDependencies:
-      fsevents: 2.3.3
 
   typescript@7.0.2:
     optionalDependencies:
@@ -2505,7 +2078,7 @@ snapshots:
 
   undici-types@8.3.0: {}
 
-  vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(tsx@4.23.12):
+  vite@8.2.2(@types/node@26.2.0):
     dependencies:
       lightningcss: 1.33.0
       picomatch: 4.0.5
@@ -2514,14 +2087,12 @@ snapshots:
       tinyglobby: 0.2.17
     optionalDependencies:
       '@types/node': 26.2.0
-      esbuild: 0.28.2
       fsevents: 2.3.3
-      tsx: 4.23.12
 
-  vitest@4.1.11(@types/node@26.2.0)(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(tsx@4.23.12)):
+  vitest@4.1.11(@types/node@26.2.0)(vite@8.2.2(@types/node@26.2.0)):
     dependencies:
       '@vitest/expect': 4.1.11
-      '@vitest/mocker': 4.1.11(vite@8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(tsx@4.23.12))
+      '@vitest/mocker': 4.1.11(vite@8.2.2(@types/node@26.2.0))
       '@vitest/pretty-format': 4.1.11
       '@vitest/runner': 4.1.11
       '@vitest/snapshot': 4.1.11
@@ -2538,7 +2109,7 @@ snapshots:
       tinyexec: 1.3.0
       tinyglobby: 0.2.17
       tinyrainbow: 3.1.1
-      vite: 8.2.2(@types/node@26.2.0)(esbuild@0.28.2)(tsx@4.23.12)
+      vite: 8.2.2(@types/node@26.2.0)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 26.2.0
@@ -2549,8 +2120,6 @@ snapshots:
     dependencies:
       siginfo: 2.0.0
       stackback: 0.0.2
-
-  xtend@4.0.2: {}
 
   zod@4.4.3: {}
 ````
@@ -2563,7 +2132,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "8498920f6e5d52571f6528dc67ab7da339543d5e9de970d1ece50e3d1f90b14a"
+sha256: "f52887318fe556dbdb3574622f5c6248483e843edc3b61ad98b6ae3b351571ba"
 variables: []
 secrets_allowed: false
 ```
@@ -2574,6 +2143,9 @@ allowBuilds:
   esbuild: true
 minimumReleaseAgeExclude:
   - '@types/react-dom@19.2.5'
+ignoredOptionalDependencies:
+  # Next declares sharp optional; runtime image optimization is disabled.
+  - sharp
 ````
 
 ### FILE: `README.md`
@@ -2584,86 +2156,41 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "3cfd1cca40c7ab03c47a3e48f98c168d92d1fa047667bcd33c39fa0a86c48550"
+sha256: "5af210bc0c6dd811224b79783f1188544a64878637eedff6261585573e218fae"
 variables: []
 secrets_allowed: false
 ```
 
 ````markdown
-# Elite Configurable Enterprise Platform
+# Enterprise Web BFF
 
-Estado: **adapter web ejecutable 0.1 y condicionado**, no foundation, backend por defecto, `REUSABLE_PACK` ni producción universal.
+Frontend y BFF opcional para el perfil empresarial Go/PostgreSQL. No contiene migrations, acceso SQL, persistencia, workers ni reglas transaccionales.
 
-Este directorio es una variante web opcional que se materializa después de que el blueprint selecciona el stack. No es una colección de snippets: compila como una aplicación, valida una configuración empresarial y ofrece un vertical slice real de catálogo público y captación de interesados.
+## Composición
 
-## Inicio local
+Se materializa con `TS-OIDC-PORTAL-ADAPTER`; el backend debe exponer las APIs públicas y las queries protegidas declaradas por el perfil empresarial.
 
-Requisitos: Node.js 24+ y pnpm 11+.
+Configuración no secreta: `BUSINESS_CONFIG_FILE`, `APP_BASE_URL`, `OIDC_ISSUER`, `OIDC_CLIENT_ID`, `ENTERPRISE_API_BASE_URL`, `ENTERPRISE_TENANT_CODE` y `ENTERPRISE_ORGANIZATION_CODE`. `AUTH_SESSION_SECRET` y `OIDC_CLIENT_SECRET` se entregan mediante el mecanismo de secretos elegido, nunca en el repositorio.
 
-```powershell
-Copy-Item .env.example .env.local
-pnpm install
-pnpm dev:ready
-```
-
-Abrir `http://localhost:3000`. El entorno local usa PGlite, una distribución PostgreSQL embebida. Producción se niega a iniciar sin PostgreSQL externo, OIDC y referencias de secretos.
-
-## Verificación reproducible
+## Verificación
 
 ```powershell
-pnpm verify
-pnpm bootstrap
-pnpm outbox:once
+pnpm install --frozen-lockfile --offline
+pnpm typecheck
+pnpm test
+pnpm build
 pnpm licenses:report
 ```
 
-`verify` exige configuración válida, TypeScript estricto, tests y build de producción. El lockfile fija versiones; `pnpm-workspace.yaml` permite ejecutar únicamente el build script de `esbuild`.
+La composición genera un nonce impredecible por request mediante `src/proxy.ts`, fuerza render dinámico y aplica una política CSP sin `unsafe-inline` ni `unsafe-eval` en producción. Google CSP Evaluator 1.1.8 verifica la política y Microsoft Playwright comprueba en cuatro navegadores que cada script lleva el nonce de su respuesta y que el siguiente request recibe otro valor.
 
-`pnpm readiness:baseline` debe pasar para ampliar el adapter. `pnpm readiness:production` falla deliberadamente mientras exista cualquier claim `OPEN` o `CONDITIONED` en `config/readiness.json`; Codex no puede convertir esos estados en promesas.
+Producción sigue condicionada al IdP, HTTPS/edge, comportamiento del CDN/WAF, protección CSRF donde corresponda, antiabuso distribuido, accesibilidad con navegador/AT, carga representativa, observabilidad y rollout/rollback del proyecto. El gate local no sustituye la repetición sobre el edge productivo.
 
-## Qué se configura sin programar
+## Imágenes
 
-- identidad visual básica del negocio y soporte;
-- mercados, monedas, locales, zonas horarias y modo fiscal;
-- tipos y jerarquías de organizaciones;
-- roles y permisos;
-- módulos y feature flags;
-- estados y transiciones de workflows;
-- campos personalizados;
-- proveedores de integración, modo, capacidades y referencias de credenciales.
+Esta referencia no transforma imágenes en runtime. `next.config.ts` establece `images.unoptimized: true`; `pnpm-workspace.yaml` excluye la dependencia opcional `sharp` y el lock congelado conserva esa selección. `/_next/image` responde404, comprobado en el recorrido de agenda con cuatro navegadores.
 
-La fuente es `config/business.example.json`; el contrato ejecutable es `src/platform/config/schema.ts`. Para otra variante, crear otro archivo dentro de `config/` y seleccionar sólo su nombre con `BUSINESS_CONFIG_FILE`.
-
-## Qué ya atraviesa el sistema
-
-```text
-web pública accesible
-→ API con Problem Details e idempotencia
-→ validación de mercado/campos
-→ transacción PostgreSQL
-→ lead + auditoría + outbox
-→ evento despachable
-→ logs operativos estructurados
-```
-
-Además existen schemas para organizaciones, membresías, catálogo, stock y pedidos; autorización por organización/objeto; workflows configurables; health/readiness; portales público, cliente, operación y fábrica; límites de abuso; seguridad de headers; y contrato fail-closed para adaptadores externos.
-
-## Frontera honesta
-
-Configurar no puede reemplazar toda lógica de dominio. Impuestos, facturación fiscal, pricing complejo, financiación, homologación, garantías, telemetría, contratos con fábricas y semántica concreta de proveedores requieren módulos o adaptadores con pruebas. OIDC, Mercado Pago, Mercado Libre, Amazon SP-API, Google Ads y Meta Ads están declarados pero deliberadamente no se activan sin implementación, credenciales y contract tests.
-
-Los portales internos están cerrados y no muestran datos hasta integrar identidad real. PGlite es para desarrollo y tests; producción exige PostgreSQL administrado con backup/restore demostrado.
-
-## Arquitectura
-
-- modular monolith y un despliegue observable como baseline;
-- PostgreSQL como fuente de verdad;
-- contratos entre configuración, dominio, persistencia e integraciones;
-- outbox transaccional para side effects;
-- autorización separada de autenticación;
-- fallos de configuración o seguridad bloquean el arranque productivo.
-
-Las decisiones y restricciones se gobiernan desde los Markdown raíz de esta biblioteca. Leer `CODEX_START_HERE.md` antes de encargar un proyecto a Codex.
+Antes de agregar optimización de imágenes, admitir la canalización elegida, versiones exactas, componentes nativos, licencias, avisos de seguridad y pruebas de rendimiento. Quitar estas dos opciones no equivale a admitir el grafo anterior. La omisión de Sharp no sustituye los gates del resto de dependencias ni la aceptación del proyecto.
 ````
 
 ### FILE: `scripts/check-readiness.ts`
@@ -2822,37 +2349,58 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "561b66589954c71c88b4f663c5342a898bd6e0f8fdbf82e7bc0d4ba96cd26428"
+sha256: "9126740c5fc287683977736b1114fd5acbbc2bdeef1dc710ee343c9daebd1474"
 variables: []
 secrets_allowed: false
 ```
 
 ````tsx
+import {loadPrivateI18n} from "@/platform/i18n/load-private-i18n";
+import type { ReactElement } from "react";
+import { PortalPaging, portalCursor, portalPageHref, type PortalPageProps } from "@/platform/backend/portal-paging";
+import { minorAmountPresentation } from "@/platform/i18n/money";
 import { redirect } from "next/navigation";
 import type { Route } from "next";
 import { allowed, readSession } from "@/platform/auth/session";
-import { protectedGet, type OrderSummary, type Overview, type Page, type ServiceCaseSummary } from "@/platform/backend/protected-client";
+import { protectedGet, type LeadSummary, type OrderSummary, type Overview, type Page, type ServiceCaseSummary } from "@/platform/backend/protected-client";
 
-export default async function AdminPage() {
+// AUTHORED framework signature glue: Next inspects the required props overload;
+// the zero-argument overload preserves existing server-component test callers.
+export default function AdminPage(): Promise<ReactElement>;
+export default function AdminPage(props: PortalPageProps): Promise<ReactElement>;
+export default async function AdminPage({ searchParams }: PortalPageProps = {}) {
+ const {locale:privateLocale,t,controlled}=await loadPrivateI18n();
+
   const session = await readSession();
   if (!session) redirect("/api/auth/login?return_to=/admin" as Route);
-  if (!allowed(session, "admin:read")) return <><h1 className="pageTitle">Acceso denegado</h1><div className="notice">La sesión no posee <code>admin:read</code>.</div></>;
+  if (!allowed(session, "admin:read")) return <><h1 className="pageTitle">{t("p0006")}</h1><div className="notice">{t("p0007")} <code>admin:read</code>{t("p0008")}</div></>;
   const organization = session.organizations[0]!;
-  const [overview, orders, cases] = await Promise.all([
+  const query = await searchParams ?? {};
+  const ordersAfter=portalCursor(query.orders_after), casesAfter=portalCursor(query.cases_after);
+  const leadsAfter=allowed(session,"lead:read") ? portalCursor(query.leads_after) : undefined;
+  const [overview, orders, cases, leads] = await Promise.all([
     protectedGet<Overview>(session, "/v1/admin/overview", { organization_id: organization }),
-    protectedGet<Page<OrderSummary>>(session, "/v1/admin/orders", { organization_id: organization, limit: "25" }),
-    protectedGet<Page<ServiceCaseSummary>>(session, "/v1/admin/service-cases", { organization_id: organization, limit: "25" }),
+    protectedGet<Page<OrderSummary>>(session, "/v1/admin/orders", { organization_id: organization, limit: "25", after: ordersAfter }),
+    protectedGet<Page<ServiceCaseSummary>>(session, "/v1/admin/service-cases", { organization_id: organization, limit: "25", after: casesAfter }),
+    allowed(session, "lead:read") ? protectedGet<Page<LeadSummary>>(session, "/v1/franchise/leads", { organization_id: organization, limit: "25", after: leadsAfter }) : Promise.resolve(null),
   ]);
   return <>
-    <div className="eyebrow">Portal operativo · {organization}</div><h1 className="pageTitle">Operación</h1>
+    <div className="eyebrow">{t("p0009")} {organization}</div><h1 className="pageTitle">{t("p0010")}</h1>
     <div className="grid">
-      <article className="card"><h2>Pedidos</h2><p>{overview.orders}</p></article>
-      <article className="card"><h2>Stock disponible</h2><p>{overview.stock_available}</p></article>
-      <article className="card"><h2>Casos abiertos</h2><p>{overview.open_cases}</p></article>
-      <article className="card"><h2>Envíos activos</h2><p>{overview.active_shipments}</p></article>
+      <article className="card"><h2>{t("p0011")}</h2><p>{overview.orders}</p></article>
+      <article className="card"><h2>{t("p0012")}</h2><p>{overview.stock_available}</p></article>
+      <article className="card"><h2>{t("p0013")}</h2><p>{overview.open_cases}</p></article>
+      <article className="card"><h2>{t("p0014")}</h2><p>{overview.active_shipments}</p></article>
     </div>
-    <section><h2>Pedidos recientes</h2><div className="grid">{orders.items.map((order) => <article className="card" key={order.id}><h3>{order.id}</h3><p>{order.state} · {order.currency} {order.total_minor_units}</p></article>)}</div></section>
-    <section><h2>Servicio</h2><div className="grid">{cases.items.map((item) => <article className="card" key={item.id}><h3>{item.id}</h3><p>{item.state} · {item.severity}</p></article>)}</div></section>
+    <section aria-label={t("p0015")}><h2>{t("p0015")}</h2><div className="grid">{orders.items.map((order) => <article className="card" key={order.id}><h3>{order.id}</h3><p>{order.state} {t("p0016")} {minorAmountPresentation(order.total_minor_units, order.currency, privateLocale.locale).amountLabel}</p></article>)}</div>
+      {orders.items.length===0 ? <p>{t("p0017")}</p> : null}
+      <PortalPaging label="Páginas de pedidos recientes" nextHref={orders.next_cursor ? portalPageHref("/admin",{orders_after:orders.next_cursor,cases_after:casesAfter,leads_after:leadsAfter}) : undefined} firstHref={ordersAfter ? portalPageHref("/admin",{cases_after:casesAfter,leads_after:leadsAfter}) : undefined}/></section>
+    <section aria-label={t("p0018")}><h2>{t("p0018")}</h2><div className="grid">{cases.items.map((item) => <article className="card" key={item.id}><h3>{item.id}</h3><p>{item.state} {t("p0016")} {item.severity}</p></article>)}</div>
+      {cases.items.length===0 ? <p>{t("p0017")}</p> : null}
+      <PortalPaging label="Páginas de servicio" nextHref={cases.next_cursor ? portalPageHref("/admin",{cases_after:cases.next_cursor,orders_after:ordersAfter,leads_after:leadsAfter}) : undefined} firstHref={casesAfter ? portalPageHref("/admin",{orders_after:ordersAfter,leads_after:leadsAfter}) : undefined}/></section>
+    {leads && <section aria-label={t("p0019")}><h2>{t("p0019")}</h2><div className="grid">{leads.items.map((item) => <article className="card" key={item.id}><h3>{item.id}</h3><p>{item.state} {t("p0016")} {item.source_code} {t("p0016")} {item.assigned_subject || t("p0020")}</p></article>)}</div>
+      {leads.items.length===0 ? <p>{t("p0017")}</p> : null}
+      <PortalPaging label="Páginas de oportunidades" nextHref={leads.next_cursor ? portalPageHref("/admin",{leads_after:leads.next_cursor,orders_after:ordersAfter,cases_after:casesAfter}) : undefined} firstHref={leadsAfter ? portalPageHref("/admin",{orders_after:ordersAfter,cases_after:casesAfter}) : undefined}/></section>}
   </>;
 }
 ````
@@ -2980,29 +2528,53 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "a89873ded6b5522c5a0cb74016c552e8b36229318ff6b7820a17fb8939b3003d"
+sha256: "b17fa71135c84b037519bfc4dd49641458d5e79a24ddbf13bbc7755e95890ca6"
 variables: []
 secrets_allowed: false
 ```
 
 ````tsx
+import {loadPrivateI18n} from "@/platform/i18n/load-private-i18n";
+import type { ReactElement } from "react";
+import Link from "next/link";
+import { CustomerCheckoutActions } from "@/components/customer-checkout-actions";
+import { publicAppointmentTime } from "@/platform/i18n/public-catalog";
+import { PortalPaging, portalCursor, portalPageHref, type PortalPageProps } from "@/platform/backend/portal-paging";
+import { minorAmountPresentation } from "@/platform/i18n/money";
 import { redirect } from "next/navigation";
 import type { Route } from "next";
 import { allowed, readSession } from "@/platform/auth/session";
-import { protectedGet, type OrderSummary, type Page, type ServiceCaseSummary } from "@/platform/backend/protected-client";
+import { protectedGet, type CustomerJourney, type OrderSummary, type Page, type ServiceCaseSummary } from "@/platform/backend/protected-client";
 
-export default async function CustomerPage() {
+// AUTHORED framework signature glue: Next inspects the required props overload;
+// the zero-argument overload preserves existing server-component test callers.
+export default function CustomerPage(): Promise<ReactElement>;
+export default function CustomerPage(props: PortalPageProps): Promise<ReactElement>;
+export default async function CustomerPage({ searchParams }: PortalPageProps = {}) {
+ const {locale:privateLocale,t,controlled}=await loadPrivateI18n();
+
   const session = await readSession();
   if (!session) redirect("/api/auth/login?return_to=/customer" as Route);
-  if (!allowed(session, "customer:self")) return <><h1 className="pageTitle">Acceso denegado</h1><div className="notice">La sesión no posee <code>customer:self</code>.</div></>;
+  if (!allowed(session, "customer:self")) return <><h1 className="pageTitle">{t("p0006")}</h1><div className="notice">{t("p0007")} <code>customer:self</code>{t("p0008")}</div></>;
   const organization = session.organizations[0]!;
-  const [orders, cases] = await Promise.all([
-    protectedGet<Page<OrderSummary>>(session, "/v1/customer/orders", { organization_id: organization, limit: "25" }),
-    protectedGet<Page<ServiceCaseSummary>>(session, "/v1/customer/service-cases", { organization_id: organization, limit: "25" }),
+  const query = await searchParams ?? {};
+  const ordersAfter = portalCursor(query.orders_after), casesAfter = portalCursor(query.cases_after);
+  const [orders, cases, journey, locale] = await Promise.all([
+    protectedGet<Page<OrderSummary>>(session, "/v1/customer/orders", { organization_id: organization, limit: "25", after: ordersAfter }),
+    protectedGet<Page<ServiceCaseSummary>>(session, "/v1/customer/service-cases", { organization_id: organization, limit: "25", after: casesAfter }),
+    protectedGet<CustomerJourney>(session, "/v1/customer/journey", { organization_id: organization }),
+    Promise.resolve(privateLocale),
   ]);
-  return <><div className="eyebrow">Portal de cliente</div><h1 className="pageTitle">Mi cuenta</h1>
-    <section><h2>Mis pedidos</h2><div className="grid">{orders.items.map((order) => <article className="card" key={order.id}><h3>{order.id}</h3><p>{order.state} · {order.currency} {order.total_minor_units}</p></article>)}</div></section>
-    <section><h2>Mis casos de servicio</h2><div className="grid">{cases.items.map((item) => <article className="card" key={item.id}><h3>{item.id}</h3><p>{item.state} · {item.description}</p></article>)}</div></section>
+  return <><div className="eyebrow">{t("p0045")}</div><h1 className="pageTitle">{t("p0046")}</h1>
+    <section aria-label={t("p0047")}><h2>{t("p0047")}</h2><div className="grid">{orders.items.map((order) => <article className="card" key={order.id}><h3>{order.id}</h3><p>{order.state} {t("p0016")} {minorAmountPresentation(order.total_minor_units, order.currency, privateLocale.locale).amountLabel}</p>{["placed","confirmed","allocated"].includes(order.state)?<CustomerCheckoutActions orderId={order.id} organizationId={order.organization_id}/>:null}</article>)}</div>
+      {orders.items.length === 0 ? <p>{t("p0017")}</p> : null}
+<PortalPaging label="Páginas de mis pedidos" nextHref={orders.next_cursor ? portalPageHref("/customer", { orders_after: orders.next_cursor, cases_after: casesAfter }) : undefined} firstHref={ordersAfter ? portalPageHref("/customer", { cases_after: casesAfter }) : undefined} /></section>
+    <section aria-label={t("p0048")}><h2>{t("p0048")}</h2><div className="grid">{cases.items.map((item) => <article className="card" key={item.id}><h3>{item.id}</h3><p>{item.state} {t("p0016")} {item.description}</p></article>)}</div>
+      {cases.items.length === 0 ? <p>{t("p0017")}</p> : null}
+<PortalPaging label="Páginas de mis casos de servicio" nextHref={cases.next_cursor ? portalPageHref("/customer", { cases_after: cases.next_cursor, orders_after: ordersAfter }) : undefined} firstHref={casesAfter ? portalPageHref("/customer", { orders_after: ordersAfter }) : undefined} /></section>
+    <section><h2>{t("p0035")}</h2><p><Link href={"/customer/appointments" as Route}>{t("p0049")}</Link></p><div className="grid">{journey.appointments.map((item) => <article className="card" key={item.id}><h3>{item.kind}</h3><p>{item.state} {t("p0016")} <time dateTime={item.starts_at}>{publicAppointmentTime(locale, item.starts_at)} {t("p0050")}{locale.timeZone}{t("p0051")}</time></p></article>)}</div></section>
+    <section><h2>{t("p0052")}</h2><div className="grid">{journey.quotes.map((item) => <article className="card" key={item.id}><h3>{item.id}</h3><p>{item.state} {t("p0016")} {minorAmountPresentation(item.total_minor_units, item.currency, privateLocale.locale).amountLabel}</p></article>)}</div></section>
+    <section><h2>{t("p0039")}</h2><div className="grid">{journey.handovers.map((item) => <article className="card" key={item.id}><h3>{item.order_id}</h3><p>{item.state}</p></article>)}</div></section>
   </>;
 }
 ````
@@ -3015,25 +2587,42 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "94339c9261711ff7824f6c07631a3550f82c216d790060fc07c9db8e749cefd2"
+sha256: "855fa37ea641fd94ce184d5af38be365009170a8cfac63f1d4fab69e3b1c993e"
 variables: []
 secrets_allowed: false
 ```
 
 ````tsx
+import {loadPrivateI18n} from "@/platform/i18n/load-private-i18n";
+import { createHash } from "node:crypto";
+import { FactoryUnitActions } from "@/components/factory-unit-actions";
+import { factoryUnitSchema } from "@/platform/factory/contracts";
+import type { ReactElement } from "react";
+import { PortalPaging, portalCursor, portalPageHref, type PortalPageProps } from "@/platform/backend/portal-paging";
 import { redirect } from "next/navigation";
 import type { Route } from "next";
 import { allowed, readSession } from "@/platform/auth/session";
 import { protectedGet, type FactoryUnitSummary, type Page } from "@/platform/backend/protected-client";
 
-export default async function FactoryPage() {
+// AUTHORED framework signature glue: Next inspects the required props overload;
+// the zero-argument overload preserves existing server-component test callers.
+export default function FactoryPage(): Promise<ReactElement>;
+export default function FactoryPage(props: PortalPageProps): Promise<ReactElement>;
+export default async function FactoryPage({ searchParams }: PortalPageProps = {}) {
+ const {locale:privateLocale,t,controlled}=await loadPrivateI18n();
+
   const session = await readSession();
   if (!session) redirect("/api/auth/login?return_to=/factory" as Route);
-  if (!allowed(session, "factory:read")) return <><h1 className="pageTitle">Acceso denegado</h1><div className="notice">La sesión no posee <code>factory:read</code>.</div></>;
+  if (!allowed(session, "factory:read")) return <><h1 className="pageTitle">{t("p0006")}</h1><div className="notice">{t("p0007")} <code>factory:read</code>{t("p0008")}</div></>;
   const organization = session.organizations[0]!;
-  const units = await protectedGet<Page<FactoryUnitSummary>>(session, "/v1/factory/units", { organization_id: organization, limit: "25" });
-  return <><div className="eyebrow">Portal de fábrica · {organization}</div><h1 className="pageTitle">Abastecimiento y seguimiento</h1>
-    <div className="grid">{units.items.map((unit) => <article className="card" key={unit.id}><h2>{unit.serial_number}</h2><p>{unit.state} · orden {unit.purchase_order_id}</p></article>)}</div>
+  const storageScope=createHash("sha256").update(JSON.stringify([session.tenantId,session.subject,organization])).digest("hex");
+  const query = await searchParams ?? {};
+  const unitsAfter = portalCursor(query.units_after);
+  const units = await protectedGet<Page<FactoryUnitSummary>>(session, "/v1/factory/units", { organization_id: organization, limit: "25", after: unitsAfter });
+  return <><div className="eyebrow">{t("p0071")} {organization}</div><h1 className="pageTitle">{t("p0072")}</h1>
+    <div className="grid">{units.items.map((unit) => <article className="card" key={unit.id}><h2>{unit.serial_number}</h2><p>{t("p0073")} {unit.purchase_order_id}</p><FactoryUnitActions unit={factoryUnitSchema.parse(unit)} canWrite={allowed(session,"factory:write")} storageScope={storageScope}/></article>)}</div>
+    {units.items.length === 0 ? <p>{t("p0017")}</p> : null}
+    <PortalPaging label="Páginas de unidades" nextHref={units.next_cursor ? portalPageHref("/factory", { units_after: units.next_cursor }) : undefined} firstHref={unitsAfter ? "/factory" : undefined} />
   </>;
 }
 ````
@@ -3046,7 +2635,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "36ec4750b1912f516622166df632bc4a6109d2715b9b6822b2539c23eac1e516"
+sha256: "b7964d15c39cd463b57f522409e07b4592a19fdcd900da05909eae2bb2c796aa"
 variables: []
 secrets_allowed: false
 ```
@@ -3068,6 +2657,8 @@ secrets_allowed: false
 * { box-sizing: border-box; }
 body { margin: 0; color: var(--ink); background: var(--surface); }
 a { color: inherit; }
+.skipLink { position: fixed; z-index: 100; left: 1rem; top: 1rem; padding: .7rem 1rem; border-radius: 8px; background: var(--ink); color: white; transform: translateY(-180%); }
+.skipLink:focus { transform: translateY(0); }
 header { background: var(--panel); border-bottom: 1px solid var(--line); }
 .shell { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
 .headerRow { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
@@ -3089,6 +2680,9 @@ p { line-height: 1.65; }
 .muted { color: var(--muted); }
 .button { display: inline-flex; align-items: center; justify-content: center; padding: .8rem 1rem; border-radius: 10px; border: 0; background: var(--accent); color: white; font-weight: 750; text-decoration: none; cursor: pointer; }
 .button:hover, .button:focus-visible { background: var(--accent-strong); }
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
+.primaryAction { display: inline-flex; padding: .85rem 1.1rem; border-radius: 10px; background: var(--accent); color: white; font-weight: 750; text-decoration: none; }
+.primaryAction:hover, .primaryAction:focus-visible { background: var(--accent-strong); }
 label { display: grid; gap: .4rem; font-weight: 700; }
 input, select { width: 100%; border: 1px solid #aebdb5; border-radius: 9px; padding: .75rem; font: inherit; background: white; }
 input:focus, select:focus { outline: 3px solid rgba(0,107,79,.25); border-color: var(--accent); }
@@ -3096,8 +2690,10 @@ form { display: grid; gap: 1rem; }
 .status { padding: .8rem; border-radius: 8px; background: #e7f6ef; color: var(--accent-strong); }
 .notice { margin: 1rem 0 2rem; padding: 1rem; border: 1px solid #e3c98e; border-radius: 10px; background: #fff8e8; color: var(--warning); line-height: 1.6; }
 .error { background: #fff0ed; color: #8a2717; }
-footer { padding: 2rem 0; border-top: 1px solid var(--line); color: var(--muted); }
+footer { padding: 2rem 0; border-top: 1px solid var(--line); color: var(--muted); background: var(--panel); }
 code { background: #e7ece9; border-radius: 5px; padding: .12rem .3rem; }
+.notificationStatus { border-top: 1px solid var(--line); margin-top: 1rem; padding-top: 1rem; overflow-wrap: anywhere; }
+.notificationStatus dd { margin-inline-start: 0; }
 @media (max-width: 760px) { .hero { grid-template-columns: 1fr; } .headerRow { align-items: flex-start; flex-direction: column; padding: 1rem 0; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
 ````
@@ -3110,40 +2706,56 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "d404abbac5a434c0ad185b14f965a5083e8a7cdd55e3a126df12d1a3f998f935"
+sha256: "e585bdfd5439d8f97af94afb7018cb2853f1322b93753e36f0b137a39bef974a"
 variables: []
 secrets_allowed: false
 ```
 
 ````tsx
-import type { Metadata } from "next";
+import { publicMessage as message } from "@/platform/i18n/public-catalog";
+import {PrivateLocaleProvider} from "@/platform/i18n/private-provider";
+import {PrivateLanguageSwitcher} from "@/components/private-language-switcher";
+import {loadPrivateLocale} from "@/platform/i18n/load-private-locale";
+import { loadPublicLocale } from "@/platform/i18n/load-public-locale";
+import type { Metadata, Route } from "next";
 import Link from "next/link";
-import "./globals.css";
 import { loadBusinessConfig } from "@/platform/config/load";
+import { readSession } from "@/platform/auth/session";
 import { enabledNavigation } from "@/platform/config/registry";
+import { connection } from "next/server";
+import "./globals.css";
 
 export async function generateMetadata(): Promise<Metadata> {
   const config = await loadBusinessConfig();
-  return { title: { default: config.business.name, template: `%s · ${config.business.name}` }, description: "Plataforma empresarial configurable." };
+  const locale = await loadPublicLocale();
+  return {
+    title: { default: config.business.name, template: `%s | ${config.business.name}` },
+    description: message(locale.locale, "site.description"),
+    robots: { index: false, follow: false }
+  };
 }
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  await connection();
   const config = await loadBusinessConfig();
-  const navigation = enabledNavigation(config);
+  const locale = await loadPrivateLocale();
+  const session = await readSession();
+  const navigation = enabledNavigation(config, session?.permissions ?? null);
   return (
-    <html lang={config.business.defaultLocale}>
-      <body>
+    <html lang={locale.locale}>
+      <body><PrivateLocaleProvider locale={locale}>
+        <a className="skipLink" href="#main">{message(locale.locale, "site.skip")}</a>
         <header>
           <div className="shell headerRow">
             <Link className="brand" href="/">{config.business.name}</Link>
-            <nav aria-label="Principal">
-              {navigation.map((item) => <Link key={item.id} href={item.href as never}>{item.label}</Link>)}
-            </nav>
+            <nav aria-label={message(locale.locale, "site.navigation")}>
+              {navigation.map((item) => <Link key={item.id} href={item.href as Route}>{message(locale.locale, "nav." + item.id)}</Link>)}
+            </nav>{session?<PrivateLanguageSwitcher/>:null}
           </div>
         </header>
-        <main><div className="shell">{children}</div></main>
-        <footer><div className="shell">Configuración <code>{config.schemaVersion}</code> · {config.business.supportEmail}</div></footer>
-      </body>
+        <main id="main" className="shell" lang={locale.locale}>{children}</main>
+        <footer><div className="shell">{message(locale.locale, "site.contact")} <a href={`mailto:${config.business.supportEmail}`}>{config.business.supportEmail}</a></div></footer>
+      </PrivateLocaleProvider></body>
     </html>
   );
 }
@@ -3249,45 +2861,44 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "c74e7df21af3f3fd6bbf09a652062cc529473692bd21d3d75bce59dbed422588"
+sha256: "d715b58d7c1be02aae1051dc5d91d619499be5fd35972658cc67d01895c9d573"
 variables: []
 secrets_allowed: false
 ```
 
 ````tsx
-import type { Metadata } from "next";
+import { publicMessage as message } from "@/platform/i18n/public-catalog";
+import { loadPublicLocale } from "@/platform/i18n/load-public-locale";
+import { publicCount } from "@/platform/i18n/public-catalog";
+import { listModels } from "@/platform/backend/public-client";
+import { LeadForm } from "@/app/connected/lead-form";
+import { publicPageMetadata } from "@/platform/seo/public-indexing";
 import Link from "next/link";
-import { database } from "@/platform/db/client";
-import { migrate } from "@/platform/db/migrations";
-import { seed } from "@/platform/seed";
-import { loadBusinessConfig } from "@/platform/config/load";
-import { listPublishedModels } from "@/modules/catalog/repository";
+import { loadPublishedCatalog } from "@/platform/catalog/load";
 
-export const metadata: Metadata = { title: "Modelos" };
+export async function generateMetadata() { const locale = await loadPublicLocale(); return publicPageMetadata("/models", message(locale.locale, "models.short")); }
 export const dynamic = "force-dynamic";
 
 export default async function ModelsPage() {
-  const config = await loadBusinessConfig();
-  const db = await database();
-  await migrate(db);
-  await seed(db, config);
-  const models = await listPublishedModels(db, config.business.defaultMarket);
+  const [catalog, locale] = await Promise.all([loadPublishedCatalog(), loadPublicLocale()]);
+  // An enabled publication profile never falls back to mutable draft data.
+  const models = catalog?.models ?? (process.env.CATALOG_RELEASE_ENABLED === "true" ? [] : await listModels());
   return (
-    <>
-      <div className="eyebrow">Catálogo público</div>
-      <h1>Modelos</h1>
-      <p className="lede">El contenido proviene de una versión publicada del catálogo y se filtra por mercado.</p>
+    <section lang={locale.locale}>
+      <div className="eyebrow">{message(locale.locale, "models.eyebrow")}</div>
+      <h1 className="pageTitle">{message(locale.locale, "models.title")}</h1>
+      <p className="lede">{message(locale.locale, "models.description")}</p>
+      <p>{publicCount(locale.locale, "models", models.length)}</p>
       <div className="grid">
         {models.map((model) => (
-          <article className="card" key={model.modelId}>
-            <h2>{model.name}</h2>
-            <p>{model.summary}</p>
-            <p className="muted">Autonomía estimada: {String(model.customFields.estimated_range_km ?? "—")} km</p>
-            <Link className="button" href={`/models/${model.slug}` as never}>Ver modelo</Link>
+          <article className="card" key={model.id}>
+            <h2>{catalog ? <Link href={`/models/${model.code}`}>{model.displayName}</Link> : model.displayName}</h2>
+            <p>{model.vehicleClass}</p>
+            <LeadForm modelId={model.id} locale={locale.locale} />
           </article>
         ))}
       </div>
-    </>
+    </section>
   );
 }
 ````
@@ -3300,45 +2911,34 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "9bfd77c3cc5e789987b24ff92ed7577055ef066a19c7cdcc5d7aff5b9fcd56c1"
+sha256: "29442ab784362d7bdbe2f460c6c531fbd1568154d41bbab34d7ee91b59f36a26"
 variables: []
 secrets_allowed: false
 ```
 
 ````tsx
+import { publicMessage as message } from "@/platform/i18n/public-catalog";
+import { loadPublicLocale } from "@/platform/i18n/load-public-locale";
 import Link from "next/link";
 import { loadBusinessConfig } from "@/platform/config/load";
-import { enabledModules } from "@/platform/config/registry";
+import { headers } from "next/headers";
+import { publicPageMetadata, websiteJsonLd } from "@/platform/seo/public-indexing";
+
+export function generateMetadata() { return publicPageMetadata("/"); }
 
 export default async function HomePage() {
   const config = await loadBusinessConfig();
-  const modules = enabledModules(config);
+  const locale = await loadPublicLocale();
+  const structuredData = websiteJsonLd(config.business.name, locale.locale);
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
   return (
-    <>
-      <section className="hero">
-        <div>
-          <div className="eyebrow">Adapter web configurable</div>
-          <h1>Un núcleo. Muchos negocios.</h1>
-          <p className="lede">Mercados, organizaciones, roles, permisos, módulos, workflows, campos e integraciones se validan desde configuración antes de iniciar el sistema.</p>
-          <Link className="button" href="/models">Explorar modelos</Link>
-        </div>
-        <aside className="panel" aria-label="Estado de configuración">
-          <div className="metric">{modules.length}</div>
-          <p>Módulos activos</p>
-          <p className="muted">{modules.join(" · ")}</p>
-          <div className="metric">{config.markets.length}</div>
-          <p>Mercados configurados</p>
-        </aside>
-      </section>
-      <section>
-        <h2>Capacidades configurables</h2>
-        <div className="grid">
-          <article className="card"><h3>Organización</h3><p>Casa central, franquicias, sucursales, fábricas y proveedores con jerarquías validadas.</p></article>
-          <article className="card"><h3>Operación</h3><p>Catálogo, leads, compras, inventario, pedidos, pagos, fulfillment y service activables.</p></article>
-          <article className="card"><h3>Control</h3><p>Permisos por organización, workflows explícitos, idempotencia, outbox y auditoría.</p></article>
-        </div>
-      </section>
-    </>
+    <section lang={locale.locale}>
+      {structuredData && <script type="application/ld+json" nonce={nonce} dangerouslySetInnerHTML={{ __html: structuredData }} />}
+      <div className="eyebrow">{message(locale.locale, "home.eyebrow")}</div>
+      <h1 className="pageTitle">{config.business.name}</h1>
+      <p className="lede">{message(locale.locale, "home.description")}</p>
+      <div className="actions"><Link className="primaryAction" href="/models">{message(locale.locale, "home.action")}</Link></div>
+    </section>
   );
 }
 ````
@@ -4321,7 +3921,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "cedca50639bb9423164e05c767144ed957dcf459d1309bf5c3255c7779bbf441"
+sha256: "d6524e3e9dd1da55eff7862db9d3c2d2a32e0b70136b6b8dbc19a3806f70c665"
 variables: []
 secrets_allowed: false
 ```
@@ -4336,19 +3936,34 @@ export interface NavigationItem {
   module?: string;
   feature?: string;
   permission?: string;
+  anyPermissions?: readonly string[];
+  guestEntry?: boolean;
 }
 
 const navigation: NavigationItem[] = [
-  { id: "public_catalog", label: "Modelos", href: "/models", module: "catalog", feature: "public_catalog", permission: "catalog:read" },
-  { id: "customer", label: "Mi cuenta", href: "/customer", feature: "customer_portal" },
-  { id: "admin", label: "Operación", href: "/admin", permission: "lead:read" },
-  { id: "factory", label: "Fábrica", href: "/factory", module: "procurement", feature: "factory_portal", permission: "procurement:read" }
+  {id:"help_content",label:"Contenido de ayuda",href:"/help/library",feature:"help_cms",anyPermissions:["help:read","help:write","help:publish"]},
+  {id:"network",label:"Red de franquicia",href:"/network",feature:"network_portal",anyPermissions:["network:admin","franchise:write"]},
+  {id:"warranty",label:"Garantía",href:"/warranty",feature:"warranty_portal",anyPermissions:["warranty:read","warranty:self","warranty:factory-read"]},
+  {id:"supply",label:"Suministro",href:"/supply",feature:"supply_portal",anyPermissions:["supply:read","supply:factory-read"]},
+  { id: "dashboard", label: "Mi panel", href: "/dashboard", feature: "role_workspace" },
+  { id: "help", label: "Ayuda", href: "/help" },
+  { id:"catalog_editor",label:"Editar catálogo",href:"/admin/catalog",feature:"catalog_editor",permission:"catalog:read" },
+  { id: "training", label: "Capacitación", href: "/guide/training", feature: "training_portal", anyPermissions: ["training:learn","training:review"] },
+  { id: "public_catalog", label: "Modelos", href: "/models", module: "catalog", feature: "public_catalog" },
+  { id: "locations", label: "Dónde estamos", href: "/locations", module: "crm" },
+  { id: "customer", label: "Mi cuenta", href: "/customer", feature: "customer_portal", permission: "customer:self", guestEntry: true },
+  { id: "admin", label: "Operación", href: "/admin", permission: "admin:read" },
+  { id: "franchise", label: "Franquicia", href: "/franchise", module: "crm", anyPermissions: ["inventory:allocate", "payment:create", "handover:manage", "admin:read", "lead:read", "resource:manage", "availability:read", "availability:manage", "appointment:manage"] },
+  { id: "factory", label: "Fábrica", href: "/factory", module: "procurement", feature: "factory_portal", permission: "factory:read" }
 ];
 
-export function enabledNavigation(config: BusinessConfig): NavigationItem[] {
+export function enabledNavigation(config: BusinessConfig, permissions: readonly string[] | null = null): NavigationItem[] {
   return navigation.filter((item) => {
     if (item.module && !config.modules[item.module]?.enabled) return false;
     if (item.feature && !config.features[item.feature]) return false;
+    const can = (permission: string) => permissions !== null && (permissions.includes("*") || permissions.includes(permission));
+    if (item.permission && !(permissions === null && item.guestEntry) && !can(item.permission)) return false;
+    if (item.anyPermissions && !item.anyPermissions.some(can)) return false;
     return true;
   });
 }
@@ -4393,33 +4008,43 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "4afcdfc68821dc303ab051ca0303237fc6e1f0c61f928ccd2efc27639e0c0f9c"
+sha256: "66e81ed47b5c7694ada84bc355d30cc3a6347106d8c6d9cc0c09cc12d10bf425"
 variables: []
 secrets_allowed: false
 ```
 
 ````typescript
-import { describe, expect, it } from "vitest";
-import { loadBusinessConfig } from "./load";
+import { afterEach, describe, expect, it } from "vitest";
+import { clearBusinessConfigCache, loadBusinessConfig } from "./load";
 import { businessConfigSchema } from "./schema";
-import { validateRuntimePolicy } from "./runtime-policy";
 
-describe("business configuration", () => {
-  it("accepts the reference electric mobility configuration", async () => {
+afterEach(() => clearBusinessConfigCache());
+
+describe("business presentation configuration", () => {
+  it("loads the bounded config file from ./config", async () => {
     const config = await loadBusinessConfig({ bypassCache: true });
     expect(config.business.id).toBe("electric-mobility-network");
-    expect(config.modules.orders?.enabled).toBe(true);
+    expect(config.workflows.lead?.states).toEqual(["new", "contacted", "qualified", "converted", "lost"]);
+    expect(config.roles.find((role) => role.id === "customer")?.permissions).toEqual(["customer:self"]);
   });
 
-  it("rejects a module whose dependency is disabled", async () => {
-    const config = structuredClone(await loadBusinessConfig({ bypassCache: true }));
-    config.modules.orders = { enabled: false };
-    expect(() => businessConfigSchema.parse(config)).toThrow(/payments requires enabled module orders/);
-  });
-
-  it("fails closed for an unsafe production runtime", async () => {
+  it("keeps the example lead workflow inside the PostgreSQL state contract", async () => {
     const config = await loadBusinessConfig({ bypassCache: true });
-    expect(() => validateRuntimePolicy(config, { APP_ENV: "production", DATABASE_URL: "memory://", ALLOW_DEMO_IDENTITY: "true" })).toThrow(/external PostgreSQL/);
+    const invalid = structuredClone(config);
+    invalid.workflows.lead!.states.push("assigned");
+    expect(invalid.workflows.lead!.states).not.toEqual(config.workflows.lead!.states);
+    expect(config.workflows.lead!.states).not.toContain("assigned");
+  });
+
+  it("rejects an invalid module dependency", async () => {
+    const config = await loadBusinessConfig({ bypassCache: true });
+    const invalid = structuredClone(config);
+    invalid.modules.orders = { enabled: false };
+    expect(() => businessConfigSchema.parse(invalid)).toThrow(/requires enabled module orders/);
+  });
+
+  it("does not allow config paths to escape ./config", async () => {
+    await expect(loadBusinessConfig({ path: "../outside.json", bypassCache: true })).rejects.toThrow();
   });
 });
 ````
@@ -5048,7 +4673,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "848e85d16e197b0a5473d2c9baf3bb6c28b256a17bfa8722b3dda80fa4c80f9d"
+sha256: "dc748632c8465c9e4f7bab4cb9249fc76bfb1cb76e04ac7ad5a48dd60c118b55"
 variables: []
 secrets_allowed: false
 ```
@@ -5056,29 +4681,22 @@ secrets_allowed: false
 ````typescript
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
-import { AuthorizationError } from "../auth/authorization";
-import { IdempotencyConflictError, InvalidLeadInputError, RateLimitExceededError } from "@/modules/crm/lead-service";
+import { BackendProblem } from "@/platform/backend/public-client";
 
 export function problem(status: number, title: string, detail: string, code: string): NextResponse {
-  return NextResponse.json({ type: `urn:elite-platform:problem:${code}`, title, status, detail, code }, {
+  return NextResponse.json({ type: "about:blank", title, status, detail, code }, {
     status,
-    headers: { "content-type": "application/problem+json", "cache-control": "no-store" }
+    headers: { "cache-control": "no-store", "content-type": "application/problem+json" }
   });
 }
 
 export function errorResponse(error: unknown): NextResponse {
-  if (error instanceof ZodError) return problem(400, "Solicitud inválida", error.issues.map((issue) => issue.message).join("; "), "VALIDATION_FAILED");
-  if (error instanceof InvalidLeadInputError) return problem(400, "Solicitud inválida", error.message, error.code);
-  if (error instanceof IdempotencyConflictError) return problem(409, "Conflicto de idempotencia", error.message, error.code);
-  if (error instanceof RateLimitExceededError) {
-    const response = problem(429, "Demasiadas solicitudes", "Intente nuevamente más tarde.", error.code);
-    response.headers.set("retry-after", String(error.retryAfterSeconds));
-    return response;
+  if (error instanceof ZodError) return problem(400, "Solicitud inválida", "Revise los datos enviados.", "VALIDATION_FAILED");
+  if (error instanceof BackendProblem) {
+    const status = error.status >= 400 && error.status < 500 ? error.status : 502;
+    return problem(status, "Backend no disponible", "No pudimos completar la operación.", error.code);
   }
-  if (error instanceof AuthorizationError) return problem(403, "Acceso denegado", "La identidad no posee el permiso requerido.", error.code);
-  const reference = crypto.randomUUID();
-  console.error(JSON.stringify({ level: "error", event: "http.unhandled", reference, message: error instanceof Error ? error.message : "unknown" }));
-  return problem(500, "Error interno", `Referencia: ${reference}`, "INTERNAL_ERROR");
+  return problem(500, "Error interno", "La operación no pudo completarse.", "INTERNAL_ERROR");
 }
 ````
 
@@ -5090,26 +4708,30 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "5164a9fc934527e0b749c274ba81c0836a8d17c250682daad4574ead4afbbafb"
+sha256: "9df9682db5bf731686285a64869487b416f1bcc630fc170bbfd006e358d67247"
 variables: []
 secrets_allowed: false
 ```
 
 ````typescript
 import { describe, expect, it } from "vitest";
-import { InvalidLeadInputError } from "@/modules/crm/lead-service";
+import { z } from "zod";
+import { BackendProblem } from "@/platform/backend/public-client";
 import { errorResponse } from "./problem";
 
-describe("HTTP problem classification", () => {
-  it("returns a stable 400 problem for invalid domain input", async () => {
-    const response = errorResponse(new InvalidLeadInputError("unknown custom field"));
-
+describe("BFF problem responses", () => {
+  it("does not expose validation input", async () => {
+    let failure: unknown;
+    try { z.object({ email: z.email() }).parse({ email: "secret-invalid" }); } catch (error) { failure = error; }
+    const response = errorResponse(failure);
     expect(response.status).toBe(400);
-    await expect(response.json()).resolves.toMatchObject({
-      status: 400,
-      code: "INVALID_LEAD_INPUT",
-      detail: "unknown custom field"
-    });
+    expect(await response.text()).not.toContain("secret-invalid");
+  });
+
+  it("maps upstream server failures to a bounded gateway response", async () => {
+    const response = errorResponse(new BackendProblem(503, "UPSTREAM_OVERLOAD"));
+    expect(response.status).toBe(502);
+    expect(await response.json()).toMatchObject({ code: "UPSTREAM_OVERLOAD" });
   });
 });
 ````
@@ -5608,7 +5230,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local canonical Markdown pack"
 license: "LicenseRef-Workspace-Owner"
-sha256: "a863b375d22d18c5f213bdf071a661893ae6ab3fcbbbd3775d8772e7c4cef236"
+sha256: "9c7de890641f7098867d39e82f3cdc852c1627797e2e536270c851864b7a7f0e"
 variables: []
 secrets_allowed: false
 ```
@@ -5620,18 +5242,32 @@ Las dependencias directas están fijadas en `package.json` y el grafo completo e
 
 | Dependencia directa | Versión | Licencia declarada por el paquete |
 |---|---:|---|
-| Next.js | 16.3.2 | MIT |
+| jose | 6.2.10 | MIT |
+| Next.js | 16.3.4 | MIT |
+| openid-client | 6.8.5 | MIT |
 | React / React DOM | 19.2.8 | MIT |
+| Google SafeValues | 1.2.0 | Apache-2.0 |
+| Google CSP Evaluator | 1.1.8 | Apache-2.0 |
+| server-only | 0.0.1 | MIT |
 | Zod | 4.4.3 | MIT |
-| node-postgres | 8.23.0 | MIT |
-| PGlite | 0.5.7 | Apache-2.0 |
 | TypeScript | 7.0.2 | Apache-2.0 |
 | Vitest | 4.1.11 | MIT |
-| tsx | 4.23.12 | MIT |
 
-Regenerar el inventario efectivo con `pnpm licenses:report`. El grafo transitivo observado también contiene Apache-2.0, MIT, ISC, BSD-3-Clause, 0BSD, CC-BY-4.0, MPL-2.0 y componentes binarios de imagen con términos adicionales. Este resumen no reemplaza conservar notices, revisar artefactos realmente distribuidos ni una revisión legal para el modo de entrega elegido.
+Google CSP Evaluator se usa sólo como dependencia de desarrollo y su propio README declara que no es un producto oficial de Google ni ofrece garantía. Regenerar el inventario efectivo con `pnpm licenses:report`. El grafo transitivo observado también contiene Apache-2.0, MIT, ISC, BSD-3-Clause, 0BSD, CC-BY-4.0, MPL-2.0 y componentes binarios de imagen con términos adicionales. Este resumen no reemplaza conservar notices, revisar artefactos realmente distribuidos ni una revisión legal para el modo de entrega elegido.
 
-No se asignó una licencia de distribución al código propio del adapter: esa decisión pertenece al propietario del repositorio.
+No se asignó una licencia de distribución al código propio del adapter: esa decisión pertenece al propietario del repositorio. El pack se compone con el overlay OIDC y el adaptador de licencia para producir el inventario legal efectivo.
+
+## FX direct-base adaptation
+
+`internal/bcfx/exchange.go` and `selection.go` adapt Microsoft BCApps commit `2eae56d704a1fd035d104f333602aea7091b7749` under MIT. The exact copyright/license is `licenses/Microsoft-BCApps-MIT.txt`; derivation and source hashes are in `docs/provenance/BC_FX_DERIVATION.md` and `BC_FX_SOURCE_LOCK.json`. `rounding.go` and snapshot/accounting/API/host glue are AUTHORED; no AL built-in equivalence or upstream runtime execution is claimed.
+
+## Odoo stored-value calculation
+
+The optional gift-card/loyalty module adapts selected Odoo Community19.0 code at99edb6dd82b7b560930c00b03b694ba700785370 under LGPL-3.0-only. Complete license, copyright, source, local changes and replacement instructions are preserved in odoo_loyalty/ and docs/provenance/ODOO_STORED_VALUE_NOTICES.md. Go/SQL/portal glue is AUTHORED with its own declared provenance. No complete Odoo runtime or corporate authorship for that glue is claimed. The Next.js direct-version notice above is aligned to the existing16.3.4 package/lock; no dependency update was performed by this notice correction.
+
+## Connected document reference
+
+When the AWS Textract/document capability is selected (these dependencies are not implied in a web-only profile), AWS SDK for Go v2 Textract1.45.0 and its15fixed modules: Apache-2.0; complete original LICENSE/NOTICE and per-module hashes are in `aws_textract_runtime/licenses/selected-notices.json`. Preserve all four original texts on redistribution. The Microsoft public invoice fixture uses its exact MIT notice at `azure_document_intelligence_official_invoice/upstream/LICENSE.txt`. Original fixture bytes are acquired by fixed commit/hash, not included here. Document pipeline/test/configuration glue is AUTHORED locally and is not attributed to AWS, Microsoft or Google.
 ````
 
 ### FILE: `tsconfig.json`
@@ -5758,3 +5394,9 @@ Estado vigente: `REBUILD_VERIFIED / CONDITIONED`, evidencia `TS-EW-20260824-V5`.
 - incluye CI reproducible con GitHub Actions fijadas por SHA.
 
 Las condiciones productivas por proyecto siguen siendo OIDC/JWKS real, PostgreSQL y roles, secretos, contratos sandbox, telemetry, deployment y recovery.
+
+V402 composed delta: Conditional document/AWS original notices; no AWS dependency claim in web-only profiles. Both alternative notice owners use the same reviewed text.
+
+V402 composed delta: Local delivery316: native stop owner reused, Next standalone exact build identity, container template without mutable defaults and complete local module context. Local fixture qualification only; docs/LOCAL_REFERENCE_DELIVERY.md.
+
+V402 composed delta: V402317 connected local API/Next telemetry, current OIDC, fixed official middleware, finite supervised alert/fault/load/WAL recovery. Historical lock kept separate; docs/LOCAL_REFERENCE_OPERATIONS.md. No production admission.

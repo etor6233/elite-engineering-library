@@ -90,7 +90,7 @@ V263 connects an operator agenda to GO-FRANCHISE-CUSTOMER-JOURNEY-API 0.10.0. Ap
 
 ```yaml
 pack_id: "TS-FRANCHISE-JOURNEY-PORTALS"
-pack_version: "0.16.0"
+pack_version: "0.21.0"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -183,6 +183,12 @@ CREATE src/platform/handovers/customer-dates.test.ts
 CREATE src/platform/handovers/render.test.ts
 CREATE src/app/franchise/whatsapp/page.tsx
 CREATE src/components/whatsapp-reply-review.tsx
+CREATE src/platform/backend/bounded-command.ts
+CREATE src/app/api/enterprise/franchise/commands/body-bound.test.ts
+CREATE src/app/api/enterprise/locale/route.test.ts
+CREATE src/app/api/enterprise/locale/route.ts
+CREATE src/platform/help/query.ts
+CREATE src/platform/i18n/private-guide-display.ts
 ```
 
 ## 5. Materialization blocks
@@ -390,24 +396,29 @@ operation: CREATE
 provenance: AUTHORED
 source: "local"
 license: "LicenseRef-Workspace-Owner"
-sha256: "fa487e8e00203be18141ac3d9f9eda2dd8c7cefa4ec1211de86bad266ad9d7f1"
+sha256: "989f9eb5efaf787c1aa08309c2127fb75868feebf2b45ae38a68deab0693203a"
 variables: []
 secrets_allowed: false
 ```
 
 ````typescript
 "use client";
+import {usePrivateI18n} from "@/platform/i18n/private-provider";
+
 import { NOTIFICATION_GUIDE } from "@/platform/help/content";
 
 import { useEffect, useRef, useState } from "react";
 import { readBackendResponse } from "@/platform/backend/public-client";
 import { notificationExplanation, notificationHistorySchema, STATUS_VIEW_VERSION, type NotificationHistory } from "@/platform/notifications/status-contract";
 
-const displayTime = (value: string | number) => new Date(value).toLocaleString("es-AR", { timeZone: "UTC", dateStyle: "short", timeStyle: "medium" }) + " UTC";
+
 
 // No automatic polling/N+1 page load or write action. Abort stale reads when
 // scope changes/unmounts, following React's effect cleanup contract.
 export function AppointmentNotificationStatus({ organization, appointment }: { organization: string; appointment: string }) {
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+ const displayTime=(value:string|number)=>new Date(value).toLocaleString(privateLocale.locale,{timeZone:privateLocale.timeZone,dateStyle:"short",timeStyle:"medium"})+" ("+privateLocale.timeZone+")";
+
   const [ready, setReady] = useState(false), [busy, setBusy] = useState(false);
   const [history, setHistory] = useState<NotificationHistory | null>(null), [error, setError] = useState("");
   const request = useRef<AbortController | null>(null);
@@ -426,27 +437,27 @@ export function AppointmentNotificationStatus({ organization, appointment }: { o
       if (value.organization_id !== organization || value.appointment_id !== appointment) throw new Error("scope mismatch");
       if (!controller.signal.aborted) setHistory(value);
     } catch {
-      if (!controller.signal.aborted) setError("No pudimos verificar el estado. No se envió ningún mensaje desde esta consulta. Volvé a consultar o pedí revisión a soporte.");
+      if (!controller.signal.aborted) setError(t("p0126"));
     } finally { if (request.current === controller) { request.current = null; setBusy(false); } }
   }
   const visible = history?.organization_id === organization && history.appointment_id === appointment ? history : null;
-  return <section aria-label="Estado de notificaciones WhatsApp" className="notificationStatus">
-    <h4>Notificación de este turno</h4>
-    <button type="button" className="button" disabled={!ready || busy} onClick={() => void refresh()}>{busy ? "Consultando notificación…" : "Consultar estado de WhatsApp"}</button>
-    <p role="status" aria-label="Resultado de consulta de WhatsApp" aria-live="polite">{error || (busy ? "Consultando el registro guardado…" : visible ? "Consulta actualizada. No se enviaron mensajes." : "Consulta de sólo lectura, sin envíos automáticos.")}</p>
-    {visible?.items.length === 0 ? <p>No hay aprobaciones de notificación registradas para este turno. Esto no significa que el cliente haya recibido un mensaje.</p> : null}
+  return <section aria-label={t("p0127")} className="notificationStatus">
+    <h4>{t("p0128")}</h4>
+    <button type="button" className="button" disabled={!ready || busy} onClick={() => void refresh()}>{busy ? t("p0129") : t("p0130")}</button>
+    <p role="status" aria-label={t("p0131")} aria-live="polite">{error || (busy ? t("p0132") : visible ? t("p0133") : t("p0134"))}</p>
+    {visible?.items.length === 0 ? <p>{t("p0135")}</p> : null}
     {visible?.items.map(item => {
       const explanation = notificationExplanation(item.status);
       return <article key={item.confirmation_event_id}>
-        <h5>{explanation.title}</h5><p>{explanation.guidance}</p>
-        <p>Consultado: <time dateTime={item.status.observed_at}>{displayTime(item.status.observed_at)}</time></p>
-        {item.status.provider_timestamp ? <p>Fecha del aviso del proveedor: <time dateTime={new Date(item.status.provider_timestamp * 1000).toISOString()}>{displayTime(item.status.provider_timestamp * 1000)}</time></p> : null}
-        {item.status.approval_expired ? <p>La aprobación de envío está vencida. Su historial sigue visible; no autoriza otro envío.</p> : null}
-        <details><summary>Ayuda y referencia para soporte</summary>
-          <p>{NOTIFICATION_GUIDE.paragraphs[0]}</p>
-          <dl><dt>Turno</dt><dd>{appointment}</dd><dt>Confirmación</dt><dd>{item.confirmation_event_id}</dd><dt>Guía</dt><dd>{STATUS_VIEW_VERSION}</dd></dl>
-          <p>{NOTIFICATION_GUIDE.paragraphs[1]}</p>
-        <a href={`/help?article=${NOTIFICATION_GUIDE.id}&version=${NOTIFICATION_GUIDE.version}`}>Abrir esta guía en Ayuda</a>
+        <h5>{controlled(explanation.title)}</h5><p>{controlled(explanation.guidance)}</p>
+        <p>{t("p0136")} <time dateTime={item.status.observed_at}>{displayTime(item.status.observed_at)}</time></p>
+        {item.status.provider_timestamp ? <p>{t("p0137")} <time dateTime={new Date(item.status.provider_timestamp * 1000).toISOString()}>{displayTime(item.status.provider_timestamp * 1000)}</time></p> : null}
+        {item.status.approval_expired ? <p>{t("p0138")}</p> : null}
+        <details><summary>{t("p0139")}</summary>
+          <p>{controlled(NOTIFICATION_GUIDE.paragraphs[0])}</p>
+          <dl><dt>{t("p0140")}</dt><dd>{appointment}</dd><dt>{t("p0141")}</dt><dd>{item.confirmation_event_id}</dd><dt>{t("p0142")}</dt><dd>{STATUS_VIEW_VERSION}</dd></dl>
+          <p>{controlled(NOTIFICATION_GUIDE.paragraphs[1])}</p>
+        <a href={`/help?article=${NOTIFICATION_GUIDE.id}&version=${NOTIFICATION_GUIDE.version}`}>{t("p0143")}</a>
         </details>
       </article>;
     })}
@@ -550,7 +561,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local same-origin command adapter governed by pack references"
 license: "LicenseRef-Workspace-Owner"
-sha256: "c48ac2f8c73b027b93e24e1e26ff0701309ba53993c8156a20d62519cebf9f56"
+sha256: "2a9e1ffb99754e25a86aecf13e855cf9078e29366c5a7886e630688720e55259"
 variables: []
 secrets_allowed: false
 ```
@@ -560,6 +571,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
 import { allowed, readSession } from "@/platform/auth/session";
 import { applicationBaseUrl } from "@/platform/auth/oidc-client";
+import { boundedCommandBody } from "@/platform/backend/bounded-command";
 import { BackendProblem } from "@/platform/backend/public-client";
 import { protectedGet, protectedPost } from "@/platform/backend/protected-client";
 
@@ -601,17 +613,18 @@ function sameOrigin(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   if (!sameOrigin(request)) return NextResponse.json({ code: "CROSS_ORIGIN_REJECTED" }, { status: 403 });
+  const session = await readSession();
+  if (!session) return NextResponse.json({ code: "UNAUTHENTICATED" }, { status: 401 });
+  if (!["appointment:manage", "availability:manage", "customer:self", "handover:manage", "inventory:allocate", "lead:assign", "lead:update", "payment:create", "quote:write", "resource:manage"].some(permission => allowed(session,permission))) return NextResponse.json({ code: "FORBIDDEN" }, { status: 403 });
   if (request.headers.get("content-type") !== "application/json") return NextResponse.json({ code: "UNSUPPORTED_MEDIA_TYPE" }, { status: 415 });
   const length = Number(request.headers.get("content-length") ?? "0");
-  if (!Number.isSafeInteger(length) || length > 65_536) return NextResponse.json({ code: "COMMAND_TOO_LARGE" }, { status: 413 });
-  const text = await request.text();
-  if (text.length > 65_536) return NextResponse.json({ code: "COMMAND_TOO_LARGE" }, { status: 413 });
+  if (!Number.isSafeInteger(length) || length < 0 || length > 65_536) return NextResponse.json({ code: "COMMAND_TOO_LARGE" }, { status: 413 });
+  let text: string;
+  try { text = await boundedCommandBody(request,65_536); } catch(e) { return NextResponse.json({code:e instanceof Error && e.message==="BODY_TOO_LARGE"?"COMMAND_TOO_LARGE":"INVALID_BODY"},{status:e instanceof Error && e.message==="BODY_TOO_LARGE"?413:400}); }
   let json: unknown;
   try { json = JSON.parse(text); } catch { return NextResponse.json({ code: "INVALID_JSON" }, { status: 400 }); }
   const parsed = commandSchema.safeParse(json);
   if (!parsed.success) return NextResponse.json({ code: "INVALID_COMMAND" }, { status: 400 });
-  const session = await readSession();
-  if (!session) return NextResponse.json({ code: "UNAUTHENTICATED" }, { status: 401 });
   const command = parsed.data;
   if (!session.organizations.includes(command.organizationId)) return NextResponse.json({ code: "ORGANIZATION_FORBIDDEN" }, { status: 403 });
 
@@ -1086,13 +1099,15 @@ operation: CREATE
 provenance: AUTHORED
 source: "local operator command UI over the canonical BFF"
 license: "LicenseRef-Workspace-Owner"
-sha256: "17c1849d6e044552a8b59c5d2ef1d5645c23a1989ea6401167407b5167919487"
+sha256: "408e4ef0d8f40fd51b81d6b837cf6f3cf3e7f80cb5aeb819ca47330fd28bae48"
 variables: []
 secrets_allowed: false
 ```
 
 ````tsx
 "use client";
+import {usePrivateI18n} from "@/platform/i18n/private-provider";
+
 import { OperationalGuide } from "@/components/operational-guide";
 import { OPERATIONAL_GUIDES } from "@/platform/help/content";
 
@@ -1119,31 +1134,35 @@ export type OrderOperations = {
 };
 
 function OrderPaymentRequest({order,organization,provider,scope,disabled}:{order:OrderOperations["orders"][number];organization:string;provider:string;scope:string;disabled:boolean}){
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
   const [message,setMessage]=useState("");const [locked,setLocked]=useState(false);const inFlight=useRef(false);
   async function requestPayment(){
     if(disabled||locked||inFlight.current)return;
-    inFlight.current=true;setLocked(true);setMessage("Registrando la solicitud local…");
+    inFlight.current=true;setLocked(true);setMessage(t("p0308"));
     let key:string;
     try{
       const storageKey=`elite-payment-request:${scope}:${order.id}`;
       key=window.sessionStorage.getItem(storageKey)??crypto.randomUUID();
       if(!/^[a-f0-9-]{36}$/i.test(key))throw new Error("invalid retained key");
       window.sessionStorage.setItem(storageKey,key);
-    }catch{setMessage("No se envió la solicitud: el navegador no pudo conservar su clave. Consultá soporte antes de continuar.");return}
+    }catch{setMessage(t("p0309"));return}
     try{
       const response=await fetch("/api/enterprise/franchise/commands",{method:"POST",headers:{"content-type":"application/json"},signal:AbortSignal.timeout(10000),body:JSON.stringify({action:"request-order-payment",organizationId:organization,orderId:order.id,requestKey:key})});
       const value=await response.json() as {id?:unknown;order_id?:unknown;organization_id?:unknown;provider_code?:unknown;state?:unknown;version?:unknown};
       if(response.ok&&typeof value.id==="string"&&value.id.length>0&&value.order_id===order.id&&value.organization_id===organization&&value.provider_code===provider&&typeof value.state==="string"&&["created","pending","authorized","captured","failed","refunded","disputed"].includes(value.state)&&typeof value.version==="number"&&Number.isSafeInteger(value.version)&&value.version>0){
-        setMessage(`Solicitud registrada: ${value.id}. Esto no confirma un cobro. Actualizá los pedidos para consultar su estado.`);
-      }else if(response.status===409){setMessage("Ya existe una solicitud o el pedido cambió. Actualizá los pedidos; no generes otra clave ni otro pedido.")}
-      else if(response.status===401||response.status===403){setMessage("Tu sesión no permite solicitar este pago. Consultá los accesos con el responsable.")}
+        setMessage(t("p0310", {request_id:(value.id)}));
+      }else if(response.status===409){setMessage(t("p0311"))}
+      else if(response.status===401||response.status===403){setMessage(t("p0312"))}
       else throw new Error("unconfirmed");
-    }catch{setMessage("No pudimos comprobar la solicitud. Actualizá los pedidos antes de continuar. Conservamos la clave de esta sesión; no borres los datos del navegador para forzar un reintento.")}
+    }catch{setMessage(t("p0313"))}
   }
-  return <div><button className="button" type="button" disabled={disabled||locked} onClick={()=>void requestPayment()}>Registrar solicitud de pago</button><p>Solicitud local para {provider}; el servidor toma el total del pedido. No se ejecuta un cobro desde esta pantalla.</p><p role="status" aria-label={`Resultado de pago ${order.id}`} aria-live="polite">{message}</p></div>;
+  return <div><button className="button" type="button" disabled={disabled||locked} onClick={()=>void requestPayment()}>{t("p0314")}</button><p>{t("p0315")} {provider}{t("p0316")}</p><p role="status" aria-label={`Resultado de pago ${order.id}`} aria-live="polite">{message}</p></div>;
 }
 
 export function OrderOperationsPanel({ snapshot, organization, canAllocate, canRequestPayment=false, paymentScope="" }: { snapshot: OrderOperations | null; organization: string; canAllocate: boolean;canRequestPayment?:boolean;paymentScope?:string }) {
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
   const [ready,setReady]=useState(false);
   const [message,setMessage]=useState("");
   const [locked,setLocked]=useState(false);
@@ -1153,40 +1172,40 @@ export function OrderOperationsPanel({ snapshot, organization, canAllocate, canR
     event.preventDefault();
     if(inFlight.current || locked || !snapshot || snapshot.truncated || !canAllocate) return;
     const stock=snapshot.stock.find(item=>item.id===new FormData(event.currentTarget).get("stock") && item.variant_id===line.variant_id);
-    if(!stock) {setMessage("Seleccioná una unidad de la lista disponible.");return;}
-    inFlight.current=true;setLocked(true);setMessage("Consultando el resultado de la reserva…");
+    if(!stock) {setMessage(t("p0317"));return;}
+    inFlight.current=true;setLocked(true);setMessage(t("p0318"));
     try {
       const response=await fetch("/api/enterprise/franchise/commands",{method:"POST",headers:{"content-type":"application/json"},signal:AbortSignal.timeout(10000),body:JSON.stringify({action:"allocate-order-stock",organizationId:organization,orderId:order.id,lineId:line.id,stockUnitId:stock.id,orderVersion:order.version,stockVersion:stock.version})});
       const result=await response.json() as {status?:unknown};
-      if(response.ok && result.status==="accepted") setMessage("Reserva guardada. Actualizá los pedidos para consultar la unidad asignada.");
-      else if(response.status===409) setMessage("El pedido o la unidad cambió. Actualizá los pedidos antes de volver a actuar.");
-      else if(response.status===401 || response.status===403) setMessage("Tu sesión no permite esta reserva. Consultá los accesos con el responsable.");
+      if(response.ok && result.status==="accepted") setMessage(t("p0319"));
+      else if(response.status===409) setMessage(t("p0320"));
+      else if(response.status===401 || response.status===403) setMessage(t("p0321"));
       else throw new Error("unconfirmed");
-    } catch {setMessage("No pudimos comprobar el resultado. No repitas la reserva: actualizá los pedidos para consultar el estado guardado.");}
+    } catch {setMessage(t("p0322"));}
     // Remain fenced after every outcome. Recovery is a fresh server-side GET,
     // never an automatic replay of a possibly committed command.
   }
-  const state=(value:string)=>({placed:"Pedido recibido",confirmed:"Confirmado",delivered:"Entregado",cancelled:"Cancelado",created:"Solicitud creada: no confirma cobro",pending:"Pendiente de confirmación",authorized:"Autorizado: no confirma cobro",captured:"Cobro registrado",failed:"Fallido",refunded:"Reembolso registrado",disputed:"En disputa",prepared:"Entrega preparada",presented:"Presentada al cliente",accepted:"Aceptada por el cliente",rejected:"Rechazada"}[value] ?? "Estado no reconocido: consultar soporte");
+  const state=(value:string)=>({placed:t("p0323"),confirmed:t("p0324"),delivered:t("p0325"),cancelled:t("p0326"),created:t("p0327"),pending:t("p0328"),authorized:t("p0329"),captured:t("p0330"),failed:t("p0331"),refunded:t("p0332"),disputed:t("p0333"),prepared:t("p0334"),presented:t("p0335"),accepted:t("p0336"),rejected:t("p0337")}[value] ?? t("p0338"));
   return <section className="card" aria-labelledby="order-operations-title">
-    <h2 id="order-operations-title">Pedidos: stock, pago y entrega</h2>
-    <p>Los estados se consultan en el registro empresarial. Reservar una unidad no cobra ni confirma su entrega.</p>
-    <button className="button" type="button" disabled={!ready} onClick={()=>window.location.reload()}>Actualizar pedidos</button>
-    <p role="status" aria-label="Resultado de reserva" aria-live="polite">{message}</p>
-    {!snapshot ? <p role="alert">No pudimos consultar los pedidos. Las acciones están bloqueadas; volvé a consultar.</p> : <>
-      {snapshot.truncated ? <p role="alert">Vista parcial: supera 25 pedidos, 100 líneas o estados por pedido, o 200 unidades. Las reservas están bloqueadas; solicitá una consulta acotada al responsable.</p> : null}
-      {snapshot.orders.length===0 ? <p>No hay pedidos en esta organización.</p> : snapshot.orders.map(order=><article className="card" key={order.id} aria-label={`Pedido ${order.id}`}>
-        <h3>Pedido {order.id}</h3><p>{state(order.state)}</p>
-        {order.lines.map(line=><div key={line.id}><h4>{line.name} · cantidad {line.quantity}</h4>
-          {line.stock_id ? <p>Unidad reservada: <span>{line.stock_id}</span></p> : <><p>Sin unidad reservada.</p>
+    <h2 id="order-operations-title">{t("p0339")}</h2>
+    <p>{t("p0340")}</p>
+    <button className="button" type="button" disabled={!ready} onClick={()=>window.location.reload()}>{t("p0341")}</button>
+    <p role="status" aria-label={t("p0342")} aria-live="polite">{message}</p>
+    {!snapshot ? <p role="alert">{t("p0343")}</p> : <>
+      {snapshot.truncated ? <p role="alert">{t("p0344")}</p> : null}
+      {snapshot.orders.length===0 ? <p>{t("p0345")}</p> : snapshot.orders.map(order=><article className="card" key={order.id} aria-label={`Pedido ${order.id}`}>
+        <h3>{t("p0251")} {order.id}</h3><p>{state(order.state)}</p>
+        {order.lines.map(line=><div key={line.id}><h4>{line.name} {t("p0346")} {line.quantity}</h4>
+          {line.stock_id ? <p>{t("p0347")} <span>{line.stock_id}</span></p> : <><p>{t("p0348")}</p>
           {canAllocate && ["placed","confirmed"].includes(order.state) && line.quantity===1 ? <form onSubmit={event=>void allocate(event,order,line)}>
-            <label>Unidad disponible · {line.name}<select name="stock" required defaultValue="" disabled={!ready || locked || snapshot.truncated}><option value="" disabled>Elegir número de serie</option>{snapshot.stock.filter(item=>item.variant_id===line.variant_id).map(item=><option key={item.id} value={item.id}>{item.serial}</option>)}</select></label>
-            {!snapshot.stock.some(item=>item.variant_id===line.variant_id) ? <p>No hay unidades disponibles de esta variante. Actualizá después de la recepción de stock.</p> : null}
-            <button className="button" disabled={!ready || locked || snapshot.truncated || !snapshot.stock.some(item=>item.variant_id===line.variant_id)}>{snapshot.stock.some(item=>item.variant_id===line.variant_id) ? "Reservar unidad" : "Sin stock disponible"}</button>
-          </form> : <p>Reserva no habilitada para tu permiso, cantidad o estado actual.</p>}</>}
+            <label>{t("p0349")} {line.name}<select name="stock" required defaultValue="" disabled={!ready || locked || snapshot.truncated}><option value="" disabled>{t("p0350")}</option>{snapshot.stock.filter(item=>item.variant_id===line.variant_id).map(item=><option key={item.id} value={item.id}>{item.serial}</option>)}</select></label>
+            {!snapshot.stock.some(item=>item.variant_id===line.variant_id) ? <p>{t("p0351")}</p> : null}
+            <button className="button" disabled={!ready || locked || snapshot.truncated || !snapshot.stock.some(item=>item.variant_id===line.variant_id)}>{snapshot.stock.some(item=>item.variant_id===line.variant_id) ? t("p0352") : t("p0353")}</button>
+          </form> : <p>{t("p0354")}</p>}</>}
         </div>)}
-        <p>Pago: {order.payments.length ? order.payments.map(item=>`${state(item.state)} (${item.id})`).join("; ") : "Sin solicitud registrada. No hay cobro confirmado."}</p>
-        {!snapshot.payment_provider ? <p>Solicitud de pago desactivada: falta seleccionar y configurar el proveedor.</p> : canRequestPayment&&paymentScope&&order.payments.length===0&&["placed","confirmed"].includes(order.state) ? <OrderPaymentRequest order={order} organization={organization} provider={snapshot.payment_provider} scope={paymentScope} disabled={!ready||locked||snapshot.truncated}/> : null}
-        <p>Entrega: {order.handovers.length ? order.handovers.map(item=>`${state(item.state)} (${item.id})`).join("; ") : "Sin entrega preparada."}</p>
+        <p>{t("p0355")} {order.payments.length ? order.payments.map(item=>`${state(item.state)} (${item.id})`).join("; ") : t("p0356")}</p>
+        {!snapshot.payment_provider ? <p>{t("p0357")}</p> : canRequestPayment&&paymentScope&&order.payments.length===0&&["placed","confirmed"].includes(order.state) ? <OrderPaymentRequest order={order} organization={organization} provider={snapshot.payment_provider} scope={paymentScope} disabled={!ready||locked||snapshot.truncated}/> : null}
+        <p>{t("p0358")} {order.handovers.length ? order.handovers.map(item=>`${state(item.state)} (${item.id})`).join("; ") : t("p0359")}</p>
       </article>)}
     </>}
     <OperationalGuide guide={OPERATIONAL_GUIDES["order-operations-view"]}/>
@@ -1200,6 +1219,8 @@ export type AppointmentAgenda = {
 };
 
 export function AppointmentAgendaPanel({ agenda, organization, notificationStatusEnabled = false }: { agenda: AppointmentAgenda; organization: string; notificationStatusEnabled?: boolean }) {
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
   const router = useRouter();
   const [ready, setReady] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -1215,34 +1236,34 @@ export function AppointmentAgendaPanel({ agenda, organization, notificationStatu
       const receipt = await response.json() as { id?: unknown; organization_id?: unknown; state?: unknown; version?: unknown; resource_id?: unknown };
       if (!response.ok) throw new Error("command not confirmed");
       if (receipt.id !== appointment.id || receipt.organization_id !== organization || receipt.state !== expectedState || receipt.version !== appointment.version + 1 || (command.action === "assign-appointment-resource" && receipt.resource_id !== command.resourceId)) throw new Error("receipt differs");
-      setMessage(expectedState === "confirmed" ? "Turno confirmado. El estado quedó guardado." : "Cambio guardado. Actualizando agenda.");
+      setMessage(expectedState === "confirmed" ? t("p0360") : t("p0361"));
       startRefresh(() => router.refresh());
     } catch {
       setUncertain(true);
-      setMessage("No pudimos comprobar el resultado. Actualizá la agenda para consultar el estado guardado antes de volver a actuar.");
+      setMessage(t("p0362"));
     } finally { setBusy(false); }
   }
-  const names: Record<string, string> = { requested: "Solicitado", confirmed: "Confirmado", completed: "Completado", cancelled: "Cancelado", "no-show": "Ausente" };
-  const kinds: Record<string,string> = { consultation: "Consulta", "test-drive": "Prueba de manejo", delivery: "Entrega", service: "Servicio" };
+  const names: Record<string, string> = { requested: t("p0363"), confirmed: t("p0324"), completed: t("p0364"), cancelled: t("p0326"), "no-show": t("p0365") };
+  const kinds: Record<string,string> = { consultation: t("p0366"), "test-drive": t("p0367"), delivery: t("p0368"), service: t("p0018") };
   return <section className="card" aria-labelledby="appointment-agenda-title">
-    <h2 id="appointment-agenda-title">Agenda de turnos</h2>
-    <p>Elegí el recurso por su nombre. El servidor valida jornada, habilidad y conflictos al asignar. Los horarios se muestran en UTC.</p>
-    <button className="button" type="button" disabled={!ready || busy || refreshing} onClick={() => window.location.reload()}>Actualizar agenda</button>
-    <p role="status" aria-label="Resultado de la agenda" aria-live="polite">{message}</p>
-    {agenda.truncated ? <p role="alert">La consulta supera el límite de 200 turnos o recursos. No se muestra una agenda completa y las acciones están bloqueadas; acotá el rango o solicitá una consulta paginada.</p> : null}
-    {!agenda.appointments.length ? <p>No hay turnos para esta fecha.</p> : <div className="grid">{agenda.appointments.map((appointment) => <article className="card" key={appointment.id} aria-label={`Turno ${appointment.kind} ${appointment.starts_at}`}>
-      <h3>{kinds[appointment.kind] ?? appointment.kind} · <time dateTime={appointment.starts_at}>{new Date(appointment.starts_at).toISOString().slice(0,16).replace("T"," ")} UTC</time></h3>
-      <p>Estado: {names[appointment.state] ?? appointment.state}</p>
-      <p>Referencia: {appointment.id}</p>
-      <p>Recurso: {agenda.resources.find((item) => item.id === appointment.resource_id)?.display_name ?? (appointment.resource_id ? "Recurso asignado" : "Sin asignar")}</p>
+    <h2 id="appointment-agenda-title">{t("p0369")}</h2>
+    <p>{t("p0370")}</p>
+    <button className="button" type="button" disabled={!ready || busy || refreshing} onClick={() => window.location.reload()}>{t("p0371")}</button>
+    <p role="status" aria-label={t("p0372")} aria-live="polite">{message}</p>
+    {agenda.truncated ? <p role="alert">{t("p0373")}</p> : null}
+    {!agenda.appointments.length ? <p>{t("p0374")}</p> : <div className="grid">{agenda.appointments.map((appointment) => <article className="card" key={appointment.id} aria-label={`Turno ${appointment.kind} ${appointment.starts_at}`}>
+      <h3>{kinds[appointment.kind] ?? appointment.kind} {t("p0016")} <time dateTime={appointment.starts_at}>{new Date(appointment.starts_at).toISOString().slice(0,16).replace("T"," ")} {t("p0375")}</time></h3>
+      <p>{t("p0247")} {names[appointment.state] ?? appointment.state}</p>
+      <p>{t("p0167")} {appointment.id}</p>
+      <p>{t("p0376")} {agenda.resources.find((item) => item.id === appointment.resource_id)?.display_name ?? (appointment.resource_id ? t("p0377") : t("p0378"))}</p>
       {appointment.state === "requested" && !appointment.resource_id ? <form onSubmit={(event) => { event.preventDefault(); const data = new FormData(event.currentTarget); void apply(appointment, { action: "assign-appointment-resource", resourceId: String(data.get("resourceId") ?? "") }, "requested"); }}>
-        <label>Recurso disponible para evaluar<select name="resourceId" required defaultValue="" disabled={disabled}><option value="" disabled>Seleccionar recurso</option>{agenda.resources.filter((item) => item.skills.includes(appointment.kind)).map((item) => <option key={item.id} value={item.id}>{item.display_name}</option>)}</select></label>
-        <button className="button" disabled={disabled}>Asignar recurso</button>
+        <label>{t("p0379")}<select name="resourceId" required defaultValue="" disabled={disabled}><option value="" disabled>{t("p0380")}</option>{agenda.resources.filter((item) => item.skills.includes(appointment.kind)).map((item) => <option key={item.id} value={item.id}>{item.display_name}</option>)}</select></label>
+        <button className="button" disabled={disabled}>{t("p0381")}</button>
       </form> : null}
-      {appointment.state === "requested" && appointment.resource_id ? <button className="button" disabled={disabled} onClick={() => void apply(appointment, { action: "transition-appointment", current: appointment.state, target: "confirmed" }, "confirmed")}>Confirmar turno</button> : null}
+      {appointment.state === "requested" && appointment.resource_id ? <button className="button" disabled={disabled} onClick={() => void apply(appointment, { action: "transition-appointment", current: appointment.state, target: "confirmed" }, "confirmed")}>{t("p0382")}</button> : null}
       {["requested","confirmed"].includes(appointment.state) ? <form onSubmit={(event) => { event.preventDefault(); const data=new FormData(event.currentTarget); const target=String(data.get("target")); const reasonCode=String(data.get("reasonCode") ?? "").trim(); void apply(appointment,{action:"transition-appointment",current:appointment.state,target,...(reasonCode?{reasonCode}:{})},target); }}>
-        <label>Otra acción<select name="target" disabled={disabled}><option value="cancelled">Cancelar</option>{appointment.state==="confirmed"?<><option value="completed">Completar</option><option value="no-show">Registrar ausencia</option></>:null}</select></label>
-        <label>Motivo para cancelar o registrar ausencia<input name="reasonCode" disabled={disabled} pattern="[a-z][a-z0-9]*(-[a-z0-9]+)*" /></label><button className="button" disabled={disabled}>Aplicar acción</button>
+        <label>{t("p0383")}<select name="target" disabled={disabled}><option value="cancelled">{t("p0384")}</option>{appointment.state==="confirmed"?<><option value="completed">{t("p0385")}</option><option value="no-show">{t("p0386")}</option></>:null}</select></label>
+        <label>{t("p0387")}<input name="reasonCode" disabled={disabled} pattern="[a-z][a-z0-9]*(-[a-z0-9]+)*" /></label><button className="button" disabled={disabled}>{t("p0388")}</button>
       </form> : null}
       {notificationStatusEnabled ? <AppointmentNotificationStatus key={`${organization}:${appointment.id}`} organization={organization} appointment={appointment.id}/> : null}
     </article>)}</div>}
@@ -1250,6 +1271,8 @@ export function AppointmentAgendaPanel({ agenda, organization, notificationStatu
 }
 
 function AvailabilityCancellation({item,organization,scope,canCancel}:{item:Availability;organization:string;scope:string;canCancel:boolean}) {
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
   const [ready,setReady]=useState(false),[locked,setLocked]=useState(true),[message,setMessage]=useState("");
   const inFlight=useRef(false);
   const key=`elite-availability-cancel:${scope}:${item.id}`;
@@ -1262,39 +1285,41 @@ function AvailabilityCancellation({item,organization,scope,canCancel}:{item:Avai
         if(!marker||typeof marker!=="object"||Object.keys(marker).join(",")!=="version"||!Number.isSafeInteger(marker.version)||Number(marker.version)<1)throw new Error("invalid marker");
         if(item.state==="cancelled"&&item.version>Number(marker.version)) {
           window.sessionStorage.removeItem(key);
-          setMessage("Consulta recuperada: el intervalo figura cancelado. No reenviamos la acción.");
-        } else setMessage("Hay una cancelación pendiente de comprobar. Consultá el intervalo antes de continuar.");
+          setMessage(t("p0389"));
+        } else setMessage(t("p0390"));
         setLocked(true);
       } else setLocked(item.state!=="active");
       setReady(true);
-    } catch {setReady(true);setLocked(true);setMessage("No pudimos leer la referencia de recuperación. No enviaremos acciones; consultá soporte sin borrar los datos del navegador.")}
+    } catch {setReady(true);setLocked(true);setMessage(t("p0391"))}
   },[key,scope,item.version,item.state]);
   async function cancel() {
     if(!ready||locked||inFlight.current||!canCancel||item.state!=="active")return;
     inFlight.current=true;setLocked(true);
     try {if(window.sessionStorage.getItem(key)!==null)throw new Error("unresolved");window.sessionStorage.setItem(key,JSON.stringify({version:item.version}))}
-    catch {setMessage("No se envió: no pudimos conservar la referencia de recuperación. Consultá soporte antes de continuar.");return}
-    setMessage("Registrando cancelación…");
+    catch {setMessage(t("p0392"));return}
+    setMessage(t("p0393"));
     try {
       const response=await fetch("/api/enterprise/franchise/commands",{method:"POST",headers:{"content-type":"application/json"},signal:AbortSignal.timeout(10000),body:JSON.stringify({action:"cancel-availability",organizationId:organization,availabilityId:item.id,version:item.version,reasonCode:"schedule-correction"})});
       const receipt=await response.json() as (Partial<Availability>&{organization_id?:unknown})|null;
       if(response.ok&&receipt?.id===item.id&&receipt.organization_id===organization&&receipt.state==="cancelled"&&receipt.version===item.version+1&&receipt.entry_type===item.entry_type&&receipt.resource_id===item.resource_id&&receipt.starts_at===item.starts_at&&receipt.ends_at===item.ends_at) {
-        setMessage("Cancelación registrada. Consultá el intervalo para ver su estado guardado.");
-      } else if(response.status===401||response.status===403)setMessage("Tu sesión no autoriza esta cancelación. Revisá tus accesos y consultá el intervalo.");
-      else if(response.status===409)setMessage("El intervalo cambió o tiene restricciones, por ejemplo citas activas. Consultá su estado y pedí revisión; no repetimos la acción.");
+        setMessage(t("p0394"));
+      } else if(response.status===401||response.status===403)setMessage(t("p0395"));
+      else if(response.status===409)setMessage(t("p0396"));
       else throw new Error("unconfirmed");
-    } catch {setMessage("No pudimos comprobar la cancelación. Puede haberse registrado; consultá el intervalo antes de continuar.")}
+    } catch {setMessage(t("p0397"))}
   }
   return <>
-    <p>{item.state==="active"?"Activo":item.state==="cancelled"?"Cancelado":"Estado no reconocido: consultar soporte"}</p>
-    {canCancel?<button type="button" disabled={!ready||locked} onClick={()=>void cancel()}>Cancelar intervalo</button>:null}
-    <p role="status" aria-label="Resultado de cancelación de intervalo" aria-live="polite">{message}</p>
-    <button type="button" disabled={!ready} onClick={()=>window.location.reload()}>Consultar intervalo</button>
+    <p>{item.state==="active"?t("p0398"):item.state==="cancelled"?t("p0326"):t("p0338")}</p>
+    {canCancel?<button type="button" disabled={!ready||locked} onClick={()=>void cancel()}>{t("p0399")}</button>:null}
+    <p role="status" aria-label={t("p0400")} aria-live="polite">{message}</p>
+    <button type="button" disabled={!ready} onClick={()=>window.location.reload()}>{t("p0401")}</button>
     <OperationalGuide guide={OPERATIONAL_GUIDES["availability-cancel-view"]}/>
   </>;
 }
 
 function LeadActions({lead,scope,defaultAssignee,canAssign,canTransition}:{lead:Lead;scope:string;defaultAssignee:string;canAssign:boolean;canTransition:boolean}) {
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
   const [ready,setReady]=useState(false),[locked,setLocked]=useState(true),[message,setMessage]=useState("");
   const inFlight=useRef(false);
   const key=`elite-lead-command:${scope}:${lead.id}`;
@@ -1308,11 +1333,11 @@ function LeadActions({lead,scope,defaultAssignee,canAssign,canTransition}:{lead:
         if(!marker||typeof marker!=="object"||Object.keys(marker).sort().join(",")!=="action,version"||!Number.isSafeInteger(marker.version)||Number(marker.version)<1||!["assign-lead","transition-lead"].includes(String(marker.action)))throw new Error("invalid marker");
         if(lead.version>Number(marker.version)) {
           window.sessionStorage.removeItem(key);inFlight.current=false;setLocked(terminal);
-          setMessage("Consulta recuperada: el lead tiene una versión posterior. Revisá el responsable y el estado actuales antes de continuar.");
-        } else {setLocked(true);setMessage("Hay un cambio pendiente de comprobar. Consultá el lead; no repitas la acción ni borres la referencia.")}
+          setMessage(t("p0402"));
+        } else {setLocked(true);setMessage(t("p0403"))}
       } else {setLocked(terminal)}
       setReady(true);
-    } catch {setReady(true);setLocked(true);setMessage("No pudimos leer la referencia de recuperación. No enviaremos acciones; consultá soporte sin borrar los datos del navegador.")}
+    } catch {setReady(true);setLocked(true);setMessage(t("p0391"))}
   },[key,scope,lead.version,terminal]);
   async function submit(event:FormEvent<HTMLFormElement>,action:"assign-lead"|"transition-lead") {
     event.preventDefault();if(!ready||locked||inFlight.current||terminal)return;
@@ -1321,29 +1346,31 @@ function LeadActions({lead,scope,defaultAssignee,canAssign,canTransition}:{lead:
     if(action==="assign-lead"?(!value||value.length>256):!transitions[lead.state]?.includes(value))return;
     inFlight.current=true;setLocked(true);
     try {if(window.sessionStorage.getItem(key)!==null)throw new Error("unresolved");window.sessionStorage.setItem(key,JSON.stringify({version:lead.version,action}))}
-    catch {setMessage("No se envió: no pudimos conservar la referencia de recuperación. Consultá soporte antes de continuar.");return}
-    setMessage("Registrando cambio…");
+    catch {setMessage(t("p0392"));return}
+    setMessage(t("p0404"));
     const command={action,organizationId:lead.organization_id,leadId:lead.id,version:lead.version,...(action==="assign-lead"?{assignedSubject:value}:{current:lead.state,target:value})};
     try {
       const response=await fetch("/api/enterprise/franchise/commands",{method:"POST",headers:{"content-type":"application/json"},signal:AbortSignal.timeout(10000),body:JSON.stringify(command)});
       const receipt=await response.json() as Partial<Lead>|null;
       if(response.ok&&receipt?.id===lead.id&&receipt.organization_id===lead.organization_id&&receipt.version===lead.version+1&&(action==="assign-lead"?receipt.assigned_subject===value&&receipt.state===lead.state:receipt.state===value)) {
-        setMessage("Cambio registrado. Consultá el lead para trabajar sobre su estado actual.");
-      } else if(response.status===401||response.status===403) {setMessage("La sesión no autoriza este cambio. Revisá tus accesos y consultá el lead; conservamos la referencia.")}
-      else if(response.status===409) {setMessage("El lead cambió o la operación no admite esa versión. Consultá su estado antes de continuar.")}
+        setMessage(t("p0405"));
+      } else if(response.status===401||response.status===403) {setMessage(t("p0406"))}
+      else if(response.status===409) {setMessage(t("p0407"))}
       else throw new Error("unconfirmed");
-    } catch {setMessage("No pudimos comprobar el resultado. El cambio puede haberse registrado; consultá el lead antes de continuar.")}
+    } catch {setMessage(t("p0408"))}
   }
   return <>
-    {canAssign?<form onSubmit={event=>void submit(event,"assign-lead")}><label>Responsable<input name="assignedSubject" defaultValue={lead.assigned_subject||defaultAssignee} required maxLength={256} disabled={!ready||locked}/></label><button className="primaryAction" disabled={!ready||locked}>Asignar</button></form>:null}
-    {canTransition&&transitions[lead.state]?.length?<form onSubmit={event=>void submit(event,"transition-lead")}><label>Nuevo estado<select name="target" disabled={!ready||locked}>{transitions[lead.state]!.map(target=><option key={target}>{target}</option>)}</select></label><button disabled={!ready||locked}>Cambiar estado</button></form>:null}
-    <p role="status" aria-label="Resultado del lead" aria-live="polite">{message}</p>
-    <button type="button" disabled={!ready} onClick={()=>window.location.reload()}>Consultar lead</button>
+    {canAssign?<form onSubmit={event=>void submit(event,"assign-lead")}><label>{t("p0409")}<input name="assignedSubject" defaultValue={lead.assigned_subject||defaultAssignee} required maxLength={256} disabled={!ready||locked}/></label><button className="primaryAction" disabled={!ready||locked}>{t("p0410")}</button></form>:null}
+    {canTransition&&transitions[lead.state]?.length?<form onSubmit={event=>void submit(event,"transition-lead")}><label>{t("p0411")}<select name="target" disabled={!ready||locked}>{transitions[lead.state]!.map(target=><option key={target}>{target}</option>)}</select></label><button disabled={!ready||locked}>{t("p0412")}</button></form>:null}
+    <p role="status" aria-label={t("p0413")} aria-live="polite">{message}</p>
+    <button type="button" disabled={!ready} onClick={()=>window.location.reload()}>{t("p0414")}</button>
     <OperationalGuide guide={OPERATIONAL_GUIDES["lead-command-view"]}/>
   </>;
 }
 
 function DeliveryExceptionResolution({item,organization,scope}:{item:DeliveryException;organization:string;scope:string}) {
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
   // This owner resolves delivery exceptions, not CRM commands.
   const [ready,setReady]=useState(false);
   const [locked,setLocked]=useState(true);
@@ -1358,13 +1385,13 @@ function DeliveryExceptionResolution({item,organization,scope}:{item:DeliveryExc
         const marker=JSON.parse(raw) as {version?:unknown;action?:unknown};
         if(!marker||typeof marker!=="object"||Object.keys(marker).sort().join(",")!=="action,version"||!Number.isSafeInteger(marker.version)||Number(marker.version)<1||!["correct-and-represent","return","exchange"].includes(String(marker.action)))throw new Error("invalid marker");
         if(item.state==="resolved"&&Number.isSafeInteger(item.version)&&item.version>Number(marker.version)&&["correct-and-represent","return","exchange"].includes(item.resolution_action??"")) {
-          setMessage(item.resolution_action===marker.action?"Consulta recuperada: la discrepancia figura resuelta. No reenviamos la acción.":"La discrepancia figura resuelta con otra decisión. Revisá el resultado con el responsable.");
+          setMessage(item.resolution_action===marker.action?t("p0415"):t("p0416"));
           window.sessionStorage.removeItem(key);
-        } else {setMessage("Hay una resolución pendiente de comprobar en esta sesión. Consultá su estado; no repitas la acción.")}
+        } else {setMessage(t("p0417"))}
         setLocked(true);
       } else {setLocked(item.state!=="open")}
       setReady(true);
-    } catch {setLocked(true);setReady(true);setMessage("No pudimos leer la referencia de recuperación. No enviaremos acciones; consultá soporte sin borrar los datos del navegador.")}
+    } catch {setLocked(true);setReady(true);setMessage(t("p0391"))}
   },[key,scope,item.state,item.version,item.resolution_action]);
   async function submit(event:FormEvent<HTMLFormElement>) {
     event.preventDefault();if(!ready||locked||inFlight.current||item.state!=="open")return;
@@ -1374,39 +1401,41 @@ function DeliveryExceptionResolution({item,organization,scope}:{item:DeliveryExc
     try {
       if(window.sessionStorage.getItem(key)!==null)throw new Error("unresolved");
       window.sessionStorage.setItem(key,JSON.stringify({version:item.version,action}));
-    } catch {setMessage("No se envió: no pudimos conservar la referencia de recuperación. Consultá soporte antes de continuar.");return}
-    setMessage("Registrando resolución…");
+    } catch {setMessage(t("p0392"));return}
+    setMessage(t("p0418"));
     try {
       const response=await fetch("/api/enterprise/franchise/commands",{method:"POST",headers:{"content-type":"application/json"},signal:AbortSignal.timeout(10000),body:JSON.stringify({action:"resolve-delivery-exception",organizationId:organization,exceptionId:item.id,version:item.version,resolutionAction:action,notes})});
       const value=await response.json() as {exception?:Record<string,unknown>;successor_handover?:Record<string,unknown>;return_authorization_id?:unknown;disposition?:unknown};
       const e=value?.exception;
       const linked=action==="correct-and-represent" ? typeof e?.successor_handover_id==="string"&&e.successor_handover_id!==""&&value.successor_handover?.id===e.successor_handover_id&&value.successor_handover?.supersedes_handover_id===item.handover_id&&value.successor_handover?.state==="prepared" : typeof e?.return_authorization_id==="string"&&e.return_authorization_id!==""&&value.return_authorization_id===e.return_authorization_id&&value.disposition===action;
       if(response.ok&&e?.id===item.id&&e.organization_id===organization&&e.handover_id===item.handover_id&&e.state==="resolved"&&e.version===item.version+1&&e.resolution_action===action&&linked) {
-        setMessage("Resolución registrada. Consultá el estado para continuar; esto no confirma entrega, reembolso ni cambio completados.");
-      } else if(response.status===401||response.status===403) {setMessage("La sesión no autoriza esta resolución. Conservamos la referencia; revisá tus accesos y consultá el estado.")}
-      else if(response.status===409) {setMessage("La discrepancia cambió o ya fue resuelta. Consultá el estado antes de continuar.")}
+        setMessage(t("p0419"));
+      } else if(response.status===401||response.status===403) {setMessage(t("p0420"))}
+      else if(response.status===409) {setMessage(t("p0421"))}
       else throw new Error("unconfirmed");
-    } catch {setMessage("No pudimos comprobar el resultado. La resolución puede haberse registrado; consultá su estado antes de continuar.")}
+    } catch {setMessage(t("p0422"))}
   }
   return <>
-    {item.state==="open"?<form onSubmit={event=>void submit(event)}><label>Resolución<select name="resolutionAction" required disabled={!ready||locked}><option value="correct-and-represent">Corregir y volver a presentar</option><option value="return">Autorizar devolución</option><option value="exchange">Autorizar cambio</option></select></label><label>Notas<textarea name="notes" required maxLength={1000} disabled={!ready||locked}/></label><button disabled={!ready||locked}>Registrar resolución</button></form>:<p>Resolución: {item.resolution_action}</p>}
-    <p role="status" aria-label="Resultado de resolución" aria-live="polite">{message}</p>
-    <button type="button" disabled={!ready} onClick={()=>window.location.reload()}>Consultar resolución</button>
+    {item.state==="open"?<form onSubmit={event=>void submit(event)}><label>{t("p0423")}<select name="resolutionAction" required disabled={!ready||locked}><option value="correct-and-represent">{t("p0424")}</option><option value="return">{t("p0425")}</option><option value="exchange">{t("p0426")}</option></select></label><label>{t("p0427")}<textarea name="notes" required maxLength={1000} disabled={!ready||locked}/></label><button disabled={!ready||locked}>{t("p0428")}</button></form>:<p>{t("p0429")} {item.resolution_action}</p>}
+    <p role="status" aria-label={t("p0430")} aria-live="polite">{message}</p>
+    <button type="button" disabled={!ready} onClick={()=>window.location.reload()}>{t("p0431")}</button>
     <OperationalGuide guide={OPERATIONAL_GUIDES["delivery-resolution-view"]}/>
   </>;
 }
 
 export function FranchiseCommandPanel({ permissions = [], leads, availability, exceptions, returnCases, defaultAssignee, organization, commandScope="" }: { permissions?: readonly string[]; leads: Lead[]; availability: Availability[]; exceptions: DeliveryException[] | null; returnCases: ReturnCase[] | null; defaultAssignee: string; organization: string;commandScope?:string }) {
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
   const can=(permission:string)=>permissions.includes("*")||permissions.includes(permission);
   return <>
-    {(can("availability:read")||can("availability:manage")) ? <section className="card"><h2>Jornadas y ausencias</h2><p>Sin jornada explícita el backend no publica cupos ni asigna recursos.</p>{can("availability:manage") ? <AvailabilityCreation organization={organization} scope={commandScope}/> : null}<div className="grid">{availability.map((item) => <article className="card" key={item.id}><h3>{item.resource_id || "Franquicia"}</h3><p>{item.entry_type} · {new Date(item.starts_at).toLocaleString()} — {new Date(item.ends_at).toLocaleString()}</p>{item.reason_code ? <p>Motivo: {item.reason_code}</p> : null}<AvailabilityCancellation item={item} organization={organization} scope={commandScope} canCancel={can("availability:manage")}/></article>)}</div></section> : null}
-    {can("resource:manage") ? <section className="card"><h2>Recursos y turnos</h2><ResourceCreation organization={organization} scope={commandScope}/></section> : null}
-    {can("appointment:manage") ? <section className="card"><h2>Publicar capacidad</h2><SlotCreation organization={organization} scope={commandScope}/></section> : null}
-    {can("handover:manage") ? <section className="card"><h2>Preparación versionada de entregas</h2><p>Publicá una versión inmutable. Para confirmaciones, la respuesta operativa exacta es <code>confirmed</code>; el servidor impide presentar la entrega si falta un ítem obligatorio.</p><ChecklistPublication key={commandScope} organization={organization} scope={commandScope}/><ChecklistCompletionPanel key={commandScope} organization={organization} scope={commandScope}/></section> : null}
-    {can("handover:manage") && exceptions!==null ? <section className="card"><h2>Discrepancias de entrega</h2>{exceptions.length ? <div className="grid">{exceptions.map((item) => <article className="card" key={item.id}><h3>{item.reason_code}</h3><p>{item.details}</p><p>Entrega {item.handover_id} · cliente {item.customer_subject} · estado {item.state}</p><DeliveryExceptionResolution item={item} organization={organization} scope={commandScope}/></article>)}</div> : <p>No hay discrepancias registradas.</p>}</section> : null}
+    {(can("availability:read")||can("availability:manage")) ? <section className="card"><h2>{t("p0432")}</h2><p>{t("p0433")}</p>{can("availability:manage") ? <AvailabilityCreation organization={organization} scope={commandScope}/> : null}<div className="grid">{availability.map((item) => <article className="card" key={item.id}><h3>{item.resource_id || t("p0434")}</h3><p>{item.entry_type} {t("p0016")} {new Date(item.starts_at).toLocaleString(privateLocale.locale, {timeZone:privateLocale.timeZone})} {t("p0435")} {new Date(item.ends_at).toLocaleString(privateLocale.locale, {timeZone:privateLocale.timeZone})}</p>{item.reason_code ? <p>{t("p0436")} {item.reason_code}</p> : null}<AvailabilityCancellation item={item} organization={organization} scope={commandScope} canCancel={can("availability:manage")}/></article>)}</div></section> : null}
+    {can("resource:manage") ? <section className="card"><h2>{t("p0437")}</h2><ResourceCreation organization={organization} scope={commandScope}/></section> : null}
+    {can("appointment:manage") ? <section className="card"><h2>{t("p0438")}</h2><SlotCreation organization={organization} scope={commandScope}/></section> : null}
+    {can("handover:manage") ? <section className="card"><h2>{t("p0439")}</h2><p>{t("p0440")} <code>confirmed</code>{t("p0441")}</p><ChecklistPublication key={commandScope} organization={organization} scope={commandScope}/><ChecklistCompletionPanel key={commandScope} organization={organization} scope={commandScope}/></section> : null}
+    {can("handover:manage") && exceptions!==null ? <section className="card"><h2>{t("p0246")}</h2>{exceptions.length ? <div className="grid">{exceptions.map((item) => <article className="card" key={item.id}><h3>{item.reason_code}</h3><p>{item.details}</p><p>{t("p0368")} {item.handover_id} {t("p0442")} {item.customer_subject} {t("p0443")} {item.state}</p><DeliveryExceptionResolution item={item} organization={organization} scope={commandScope}/></article>)}</div> : <p>{t("p0444")}</p>}</section> : null}
     {can("handover:manage") ? <ReturnOperationsPanel key={commandScope} organization={organization} scope={commandScope} cases={returnCases}/> : null}
     <div className="grid">{leads.map((lead) => <article className="card" key={lead.id}>
-      <h2>{lead.id}</h2><p>{lead.state} · {lead.source_code}</p><p>{lead.assigned_subject ? `Responsable: ${lead.assigned_subject}` : "Sin asignar"}</p>
+      <h2>{lead.id}</h2><p>{lead.state} {t("p0016")} {lead.source_code}</p><p>{lead.assigned_subject ? `Responsable: ${lead.assigned_subject}` : t("p0378")}</p>
       <LeadActions lead={lead} scope={commandScope} defaultAssignee={defaultAssignee} canAssign={can("lead:assign")} canTransition={can("lead:update")}/>
       {can("quote:write") ? <QuoteCreation lead={lead} scope={commandScope}/> : null}
     </article>)}</div>
@@ -1414,6 +1443,8 @@ export function FranchiseCommandPanel({ permissions = [], leads, availability, e
 }
 
 function QuoteCreation({lead,scope}:{lead:Lead;scope:string}) {
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
  const [ready,setReady]=useState(false),[locked,setLocked]=useState(true),[message,setMessage]=useState("");
  const [result,setResult]=useState<{id:string;state:string;currency:string;total_minor_units:number}|null>(null);
  const sending=useRef(false),reading=useRef(false),operation=useRef<string|null>(null);
@@ -1422,10 +1453,10 @@ function QuoteCreation({lead,scope}:{lead:Lead;scope:string}) {
    try {
      if(!/^[a-f0-9]{64}$/.test(scope))throw new Error("scope");
      const raw=sessionStorage.getItem(storageKey);
-     if(raw!==null){const marker=JSON.parse(raw);if(!marker||Object.keys(marker).join(",")!=="requestKey"||!/^quote-[a-f0-9-]{36}$/.test(marker.requestKey))throw new Error("marker");operation.current=marker.requestKey;setLocked(true);setMessage("Hay una cotización pendiente de comprobar. Consultá el resultado sin repetir la emisión.");}
+     if(raw!==null){const marker=JSON.parse(raw);if(!marker||Object.keys(marker).join(",")!=="requestKey"||!/^quote-[a-f0-9-]{36}$/.test(marker.requestKey))throw new Error("marker");operation.current=marker.requestKey;setLocked(true);setMessage(t("p0445"));}
      else {operation.current=null;setLocked(false)}
      setReady(true);
-   }catch{setReady(true);setLocked(true);setMessage("No pudimos leer la referencia. Consultá soporte sin borrar los datos del navegador.")}
+   }catch{setReady(true);setLocked(true);setMessage(t("p0446"))}
  },[scope,storageKey]);
  function valid(value:unknown): value is {id:string;organization_id:string;lead_id:string;variant_id:string;price_book_id:string;valid_until:string;state:string;currency:string;total_minor_units:number;version:number} {
    if(!value||typeof value!=="object")return false;
@@ -1438,14 +1469,14 @@ function QuoteCreation({lead,scope}:{lead:Lead;scope:string}) {
    if(!variantId||!priceBookId||!Number.isFinite(until.getTime())||until<=new Date())return;
    sending.current=true;setLocked(true);
    try{if(sessionStorage.getItem(storageKey)!==null)throw new Error("unresolved");const requestKey="quote-"+crypto.randomUUID();sessionStorage.setItem(storageKey,JSON.stringify({requestKey}));operation.current=requestKey;}
-   catch{setMessage("No se envió: no pudimos conservar la referencia. Consultá soporte antes de continuar.");return}
-   setMessage("Emitiendo cotización…");
+   catch{setMessage(t("p0447"));return}
+   setMessage(t("p0448"));
    try{
      const response=await fetch("/api/enterprise/franchise/commands",{method:"POST",headers:{"content-type":"application/json","idempotency-key":operation.current!},signal:AbortSignal.timeout(10000),body:JSON.stringify({action:"create-quote",organizationId:lead.organization_id,leadId:lead.id,variantId,priceBookId,validUntil:until.toISOString()})});
      const receipt=await response.json();
      if(!response.ok||!valid(receipt)||receipt.variant_id!==variantId||receipt.price_book_id!==priceBookId||new Date(receipt.valid_until).getTime()!==until.getTime()||receipt.state!=="issued"||receipt.version!==1)throw new Error("unconfirmed");
-     setResult(receipt);setMessage("Cotización registrada. Consultá el resultado persistente antes de continuar.");
-   }catch{setMessage("No pudimos comprobar el resultado. La cotización puede haberse registrado; consultá sin volver a emitir.")}
+     setResult(receipt);setMessage(t("p0449"));
+   }catch{setMessage(t("p0450"))}
  }
  async function consult(){
    if(!ready||!operation.current||reading.current)return;reading.current=true;
@@ -1454,25 +1485,27 @@ function QuoteCreation({lead,scope}:{lead:Lead;scope:string}) {
      const response=await fetch("/api/enterprise/franchise/commands?"+query,{cache:"no-store",signal:AbortSignal.timeout(10000)});
      const receipt=await response.json();
      if(!response.ok||receipt?.request_key!==operation.current||!valid(receipt.quote))throw new Error("unconfirmed");
-     setResult(receipt.quote);setMessage("Consulta recuperada: esta referencia corresponde a la cotización mostrada. La emisión permanece cerrada para evitar duplicados.");
-   }catch{setMessage("No pudimos recuperar la cotización. Conservamos la referencia y el bloqueo; consultá nuevamente o pedí revisión autorizada.")}
+     setResult(receipt.quote);setMessage(t("p0451"));
+   }catch{setMessage(t("p0452"))}
    finally{reading.current=false}
  }
  return <div>
   <form onSubmit={event=>void submit(event)}>
-   <label>Variante<input name="variantId" required maxLength={128} disabled={!ready||locked}/></label>
-   <label>Lista de precios<input name="priceBookId" required maxLength={128} disabled={!ready||locked}/></label>
-   <label>Válida hasta<input name="validUntil" type="datetime-local" required disabled={!ready||locked}/></label>
-   <button disabled={!ready||locked}>Emitir cotización</button>
+   <label>{t("p0182")}<input name="variantId" required maxLength={128} disabled={!ready||locked}/></label>
+   <label>{t("p0453")}<input name="priceBookId" required maxLength={128} disabled={!ready||locked}/></label>
+   <label>{t("p0454")}<input name="validUntil" type="datetime-local" required disabled={!ready||locked}/></label>
+   <button disabled={!ready||locked}>{t("p0455")}</button>
   </form>
-  <p role="status" aria-label="Resultado de cotización" aria-live="polite">{message}</p>
-  {result?<p>Cotización {result.id} · {result.state} · {result.currency}</p>:null}
-  <button type="button" disabled={!ready||!operation.current} onClick={()=>void consult()}>Consultar cotización</button>
+  <p role="status" aria-label={t("p0456")} aria-live="polite">{message}</p>
+  {result?<p>{t("p0457")} {result.id} {t("p0016")} {result.state} {t("p0016")} {result.currency}</p>:null}
+  <button type="button" disabled={!ready||!operation.current} onClick={()=>void consult()}>{t("p0458")}</button>
   <OperationalGuide guide={OPERATIONAL_GUIDES["quote-create-view"]}/>
  </div>;
 }
 
 function AvailabilityCreation({organization,scope}:{organization:string;scope:string}) {
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
  const [ready,setReady]=useState(false),[locked,setLocked]=useState(true),[message,setMessage]=useState("");
  const [confirmed,setConfirmed]=useState(false),[posting,setPosting]=useState(false),[result,setResult]=useState<Availability|null>(null);
  const fence=useRef(false),reading=useRef(false),operation=useRef<string|null>(null),form=useRef<HTMLFormElement>(null);
@@ -1481,9 +1514,9 @@ function AvailabilityCreation({organization,scope}:{organization:string;scope:st
   try{
    if(!/^[a-f0-9]{64}$/.test(scope))throw new Error("scope");
    const raw=sessionStorage.getItem(storageKey);
-   if(raw!==null){const marker=JSON.parse(raw);if(!marker||Object.keys(marker).join(",")!=="requestKey"||!/^availability-[a-f0-9-]{36}$/.test(marker.requestKey))throw new Error("marker");operation.current=marker.requestKey;setLocked(true);setMessage("Hay un intervalo pendiente de comprobar. Consultá el resultado sin volver a registrarlo.");}
+   if(raw!==null){const marker=JSON.parse(raw);if(!marker||Object.keys(marker).join(",")!=="requestKey"||!/^availability-[a-f0-9-]{36}$/.test(marker.requestKey))throw new Error("marker");operation.current=marker.requestKey;setLocked(true);setMessage(t("p0459"));}
    else{operation.current=null;setLocked(false)}setReady(true);
-  }catch{setReady(true);setLocked(true);setMessage("No pudimos leer la referencia. Consultá soporte sin borrar los datos del navegador.")}
+  }catch{setReady(true);setLocked(true);setMessage(t("p0446"))}
  },[scope,storageKey]);
  function valid(value:unknown):value is Availability & {organization_id:string}{
   if(!value||typeof value!=="object")return false;const v=value as Record<string,unknown>;
@@ -1492,18 +1525,18 @@ function AvailabilityCreation({organization,scope}:{organization:string;scope:st
  async function submit(event:FormEvent<HTMLFormElement>){
   event.preventDefault();if(!ready||locked||fence.current)return;
   const data=new FormData(event.currentTarget),from=new Date(String(data.get("startsAt")??"")),to=new Date(String(data.get("endsAt")??""));
-  if(!Number.isFinite(from.getTime())||!Number.isFinite(to.getTime())||to<=from){setMessage("El intervalo no es válido.");return}
+  if(!Number.isFinite(from.getTime())||!Number.isFinite(to.getTime())||to<=from){setMessage(t("p0460"));return}
   const resourceId=String(data.get("resourceId")??"").trim(),entryType=String(data.get("entryType")??"working"),reasonCode=String(data.get("reasonCode")??"").trim();
   fence.current=true;setLocked(true);setConfirmed(false);
   try{if(sessionStorage.getItem(storageKey)!==null)throw new Error("unresolved");const key="availability-"+crypto.randomUUID();sessionStorage.setItem(storageKey,JSON.stringify({requestKey:key}));operation.current=key;}
-  catch{setMessage("No se envió: no pudimos conservar la referencia. Consultá soporte antes de continuar.");return}
-  const key=operation.current;setPosting(true);setMessage("Registrando intervalo…");
+  catch{setMessage(t("p0447"));return}
+  const key=operation.current;setPosting(true);setMessage(t("p0461"));
   try{
    const response=await fetch("/api/enterprise/franchise/commands",{method:"POST",headers:{"content-type":"application/json","idempotency-key":key!},signal:AbortSignal.timeout(10000),body:JSON.stringify({action:"create-availability",organizationId:organization,...(resourceId?{resourceId}:{}),entryType,...(reasonCode?{reasonCode}:{}),startsAt:from.toISOString(),endsAt:to.toISOString()})});
    const receipt=await response.json();if(operation.current!==key)return;
    if(!response.ok||!valid(receipt)||(receipt.resource_id??"")!==resourceId||receipt.entry_type!==entryType||(receipt.reason_code??"")!==reasonCode||Date.parse(receipt.starts_at)!==from.getTime()||Date.parse(receipt.ends_at)!==to.getTime()||receipt.state!=="active"||receipt.version!==1)throw new Error("unconfirmed");
-   setResult(receipt);setMessage("Intervalo registrado. Consultá el resultado antes de preparar otro.");
-  }catch{if(operation.current===key)setMessage("No pudimos comprobar el resultado. El intervalo puede haberse registrado; consultá sin volver a enviarlo.")}
+   setResult(receipt);setMessage(t("p0462"));
+  }catch{if(operation.current===key)setMessage(t("p0463"))}
   finally{setPosting(false)}
  }
  async function consult(){
@@ -1513,33 +1546,35 @@ function AvailabilityCreation({organization,scope}:{organization:string;scope:st
    const response=await fetch("/api/enterprise/franchise/commands?"+query,{cache:"no-store",signal:AbortSignal.timeout(10000)}),receipt=await response.json();
    if(operation.current!==key)return;
    if(!response.ok||receipt?.request_key!==key||!valid(receipt.availability))throw new Error("unconfirmed");
-   setResult(receipt.availability);setConfirmed(true);setMessage("Consulta recuperada: esta referencia corresponde al intervalo mostrado. Revisá su estado antes de preparar otro.");
-  }catch{if(operation.current===key){setConfirmed(false);setMessage("No pudimos recuperar el intervalo. Conservamos la referencia y el bloqueo; consultá nuevamente o pedí revisión autorizada.")}}
+   setResult(receipt.availability);setConfirmed(true);setMessage(t("p0464"));
+  }catch{if(operation.current===key){setConfirmed(false);setMessage(t("p0465"))}}
   finally{reading.current=false}
  }
  function prepare(){
   if(!confirmed||posting||reading.current)return;
-  try{sessionStorage.removeItem(storageKey);operation.current=null;fence.current=false;setLocked(false);setConfirmed(false);setResult(null);form.current?.reset();setMessage("Formulario nuevo preparado. El intervalo anterior permanece registrado.")}
-  catch{setMessage("No pudimos actualizar la referencia. Conservamos el bloqueo; consultá soporte.")}
+  try{sessionStorage.removeItem(storageKey);operation.current=null;fence.current=false;setLocked(false);setConfirmed(false);setResult(null);form.current?.reset();setMessage(t("p0466"))}
+  catch{setMessage(t("p0467"))}
  }
  return <div>
   <form ref={form} onSubmit={event=>void submit(event)}>
-   <label>Alcance<input name="resourceId" maxLength={128} placeholder="Vacío = toda la franquicia" disabled={!ready||locked}/></label>
-   <label>Tipo<select name="entryType" defaultValue="working" disabled={!ready||locked}><option value="working">Jornada activa</option><option value="unavailable">No disponible</option></select></label>
-   <label>Motivo<input name="reasonCode" pattern="[a-z][a-z0-9]*(-[a-z0-9]+)*" placeholder="Obligatorio para ausencia" disabled={!ready||locked}/></label>
-   <label>Desde<input name="startsAt" type="datetime-local" required disabled={!ready||locked}/></label><label>Hasta<input name="endsAt" type="datetime-local" required disabled={!ready||locked}/></label>
-   <button disabled={!ready||locked}>Registrar intervalo</button>
+   <label>{t("p0468")}<input name="resourceId" maxLength={128} placeholder={t("p0469")} disabled={!ready||locked}/></label>
+   <label>{t("p0470")}<select name="entryType" defaultValue="working" disabled={!ready||locked}><option value="working">{t("p0471")}</option><option value="unavailable">{t("p0472")}</option></select></label>
+   <label>{t("p0473")}<input name="reasonCode" pattern="[a-z][a-z0-9]*(-[a-z0-9]+)*" placeholder={t("p0474")} disabled={!ready||locked}/></label>
+   <label>{t("p0475")}<input name="startsAt" type="datetime-local" required disabled={!ready||locked}/></label><label>{t("p0476")}<input name="endsAt" type="datetime-local" required disabled={!ready||locked}/></label>
+   <button disabled={!ready||locked}>{t("p0477")}</button>
   </form>
-  <p role="status" aria-label="Resultado de intervalo" aria-live="polite">{message}</p>
-  {result?<p>Intervalo {result.id} · {result.state} · {new Date(result.starts_at).toLocaleString()} — {new Date(result.ends_at).toLocaleString()}</p>:null}
-  <button type="button" disabled={!ready||!operation.current} onClick={()=>void consult()}>Consultar intervalo creado</button>
-  <button type="button" disabled={!confirmed||posting} onClick={prepare}>Preparar otro intervalo</button>
+  <p role="status" aria-label={t("p0478")} aria-live="polite">{message}</p>
+  {result?<p>{t("p0479")} {result.id} {t("p0016")} {result.state} {t("p0016")} {new Date(result.starts_at).toLocaleString(privateLocale.locale, {timeZone:privateLocale.timeZone})} {t("p0435")} {new Date(result.ends_at).toLocaleString(privateLocale.locale, {timeZone:privateLocale.timeZone})}</p>:null}
+  <button type="button" disabled={!ready||!operation.current} onClick={()=>void consult()}>{t("p0480")}</button>
+  <button type="button" disabled={!confirmed||posting} onClick={prepare}>{t("p0481")}</button>
   <OperationalGuide guide={OPERATIONAL_GUIDES["availability-create-view"]}/>
  </div>;
 }
 
 type ResourceReceipt={id:string;organization_id:string;display_name:string;principal_subject?:string;kind:string;status:string;version:number;skills:string[]};
 function ResourceCreation({organization,scope}:{organization:string;scope:string}) {
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
  const [ready,setReady]=useState(false),[locked,setLocked]=useState(true),[message,setMessage]=useState("");
  const [confirmed,setConfirmed]=useState(false),[posting,setPosting]=useState(false),[result,setResult]=useState<ResourceReceipt|null>(null);
  const fence=useRef(false),reading=useRef(false),operation=useRef<string|null>(null),form=useRef<HTMLFormElement>(null);
@@ -1548,9 +1583,9 @@ function ResourceCreation({organization,scope}:{organization:string;scope:string
   try{
    if(!/^[a-f0-9]{64}$/.test(scope))throw new Error("scope");
    const raw=sessionStorage.getItem(storageKey);
-   if(raw!==null){const marker=JSON.parse(raw);if(!marker||Object.keys(marker).join(",")!=="requestKey"||!/^resource-[a-f0-9-]{36}$/.test(marker.requestKey))throw new Error("marker");operation.current=marker.requestKey;setLocked(true);setMessage("Hay un recurso pendiente de comprobar. Consultá el resultado sin volver a registrarlo.");}
+   if(raw!==null){const marker=JSON.parse(raw);if(!marker||Object.keys(marker).join(",")!=="requestKey"||!/^resource-[a-f0-9-]{36}$/.test(marker.requestKey))throw new Error("marker");operation.current=marker.requestKey;setLocked(true);setMessage(t("p0482"));}
    else{operation.current=null;setLocked(false)}setReady(true);
-  }catch{setReady(true);setLocked(true);setMessage("No pudimos leer la referencia. Consultá soporte sin borrar los datos del navegador.")}
+  }catch{setReady(true);setLocked(true);setMessage(t("p0446"))}
  },[scope,storageKey]);
  function valid(value:unknown):value is ResourceReceipt {
   if(!value||typeof value!=="object")return false;const v=value as Record<string,unknown>;
@@ -1559,17 +1594,17 @@ function ResourceCreation({organization,scope}:{organization:string;scope:string
  async function submit(event:FormEvent<HTMLFormElement>){
   event.preventDefault();if(!ready||locked||fence.current)return;
   const data=new FormData(event.currentTarget),displayName=String(data.get("displayName")??"").trim(),principalSubject=String(data.get("principalSubject")??"").trim(),kind=String(data.get("kind")??"employee"),skills=data.getAll("skills").map(String);
-  if(!displayName||!skills.length||((kind==="employee"||kind==="contractor")!==!!principalSubject)){setMessage("Indicá nombre y habilidades. Empleados y contratistas requieren identidad; bahías y vehículos no la usan.");return}
+  if(!displayName||!skills.length||((kind==="employee"||kind==="contractor")!==!!principalSubject)){setMessage(t("p0483"));return}
   fence.current=true;setLocked(true);setConfirmed(false);
   try{if(sessionStorage.getItem(storageKey)!==null)throw new Error("unresolved");const key="resource-"+crypto.randomUUID();sessionStorage.setItem(storageKey,JSON.stringify({requestKey:key}));operation.current=key;}
-  catch{setMessage("No se envió: no pudimos conservar la referencia. Consultá soporte antes de continuar.");return}
-  const key=operation.current;setPosting(true);setMessage("Registrando recurso…");
+  catch{setMessage(t("p0447"));return}
+  const key=operation.current;setPosting(true);setMessage(t("p0484"));
   try{
    const response=await fetch("/api/enterprise/franchise/commands",{method:"POST",headers:{"content-type":"application/json","idempotency-key":key!},signal:AbortSignal.timeout(10000),body:JSON.stringify({action:"create-resource",organizationId:organization,displayName,...(principalSubject?{principalSubject}:{}),kind,skills})});
    const receipt=await response.json();if(operation.current!==key)return;
    if(!response.ok||!valid(receipt)||receipt.display_name!==displayName||(receipt.principal_subject??"")!==principalSubject||receipt.kind!==kind||JSON.stringify([...receipt.skills].sort())!==JSON.stringify([...skills].sort())||receipt.status!=="active"||receipt.version!==1)throw new Error("unconfirmed");
-   setResult(receipt);setMessage("Recurso registrado. Consultá el resultado antes de preparar otro.");
-  }catch{if(operation.current===key)setMessage("No pudimos comprobar el resultado. El recurso puede haberse registrado; consultá sin volver a enviarlo.")}
+   setResult(receipt);setMessage(t("p0485"));
+  }catch{if(operation.current===key)setMessage(t("p0486"))}
   finally{setPosting(false)}
  }
  async function consult(){
@@ -1579,33 +1614,35 @@ function ResourceCreation({organization,scope}:{organization:string;scope:string
    const response=await fetch("/api/enterprise/franchise/commands?"+query,{cache:"no-store",signal:AbortSignal.timeout(10000)}),receipt=await response.json();
    if(operation.current!==key)return;
    if(!response.ok||receipt?.request_key!==key||!valid(receipt.resource))throw new Error("unconfirmed");
-   setResult(receipt.resource);setConfirmed(true);setMessage("Consulta recuperada: esta referencia corresponde al recurso mostrado. Revisá su estado antes de preparar otro.");
-  }catch{if(operation.current===key){setConfirmed(false);setMessage("No pudimos recuperar el recurso. Conservamos la referencia y el bloqueo; consultá nuevamente o pedí revisión autorizada.")}}
+   setResult(receipt.resource);setConfirmed(true);setMessage(t("p0487"));
+  }catch{if(operation.current===key){setConfirmed(false);setMessage(t("p0488"))}}
   finally{reading.current=false}
  }
  function prepare(){
   if(!confirmed||posting||reading.current)return;
-  try{sessionStorage.removeItem(storageKey);operation.current=null;fence.current=false;setLocked(false);setConfirmed(false);setResult(null);form.current?.reset();setMessage("Formulario nuevo preparado. El recurso anterior permanece registrado.")}
-  catch{setMessage("No pudimos actualizar la referencia. Conservamos el bloqueo; consultá soporte.")}
+  try{sessionStorage.removeItem(storageKey);operation.current=null;fence.current=false;setLocked(false);setConfirmed(false);setResult(null);form.current?.reset();setMessage(t("p0489"))}
+  catch{setMessage(t("p0467"))}
  }
  return <div>
   <form ref={form} onSubmit={event=>void submit(event)}>
-   <label>Nombre<input name="displayName" required maxLength={160} disabled={!ready||locked}/></label>
-   <label>Identidad del proveedor de acceso<input name="principalSubject" maxLength={256} disabled={!ready||locked}/></label>
-   <label>Tipo<select name="kind" defaultValue="employee" disabled={!ready||locked}><option value="employee">Empleado</option><option value="contractor">Contratista</option><option value="service-bay">Bahía</option><option value="vehicle">Vehículo</option></select></label>
-   <fieldset disabled={!ready||locked}><legend>Habilidades</legend>{["consultation","test-drive","delivery","service"].map(skill=><label key={skill}><input name="skills" type="checkbox" value={skill}/>{skill}</label>)}</fieldset>
-   <button disabled={!ready||locked}>Crear recurso</button>
+   <label>{t("p0490")}<input name="displayName" required maxLength={160} disabled={!ready||locked}/></label>
+   <label>{t("p0491")}<input name="principalSubject" maxLength={256} disabled={!ready||locked}/></label>
+   <label>{t("p0470")}<select name="kind" defaultValue="employee" disabled={!ready||locked}><option value="employee">{t("p0492")}</option><option value="contractor">{t("p0493")}</option><option value="service-bay">{t("p0494")}</option><option value="vehicle">{t("p0495")}</option></select></label>
+   <fieldset disabled={!ready||locked}><legend>{t("p0496")}</legend>{["consultation","test-drive","delivery","service"].map(skill=><label key={skill}><input name="skills" type="checkbox" value={skill}/>{skill}</label>)}</fieldset>
+   <button disabled={!ready||locked}>{t("p0497")}</button>
   </form>
-  <p role="status" aria-label="Resultado de recurso" aria-live="polite">{message}</p>
-  {result?<p>Recurso {result.id} · {result.display_name} · {result.kind} · {result.status}</p>:null}
-  <button type="button" disabled={!ready||!operation.current} onClick={()=>void consult()}>Consultar recurso creado</button>
-  <button type="button" disabled={!confirmed||posting} onClick={prepare}>Preparar otro recurso</button>
+  <p role="status" aria-label={t("p0498")} aria-live="polite">{message}</p>
+  {result?<p>{t("p0499")} {result.id} {t("p0016")} {result.display_name} {t("p0016")} {result.kind} {t("p0016")} {result.status}</p>:null}
+  <button type="button" disabled={!ready||!operation.current} onClick={()=>void consult()}>{t("p0500")}</button>
+  <button type="button" disabled={!confirmed||posting} onClick={prepare}>{t("p0501")}</button>
   <OperationalGuide guide={OPERATIONAL_GUIDES["resource-create-view"]}/>
  </div>;
 }
 
 type SlotReceipt={id:string;organization_id:string;kind:string;starts_at:string;ends_at:string;capacity:number;booked:number;state:string;version:number};
 function SlotCreation({organization,scope}:{organization:string;scope:string}) {
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
  const [ready,setReady]=useState(false),[locked,setLocked]=useState(true),[message,setMessage]=useState("");
  const [confirmed,setConfirmed]=useState(false),[posting,setPosting]=useState(false),[result,setResult]=useState<SlotReceipt|null>(null);
  const fence=useRef(false),reading=useRef(false),operation=useRef<string|null>(null),form=useRef<HTMLFormElement>(null);
@@ -1614,9 +1651,9 @@ function SlotCreation({organization,scope}:{organization:string;scope:string}) {
   try{
    if(!/^[a-f0-9]{64}$/.test(scope))throw new Error("scope");
    const raw=sessionStorage.getItem(storageKey);
-   if(raw!==null){const marker=JSON.parse(raw);if(!marker||Object.keys(marker).join(",")!=="requestKey"||!/^slot-[a-f0-9-]{36}$/.test(marker.requestKey))throw new Error("marker");operation.current=marker.requestKey;setLocked(true);setMessage("Hay un turno pendiente de comprobar. Consultá el resultado sin volver a registrarlo.");}
+   if(raw!==null){const marker=JSON.parse(raw);if(!marker||Object.keys(marker).join(",")!=="requestKey"||!/^slot-[a-f0-9-]{36}$/.test(marker.requestKey))throw new Error("marker");operation.current=marker.requestKey;setLocked(true);setMessage(t("p0502"));}
    else{operation.current=null;setLocked(false)}setReady(true);
-  }catch{setReady(true);setLocked(true);setMessage("No pudimos leer la referencia. Consultá soporte sin borrar los datos del navegador.")}
+  }catch{setReady(true);setLocked(true);setMessage(t("p0446"))}
  },[scope,storageKey]);
  function valid(value:unknown):value is SlotReceipt {
   if(!value||typeof value!=="object")return false;const v=value as Record<string,unknown>;
@@ -1625,19 +1662,19 @@ function SlotCreation({organization,scope}:{organization:string;scope:string}) {
  async function submit(event:FormEvent<HTMLFormElement>){
   event.preventDefault();if(!ready||locked||fence.current)return;
   const data=new FormData(event.currentTarget),from=new Date(String(data.get("startsAt")??"")),to=new Date(String(data.get("endsAt")??""));
-  if(!Number.isFinite(from.getTime())||!Number.isFinite(to.getTime())||to<=from){setMessage("El turno no es válido.");return}
+  if(!Number.isFinite(from.getTime())||!Number.isFinite(to.getTime())||to<=from){setMessage(t("p0503"));return}
   const kind=String(data.get("kind")??"test-drive"),capacity=Number(data.get("capacity"));
-  if(!Number.isInteger(capacity)||capacity<1||capacity>100){setMessage("La capacidad debe ser un entero entre 1 y 100.");return}
+  if(!Number.isInteger(capacity)||capacity<1||capacity>100){setMessage(t("p0504"));return}
   fence.current=true;setLocked(true);setConfirmed(false);
   try{if(sessionStorage.getItem(storageKey)!==null)throw new Error("unresolved");const key="slot-"+crypto.randomUUID();sessionStorage.setItem(storageKey,JSON.stringify({requestKey:key}));operation.current=key;}
-  catch{setMessage("No se envió: no pudimos conservar la referencia. Consultá soporte antes de continuar.");return}
-  const key=operation.current;setPosting(true);setMessage("Registrando turno…");
+  catch{setMessage(t("p0447"));return}
+  const key=operation.current;setPosting(true);setMessage(t("p0505"));
   try{
    const response=await fetch("/api/enterprise/franchise/commands",{method:"POST",headers:{"content-type":"application/json","idempotency-key":key!},signal:AbortSignal.timeout(10000),body:JSON.stringify({action:"create-appointment-slot",organizationId:organization,kind,capacity,startsAt:from.toISOString(),endsAt:to.toISOString()})});
    const receipt=await response.json();if(operation.current!==key)return;
    if(!response.ok||!valid(receipt)||receipt.kind!==kind||receipt.capacity!==capacity||Date.parse(receipt.starts_at)!==from.getTime()||Date.parse(receipt.ends_at)!==to.getTime()||receipt.state!=="open"||receipt.version!==1)throw new Error("unconfirmed");
-   setResult(receipt);setMessage("Turno registrado. Consultá el resultado antes de preparar otro.");
-  }catch{if(operation.current===key)setMessage("No pudimos comprobar el resultado. El turno puede haberse registrado; consultá sin volver a enviarlo.")}
+   setResult(receipt);setMessage(t("p0506"));
+  }catch{if(operation.current===key)setMessage(t("p0507"))}
   finally{setPosting(false)}
  }
  async function consult(){
@@ -1647,26 +1684,26 @@ function SlotCreation({organization,scope}:{organization:string;scope:string}) {
    const response=await fetch("/api/enterprise/franchise/commands?"+query,{cache:"no-store",signal:AbortSignal.timeout(10000)}),receipt=await response.json();
    if(operation.current!==key)return;
    if(!response.ok||receipt?.request_key!==key||!valid(receipt.slot))throw new Error("unconfirmed");
-   setResult(receipt.slot);setConfirmed(true);setMessage("Consulta recuperada: esta referencia corresponde al turno mostrado. Revisá su estado antes de preparar otro.");
-  }catch{if(operation.current===key){setConfirmed(false);setMessage("No pudimos recuperar el turno. Conservamos la referencia y el bloqueo; consultá nuevamente o pedí revisión autorizada.")}}
+   setResult(receipt.slot);setConfirmed(true);setMessage(t("p0508"));
+  }catch{if(operation.current===key){setConfirmed(false);setMessage(t("p0509"))}}
   finally{reading.current=false}
  }
  function prepare(){
   if(!confirmed||posting||reading.current)return;
-  try{sessionStorage.removeItem(storageKey);operation.current=null;fence.current=false;setLocked(false);setConfirmed(false);setResult(null);form.current?.reset();setMessage("Formulario nuevo preparado. El turno anterior permanece registrado.")}
-  catch{setMessage("No pudimos actualizar la referencia. Conservamos el bloqueo; consultá soporte.")}
+  try{sessionStorage.removeItem(storageKey);operation.current=null;fence.current=false;setLocked(false);setConfirmed(false);setResult(null);form.current?.reset();setMessage(t("p0510"))}
+  catch{setMessage(t("p0467"))}
  }
  return <div>
   <form ref={form} onSubmit={event=>void submit(event)}>
-   <label>Tipo<select name="kind" defaultValue="test-drive" disabled={!ready||locked}><option value="test-drive">Prueba de manejo</option><option value="consultation">Consulta</option><option value="delivery">Entrega</option><option value="service">Servicio</option></select></label>
-   <label>Desde<input name="startsAt" type="datetime-local" required disabled={!ready||locked}/></label><label>Hasta<input name="endsAt" type="datetime-local" required disabled={!ready||locked}/></label>
-   <label>Cupos<input name="capacity" type="number" min={1} max={100} defaultValue={1} required disabled={!ready||locked}/></label>
-   <button disabled={!ready||locked}>Publicar turno</button>
+   <label>{t("p0470")}<select name="kind" defaultValue="test-drive" disabled={!ready||locked}><option value="test-drive">{t("p0367")}</option><option value="consultation">{t("p0366")}</option><option value="delivery">{t("p0368")}</option><option value="service">{t("p0018")}</option></select></label>
+   <label>{t("p0475")}<input name="startsAt" type="datetime-local" required disabled={!ready||locked}/></label><label>{t("p0476")}<input name="endsAt" type="datetime-local" required disabled={!ready||locked}/></label>
+   <label>{t("p0511")}<input name="capacity" type="number" min={1} max={100} defaultValue={1} required disabled={!ready||locked}/></label>
+   <button disabled={!ready||locked}>{t("p0512")}</button>
   </form>
-  <p role="status" aria-label="Resultado de turno" aria-live="polite">{message}</p>
-  {result?<p>Turno {result.id} · {result.state} · {result.booked}/{result.capacity} ocupados · {new Date(result.starts_at).toLocaleString()} — {new Date(result.ends_at).toLocaleString()}</p>:null}
-  <button type="button" disabled={!ready||!operation.current} onClick={()=>void consult()}>Consultar turno creado</button>
-  <button type="button" disabled={!confirmed||posting} onClick={prepare}>Preparar otro turno</button>
+  <p role="status" aria-label={t("p0513")} aria-live="polite">{message}</p>
+  {result?<p>{t("p0140")} {result.id} {t("p0016")} {result.state} {t("p0016")} {result.booked}{t("p0280")}{result.capacity} {t("p0514")} {new Date(result.starts_at).toLocaleString(privateLocale.locale, {timeZone:privateLocale.timeZone})} {t("p0435")} {new Date(result.ends_at).toLocaleString(privateLocale.locale, {timeZone:privateLocale.timeZone})}</p>:null}
+  <button type="button" disabled={!ready||!operation.current} onClick={()=>void consult()}>{t("p0515")}</button>
+  <button type="button" disabled={!confirmed||posting} onClick={prepare}>{t("p0516")}</button>
   <OperationalGuide guide={OPERATIONAL_GUIDES["slot-create-view"]}/>
  </div>;
 }
@@ -1676,6 +1713,8 @@ function SlotCreation({organization,scope}:{organization:string;scope:string}) {
 type PublishedChecklist={id:string;organization_id:string;version:number;title:string;state:string;items:{id:string;ordinal:number;prompt:string;response_type:string;required:boolean}[]};
 type ChecklistMarker={checklistId:string;version:number;digest:string};
 function ChecklistPublication({organization,scope}:{organization:string;scope:string}){
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
  const [ready,setReady]=useState(false),[locked,setLocked]=useState(true),[message,setMessage]=useState("");
  const [posting,setPosting]=useState(false),[querying,setQuerying]=useState(false),[confirmed,setConfirmed]=useState(false),[result,setResult]=useState<PublishedChecklist|null>(null);
  const [checklistItems,setChecklistItems]=useState<ChecklistDraftItem[]>([{key:1,id:"",prompt:"",responseType:"confirmation",required:true}]);
@@ -1695,25 +1734,25 @@ function ChecklistPublication({organization,scope}:{organization:string;scope:st
   try{
    if(!/^[a-f0-9]{64}$/.test(scope))throw new Error("scope");
    const raw=sessionStorage.getItem(storageKey);
-   if(raw!==null){const v=JSON.parse(raw);if(!v||Object.keys(v).sort().join(",")!=="checklistId,digest,version"||!code(v.checklistId)||!Number.isSafeInteger(v.version)||v.version<1||!/^[a-f0-9]{64}$/.test(v.digest))throw new Error("marker");operation.current=v;setLocked(true);setMessage("Hay una versión pendiente de comprobar. Consultá su contenido sin volver a publicarla.");}
+   if(raw!==null){const v=JSON.parse(raw);if(!v||Object.keys(v).sort().join(",")!=="checklistId,digest,version"||!code(v.checklistId)||!Number.isSafeInteger(v.version)||v.version<1||!/^[a-f0-9]{64}$/.test(v.digest))throw new Error("marker");operation.current=v;setLocked(true);setMessage(t("p0517"));}
    else{operation.current=null;setLocked(false)}setReady(true);
-  }catch{setReady(true);setLocked(true);setMessage("No pudimos leer la referencia. Pedí revisión sin borrar los datos del navegador.")}
+  }catch{setReady(true);setLocked(true);setMessage(t("p0518"))}
  },[scope,storageKey]);
  async function submit(event:FormEvent<HTMLFormElement>){
   event.preventDefault();if(!ready||locked||fence.current)return;
   const data=new FormData(event.currentTarget);const value:PublishedChecklist={id:String(data.get("checklistId")??""),organization_id:organization,version:Number(data.get("checklistVersion")),title:String(data.get("title")??"").trim(),state:"published",items:checklistItems.map((i,index)=>({id:i.id,ordinal:index+1,prompt:i.prompt.trim(),response_type:i.responseType,required:i.required}))};
-  if(!valid(value)){setMessage("Revisá ID, versión, título y contenido. Cada ítem debe tener un ID distinto y un texto válido.");return}
+  if(!valid(value)){setMessage(t("p0519"));return}
   fence.current=true;setLocked(true);setConfirmed(false);setPosting(true);
   let marker:ChecklistMarker;
   try{if(sessionStorage.getItem(storageKey)!==null)throw new Error("unresolved");marker={checklistId:value.id,version:value.version,digest:await digest(value)};sessionStorage.setItem(storageKey,JSON.stringify(marker));operation.current=marker;}
-  catch{setPosting(false);setMessage("No se envió: no pudimos conservar la referencia. Pedí revisión antes de continuar.");return}
-  setMessage("Publicando versión…");
+  catch{setPosting(false);setMessage(t("p0520"));return}
+  setMessage(t("p0521"));
   try{
    const response=await fetch("/api/enterprise/franchise/commands",{method:"POST",headers:{"content-type":"application/json"},signal:AbortSignal.timeout(10000),body:JSON.stringify({action:"publish-delivery-checklist",organizationId:organization,checklistId:value.id,version:value.version,title:value.title,items:value.items.map(i=>({id:i.id,prompt:i.prompt,response_type:i.response_type,required:i.required}))})});
    const receipt=await response.json();if(operation.current!==marker)return;
    if(!response.ok||!valid(receipt)||await digest(receipt)!==marker.digest)throw new Error("unconfirmed");
-   setResult(receipt);setMessage("Versión publicada. Consultá el resultado antes de preparar otra.");
-  }catch{if(operation.current===marker)setMessage("No pudimos comprobar el resultado. La versión puede estar publicada; consultá sin reenviarla.")}
+   setResult(receipt);setMessage(t("p0522"));
+  }catch{if(operation.current===marker)setMessage(t("p0523"))}
   finally{setPosting(false)}
  }
  async function consult(){
@@ -1723,26 +1762,26 @@ function ChecklistPublication({organization,scope}:{organization:string;scope:st
    const response=await fetch("/api/enterprise/franchise/commands?"+q,{cache:"no-store",signal:AbortSignal.timeout(10000)}),body=await response.json();
    if(operation.current!==marker)return;
    if(!response.ok||!valid(body?.checklist)||body.checklist.id!==marker.checklistId||body.checklist.version!==marker.version||await digest(body.checklist)!==marker.digest)throw new Error("unconfirmed");
-   setResult(body.checklist);setConfirmed(true);setMessage("Versión recuperada: su contenido coincide con la referencia conservada. Revisalo antes de preparar otra.");
-  }catch{if(operation.current===marker){setConfirmed(false);setMessage("No pudimos comprobar esa versión y su contenido. Conservamos el bloqueo; consultá nuevamente o pedí revisión autorizada.")}}
+   setResult(body.checklist);setConfirmed(true);setMessage(t("p0524"));
+  }catch{if(operation.current===marker){setConfirmed(false);setMessage(t("p0525"))}}
   finally{reading.current=false;setQuerying(false)}
  }
  function prepare(){
   if(!confirmed||posting||reading.current)return;
-  try{sessionStorage.removeItem(storageKey);operation.current=null;fence.current=false;setLocked(false);setConfirmed(false);setResult(null);form.current?.reset();setChecklistItems([{key:1,id:"",prompt:"",responseType:"confirmation",required:true}]);setMessage("Formulario nuevo preparado. La versión anterior sigue publicada e inmutable.")}
-  catch{setMessage("No pudimos actualizar la referencia. Conservamos el bloqueo; pedí revisión.")}
+  try{sessionStorage.removeItem(storageKey);operation.current=null;fence.current=false;setLocked(false);setConfirmed(false);setResult(null);form.current?.reset();setChecklistItems([{key:1,id:"",prompt:"",responseType:"confirmation",required:true}]);setMessage(t("p0526"))}
+  catch{setMessage(t("p0527"))}
  }
- return <div><h3>Publicar versión de checklist</h3><form ref={form} onSubmit={event=>void submit(event)}><fieldset disabled={!ready||locked}>
+ return <div><h3>{t("p0528")}</h3><form ref={form} onSubmit={event=>void submit(event)}><fieldset disabled={!ready||locked}>
  
-      <label>ID del checklist<input name="checklistId" required maxLength={64} pattern="[a-z][a-z0-9]*(-[a-z0-9]+)*" /></label><label>Versión<input name="checklistVersion" type="number" min={1} required /></label><label>Título<input name="title" required maxLength={160} /></label>
-      {checklistItems.map((item, index) => <fieldset key={item.key}><legend>Ítem {index + 1}</legend><label>ID<input required value={item.id} maxLength={64} pattern="[a-z][a-z0-9]*(-[a-z0-9]+)*" onChange={(event) => setChecklistItems((items) => items.map((candidate) => candidate.key === item.key ? { ...candidate, id: event.target.value } : candidate))}/></label><label>Pregunta o control<input required value={item.prompt} maxLength={500} onChange={(event) => setChecklistItems((items) => items.map((candidate) => candidate.key === item.key ? { ...candidate, prompt: event.target.value } : candidate))}/></label><label>Respuesta<select value={item.responseType} onChange={(event) => setChecklistItems((items) => items.map((candidate) => candidate.key === item.key ? { ...candidate, responseType: event.target.value as ChecklistDraftItem["responseType"] } : candidate))}><option value="confirmation">Confirmación</option><option value="text">Texto</option><option value="serial">Serie</option></select></label><label><input type="checkbox" checked={item.required} onChange={(event) => setChecklistItems((items) => items.map((candidate) => candidate.key === item.key ? { ...candidate, required: event.target.checked } : candidate))}/> Obligatorio</label>{checklistItems.length > 1 ? <button type="button" onClick={() => setChecklistItems((items) => items.filter((candidate) => candidate.key !== item.key))}>Quitar ítem</button> : null}</fieldset>)}
-      <button type="button" disabled={checklistItems.length >= 64} onClick={() => setChecklistItems((items) => [...items, { key: Math.max(...items.map((item) => item.key)) + 1, id: "", prompt: "", responseType: "confirmation", required: true }])}>Agregar ítem</button><button disabled={!ready||locked}>Publicar versión</button>
+      <label>{t("p0529")}<input name="checklistId" required maxLength={64} pattern="[a-z][a-z0-9]*(-[a-z0-9]+)*" /></label><label>{t("p0530")}<input name="checklistVersion" type="number" min={1} required /></label><label>{t("p0531")}<input name="title" required maxLength={160} /></label>
+      {checklistItems.map((item, index) => <fieldset key={item.key}><legend>{t("p0532")} {index + 1}</legend><label>{t("p0533")}<input required value={item.id} maxLength={64} pattern="[a-z][a-z0-9]*(-[a-z0-9]+)*" onChange={(event) => setChecklistItems((items) => items.map((candidate) => candidate.key === item.key ? { ...candidate, id: event.target.value } : candidate))}/></label><label>{t("p0534")}<input required value={item.prompt} maxLength={500} onChange={(event) => setChecklistItems((items) => items.map((candidate) => candidate.key === item.key ? { ...candidate, prompt: event.target.value } : candidate))}/></label><label>{t("p0535")}<select value={item.responseType} onChange={(event) => setChecklistItems((items) => items.map((candidate) => candidate.key === item.key ? { ...candidate, responseType: event.target.value as ChecklistDraftItem["responseType"] } : candidate))}><option value="confirmation">{t("p0141")}</option><option value="text">{t("p0536")}</option><option value="serial">{t("p0537")}</option></select></label><label><input type="checkbox" checked={item.required} onChange={(event) => setChecklistItems((items) => items.map((candidate) => candidate.key === item.key ? { ...candidate, required: event.target.checked } : candidate))}/> {t("p0538")}</label>{checklistItems.length > 1 ? <button type="button" onClick={() => setChecklistItems((items) => items.filter((candidate) => candidate.key !== item.key))}>{t("p0539")}</button> : null}</fieldset>)}
+      <button type="button" disabled={checklistItems.length >= 64} onClick={() => setChecklistItems((items) => [...items, { key: Math.max(...items.map((item) => item.key)) + 1, id: "", prompt: "", responseType: "confirmation", required: true }])}>{t("p0540")}</button><button disabled={!ready||locked}>{t("p0541")}</button>
     
  </fieldset></form>
- <p role="status" aria-label="Resultado de publicación de checklist" aria-live="polite">{message}</p>
- {result&&result.organization_id===organization?<div><p>{result.id} · versión {result.version} · {result.title} · {result.state}</p><ol>{result.items.map(item=><li key={item.id}>{item.id}: {item.prompt} · {item.response_type} · {item.required?"Obligatorio":"Opcional"}</li>)}</ol></div>:null}
- <button type="button" disabled={!ready||!operation.current||querying} onClick={()=>void consult()}>Consultar versión publicada</button>
- <button type="button" disabled={!confirmed||posting||querying} onClick={prepare}>Preparar otra versión</button>
+ <p role="status" aria-label={t("p0542")} aria-live="polite">{message}</p>
+ {result&&result.organization_id===organization?<div><p>{result.id} {t("p0543")} {result.version} {t("p0016")} {result.title} {t("p0016")} {result.state}</p><ol>{result.items.map(item=><li key={item.id}>{item.id}{t("p0213")} {item.prompt} {t("p0016")} {item.response_type} {t("p0016")} {item.required?t("p0538"):t("p0544")}</li>)}</ol></div>:null}
+ <button type="button" disabled={!ready||!operation.current||querying} onClick={()=>void consult()}>{t("p0545")}</button>
+ <button type="button" disabled={!confirmed||posting||querying} onClick={prepare}>{t("p0546")}</button>
  <OperationalGuide guide={OPERATIONAL_GUIDES["checklist-publication-view"]}/>
  </div>;
 }
@@ -1752,6 +1791,8 @@ type CompletionReference={handoverId:string;version:number;checklistId:string;ch
 type CompletionResponse={item_id:string;response_text:string;evidence_sha256?:string};
 type CompletionResult={handover_id:string;organization_id:string;state:string;version:number;checklist_id:string;checklist_version:number;completed_at:string;actor_subject:string;responses:CompletionResponse[]};
 export function ChecklistCompletionPanel({organization,scope,initialHandover}:{organization:string;scope:string;initialHandover?:{id:string;version:number}}){
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
  const [ready,setReady]=useState(false),[locked,setLocked]=useState(true),[message,setMessage]=useState("");
  const [posting,setPosting]=useState(false),[querying,setQuerying]=useState(false),[confirmed,setConfirmed]=useState(false),[result,setResult]=useState<CompletionResult|null>(null);
  const form=useRef<HTMLFormElement>(null),fence=useRef(false),reading=useRef(false),operation=useRef<CompletionReference|null>(null);
@@ -1769,25 +1810,25 @@ export function ChecklistCompletionPanel({organization,scope,initialHandover}:{o
  }
  useEffect(()=>{try{
   if(!/^[a-f0-9]{64}$/.test(scope))throw new Error("scope");const raw=sessionStorage.getItem(storageKey);
-  if(raw!==null){const v=JSON.parse(raw);if(!v||Object.keys(v).sort().join(",")!=="checklistId,checklistVersion,digest,handoverId,version"||!id(v.handoverId)||!version(v.version)||!code(v.checklistId)||!version(v.checklistVersion)||!/^[a-f0-9]{64}$/.test(v.digest))throw new Error("reference");operation.current=v;setLocked(true);setMessage("Hay una presentación pendiente de comprobar. Consultá sin volver a enviarla.")}
+  if(raw!==null){const v=JSON.parse(raw);if(!v||Object.keys(v).sort().join(",")!=="checklistId,checklistVersion,digest,handoverId,version"||!id(v.handoverId)||!version(v.version)||!code(v.checklistId)||!version(v.checklistVersion)||!/^[a-f0-9]{64}$/.test(v.digest))throw new Error("reference");operation.current=v;setLocked(true);setMessage(t("p0547"))}
   else{operation.current=null;setLocked(false)}setReady(true);
- }catch{setReady(true);setLocked(true);setMessage("No pudimos leer la referencia. Pedí revisión sin borrar los datos del navegador.")}},[scope,storageKey]);
+ }catch{setReady(true);setLocked(true);setMessage(t("p0518"))}},[scope,storageKey]);
  async function submit(event:FormEvent<HTMLFormElement>){
   event.preventDefault();if(!ready||locked||fence.current)return;const data=new FormData(event.currentTarget);
   const lines=String(data.get("responses")??"").split(/\r?\n/).map(line=>line.trim()).filter(Boolean);
   const responses=lines.map(line=>{const separator=line.indexOf("=");return {item_id:separator>0?line.slice(0,separator).trim():"",response_text:separator>0?line.slice(separator+1).trim():""}});
   const value={handover_id:String(data.get("handoverId")??""),organization_id:organization,checklist_id:String(data.get("checklistId")??""),checklist_version:Number(data.get("checklistVersion")),responses};const currentVersion=Number(data.get("handoverVersion"));
-  if(!id(value.handover_id)||!code(value.checklist_id)||!version(value.checklist_version)||!version(currentVersion)||!validResponses(responses)){setMessage("Revisá entrega, versiones y respuestas únicas con formato item-id=respuesta.");return}
+  if(!id(value.handover_id)||!code(value.checklist_id)||!version(value.checklist_version)||!version(currentVersion)||!validResponses(responses)){setMessage(t("p0548"));return}
   fence.current=true;setLocked(true);setPosting(true);setConfirmed(false);let reference:CompletionReference;
   try{if(sessionStorage.getItem(storageKey)!==null)throw new Error("unresolved");reference={handoverId:value.handover_id,version:currentVersion,checklistId:value.checklist_id,checklistVersion:value.checklist_version,digest:await digest(value)};sessionStorage.setItem(storageKey,JSON.stringify(reference));operation.current=reference}
-  catch{setPosting(false);setMessage("No se envió: no pudimos conservar la referencia. Pedí revisión antes de continuar.");return}
-  setMessage("Completando y presentando…");
+  catch{setPosting(false);setMessage(t("p0520"));return}
+  setMessage(t("p0549"));
   try{
    const response=await fetch("/api/enterprise/franchise/commands",{method:"POST",headers:{"content-type":"application/json"},signal:AbortSignal.timeout(10000),body:JSON.stringify({action:"complete-delivery-checklist",organizationId:organization,handoverId:value.handover_id,version:currentVersion,checklistId:value.checklist_id,checklistVersion:value.checklist_version,responses})});
    const receipt=await response.json();if(operation.current!==reference)return;
    if(!response.ok||receipt?.id!==value.handover_id||receipt.organization_id!==organization||receipt.state!=="presented"||receipt.version!==currentVersion+1||receipt.checklist_id!==value.checklist_id||receipt.checklist_version!==value.checklist_version||typeof receipt.checklist_completed_at!=="string"||!Number.isFinite(Date.parse(receipt.checklist_completed_at)))throw new Error("unconfirmed");
-   setMessage("Respuesta recibida. Consultá la presentación y sus respuestas antes de preparar otra.");
-  }catch{if(operation.current===reference)setMessage("No pudimos comprobar el resultado. La entrega puede estar presentada; consultá sin reenviarla.")}
+   setMessage(t("p0550"));
+  }catch{if(operation.current===reference)setMessage(t("p0551"))}
   finally{setPosting(false)}
  }
  async function consult(){
@@ -1795,16 +1836,16 @@ export function ChecklistCompletionPanel({organization,scope,initialHandover}:{o
   try{
    const response=await fetch("/api/enterprise/franchise/commands?"+new URLSearchParams({kind:"checklist-completion",organizationId:organization,handoverId:reference.handoverId}),{cache:"no-store",signal:AbortSignal.timeout(10000)}),body=await response.json();if(operation.current!==reference)return;
    if(!response.ok||!valid(body?.completion)||body.completion.handover_id!==reference.handoverId||body.completion.version<reference.version+1||body.completion.checklist_id!==reference.checklistId||body.completion.checklist_version!==reference.checklistVersion||await digest(body.completion)!==reference.digest)throw new Error("unconfirmed");
-   setResult(body.completion);setConfirmed(true);setMessage("Presentación recuperada: checklist y respuestas coinciden. Revisá el estado actual y el actor antes de preparar otra.");
-  }catch{if(operation.current===reference){setConfirmed(false);setMessage("No pudimos comprobar esa presentación y sus respuestas. Conservamos el bloqueo; consultá nuevamente o pedí revisión autorizada.")}}
+   setResult(body.completion);setConfirmed(true);setMessage(t("p0552"));
+  }catch{if(operation.current===reference){setConfirmed(false);setMessage(t("p0553"))}}
   finally{reading.current=false;setQuerying(false)}
  }
- function prepare(){if(!confirmed||posting||reading.current)return;try{sessionStorage.removeItem(storageKey);operation.current=null;fence.current=false;setLocked(false);setConfirmed(false);setResult(null);form.current?.reset();setMessage("Formulario nuevo preparado. La entrega anterior conserva su estado y sus respuestas.")}catch{setMessage("No pudimos actualizar la referencia. Conservamos el bloqueo; pedí revisión.")}}
- return <div role="region" aria-label="Presentación de entrega"><form ref={form} onSubmit={event=>void submit(event)}><fieldset disabled={!ready||locked}><h3>Completar y presentar una entrega preparada</h3><label>Entrega<input name="handoverId" required maxLength={128} defaultValue={initialHandover?.id} readOnly={Boolean(initialHandover)}/></label><label>Versión actual de entrega<input name="handoverVersion" type="number" min={1} required defaultValue={initialHandover?.version} readOnly={Boolean(initialHandover)}/></label><label>ID del checklist<input name="checklistId" required maxLength={64} pattern="[a-z][a-z0-9]*(-[a-z0-9]+)*"/></label><label>Versión del checklist<input name="checklistVersion" type="number" min={1} required/></label><label>Respuestas, una por línea<textarea name="responses" required placeholder={"serial-observed=SERIAL-123\nasset-condition=confirmed"}/></label><button disabled={!ready||locked}>Completar y presentar</button></fieldset></form>
- <p role="status" aria-label="Resultado de presentación" aria-live="polite">{message}</p>
- {result&&result.organization_id===organization?<div><p>{result.handover_id} · estado actual: {result.state} · versión {result.version}</p><p>Checklist {result.checklist_id} · versión {result.checklist_version} · completado por {result.actor_subject} · {result.completed_at}</p><ol>{result.responses.map(r=><li key={r.item_id}>{r.item_id}: {r.response_text}{r.evidence_sha256?` · evidencia ${r.evidence_sha256}`:""}</li>)}</ol></div>:null}
- <button type="button" disabled={!ready||!operation.current||querying} onClick={()=>void consult()}>Consultar presentación</button>
- <button type="button" disabled={!confirmed||posting||querying} onClick={prepare}>Preparar otra presentación</button>
+ function prepare(){if(!confirmed||posting||reading.current)return;try{sessionStorage.removeItem(storageKey);operation.current=null;fence.current=false;setLocked(false);setConfirmed(false);setResult(null);form.current?.reset();setMessage(t("p0554"))}catch{setMessage(t("p0527"))}}
+ return <div role="region" aria-label={t("p0555")}><form ref={form} onSubmit={event=>void submit(event)}><fieldset disabled={!ready||locked}><h3>{t("p0556")}</h3><label>{t("p0368")}<input name="handoverId" required maxLength={128} defaultValue={initialHandover?.id} readOnly={Boolean(initialHandover)}/></label><label>{t("p0557")}<input name="handoverVersion" type="number" min={1} required defaultValue={initialHandover?.version} readOnly={Boolean(initialHandover)}/></label><label>{t("p0529")}<input name="checklistId" required maxLength={64} pattern="[a-z][a-z0-9]*(-[a-z0-9]+)*"/></label><label>{t("p0558")}<input name="checklistVersion" type="number" min={1} required/></label><label>{t("p0559")}<textarea name="responses" required placeholder={"serial-observed=SERIAL-123\nasset-condition=confirmed"}/></label><button disabled={!ready||locked}>{t("p0561")}</button></fieldset></form>
+ <p role="status" aria-label={t("p0562")} aria-live="polite">{message}</p>
+ {result&&result.organization_id===organization?<div><p>{result.handover_id} {t("p0563")} {result.state} {t("p0543")} {result.version}</p><p>{t("p0564")} {result.checklist_id} {t("p0543")} {result.checklist_version} {t("p0565")} {result.actor_subject} {t("p0016")} {result.completed_at}</p><ol>{result.responses.map(r=><li key={r.item_id}>{r.item_id}{t("p0213")} {r.response_text}{r.evidence_sha256?` · evidencia ${r.evidence_sha256}`:""}</li>)}</ol></div>:null}
+ <button type="button" disabled={!ready||!operation.current||querying} onClick={()=>void consult()}>{t("p0566")}</button>
+ <button type="button" disabled={!confirmed||posting||querying} onClick={prepare}>{t("p0567")}</button>
  <OperationalGuide guide={OPERATIONAL_GUIDES["checklist-completion-view"]}/>
  </div>;
 }
@@ -1816,6 +1857,8 @@ type ReceivedReturn={id:string;authorization_id:string;organization_id:string;or
 type DecidedReturn={id:string;receipt_id:string;inventory_action:string;customer_remedy:string;notes:string;decided_by_subject:string;decided_at:string;effect_requests:(ReturnEffect&{idempotency_key:string;requested_at:string})[]};
 type RecoveredReturnCase=Omit<ReturnCase,"receipt"|"disposition">&{organization_id:string;authorized_at:string;receipt?:ReceivedReturn;disposition?:DecidedReturn};
 function ReturnOperationsPanel({organization,scope,cases}:{organization:string;scope:string;cases:ReturnCase[]|null}){
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
  const router=useRouter();const [caseList,setCaseList]=useState<ReturnCase[]|null>(cases),[ready,setReady]=useState(false),[locked,setLocked]=useState(true),[message,setMessage]=useState("");
  const [posting,setPosting]=useState(false),[querying,setQuerying]=useState(false),[confirmed,setConfirmed]=useState(false),[result,setResult]=useState<RecoveredReturnCase|null>(null);
  const fence=useRef(false),reading=useRef(false),operation=useRef<ReturnReference|null>(null);const storageKey=`elite-return-operation:${scope}`;
@@ -1823,7 +1866,7 @@ function ReturnOperationsPanel({organization,scope,cases}:{organization:string;s
  const bounded=(v:unknown,max:number):v is string=>text(v,max)&&v.trim().length>0;
  const date=(v:unknown):v is string=>typeof v==="string"&&Number.isFinite(Date.parse(v));
  const hash=(v:unknown):v is string=>typeof v==="string"&&/^[a-f0-9]{64}$/.test(v);
- const effects:Record<string,string>={inventory:"Inventario",refund:"Reembolso",exchange:"Cambio",accounting:"Contabilidad",fiscal:"Fiscal"};
+ const effects:Record<string,string>={inventory:t("p0568"),refund:t("p0569"),exchange:t("p0570"),accounting:t("p0571"),fiscal:t("p0572")};
  function validCase(value:unknown):value is RecoveredReturnCase{
   if(!value||typeof value!=="object")return false;const v=value as RecoveredReturnCase;
   if(!text(v.authorization_id,128)||v.organization_id!==organization||!bounded(v.order_id,128)||!bounded(v.stock_unit_id,128)||!bounded(v.customer_subject,255)||!["return","exchange"].includes(v.authorized_action)||!date(v.authorized_at))return false;
@@ -1847,22 +1890,22 @@ function ReturnOperationsPanel({organization,scope,cases}:{organization:string;s
  useEffect(()=>setCaseList(cases),[cases]);
  useEffect(()=>{try{
   if(!/^[a-f0-9]{64}$/.test(scope))throw new Error("scope");const raw=sessionStorage.getItem(storageKey);
-  if(raw!==null){if(raw.length>2048)throw new Error("reference");const v=JSON.parse(raw);if(!v||Object.keys(v).sort().join(",")!=="action,authorizationId,digest,receiptId"||!["receive-return","decide-return"].includes(v.action)||!text(v.authorizationId,128)||!hash(v.digest)||(v.action==="receive-return"?v.receiptId!=="":!text(v.receiptId,128)))throw new Error("reference");operation.current=v;setLocked(true);setMessage("Hay una operación pendiente de comprobar. Consultá el caso sin volver a enviarla.")}
+  if(raw!==null){if(raw.length>2048)throw new Error("reference");const v=JSON.parse(raw);if(!v||Object.keys(v).sort().join(",")!=="action,authorizationId,digest,receiptId"||!["receive-return","decide-return"].includes(v.action)||!text(v.authorizationId,128)||!hash(v.digest)||(v.action==="receive-return"?v.receiptId!=="":!text(v.receiptId,128)))throw new Error("reference");operation.current=v;setLocked(true);setMessage(t("p0573"))}
   else{operation.current=null;setLocked(false)}setReady(true);
- }catch{setReady(true);setLocked(true);setMessage("No pudimos leer la referencia. Pedí revisión sin borrar los datos del navegador.")}},[scope,storageKey]);
+ }catch{setReady(true);setLocked(true);setMessage(t("p0518"))}},[scope,storageKey]);
  async function submit(event:FormEvent<HTMLFormElement>,item:ReturnCase,action:ReturnReference["action"]){
   event.preventDefault();if(!ready||locked||fence.current)return;const data=new FormData(event.currentTarget);
   const command:ReturnCommand=action==="receive-return"?{action:"receive-return",organizationId:organization,authorizationId:item.authorization_id,serialNumber:String(data.get("serialNumber")??""),conditionCode:String(data.get("conditionCode")??""),notes:String(data.get("notes")??"").trim()}:{action:"decide-return",organizationId:organization,receiptId:item.receipt?.id??"",inventoryAction:String(data.get("inventoryAction")??""),notes:String(data.get("notes")??"").trim()};
-  if(!text(item.authorization_id,128)||!bounded(command.notes,1000)||(command.action==="receive-return"?(!text(command.serialNumber,128)||!["sealed","opened","damaged","incomplete"].includes(command.conditionCode)):(!text(command.receiptId,128)||!["quarantine","restock","repair","scrap"].includes(command.inventoryAction)))){setMessage("Revisá el caso, la serie, la opción elegida y las observaciones.");return}
+  if(!text(item.authorization_id,128)||!bounded(command.notes,1000)||(command.action==="receive-return"?(!text(command.serialNumber,128)||!["sealed","opened","damaged","incomplete"].includes(command.conditionCode)):(!text(command.receiptId,128)||!["quarantine","restock","repair","scrap"].includes(command.inventoryAction)))){setMessage(t("p0574"));return}
   fence.current=true;setLocked(true);setPosting(true);setConfirmed(false);setResult(null);let reference:ReturnReference;
   try{if(sessionStorage.getItem(storageKey)!==null)throw new Error("unresolved");reference={action,authorizationId:item.authorization_id,receiptId:command.action==="decide-return"?command.receiptId:"",digest:await digest(command)};sessionStorage.setItem(storageKey,JSON.stringify(reference));operation.current=reference}
-  catch{setPosting(false);setMessage("No se envió: no pudimos conservar la referencia. Pedí revisión antes de continuar.");return}
-  setMessage(action==="receive-return"?"Registrando recepción…":"Registrando decisión…");
+  catch{setPosting(false);setMessage(t("p0520"));return}
+  setMessage(action==="receive-return"?t("p0575"):t("p0576"));
   try{
    const response=await fetch("/api/enterprise/franchise/commands",{method:"POST",headers:{"content-type":"application/json"},signal:AbortSignal.timeout(10000),body:JSON.stringify(command)}),body=await response.json();if(operation.current!==reference)return;
    if(!response.ok||!text(body?.id,128)||(action==="receive-return"?(body.authorization_id!==reference.authorizationId||body.organization_id!==organization||body.evidence_sha256!==reference.digest):body.receipt_id!==reference.receiptId))throw new Error("unconfirmed");
-   setMessage("Respuesta recibida. Consultá el caso y su evidencia antes de continuar operando.");
-  }catch{if(operation.current===reference)setMessage("No pudimos comprobar el resultado. La operación puede estar registrada; consultá sin reenviarla.")}
+   setMessage(t("p0577"));
+  }catch{if(operation.current===reference)setMessage(t("p0578"))}
   finally{setPosting(false)}
  }
  async function consult(){
@@ -1870,25 +1913,25 @@ function ReturnOperationsPanel({organization,scope,cases}:{organization:string;s
   try{
    const response=await fetch("/api/enterprise/franchise/commands?"+new URLSearchParams({kind:"return",organizationId:organization,authorizationId:reference.authorizationId}),{cache:"no-store",signal:AbortSignal.timeout(10000)}),body=await response.json();if(operation.current!==reference)return;
    if(!response.ok||!validCase(body?.returnCase)||!await matches(body.returnCase,reference))throw new Error("unconfirmed");
-   setResult(body.returnCase);setConfirmed(true);setMessage("Caso recuperado: la evidencia coincide con la operación conservada. Revisá el actor y las solicitudes antes de continuar.");
-  }catch{if(operation.current===reference){setConfirmed(false);setMessage("No pudimos comprobar el caso y su evidencia. Conservamos el bloqueo; consultá nuevamente o pedí revisión autorizada.")}}
+   setResult(body.returnCase);setConfirmed(true);setMessage(t("p0579"));
+  }catch{if(operation.current===reference){setConfirmed(false);setMessage(t("p0580"))}}
   finally{reading.current=false;setQuerying(false)}
  }
  function prepare(){
   if(!confirmed||!result||posting||reading.current)return;
-  try{sessionStorage.removeItem(storageKey);const recovered=result;setCaseList(previous=>previous?.some(item=>item.authorization_id===recovered.authorization_id)?previous.map(item=>item.authorization_id===recovered.authorization_id?recovered:item):[recovered,...(previous??[])]);operation.current=null;fence.current=false;setLocked(false);setConfirmed(false);setResult(null);setMessage("Caso actualizado. Elegí la siguiente acción; la operación anterior conserva su evidencia.")}
-  catch{setMessage("No pudimos actualizar la referencia. Conservamos el bloqueo; pedí revisión.")}
+  try{sessionStorage.removeItem(storageKey);const recovered=result;setCaseList(previous=>previous?.some(item=>item.authorization_id===recovered.authorization_id)?previous.map(item=>item.authorization_id===recovered.authorization_id?recovered:item):[recovered,...(previous??[])]);operation.current=null;fence.current=false;setLocked(false);setConfirmed(false);setResult(null);setMessage(t("p0581"))}
+  catch{setMessage(t("p0527"))}
  }
- return <section className="card" aria-label="Operaciones de devoluciones"><h2>Recepción y disposición de devoluciones</h2><p>Las decisiones registran solicitudes de trabajo. Su ejecución se verifica en los procesos de inventario, reembolso o cambio, contabilidad y fiscalidad correspondientes.</p>
- <p role="status" aria-label="Resultado de devolución" aria-live="polite">{message}</p>
- <button type="button" disabled={!ready||!operation.current||querying} onClick={()=>void consult()}>Consultar operación de devolución</button>
- <button type="button" disabled={!confirmed||posting||querying} onClick={prepare}>Continuar operando</button>
- <button type="button" disabled={posting||querying} onClick={()=>router.refresh()}>Actualizar casos</button>
- {result?<div role="region" aria-label="Evidencia recuperada de devolución"><h3>Autorización {result.authorization_id}</h3>{result.receipt?<><p>Recibo {result.receipt.id} · recibido por {result.receipt.received_by_subject} · {result.receipt.received_at}</p><p>Serie: {result.receipt.received_serial_number} · {result.receipt.condition_code}</p><p>{result.receipt.notes}</p></>:null}{result.disposition?<><p>Decisión {result.disposition.id} · registrada por {result.disposition.decided_by_subject} · {result.disposition.decided_at}</p><p>{result.disposition.inventory_action} · {result.disposition.customer_remedy} · {result.disposition.notes}</p><ul>{result.disposition.effect_requests.map(e=><li key={e.id}>{effects[e.effect_kind]}: solicitada · {e.id}</li>)}</ul></>:null}</div>:null}
- {cases===null?<p role="alert">Lista de devoluciones no disponible. La consulta de una operación conservada sigue disponible.</p>:null}
- {caseList?.length?<div className="grid">{caseList.map(item=><article className="card" key={item.authorization_id} aria-label={`Caso ${item.authorization_id}`}><h3>{item.authorized_action==="return"?"Devolución":"Cambio"} · {item.authorization_id}</h3><p>Pedido {item.order_id} · unidad {item.stock_unit_id}</p>
- {!item.receipt?<form onSubmit={event=>void submit(event,item,"receive-return")}><fieldset disabled={!ready||locked}><label>Serie recibida<input name="serialNumber" required maxLength={128}/></label><label>Condición<select name="conditionCode" required><option value="sealed">Sellado</option><option value="opened">Abierto</option><option value="damaged">Dañado</option><option value="incomplete">Incompleto</option></select></label><label>Inspección/observaciones<textarea name="notes" required maxLength={1000}/></label><button disabled={!ready||locked}>Registrar recepción</button></fieldset></form>:!item.disposition?<form onSubmit={event=>void submit(event,item,"decide-return")}><fieldset disabled={!ready||locked}><p>Recibido: serie {item.receipt.received_serial_number} · {item.receipt.condition_code}</p><label>Acción de inventario solicitada<select name="inventoryAction" required><option value="quarantine">Cuarentena</option><option value="restock">Reingreso</option><option value="repair">Reparación</option><option value="scrap">Baja</option></select></label><label>Fundamento<textarea name="notes" required maxLength={1000}/></label><button disabled={!ready||locked}>Registrar decisión</button></fieldset></form>:<><p>Recibo {item.receipt.id} · decisión {item.disposition.id}</p><p>{item.disposition.inventory_action} · {item.disposition.customer_remedy}</p><ul>{item.disposition.effect_requests.map(e=><li key={e.id}>{effects[e.effect_kind]}: solicitada · {e.id}</li>)}</ul></>}
- </article>)}</div>:cases!==null?<p>No hay casos en la lista actual. Una referencia conservada se consulta de forma independiente.</p>:null}
+ return <section className="card" aria-label={t("p0582")}><h2>{t("p0583")}</h2><p>{t("p0584")}</p>
+ <p role="status" aria-label={t("p0585")} aria-live="polite">{message}</p>
+ <button type="button" disabled={!ready||!operation.current||querying} onClick={()=>void consult()}>{t("p0586")}</button>
+ <button type="button" disabled={!confirmed||posting||querying} onClick={prepare}>{t("p0587")}</button>
+ <button type="button" disabled={posting||querying} onClick={()=>router.refresh()}>{t("p0588")}</button>
+ {result?<div role="region" aria-label={t("p0589")}><h3>{t("p0590")} {result.authorization_id}</h3>{result.receipt?<><p>{t("p0591")} {result.receipt.id} {t("p0592")} {result.receipt.received_by_subject} {t("p0016")} {result.receipt.received_at}</p><p>{t("p0593")} {result.receipt.received_serial_number} {t("p0016")} {result.receipt.condition_code}</p><p>{result.receipt.notes}</p></>:null}{result.disposition?<><p>{t("p0594")} {result.disposition.id} {t("p0595")} {result.disposition.decided_by_subject} {t("p0016")} {result.disposition.decided_at}</p><p>{result.disposition.inventory_action} {t("p0016")} {result.disposition.customer_remedy} {t("p0016")} {result.disposition.notes}</p><ul>{result.disposition.effect_requests.map(e=><li key={e.id}>{effects[e.effect_kind]}{t("p0596")} {e.id}</li>)}</ul></>:null}</div>:null}
+ {cases===null?<p role="alert">{t("p0597")}</p>:null}
+ {caseList?.length?<div className="grid">{caseList.map(item=><article className="card" key={item.authorization_id} aria-label={`Caso ${item.authorization_id}`}><h3>{item.authorized_action==="return"?t("p0598"):t("p0570")} {t("p0016")} {item.authorization_id}</h3><p>{t("p0251")} {item.order_id} {t("p0599")} {item.stock_unit_id}</p>
+ {!item.receipt?<form onSubmit={event=>void submit(event,item,"receive-return")}><fieldset disabled={!ready||locked}><label>{t("p0600")}<input name="serialNumber" required maxLength={128}/></label><label>{t("p0601")}<select name="conditionCode" required><option value="sealed">{t("p0602")}</option><option value="opened">{t("p0603")}</option><option value="damaged">{t("p0604")}</option><option value="incomplete">{t("p0605")}</option></select></label><label>{t("p0606")}<textarea name="notes" required maxLength={1000}/></label><button disabled={!ready||locked}>{t("p0261")}</button></fieldset></form>:!item.disposition?<form onSubmit={event=>void submit(event,item,"decide-return")}><fieldset disabled={!ready||locked}><p>{t("p0607")} {item.receipt.received_serial_number} {t("p0016")} {item.receipt.condition_code}</p><label>{t("p0608")}<select name="inventoryAction" required><option value="quarantine">{t("p0609")}</option><option value="restock">{t("p0610")}</option><option value="repair">{t("p0611")}</option><option value="scrap">{t("p0612")}</option></select></label><label>{t("p0613")}<textarea name="notes" required maxLength={1000}/></label><button disabled={!ready||locked}>{t("p0614")}</button></fieldset></form>:<><p>{t("p0591")} {item.receipt.id} {t("p0615")} {item.disposition.id}</p><p>{item.disposition.inventory_action} {t("p0016")} {item.disposition.customer_remedy}</p><ul>{item.disposition.effect_requests.map(e=><li key={e.id}>{effects[e.effect_kind]}{t("p0596")} {e.id}</li>)}</ul></>}
+ </article>)}</div>:cases!==null?<p>{t("p0616")}</p>:null}
  <OperationalGuide guide={OPERATIONAL_GUIDES["return-operations-view"]}/>
  </section>;
 }
@@ -1902,13 +1945,15 @@ operation: CREATE
 provenance: AUTHORED
 source: "local customer command UI governed by pack references"
 license: "LicenseRef-Workspace-Owner"
-sha256: "452c0ebb920b5729022c7f9edd1a540dfc3b22c663dfccfe165290ea75f38611"
+sha256: "842e6b7d2f3f7bcf9b23cf74a6b148fdd89f002355413a7d0adab4308ba43a2c"
 variables: []
 secrets_allowed: false
 ```
 
 ````tsx
 "use client";
+import {usePrivateI18n} from "@/platform/i18n/private-provider";
+
 import { QUOTE_GUIDE } from "@/platform/help/content";
 
 import { useState } from "react";
@@ -1916,6 +1961,8 @@ import { useState } from "react";
 type Quote = { id: string; currency: string; total_minor_units: number; valid_until: string; state: string; version: number; order_id?: string; amountLabel: string; validUntilLabel: string; statusLabel: string; acceptanceAvailable: boolean };
 
 export function CustomerQuoteActions({ organizationId, quotes }: { organizationId: string; quotes: Quote[] }) {
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
   const [pending, setPending] = useState("");
   const [message, setMessage] = useState("");
   const [uncertain, setUncertain] = useState(false);
@@ -1924,11 +1971,11 @@ export function CustomerQuoteActions({ organizationId, quotes }: { organizationI
     if (pending || uncertain || !quote.acceptanceAvailable) return;
     if (Date.parse(quote.valid_until) <= Date.now()) {
       setUncertain(true);
-      setMessage("La vigencia terminó. Actualizá el estado para consultar una cotización vigente.");
+      setMessage(t("p0269"));
       return;
     }
     setPending(quote.id);
-    setMessage("Estamos comprobando la aceptación. No cierres esta pantalla.");
+    setMessage(t("p0270"));
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 10000);
     try {
@@ -1944,11 +1991,11 @@ export function CustomerQuoteActions({ organizationId, quotes }: { organizationI
           !("order_id" in result) || typeof result.order_id !== "string" || result.order_id.length === 0) {
         throw new Error("RESULT_NOT_CONFIRMED");
       }
-      setMessage("Aceptación confirmada por el servidor. Consultando el pedido…");
+      setMessage(t("p0271"));
       window.location.reload();
     } catch {
       setUncertain(true);
-      setMessage("No pudimos comprobar el resultado. El pedido podría haberse creado. Actualizá el estado antes de intentar otra acción.");
+      setMessage(t("p0272"));
       // Keep acceptance disabled. GET recovery, never an automatic POST retry.
     } finally {
       clearTimeout(timer);
@@ -1957,26 +2004,28 @@ export function CustomerQuoteActions({ organizationId, quotes }: { organizationI
 
   return <>
     {message && <p className="status" role="status" aria-live="polite">{message}</p>}
-    {uncertain && <button className="button" onClick={() => window.location.reload()}>Actualizar estado</button>}
-    {quotes.length === 0 && <p className="notice">No hay cotizaciones disponibles para tu cuenta en esta organización.</p>}
+    {uncertain && <button className="button" onClick={() => window.location.reload()}>{t("p0273")}</button>}
+    {quotes.length === 0 && <p className="notice">{t("p0274")}</p>}
     <div className="grid">{quotes.map((quote) => <article className="card" key={quote.id}>
       <h2>{quote.id}</h2>
-      <p>Importe: {quote.amountLabel}</p>
-      <p>Estado: {quote.statusLabel}</p>
-      <p>Vigencia: {quote.validUntilLabel}</p>
-      {quote.state === "accepted" && quote.order_id ? <p role="note">Pedido creado: <strong>{quote.order_id}</strong></p> : null}
-      {quote.acceptanceAvailable ? <button className="button" disabled={pending !== "" || uncertain} onClick={() => void accept(quote)}>Aceptar y crear pedido</button> : null}
+      <p>{t("p0275")} {quote.amountLabel}</p>
+      <p>{t("p0247")} {quote.statusLabel}</p>
+      <p>{t("p0276")} {quote.validUntilLabel}</p>
+      {quote.state === "accepted" && quote.order_id ? <p role="note">{t("p0277")} <strong>{quote.order_id}</strong></p> : null}
+      {quote.acceptanceAvailable ? <button className="button" disabled={pending !== "" || uncertain} onClick={() => void accept(quote)}>{t("p0278")}</button> : null}
     </article>)}</div>
     <QuoteAcceptanceHelp/>
   </>;
 }
 
 export function QuoteAcceptanceHelp() {
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
   return <details className="card">
-    <summary>Ayuda para aceptar una cotización</summary>
-    <p>Guía {QUOTE_GUIDE.id}/{QUOTE_GUIDE.version}</p>
-    {QUOTE_GUIDE.paragraphs.map(text => <p key={text}>{text}</p>)}
-    <a href={`/help?article=${QUOTE_GUIDE.id}&version=${QUOTE_GUIDE.version}`}>Abrir esta guía en Ayuda</a>
+    <summary>{t("p0279")}</summary>
+    <p>{t("p0142")} {QUOTE_GUIDE.id}{t("p0280")}{QUOTE_GUIDE.version}</p>
+    {QUOTE_GUIDE.paragraphs.map(text => <p key={text}>{controlled(text)}</p>)}
+    <a href={`/help?article=${QUOTE_GUIDE.id}&version=${QUOTE_GUIDE.version}`}>{t("p0143")}</a>
   </details>;
 }
 ````
@@ -1989,12 +2038,15 @@ operation: CREATE
 provenance: AUTHORED
 source: "local customer quote page over canonical session and protected client"
 license: "LicenseRef-Workspace-Owner"
-sha256: "2357b04d0011d384618372fc781504db17169c08de1c93cb44158920043bd16c"
+sha256: "18d3b3c0bc7c2bc08376157884057c83b6f16f3c47cb8d7a5fd6a5a5d25286b0"
 variables: []
 secrets_allowed: false
 ```
 
 ````tsx
+import {privateTranslator} from "@/platform/i18n/private-catalog";
+import type {PrivateLocale} from "@/platform/i18n/private-locale";
+import {loadPrivateI18n} from "@/platform/i18n/load-private-i18n";
 import { minorAmountPresentation } from "@/platform/i18n/money";
 import { redirect } from "next/navigation";
 import type { Route } from "next";
@@ -2006,21 +2058,25 @@ import Link from "next/link";
 // AUTHORED presentation only. ISO currency digits from the pinned runtime's Intl;
 // no pricing, exchange, tax or rounding rule is introduced. Compute on server
 // once so browser ICU/timezone differences do not cause hydration mismatches.
-function quotePresentation(quote: CustomerJourney["quotes"][number], asOf: number) {
-  const { amountLabel, amountValid } = minorAmountPresentation(quote.total_minor_units, quote.currency);
+function quotePresentation(quote: CustomerJourney["quotes"][number], asOf: number, locale:PrivateLocale) {
+ const t=privateTranslator(locale.language);
+
+  const { amountLabel, amountValid } = minorAmountPresentation(quote.total_minor_units, quote.currency, locale.locale);
   const until = Date.parse(quote.valid_until);
   const dateValid = Number.isFinite(until);
   const expired = dateValid && until <= asOf;
-  const states: Record<string, string> = { issued: expired ? "Vigencia finalizada" : "Disponible para aceptar", accepted: "Aceptada", cancelled: "Cancelada", draft: "En preparación", expired: "Vigencia finalizada" };
-  return { ...quote, amountLabel, statusLabel: states[quote.state] ?? "Estado pendiente de verificar",
-    validUntilLabel: dateValid ? new Intl.DateTimeFormat("es-AR", { dateStyle: "medium", timeStyle: "short", timeZone: "UTC" }).format(until) + " UTC" : "Fecha no verificable; consultá al soporte.",
+  const states: Record<string, string> = { issued: expired ? t("p0053") : t("p0054"), accepted: t("p0055"), cancelled: t("p0056"), draft: t("p0057"), expired: t("p0053") };
+  return { ...quote, amountLabel, statusLabel: states[quote.state] ?? t("p0058"),
+    validUntilLabel: dateValid ? new Intl.DateTimeFormat(locale.locale, { dateStyle: "medium", timeStyle: "short", timeZone: locale.timeZone }).format(until) + " (" + locale.timeZone + ")" : t("p0059"),
     acceptanceAvailable: quote.state === "issued" && amountValid && dateValid && !expired };
 }
 
 export default async function CustomerQuotesPage() {
+ const {locale:privateLocale,t,controlled}=await loadPrivateI18n();
+
   const session = await readSession();
   if (!session) redirect("/api/auth/login?return_to=/customer" as Route);
-  if (!allowed(session, "customer:self")) return <><h1 className="pageTitle">Acceso denegado</h1><div className="notice">La sesión no posee <code>customer:self</code>.</div></>;
+  if (!allowed(session, "customer:self")) return <><h1 className="pageTitle">{t("p0006")}</h1><div className="notice">{t("p0007")} <code>customer:self</code>{t("p0008")}</div></>;
   const organization = session.organizations[0]!;
   let journey: CustomerJourney;
   try {
@@ -2028,18 +2084,18 @@ export default async function CustomerQuotesPage() {
     if (!Array.isArray(journey.quotes)) throw new Error("INVALID_JOURNEY");
   } catch {
     return <>
-      <h1 className="pageTitle">Mis cotizaciones</h1>
-      <p role="alert">No pudimos consultar tus cotizaciones. Esto no indica que la aceptación haya fallado. No repitas la operación sin consultar su estado.</p>
-      <p><a className="button" href="/customer/quotes">Volver a consultar</a></p>
+      <h1 className="pageTitle">{t("p0052")}</h1>
+      <p role="alert">{t("p0060")}</p>
+      <p><a className="button" href="/customer/quotes">{t("p0033")}</a></p>
       <QuoteAcceptanceHelp/>
     </>;
   }
   return <>
-    <div className="eyebrow">Portal de cliente · {organization}</div>
-    <h1 className="pageTitle">Mis cotizaciones</h1>
-    <p className="lede">El precio y la moneda provienen del servidor. Aceptar crea un único pedido en la misma transacción.</p>
-    <p><Link href={"/customer/appointments" as Route}>Ver y cancelar turnos</Link></p>
-    <CustomerQuoteActions organizationId={organization} quotes={journey.quotes.map(quote => quotePresentation(quote, Date.now()))}/>
+    <div className="eyebrow">{t("p0034")} {organization}</div>
+    <h1 className="pageTitle">{t("p0052")}</h1>
+    <p className="lede">{t("p0061")}</p>
+    <p><Link href={"/customer/appointments" as Route}>{t("p0062")}</Link></p>
+    <CustomerQuoteActions organizationId={organization} quotes={journey.quotes.map(quote => quotePresentation(quote, Date.now(), privateLocale))}/>
   </>;
 }
 ````
@@ -2213,12 +2269,13 @@ operation: CREATE
 provenance: AUTHORED
 source: "local implementation governed by the upstream references in metadata"
 license: "LicenseRef-Workspace-Owner"
-sha256: "b97c4c2df3c8c185cfd31bef95abc6746f3f288b79265081e66b58f5e327df79"
+sha256: "215190e2750f48da05dceab9bc116146b1f5700d461cdce0e7d32905d9f7ecfd"
 variables: []
 secrets_allowed: false
 ```
 
 ````tsx
+import {loadPrivateI18n} from "@/platform/i18n/load-private-i18n";
 import { HandoverOperationsPanel } from "@/components/handover-operations-panel";
 import { OperationalGuide } from "@/components/operational-guide";
 import { OPERATIONAL_GUIDES } from "@/platform/help/content";
@@ -2236,19 +2293,22 @@ type ReturnEffect = { id: string; effect_kind: "inventory" | "refund" | "exchang
 type ReturnCase = { authorization_id: string; order_id: string; stock_unit_id: string; customer_subject: string; authorized_action: "return" | "exchange"; receipt?: { id: string; received_serial_number: string; condition_code: string; received_at: string }; disposition?: { id: string; inventory_action: string; customer_remedy: string; effect_requests: ReturnEffect[] } };
 
 export default async function FranchisePage({ searchParams }: { searchParams: Promise<{ day?: string }> }) {
+ const {locale:privateLocale,t,controlled}=await loadPrivateI18n();
+
   const session = await readSession();
   if (!session) redirect("/api/auth/login?return_to=/franchise" as Route);
   const canOperate=["inventory:allocate","payment:create","handover:manage","admin:read"].some(permission=>allowed(session,permission));
   const canPanel=["lead:read","handover:manage","resource:manage","availability:read","availability:manage","appointment:manage"].some(permission=>allowed(session,permission));
   const canReviewWhatsApp=allowed(session,"whatsapp:approve");
-  if (!canOperate && !canPanel && !canReviewWhatsApp) return <><h1 className="pageTitle">Acceso denegado</h1><div className="notice">La sesión no posee permisos para esta operación.</div></>;
+  const canStoredValue=allowed(session,"stored_value:read");
+  if (!canOperate && !canPanel && !canReviewWhatsApp && !canStoredValue) return <><h1 className="pageTitle">{t("p0006")}</h1><div className="notice">{t("p0074")}</div></>;
   const organization = session.organizations[0]!;
   const notificationStatusEnabled = (await loadBusinessConfig()).features.whatsapp_status_history === true;
   const from = new Date().toISOString();
   const to = new Date(Date.now() + 90 * 24 * 60 * 60_000).toISOString();
   const requestedDay=(await searchParams).day ?? new Date().toISOString().slice(0,10);
   const parsedDay=new Date(requestedDay+"T00:00:00Z");
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(requestedDay) || !Number.isFinite(parsedDay.getTime()) || parsedDay.toISOString().slice(0,10)!==requestedDay) return <><h1>Fecha inválida</h1><a href="/franchise">Volver a la agenda</a></>;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(requestedDay) || !Number.isFinite(parsedDay.getTime()) || parsedDay.toISOString().slice(0,10)!==requestedDay) return <><h1>{t("p0075")}</h1><a href="/franchise">{t("p0076")}</a></>;
   const agendaFrom=parsedDay.toISOString(), agendaTo=new Date(parsedDay.getTime()+24*60*60_000).toISOString();
   // Each owner may fail independently; null means unavailable, never an empty result.
   const [operationSnapshot,leads,availability,exceptions,returnCases,agenda]=await Promise.all([
@@ -2262,19 +2322,20 @@ export default async function FranchisePage({ searchParams }: { searchParams: Pr
   const failed=[
     leads===null ? "leads" : null,
     availability===null ? "disponibilidad" : null,
-    exceptions===null ? "discrepancias de entrega" : null,
+    exceptions===null ? t("p0077") : null,
     returnCases===null ? "devoluciones" : null,
     allowed(session,"appointment:manage") && agenda===null ? "agenda" : null
   ].filter((item):item is string=>item!==null);
   return <>
-    <div className="eyebrow">Franquicia · {organization}</div>
-    <h1 className="pageTitle">Operación comercial, agenda y entregas</h1>
-    <p className="lede">Consultá pedidos y agenda. Cada acción requiere sus permisos y conserva su estado.</p>
-    {canReviewWhatsApp ? <p><a className="button" href="/franchise/whatsapp">Revisar respuestas de WhatsApp</a></p> : null}
+    <div className="eyebrow">{t("p0078")} {organization}</div>
+    <h1 className="pageTitle">{t("p0079")}</h1>
+    <p className="lede">{t("p0080")}</p>
+    {canStoredValue ? <p><a className="button" href="/franchise/stored-value">{t("p0081")}</a></p> : null}
+    {canReviewWhatsApp ? <p><a className="button" href="/franchise/whatsapp">{t("p0082")}</a></p> : null}
     {canOperate ? <OrderOperationsPanel snapshot={operationSnapshot} organization={organization} canAllocate={allowed(session,"inventory:allocate")} canRequestPayment={allowed(session,"payment:create")} paymentScope={createHash("sha256").update(JSON.stringify([session.tenantId,session.subject,organization])).digest("hex")}/> : null}
     {allowed(session,"handover:manage") ? <HandoverOperationsPanel orders={operationSnapshot && !operationSnapshot.truncated ? operationSnapshot.orders.map(o=>({id:o.id})) : null} organization={organization} scope={createHash("sha256").update(JSON.stringify([session.tenantId,session.subject,organization])).digest("hex")}/> : null}
-    {failed.length>0 ? <section role="alert">{failed.map(name=><p key={name}>No pudimos consultar {name}. No se muestran datos de esa sección.</p>)}<a href={("/franchise?day="+requestedDay) as Route}>Volver a consultar operación</a></section> : null}
-    {allowed(session,"appointment:manage") ? <form action="/franchise" method="get"><label>Fecha de agenda (UTC)<input type="date" name="day" defaultValue={requestedDay} required /></label><button className="button">Ver fecha</button></form> : null}
+    {failed.length>0 ? <section role="alert">{failed.map(name=><p key={name}>{t("p0083")} {name}{t("p0084")}</p>)}<a href={("/franchise?day="+requestedDay) as Route}>{t("p0085")}</a></section> : null}
+    {allowed(session,"appointment:manage") ? <form action="/franchise" method="get"><label>{t("p0086")}<input type="date" name="day" defaultValue={requestedDay} required /></label><button className="button">{t("p0087")}</button></form> : null}
     {agenda ? <AppointmentAgendaPanel agenda={agenda} organization={organization} notificationStatusEnabled={notificationStatusEnabled}/> : null}
     {canPanel ? <FranchiseCommandPanel commandScope={createHash("sha256").update(JSON.stringify([session.tenantId,session.subject,organization])).digest("hex")} permissions={session.permissions} leads={leads?.items??[]} availability={availability?.items??[]} exceptions={exceptions?.items??null} returnCases={returnCases?.items??null} defaultAssignee={session.subject} organization={organization}/> : null}
     <OperationalGuide guide={OPERATIONAL_GUIDES["operation-sections-view"]} className="card"/>
@@ -2290,13 +2351,15 @@ operation: CREATE
 provenance: AUTHORED
 source: "local customer self-service UI governed by Microsoft calendar/absence and Next.js references pinned in metadata"
 license: "LicenseRef-Workspace-Owner"
-sha256: "3c30c47587d4932010cd6a58f6c816cb414f2254f157a9d43ba75f93eccae63a"
+sha256: "53c1b1036c933abcca77d84919783fb85dd118e605533b64b03d2d2927a1b0e1"
 variables: []
 secrets_allowed: false
 ```
 
 ````tsx
 "use client";
+import {usePrivateI18n} from "@/platform/i18n/private-provider";
+
 
 import { useRef, useState } from "react";
 
@@ -2312,6 +2375,8 @@ export function isCancellationReceipt(value: unknown, organizationId: string, ap
 }
 
 export function CustomerAppointmentActions({ organizationId, appointments }: { organizationId: string; appointments: Appointment[] }) {
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
   const [pending, setPending] = useState("");
   const [message, setMessage] = useState("");
   const [uncertain, setUncertain] = useState(false);
@@ -2321,18 +2386,18 @@ export function CustomerAppointmentActions({ organizationId, appointments }: { o
     if (inFlight.current) return;
     inFlight.current = true;
     setPending(appointment.id);
-    setMessage("Estamos comprobando la cancelación. Esperá el resultado.");
+    setMessage(t("p0231"));
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 10000);
     try {
       const response = await fetch("/api/enterprise/franchise/commands", { method: "POST", headers: { "content-type": "application/json" }, signal: controller.signal, body: JSON.stringify({ action: "cancel-customer-appointment", organizationId, appointmentId: appointment.id, version: appointment.version, reasonCode: "customer-request" }) });
       const result: unknown = await response.json();
       if (!response.ok || !isCancellationReceipt(result, organizationId, appointment)) throw new Error("RESULT_NOT_CONFIRMED");
-      setMessage("Turno cancelado y auditado. Actualizando…");
+      setMessage(t("p0232"));
       window.location.reload();
     } catch {
       setUncertain(true);
-      setMessage("No pudimos comprobar el resultado. La cancelación podría haberse registrado. Volvé a consultar el estado antes de intentar otra acción.");
+      setMessage(t("p0233"));
       // Keep commands disabled; recover with an explicit GET, never an automatic POST retry.
     } finally {
       clearTimeout(timer);
@@ -2341,11 +2406,11 @@ export function CustomerAppointmentActions({ organizationId, appointments }: { o
 
   return <>
     {message && <p className="status" role="status" aria-live="polite">{message}</p>}
-    {uncertain && <p><a href="/customer/appointments">Volver a consultar mis turnos</a></p>}
-    {appointments.length === 0 && <p className="notice">No hay turnos disponibles para tu cuenta en esta organización.</p>}
+    {uncertain && <p><a href="/customer/appointments">{t("p0234")}</a></p>}
+    {appointments.length === 0 && <p className="notice">{t("p0235")}</p>}
     <div className="grid">{appointments.map((appointment) => <article className="card" key={appointment.id}>
-      <h2>{appointment.kind}</h2><p>{appointment.state} · <time dateTime={appointment.starts_at}>{appointment.startsAtLabel}</time></p>
-      {["requested", "confirmed"].includes(appointment.state) && new Date(appointment.starts_at).getTime() > Date.now() ? <button disabled={pending !== ""} onClick={() => void cancel(appointment)}>Cancelar mi turno</button> : null}
+      <h2>{appointment.kind}</h2><p>{appointment.state} {t("p0016")} <time dateTime={appointment.starts_at}>{appointment.startsAtLabel}</time></p>
+      {["requested", "confirmed"].includes(appointment.state) && new Date(appointment.starts_at).getTime() > Date.now() ? <button disabled={pending !== ""} onClick={() => void cancel(appointment)}>{t("p0236")}</button> : null}
     </article>)}</div>
   </>;
 }
@@ -2359,13 +2424,13 @@ operation: CREATE
 provenance: AUTHORED
 source: "local server-rendered customer appointment portal governed by Next.js and journey references pinned in metadata"
 license: "LicenseRef-Workspace-Owner"
-sha256: "f259498375f6b36a9508c9e15f308ca9531b4407f1c436bd6ef788756c6ee697"
+sha256: "bb1c7c2853757f29fca7236163ea0a4bd312c29aed6a5cbdfd6e7dc923af3527"
 variables: []
 secrets_allowed: false
 ```
 
 ````tsx
-import { loadPublicLocale } from "@/platform/i18n/load-public-locale";
+import {loadPrivateI18n} from "@/platform/i18n/load-private-i18n";
 import { publicAppointmentTime } from "@/platform/i18n/public-catalog";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -2375,18 +2440,20 @@ import { protectedGet, type CustomerJourney } from "@/platform/backend/protected
 import { CustomerAppointmentActions } from "@/components/customer-appointment-actions";
 
 export default async function CustomerAppointmentsPage() {
+ const {locale:privateLocale,t,controlled}=await loadPrivateI18n();
+
   const session = await readSession();
   if (!session) redirect("/api/auth/login?return_to=/customer/appointments" as Route);
-  if (!allowed(session, "customer:self")) return <><h1 className="pageTitle">Acceso denegado</h1><div className="notice">La sesión no posee <code>customer:self</code>.</div></>;
+  if (!allowed(session, "customer:self")) return <><h1 className="pageTitle">{t("p0006")}</h1><div className="notice">{t("p0007")} <code>customer:self</code>{t("p0008")}</div></>;
   const organization = session.organizations[0]!;
   const journey = await protectedGet<CustomerJourney>(session, "/v1/customer/journey", { organization_id: organization });
-  const locale = await loadPublicLocale();
+  const locale = privateLocale;
   const appointments = journey.appointments.map((item) => ({ ...item, startsAtLabel: `${publicAppointmentTime(locale, item.starts_at)} (${locale.timeZone})` }));
   return <>
-    <div className="eyebrow">Portal de cliente · {organization}</div><h1 className="pageTitle">Mis turnos</h1>
-    <p className="lede">La cancelación se limita a tus turnos futuros activos, exige la versión vigente y deja motivo auditable.</p>
-    <p><Link href={"/customer/quotes" as Route}>Ver cotizaciones</Link></p>
-    <p><Link href={"/customer/handovers" as Route}>Ver entregas</Link></p>
+    <div className="eyebrow">{t("p0034")} {organization}</div><h1 className="pageTitle">{t("p0035")}</h1>
+    <p className="lede">{t("p0036")}</p>
+    <p><Link href={"/customer/quotes" as Route}>{t("p0037")}</Link></p>
+    <p><Link href={"/customer/handovers" as Route}>{t("p0038")}</Link></p>
     <CustomerAppointmentActions organizationId={organization} appointments={appointments}/>
   </>;
 }
@@ -2400,13 +2467,15 @@ operation: CREATE
 provenance: AUTHORED
 source: "local authenticated handover UI governed by Microsoft posted-shipment and inspection references pinned in metadata"
 license: "LicenseRef-Workspace-Owner"
-sha256: "d61fad94d921f2af87f38498471b99d6e5db570d9d8db5121b2965e06ac50f54"
+sha256: "10402e5757d5dc7e63ffd34e57360791210902375576088cc9aff50f4e52baa3"
 variables: []
 secrets_allowed: false
 ```
 
 ````tsx
 "use client";
+import {usePrivateI18n} from "@/platform/i18n/private-provider";
+
 
 import { useRef, useState, type FormEvent } from "react";
 
@@ -2415,6 +2484,8 @@ type Handover = { id: string; order_id: string; stock_unit_id: string; state: st
 type DeliveryException = { id: string; handover_id: string; reason_code: string; details: string; state: string; version: number; resolution_action?: string; successor_handover_id?: string; return_authorization_id?: string };
 
 export function CustomerHandoverActions({ organizationId, handovers, exceptions }: { organizationId: string; handovers: Handover[]; exceptions: DeliveryException[] }) {
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
   const [pending, setPending] = useState("");
   const [message, setMessage] = useState("");
   const inFlight = useRef(false);
@@ -2440,10 +2511,10 @@ export function CustomerHandoverActions({ organizationId, handovers, exceptions 
     try {
       const result = await send({ action: "accept-handover", organizationId, handoverId: handover.id, version: handover.version, confirmedReceived: data.get("confirmedReceived") === "yes", serialNumber: String(data.get("serialNumber") ?? ""), checklistId: handover.checklist_id, checklistVersion: handover.checklist_version });
       if (result.id !== handover.id || result.state !== "accepted" || result.version !== handover.version + 1) throw new Error("UNVERIFIED_RECEIPT");
-      setMessage("Recepción registrada con identidad, serie, versión y evidencia del servidor. Actualizando…");
+      setMessage(t("p0241"));
       window.location.reload();
     } catch {
-      setMessage("No pudimos comprobar el resultado. La recepción pudo haberse registrado. Consultá el estado antes de volver a actuar.");
+      setMessage(t("p0242"));
     }
   }
 
@@ -2457,16 +2528,16 @@ export function CustomerHandoverActions({ organizationId, handovers, exceptions 
     try {
       const result = await send({ action: "reject-handover", organizationId, handoverId: handover.id, version: handover.version, reasonCode: String(data.get("reasonCode") ?? ""), details: String(data.get("details") ?? "") });
       if (typeof result.id !== "string" || !result.id || result.handover_id !== handover.id || result.state !== "open" || result.version !== 1) throw new Error("UNVERIFIED_RECEIPT");
-      setMessage("Discrepancia registrada con tu identidad y la versión exacta. Actualizando…");
+      setMessage(t("p0243"));
       window.location.reload();
     } catch {
-      setMessage("No pudimos comprobar el resultado. La discrepancia pudo haberse registrado. Consultá el estado antes de volver a actuar.");
+      setMessage(t("p0244"));
     }
   }
 
-  return <>{message && <><p className="status" role="status">{message}</p><p><a href="/customer/handovers">Consultar estado de entregas</a></p></>}{exceptions.length ? <section className="card"><h2>Discrepancias de entrega</h2>{exceptions.map((item) => <article key={item.id}><h3>{item.reason_code}</h3><p>{item.details}</p><p>Estado: {item.state}{item.resolution_action ? ` · resolución: ${item.resolution_action}` : ""}</p>{item.successor_handover_id ? <p>Nueva preparación: {item.successor_handover_id}</p> : null}{item.return_authorization_id ? <p>Autorización: {item.return_authorization_id}</p> : null}</article>)}</section> : null}<div className="grid">{handovers.map((handover) => {
+  return <>{message && <><p className="status" role="status">{message}</p><p><a href="/customer/handovers">{t("p0245")}</a></p></>}{exceptions.length ? <section className="card"><h2>{t("p0246")}</h2>{exceptions.map((item) => <article key={item.id}><h3>{item.reason_code}</h3><p>{item.details}</p><p>{t("p0247")} {item.state}{item.resolution_action ? t("p0248", {resolution_action:(item.resolution_action)}) : ""}</p>{item.successor_handover_id ? <p>{t("p0249")} {item.successor_handover_id}</p> : null}{item.return_authorization_id ? <p>{t("p0250")} {item.return_authorization_id}</p> : null}</article>)}</section> : null}<div className="grid">{handovers.map((handover) => {
     const checklistReady = Boolean(handover.checklist_id && handover.checklist_version && handover.checklist_completed_at && handover.checklist_items.length);
-    return <article className="card" key={handover.id}><h2>Pedido {handover.order_id}</h2><p>Estado: {handover.state}</p>{handover.checklist_id ? <section aria-label="Preparación verificada"><h3>{handover.checklist_title || "Checklist de entrega"} · v{handover.checklist_version}</h3><ol>{handover.checklist_items.map((item) => <li key={item.id}>{item.prompt}{item.required ? " · obligatorio" : ""}</li>)}</ol><p>{handover.checklist_completed_at ? `Completado por la franquicia: ${handover.checklistCompletedLabel ?? "Fecha pendiente de validación"}` : "La preparación todavía no está completa."}</p></section> : <p>La franquicia todavía no vinculó una versión de preparación.</p>}{handover.state === "presented" && checklistReady ? <><form onSubmit={(event) => void accept(event, handover)}><label>Número de serie observado<input name="serialNumber" required maxLength={128}/></label><label><input name="confirmedReceived" type="checkbox" value="yes" required/> Confirmo que recibí el activo identificado y revisé la preparación indicada</label><button disabled={pending !== ""}>Registrar recepción</button></form><form onSubmit={(event) => void reject(event, handover)}><h3>Informar una discrepancia</h3><label>Código de motivo<input name="reasonCode" required maxLength={64} pattern="[a-z][a-z0-9]*(-[a-z0-9]+)*" placeholder="Código aprobado por la empresa"/></label><label>Detalle<textarea name="details" required maxLength={1000}/></label><button disabled={pending !== ""}>Rechazar esta presentación</button></form></> : <p>{handover.customer_accepted_at ? `Aceptado: ${handover.acceptedLabel ?? "Fecha pendiente de validación"}` : "Sin aceptación disponible hasta completar la preparación exacta."}</p>}</article>;
+    return <article className="card" key={handover.id}><h2>{t("p0251")} {handover.order_id}</h2><p>{t("p0247")} {handover.state}</p>{handover.checklist_id ? <section aria-label={t("p0252")}><h3>{handover.checklist_title || t("p0253")} {t("p0254")}{handover.checklist_version}</h3><ol>{handover.checklist_items.map((item) => <li key={item.id}>{item.prompt}{item.required ? " · obligatorio" : ""}</li>)}</ol><p>{handover.checklist_completed_at ? t("p0255", {completed_at:(handover.checklistCompletedLabel ?? t("p0256"))}) : t("p0257")}</p></section> : <p>{t("p0258")}</p>}{handover.state === "presented" && checklistReady ? <><form onSubmit={(event) => void accept(event, handover)}><label>{t("p0259")}<input name="serialNumber" required maxLength={128}/></label><label><input name="confirmedReceived" type="checkbox" value="yes" required/> {t("p0260")}</label><button disabled={pending !== ""}>{t("p0261")}</button></form><form onSubmit={(event) => void reject(event, handover)}><h3>{t("p0262")}</h3><label>{t("p0263")}<input name="reasonCode" required maxLength={64} pattern="[a-z][a-z0-9]*(-[a-z0-9]+)*" placeholder={t("p0264")}/></label><label>{t("p0265")}<textarea name="details" required maxLength={1000}/></label><button disabled={pending !== ""}>{t("p0266")}</button></form></> : <p>{handover.customer_accepted_at ? t("p0267", {accepted_at:(handover.acceptedLabel ?? t("p0256"))}) : t("p0268")}</p>}</article>;
   })}</div></>;
 }
 ````
@@ -2479,13 +2550,13 @@ operation: CREATE
 provenance: AUTHORED
 source: "local server-rendered delivery portal governed by Microsoft posted-shipment and inspection references pinned in metadata"
 license: "LicenseRef-Workspace-Owner"
-sha256: "6ad96bad6ffada0391299a30fc3f4e67a503fe9c7eded13ad45c50c49f29dc3f"
+sha256: "9ddfb74a89069a82e952190f8e86d4d6c97e22e4a7564ade3466593e66cb9775"
 variables: []
 secrets_allowed: false
 ```
 
 ````tsx
-import { loadPublicLocale } from "@/platform/i18n/load-public-locale";
+import {loadPrivateI18n} from "@/platform/i18n/load-private-i18n";
 import { publicAppointmentTime } from "@/platform/i18n/public-catalog";
 import { OperationalGuide } from "@/components/operational-guide";
 import { OPERATIONAL_GUIDES } from "@/platform/help/content";
@@ -2501,15 +2572,17 @@ type DeliveryException = { id: string; handover_id: string; reason_code: string;
 type DeliveryJourney = Omit<CustomerJourney, "handovers"> & { handovers: DeliveryHandover[]; delivery_exceptions: DeliveryException[] };
 
 export default async function CustomerHandoversPage() {
+ const {locale:privateLocale,t,controlled}=await loadPrivateI18n();
+
   const session = await readSession();
   if (!session) redirect("/api/auth/login?return_to=/customer/handovers" as Route);
-  if (!allowed(session, "customer:self")) return <><h1 className="pageTitle">Acceso denegado</h1><div className="notice">La sesión no posee <code>customer:self</code>.</div></>;
+  if (!allowed(session, "customer:self")) return <><h1 className="pageTitle">{t("p0006")}</h1><div className="notice">{t("p0007")} <code>customer:self</code>{t("p0008")}</div></>;
   const organization = session.organizations[0]!;
   const journey = await protectedGet<DeliveryJourney>(session, "/v1/customer/journey", { organization_id: organization }).catch(() => null);
-  const locale = await loadPublicLocale();
+  const locale = privateLocale;
   const handovers = journey?.handovers.map(item => ({ ...item, ...(item.checklist_completed_at ? { checklistCompletedLabel: `${publicAppointmentTime(locale, item.checklist_completed_at)} (${locale.timeZone})` } : {}), ...(item.customer_accepted_at ? { acceptedLabel: `${publicAppointmentTime(locale, item.customer_accepted_at)} (${locale.timeZone})` } : {}) })) ?? [];
-  return <><div className="eyebrow">Portal de cliente · {organization}</div><h1 className="pageTitle">Mis entregas</h1><p className="lede">Antes de aceptar verás la preparación completada, sus controles y la versión exacta. También podés rechazar esa presentación y seguir su corrección, devolución o cambio sin perder el historial.</p><p><Link href={"/customer/appointments" as Route}>Ver turnos</Link></p>
-    {journey ? <>{journey.handovers.length === 0 ? <p>Por ahora no hay entregas disponibles para consultar.</p> : null}<CustomerHandoverActions organizationId={organization} handovers={handovers} exceptions={journey.delivery_exceptions}/></> : <><div className="notice" role="alert">No pudimos verificar tus entregas. No se confirmó ni modificó ninguna entrega desde esta consulta.</div><p><a href="/customer/handovers">Volver a consultar entregas</a></p></>}
+  return <><div className="eyebrow">{t("p0034")} {organization}</div><h1 className="pageTitle">{t("p0039")}</h1><p className="lede">{t("p0040")}</p><p><Link href={"/customer/appointments" as Route}>{t("p0041")}</Link></p>
+    {journey ? <>{journey.handovers.length === 0 ? <p>{t("p0042")}</p> : null}<CustomerHandoverActions organizationId={organization} handovers={handovers} exceptions={journey.delivery_exceptions}/></> : <><div className="notice" role="alert">{t("p0043")}</div><p><a href="/customer/handovers">{t("p0044")}</a></p></>}
     <OperationalGuide guide={OPERATIONAL_GUIDES["handover-read-view"]}/>
   </>;
 }
@@ -2522,7 +2595,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "Local read-only integration of existing public operational guides and admitted session/runtime; see VERSIONED_JOURNEY_HELP_V379.md"
 license: "LicenseRef-Workspace-Owner"
-sha256: "17d210d1ad3bb0c80bdb94a8d8623cc2b8ea71a4fc94824882ef9362c189c4fd"
+sha256: "1c1ebc33ca2e578725f9d0ca4f51588f6f480e81ab9e8cbbdfc05b963395a581"
 variables: []
 secrets_allowed: false
 ```
@@ -2687,7 +2760,84 @@ export const OPERATIONAL_GUIDES = {
   }
 } as const;
 
-export const ALL_GUIDES = [QUOTE_GUIDE, NOTIFICATION_GUIDE, ...Object.values(OPERATIONAL_GUIDES)] as const;
+// Same-release operational guidance. AUTHORED integration text; no corporate attribution.
+export const RELEASE_GUIDES = {
+  "supply-role-view": {
+    "id": "supply-role-view",
+    "version": "1.0.0",
+    "title": "Guía de suministro",
+    "summary": "Guía de suministro · versión 1.0.0",
+    "paragraphs": [
+      "Compras registra proveedor, destino, fábrica, importe y cantidades. La fábrica confirma la orden, registra cada serie y pide revisión de calidad. Otra persona autorizada decide su liberación o rechazo con evidencia.",
+      "El despacho identifica un envío y sus series. Recepción registra sólo lo recibido; queda en cuarentena hasta la decisión de otra persona autorizada. Las cantidades y versiones se comprueban en cada operación.",
+      "Si se pierde una respuesta, consultá el resultado pendiente. Esa consulta no vuelve a enviar. No borres referencias para forzar un reintento. En capacitación, practicá con datos sintéticos el recorrido y la recuperación."
+    ],
+    "inlineLead": false
+  },
+  "warranty-role-view": {
+    "id": "warranty-role-view",
+    "version": "1.0.0",
+    "title": "Guía de garantía",
+    "summary": "Guía de garantía · versión 1.0.0",
+    "paragraphs": [
+      "Leé los términos vinculados a la cotización antes de acusar su recepción. La garantía activa conserva esos términos vendidos. Un reclamo necesita entrega y atención registradas.",
+      "Diagnóstico, plan y aprobación preceden al trabajo. La persona revisora es diferente de quien propone; calidad es diferente de quien ejecuta. El cliente acepta y la fábrica concilia el servicio. La conciliación es un acuse interno, no un pago.",
+      "Si se pierde una respuesta, consultá el resultado pendiente: no vuelve a enviar. Conservá su referencia y pedí revisión autorizada si sigue incierto. Practicá con datos sintéticos en capacitación."
+    ],
+    "inlineLead": false
+  },
+  "network-role-view": {
+    "id": "network-role-view",
+    "version": "1.0.0",
+    "title": "Guía de red y acuerdos",
+    "summary": "Guía de red y acuerdos · versión 1.0.0",
+    "paragraphs": [
+      "Registrá la organización bajo un padre autorizado y usá la referencia devuelta para consultar su estado. Crear una organización no concede accesos a personas. Los nuevos accesos se asignan mediante el proveedor de identidad autorizado.",
+      "La estructura activa permite preparar acuerdos y sucursales. No equivale a autorización de despliegue o producción. Territorio, versión de términos y fechas deben proceder del acuerdo revisado; no se generan condiciones comerciales aquí.",
+      "Antes de operar, completá la capacitación de tu rol. La evaluación no concede permisos. Si una respuesta se pierde, recuperá su resultado y luego consultá el estado actual. No repitas una escritura incierta.",
+      "Para cerrar una organización, revisá primero sus sucursales y acuerdos activos. No se eliminan los registros ni se revocan sesiones desde este formulario."
+    ],
+    "inlineLead": false
+  },
+  "help-cms-view": {
+    "id": "help-cms-view",
+    "version": "1.0.0",
+    "title": "Guía de contenidos",
+    "summary": "Guía de contenidos · versión 1.0.0",
+    "paragraphs": [
+      "El contenido pertenece a una organización y un idioma. Guardá un borrador, revisalo y publicalo con el permiso correspondiente. Archivar retira el artículo de la consulta de lectores y conserva su historial.",
+      "Las versiones publicadas no se editan. Para reemplazarlas, prepará un artículo nuevo y archivá el anterior después de revisar la sustitución. El texto se muestra literalmente; no ejecuta HTML.",
+      "Publicar aquí no modifica cursos aprobados ni concede permisos. La incorporación a capacitación requiere revisión y una nueva versión del curso."
+    ],
+    "inlineLead": false
+  },
+  "catalog-role-view": {
+    "id": "catalog-role-view",
+    "version": "1.0.0",
+    "title": "Guía de catálogo y publicación",
+    "summary": "Guía de catálogo · versión 1.0.0",
+    "inlineLead": false,
+    "paragraphs": [
+      "Creá modelo, variantes y precios con importes y vigencias explícitos. Conservá las referencias devueltas, incorporá la imagen PNG y prepará una versión del catálogo.",
+      "La versión requiere las revisiones legal, técnica, de imagen y de publicación. Cada decisión refiere al contenido exacto y su evidencia. Publicar comprueba la generación vigente; una revisión desactualizada no autoriza contenido nuevo.",
+      "Consultar un resultado pendiente recupera la operación sin repetirla. Antes de publicar otra versión o volver a una anterior, consultá la publicación vigente. La publicación del catálogo no confirma stock, cobro ni habilitación comercial. Practicá únicamente con datos sintéticos."
+    ]
+  },
+  "training-role-view": {
+    "id": "training-role-view",
+    "version": "1.0.0",
+    "title": "Guía de capacitación y evaluación",
+    "summary": "Guía de capacitación · versión 1.0.0",
+    "inlineLead": false,
+    "paragraphs": [
+      "Elegí la guía del rol e iniciá una práctica. Registrá la lectura de cada lección y presentá respuestas para revisión humana. Elegir una guía no cambia los permisos de tu sesión.",
+      "Una persona autorizada diferente revisa las respuestas contra la versión presentada. Una evaluación favorable conserva evidencia, pero no asigna accesos ni reemplaza la aceptación del responsable de la operación.",
+      "Ante una respuesta incierta, consultá el intento guardado. Un curso nuevo no cambia la evidencia de intentos anteriores; prepará otra práctica para la versión activa. Los artículos privados del CMS requieren incorporación explícita a un curso revisado."
+    ]
+  }
+} as const;
+
+export const ALL_GUIDES = [QUOTE_GUIDE, NOTIFICATION_GUIDE, ...Object.values(OPERATIONAL_GUIDES), ...Object.values(RELEASE_GUIDES)] as const;
 export type GuideID = typeof ALL_GUIDES[number]["id"];
 ````
 
@@ -2724,11 +2874,13 @@ operation: CREATE
 provenance: AUTHORED
 source: "Local read-only integration of existing public operational guides and admitted session/runtime; see VERSIONED_JOURNEY_HELP_V379.md"
 license: "LicenseRef-Workspace-Owner"
-sha256: "619f9792e0b664201044933ad58b297ccbc667dfa25baf3ca4ae2cdd7958c715"
+sha256: "e35adc9a1d42ed9345c0e016a357a2f2b9fefd752a3beedadb33282ec15639f4"
 variables: []
 secrets_allowed: false
 ```
 ````typescript
+import{parseHelpQuery}from"./query";
+export{parseHelpQuery}from"./query";
 import "server-only";
 import { allowed, type PortalSession } from "@/platform/auth/session";
 import { ALL_GUIDES, type GuideID } from "./content";
@@ -2739,6 +2891,13 @@ const sectionPermissions = [...operationPermissions, "lead:read", "resource:mana
 export function availableGuides(session: PortalSession, notificationsEnabled: boolean) {
   const can = (permission: string) => allowed(session, permission);
   const policy: Record<GuideID, boolean> = {
+    "catalog-role-view": can("catalog:read"),
+    "supply-role-view": can("supply:read") || can("supply:factory-read"),
+    "warranty-role-view": can("warranty:read") || can("warranty:self") || can("warranty:factory-read"),
+    "network-role-view": can("network:admin") || can("franchise:write"),
+    "help-cms-view": can("help:read") || can("help:write") || can("help:publish"),
+    "training-role-view": can("training:learn") || can("training:review"),
+
     "quote-acceptance-view": can("customer:self"),
     "handover-read-view": can("customer:self"),
     "whatsapp-status-view": notificationsEnabled && can("appointment:manage"),
@@ -2757,15 +2916,6 @@ export function availableGuides(session: PortalSession, notificationsEnabled: bo
   };
   // Project only the response contract, excluding inline-rendering metadata.
   return ALL_GUIDES.filter(g => policy[g.id]).map(({ id, version, title, paragraphs }) => ({ id, version, title, paragraphs }));
-}
-export function parseHelpQuery(url: string) {
-  if (url.length > 2048) return null;
-  const p = new URL(url).searchParams;
-  if ([...p.keys()].some(key => !["q", "article", "version"].includes(key) || p.getAll(key).length !== 1)) return null;
-  const q = p.get("q") ?? "", article = p.get("article"), version = p.get("version");
-  if (q.length > 160 || /[\u0000-\u001f\u007f]/.test(q)) return null;
-  if ((article === null) !== (version === null) || (article !== null && (p.has("q") || !/^[a-z][a-z0-9-]{0,63}$/.test(article) || !/^\d{1,6}\.\d{1,6}\.\d{1,6}$/.test(version!)))) return null;
-  return { q: q.trim().normalize("NFC").toLocaleLowerCase("es"), article, version };
 }
 export function selectGuides(guides: ReturnType<typeof availableGuides>, query: NonNullable<ReturnType<typeof parseHelpQuery>>) {
   if (query.article !== null) return guides.filter(g => g.id === query.article && g.version === query.version);
@@ -2817,7 +2967,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "Local read-only integration of existing public operational guides and admitted session/runtime; see VERSIONED_JOURNEY_HELP_V379.md"
 license: "LicenseRef-Workspace-Owner"
-sha256: "d0822166efd21a175029e82c73ac2583464b0522f0f2640c6dfa95a56b2279b1"
+sha256: "232505c91b6ac4c950f82bace4a10e6ddb1e3ea1d30b2f9c09d2f836e9b321b3"
 variables: []
 secrets_allowed: false
 ```
@@ -2838,7 +2988,7 @@ test("customer receives only applicable versioned public help without identity",
  const data = helpResponseSchema.parse(await r.json()); expect(data.articles.map(g=>g.id)).toEqual(["quote-acceptance-view","handover-read-view"]); expect(JSON.stringify(data)).not.toMatch(/private-|never-return-token/);
 });
 test("operator receives only enabled notification guidance", async () => { mocks.readSession.mockResolvedValue(session(["appointment:manage"])); expect((await (await get()).json()).articles.map((g:{id:string})=>g.id).sort()).toEqual(["operation-sections-view","slot-create-view","whatsapp-status-view"]); mocks.loadBusinessConfig.mockResolvedValue({ features: {} }); expect((await (await get()).json()).articles.map((g:{id:string})=>g.id).sort()).toEqual(["operation-sections-view","slot-create-view"]); });
-test("wildcard still obeys feature selection", async () => { mocks.readSession.mockResolvedValue(session(["*"])); expect((await (await get()).json()).articles).toHaveLength(15); mocks.loadBusinessConfig.mockResolvedValue({ features: {} }); expect((await (await get()).json()).articles.map((g:{id:string})=>g.id).sort()).toEqual(ALL_GUIDES.filter(g=>g.id!=="whatsapp-status-view").map(g=>g.id).sort()); });
+test("wildcard still obeys feature selection", async () => { mocks.readSession.mockResolvedValue(session(["*"])); expect((await (await get()).json()).articles).toHaveLength(21); mocks.loadBusinessConfig.mockResolvedValue({ features: {} }); expect((await (await get()).json()).articles.map((g:{id:string})=>g.id).sort()).toEqual(ALL_GUIDES.filter(g=>g.id!=="whatsapp-status-view").map(g=>g.id).sort()); });
 test("no permission is denied and rechecked on subsequent reads", async () => { expect((await get()).status).toBe(200); mocks.readSession.mockResolvedValue(session(["factory:read"])); const r=await get(); expect(r.status).toBe(403); expect(await r.json()).toEqual({ code: "FORBIDDEN" }); });
 test("missing session returns401 without loading configuration", async () => { mocks.readSession.mockResolvedValue(null); expect((await get()).status).toBe(401); expect(mocks.loadBusinessConfig).not.toHaveBeenCalled(); });
 test.each(["cross-site", "none"])("rejects %s before credentials", async value => { expect((await get("", { "sec-fetch-site": value })).status).toBe(403); expect(mocks.readSession).not.toHaveBeenCalled(); });
@@ -2993,11 +3143,14 @@ const roleMatrix = [
     "expected": [
       "availability-cancel-view",
       "availability-create-view",
+      "catalog-role-view",
       "checklist-completion-view",
       "checklist-publication-view",
       "delivery-resolution-view",
       "handover-read-view",
+      "help-cms-view",
       "lead-command-view",
+      "network-role-view",
       "operation-sections-view",
       "order-operations-view",
       "quote-acceptance-view",
@@ -3005,8 +3158,11 @@ const roleMatrix = [
       "resource-create-view",
       "return-operations-view",
       "slot-create-view",
+      "supply-role-view",
+      "training-role-view",
+      "warranty-role-view",
       "whatsapp-status-view"
-    ]
+]
   }
 ] as const;
 test.each(roleMatrix)("complete guide access for $role", async row => {
@@ -3024,19 +3180,25 @@ operation: CREATE
 provenance: AUTHORED
 source: "Local read-only integration of existing public operational guides and admitted session/runtime; see VERSIONED_JOURNEY_HELP_V379.md"
 license: "LicenseRef-Workspace-Owner"
-sha256: "d998fd74ee03ce1fa4af791db52e4a25a9678c2d88ad6dfd0e37a07496829237"
+sha256: "ebc16333b017e210ca14593e674c6a481c04d517a4d05ac36857a8a7062b16c5"
 variables: []
 secrets_allowed: false
 ```
 ````typescript
 "use client";
+import {parseHelpQuery} from "@/platform/help/query";
+import {guideDisplay} from "@/platform/i18n/private-guide-display";
+import {usePrivateI18n} from "@/platform/i18n/private-provider";
+
 import { useCallback, useEffect, useRef, useState } from "react";
 import { helpResponseSchema, type HelpResponse } from "@/platform/help/contract";
 
 export function JourneyHelpPanel() {
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
   const [query, setQuery] = useState("");
   const [result, setResult] = useState<HelpResponse | null>(null);
-  const [status, setStatus] = useState("Consultando ayuda…");
+  const [status, setStatus] = useState(t("p0690"));
   const [busy, setBusy] = useState(false);
   const request = useRef<AbortController | null>(null);
   const currentQuery = useRef("");
@@ -3044,42 +3206,45 @@ export function JourneyHelpPanel() {
   const load = useCallback(async (params: string) => {
     clear(); currentQuery.current = params;
     const controller = new AbortController(); request.current = controller;
-    setBusy(true); setStatus("Consultando ayuda…");
+    setBusy(true); setStatus(t("p0690"));
     try {
-      const response = await fetch(`/api/enterprise/help${params ? "?" + params : ""}`, { cache: "no-store", redirect: "error", signal: AbortSignal.any([controller.signal, AbortSignal.timeout(7000)]) });
+      const validated=parseHelpQuery(new URL("/help?"+params,window.location.origin).href);if(!validated)throw new Error("INVALID_HELP_QUERY");
+      const parameters=new URLSearchParams(params),search=parameters.get("q")??"";parameters.delete("q");
+      const response = await fetch(`/api/enterprise/help${parameters.size ? "?" + parameters.toString() : ""}`, { cache: "no-store", redirect: "error", signal: AbortSignal.any([controller.signal, AbortSignal.timeout(7000)]) });
       if (!response.ok) {
-        const text = response.status === 401 ? "Iniciá sesión para consultar la ayuda." : response.status === 403 ? "Tu sesión no tiene guías disponibles." : response.status === 404 ? "Esta guía o versión no está disponible para tu sesión." : "No pudimos consultar la ayuda. Podés volver a intentar.";
+        const text = response.status === 401 ? t("p0691") : response.status === 403 ? t("p0692") : response.status === 404 ? t("p0693") : t("p0694");
         if (request.current === controller) setStatus(text);
         return;
       }
       const data = helpResponseSchema.parse(await response.json());
-      if (request.current === controller && !controller.signal.aborted) { setResult(data); setStatus(data.articles.length ? "Ayuda actualizada. Consulta de sólo lectura." : "No encontramos guías para esa búsqueda."); }
-    } catch { if (request.current === controller && !controller.signal.aborted) setStatus("No pudimos consultar la ayuda. Podés volver a intentar."); }
+      data.articles=data.articles.filter(article=>{const view=guideDisplay(article,privateLocale.language);return [view.title,...view.paragraphs].join(" ").normalize("NFC").toLocaleLowerCase(privateLocale.locale).includes(search.trim().normalize("NFC").toLocaleLowerCase(privateLocale.locale))});
+      if (request.current === controller && !controller.signal.aborted) { setResult(data); setStatus(data.articles.length ? t("p0695") : t("p0696")); }
+    } catch { if (request.current === controller && !controller.signal.aborted) setStatus(t("p0694")); }
     finally { if (request.current === controller) { request.current = null; setBusy(false); } }
-  }, [clear]);
+  }, [clear,privateLocale]);
   useEffect(() => {
     const initial = window.location.search.slice(1);
     setQuery(new URLSearchParams(initial).get("q")?.slice(0, 160) ?? "");
     void load(initial);
-    const visible = () => { if (document.visibilityState === "hidden") { clear(); setStatus("Volvé a consultar para actualizar la ayuda."); } else void load(currentQuery.current); };
+    const visible = () => { if (document.visibilityState === "hidden") { clear(); setStatus(t("p0697")); } else void load(currentQuery.current); };
     const focus = () => { if (document.visibilityState === "visible") void load(currentQuery.current); };
     document.addEventListener("visibilitychange", visible); window.addEventListener("focus", focus);
     return () => { request.current?.abort(); request.current = null; document.removeEventListener("visibilitychange", visible); window.removeEventListener("focus", focus); };
   }, [clear, load]);
-  return <section aria-label="Ayuda de los recorridos">
-    <h1>Ayuda</h1>
-    <p>Guías de uso en español, según los permisos de tu sesión. Leerlas no ejecuta operaciones ni acredita una capacitación.</p>
+  return <section aria-label={t("p0698")}>
+    <h1>{t("p0699")}</h1>
+    <p>{t("p0700")}</p>
     <form onSubmit={event => { event.preventDefault(); void load(new URLSearchParams({ q: query }).toString()); }}>
-      <label>Buscar en las guías<input type="search" maxLength={160} value={query} onChange={event => { clear(); setQuery(event.target.value); currentQuery.current = new URLSearchParams({ q: event.target.value }).toString(); setStatus("Presioná Buscar para consultar."); }}/></label>
-      <button className="button" type="submit">Buscar</button>
+      <label>{t("p0701")}<input type="search" maxLength={160} value={query} onChange={event => { clear(); setQuery(event.target.value); currentQuery.current = new URLSearchParams({ q: event.target.value }).toString(); setStatus(t("p1193")); }}/></label>
+      <button className="button" type="submit">{t("p0702")}</button>
     </form>
-    <button className="button" type="button" disabled={busy} onClick={() => void load(currentQuery.current)}>Actualizar ayuda</button>
+    <button className="button" type="button" disabled={busy} onClick={() => void load(currentQuery.current)}>{t("p0703")}</button>
     <p role="status" aria-live="polite">{status}</p>
-    <div aria-busy={busy}>{result?.articles.map(article => <article className="card" key={article.id + "/" + article.version}>
-      <h2>{article.title}</h2><p>Guía {article.id}/{article.version}</p>
+    <div aria-busy={busy}>{result?.articles.map(source => {const article=guideDisplay(source,privateLocale.language);return <article lang={article.displayLanguage} className="card" key={article.id + "/" + article.version}>
+      <h2>{article.title}</h2><p>{t("p0142")} {article.id}{t("p0280")}{article.version}</p>
       {article.paragraphs.map(text => <p key={text}>{text}</p>)}
-      <a href={`/help?article=${encodeURIComponent(article.id)}&version=${encodeURIComponent(article.version)}`}>Enlace a esta versión</a>
-    </article>)}</div>
+      <a href={`/help?article=${encodeURIComponent(article.id)}&version=${encodeURIComponent(article.version)}`}>{t("p0704")}</a>
+    </article>})}</div>
   </section>;
 }
 ````
@@ -3130,19 +3295,25 @@ operation: CREATE
 provenance: AUTHORED
 source: "Exact existing operational guide extraction; see VERSIONED_HELP_ROLE_COVERAGE_V380.md"
 license: "LicenseRef-Workspace-Owner"
-sha256: "59a153a03a449c43490685b91b2440d65fb13efa003275283f128b685509d644"
+sha256: "37ffa11dbb90c30691d84c4862b79fc95e15d2d469475f6201d461b459f6b206"
 variables: []
 secrets_allowed: false
 ```
 ````typescript
+"use client";
+import {guideDisplay} from "@/platform/i18n/private-guide-display";
+import {usePrivateI18n} from "@/platform/i18n/private-provider";
 // Pure shared rendering: no effects, session state, operation or training progress.
 type Guide = { id: string; version: string; title: string; summary: string; paragraphs: readonly string[]; inlineLead: boolean };
 export function OperationalGuide({ guide, className }: { guide: Guide; className?: string }) {
-  return <details className={className}>
-    <summary>{guide.summary}</summary>
-    <p>{guide.id}/{guide.version}{guide.inlineLead ? " · " + guide.paragraphs[0] : ""}</p>
-    {guide.paragraphs.slice(guide.inlineLead ? 1 : 0).map(text => <p key={text}>{text}</p>)}
-    <a href={`/help?article=${encodeURIComponent(guide.id)}&version=${encodeURIComponent(guide.version)}`}>Abrir esta guía en Ayuda</a>
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
+  const display=guideDisplay(guide,privateLocale.language);
+  return <details lang={display.displayLanguage} className={className}>
+    <summary>{display.summary}</summary>
+    <p>{guide.id}{t("p0280")}{guide.version}{guide.inlineLead ? " · " + display.paragraphs[0] : ""}</p>
+    {display.paragraphs.slice(guide.inlineLead ? 1 : 0).map(text => <p key={text}>{text}</p>)}
+    <a href={`/help?article=${encodeURIComponent(guide.id)}&version=${encodeURIComponent(guide.version)}`}>{t("p0143")}</a>
   </details>;
 }
 ````
@@ -3550,7 +3721,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "599e18f3bd279e83406f6c2205f59db4a977204df3da983d22ff54f4f81a5988"
+sha256: "e3e375d6b67aa8212c9caa9d4768dedc6c50fc9a71a11f1d5e89f57ac64b4103"
 variables: []
 secrets_allowed: false
 ```
@@ -3582,6 +3753,14 @@ it("recovers historical receipt independently of a held/missing current context"
 it("shows current=false after callback without deleting historical receipt",async()=>{m.get.mockResolvedValue({receipt:receipt(),evaluated_at:date,current:false});const r=await GET(new Request(url+"?kind=release-current&organizationId=store&orderId=order&handoverId=handover"));expect(r.status).toBe(200);expect((await r.json()).current).toBe(false)});
 it.each(["organizationId=store&organizationId=store","organizationId=store&unexpected=value","organizationId=foreign"])("denies invalid recovery query %s",async org=>{expect([400,403]).toContain((await GET(new Request(url+"?kind=context&orderId=order&"+org))).status);expect(m.get).not.toHaveBeenCalled()});
 it("rejects receipt mismatch and never retries or exposes backend errors",async()=>{m.post.mockResolvedValue({...prepared(),handover:{...handover(),order_id:"other"}});expect((await POST(post())).status).toBe(502);expect(m.post).toHaveBeenCalledTimes(1);m.get.mockRejectedValue(new Error("PRIVATE_BACKEND_DETAIL"));const r=await GET(new Request(url+"?kind=context&organizationId=store&orderId=order"));expect(r.status).toBe(503);expect(await r.text()).not.toContain("PRIVATE_BACKEND_DETAIL")});
+
+it("uses exactly one stored-value funding reference for preparation",async()=>{
+ m.get.mockResolvedValue({...context(),payment_attempt_id:"",funding_receipt_id:"funding_local"});m.post.mockResolvedValue({...prepared(),payment_attempt_id:"",funding_receipt_id:"funding_local"});
+ expect((await POST(post())).status).toBe(201);expect(m.post).toHaveBeenCalledWith(session,"/v1/franchise/orders/order/handover",{organization_id:"store",order_line_id:"line",payment_attempt_id:"",funding_receipt_id:"funding_local",observation_sha256:h},key);
+});
+it.each(["both","neither"])("rejects %s funding sources before preparation",async mode=>{
+ m.get.mockResolvedValue({...context(),payment_attempt_id:mode==="both"?"payment":"",...(mode==="both"?{funding_receipt_id:"funding_local"}:{})});expect((await POST(post())).status).toBe(503);expect(m.post).not.toHaveBeenCalled();
+});
 ````
 
 ### FILE: `src/app/api/enterprise/handovers/route.ts`
@@ -3592,12 +3771,13 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "4590749b6ab64dbd32f26ab358def8a3dea4f5fe2ab5a141458e57a3a4029084"
+sha256: "25639c5b727f5543d8d35b03950efd344f539d35d5bd435a26e89f8313734955"
 variables: []
 secrets_allowed: false
 ```
 
 ````typescript
+import { boundedCommandBody as boundedBody } from "@/platform/backend/bounded-command";
 // AUTHORED scoped BFF; obtains observation bindings server-to-server and forwards
 // only supported commands. No browser-entered amount, customer or digest.
 import { NextResponse } from "next/server";
@@ -3617,19 +3797,6 @@ const query=z.discriminatedUnion("kind",[
  z.object({...base,kind:z.literal("release-current"),handoverId:handoverID}).strict(),
 ]);
 function problem(error:unknown){return reply({code:"HANDOVER_UNAVAILABLE"},error instanceof BackendProblem&&[400,401,403,404,409,503].includes(error.status)?error.status:503);}
-async function boundedBody(request: Request) {
- if (!request.body) throw new Error("invalid handover body");
- const reader = request.body.getReader(); const chunks: Uint8Array[] = []; let bytes = 0; let timer: ReturnType<typeof setTimeout> | undefined;
- const deadline = new Promise<never>((_, reject) => { timer = setTimeout(() => reject(new Error("body deadline")), 2500); });
- try {
-  while (true) {
-   const part = await Promise.race([reader.read(), deadline]); if (part.done) break;
-   bytes += part.value.byteLength; if (bytes > 4096) throw new Error("BODY_TOO_LARGE"); chunks.push(part.value);
-  }
-  const data = new Uint8Array(bytes); let offset = 0; for (const chunk of chunks) { data.set(chunk, offset); offset += chunk.byteLength; }
-  return new TextDecoder("utf-8", { fatal: true }).decode(data);
- } finally { clearTimeout(timer); void reader.cancel().catch(() => {}); reader.releaseLock(); }
-}
 export async function POST(request:Request){
  try{if(request.headers.get("origin")!==applicationBaseUrl().origin)return reply({code:"CROSS_ORIGIN_REJECTED"},403)}catch{return reply({code:"CROSS_ORIGIN_REJECTED"},403)}
  if(request.headers.get("content-type")!=="application/json")return reply({code:"UNSUPPORTED_MEDIA_TYPE"},415);
@@ -3642,8 +3809,8 @@ export async function POST(request:Request){
   if(v.organization_id!==c.organizationId||v.order_id!==c.orderId)return reply({code:"CONTEXT_MISMATCH"},502);
   if(c.action==="prepare"){
    if(!v.can_prepare)return reply({code:"HANDOVER_ALREADY_PREPARED"},409);
-   const result=preparationSchema.parse(await protectedPost<unknown>(session,`/v1/franchise/orders/${encodeURIComponent(c.orderId)}/handover`,{organization_id:c.organizationId,order_line_id:v.order_line_id,payment_attempt_id:v.payment_attempt_id,observation_sha256:v.observation_sha256},c.requestKey));
-   if(result.handover.organization_id!==c.organizationId||result.handover.order_id!==c.orderId||result.order_line_id!==v.order_line_id||result.payment_attempt_id!==v.payment_attempt_id||result.observation_sha256!==v.observation_sha256)return reply({code:"RECEIPT_MISMATCH"},502);
+   const result=preparationSchema.parse(await protectedPost<unknown>(session,`/v1/franchise/orders/${encodeURIComponent(c.orderId)}/handover`,{organization_id:c.organizationId,order_line_id:v.order_line_id,payment_attempt_id:v.payment_attempt_id,...(v.funding_receipt_id?{funding_receipt_id:v.funding_receipt_id}:{}),observation_sha256:v.observation_sha256},c.requestKey));
+   if(result.handover.organization_id!==c.organizationId||result.handover.order_id!==c.orderId||result.order_line_id!==v.order_line_id||result.payment_attempt_id!==v.payment_attempt_id||result.funding_receipt_id!==v.funding_receipt_id||result.observation_sha256!==v.observation_sha256)return reply({code:"RECEIPT_MISMATCH"},502);
    return reply({handover:result.handover},201);
   }
   if(v.release_effect!=="COMMIT_COMMERCIAL_RELEASE_RECEIPT"||v.handover?.state!=="accepted")return reply({code:"RELEASE_NOT_ENABLED"},409);
@@ -3682,13 +3849,15 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "de101dd96d631cf52e46178ac9198c254eec4ba83e1a24b47f14dc4a046af8e0"
+sha256: "d9790e1c34b165dccab6f498d01eb0f613527df64be3d9a2f772bc25fdd77514"
 variables: []
 secrets_allowed: false
 ```
 
 ````tsx
 "use client";
+import {usePrivateI18n} from "@/platform/i18n/private-provider";
+
 
 // AUTHORED orchestration UI; uses existing checklist and customer acceptance.
 import { useEffect,useRef,useState } from "react";
@@ -3697,12 +3866,16 @@ import { commercialReceiptSchema,currentReleaseSchema,handoverContextSchema,hand
 
 const endpoint="/api/enterprise/handovers";
 export function HandoverOperationsPanel({orders,organization,scope}:{orders:{id:string}[]|null;organization:string;scope:string}){
- return <section className="card" aria-label="Preparación y liberación comercial"><h2>Entregas: preparación y cierre comercial</h2><p>La franquicia prepara la entrega y completa la checklist. El cliente registra la recepción desde su portal. Después se puede registrar el cierre comercial permitido por el perfil activo.</p>
- {orders===null?<p role="alert">La lista de pedidos no está disponible o es parcial. Actualizá la consulta antes de operar.</p>:orders.length===0?<p>No hay pedidos para consultar.</p>:orders.map(order=><HandoverOrder key={`${scope}:${order.id}`} orderId={order.id} organization={organization} scope={scope}/>)}
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
+ return <section className="card" aria-label={t("p0617")}><h2>{t("p0618")}</h2><p>{t("p0619")}</p>
+ {orders===null?<p role="alert">{t("p0620")}</p>:orders.length===0?<p>{t("p0621")}</p>:orders.map(order=><HandoverOrder key={`${scope}:${order.id}`} orderId={order.id} organization={organization} scope={scope}/>)}
  </section>;
 }
 
 function HandoverOrder({orderId,organization,scope}:{orderId:string;organization:string;scope:string}){
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
  const [context,setContext]=useState<HandoverContext|null>(null),[message,setMessage]=useState(""),[ready,setReady]=useState(false),[busy,setBusy]=useState(false),[storageOK,setStorageOK]=useState(false);
  const [markers,setMarkers]=useState<Partial<Record<"prepare"|"release",OperationMarker>>>({}),[receipt,setReceipt]=useState<CommercialReceipt|null>(null),[current,setCurrent]=useState<CurrentRelease|null>(null);
  const operations=useRef<Partial<Record<"prepare"|"release",OperationMarker>>>({}),fence=useRef(false);
@@ -3713,8 +3886,8 @@ function HandoverOrder({orderId,organization,scope}:{orderId:string;organization
  }
  async function refresh(){
   setCurrent(null);
-  try{const v=handoverContextSchema.parse(await read("context"));if(v.organization_id!==organization||v.order_id!==orderId)throw new Error("scope");setContext(v);setMessage("Estado consultado. Cada operación vuelve a validar sus condiciones en el servidor.")}
-  catch{setContext(null);setMessage("Todavía no pudimos verificar una preparación habilitada para este pedido. Actualizá después de confirmar pago, reserva y perfil. Las referencias guardadas siguen disponibles para consultar.")}
+  try{const v=handoverContextSchema.parse(await read("context"));if(v.organization_id!==organization||v.order_id!==orderId)throw new Error("scope");setContext(v);setMessage(t("p0622"))}
+  catch{setContext(null);setMessage(t("p0623"))}
  }
  useEffect(()=>{
   let mounted=true;
@@ -3722,7 +3895,7 @@ function HandoverOrder({orderId,organization,scope}:{orderId:string;organization
    if(!/^[a-f0-9]{64}$/.test(scope))throw new Error("scope");const values:Partial<Record<"prepare"|"release",OperationMarker>>={};
    for(const action of ["prepare","release"] as const){const raw=sessionStorage.getItem(storageKey(action));if(raw!==null){if(raw.length>1024)throw new Error("reference");const v=operationMarkerSchema.parse(JSON.parse(raw));if(v.action!==action||v.orderId!==orderId)throw new Error("scope");values[action]=v}}
    operations.current=values;setMarkers(values);setStorageOK(true);
-  }catch{setStorageOK(false);setMessage("No pudimos leer las referencias guardadas. Consultá el estado y pedí revisión antes de operar.")}
+  }catch{setStorageOK(false);setMessage(t("p0624"))}
   setReady(true);
   void read("context").then(raw=>{if(!mounted)return;const v=handoverContextSchema.parse(raw);if(v.order_id!==orderId||v.organization_id!==organization)throw new Error("scope");setContext(v)}).catch(()=>{if(mounted)setContext(null)});
   return()=>{mounted=false};
@@ -3738,43 +3911,43 @@ function HandoverOrder({orderId,organization,scope}:{orderId:string;organization
    const requested:OperationMarker=action==="prepare"?{action,orderId,requestKey:crypto.randomUUID()}:{action,orderId,handoverId:context.handover!.id,requestKey:crypto.randomUUID()};
    if(sessionStorage.getItem(storageKey(action))!==null)throw new Error("existing operation");
    marker=retainOperation(sessionStorage,storageKey(action),requested);operations.current={...operations.current,[action]:marker};setMarkers(operations.current);
-  }catch{setStorageOK(false);setBusy(false);fence.current=false;setMessage("No se envió la operación porque no pudimos guardar su referencia. Conservá los datos y pedí revisión.");return}
+  }catch{setStorageOK(false);setBusy(false);fence.current=false;setMessage(t("p0625"));return}
   try{
    const response=await fetch(endpoint,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({action,organizationId:organization,orderId,requestKey:marker.requestKey}),signal:AbortSignal.timeout(10000)}),raw=await response.json();
    if(!response.ok)throw new Error("unconfirmed");
    if(action==="prepare"){
     const v=handoverViewSchema.parse(raw.handover);if(v.organization_id!==organization||v.order_id!==orderId)throw new Error("scope");
-    setContext({...context,handover:v,can_prepare:false});setMessage("Entrega preparada. Completá la checklist correspondiente y consultá el estado.");
+    setContext({...context,handover:v,can_prepare:false});setMessage(t("p0626"));
    }else{
-    const v=commercialReceiptSchema.parse(raw.receipt);if(v.organization_id!==organization||v.order_id!==orderId||marker.action!=="release"||v.handover_id!==marker.handoverId)throw new Error("scope");setReceipt(v);setMessage("Recibo comercial registrado. Consultá su vigencia antes de continuar con una operación posterior.");
+    const v=commercialReceiptSchema.parse(raw.receipt);if(v.organization_id!==organization||v.order_id!==orderId||marker.action!=="release"||v.handover_id!==marker.handoverId)throw new Error("scope");setReceipt(v);setMessage(t("p0627"));
    }
-  }catch{setMessage("El resultado quedó sin comprobar. La operación pudo guardarse: usá Consultar resultado, que recupera la misma referencia sin reenviar.")}
+  }catch{setMessage(t("p0628"))}
   finally{setBusy(false);fence.current=false}
  }
  async function recover(action:"prepare"|"release"){
   const marker=operations.current[action];if(!marker||fence.current)return;fence.current=true;setBusy(true);setCurrent(null);
   try{
    const raw=await read(action+"-result",{requestKey:marker.requestKey,...(marker.action==="release"?{handoverId:marker.handoverId}:{})}) as {handover?:unknown;receipt?:unknown};
-   if(action==="prepare"){const h=handoverViewSchema.parse(raw.handover);if(h.order_id!==orderId||h.organization_id!==organization)throw new Error("scope");await refresh();setMessage(`Preparación recuperada: ${h.id}. Estado ${h.state}.`)}
-   else{const r=commercialReceiptSchema.parse(raw.receipt);if(r.order_id!==orderId||r.organization_id!==organization||marker.action!=="release"||r.handover_id!==marker.handoverId)throw new Error("scope");setReceipt(r);setMessage("Recibo histórico recuperado. Esto no confirma su vigencia actual.")}
-  }catch{setMessage("No pudimos recuperar un resultado confirmado. Conservamos la referencia y el bloqueo de reenvío; consultá nuevamente o pedí revisión.")}
+   if(action==="prepare"){const h=handoverViewSchema.parse(raw.handover);if(h.order_id!==orderId||h.organization_id!==organization)throw new Error("scope");await refresh();setMessage(t("p0629", {handover_id:(h.id),handover_state:(h.state)}))}
+   else{const r=commercialReceiptSchema.parse(raw.receipt);if(r.order_id!==orderId||r.organization_id!==organization||marker.action!=="release"||r.handover_id!==marker.handoverId)throw new Error("scope");setReceipt(r);setMessage(t("p0630"))}
+  }catch{setMessage(t("p0631"))}
   finally{fence.current=false;setBusy(false)}
  }
  async function validate(){
   const id=receipt?.handover_id??context?.handover?.id??(operations.current.release?.action==="release"?operations.current.release.handoverId:undefined);if(!id||fence.current)return;
   fence.current=true;setBusy(true);setCurrent(null);
-  try{const v=currentReleaseSchema.parse(await read("release-current",{handoverId:id}));if(v.receipt.organization_id!==organization||v.receipt.order_id!==orderId||v.receipt.handover_id!==id)throw new Error("scope");setReceipt(v.receipt);setCurrent(v)}catch{setMessage("No pudimos verificar la vigencia. El recibo histórico permanece disponible, pero no confirma autorización actual.")}
+  try{const v=currentReleaseSchema.parse(await read("release-current",{handoverId:id}));if(v.receipt.organization_id!==organization||v.receipt.order_id!==orderId||v.receipt.handover_id!==id)throw new Error("scope");setReceipt(v.receipt);setCurrent(v)}catch{setMessage(t("p0632"))}
   finally{fence.current=false;setBusy(false)}
  }
- return <article className="card" aria-label={`Entrega del pedido ${orderId}`}><h3>Pedido {orderId}</h3>
- <button className="button" type="button" disabled={!ready||busy} onClick={()=>void refresh()}>Consultar estado de entrega</button>
- {!context?<p>No hay una preparación habilitada verificada en esta consulta.</p>:context.handover?<><p>Entrega {context.handover.id} · estado {context.handover.state}</p>{context.handover.state==="prepared"?<ChecklistCompletionPanel key={context.handover.id} organization={organization} scope={scope} initialHandover={{id:context.handover.id,version:context.handover.version}}/>:context.handover.state==="presented"?<p>Checklist presentada. Falta que el cliente registre la recepción desde su portal de entregas.</p>:null}</>:<button className="button" type="button" disabled={!ready||busy||!storageOK||!context.can_prepare||Boolean(markers.prepare)} onClick={()=>void mutate("prepare")}>Preparar entrega</button>}
- {markers.prepare?<button className="button" type="button" disabled={!ready||busy} onClick={()=>void recover("prepare")}>Consultar resultado de preparación</button>:null}
- {context?.handover?.state==="accepted"&&context.release_effect==="COMMIT_COMMERCIAL_RELEASE_RECEIPT"?<button className="button" type="button" disabled={!ready||busy||!storageOK||Boolean(markers.release)} onClick={()=>void mutate("release")}>Registrar cierre comercial</button>:context?.release_effect==="READ_ONLY_ELIGIBILITY"?<p>El perfil activo permite consultar elegibilidad; no habilita un recibo comercial.</p>:null}
- {markers.release?<button className="button" type="button" disabled={!ready||busy} onClick={()=>void recover("release")}>Consultar resultado comercial</button>:null}
- {receipt||context?.handover?.state==="accepted"?<button className="button" type="button" disabled={!ready||busy} onClick={()=>void validate()}>Consultar vigencia del recibo</button>:null}
- {receipt?<div><p>Recibo comercial {receipt.id} · registrado {receipt.recorded_at}</p><p>El registro no modifica stock ni acredita despacho físico.</p></div>:null}
- {current?<p role="status">{current.current?`Condiciones verificadas en la consulta de ${current.evaluated_at}, con límite ${current.receipt.valid_until}. Una operación posterior debe volver a verificarlas.`:`El recibo no tiene vigencia comprobada en la consulta de ${current.evaluated_at}. Su historial se conserva.`}</p>:receipt?<p>Vigencia pendiente de consulta.</p>:null}
+ return <article className="card" aria-label={`Entrega del pedido ${orderId}`}><h3>{t("p0251")} {orderId}</h3>
+ <button className="button" type="button" disabled={!ready||busy} onClick={()=>void refresh()}>{t("p0633")}</button>
+ {!context?<p>{t("p0634")}</p>:context.handover?<><p>{t("p0368")} {context.handover.id} {t("p0443")} {context.handover.state}</p>{context.handover.state==="prepared"?<ChecklistCompletionPanel key={context.handover.id} organization={organization} scope={scope} initialHandover={{id:context.handover.id,version:context.handover.version}}/>:context.handover.state==="presented"?<p>{t("p0635")}</p>:null}</>:<button className="button" type="button" disabled={!ready||busy||!storageOK||!context.can_prepare||Boolean(markers.prepare)} onClick={()=>void mutate("prepare")}>{t("p0636")}</button>}
+ {markers.prepare?<button className="button" type="button" disabled={!ready||busy} onClick={()=>void recover("prepare")}>{t("p0637")}</button>:null}
+ {context?.handover?.state==="accepted"&&context.release_effect==="COMMIT_COMMERCIAL_RELEASE_RECEIPT"?<button className="button" type="button" disabled={!ready||busy||!storageOK||Boolean(markers.release)} onClick={()=>void mutate("release")}>{t("p0638")}</button>:context?.release_effect==="READ_ONLY_ELIGIBILITY"?<p>{t("p0639")}</p>:null}
+ {markers.release?<button className="button" type="button" disabled={!ready||busy} onClick={()=>void recover("release")}>{t("p0640")}</button>:null}
+ {receipt||context?.handover?.state==="accepted"?<button className="button" type="button" disabled={!ready||busy} onClick={()=>void validate()}>{t("p0641")}</button>:null}
+ {receipt?<div><p>{t("p0642")} {receipt.id} {t("p0643")} {receipt.recorded_at}</p><p>{t("p0644")}</p></div>:null}
+ {current?<p role="status">{current.current?t("p0645", {evaluated_at:(current.evaluated_at),valid_until:(current.receipt.valid_until)}):t("p0646", {evaluated_at:(current.evaluated_at)})}</p>:receipt?<p>{t("p0647")}</p>:null}
  <p role="status" aria-live="polite">{message}</p>
  </article>;
 }
@@ -3846,7 +4019,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "3002b02b299ab3969f168ff7edd51b1c8c47b4343defcbd198364a28c4a451b8"
+sha256: "1b5d8a029aa06c4cbe30cf3047f76184cb44bff86a6bff6ae536e3680e93714b"
 variables: []
 secrets_allowed: false
 ```
@@ -3857,13 +4030,15 @@ import { z } from "zod";
 export const handoverID=z.string().min(1).max(128).regex(/^[A-Za-z0-9_-]+$/);
 const hash=z.string().regex(/^[a-f0-9]{64}$/),version=z.number().int().positive().max(Number.MAX_SAFE_INTEGER);
 const date=z.iso.datetime({offset:true});
+const fundingFields={payment_attempt_id:z.union([handoverID,z.literal("")]),funding_receipt_id:handoverID.optional()};
+const oneFunding=(v:{payment_attempt_id:string;funding_receipt_id?:string|undefined})=>Boolean(v.payment_attempt_id)!==Boolean(v.funding_receipt_id);
 export const handoverViewSchema=z.object({id:handoverID,organization_id:handoverID,order_id:handoverID,state:z.enum(["prepared","presented","accepted","rejected"]),version,checklist_id:z.string().max(128).optional(),checklist_version:z.number().int().nonnegative().optional(),checklist_completed_at:date.optional(),customer_accepted_at:date.optional()});
 export const handoverContextSchema=z.object({organization_id:handoverID,order_id:handoverID,handover:handoverViewSchema.optional(),can_prepare:z.boolean(),release_effect:z.enum(["READ_ONLY_ELIGIBILITY","COMMIT_COMMERCIAL_RELEASE_RECEIPT"]),evaluated_at:date}).superRefine((v,ctx)=>{
  if(v.can_prepare===Boolean(v.handover)||v.handover&&(v.handover.organization_id!==v.organization_id||v.handover.order_id!==v.order_id))ctx.addIssue({code:"custom",message:"inconsistent context"});
 });
-export const backendHandoverContextSchema=handoverContextSchema.safeExtend({order_line_id:handoverID,payment_attempt_id:handoverID,observation_sha256:hash});
-export const preparationSchema=z.object({handover:handoverViewSchema,order_line_id:handoverID,reservation_id:handoverID,payment_attempt_id:handoverID,observation_sha256:hash,contract_id:z.string().min(1).max(128),contract_sha256:hash,prepared_by:z.string().min(1).max(256),prepared_at:date});
-export const commercialReceiptSchema=z.object({id:handoverID,organization_id:handoverID,handover_id:handoverID,order_id:handoverID,payment_attempt_id:handoverID,observation_sha256:hash,observation_generation:version,handover_version:version,acceptance_sha256:hash,checklist_id:handoverID,checklist_version:version,contract_id:z.string().min(1).max(128),contract_sha256:hash,effect:z.literal("COMMIT_COMMERCIAL_RELEASE_RECEIPT"),released_by:z.string().min(1).max(256),recorded_at:date,valid_until:date}).refine(v=>Date.parse(v.valid_until)>Date.parse(v.recorded_at));
+export const backendHandoverContextSchema=handoverContextSchema.safeExtend({order_line_id:handoverID,...fundingFields,observation_sha256:hash}).refine(oneFunding);
+export const preparationSchema=z.object({handover:handoverViewSchema,order_line_id:handoverID,reservation_id:handoverID,...fundingFields,observation_sha256:hash,contract_id:z.string().min(1).max(128),contract_sha256:hash,prepared_by:z.string().min(1).max(256),prepared_at:date}).refine(oneFunding);
+export const commercialReceiptSchema=z.object({id:handoverID,organization_id:handoverID,handover_id:handoverID,order_id:handoverID,...fundingFields,observation_sha256:hash,observation_generation:version,handover_version:version,acceptance_sha256:hash,checklist_id:handoverID,checklist_version:version,contract_id:z.string().min(1).max(128),contract_sha256:hash,effect:z.literal("COMMIT_COMMERCIAL_RELEASE_RECEIPT"),released_by:z.string().min(1).max(256),recorded_at:date,valid_until:date}).refine(oneFunding).refine(v=>Date.parse(v.valid_until)>Date.parse(v.recorded_at));
 export const currentReleaseSchema=z.object({receipt:commercialReceiptSchema,evaluated_at:date,current:z.boolean()}).refine(v=>!v.current||Date.parse(v.evaluated_at)<Date.parse(v.receipt.valid_until));
 export type HandoverContext=z.infer<typeof handoverContextSchema>;
 export type CommercialReceipt=z.infer<typeof commercialReceiptSchema>;
@@ -3942,12 +4117,13 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "aad66132e32e8046bb1f2c6d8ac6bd9e44d3da4a5e530c03d920c3bf68e901ce"
+sha256: "4feaa986d7aa743bc27d06d65dd5d5ab493f71c1d86fff49f255b516bfdf5267"
 variables: []
 secrets_allowed: false
 ```
 
 ````tsx
+import {loadPrivateI18n} from "@/platform/i18n/load-private-i18n";
 import { redirect } from "next/navigation";
 import type { Route } from "next";
 import { allowed, readSession } from "@/platform/auth/session";
@@ -3956,14 +4132,16 @@ import { responseText, type ReplyView } from "@/platform/notifications/reply-con
 import { WhatsAppReplyReview } from "@/components/whatsapp-reply-review";
 
 export default async function WhatsAppReplyPage(){
+ const {locale:privateLocale,t,controlled}=await loadPrivateI18n();
+
  const session=await readSession();if(!session)redirect("/api/auth/login?return_to=/franchise/whatsapp" as Route);
- if(!allowed(session,"whatsapp:approve"))return <><h1 className="pageTitle">Respuestas de WhatsApp</h1><p>Tu sesión no permite revisar respuestas.</p></>;
+ if(!allowed(session,"whatsapp:approve"))return <><h1 className="pageTitle">{t("p0096")}</h1><p>{t("p0097")}</p></>;
  try{
   const replies=await protectedGet<ReplyView[]>(session,"/v1/franchise/whatsapp/replies",{});
   if(!Array.isArray(replies)||replies.length>50||replies.some(v=>!session.organizations.includes(v.context.organization_id)))throw new Error("INVALID_SCOPE");
-  const rows=replies.map(value=>({...value,body:responseText(value),windowLabel:new Date(value.context.expires_at).toISOString().replace("T"," ").replace(".000Z"," UTC")}));
-  return <><h1 className="pageTitle">Respuestas de WhatsApp</h1><p>Revisá el destinatario y el texto completo. Aprobar registra tu decisión; enviar es una acción separada.</p><WhatsAppReplyReview replies={rows} canSend={allowed(session,"whatsapp:send")}/></>;
- }catch{return <><h1 className="pageTitle">Respuestas de WhatsApp</h1><p role="alert">No pudimos consultar las respuestas. Volvé a consultar su estado antes de intentar un envío.</p><a className="button" href="/franchise/whatsapp">Consultar de nuevo</a></>}
+  const rows=replies.map(value=>({...value,body:responseText(value),windowLabel:new Intl.DateTimeFormat(privateLocale.locale,{dateStyle:"medium",timeStyle:"short",timeZone:privateLocale.timeZone}).format(new Date(value.context.expires_at))+" ("+privateLocale.timeZone+")"}));
+  return <><h1 className="pageTitle">{t("p0096")}</h1><p>{t("p0098")}</p><WhatsAppReplyReview replies={rows} canSend={allowed(session,"whatsapp:send")}/></>;
+ }catch{return <><h1 className="pageTitle">{t("p0096")}</h1><p role="alert">{t("p0099")}</p><a className="button" href="/franchise/whatsapp">{t("p0095")}</a></>}
 }
 ````
 
@@ -3975,33 +4153,40 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "41a13d722e3084bf4c31bd84268a8a7d559567730a9b2ef8fe5eba2b7640d9b3"
+sha256: "58e685649c19ea32aa635a36594bd8e3db2f0fea7aa503fc91cca0ebcf4d6cb5"
 variables: []
 secrets_allowed: false
 ```
 
 ````tsx
 "use client";
+import {usePrivateI18n} from "@/platform/i18n/private-provider";
+
 import { useState } from "react";
 import type { ReplyView } from "@/platform/notifications/reply-contract";
 type Row=ReplyView&{body:string;windowLabel:string};
-const sendLabels:Record<string,string>={not_started:"Sin iniciar",sending:"En proceso",accepted:"Aceptado por WhatsApp",unknown:"Resultado por confirmar",failed:"No aceptado"};
-const deliveryLabels:Record<string,string>={not_observed_by_this_reader:"Aún no hay confirmación del proveedor",observed_sent:"Enviado según WhatsApp",observed_delivered:"Entregado según WhatsApp",observed_read:"Leído según WhatsApp",observed_failed:"WhatsApp informó un fallo",ambiguous_latest_timestamp:"Hay informes que requieren revisión"};
+
+
 export function WhatsAppReplyReview({replies,canSend}:{replies:Row[];canSend:boolean}){
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+const sendLabels:Record<string,string>={not_started:t("p1035"),sending:t("p1036"),accepted:t("p1037"),unknown:t("p1038"),failed:t("p1039")};
+const deliveryLabels:Record<string,string>={not_observed_by_this_reader:t("p1040"),observed_sent:t("p1041"),observed_delivered:t("p1042"),observed_read:t("p1043"),observed_failed:t("p1044"),ambiguous_latest_timestamp:t("p1045")};
+
  const [busy,setBusy]=useState<string|null>(null);const [notice,setNotice]=useState("");
  async function act(row:Row,action:"decision"|"send"|"recover",approved?:boolean){
   if(busy)return;setBusy(row.request_id);setNotice("");
+  // Existing audit reasons are wire data, not translated display messages.
   const body={action,request_id:row.request_id,payload_sha256:row.payload_sha256,...(action==="decision"?{approved,reason:approved?"Texto y destinatario revisados en el portal":"Respuesta rechazada desde el portal"}:{})};
   try{const r=await fetch("/api/enterprise/franchise/whatsapp/replies",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(body)});if(!r.ok)throw new Error("UNCONFIRMED");window.location.reload()}
-  catch{setNotice("La acción no está confirmada. Consultá el estado; un resultado incierto requiere reconciliación y no otro envío.")}
+  catch{setNotice(t("p1048"))}
   // Stay disabled after uncertainty until the user reloads the authoritative state.
  }
- return <><p><a className="button" href="/franchise/whatsapp">Consultar estado</a></p><p role="status" aria-live="polite">{notice}</p>{replies.length===0?<p>No hay respuestas para revisar.</p>:replies.map(row=><article className="card" style={{marginTop:16,overflowWrap:"anywhere"}} key={row.request_id}>
-  <h2>Respuesta para {row.context.message.ExternalID}</h2><p>Organización: {row.context.organization_id}</p><p>Ventana de respuesta hasta {row.windowLabel}</p><p style={{whiteSpace:"pre-wrap",overflowWrap:"anywhere"}}>{row.body}</p>
-  <p>Revisión: {row.state==="pending"?"Pendiente":row.state==="approved"?"Aprobada":"Rechazada"}. Envío: {row.status ? sendLabels[row.status.fence_state]??"Requiere revisión" : "Sin iniciar"}. Estado informado: {row.status ? deliveryLabels[row.status.delivery_status]??"Requiere revisión" : "Sin observación del proveedor"}.</p>
-  {row.state==="pending"&&<div style={{display:"flex",gap:12,flexWrap:"wrap"}}><button className="button" disabled={busy!==null} onClick={()=>void act(row,"decision",true)}>Aprobar este texto</button><button className="button" disabled={busy!==null} onClick={()=>void act(row,"decision",false)}>Rechazar</button></div>}
-  {row.state==="approved"&&canSend&&row.status?.fence_state==="not_started"&&!row.status.approval_expired&&<button className="button" disabled={busy!==null} onClick={()=>void act(row,"send")}>Enviar respuesta aprobada</button>}
-  {row.state==="approved"&&canSend&&row.status?.reconciliation_required&&<><p>El resultado del envío necesita reconciliación. La recuperación sólo consulta el comprobante guardado.</p><button className="button" disabled={busy!==null} onClick={()=>void act(row,"recover")}>Verificar comprobante guardado</button></>}
+ return <><p><a className="button" href="/franchise/whatsapp">{t("p1049")}</a></p><p role="status" aria-live="polite">{notice}</p>{replies.length===0?<p>{t("p1050")}</p>:replies.map(row=><article className="card" style={{marginTop:16,overflowWrap:"anywhere"}} key={row.request_id}>
+  <h2>{t("p1051")} {row.context.message.ExternalID}</h2><p>{t("p0005")} {row.context.organization_id}</p><p>{t("p1052")} {row.windowLabel}</p><p style={{whiteSpace:"pre-wrap",overflowWrap:"anywhere"}}>{row.body}</p>
+  <p>{t("p1053")} {row.state==="pending"?t("p0797"):row.state==="approved"?t("p0798"):t("p0337")}{t("p1054")} {row.status ? sendLabels[row.status.fence_state]??t("p1055") : t("p1035")}{t("p1056")} {row.status ? deliveryLabels[row.status.delivery_status]??t("p1055") : t("p1057")}{t("p0008")}</p>
+  {row.state==="pending"&&<div style={{display:"flex",gap:12,flexWrap:"wrap"}}><button className="button" disabled={busy!==null} onClick={()=>void act(row,"decision",true)}>{t("p1058")}</button><button className="button" disabled={busy!==null} onClick={()=>void act(row,"decision",false)}>{t("p1059")}</button></div>}
+  {row.state==="approved"&&canSend&&row.status?.fence_state==="not_started"&&!row.status.approval_expired&&<button className="button" disabled={busy!==null} onClick={()=>void act(row,"send")}>{t("p1060")}</button>}
+  {row.state==="approved"&&canSend&&row.status?.reconciliation_required&&<><p>{t("p1061")}</p><button className="button" disabled={busy!==null} onClick={()=>void act(row,"recover")}>{t("p1062")}</button></>}
  </article>)}</>;
 }
 ````
@@ -4055,3 +4240,194 @@ V402 composed delta: Connected handover browser/BFF/Go/PostgreSQL gate; bounded 
 V402 browser evidence: reconstruction_evidence/HANDOVER_BROWSER_V402.md. Production Webpack build includes TypeScript checking;42 direct-call and23 focused BFF/date tests PASS. Chromium desktop and mobile viewport through real BFF/API/PG cover lost-response recovery and callback invalidation. Hosted IdP/live payment/physical shipment not claimed.
 
 V402 composed delta: Role-scoped navigation and human WhatsApp reply review/send/recovery with readable delivery status. Real browser/BFF/Go/PostgreSQL proof; no new business rule or automatic send.
+
+V402 composed delta: V402 source-backed stored-value integration: exact remaining provider due, explicit payment/funding XOR, shared approval, bounded browser transport and optional host. See STORED_VALUE_OPERATOR_FLOW_V402.md; source/pack admission successor governs final claim. Existing provider-only behavior retained.
+
+
+### FILE: `src/platform/backend/bounded-command.ts`
+
+```yaml
+block_id: "TS-FRANCHISE-JOURNEY-PORTALS:src/platform/backend/bounded-command.ts:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "Local typed source/transaction/transport/UI/recovery glue; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "bbd8f31396a0262e9416744387d985adf85947d18dbc648af3fa5aa28ada88b7"
+variables: []
+secrets_allowed: false
+```
+
+````typescript
+// AUTHORED shared body bound, extracted without semantic change from the handover BFF.
+export async function boundedRequestBytes(request: Request, maxBytes: number) {
+ if (!Number.isSafeInteger(maxBytes) || maxBytes < 1 || maxBytes > 1048576) throw new Error("invalid body budget");
+ if (!request.body) throw new Error("invalid handover body");
+ const reader = request.body.getReader(); const chunks: Uint8Array[] = []; let bytes = 0; let timer: ReturnType<typeof setTimeout> | undefined;
+ const deadline = new Promise<never>((_, reject) => { timer = setTimeout(() => reject(new Error("body deadline")), 2500); });
+ try {
+  while (true) {
+   const part = await Promise.race([reader.read(), deadline]); if (part.done) break;
+   bytes += part.value.byteLength; if (bytes > maxBytes) throw new Error("BODY_TOO_LARGE"); chunks.push(part.value);
+  }
+  const data = new Uint8Array(bytes); let offset = 0; for (const chunk of chunks) { data.set(chunk, offset); offset += chunk.byteLength; }
+  return data;
+ } finally { clearTimeout(timer); void reader.cancel().catch(() => {}); reader.releaseLock(); }
+}
+
+// Existing text budgets and UTF-8 behavior remain unchanged.
+export async function boundedCommandBody(request: Request, maxBytes = 4096) {
+ if (!Number.isSafeInteger(maxBytes) || maxBytes < 1 || maxBytes > 65536) throw new Error("invalid body budget");
+ return new TextDecoder("utf-8", { fatal: true }).decode(await boundedRequestBytes(request,maxBytes));
+}
+````
+
+V402 composed delta: T2804 connected training: existing versioned help/audit/shared approvals/outbox/BFF; opt-in host and navigation; bounded body retains original default. No new dependency or automatic grant. TRAINING_CONNECTED_RELEASE_V402.md.
+
+V402 composed delta: T2804 catalog role source/edit/review/publication transport reuses original model/price writers and catalog owner. Bounded PNG and text defaults retained. No new dependency. CATALOG_ROLE_AUTHORING_RELEASE_V402.md.
+
+V402 composed delta: T2804 help CMS and21same-release guides;15oldguides unchanged,5bounded training curricula revision2, no automatic grants. New optional host, shared inline text, actual browser/PG proofs. HELP_CMS_RELEASE_V402.md.
+
+V402 composed delta: T2804 role metrics use existing domain read models with exact strings, organization/customer/factory/program permissions, NPS minimum/retention and no zero on unavailable. FAIL868 converted lead and FAIL457 bounded generic body corrected. ROLE_METRICS_RELEASE_V402.md/json; no new dependency or corporate authorship.
+
+### FILE: `src/app/api/enterprise/franchise/commands/body-bound.test.ts`
+
+```yaml
+block_id: "TS-FRANCHISE-JOURNEY-PORTALS-METRIC-DELTA:file1:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "9f0e250e72838a01b2ed676bd95292354ef005a2795527a46c0c87038baa1c0b"
+variables: []
+secrets_allowed: false
+```
+
+````typescript
+import{it,expect,vi,afterEach}from"vitest";import{NextRequest}from"next/server";
+const m=vi.hoisted(()=>({session:vi.fn(),get:vi.fn(),post:vi.fn()}));
+vi.mock("@/platform/auth/session",()=>({readSession:m.session,allowed:(s:{permissions:string[]},p:string)=>s.permissions.includes("*")||s.permissions.includes(p)}));
+vi.mock("@/platform/auth/oidc-client",()=>({applicationBaseUrl:()=>new URL("https://portal.example.test")}));
+vi.mock("@/platform/backend/protected-client",()=>({protectedGet:m.get,protectedPost:m.post}));
+import{POST}from"./route";afterEach(()=>{vi.clearAllMocks();vi.useRealTimers()});
+const req=(body:BodyInit)=>new NextRequest("https://portal.example.test/api/enterprise/franchise/commands",{method:"POST",headers:{origin:"https://portal.example.test","content-type":"application/json"},body,duplex:"half"as const});
+it("auth precedes body consumption",async()=>{for(const session of[null,{permissions:[],organizations:["org"]}]){m.session.mockResolvedValue(session);const r=req("{}");expect([401,403]).toContain((await POST(r)).status);expect(r.bodyUsed).toBe(false)}expect(m.post).not.toHaveBeenCalled()});
+it("bounds byte stream without content length and cancels it",async()=>{m.session.mockResolvedValue({permissions:["customer:self"],organizations:["org"]});let cancelled=false;const r=req(new ReadableStream<Uint8Array>({pull(c){c.enqueue(new Uint8Array(65537))},cancel(){cancelled=true}}));expect((await POST(r)).status).toBe(413);expect(cancelled).toBe(true);expect(m.post).not.toHaveBeenCalled()});
+it("cancels stalled body at deadline and rejects malformed UTF8",async()=>{m.session.mockResolvedValue({permissions:["customer:self"],organizations:["org"]});vi.useFakeTimers();let cancelled=false;const pending=POST(req(new ReadableStream<Uint8Array>({cancel(){cancelled=true}})));await vi.advanceTimersByTimeAsync(2600);expect((await pending).status).toBe(400);expect(cancelled).toBe(true);vi.useRealTimers();expect((await POST(req(new Uint8Array([255])))).status).toBe(400);expect(m.post).not.toHaveBeenCalled()});
+it("retains action permission checks after parse",async()=>{m.session.mockResolvedValue({permissions:["customer:self"],organizations:["org"]});expect((await POST(req(JSON.stringify({action:"assign-lead",organizationId:"org",leadId:"lead",assignedSubject:"maker",version:1})))).status).toBe(403);expect(m.post).not.toHaveBeenCalled()});
+````
+
+
+V402 composed delta: T2804 private es/en display, per-user/tenant preference and browser negotiation;1198messages,21exact guides,5hash-bound curricula; original commands/content/policies preserved. PRIVATE_LOCALE_RELEASE_V402.md/json. AUTHORED glue; no new dependency or corporate attribution.
+
+### FILE: `src/app/api/enterprise/locale/route.test.ts`
+
+```yaml
+block_id: "TS-FRANCHISE-JOURNEY-PORTALS-LOCALE-DELTA:file1:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "971c8180196a9c6a9ad0a11728b29d1b70ed7bf65ee524a82cf000d8f2a47ac9"
+variables: []
+secrets_allowed: false
+```
+
+````typescript
+import{it,expect,vi,afterEach}from"vitest";import{NextRequest}from"next/server";import{createHash}from"node:crypto";
+const m=vi.hoisted(()=>({session:vi.fn()}));
+vi.mock("@/platform/auth/session",()=>({readSession:m.session}));
+vi.mock("@/platform/auth/oidc-client",()=>({applicationBaseUrl:()=>new URL("https://portal.example.test")}));
+vi.mock("@/platform/i18n/load-private-locale",()=>({privateLocaleCookieName:(s:{tenantId:string;subject:string})=>"elite_locale_"+createHash("sha256").update(JSON.stringify([s.tenantId,s.subject])).digest("hex")}));
+import{POST}from"./route";afterEach(()=>vi.clearAllMocks());
+const req=(body:BodyInit,origin="https://portal.example.test")=>new NextRequest("https://portal.example.test/api/enterprise/locale",{method:"POST",headers:{origin,"content-type":"application/json"},body,duplex:"half"as const});
+it("authenticates before reading and rejects cross-origin preference writes",async()=>{m.session.mockResolvedValue(null);const r=req('{"language":"en"}');expect((await POST(r)).status).toBe(401);expect(r.bodyUsed).toBe(false);expect((await POST(req('{"language":"en"}',"https://other.test"))).status).toBe(403)});
+it("allows only one bounded display language and no actor/policy field",async()=>{m.session.mockResolvedValue({tenantId:"t",subject:"user"});for(const body of['{"language":"fr"}','{"language":"en","language":"es"}','{"language":"en","tenantId":"other"}',"x".repeat(65)])expect((await POST(req(body))).status).toBe(400)});
+it("preference cookie is private and differs by authenticated subject and tenant",async()=>{const names=[];for(const [tenantId,subject]of[["t","a"],["t","b"],["other","a"]]){m.session.mockResolvedValue({tenantId,subject});const response=await POST(req('{"language":"en"}'));expect(response.status).toBe(200);const cookie=response.headers.get("set-cookie")!;expect(cookie).toContain("HttpOnly");expect(cookie).toContain("SameSite=lax");expect(response.headers.get("cache-control")).toContain("no-store");names.push(cookie.split("=")[0])}expect(new Set(names).size).toBe(3)});
+````
+
+### FILE: `src/app/api/enterprise/locale/route.ts`
+
+```yaml
+block_id: "TS-FRANCHISE-JOURNEY-PORTALS-LOCALE-DELTA:file2:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "83458d1331bd74794844a2b415670ddec65fb8e5ae406e164d362b70aa9abcf6"
+variables: []
+secrets_allowed: false
+```
+
+````typescript
+import{NextResponse,type NextRequest}from"next/server";
+import{readSession}from"@/platform/auth/session";
+import{applicationBaseUrl}from"@/platform/auth/oidc-client";
+import{boundedCommandBody}from"@/platform/backend/bounded-command";
+import{privateLocaleCookieName}from"@/platform/i18n/load-private-locale";
+const reply=(code:string,status:number)=>NextResponse.json({code},{status,headers:{"cache-control":"private, no-store",vary:"Cookie"}});
+export async function POST(r:NextRequest){
+ try{if(r.headers.get("origin")!==applicationBaseUrl().origin)return reply("CROSS_ORIGIN_REJECTED",403)}catch{return reply("UNAVAILABLE",503)}
+ const session=await readSession();if(!session)return reply("UNAUTHENTICATED",401);
+ if(r.nextUrl.searchParams.size)return reply("INVALID_QUERY",400);
+ if(r.headers.get("content-type")!=="application/json")return reply("UNSUPPORTED_MEDIA_TYPE",415);
+ let text:string;try{text=await boundedCommandBody(r,64)}catch{return reply("INVALID_PREFERENCE",400)}
+ // Exact one-field request rejects duplicate keys as well as identity/policy fields.
+ const parsed=/^\{\s*"language"\s*:\s*"(es|en)"\s*\}$/.exec(text);if(!parsed)return reply("INVALID_PREFERENCE",400);
+ const response=NextResponse.json({language:parsed[1]},{headers:{"cache-control":"private, no-store",vary:"Cookie"}});
+ response.cookies.set(privateLocaleCookieName(session),parsed[1]!,{httpOnly:true,secure:process.env.NODE_ENV==="production",sameSite:"lax",path:"/",maxAge:31536000});
+ return response;
+}
+````
+
+### FILE: `src/platform/help/query.ts`
+
+```yaml
+block_id: "TS-FRANCHISE-JOURNEY-PORTALS-LOCALE-DELTA:file3:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "45d561ee81c44bc1751db056b7b7585dce90b790c28e03507edecccd26567bac"
+variables: []
+secrets_allowed: false
+```
+
+````typescript
+export function parseHelpQuery(url: string) {
+  if (url.length > 2048) return null;
+  const p = new URL(url).searchParams;
+  if ([...p.keys()].some(key => !["q", "article", "version"].includes(key) || p.getAll(key).length !== 1)) return null;
+  const q = p.get("q") ?? "", article = p.get("article"), version = p.get("version");
+  if (q.length > 160 || /[\u0000-\u001f\u007f]/.test(q)) return null;
+  if ((article === null) !== (version === null) || (article !== null && (p.has("q") || !/^[a-z][a-z0-9-]{0,63}$/.test(article) || !/^\d{1,6}\.\d{1,6}\.\d{1,6}$/.test(version!)))) return null;
+  return { q: q.trim().normalize("NFC").toLocaleLowerCase("es"), article, version };
+}
+````
+
+### FILE: `src/platform/i18n/private-guide-display.ts`
+
+```yaml
+block_id: "TS-FRANCHISE-JOURNEY-PORTALS-LOCALE-DELTA:file4:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "5348fcc095d238d42a654349919b2f6bb46fd6ad14ee67b6f848784aa7b411a3"
+variables: []
+secrets_allowed: false
+```
+
+````typescript
+// AUTHORED display adapter. Immutable source content and training hashes are unchanged.
+import{ALL_GUIDES}from"@/platform/help/content";
+import{controlledPrivateLabel}from"./private-catalog";
+import type{PrivateLanguage}from"./private-locale";
+type Guide={id:string;version:string;title:string;paragraphs:readonly string[];summary?:string;inlineLead?:boolean};
+export function guideDisplay(source:Guide,language:PrivateLanguage){
+ const original=ALL_GUIDES.find(x=>x.id===source.id&&x.version===source.version);
+ const known=original!==undefined&&original.title===source.title&&(source.summary===undefined||("summary"in original&&source.summary===original.summary))&&original.paragraphs.length===source.paragraphs.length&&original.paragraphs.every((p,i)=>p===source.paragraphs[i]);
+ const translate=(text:string)=>known?controlledPrivateLabel(language,text):text;
+ return{id:source.id,version:source.version,title:translate(source.title),paragraphs:source.paragraphs.map(translate),summary:translate(source.summary??source.title),inlineLead:source.inlineLead??false,displayLanguage:known?language:"und"};
+}
+````
+

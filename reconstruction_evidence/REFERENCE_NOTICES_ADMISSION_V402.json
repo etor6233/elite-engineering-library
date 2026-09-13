@@ -1,0 +1,87 @@
+{
+  "schema": "elite-reference-notice-admission/v1",
+  "state": "PROVEN_LOCAL_NOTICE_INFRASTRUCTURE",
+  "decision": "USE_REUSABLE_PACK_WITH_EXACT_REFERENCE_INPUTS",
+  "scope": "Notice retention and builder enforcement only; not binary, native or production certification.",
+  "G0": "Official fixed source Git blobs, npm exact version metadata and SHA512 quarantine; runtime129manifest identities fixed.",
+  "G1": "Original16license/README/manifest texts retained VERBATIM. Three notice renderings explicitly ADAPTED: publisher MIT grant/standard terms or original inline copyright comments; no fabricated upstream file, owner or year.",
+  "G2": "Separate actual runtime, embedded framework bundles, unnamed export metadata and unshipped build inputs; no package version invented.",
+  "G3": "PORTABLE-CI-GATE-RUNNER0.1.4 reconstructs exact24new files and modified builder in4profiles, runtime collector directly invoked from packaging.",
+  "G4": "129real runtime manifests/71installed identities,155unique texts and12adverse publication tests PASS; no dependency code executed for license inspection.",
+  "G5": "Exact SHA256, bounded JSON/texts, duplicate-key/path/reparse/native/unknown manifest rejection, create-only output;8delta lint findings manually reviewed.",
+  "G6": "1000runtime manifest and16MiB notice budgets; actual notice collection0.695seconds. No production performance inference.",
+  "G7": "Release build fails before catalogue publication on mismatch; previous artifact preserved, source snapshot/receipts retained. Final current two builds remain T2810.",
+  "G8": "Narrow notice infrastructure reusable in exact local reference; final post-ARCA release must run collector in both independent builds.",
+  "runtime": {
+    "runtime_manifests": 129,
+    "installed_identities": 71,
+    "unique_notice_texts": 155,
+    "excluded_build_tools": 4,
+    "state": "PASS",
+    "seconds": 0.695,
+    "reference": "Exact historical316 runtime files read-only; final post-ARCA rebuild still required.",
+    "source_projection": "Only original exact manifests/notices copied, no package execution/installation.",
+    "projection_files": 414,
+    "projection_sha256": "71961dd6061748f3264459b79dba96f1d635c11552ad6e69e9804a9cfbdc8365",
+    "runtime_catalogue_sha256": "73fa1e76a6074c6e36030c81f36d7a6b72ecb516fce41f6ab1cf30026a3126b1",
+    "unit_tests": 12,
+    "unit_log_sha256": "9fbd079fc908e06178e9df0d78dafbb46fcf15ec375a0bf7a0806997c72e3de4",
+    "runtime_missing_notices": 0,
+    "build_only_without_original_text": [
+      "@next/swc-win32-x64-msvc@16.3.4",
+      "@rolldown/binding-win32-x64-msvc@1.2.5",
+      "server-only@0.0.1",
+      "stackback@0.0.2"
+    ],
+    "adapted_notice_renderings_verified": 3
+  },
+  "rebuilds": [
+    {
+      "plan": "ENTERPRISE_BACKEND_PACK_PLAN.md",
+      "exit_code": 0,
+      "destination": "Temp/elite-v402-library-infra\\portable-release\\rebuilds322\\enterprise_backend",
+      "files": 639,
+      "log_sha256": "7dfbc7a45ba8196c195b9c57aac557e745507db0a3f535695d3e15413d3e2c72",
+      "seconds": 4.28,
+      "exact": true,
+      "mismatches": []
+    },
+    {
+      "plan": "FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "exit_code": 0,
+      "destination": "Temp/elite-v402-library-infra\\portable-release\\frozen322",
+      "files": 1615,
+      "log_sha256": "6afe358d6faaa92eaae071eefae43347a3bbedfb7093a43b43b77c0b98c63ab1",
+      "seconds": 9.73,
+      "exact": true,
+      "mismatches": []
+    },
+    {
+      "plan": "FRANCHISE_SERVERLESS_PACK_PLAN.md",
+      "exit_code": 0,
+      "destination": "Temp/elite-v402-library-infra\\portable-release\\rebuilds322\\franchise_serverless",
+      "files": 960,
+      "log_sha256": "0ad8e0a9079426b7987519515aaadb07335908989fe4ad879a83956df3780568",
+      "seconds": 5.63,
+      "exact": true,
+      "mismatches": []
+    },
+    {
+      "plan": "HTTP_METRICS_REFERENCE_PACK_PLAN.md",
+      "exit_code": 0,
+      "destination": "Temp/elite-v402-library-infra\\portable-release\\rebuilds322\\http_metrics_reference",
+      "files": 1615,
+      "log_sha256": "2ef49e301980b9db4fa0aee28f72389d5350c63a8b59d598b6b8783cf688e668",
+      "seconds": 9.4,
+      "exact": true,
+      "mismatches": []
+    }
+  ],
+  "provenance": {
+    "ADAPTED": 164,
+    "AUTHORED": 2004,
+    "VERBATIM": 164
+  },
+  "source_recipe_sha256": "18b20c9a287eb5ad12217db27f58384812d2d36a7a74c8355390db94f9bdd47b",
+  "runtime_notice_lock_sha256": "7a830609937f34472e01f8f1de7fc3cd26a9177958984f89b64e5af60095d17a"
+}

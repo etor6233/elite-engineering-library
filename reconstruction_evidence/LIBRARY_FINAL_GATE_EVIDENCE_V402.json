@@ -1,0 +1,184 @@
+{
+  "schema": "elite-library-g0-g8-closure/v1",
+  "scope": "V402-source330-metadata331-local",
+  "source_files": 1653,
+  "production_authorized": false,
+  "limits": "Only selected configured local reference, not all standalone cores or proprietary vendor systems. AUTHORED is explicit DTO/configuration/SDK/SQL/host/UI/test/orchestration glue; substantive adapted owners and excluded claims remain as reviewed.",
+  "gates": {
+    "G0": {
+      "status": "PASS",
+      "meaning": "Identidad y procedencia",
+      "evidence": [
+        {
+          "path": "reconstruction_evidence/LIBRARY_REFERENCE_PROVENANCE_V402.json",
+          "sha256": "72419fd412bceeb21e8a73201d7f9fa98de0113582661f5577009db91d3c5156"
+        },
+        {
+          "path": "reconstruction_evidence/REFERENCE_NOTICE_METADATA_V402.json",
+          "sha256": "1d2c20c2839a1fe116940a51c0ca25b5cde08130f826b8b57ff37c87d232725b"
+        }
+      ],
+      "boundary": "Per-file mode/owner/version/SHA; fixed official source receipts; no corporate authorship inferred."
+    },
+    "G1": {
+      "status": "PASS",
+      "meaning": "Licencia y reutilización",
+      "evidence": [
+        {
+          "path": "reconstruction_evidence/REFERENCE_NOTICES_RELEASE_V402.json",
+          "sha256": "6de7c74badb80c6b1911bfae752d1cff28600bdf4e07abd375cd58078f96bd82"
+        },
+        {
+          "path": "reconstruction_evidence/REFERENCE_NOTICES_ADMISSION_V402.json",
+          "sha256": "899d1390bfcc9c4b52f0801b8c8445d169a40f3dcdf800b506cd9ed1f684fd9c"
+        },
+        {
+          "path": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.json",
+          "sha256": "88c2361c1b10ead7af3933fce2564eacd097515d4a5f45c278480ee2a2757a42"
+        }
+      ],
+      "boundary": "Actual Go/Node/.NET/runtime notice collectors invoked; NOASSERTION in generated SPDX is never treated as a license grant."
+    },
+    "G2": {
+      "status": "PASS",
+      "meaning": "Alineación con manuales",
+      "evidence": [
+        {
+          "path": "reconstruction_evidence/LIBRARY_ASSURANCE_BEFORE_FINAL_V402.json",
+          "sha256": "5db18a576677c271a4184771a9f6acccd29c8f9fd6ec33b4e4f738b57a878b4a"
+        },
+        {
+          "path": "PROJECT_AUTHORITY_MAP.md",
+          "sha256": "fe76e9d53e2f87fee7f381698ad4c04e900c1e7500738e9ea2a0309780df49ef"
+        }
+      ],
+      "boundary": "Existing narrow source-claim matrix and configured blueprint; no rule invention."
+    },
+    "G3": {
+      "status": "PASS",
+      "meaning": "Arquitectura observable",
+      "evidence": [
+        {
+          "path": "reconstruction_evidence/T2802_CONNECTED_CLOSURE_V402.md",
+          "sha256": "61f0aad2be78c44fb2a129534d2038cbf858abf83227d1981150738d2f6cbb56"
+        },
+        {
+          "path": "reconstruction_evidence/ARCA_CONNECTED_INFRA_V402.md",
+          "sha256": "1c8f16a6806c6d6da42e73f9d8f8b200d0f646b971356ea1ef8263aadbb2512d"
+        },
+        {
+          "path": "reconstruction_evidence/LIBRARY_EXACT_REFERENCE_V402.json",
+          "sha256": "1ed00fb0790ab68ccc501e5852c4f227021527dc8c706d7f56e282dce983dd92"
+        }
+      ],
+      "boundary": "Single connected composition and durable typed owners; generated source matches selected recipes."
+    },
+    "G4": {
+      "status": "PASS",
+      "meaning": "Correctitud",
+      "evidence": [
+        {
+          "path": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.json",
+          "sha256": "88c2361c1b10ead7af3933fce2564eacd097515d4a5f45c278480ee2a2757a42"
+        },
+        {
+          "path": "reconstruction_evidence/LIBRARY_T2802_CONTROL_RECEIPT_V402_331.json",
+          "sha256": "66f3fabf605d33e643b71fa9b8ac993aed5b4b579d86d7bb2a6bca3bae53c7a7"
+        },
+        {
+          "path": "reconstruction_evidence/LIBRARY_T2804_CONTROL_RECEIPT_V402_331.json",
+          "sha256": "b479f028ed86557be99e545cbeb9f0755a8e73e01796af93e2cbd6b11ce4e74f"
+        },
+        {
+          "path": "reconstruction_evidence/LIBRARY_T2805_CONTROL_RECEIPT_V402_331.json",
+          "sha256": "b52f165ede37c30e7d7a3c6296c5743a007e51273a72c60f81861208f4800527"
+        },
+        {
+          "path": "reconstruction_evidence/LIBRARY_T2806_CONTROL_RECEIPT_V402_331.json",
+          "sha256": "d3f913d71bfbfa3ebc902f15035aeb1bcfa4d23be98149f19908aecc3b6bb5aa"
+        },
+        {
+          "path": "reconstruction_evidence/LIBRARY_T2807_CONTROL_RECEIPT_V402_331.json",
+          "sha256": "4c55ecc2156331b1a66d3de5149ad20342f4535a9fc4dec91d319d56a360e1ed"
+        }
+      ],
+      "boundary": "Prior controlled test receipts carried by exact unchanged source/dependency deltas; new release/extraction/runtime paths actually exercised."
+    },
+    "G5": {
+      "status": "PASS",
+      "meaning": "Seguridad y privacidad",
+      "evidence": [
+        {
+          "path": "reconstruction_evidence/COMPOSITION_SECURITY_RELEASE_V402.json",
+          "sha256": "60eb8bd2d73a4fdc0e46fb1ac154c66ba52e96d4252feea9e5546b8a7a94a9a1"
+        },
+        {
+          "path": "reconstruction_evidence/SIGNED_EXTRACTION_COMPLETENESS_V402.json",
+          "sha256": "b90961719141f4d1054ad1baa98daa8dc01dea5651f16db69126f5ef0734b788"
+        },
+        {
+          "path": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.json",
+          "sha256": "88c2361c1b10ead7af3933fce2564eacd097515d4a5f45c278480ee2a2757a42"
+        }
+      ],
+      "boundary": "Identity/object/org boundaries, exact SCA0, reviewed security lint and adverse contracts; Daybreak branch excluded, no offensive or deployment security certification."
+    },
+    "G6": {
+      "status": "PASS",
+      "meaning": "Rendimiento y resiliencia",
+      "evidence": [
+        {
+          "path": "reconstruction_evidence/LOCAL_REFERENCE_OPERATIONS_V402.json",
+          "sha256": "2312cc47f371784e4763991c8720b49901ff937242ee1d90d45b7415bc427a0b"
+        },
+        {
+          "path": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.json",
+          "sha256": "88c2361c1b10ead7af3933fce2564eacd097515d4a5f45c278480ee2a2757a42"
+        }
+      ],
+      "boundary": "Finite local1000replay workload, bounded host and recovery; no permanent-service SLO or disk-retention ceiling claim."
+    },
+    "G7": {
+      "status": "PASS",
+      "meaning": "Operación y evolución",
+      "evidence": [
+        {
+          "path": "reconstruction_evidence/LOCAL_REFERENCE_DELIVERY_V402.json",
+          "sha256": "8a9a0ef6abd5444c88f66ccd64e926043e08793af8d3c1e1e88494ecca3d7f69"
+        },
+        {
+          "path": "reconstruction_evidence/LOCAL_REFERENCE_OPERATIONS_V402.json",
+          "sha256": "2312cc47f371784e4763991c8720b49901ff937242ee1d90d45b7415bc427a0b"
+        },
+        {
+          "path": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.json",
+          "sha256": "88c2361c1b10ead7af3933fce2564eacd097515d4a5f45c278480ee2a2757a42"
+        },
+        {
+          "path": "reconstruction_evidence/LIBRARY_FAIL_CONTAINMENT_V402.json",
+          "sha256": "6eb5c808bc9ca31b6aa27101f092d24471d8731371ade585020f8458d4005fe6"
+        }
+      ],
+      "boundary": "Immutable product ZIP, rollback/recovery/process stop and durable rebuild inputs; target HA/PITR/oncall remain candidate target operations."
+    },
+    "G8": {
+      "status": "PASS",
+      "meaning": "Conversión a reusable pack",
+      "evidence": [
+        {
+          "path": "reconstruction_evidence/LIBRARY_EXACT_REFERENCE_V402.json",
+          "sha256": "1ed00fb0790ab68ccc501e5852c4f227021527dc8c706d7f56e282dce983dd92"
+        },
+        {
+          "path": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.json",
+          "sha256": "88c2361c1b10ead7af3933fce2564eacd097515d4a5f45c278480ee2a2757a42"
+        },
+        {
+          "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+          "sha256": "4aaa1fb70a613dace854645c2d053097c6d8b3173cb8c2f6db80aedb9e04e672"
+        }
+      ],
+      "boundary": "Actual local reference materialized outside canonical root, complete contracts/fixtures, two actual builds and independently verified signature; future target acceptance separate."
+    }
+  }
+}

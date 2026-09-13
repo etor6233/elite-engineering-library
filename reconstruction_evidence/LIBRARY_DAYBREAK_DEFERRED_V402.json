@@ -1,0 +1,16 @@
+{
+  "schema": "elite-user-deferred-branch/v1",
+  "scope": "V402-source330-metadata331-local",
+  "id": "daybreak-libxml2",
+  "status": "ACCESS_BLOCKED",
+  "code_complete": false,
+  "production_authorized": false,
+  "basis": "Explicit user instruction; reported ChatGPT notice: This content can’t be shown. We take extra care with some cybersecurity requests.",
+  "actions_this_closure": [
+    "Preserve historical dossier and user-reported access boundary",
+    "Record reopening trigger only"
+  ],
+  "investigation_or_unblocking_performed": false,
+  "blocks_library_infrastructure": false,
+  "reopen_trigger": "New explicit user request for this exact branch plus permitted access; then revalidate official source/advisory/binary provenance and native tests. No current native security claim."
+}

@@ -139,3 +139,51 @@ V402 handover UI integration changes no upstream/dependency revisions. Existing 
 V402 factory delta changes no pinned upstream/dependency.10new files are local AUTHORED projection/UI/test glue over existing operations and query owners; no corporate source attribution or whole-domain admission. FACTORY_BROWSER_V402.md binds current proof.
 
 V402 current source binding: BCApps2eae56d704a1fd035d104f333602aea7091b7749 exact ExchangeExact/FindLast sources and MIT retained; RoundMinor locally authored exact representation. Meta Page SDK26.0.1 commit788f363d15b1269ab5efb7cd00fb5e3b133cd99b and existing18wheel lock unchanged. OIDC service broker uses existing go-oidc3.20.0/oauth2.36.0 and existing jose graph, with explicit exact license files. No new dependency version. COMMUNICATIONS_RUNTIME_V402.md binds manifests/normalization/composition; historical locks are not overwritten.
+
+V402 FX journal connection: no new upstream/version. Original BC source/notice/arithmetical outputs unchanged; journal SQL/HTTP/source binding are AUTHORED integration, not Microsoft code. Exact delta and rebuild hashes in reconstruction_evidence/FX_JOURNAL_CONNECTION_V402.json.
+
+V402: Odoo19.0 exact selected-file source commit99edb6dd82b7b560930c00b03b694ba700785370;24official files/443332bytes. Runtime/adaptation/source locks and VERBATIM license included in Python stored-value pack0.1.0. Source acquisition receipt7e581370505c7b28debdb8da31c61a1963d8a4eeae42930ddee3b2c358e658b5; engine7c0bfe5065d94eac389484b40fa3842b43504864655d475c4c053af0d9209e73. Exact outputs/evidence in STORED_VALUE_CONNECTED_RELEASE_V402.json. Go/SQL/TS glue is AUTHORED, not Odoo code.
+
+V402 warranty source: Microsoft BCApps2eae56d704a1fd035d104f333602aea7091b7749; full ServiceItemLine.Table.al SHA32b4fcf60b25d363d31ef6a1927b1f051eb4ef4ef48d9ca6b2ecc04844a854ff, CheckWarranty segment e46ec6bb958d2d3b946ef59a3833664dc2c8d13351dd6c876493a3980c5b95e0, MIT c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383. Predicate ADAPTED only, source/license VERBATIM, integration AUTHORED. Exact tree and receipts WARRANTY_CONNECTED_RELEASE_V402.json.
+
+V402 private locale: no external code/dependency delta. Official documentation snapshot URL/SHA receipts in PRIVATE_LOCALE_RELEASE_V402.json;20new files are AUTHORED local glue/translation/proof. Existing ADAPTED/VERBATIM/DEPENDENCY_PIN source locks remain authoritative.
+
+V402 marketplace HTTP-only source lock (no source code copied):
+- publish | https://developers.mercadolibre.com.ar/es_ar/publica-productos | SHA256 81afd38a0b2129bdbee94a94b7a4c5c70d8d655e0f30064d6c31681959b22237
+- updates | https://developers.mercadolibre.com.ar/es_ar/producto-sincroniza-modifica-publicaciones | SHA256 fd65167d83faf26d90e3b716dc59e97be9d8b651e2a8c355836046333d0b83c0
+- prices | https://developers.mercadolibre.com.ar/es_ar/api-de-precios | SHA256 a55b9cc9640770e3aaea3c4455e1bdb587fe8cdf22ba5b9af4c60fc535d7c764
+- stock | https://developers.mercadolibre.com.ar/en_us/distributed-stock | SHA256 ccc83823912518a919c48f02bb507e5a0eb44408f302d3fdaf51fe36848c9770
+- search | https://developers.mercadolibre.com.ar/items-y-busquedas | SHA256 8c469657bc8c01e210f51c132d19ac13e7d662fcc31ec41ad4082233975b4272
+- user-products | https://developers.mercadolibre.com.ar/es_ar/user-products | SHA256 465aba2731d7d7e4ac08cf368d881364c72a8aa90877421621666f2d8136d6b6
+- automation | https://developers.mercadolibre.com.ar/automatizaciones-de-precios | SHA256 59ae4836ea4eecb5fa632a2a9808a864960d6eeeab30685bbec6187f78381caa
+The local adapter/fixtures are AUTHORED; previous ADAPTED/VERBATIM pins and notices remain authoritative.
+
+V402304 official pictures HTTP contract: https://developers.mercadolibre.com.ar/es_ar/saldo-de-la-cuenta/trabajar-con-imagenes | SHA256 2e85a485a52fa1311b7e8aaa1391fb18df140dc16b880dd723b5705f43fbe695. Documentation reference only, no provider code copied. Existing seven sources retained in same lock.
+
+V402305 CONTENT reuses the eight exact official Mercado Libre HTTP documentation pins of304; no additional external acquisition. Current pack0.3.0 provenance and test hashes: reconstruction_evidence/MARKETPLACE_CONTENT_RELEASE_V402.json.
+
+V402306: Google SDK97d7b42cd74b41211f5ec8871cc0dd15debdb1a0 unchanged, wheel722ef095eca35126255c129964a61818f0d7bc9eeef7f1da12732d81c1dcd505. Three official docs and20exact wheels acquired; no unpinned dependency or source adopted. MERCHANT_CONNECTED_RELEASE_V402.md/json.
+
+V402307: Meta de70ee908a67026e642aaee3703d20464e2a9466 unchanged and packaged source verified during actual adapter/recovery tests. New files AUTHORED; no upstream authorship attribution. SCHEDULED_COMMUNICATIONS_RELEASE_V402.md/json.
+
+V402308: Meta de70ee908a67026e642aaee3703d20464e2a9466 and prior SDK/source pins unchanged. New16files AUTHORED; no company authorship attribution. CAMPAIGN_CONNECTED_RELEASE_V402.md/json.
+
+V402309: Existing OIDC/service-token Go and TypeScript dependency pins unchanged; proof binds go.mod/go.sum and exact SDK manifests without claiming manifest hash proves source-equivalent archive. IDENTITY_PORTAL_RELEASE_V402.md/json.
+
+V402310: Existing exact OIDC and domain SDK/source pins unchanged; local permission-routing and test fixtures AUTHORED. IDENTITY_J5_RELEASE_V402.md/json.
+
+V402311: PNPM local policySHA77956707bda8be688bbbf01b72b9182d255f882c70f99a47a68eb64204452b1d;475package catalogueSHA0398c1f427a933b021563b1d1f5da9feb380f58d16aa325e62732852c7252521. OfficialURLs/SRI/SHA in canonical local-tool-notices.json.6inactiveWASM identities; no native rebuild claim. PNPM_LOCAL_RUNTIME_V402.md/json.
+
+V402312: Go x/mod0.40/x/tools0.49 admitidos previamente; commit DevSkim a452aa506f80928b611c4c7bfe306b8115821aae y SharpCompress0.48 intactos. Mapa exacto1481file/provenance público. COMPOSITION_SECURITY_RELEASE_V402.md/json.
+
+V402313: AWS Textract1.45.0 SDK15modules fijados por go.sum; Azure fixture commit8555d14532a9688b751d8408d822d1dd5feb47f6 SHA489f0c63... y MIT exacto. Originales/notices vinculados al mapa público. DOCUMENT_REFERENCE_RELEASE_V402.md/json.
+
+V402315: Sin fuente/dependencia nueva. Histórico opt-in conserva pins y nueve hashes de código iguales al job V373 audit-final; H​​ISTORY_EXECUTION_CORRESPONDENCE_V402.json contiene trazabilidad exacta. AI_CONNECTED_REFERENCE_RELEASE_V402.md/json.
+
+V402316: No adquisición/versión nueva; Node/Go/pnpm/Next y Windows supervisor conservan pins. SOURCE y generated metadata separados. Local_reference build-authority y provenance preservan hashes de los contratos oficiales consumidos. LOCAL_REFERENCE_DELIVERY_V402.md/json.
+
+V402317: OTel contrib c8a87a60ba1b3374fd16df11fc3eeae6c41abbc9, Go93a693edeed0e07ce5ebd1dfe67af42d1e2055d8; ZIP/checksum/notices exactos heredados y78módulos actuales consultados. Prometheus/Collector binarios exactos V372, triage de grafo externo conservado sin claim cero global. LOCAL_REFERENCE_OPERATIONS_V402.md/json.
+
+V402319: PostHog/posthog released commit6fafbb9081bd15e79448af5650e02a4f9ea435cc; utils.ts a43ed06c7eaffbe5bde3fe515177e512ebc4e6bce24dbef253ed100cbb1a08c1, utils.test.ts7b3b24fe2d6d4525113657629991e0d0056b2c8fcf91e6bd2a906b1c280bd565, LICENSE6d82d67dba42eb94ba10f1e986d2eec338c22fb7c5216c2c0ebdecd83d53a029. Verified Git blobs and SHA; no branch dependency. NPS_SOURCE_ADAPTATION_V402.md/json.
+
+V402322 exact reference notice supplements: Next commit299180d3315c7ebd7b199d2b1a265b5986c5fc7d and source licenseee765244e2d59f5234d474f62e0766fa0c8b99af967fdd4c0cb8dcb0c76ea224; source manifests/tasks and exact npm SHA512 text quarantine retained.16VERBATIM legal/README/manifest files;3declared notice adaptations, no code source substitution. Materialized licenses/reference/SOURCE_NOTICES.json andruntime-notice-lock.json bind all selected bytes. REFERENCE_NOTICES_ADMISSION_V402.json.

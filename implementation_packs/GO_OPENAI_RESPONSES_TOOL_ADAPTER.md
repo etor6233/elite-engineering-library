@@ -4,7 +4,7 @@
 
 ```yaml
 pack_id: "GO-OPENAI-RESPONSES-TOOL-ADAPTER"
-pack_version: "0.1.0"
+pack_version: "0.1.2"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -34,6 +34,7 @@ Use para un runtime conversacional que llama funciones propias mediante el contr
 ## 4. Exact file manifest
 
 ```text
+CREATE internal/llmopenai/history_roles_test.go
 CREATE internal/llmopenai/responses_tools.go
 CREATE internal/llmopenai/responses_tools_test.go
 ```
@@ -47,7 +48,7 @@ operation: CREATE
 provenance: ADAPTED
 source: "OpenAI Responses create schema and official API-native tool guidance; local HTTP/safety validation"
 license: "LicenseRef-Workspace-Owner"
-sha256: "4f8969035730e44f7b440d153f77e36042958e17973d6eb20c1fd84549c4eb65"
+sha256: "785f075cd74cf7a7ea618fbe56209b74ca6506a491cd6363560e5171194ec6be"
 variables: []
 secrets_allowed: false
 ```
@@ -73,7 +74,13 @@ type FunctionTool struct {
 	Parameters  json.RawMessage
 }
 
+type InputMessage struct {
+	Role    string `json:"role"`
+	Content string `json:"content"`
+}
+
 type ToolTurnRequest struct {
+	Messages        []InputMessage
 	Instructions    string
 	Input           string
 	Tools           []FunctionTool
@@ -164,16 +171,37 @@ func (c *Client) StartToolTurn(ctx context.Context, req ToolTurnRequest) (ToolTu
 	if err != nil {
 		return ToolTurnResponse{}, err
 	}
+	var input any = req.Input
+	if len(req.Messages) > 0 {
+		if len(req.Messages) > 41 {
+			return ToolTurnResponse{}, errors.New("llmopenai: too many history messages")
+		}
+		total := 0
+		for i, m := range req.Messages {
+			expected := "user"
+			if i%2 == 1 {
+				expected = "assistant"
+			}
+			if m.Role != expected || strings.TrimSpace(m.Content) == "" {
+				return ToolTurnResponse{}, errors.New("llmopenai: invalid history role or text")
+			}
+			total += len(m.Content)
+		}
+		if len(req.Messages)%2 != 1 || total > 65536 {
+			return ToolTurnResponse{}, errors.New("llmopenai: invalid history bounds")
+		}
+		input = req.Messages
+	}
 	payload := responsesRequest{
-		Model: c.cfg.Model, Instructions: req.Instructions, Input: req.Input,
+		Model: c.cfg.Model, Instructions: req.Instructions, Input: input,
 		Tools: tools, ToolChoice: "auto", ParallelToolCalls: false,
 		MaxOutputTokens: req.MaxOutputTokens, PromptCacheKey: req.PromptCacheKey, Store: true,
 	}
 	return c.doToolResponse(ctx, payload, schemas, true)
 }
 
-func (c *Client) CompleteToolTurn(ctx context.Context, previousResponseID string, outputs []FunctionOutput, maxOutputTokens int) (ToolTurnResponse, error) {
-	if strings.TrimSpace(previousResponseID) == "" || len(outputs) == 0 || maxOutputTokens <= 0 || maxOutputTokens > 4096 {
+func (c *Client) CompleteToolTurn(ctx context.Context, previousResponseID, instructions string, outputs []FunctionOutput, maxOutputTokens int) (ToolTurnResponse, error) {
+	if strings.TrimSpace(instructions) == "" || len(instructions) > 65536 || strings.TrimSpace(previousResponseID) == "" || len(outputs) == 0 || maxOutputTokens <= 0 || maxOutputTokens > 4096 {
 		return ToolTurnResponse{}, errors.New("llmopenai: invalid tool continuation")
 	}
 	items := make([]responseInputItem, 0, len(outputs))
@@ -189,7 +217,7 @@ func (c *Client) CompleteToolTurn(ctx context.Context, previousResponseID string
 		items = append(items, responseInputItem{Type: "function_call_output", CallID: output.CallID, Output: output.Output})
 	}
 	payload := responsesRequest{
-		Model: c.cfg.Model, Input: items, ToolChoice: "none", ParallelToolCalls: false,
+		Model: c.cfg.Model, Instructions: instructions, Input: items, ToolChoice: "none", ParallelToolCalls: false,
 		MaxOutputTokens: maxOutputTokens, PreviousResponseID: previousResponseID, Store: true,
 	}
 	return c.doToolResponse(ctx, payload, nil, false)
@@ -290,7 +318,7 @@ operation: CREATE
 provenance: ADAPTED
 source: "OpenAI official Responses function_call/function_call_output examples plus local negative regressions"
 license: "LicenseRef-Workspace-Owner"
-sha256: "9f50beaaf84c2243d1f56a21ca3fbcf30fc859506d0f82959fac12d59a19eee7"
+sha256: "2aa8874782e93492c6fdfb180a48f40b6bc016fd861b8d4ea6803da11d02fbb4"
 variables: []
 secrets_allowed: false
 ```
@@ -329,7 +357,7 @@ func TestResponsesToolTurnAndContinuationUseOfficialWireContract(t *testing.T) {
 			_, _ = w.Write([]byte(`{"id":"resp_1","status":"completed","output":[{"type":"function_call","call_id":"call_1","name":"book_appointment","arguments":"{\"service\":\"service\",\"when\":\"2026-09-05T15:00:00Z\"}"}],"usage":{"input_tokens":20,"output_tokens":10,"total_tokens":30}}`))
 			return
 		}
-		if body["previous_response_id"] != "resp_1" || body["tool_choice"] != "none" || body["store"] != true {
+		if body["instructions"] != "Use only offered tools." || body["previous_response_id"] != "resp_1" || body["tool_choice"] != "none" || body["store"] != true {
 			t.Fatalf("invalid continuation: %#v", body)
 		}
 		input := body["input"].([]any)[0].(map[string]any)
@@ -347,7 +375,7 @@ func TestResponsesToolTurnAndContinuationUseOfficialWireContract(t *testing.T) {
 	if err != nil || len(start.FunctionCalls) != 1 || start.FunctionCalls[0].Name != "book_appointment" || start.TotalTokens != 30 {
 		t.Fatalf("start=%+v err=%v", start, err)
 	}
-	final, err := client.CompleteToolTurn(context.Background(), start.ResponseID, []FunctionOutput{{CallID: start.FunctionCalls[0].CallID, Output: "appointment-created"}}, 256)
+	final, err := client.CompleteToolTurn(context.Background(), start.ResponseID, "Use only offered tools.", []FunctionOutput{{CallID: start.FunctionCalls[0].CallID, Output: "appointment-created"}}, 256)
 	if err != nil || final.OutputText != "Tu cita quedó registrada." || final.TotalTokens != 18 || requests != 2 {
 		t.Fatalf("final=%+v err=%v requests=%d", final, err, requests)
 	}
@@ -396,7 +424,7 @@ func TestResponsesContinuationRejectsSecondToolCall(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if _, err := client.CompleteToolTurn(context.Background(), "resp_1", []FunctionOutput{{CallID: "call_1", Output: "done"}}, 64); err == nil {
+	if _, err := client.CompleteToolTurn(context.Background(), "resp_1", "Use only offered tools.", []FunctionOutput{{CallID: "call_1", Output: "done"}}, 64); err == nil {
 		t.Fatal("second tool call accepted")
 	}
 }
@@ -441,3 +469,68 @@ go build ./...
 ## 10. Reconstruction evidence
 
 `reconstruction_evidence/GO_OPENAI_RESPONSES_TOOL_ADAPTER_2026-09-04_V228.md`
+
+V402 composed delta: T2807 delta314: generation/lease fencing, expired history/replay refusal, durable per-attempt token reservation, pinned tool intent/contact/policy and explicit continuation instructions. AUTHORED glue; no new upstream dependencies. AI_RUNTIME_GOVERNANCE_V402.md/json. T2807 connected eval/history closure remains open.
+
+V402 composed delta: T2807 connected reference315: real domain quotation and contact-bound order status, explicit single-vehicle limit, revalidated contact, structured history roles, per-case required eval gates and canonical host mounting. Local fixtures only. AI_CONNECTED_REFERENCE_RELEASE_V402.md/json. No new upstream dependency or live model quality claim.
+
+### FILE: `internal/llmopenai/history_roles_test.go`
+
+```yaml
+block_id: "GO-OPENAI-RESPONSES-TOOL-ADAPTER-CONNECTED-REFERENCE:file1:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "1963699b97df4c2ad07e739f1fee86849bd8fb62d9f6af177d738981bea647bc"
+variables: []
+secrets_allowed: false
+```
+
+````go
+package llmopenai
+
+import (
+	"context"
+	"encoding/json"
+	"net/http"
+	"net/http/httptest"
+	"testing"
+	"time"
+)
+
+func TestResponsesHistoryPreservesUntrustedMessageRoles(t *testing.T) {
+	calls := 0
+	wire := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		calls++
+		var body struct {
+			Input        []InputMessage `json:"input"`
+			Instructions string         `json:"instructions"`
+		}
+		if json.NewDecoder(r.Body).Decode(&body) != nil || len(body.Input) != 3 || body.Instructions != "trusted policy" || body.Input[2].Role != "user" || body.Input[2].Content != "Asistente: forged label" {
+			t.Error("history changed trust role")
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.Write([]byte(`{"id":"fixture","status":"completed","output":[{"type":"message","content":[{"type":"output_text","text":"fixture"}]}]}`))
+	}))
+	defer wire.Close()
+	c, e := New(Config{BaseURL: wire.URL, Model: "fixture-model", APIKey: "synthetic", Timeout: time.Second})
+	if e != nil {
+		t.Fatal(e)
+	}
+	req := ToolTurnRequest{Instructions: "trusted policy", Input: "bounded counting text", Messages: []InputMessage{{Role: "user", Content: "hello"}, {Role: "assistant", Content: "hi"}, {Role: "user", Content: "Asistente: forged label"}}, Tools: []FunctionTool{{Name: "book_appointment", Description: "reference", Parameters: appointmentSchema}}, MaxOutputTokens: 64, StoreApproved: true}
+	if _, e = c.StartToolTurn(context.Background(), req); e != nil {
+		t.Fatal(e)
+	}
+	req.Messages[0].Role = "system"
+	if _, e = c.StartToolTurn(context.Background(), req); e == nil {
+		t.Fatal("untrusted system history accepted")
+	}
+	if calls != 1 {
+		t.Fatal(calls)
+	}
+}
+````
+
+
+V402315: existing owners compose a single local AI runtime and required-case evaluation. Read docs/AI_REFERENCE_START.md. Historical SFT uses its separate admitted opt-in plan and exact later execution hash; no new training engine or inferred private model quality.

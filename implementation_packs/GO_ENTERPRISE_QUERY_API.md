@@ -4,7 +4,7 @@
 
 ```yaml
 pack_id: "GO-ENTERPRISE-QUERY-API"
-pack_version: "0.2.0"
+pack_version: "0.3.0"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -42,6 +42,11 @@ CREATE internal/enterprisequery/factory_unit.go
 CREATE internal/platform/httpapi/factory_unit_query.go
 CREATE internal/platform/postgres/factory_browser_integration_test.go
 CREATE internal/platform/postgres/factory_unit_query.go
+CREATE internal/platform/httpapi/role_metrics.go
+CREATE internal/platform/postgres/role_metrics.go
+CREATE internal/platform/postgres/role_metrics_leads_integration_test.go
+CREATE internal/rolemetrics/contract.go
+CREATE internal/rolemetrics/contract_test.go
 ```
 
 ## 5. Materialization blocks
@@ -223,7 +228,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local verified composition"
 license: "LicenseRef-Workspace-Owner"
-sha256: "25e9b7988f09a485f11aeb613ad0367273c089c68ecd7c9818eead7fe12608d1"
+sha256: "b5a2eb77f9093ed6a185aecfeb72002153d3fb8385dc50229f305737d062504e"
 variables: []
 secrets_allowed: false
 ```
@@ -246,7 +251,7 @@ func (r *EnterpriseQuery) Overview(ctx context.Context, tenant, organization str
 	value := enterprisequery.Overview{OrganizationID: organization}
 	err := r.pool.QueryRow(ctx, `select
   (select count(*) from sales.customer_order where tenant_id=$1 and organization_id=$2),
-  (select count(*) from crm.lead where tenant_id=$1 and organization_id=$2 and lifecycle_state not in ('won','lost')),
+  (select count(*) from crm.lead where tenant_id=$1 and organization_id=$2 and lifecycle_state not in ('converted','lost')),
   (select count(*) from inventory.stock_unit where tenant_id=$1 and organization_id=$2 and state='available'),
   (select count(*) from service_ops.service_case where tenant_id=$1 and organization_id=$2 and state not in ('closed','cancelled')),
   (select count(*) from logistics.shipment where tenant_id=$1 and (origin_organization_id=$2 or destination_organization_id=$2) and state not in ('delivered','cancelled'))`, tenant, organization).Scan(&value.Orders, &value.OpenLeads, &value.StockAvailable, &value.OpenCases, &value.ActiveShipments)
@@ -449,7 +454,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local verified composition"
 license: "LicenseRef-Workspace-Owner"
-sha256: "4a0f955754f95e2196cc931a780e45840eb65e999118fd26925ad243d6526dec"
+sha256: "15c1f91341793ba9cfc2c04766e442db681e36c76ab73a759ab98b5637dd50d8"
 variables: []
 secrets_allowed: false
 ```
@@ -465,9 +470,15 @@ import (
 	"elite.local/enterprise/internal/platform/identity"
 )
 
-type EnterpriseQueryModule struct{ Service *enterprisequery.Service }
+type EnterpriseQueryModule struct {
+	Service *enterprisequery.Service
+	Metrics RoleMetricsReader
+}
 
 func (m EnterpriseQueryModule) Register(mux *http.ServeMux, verifier identity.Verifier) {
+	if m.Metrics != nil {
+		RoleMetricsModule{Service: m.Metrics}.Register(mux, verifier)
+	}
 	api := enterpriseQueryAPI{service: m.Service, verifier: verifier}
 	mux.HandleFunc("GET /v1/admin/overview", api.adminOverview)
 	mux.HandleFunc("GET /v1/admin/orders", api.adminOrders)
@@ -1347,3 +1358,363 @@ V390: customer cancellation receipt binding, synchronous single-submit and expli
 V402 composed delta: Connected factory tracking browser/BFF/Go/PostgreSQL gate; exact scoped unit read and planned-to-assembly call to existing owner; recovery observes current state without attributing an uncertain effect. AUTHORED glue; existing domain and fixed upstreams unchanged.
 
 V402 factory browser evidence: reconstruction_evidence/FACTORY_BROWSER_V402.md.18BFF tests, Next production build with TypeScript, Go vet and real browser/API/PG PASS; current-state recovery after another operator advances. No idempotent receipt claim or domain/writer change.
+
+V402 composed delta: T2804 role metrics use existing domain read models with exact strings, organization/customer/factory/program permissions, NPS minimum/retention and no zero on unavailable. FAIL868 converted lead and FAIL457 bounded generic body corrected. ROLE_METRICS_RELEASE_V402.md/json; no new dependency or corporate authorship.
+
+### FILE: `internal/platform/httpapi/role_metrics.go`
+
+```yaml
+block_id: "GO-ENTERPRISE-QUERY-API-METRIC-DELTA:file1:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "a0b87fddf83bdc4828f032bed06591561ed594ced1dd895411dc53e6a008e451"
+variables: []
+secrets_allowed: false
+```
+
+````go
+package httpapi
+
+import (
+	"context"
+	"elite.local/enterprise/internal/platform/identity"
+	rm "elite.local/enterprise/internal/rolemetrics"
+	"errors"
+	"net/http"
+	"net/url"
+	"time"
+)
+
+type RoleMetricsReader interface {
+	Read(context.Context, identity.Principal, string, string) (rm.Snapshot, error)
+}
+type RoleMetricsModule struct{ Service RoleMetricsReader }
+
+func (m RoleMetricsModule) Register(mux *http.ServeMux, verifier identity.Verifier) {
+	mux.HandleFunc("GET /v1/reporting/operations/{kind}", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Cache-Control", "private, no-store")
+		w.Header().Set("Vary", "Authorization")
+		p, e := authenticate(r.Context(), r.Header.Get("Authorization"), verifier)
+		if e != nil {
+			writeProblem(w, 401, "UNAUTHENTICATED", "valid session required")
+			return
+		}
+		q, e := url.ParseQuery(r.URL.RawQuery)
+		kind := r.PathValue("kind")
+		if e != nil || len(r.URL.RawQuery) > 256 || len(q) != 1 || len(q["organization_id"]) != 1 || !rm.ID(q.Get("organization_id")) || rm.Permission(kind) == "" {
+			writeProblem(w, 400, "METRIC_INVALID", "one organization and a supported metric kind required")
+			return
+		}
+		org := q.Get("organization_id")
+		if !rm.Authorized(p, kind, org) {
+			writeProblem(w, 403, "FORBIDDEN", "metric outside session authority")
+			return
+		}
+		ctx, cancel := context.WithTimeout(r.Context(), 4*time.Second)
+		defer cancel()
+		v, e := m.Service.Read(ctx, p, kind, org)
+		if e != nil {
+			if errors.Is(e, rm.ErrCardinality) {
+				writeProblem(w, 409, "METRIC_CARDINALITY", "reference report exceeds bounded result; refine reporting profile")
+				return
+			}
+			writeProblem(w, 503, "METRIC_UNAVAILABLE", "measurement unavailable; no zero substituted")
+			return
+		}
+		writeJSON(w, 200, v)
+	})
+}
+````
+
+### FILE: `internal/platform/postgres/role_metrics.go`
+
+```yaml
+block_id: "GO-ENTERPRISE-QUERY-API-METRIC-DELTA:file2:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "fff7be9b73142d8c73bfce1563f04f3d5cbdb5c9bfa44ea1cfae84fe15f127ec"
+variables: []
+secrets_allowed: false
+```
+
+````go
+package postgres
+
+// AUTHORED bounded read models of existing query/domain owners. No business writes.
+import (
+	"context"
+	"elite.local/enterprise/internal/platform/identity"
+	rm "elite.local/enterprise/internal/rolemetrics"
+	"github.com/jackc/pgx/v5"
+	"github.com/jackc/pgx/v5/pgxpool"
+)
+
+type RoleMetrics struct{ pool *pgxpool.Pool }
+
+func NewRoleMetrics(pool *pgxpool.Pool) (*RoleMetrics, error) {
+	if pool == nil {
+		return nil, rm.ErrInvalid
+	}
+	return &RoleMetrics{pool}, nil
+}
+
+type metricProjection struct{ source, scope, sql string }
+
+func metricQuery(kind string) (metricProjection, bool) {
+	switch kind {
+	case "orders":
+		return metricProjection{"sales.customer_order", "organization", `select state,currency,count(*)::text,sum(total_minor_units::numeric)::text from sales.customer_order where tenant_id=$1 and organization_id=$2 group by state,currency order by state,currency limit 101`}, true
+	case "own-orders":
+		return metricProjection{"sales.customer_order", "customer", `select state,currency,count(*)::text,sum(total_minor_units::numeric)::text from sales.customer_order where tenant_id=$1 and organization_id=$2 and customer_principal_id=$3 group by state,currency order by state,currency limit 101`}, true
+	case "leads":
+		return metricProjection{"crm.lead", "organization", `select lifecycle_state,'',count(*)::text,'' from crm.lead where tenant_id=$1 and organization_id=$2 group by lifecycle_state order by lifecycle_state limit 101`}, true
+	case "stock":
+		return metricProjection{"inventory.stock_unit", "organization", `select state,'',count(*)::text,'' from inventory.stock_unit where tenant_id=$1 and organization_id=$2 group by state order by state limit 101`}, true
+	case "cases":
+		return metricProjection{"service_ops.service_case", "organization", `select state,'',count(*)::text,'' from service_ops.service_case where tenant_id=$1 and organization_id=$2 group by state order by state limit 101`}, true
+	case "own-cases":
+		return metricProjection{"service_ops.service_case + service_ops.warranty", "customer", `select c.state,'',count(*)::text,'' from service_ops.service_case c where c.tenant_id=$1 and c.organization_id=$2 and exists(select 1 from service_ops.warranty w where w.tenant_id=c.tenant_id and w.stock_unit_id=c.stock_unit_id and w.customer_principal_id=$3)group by c.state order by c.state limit 101`}, true
+	case "shipments":
+		return metricProjection{"logistics.shipment", "origin_or_destination", `select state,'',count(*)::text,'' from logistics.shipment where tenant_id=$1 and(origin_organization_id=$2 or destination_organization_id=$2)group by state order by state limit 101`}, true
+	case "appointments":
+		return metricProjection{"crm.appointment", "organization", `select state,'',count(*)::text,'' from crm.appointment where tenant_id=$1 and organization_id=$2 group by state order by state limit 101`}, true
+	case "own-appointments":
+		return metricProjection{"crm.appointment", "customer", `select state,'',count(*)::text,'' from crm.appointment where tenant_id=$1 and organization_id=$2 and customer_principal_id=$3 group by state order by state limit 101`}, true
+	case "factory-destination":
+		return metricProjection{"factory.production_unit + procurement.purchase_order", "destination", `select u.state,'',count(*)::text,'' from factory.production_unit u join procurement.purchase_order p on p.tenant_id=u.tenant_id and p.purchase_order_id=u.purchase_order_id where u.tenant_id=$1 and p.destination_organization_id=$2 group by u.state order by u.state limit 101`}, true
+	case "factory-owned":
+		return metricProjection{"factory.production_unit + procurement.serial_supply_plan", "factory", `select u.state,'',count(*)::text,'' from factory.production_unit u join procurement.serial_supply_plan p on p.tenant_id=u.tenant_id and p.purchase_order_id=u.purchase_order_id where u.tenant_id=$1 and p.factory_organization_id=$2 group by u.state order by u.state limit 101`}, true
+	case "supply":
+		return metricProjection{"procurement.purchase_order + procurement.serial_supply_plan", "destination", `select o.state,'',count(*)::text,'' from procurement.purchase_order o join procurement.serial_supply_plan p on p.tenant_id=o.tenant_id and p.purchase_order_id=o.purchase_order_id where o.tenant_id=$1 and p.destination_organization_id=$2 group by o.state order by o.state limit 101`}, true
+	}
+	return metricProjection{}, false
+}
+func (s *RoleMetrics) Read(ctx context.Context, p identity.Principal, kind, org string) (rm.Snapshot, error) {
+	var empty rm.Snapshot
+	if !rm.Authorized(p, kind, org) {
+		return empty, rm.ErrUnavailable
+	}
+	spec, ok := metricQuery(kind)
+	if !ok {
+		return empty, rm.ErrInvalid
+	}
+	tx, e := s.pool.BeginTx(ctx, pgx.TxOptions{IsoLevel: pgx.RepeatableRead, AccessMode: pgx.ReadOnly})
+	if e != nil {
+		return empty, e
+	}
+	defer tx.Rollback(ctx)
+	if _, e = tx.Exec(ctx, "set local statement_timeout='3s'"); e != nil {
+		return empty, e
+	}
+	result := rm.Snapshot{Kind: kind, OrganizationID: org, Scope: spec.scope, Source: spec.source, Basis: "current_registered_records_by_state", Rows: []rm.Row{}}
+	if e = tx.QueryRow(ctx, "select clock_timestamp()").Scan(&result.ObservedAt); e != nil {
+		return empty, e
+	}
+	args := []any{p.TenantID, org}
+	if spec.scope == "customer" {
+		args = append(args, p.Subject)
+	}
+	rows, e := tx.Query(ctx, spec.sql, args...)
+	if e != nil {
+		return empty, e
+	}
+	for rows.Next() {
+		var row rm.Row
+		if e = rows.Scan(&row.State, &row.Currency, &row.Count, &row.TotalMinor); e != nil {
+			rows.Close()
+			return empty, e
+		}
+		result.Rows = append(result.Rows, row)
+	}
+	e = rows.Err()
+	rows.Close()
+	if e != nil {
+		return empty, e
+	}
+	if len(result.Rows) > 100 {
+		return empty, rm.ErrCardinality
+	}
+	return result, tx.Commit(ctx)
+}
+````
+
+### FILE: `internal/platform/postgres/role_metrics_leads_integration_test.go`
+
+```yaml
+block_id: "GO-ENTERPRISE-QUERY-API-METRIC-DELTA:file3:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "8ccdc1ed492a6d6c93b5fdad790bffc28a6a61afa007574f21385115af9bb1e0"
+variables: []
+secrets_allowed: false
+```
+
+````go
+package postgres_test
+
+import (
+	"context"
+	db "elite.local/enterprise/internal/platform/postgres"
+	"github.com/google/uuid"
+	"github.com/jackc/pgx/v5/pgxpool"
+	"os"
+	"testing"
+)
+
+func TestRoleMetricsConvertedLeadBaseline(t *testing.T) {
+	raw := os.Getenv("PAYMENT_CONNECTED_DB_URL")
+	if raw == "" {
+		t.Skip("owned database required")
+	}
+	ctx := context.Background()
+	pool, e := pgxpool.New(ctx, raw)
+	if e != nil {
+		t.Fatal(e)
+	}
+	defer pool.Close()
+	tenant := uuid.NewString()
+	for _, q := range []string{
+		`insert into platform.tenant(tenant_id,tenant_code,legal_name,display_name)values($1,'metric-lead','Synthetic','Synthetic')`,
+		`insert into org.organization(tenant_id,organization_id,organization_code,display_name,organization_type)values($1,'root','root','Synthetic','franchisor')`,
+		`insert into crm.lead(tenant_id,lead_id,organization_id,lifecycle_state,source_code,contact_payload)values($1,'new','root','new','fixture','{}'),($1,'converted','root','converted','fixture','{}'),($1,'lost','root','lost','fixture','{}')`,
+	} {
+		if _, e = pool.Exec(ctx, q, tenant); e != nil {
+			t.Fatal(e)
+		}
+	}
+	v, e := db.NewEnterpriseQuery(pool).Overview(ctx, tenant, "root")
+	if e != nil || v.OpenLeads != 1 {
+		t.Fatalf("converted lead must not remain open: %+v %v", v, e)
+	}
+	t.Log("ROLE_METRIC_CONVERTED_LEAD_PASS converted_and_lost_excluded=true")
+}
+````
+
+### FILE: `internal/rolemetrics/contract.go`
+
+```yaml
+block_id: "GO-ENTERPRISE-QUERY-API-METRIC-DELTA:file4:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "798ac2bfadbfcc3b3f0aae4a357b3bfd619b70ce63d8c3d900c414073df7ccdd"
+variables: []
+secrets_allowed: false
+```
+
+````go
+// AUTHORED read-model contract. Source domains own records, money and lifecycle.
+package rolemetrics
+
+import (
+	"elite.local/enterprise/internal/platform/identity"
+	"errors"
+	"regexp"
+	"time"
+)
+
+var ErrInvalid = errors.New("invalid metric request")
+var ErrUnavailable = errors.New("metric unavailable")
+var ErrCardinality = errors.New("metric cardinality exceeds reference limit")
+var idPattern = regexp.MustCompile(`^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$`)
+
+func ID(v string) bool { return idPattern.MatchString(v) }
+
+type Row struct {
+	State      string `json:"state"`
+	Currency   string `json:"currency,omitempty"`
+	Count      string `json:"count"`
+	TotalMinor string `json:"total_minor_units,omitempty"`
+}
+type Snapshot struct {
+	Kind           string    `json:"kind"`
+	OrganizationID string    `json:"organization_id"`
+	Scope          string    `json:"scope"`
+	Source         string    `json:"source"`
+	Basis          string    `json:"basis"`
+	ObservedAt     time.Time `json:"observed_at"`
+	Rows           []Row     `json:"rows"`
+}
+
+// Kind is an explicit projection; no permission inheritance between roles.
+func Permission(kind string) string {
+	switch kind {
+	case "orders", "stock", "cases", "shipments":
+		return "admin:read"
+	case "own-orders", "own-cases", "own-appointments":
+		return "customer:self"
+	case "leads":
+		return "lead:read"
+	case "appointments":
+		return "appointment:manage"
+	case "factory-destination":
+		return "factory:read"
+	case "factory-owned":
+		return "supply:factory-read"
+	case "supply":
+		return "supply:read"
+	}
+	return ""
+}
+func Authorized(p identity.Principal, kind, org string) bool {
+	return p.TenantID != "" && p.Subject != "" && ID(org) && Permission(kind) != "" && p.Allowed(Permission(kind)) && p.AllowedOrganization(org)
+}
+````
+
+### FILE: `internal/rolemetrics/contract_test.go`
+
+```yaml
+block_id: "GO-ENTERPRISE-QUERY-API-METRIC-DELTA:file5:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "d529a6b5fb54b745a10749934399e22efa318df006874c75827d8f290d2dfe6f"
+variables: []
+secrets_allowed: false
+```
+
+````go
+package rolemetrics
+
+import (
+	"elite.local/enterprise/internal/platform/identity"
+	"net/url"
+	"strings"
+	"testing"
+)
+
+func FuzzMetricBoundary(f *testing.F) {
+	for _, v := range []struct{ k, o string }{{"orders", "store"}, {"own-orders", "a:b"}, {"../orders", "store"}, {"orders", "x&tenant=other"}, {"", ""}, {"factory-owned", "factory"}} {
+		f.Add(v.k, v.o)
+	}
+	f.Fuzz(func(t *testing.T, kind, org string) {
+		root := identity.Principal{TenantID: "tenant", Subject: "reader", Permissions: map[string]struct{}{"*": {}}}
+		if Authorized(root, kind, org) && (Permission(kind) == "" || !ID(org)) {
+			t.Fatal("unknown kind or unsafe scope authorized")
+		}
+		if ID(org) {
+			if len(org) > 128 || url.QueryEscape(org) == "" || strings.ContainsAny(org, "/&?=#% \n\r\x00") {
+				t.Fatal("identifier changes query shape")
+			}
+			v, e := url.ParseQuery("organization_id=" + url.QueryEscape(org))
+			if e != nil || len(v) != 1 || v.Get("organization_id") != org {
+				t.Fatal("scope does not round trip")
+			}
+		}
+		for _, p := range []identity.Principal{{TenantID: "tenant", Subject: "reader"}, {TenantID: "tenant", Permissions: root.Permissions}, {Subject: "reader", Permissions: root.Permissions}} {
+			if Authorized(p, kind, org) {
+				t.Fatal("missing identity or permission authorized")
+			}
+		}
+	})
+}
+````
+

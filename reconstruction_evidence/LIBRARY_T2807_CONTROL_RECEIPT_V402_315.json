@@ -1,0 +1,49 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2807",
+  "outcome": "PASS",
+  "command": "Materialized verify_ai_reference.py;11required PG/HTTP domain evaluations,original WA2carryforward,host;history21rebuild/27policy/executed code_sha;3exact compositions",
+  "exit_code": 0,
+  "assertions": [
+    "Same selected host assembles runtime, current contact resolver, durable budget/turn/intent and scoped domain",
+    "Real quotation persisted once across restart and uncertain model response; one-vehicle contract enforced",
+    "Order status tied to resolved tenant/organization/lead customer; foreign and revoked contact denied",
+    "Structured user/assistant history and explicit continuation instructions; model outputs never own authorization",
+    "Closed offered tools, duplicate args/unoffered tools/input injection refusal, durable human handoff",
+    "All11required fixture cases PASS; no SKIP or live model quality claim; required cases cannot hide behind averages",
+    "Eval cancellation, NaN/nil/duplicate IDs checked",
+    "Existing WhatsApp human approval/outbound/reconciliation/lost-response tests PASS with current migration0086",
+    "Historical optional21-file profile reconstructed,27policy PASS,9executed code hashes match successful V373 audit job intent/profile",
+    "NEW no import/training; EXISTING explicit private/source/purpose/storage/lineage/splits/job/eval/owner promotion/rollback; no RAG substitution",
+    "Historical actual SFT/eval/13negatives/timeout/tree-empty proof retained without retraining unchanged code",
+    "Three exact profiles and whole composition compile;13delta lint files5reviewed findings, unchanged source/dependency/notices lineage"
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "cc49496da6f2f33519115d53e10a2e69037a7c3294a6a4d8b3264c84d8e8a501"
+    },
+    {
+      "path": "markdown_system/PROJECT_HISTORY_MODEL_TRAINING_CONTRACT.md",
+      "sha256": "3eed8a07661192c161278696f86b4be1ea47262488e10ed7710c6dde6c5078cc"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/AI_CONNECTED_REFERENCE_RELEASE_V402.md",
+      "sha256": "5352c625aa0dffa700a559ba3b4f9d2795ab7d9816cebf8045747cd0954759ca"
+    },
+    {
+      "path": "reconstruction_evidence/AI_CONNECTED_REFERENCE_RELEASE_V402.json",
+      "sha256": "518b824e03354ba277c9915b8f93825c65a28acbfa3b5c6f882e60dfca8a9ab5"
+    },
+    {
+      "path": "reconstruction_evidence/HISTORY_EXECUTION_CORRESPONDENCE_V402.json",
+      "sha256": "0475b2acca85c9df8e204870b80863166f97262db8d71635765168e730dc20b5"
+    }
+  ],
+  "inventory_sha256": "0aa33d0aaf1d2bd4ae5d3998665be4e959adaa79a8b5cad98250884bd6f6105a",
+  "live_effects_performed": false
+}

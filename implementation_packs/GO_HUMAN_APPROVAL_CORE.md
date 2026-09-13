@@ -4,7 +4,7 @@
 
 ```yaml
 pack_id: "GO-HUMAN-APPROVAL-CORE"
-pack_version: "0.2.0"
+pack_version: "0.9.1"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -61,7 +61,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local"
 license: "LicenseRef-Workspace-Owner"
-sha256: "c83abf7f1c04060972a24b0dbbdbc5a4bc05f6dc6f018d7197442e8d967e4522"
+sha256: "59eb5529eddd79f78bcd514d11c7c434d55523de7930691405e693d0e56fced8"
 variables: []
 secrets_allowed: false
 ```
@@ -84,13 +84,21 @@ import (
 type Kind string
 
 const (
-	KindReservation   Kind = "reservation"
-	KindSale          Kind = "sale"
-	KindRefund        Kind = "refund"
-	KindPayment       Kind = "payment"
-	KindWhatsAppReply Kind = "whatsapp_reply"
-	KindSocialPublish Kind = "social_publish"
-	KindSocialRevoke  Kind = "social_revoke"
+	KindReservation          Kind = "reservation"
+	KindSale                 Kind = "sale"
+	KindRefund               Kind = "refund"
+	KindPayment              Kind = "payment"
+	KindWhatsAppReply        Kind = "whatsapp_reply"
+	KindSocialPublish        Kind = "social_publish"
+	KindSocialRevoke         Kind = "social_revoke"
+	KindStoredValueOperation Kind = "stored_value_operation"
+	KindWarrantyRepair       Kind = "warranty_repair"
+	KindSerialQuality        Kind = "serial_quality"
+	KindCatalogReview        Kind = "catalog_review"
+	KindTrainingAssessment   Kind = "training_assessment"
+	KindMarketplaceMutation  Kind = "marketplace_mutation"
+	KindWhatsAppSchedule     Kind = "whatsapp_schedule"
+	KindDocumentReview       Kind = "document_review"
 )
 
 // State is the lifecycle of an approval request.
@@ -141,7 +149,7 @@ func (r Request) Validate() error {
 		return fmt.Errorf("%w: id", ErrInvalidRequest)
 	}
 	switch r.Kind {
-	case KindReservation, KindSale, KindRefund, KindPayment, KindWhatsAppReply, KindSocialPublish, KindSocialRevoke:
+	case KindReservation, KindSale, KindRefund, KindPayment, KindWhatsAppReply, KindSocialPublish, KindSocialRevoke, KindStoredValueOperation, KindWarrantyRepair, KindSerialQuality, KindCatalogReview, KindTrainingAssessment, KindMarketplaceMutation, KindWhatsAppSchedule, KindDocumentReview:
 	default:
 		return fmt.Errorf("%w: kind", ErrInvalidRequest)
 	}
@@ -177,7 +185,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local"
 license: "LicenseRef-Workspace-Owner"
-sha256: "44b24acda97d0ea3729919e5aacbead9ddfe1db3c56a2ec9d8a73ed3e597dd4c"
+sha256: "d402b0c5d301bf1d3f2c9068a4439df209b77ef84bb25131f1d59bc5075b9d86"
 variables: []
 secrets_allowed: false
 ```
@@ -259,7 +267,7 @@ func (r *Registry) autoApprove(req Request) bool {
 	if r.policy.AutoApproveMinorUnits <= 0 {
 		return false
 	}
-	if req.Kind == KindPayment || req.Kind == KindRefund || req.Kind == KindWhatsAppReply || req.Kind == KindSocialPublish || req.Kind == KindSocialRevoke {
+	if req.Kind == KindPayment || req.Kind == KindRefund || req.Kind == KindWhatsAppReply || req.Kind == KindSocialPublish || req.Kind == KindSocialRevoke || req.Kind == KindStoredValueOperation || req.Kind == KindWarrantyRepair || req.Kind == KindSerialQuality || req.Kind == KindCatalogReview || req.Kind == KindTrainingAssessment || req.Kind == KindMarketplaceMutation || req.Kind == KindWhatsAppSchedule || req.Kind == KindDocumentReview {
 		return false // money movements always require a human
 	}
 	return req.AmountMinorUnits <= r.policy.AutoApproveMinorUnits
@@ -745,7 +753,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "63138c67b6496e7d9b0c8918f9dfb89dd4d7d77cad096c25e0e3f3a92e0650ce"
+sha256: "511c953727e80f52e8a7d84582146e48e7d812eeb378ad3b45f68f01790123c3"
 variables: []
 secrets_allowed: false
 ```
@@ -776,14 +784,14 @@ type HumanApprovals struct{ pool *pgxpool.Pool }
 
 func NewHumanApprovals(pool *pgxpool.Pool) *HumanApprovals { return &HumanApprovals{pool} }
 func boundApprovalKind(k approval.Kind) bool {
-	return k == approval.KindWhatsAppReply || k == approval.KindSocialPublish || k == approval.KindSocialRevoke
+	return k == approval.KindWhatsAppReply || k == approval.KindSocialPublish || k == approval.KindSocialRevoke || k == approval.KindStoredValueOperation || k == approval.KindWarrantyRepair || k == approval.KindSerialQuality || k == approval.KindCatalogReview || k == approval.KindTrainingAssessment || k == approval.KindMarketplaceMutation || k == approval.KindWhatsAppSchedule || k == approval.KindDocumentReview
 }
 func approvalPrincipal(p identity.Principal, tenant, org, permission string) bool {
 	return permission != "" && p.Subject != "" && len(p.Subject) <= 128 && p.TenantID == tenant && p.Allowed(permission) && p.AllowedOrganization(org)
 }
 func (s *HumanApprovals) Submit(ctx context.Context, p identity.Principal, v HumanApprovalSpec, permission string, guard HumanApprovalGuard) (bool, error) {
-	canonical, hash, e := approval.CanonicalPayload(v.Payload)
-	if s == nil || s.pool == nil || e != nil || v.Request.Validate() != nil || !boundApprovalKind(v.Request.Kind) || v.Request.AmountMinorUnits != 0 || v.Request.Requester != p.Subject || v.Request.EvidenceSHA != hash || !approvalPrincipal(p, v.Request.TenantID, v.OrganizationID, permission) {
+
+	if s == nil || s.pool == nil {
 		return false, approval.ErrInvalidRequest
 	}
 	tx, e := s.pool.BeginTx(ctx, pgx.TxOptions{})
@@ -791,6 +799,20 @@ func (s *HumanApprovals) Submit(ctx context.Context, p identity.Principal, v Hum
 		return false, e
 	}
 	defer tx.Rollback(ctx)
+	replay, e := s.submitTx(ctx, tx, p, v, permission, guard)
+	if e != nil {
+		return false, e
+	}
+	return replay, tx.Commit(ctx)
+}
+
+// submitTx reuses the same approval admission under a caller-owned local transaction.
+// It does not commit, approve, or run external provider effects.
+func (s *HumanApprovals) submitTx(ctx context.Context, tx pgx.Tx, p identity.Principal, v HumanApprovalSpec, permission string, guard HumanApprovalGuard) (bool, error) {
+	canonical, hash, e := approval.CanonicalPayload(v.Payload)
+	if s == nil || s.pool == nil || e != nil || v.Request.Validate() != nil || !boundApprovalKind(v.Request.Kind) || v.Request.AmountMinorUnits != 0 || v.Request.Requester != p.Subject || v.Request.EvidenceSHA != hash || !approvalPrincipal(p, v.Request.TenantID, v.OrganizationID, permission) {
+		return false, approval.ErrInvalidRequest
+	}
 	if guard != nil {
 		if e = guard(ctx, tx); e != nil {
 			return false, e
@@ -806,7 +828,7 @@ func (s *HumanApprovals) Submit(ctx context.Context, p identity.Principal, v Hum
 	if e != nil || !same {
 		return false, approval.ErrDuplicate
 	}
-	return tag.RowsAffected() == 0, tx.Commit(ctx)
+	return tag.RowsAffected() == 0, nil
 }
 func (s *HumanApprovals) Decide(ctx context.Context, p identity.Principal, tenant, id, org, expectedSHA string, approved bool, reason, permission string, guard HumanApprovalGuard) (approval.State, error) {
 	if s == nil || s.pool == nil || len(reason) > 2048 || !approvalPrincipal(p, tenant, org, permission) {
@@ -817,6 +839,18 @@ func (s *HumanApprovals) Decide(ctx context.Context, p identity.Principal, tenan
 		return "", e
 	}
 	defer tx.Rollback(ctx)
+	state, e := s.decideTx(ctx, tx, p, tenant, id, org, expectedSHA, approved, reason, permission, guard)
+	if e != nil {
+		return "", e
+	}
+	return state, tx.Commit(ctx)
+}
+
+// AUTHORED caller-controlled transaction composition; registry decision owner retained.
+func (s *HumanApprovals) decideTx(ctx context.Context, tx pgx.Tx, p identity.Principal, tenant, id, org, expectedSHA string, approved bool, reason, permission string, guard HumanApprovalGuard) (approval.State, error) {
+	if s == nil || s.pool == nil || len(reason) > 2048 || !approvalPrincipal(p, tenant, org, permission) {
+		return "", approval.ErrInvalidRequest
+	}
 	v, state, e := readHumanApproval(ctx, tx, tenant, id, true)
 	if e != nil {
 		return "", e
@@ -854,7 +888,7 @@ func (s *HumanApprovals) Decide(ctx context.Context, p identity.Principal, tenan
 	if e != nil {
 		return "", e
 	}
-	return state, tx.Commit(ctx)
+	return state, nil
 }
 func readHumanApproval(ctx context.Context, tx pgx.Tx, tenant, id string, lock bool) (HumanApprovalSpec, approval.State, error) {
 	var v HumanApprovalSpec
@@ -1012,3 +1046,19 @@ Véase `reconstruction_evidence/GO_HUMAN_APPROVAL_CORE_2026-09-02_V182.md`.
 V402 composed delta: New durable exact-payload manual approvals for WhatsApp/social; immutable scoped bindings, expected-hash decision, existing Registry separation and shared transaction guards. No automatic new-kind approval or provider side effect.
 
 New durable scope: WhatsApp/social only, amount=0, one_distinct_human. Existing amount thresholds/velocity policies are not newly attributed, promoted or implemented for durable historical money kinds. G0-G8 and final composition conditions are in social-connected-evidence.md.
+
+V402 composed delta: V402 source-backed stored-value integration: exact remaining provider due, explicit payment/funding XOR, shared approval, bounded browser transport and optional host. See STORED_VALUE_OPERATOR_FLOW_V402.md; source/pack admission successor governs final claim. Existing provider-only behavior retained.
+
+V402 composed delta: Connected warranty reuses existing transaction/approval/stock/service owners; SQL ordering and public wrapper behavior retained. Optional host factory fails closed. Exact source tested in WARRANTY_INTERFACE_AND_PORTABILITY_V402.md; no new dependency or corporate attribution.
+
+V402 composed delta: Connected J2 uses existing transaction owners and preserves public operations transitions; serial quality remains in the shared distinct-human approval owner. Optional host hook keeps narrower profiles compatible. No dependency added or corporate attribution. SERIAL_SUPPLY_CONNECTED_RELEASE_V402.md.
+
+V402 composed delta: J3 immutable approved catalog publication reuses original Commerce SQL/shared approval and optional host/public model owner; existing Next storefront consumes a validated published projection. No new dependencies or corporate attribution. CATALOG_CONNECTED_RELEASE_V402.md.
+
+V402 composed delta: T2804 connected training: existing versioned help/audit/shared approvals/outbox/BFF; opt-in host and navigation; bounded body retains original default. No new dependency or automatic grant. TRAINING_CONNECTED_RELEASE_V402.md.
+
+V402 composed delta: T2805 narrow connected Mercado Libre PRICE/STOCK/PAUSE/RESUME for existing User Products item: immutable current catalog + existing serial ATP + exact distinct human approval + shared one-attempt fence + GET-only recovery. MARKETPLACE_MUTATION_RELEASE_V402.md/json. AUTHORED HTTP/SQL/host/proof glue; initial publication/media and other T2805 work remain open.
+
+V402 composed delta: Scheduled WhatsApp exact source/approval/job/host glue and template receipt recovery; SCHEDULED_COMMUNICATIONS_RELEASE_V402.md/json.
+
+V402 composed delta: T2806 connected document reference. Optional host hook, explicit bound document-review kind, exact AWS module closure and preserved security-floor checksums; no unchanged business policy modified. DOCUMENT_REFERENCE_RELEASE_V402.md/json.

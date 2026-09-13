@@ -59,7 +59,8 @@ $releaseRootMarkdown = @(
   'TOOLCHAINS_BUILDS_PACKAGING_FFI.md'
 )
 $releaseRootScripts = @('materialize_markdown_pack.ps1', 'VERIFY_LIBRARY.ps1', 'VERIFY_EXECUTABLE_LIBRARY.ps1', 'CREATE_PORTABLE_ARCHIVE.ps1', 'INSTALL_AGENT_BRIDGE.ps1')
-$releaseMarkdownSystemScripts = @('update_pack_from_tree.ps1', 'test_update_pack_from_tree.ps1', 'test_install_agent_bridge.ps1', 'test_library_maintenance_state.ps1', 'test_agent_bridge_safety.ps1', 'test_toolchain_resolution.ps1', 'test_agent_entry_lifecycle.ps1', 'project_local_secrets.ps1', 'test_project_local_secrets.ps1')
+$releaseRootMetadata = @('.gitignore','.gitattributes')
+$releaseMarkdownSystemScripts = @('update_pack_from_tree.ps1', 'test_update_pack_from_tree.ps1', 'test_pack_exact_eof.ps1', 'test_public_release_policy.ps1', 'test_install_agent_bridge.ps1', 'test_library_maintenance_state.ps1', 'test_agent_bridge_safety.ps1', 'test_toolchain_resolution.ps1', 'test_agent_entry_lifecycle.ps1', 'project_local_secrets.ps1', 'test_project_local_secrets.ps1')
 
 function Assert-True([bool] $Condition, [string] $Message) {
   if (-not $Condition) { throw "VERIFY_LIBRARY_FAILED: $Message" }
@@ -80,13 +81,20 @@ function Assert-FranchiseProfileSelection([string[]] $PackIds) {
   Assert-True ($PackIds -contains 'GO-INITIAL-HANDOVER-API') 'franchise profile omitted GO-INITIAL-HANDOVER-API'
   Assert-True ($PackIds -contains 'GO-BUSINESS-POLICY-PROFILE') 'franchise profile omitted GO-BUSINESS-POLICY-PROFILE'
   Assert-True ($PackIds -contains 'TS-PAYMENT-CHECKOUT-PORTAL') 'franchise profile omitted TS-PAYMENT-CHECKOUT-PORTAL'
-  Assert-True ($PackIds.Count -eq 77) "franchise profile pack count drifted: expected=77 actual=$($PackIds.Count)"
+  $policy = Get-ReleaseInputPolicy
+  Assert-True ($null -ne $policy) 'franchise release selection lock missing'
+  Assert-True ($PackIds.Count -eq $policy.franchise_pack_ids.Count) "franchise profile pack count drifted: expected=$($policy.franchise_pack_ids.Count) actual=$($PackIds.Count)"
+  Assert-True (($PackIds | Sort-Object -Unique).Count -eq $PackIds.Count) 'franchise profile duplicate ID'
+  foreach ($id in $policy.franchise_pack_ids) { Assert-True ($PackIds -ccontains $id) "franchise profile omitted locked source: $id" }
 }
 
 function Assert-FranchiseProfileSelectionRegression {
-  $valid = @('MICROSOFT-DEVSKIM-ADAPTED-SAST-GATE','PORTABLE-SIGNED-RELEASE-EVIDENCE-GATE','GO-MERCADOLIBRE-MARKETPLACE-ADAPTER','GO-MERCADOLIBRE-QUESTION-OUTBOUND','GO-CUSTOMER-SURVEY-API','TS-CUSTOMER-SURVEY-PORTAL','GO-BC-EXACT-AMOUNT-ADAPTER','GO-BC-SALES-CONTRACT-ADAPTER','GO-OFFICIAL-PAYMENT-WEBHOOK-ADAPTERS','GO-PAYMENT-CHECKOUT-RUNTIME','GO-INITIAL-HANDOVER-API','GO-BUSINESS-POLICY-PROFILE','TS-PAYMENT-CHECKOUT-PORTAL') + @(1..64 | ForEach-Object { "SYNTHETIC-PACK-$_" })
+  $valid = @((Get-ReleaseInputPolicy).franchise_pack_ids)
   Assert-FranchiseProfileSelection $valid
   foreach ($negative in @(
+    [pscustomobject]@{ Name = 'unknown-replacement'; Ids = @($valid | Where-Object { $_ -ne 'GO-CONNECTED-DOCUMENT-REFERENCE' }) + 'SYNTHETIC-UNKNOWN'; Expected = 'omitted locked source' },
+    [pscustomobject]@{ Name = 'duplicate'; Ids = @($valid | Where-Object { $_ -ne 'GO-CONNECTED-DOCUMENT-REFERENCE' }) + 'GO-CUSTOMER-SURVEY-API'; Expected = 'duplicate ID' },
+    [pscustomobject]@{ Name = 'missing-count'; Ids = @($valid | Where-Object { $_ -ne 'GO-CONNECTED-DOCUMENT-REFERENCE' }); Expected = 'pack count drifted' },
     [pscustomobject]@{ Name = 'missing-survey-api'; Ids = @($valid | Where-Object { $_ -ne 'GO-CUSTOMER-SURVEY-API' }) + 'SYNTHETIC-SURVEY-A'; Expected = 'omitted customer survey API' },
     [pscustomobject]@{ Name = 'missing-survey-portal'; Ids = @($valid | Where-Object { $_ -ne 'TS-CUSTOMER-SURVEY-PORTAL' }) + 'SYNTHETIC-SURVEY-B'; Expected = 'omitted customer survey portal' },
     [pscustomobject]@{ Name = 'rejected'; Ids = @($valid + 'GITLAB-OPENGREP-SIGNED-SAST-GATE'); Expected = 'selected OpenGrep' },
@@ -210,8 +218,60 @@ function Test-LocalMaintenanceEntry([IO.FileSystemInfo] $Item, [int] $Checkpoint
   return $true
 }
 
+# AUTHORED strict selection metadata reader, shared byte-for-byte by both entrypoints.
+function Find-MachineLocalHomePath([string] $Text) {
+  [regex]::Match($Text, '(?:(?i:[A-Z]:\\Users\\[^\\\s`"''<>]+)|(?<![A-Za-z0-9:])/(?:home|Users)/[^/\s`"''<>]+)')
+}
+
+function Get-ReleaseInputPolicy {
+  $parent = Join-Path $libraryRoot 'markdown_system'
+  $path = Join-Path $parent 'PUBLIC_RELEASE_INPUT_POLICY.md'
+  if (-not (Test-Path -LiteralPath $path)) { return $null }
+  foreach ($part in @($parent,$path)) {
+    $item = Get-Item -LiteralPath $part -Force
+    if (($item.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) { throw 'Release policy is a symlink/reparse point' }
+  }
+  $item = Get-Item -LiteralPath $path -Force
+  if ($item.PSIsContainer -or $item.Length -gt 65536) { throw 'Release policy must be a bounded regular file' }
+  $raw = [IO.File]::ReadAllText($path,[Text.UTF8Encoding]::new($false,$true))
+  $matches = [regex]::Matches($raw,'(?s)```json\s*(?<json>.*?)\s*```')
+  if ($matches.Count -ne 1) { throw 'Release policy requires exactly one JSON block' }
+  $doc = [Text.Json.JsonDocument]::Parse([string]$matches[0].Groups['json'].Value)
+  try {
+    $root = $doc.RootElement
+    if ($root.ValueKind -ne [Text.Json.JsonValueKind]::Object) { throw 'Release policy must be an object' }
+    $keys = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+    foreach ($prop in $root.EnumerateObject()) {
+      if (-not $keys.Add($prop.Name)) { throw 'Release policy duplicate field' }
+    }
+    $expected = @('schema','json_files','text_logs','franchise_pack_ids','franchise_files')
+    if ($keys.Count -ne $expected.Count -or @($expected | Where-Object { -not $keys.Contains($_) }).Count) { throw 'Release policy unknown/missing field' }
+    if ($root.GetProperty('schema').GetString() -cne 'elite-public-release-input-policy/v1') { throw 'Release policy schema mismatch' }
+    $result = @{ schema = 'elite-public-release-input-policy/v1' }
+    foreach ($field in @('json_files','text_logs','franchise_pack_ids')) {
+      $array = $root.GetProperty($field)
+      if ($array.ValueKind -ne [Text.Json.JsonValueKind]::Array) { throw 'Release policy array required' }
+      $list = [Collections.Generic.List[string]]::new()
+      $seen = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+      foreach ($entry in $array.EnumerateArray()) {
+        if ($entry.ValueKind -ne [Text.Json.JsonValueKind]::String) { throw 'Release policy string item required' }
+        $name = $entry.GetString()
+        $pattern = switch ($field) { 'json_files' { '^[A-Z][A-Z0-9_]*\.json$' } 'text_logs' { '^[A-Z][A-Z0-9_]*\.log$' } 'franchise_pack_ids' { '^[A-Z][A-Z0-9-]+$' } }
+        if ($name -cnotmatch $pattern -or -not $seen.Add($name)) { throw 'Release policy unsafe/duplicate item' }
+        $list.Add($name)
+      }
+      $result[$field] = @($list.ToArray())
+    }
+    $count = $root.GetProperty('franchise_files').GetInt32()
+    if ($count -lt 1 -or $result.franchise_pack_ids.Count -lt 1) { throw 'Release policy empty franchise lock' }
+    $result.franchise_files = $count
+    return $result
+  } finally { $doc.Dispose() }
+}
+
 function Get-ReleaseSourceFiles {
   $files = [Collections.Generic.List[IO.FileInfo]]::new()
+  $releasePolicy = Get-ReleaseInputPolicy
   # Local continuity is not readiness evidence for a consuming project.
   $localStateNames = @('PROJECT_EXECUTION_STATE.json', 'PROJECT_EXECUTION_EVENTS.jsonl')
   $localStateCount = @($localStateNames | Where-Object { Test-Path -LiteralPath (Join-Path $libraryRoot $_) }).Count
@@ -236,7 +296,9 @@ function Get-ReleaseSourceFiles {
       foreach ($child in Get-ChildItem -LiteralPath $item.FullName -Recurse -Force) {
         Assert-True (($child.Attributes -band [IO.FileAttributes]::ReparsePoint) -eq 0) "release entry is a symlink/reparse point: $(Relative $child.FullName)"
         if ($child.PSIsContainer) { continue }
-        Assert-True ($allowedExtensions -icontains $child.Extension) "unknown release file: $(Relative $child.FullName)"
+        $publicEvidence = $null -ne $releasePolicy -and $item.Name -ceq 'reconstruction_evidence' -and
+          $child.DirectoryName -ceq $item.FullName -and (@($releasePolicy.json_files) + @($releasePolicy.text_logs)) -ccontains $child.Name
+        Assert-True (($allowedExtensions -icontains $child.Extension) -or $publicEvidence) "unknown release file: $(Relative $child.FullName)"
         if ($item.Name -eq 'markdown_system' -and $child.Extension -ieq '.ps1') {
           Assert-True ($releaseMarkdownSystemScripts -icontains $child.Name) "unknown markdown_system script: $(Relative $child.FullName)"
         }
@@ -245,12 +307,17 @@ function Get-ReleaseSourceFiles {
       continue
     }
 
-    $allowedRootFile = $releaseRootMarkdown -icontains $item.Name -or $releaseRootScripts -icontains $item.Name
+    $allowedRootFile = $releaseRootMarkdown -icontains $item.Name -or $releaseRootScripts -icontains $item.Name -or $releaseRootMetadata -ccontains $item.Name
     Assert-True $allowedRootFile "unknown top-level file: $($item.Name)"
     $files.Add($item)
   }
 
   Assert-True ($files.Count -gt 0) 'release file allowlist produced no files'
+  if ($null -ne $releasePolicy) {
+    foreach ($name in (@($releasePolicy.json_files) + @($releasePolicy.text_logs))) {
+      if (@($files | Where-Object { $_.DirectoryName -ceq (Join-Path $libraryRoot 'reconstruction_evidence') -and $_.Name -ceq $name }).Count -ne 1) { throw "Release policy named evidence missing: $name" }
+    }
+  }
   $relativePaths = @($files | ForEach-Object { Relative $_.FullName })
   Assert-True (($relativePaths | Sort-Object -Unique).Count -eq $relativePaths.Count) 'duplicate release path'
   $files | Sort-Object FullName
@@ -545,7 +612,7 @@ try {
       throw "VERIFY_LIBRARY_FAILED: release file is not valid UTF-8: $(Relative $file.FullName)"
     }
     Assert-True (-not $text.Contains([char]0)) "NUL byte in release file: $(Relative $file.FullName)"
-    $localHome = [regex]::Match($text, '(?i)(?:[A-Z]:\\Users\\[^\\\s`"''<>]+|(?<![A-Za-z0-9:])/(?:home|Users)/[^/\s`"''<>]+)')
+    $localHome = Find-MachineLocalHomePath $text
     Assert-True (-not $localHome.Success) "machine-local home path in release file $(Relative $file.FullName): $($localHome.Value)"
   }
 
@@ -644,7 +711,7 @@ try {
       $provenanceCounts[$provenance]++
     }
   }
-  $coreAuditText = [IO.File]::ReadAllText((Join-Path $libraryRoot 'reconstruction_evidence/CORE_CLAIM_ADMISSION_V374.md'), $utf8)
+  $coreAuditText = [IO.File]::ReadAllText((Join-Path $libraryRoot 'reconstruction_evidence/CORE_CLAIM_CURRENT_V402.md'), $utf8)
   $coreFence = [string][char]96 * 3
   $coreAuditMatch = [regex]::Match($coreAuditText, '(?s)' + $coreFence + 'json\s*(?<json>.*?)\s*' + $coreFence)
   Assert-True $coreAuditMatch.Success 'core audit JSON missing'
@@ -689,6 +756,11 @@ try {
   $compositorRoot = Join-Path $tempRoot 'compositor'
   & $materializer -PackFile $compositorPack -Destination $compositorRoot | Out-Null
   $compositor = Join-Path $compositorRoot 'tools/compose-markdown-project.ps1'
+  $eofOutput = @(& (Join-Path $libraryRoot 'markdown_system/test_pack_exact_eof.ps1') -Materializer $materializer -Composer $compositor -Updater (Join-Path $libraryRoot 'markdown_system/update_pack_from_tree.ps1') -EvidenceRoot (Join-Path $tempRoot 'exact-eof-regression'))
+  Assert-True (@($eofOutput | Where-Object { $_ -match '^PASS: [0-9]+ exact EOF reconstruction/negative/updater cases$' }).Count -eq 1) 'exact EOF regression did not report PASS'
+  $publicPolicyOutput = @(& (Join-Path $libraryRoot 'markdown_system/test_public_release_policy.ps1'))
+  Assert-True (@($publicPolicyOutput | Where-Object { $_ -match '^PASS: public release policy ' }).Count -eq 1) 'public release policy regression did not report PASS'
+
   $profileResults = [Collections.Generic.List[object]]::new()
   foreach ($profile in @('PROJECT_READINESS_GATE_PACK_PLAN.md','CAPABILITY_GAP_RESOLUTION_PACK_PLAN.md','PNPM_ARTIFACT_SELECTION_PACK_PLAN.md','PROJECT_INITIALIZATION_PACK_PLAN.md','DOCUMENT_PIPELINE_ROUTING_PACK_PLAN.md','DURABLE_DOCUMENT_PIPELINE_PACK_PLAN.md','AZURE_DOCUMENT_RUNTIME_PACK_PLAN.md','GOOGLE_DOCUMENT_RUNTIME_PACK_PLAN.md','AWS_TEXTRACT_DOCUMENT_RUNTIME_PACK_PLAN.md','AWS_POWERTOOLS_IDEMPOTENT_SQS_BATCH_PACK_PLAN.md','AWS_DURABLE_OBJECT_EVENT_WORKER_PACK_PLAN.md','PADDLEOCR_LOCAL_RUNTIME_PACK_PLAN.md','MARKITDOWN_LOCAL_RUNTIME_PACK_PLAN.md','SECURE_LOCAL_FILE_INGESTION_PACK_PLAN.md','STRICT_DOCUMENT_FIELD_EVALUATION_PACK_PLAN.md','TESSERA_POSIX_EVIDENCE_LOG_PACK_PLAN.md','AWS_ENTERPRISE_ADAPTERS_PACK_PLAN.md','AWS_SECURE_DOCUMENT_INTAKE_PACK_PLAN.md','AWS_SECURE_EMAIL_ATTACHMENT_PROCESSING_PACK_PLAN.md','AWS_IDP_POSTGRES_PERSISTENCE_PACK_PLAN.md','GOOGLE_ADS_REPORTING_PACK_PLAN.md','META_ADS_REPORTING_PACK_PLAN.md','TIKTOK_ADS_REPORTING_PACK_PLAN.md','TIKTOK_LEAD_ADAPTER_PACK_PLAN.md','META_WHATSAPP_CLOUD_PACK_PLAN.md','FIREBASE_PUSH_PACK_PLAN.md','MERCADOLIBRE_MARKETPLACE_PACK_PLAN.md','AMAZON_SPAPI_CATALOG_PACK_PLAN.md','GOOGLE_MERCHANT_PRODUCT_SYNC_PACK_PLAN.md','PAYMENT_WEBHOOK_ADAPTERS_PACK_PLAN.md','MICROSOFT_BUSINESS_CENTRAL_PLATFORM_PACK_PLAN.md','MICROSOFT_AVM_SECURE_SFTP_INTAKE_PACK_PLAN.md','ENTERPRISE_BACKEND_PACK_PLAN.md','ENTERPRISE_WEB_PACK_PLAN.md','FRANCHISE_COMPLETE_PACK_PLAN.md','FRANCHISE_SERVERLESS_PACK_PLAN.md','WINDOWS_REFERENCE_TELEMETRY_PACK_PLAN.md')) {
     $destination = Join-Path $tempRoot ([IO.Path]::GetFileNameWithoutExtension($profile))
@@ -708,7 +780,7 @@ try {
   & $compositor -PlanFile (Join-Path $libraryRoot "markdown_system/$profile") -LibraryRoot $libraryRoot -Destination $destination | Out-Null
   Assert-True (Test-Path -LiteralPath (Join-Path $destination 'MATERIALIZATION_RECORD.md')) "composition record missing for $profile"
   $profileFiles = (Get-ChildItem -LiteralPath $destination -Recurse -File | Measure-Object).Count - 1
-  Assert-True ($profileFiles -eq 10) "profile file count mismatch for $profile expected=10 actual=$profileFiles"
+  Assert-True ($profileFiles -eq 11) "profile file count mismatch for $profile expected=11 actual=$profileFiles"
   $profileResults.Add([pscustomobject]@{ Profile = $profile; Files = $profileFiles })
   $profile = 'NODE_OFFICIAL_RUNTIME_ADVISORY_PACK_PLAN.md'
   $destination = Join-Path $tempRoot ([IO.Path]::GetFileNameWithoutExtension($profile))
@@ -835,7 +907,7 @@ try {
   & $compositor -PlanFile (Join-Path $libraryRoot "markdown_system/$profile") -LibraryRoot $libraryRoot -Destination $destination | Out-Null
   Assert-True (Test-Path -LiteralPath (Join-Path $destination 'MATERIALIZATION_RECORD.md')) "composition record missing for $profile"
   $profileFiles = (Get-ChildItem -LiteralPath $destination -Recurse -File | Measure-Object).Count - 1
-  Assert-True ($profileFiles -eq 1040) "profile file count mismatch for $profile expected=1040 actual=$profileFiles"
+  Assert-True ($profileFiles -eq (Get-ReleaseInputPolicy).franchise_files) "full HTTP reference differs from the current locked franchise file count: actual=$profileFiles"
   $profileResults.Add([pscustomobject]@{ Profile = $profile; Files = $profileFiles })
 
   foreach ($result in $profileResults) {
@@ -853,6 +925,7 @@ try {
   $markdownFiles = @($releaseFiles | Where-Object Extension -eq '.md')
   $franchiseProfile = @($profileResults | Where-Object Profile -eq 'FRANCHISE_COMPLETE_PACK_PLAN.md')
   Assert-True ($franchiseProfile.Count -eq 1) 'franchise profile result missing or duplicated'
+  Assert-True ($franchiseProfile[0].Files -eq (Get-ReleaseInputPolicy).franchise_files) 'franchise reconstructed file count differs from release lock'
   $preflightSummary = Get-Content -LiteralPath (Join-Path $libraryRoot 'markdown_system/FRANCHISE_PREFLIGHT_GAP.md') -Raw
   $normalizedPreflight = [regex]::Replace($preflightSummary, '\s+', ' ')
   $materializedDisplay = $materializedFiles.ToString('N0', [Globalization.CultureInfo]::GetCultureInfo('es-AR'))

@@ -1,0 +1,85 @@
+{
+  "state": "PASS_LOCAL",
+  "files": {
+    "ci/build_local_reference.py": "02fafa92bceb2eacfdabd660c1247f969e12ebf3e5055a0e491da47c914f0684",
+    "ci/collect_runtime_notices.py": "535230ec76013c14fb7329c7d14e2b19dafcaaa4746819ac40a1e6a101d9f1a2",
+    "ci/test_runtime_notices.py": "a37f1c31eff464669dcc14f8c0a88c3a3fcddc2a3da1f1e4ae69e58d11b59a1f"
+  },
+  "findings": [
+    {
+      "id": 1,
+      "rule": "DS197836",
+      "path": "ci/build_local_reference.py",
+      "line": 59,
+      "source_line_sha256": "9b01bcca664afacb4e466bcb967ec7a88a602fa1bb00fadcf7216db01feb03ad",
+      "disposition": "REVIEWED_NOT_BLOCKING_FOR_LOCAL_SCOPE",
+      "reason": "Public deterministic LOCAL fixture action material, explicitly forbidden as live credential and declared in artifact scope; unchanged316."
+    },
+    {
+      "id": 2,
+      "rule": "DS162092",
+      "path": "ci/build_local_reference.py",
+      "line": 47,
+      "source_line_sha256": "7d2aaad3a05eda39c30d6ef54b366f3d7cc68b6af8abedffc8a441cd339a9f90",
+      "disposition": "REVIEWED_NOT_BLOCKING_FOR_LOCAL_SCOPE",
+      "reason": "Explicit loopback/no-service endpoint values for LOCAL fixture build; no live deployment claim, unchanged316."
+    },
+    {
+      "id": 3,
+      "rule": "DS162092",
+      "path": "ci/build_local_reference.py",
+      "line": 47,
+      "source_line_sha256": "7d2aaad3a05eda39c30d6ef54b366f3d7cc68b6af8abedffc8a441cd339a9f90",
+      "disposition": "REVIEWED_NOT_BLOCKING_FOR_LOCAL_SCOPE",
+      "reason": "Explicit loopback/no-service endpoint values for LOCAL fixture build; no live deployment claim, unchanged316."
+    },
+    {
+      "id": 4,
+      "rule": "DS173237",
+      "path": "ci/build_local_reference.py",
+      "line": 12,
+      "source_line_sha256": "0c807b5070ee49f9ffd60618f40239b36e6f4183f839ce6531f9134185f1d0a8",
+      "disposition": "REVIEWED_NOT_BLOCKING_FOR_LOCAL_SCOPE",
+      "reason": "Exact public Go/Node/license SHA256 identity pins, not credentials; unchanged from qualified316 builder."
+    },
+    {
+      "id": 5,
+      "rule": "DS173237",
+      "path": "ci/build_local_reference.py",
+      "line": 11,
+      "source_line_sha256": "47a57d83bb9edbe50aa0c6d99440de748a59bda9693d4df1e78f858bc5d89445",
+      "disposition": "REVIEWED_NOT_BLOCKING_FOR_LOCAL_SCOPE",
+      "reason": "Exact public Go/Node/license SHA256 identity pins, not credentials; unchanged from qualified316 builder."
+    },
+    {
+      "id": 6,
+      "rule": "DS197836",
+      "path": "ci/collect_runtime_notices.py",
+      "line": 79,
+      "source_line_sha256": "813fa341cd576afdd74f300d6178739561035945b9905b335af101a1df22f63b",
+      "disposition": "REVIEWED_NOT_BLOCKING_FOR_LOCAL_SCOPE",
+      "reason": "SHA256 of actual package manifest file bytes for exact artifact correspondence; not password derivation, randomness or authentication."
+    },
+    {
+      "id": 7,
+      "rule": "DS173237",
+      "path": "ci/build_local_reference.py",
+      "line": 10,
+      "source_line_sha256": "c3707bb7c159187fa4248ba9fb04017af61bb54f39556bd538b675ee99b95827",
+      "disposition": "REVIEWED_NOT_BLOCKING_FOR_LOCAL_SCOPE",
+      "reason": "Exact public Go/Node/license SHA256 identity pins, not credentials; unchanged from qualified316 builder."
+    },
+    {
+      "id": 8,
+      "rule": "DS197836",
+      "path": "ci/collect_runtime_notices.py",
+      "line": 58,
+      "source_line_sha256": "2ac0d889d275fd9148ce5704e49fe267327d0e7ca8d6d1a8378425953ec13058",
+      "disposition": "REVIEWED_NOT_BLOCKING_FOR_LOCAL_SCOPE",
+      "reason": "SHA256 of actual package manifest file bytes for exact artifact correspondence; not password derivation, randomness or authentication."
+    }
+  ],
+  "untriaged": 0,
+  "new_blockers": 0,
+  "whole_tool_suite_rerun": false
+}

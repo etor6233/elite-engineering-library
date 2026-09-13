@@ -1,0 +1,36 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2809",
+  "outcome": "PASS",
+  "command": "V402330 exact1653source;5release/launcher/test blocks changed;actual extracted329 activation and full SPDX coverage PASS",
+  "exit_code": 0,
+  "assertions": [
+    "Prior hash-bound local control proof retained; domain/adapters/dependencies unchanged.",
+    "Only signed SBOM coverage and ZIP junction parent creation changed;21contract assertions and real437entry SPDX coverage PASS.",
+    "Actual extracted329 with corrected launcher passed API/web/order/rollback/recovery/empty process tree. Current330build qualification pending."
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "dec9b6566aa3be31b627f5c21114050028d0f4ca7c5bc4fef592a4c7c0b6a5a1"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_T2809_CONTROL_RECEIPT_V402_329.json",
+      "sha256": "6f69dac5d171db11bd45c629a5c0b464e18eda49001566c2ada6618e754c3306"
+    },
+    {
+      "path": "reconstruction_evidence/SIGNED_EXTRACTION_COMPLETENESS_V402.json",
+      "sha256": "b90961719141f4d1054ad1baa98daa8dc01dea5651f16db69126f5ef0734b788"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/SIGNED_EXTRACTION_COMPLETENESS_V402.md",
+      "sha256": "c5ab47d4f9a0f1948e40f4c5640ae930bd4c45f1d2b581321b8855031204cf04"
+    }
+  ],
+  "inventory_sha256": "b827c89f4809d8dbacfb2d050c291f20f52d8802608bddc8827038badad4ba59",
+  "live_effects_performed": false
+}

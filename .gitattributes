@@ -1,0 +1,9 @@
+# Stable source text for hash-locked Markdown materialization; no history rewrite.
+* text=auto eol=lf
+*.md text eol=lf
+*.ps1 text eol=lf
+*.json text eol=lf
+*.jsonl text eol=lf
+*.png binary
+*.jpg binary
+*.zip binary

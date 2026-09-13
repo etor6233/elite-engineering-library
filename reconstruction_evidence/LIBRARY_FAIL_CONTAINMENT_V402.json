@@ -1,0 +1,79 @@
+{
+  "schema": "elite-library-failure-containment/v1",
+  "scope": "V402-source330-metadata331-local",
+  "production_authorized": false,
+  "dispositions": {
+    "384": {
+      "state": "CONTAINED_LIBRARY_USE",
+      "basis": "Selector/NEW-EXISTING/preservation and current exact independent source/product ZIP proven; final library-distribution archive proof is kept in excluded local tasks record. No inherited production approval."
+    },
+    "385": {
+      "state": "RESOLVED_LOCAL_SCOPE",
+      "basis": "Connected REQUIRED claims and explicit blueprint NONE_WITH_REASON; no 21-core enterprise-equivalence claim."
+    },
+    "405": {
+      "state": "CONTAINED_EXCLUDED_IMPORT_BRANCH",
+      "basis": "Historical Meta onboarding/app-users HTTP429 and provider bulk conversation history contract remain unproven. Selected webhook/conversation/reconciliation and user-supplied history fixtures are separate; no claim of provider historical bulk import or access restoration."
+    },
+    "423/742": {
+      "state": "CONTAINED_REFERENCE_BROWSER_SCOPE",
+      "basis": "Historical Firefox teardown failures are not reclassified as fixed. Current selected role/localization acceptance is Chromium; prior Firefox/WebKit evidence is retained only for its exact historical cases."
+    },
+    "532/804": {
+      "state": "CONTAINED_LOCAL_USE",
+      "basis": "Only exact private restricted installer0.9.0 admitted, no addons/WASM/scripts/hooks/ZIP path. General native redistribution remains rejected; bundle absent from artifact and public library payload."
+    },
+    "735": {
+      "state": "RESOLVED_NOTICE_CORRESPONDENCE",
+      "basis": "@next/env16.3.4 carries fixed Next root MIT plus embedded dotenv/BSD notices in the actual artifact",
+      "proof": {
+        "license": "MIT",
+        "manifest": "node_modules/.pnpm/@next+env@16.3.4/node_modules/@next/env/package.json",
+        "name": "@next/env",
+        "notice_refs": [
+          "licenses/reference/next-MIT.txt",
+          "licenses/reference/dotenv-LICENSE.txt",
+          "licenses/reference/dotenv-expand-LICENSE.txt"
+        ],
+        "sha256": "229045587b8f7898b12126f99fadd1021c8c928f207f92f22146908d46899b5b",
+        "source_basis": "Next fixed source package16.3.4 MIT and declared embedded dotenv16.3.1/dotenv-expand10.0.0 BSD notices.",
+        "texts": {
+          "licenses/reference/dotenv-LICENSE.txt": "74b629b24865e1e83c5277ee84590b7937644d6fd959d0c7bdce758676cd2ced",
+          "licenses/reference/dotenv-expand-LICENSE.txt": "3726b9470c3a6b54e1ebcc1d802d37089b5a5fc97273b52b2cee578a4421ec45",
+          "licenses/reference/next-MIT.txt": "ee765244e2d59f5234d474f62e0766fa0c8b99af967fdd4c0cb8dcb0c76ea224"
+        },
+        "version": "16.3.4"
+      }
+    },
+    "978/979": {
+      "state": "RESOLVED_LOCAL",
+      "basis": "Complete actual SPDX coverage and recreated ZIP link parents;21contracts, actual extracted API/web/order/rollback/recovery/stop."
+    },
+    "980": {
+      "state": "RESOLVED_FIXTURE_HARNESS",
+      "basis": "Expired synthetic token correctly rejected401; resumed from same database/pointer with newlyissued token. No authentication bypass or repeated completed rollback."
+    },
+    "981": {
+      "state": "RESOLVED_METADATA",
+      "basis": "19notice labels mapped to exact original source receipts, payload unchanged."
+    }
+  },
+  "evidence": [
+    {
+      "path": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.json",
+      "sha256": "88c2361c1b10ead7af3933fce2564eacd097515d4a5f45c278480ee2a2757a42"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_ASSURANCE_BEFORE_FINAL_V402.json",
+      "sha256": "5db18a576677c271a4184771a9f6acccd29c8f9fd6ec33b4e4f738b57a878b4a"
+    },
+    {
+      "path": "reconstruction_evidence/PNPM_LOCAL_RUNTIME_V402.json",
+      "sha256": "61eb425032a287c0c42386a851d927a6fe9f581653e1a0cfc37af413db24a560"
+    },
+    {
+      "path": "reconstruction_evidence/REFERENCE_NOTICE_METADATA_V402.json",
+      "sha256": "1d2c20c2839a1fe116940a51c0ca25b5cde08130f826b8b57ff37c87d232725b"
+    }
+  ]
+}

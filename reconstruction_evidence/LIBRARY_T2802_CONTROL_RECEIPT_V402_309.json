@@ -1,0 +1,46 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2802",
+  "outcome": "PASS",
+  "command": "C:/Python314/python.exe -X utf8 -B C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\record-identity-checkpoint309.py; exact1477 source correspondence, no unchanged journey reruns",
+  "exit_code": 0,
+  "assertions": [
+    "quote/order/provider SDK fixture/callback/reconciliation/initial handover/checklist/acceptance/commercial receipt",
+    "FX durable journal posting/balance/reversal",
+    "source-derived gift/loyalty tender connected to provider or local funding and delivery",
+    "sold warranty terms and J4 claim/stock/FIFO/approval/quality/recovery",
+    "J2 demand/PO quantities/factory/serial QA/ASN/receiving/quarantine/release",
+    "J3 draft/reviews/immutable publish/effective price/search/actual storefront/reference feed/rollback",
+    "six named non-selected subcores NONE_WITH_REASON; no universal equivalence claimed",
+    "1451 current outputs exact;1428 previous unchanged,7 reviewed optional schedule/source/host/doc changes,16 new AUTHORED campaign binding files. Two profiles exact; campaigns/partial decisions/source suppression/quote-order/host/rollback/appointment compatibility/fuzz PASS. Selected T2805 closed local; T2803 next.",
+    "1477current outputs exact;1445previous unchanged,6revised optional BFF/auth/main hooks,26new AUTHORED session/profile/host/test/docs. Business handlers and role UI unchanged. Real SDK/Go/PG lifecycle/host/standalone compatibility/profile/rollback/fuzz and5exactprofiles PASS. Source/SCA/J5 administration remain T2803."
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "8bf39765e8fac89d054d3758e3600ed52897d1c736cd8e3e2e453d2e6bf10ac5"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_T2802_CONTROL_RECEIPT_V402_308.json",
+      "sha256": "b93604b286f523892c294944c16fb71fac23ebae3e59534c6b4e7d0a69fd049e"
+    },
+    {
+      "path": "reconstruction_evidence/IDENTITY_PORTAL_RELEASE_V402.json",
+      "sha256": "b6cde44f897802f5990cab1744ab24b52ad8f033b840a8dad9a774d185c6136f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/IDENTITY_PORTAL_RELEASE_V402.md",
+      "sha256": "7ac6c8cc99448f563972b5ad8fad3de325c4e499220f96dfde9a6c654515e1eb"
+    },
+    {
+      "path": "reconstruction_evidence/IDENTITY_PORTAL_RELEASE_V402.json",
+      "sha256": "b6cde44f897802f5990cab1744ab24b52ad8f033b840a8dad9a774d185c6136f"
+    }
+  ],
+  "inventory_sha256": "d8808dd0f8843b0e0e8f57636b402254a7e77cb26ad85dca669b6c5b1ecb5085",
+  "live_effects_performed": false
+}

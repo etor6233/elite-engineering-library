@@ -1,0 +1,133 @@
+{
+  "scope": "LOCAL_INFRASTRUCTURE_INCREMENT",
+  "franchise": {
+    "packs": 82,
+    "files": 1039
+  },
+  "delta": [
+    {
+      "path": "internal/accounting/service.go",
+      "before_sha256": "2a13037520259e67baf5ea5b300f6ce06ec10cb893158d5080237082af6f9995",
+      "after_sha256": "97a1d5bcc5691333b82f76eb1dac27b732c9f0514dbc6dc626d15c6a2eefacee"
+    },
+    {
+      "path": "internal/platform/postgres/accounting.go",
+      "before_sha256": "1cf36e069d78a707cf47ac58af6fe5bb082a7410d46a7cfa2609edb02c4ccf82",
+      "after_sha256": "d31c8cdeffd16e7a308027b19d50470b6ef64ee2cdafba4b8b0524ce690d204d"
+    },
+    {
+      "path": "internal/accounting/fx.go",
+      "before_sha256": "1f855979bc844426da227258b0544cfb102d62b2f7e7e2173895daa4b4762e6f",
+      "after_sha256": "60b863c71f2e39501f35540f10761075487d3bbd0e23bd0d46a06c0d14e69dfa"
+    },
+    {
+      "path": "internal/platform/httpapi/fx_conversion.go",
+      "before_sha256": "d0e2d18e3b10a3dca83ef45bd0432154f6ef261531d72beea142b3f44dcac7bb",
+      "after_sha256": "9da7fb9aeea6bdc906b70cdcec478dd852e96b8db755824f9cbc4f39b0367afc"
+    },
+    {
+      "path": "internal/accounting/fx_journal.go",
+      "before_sha256": null,
+      "after_sha256": "dfe80352679004ad25108e6c575fca7b30839660b78db4020dd2c68bc326f114"
+    },
+    {
+      "path": "internal/platform/postgres/fx_journal.go",
+      "before_sha256": null,
+      "after_sha256": "5f05998186adcc1d4a5b94f1b2b8b48c09ab1f3072fd810d9b483c6972c8dec3"
+    },
+    {
+      "path": "internal/platform/httpapi/fx_journal.go",
+      "before_sha256": null,
+      "after_sha256": "1153dce4e0214feeb794e5deb04a546e7b748e2c8fd11cd36d4c70a33b31bcf7"
+    },
+    {
+      "path": "internal/platform/postgres/fx_journal_integration_test.go",
+      "before_sha256": null,
+      "after_sha256": "249983207f974d5486a699b74086ea96d6a857f3fc83bc3ebcd23f4d53c96525"
+    },
+    {
+      "path": "db/migrations/0065_fx_journal_receipt.up.sql",
+      "before_sha256": null,
+      "after_sha256": "f0c415554e8267d7125c4836b3cff45b43df41f50b706bdee4e686c64b47cb57"
+    },
+    {
+      "path": "db/migrations/0065_fx_journal_receipt.down.sql",
+      "before_sha256": null,
+      "after_sha256": "b6cb77d1929a4e5ce20595c95766aa191cdf72f92c93b7f8a770e9b3adb855b3"
+    },
+    {
+      "path": "docs/fx-journal-runtime.md",
+      "before_sha256": null,
+      "after_sha256": "88aeccfcdaaac54223a9bab4cd134f7d9b19f265c372e732697c790a11eda8fb"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\FX_JOURNAL_CONNECTION_ADMISSION.candidate.md",
+      "sha256": "0176bbd8dd61d8414af2e770507737814d3a7db1403456c42526dc54af4b850c"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\fx-journal-pg-first\\result.json",
+      "sha256": "b288cdacbfe13ae6db5d2d90a35f871e4cd87338d11d7d1949c7c566effaf371"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\fx-journal-pg-first\\connected.log",
+      "sha256": "a69430a68ebad82bea97dbe976e691a80b5e2ba0a276a8d23263491a48338a66"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\fx-journal-build-gates.json",
+      "sha256": "53a44c110431b44fb65649f25a66c939966347780de4d66ee5e263ebad947597"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\fx-journal-downgrade\\result.json",
+      "sha256": "426265fd620426314b533d97bd15ef458c0c17d082cb09f6de66284e843056e5"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\fx-journal-downgrade-corrected\\result.json",
+      "sha256": "1e6f00353efbe802fa7f97537c3aae6d987aedadac11272bcb5aaa2ac6fa40e7"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\fx-journal-package-result.json",
+      "sha256": "81ece03f4443265151a5b11efb79c99a91b6e632029a51e98dc6a14a494805b6"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\fx-journal-composition-stage.json",
+      "sha256": "6a51adad8f7abaa34cf5b42a9afc2dcc70a50b95e6cf7c4198baa01b06ec5f28"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\fx-journal-reconstruction.json",
+      "sha256": "9e21c0bc11d420b688ec7507f8f65236a889820c82d190e87dba09746bac5c78"
+    }
+  ],
+  "rebuilds": [
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\fx-journal-rebuilds\\enterprise_backend.json",
+      "sha256": "ce633614f2dbae926f393b729acb2f1511a77cb5070d1ec735d8230a04d2a25d"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\fx-journal-rebuilds\\enterprise_backend-compile.json",
+      "sha256": "39f5dc9b8a2a82ed33848e5f0f236c2ed43de1736ea7c056d253121d33599463"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\fx-journal-rebuilds\\franchise_complete.json",
+      "sha256": "af9fb1757a1d9fdf9c2ad195ec217425971f6901f684e0447a6812c339c10fc3"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\fx-journal-rebuilds\\franchise_complete-compile.json",
+      "sha256": "d5f33ea8cc50e53cb53e392769dbedcd2f1b1450ea3833bf24bf1d3c0be0a222"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\fx-journal-rebuilds\\franchise_serverless.json",
+      "sha256": "24684685f2ddfe52e891ba940218d4692117685aa6cc8272c8e2e35dd1fabeb0"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\fx-journal-rebuilds\\franchise_serverless-compile.json",
+      "sha256": "92decbb9cd90abfca72af7fe1b8c7c46d3ac7278ba88f3783c9a6a415756e028"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\fx-journal-rebuilds\\http_metrics_reference.json",
+      "sha256": "a8a9a98f4d9cb0b70ba03a7059b274b2effdf3bc4a1ee03ece1bd5bc5b26e1d0"
+    }
+  ],
+  "overall_ready": false
+}

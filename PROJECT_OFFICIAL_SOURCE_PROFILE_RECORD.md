@@ -370,3 +370,61 @@ Estado ANSWERED; fuente user instruction/contract/probe; owner agent. Use only r
 Perfil C:\Users\NL\AppData\Local\Temp\elite-v396-e5a797060309431d8e37863e7f5eeea3\rebuilt2\elite_sources\source-profiles\maintenance-semver-license-quarantine.json SHA256 2b0d7ca3d3cc2d8746aade42759fb8412f9a01ef1565967a7ef78c645563c602; lock C:\Users\NL\AppData\Local\Temp\elite-v396-e5a797060309431d8e37863e7f5eeea3\rebuilt2\elite_sources\upstream-source-lock.json SHA256 943c7e1557ca5beba0215275f1c0de7bd993f4bb986fe5a65e3bdb3e74ac111e; approval C:\Users\NL\AppData\Local\Temp\elite-v396-e5a797060309431d8e37863e7f5eeea3\profile-approval.json SHA256 c45d05378960de4be7424266e4a3b539ac60fb273f851d811e0f5dd2e4368ab8. 51 archivos reconstruidos; 140 checks del transporte, perfiles y gates anteriores pasan. Producción conserva todos los blockers. Validar con apply_source_profile.ps1 antes de adquirir.
 
 V396 acquisition observed: VALIDATE PASS, ACQUIRED, PRESENT rehash PASS. Receipt C:\Users\NL\AppData\Local\Temp\elite-v396-e5a797060309431d8e37863e7f5eeea3\governed-acquisition\profile-receipts\maintenance-semver-license-quarantine.json. Status ACQUIRED / QUARANTINED_NOT_ADMITTED. All blockers preserved; no install or execution.
+
+V402306: Existing Google Merchant source profile reused for user-authorized local fixtures; purpose/data/zero live writes explicit in merchant-connected-admission.json. No account/key/billing action asked or inferred. MERCHANT_CONNECTED_RELEASE_V402.md/json.
+
+## V402 / T2803 — fixed pnpm license inspection, before acquisition
+
+Status DISCOVERY_METADATA_ONLY. Profile C:\Users\NL\AppData\Local\Temp\elite-v402-library-infra\pnpm-current-closure\license-profile.json; exact467component inspection-setSHA256 e1414ae5320a07257335ce0e905655db247ba1dded7440c8b28d7608631b54de. Required inputs answered by the agent under existing user authorization in C:\Users\NL\AppData\Local\Temp\elite-v402-library-infra\pnpm-current-closure\license-profile-answers.json. This is an independent bounded inspection profile using the existing registry/SRI primitives, not authorization from the semver-only npm quarantine transport. No package installation/execution, credential, spending or runtime/redistribution promotion. First obtain only exact public URL header sizes; subsequent frozen quarantine requires validation and retained receipts. Native/source/SCA/license obligations remain open.
+
+V402 T2803 metadata refinement: registry HEAD has no size. Range0-0 probe proved HTTP206, exactly1byte and a total length. Existing public read-only authorization covers this finite discovery; preserve original HEAD receipts and range-contract-probe.json. No complete artifact acquired or source admitted. Next use one-byte ranges on the same467fixed URLs; sizes freeze the quarantine lock.
+
+V402 T2803 license supplements: bounded fixed metadata-commit LICENSE/build metadata and pnpm/components commit/tree discovery. Profile C:\Users\NL\AppData\Local\Temp\elite-v402-library-infra\pnpm-current-closure\license-supplement-profile.json SHA256 5cdf53dc20df34ec2252ea4573ef5a5807fcef91def54c596146d4b2fc388f92. Existing authorization; no execution or adoption.
+
+V402 T2803 nested OpenPGP eight archives: C:\Users\NL\AppData\Local\Temp\elite-v402-library-infra\pnpm-current-closure\nested-source-profile.json SHA256 ebc15fbffbad6b28e4b47f3e78ff1e9f66a89f807b577f0d56ebf1057c454bf9. Exact official lock/SHA512; bounded quarantine, no source execution or runtime promotion.
+
+V402 T2803 fixed llhttp metadata/source and component license inspection: C:\Users\NL\AppData\Local\Temp\elite-v402-library-infra\pnpm-current-closure\nested-authority-profile.json SHA256 431e7d038557931410de89e25e3bbaebb026e64197b35b6d03e8ab4a006d342b. Existing user scope, no execution/admission.
+
+V402 T2803 payment metadata only: C:\Users\NL\AppData\Local\Temp\elite-v402-library-infra\composition-security-311\payment-metadata-profile.json SHA256 6ad1c119a5edf92d2aa0f636bed8899516b0c848ccc1b48a6a5f40be07ffac4e. Two fixed Go metadata responses checked against existing go.sum h1; no new package version or code execution.
+
+V402 exact .info metadata correction: C:\Users\NL\AppData\Local\Temp\elite-v402-library-infra\composition-security-311\payment-info-profile.json SHA256 73d680445e99e026984c673526359f22c5a044f9cbe1de90bf75260dfea2233b. Version/date discovery only; existing h1 metadata validated; no source acquisition or execution.
+
+V402 T2803 current-composition DevSkim runtime profile: C:\Users\NL\AppData\Local\Temp\elite-v402-library-infra\composition-security-311\devskim-runtime-profile.json SHA256 40c0b761cf88074ad0c5969320bf976c11059ca4d0184ed181fed649970fafbf. Reuse exact admitted owner; retain runtime/manifest this time. User maintenance authorization, no live secrets.
+
+V402 / FAIL925 exact .NET10.0.400 SDK recovery. Profile composition-security-311/dotnet-recovery-profile.json binds Microsoft official release metadata SHA and exact ZIP SHA512 before acquisition. Same-version isolated restoration, not a version upgrade; old SDK retained.
+
+V402 T2803 DevSkim scope before execution: composition-security-311/lint-profile.json, hash fffdc3c3acc1b73264586c1285a09d2611a33f9addca1ec7547919c8a4420b0d. Exact selected source/config languages including tests; ARCA and documented non-code/lock exclusions explicit. All severities triaged by library maintainer before closure, no blanket suppressions, no excerpts in retained SARIF. Original300tests/SCA0 and exact runtime manifest now verified after same-SDK recovery.
+
+V402 T2806 fixture profile before acquisition: document-connected/fixture-profile.json SHA256 0132b362c16faa42ba0e6468865954f98d88fc5e59136225aed3b4c12b89b60c. One existing commit-fixed public JPEG, MIT, transport-only fixture; no live OCR/ground-truth claim. AWS Go existing runtime as reversible reference; no user secrets or vendor production selection.
+
+V402 T2801 NPS metadata discovery only: library-assurance/nps-discovery-profile.json SHA256 880e24193d9e48e06ea8e0c02bd7a0842cdf45c677e35cb739308e740bb9da62. Eight bounded official API responses maximum; current commit/tree discovery does not authorize mobile source incorporation. Inputs recorded under existing user authorization; no runtime execution, secret or source promotion.
+
+V402 T2801 bounded NPS fixed source inspection before acquisition: library-assurance/nps-fixed-inspection-profile.json SHA256 1ff8b69c4e50896a8b4156cfeb80ad15b8ce569b1f6990266ae413db123f8633. Three official released-commit files, Git blob identities and <=250k each, public quarantine only; selected TS implementation/tests match latest inspected tree. No source adoption or execution yet. All required inputs recorded under user authorization.
+
+V402319: Bounded PostHog source profile completed:3fixed files verified; G0-G8 USE_REUSABLE_PACK numerical owner,9original selected TS cases, Go oracle/fuzz,8file source reconstruction then current connected PG summary qualification. No PostHog runtime installed. NPS_SOURCE_ADAPTATION_V402.md/json.
+
+V402 T2810 exact npm legal metadata before acquisition: portable-release/npm-legal/metadata-profile.json SHA256 3bd60df326c0cc6b3adcc2b87cc00704f5f8ee6d2a9bb77a11d56f58756d4edc. Eight exact version responses, bounded300000bytes each, required inputs answered under existing public read-only library authorization. Six missing texts plus two parent identities; no install/execution/version change or license admission from a label.
+
+V402 T2810 bounded official license-source discovery: portable-release/npm-legal/source-discovery-profile.json SHA256 13520402e05f492452a46f89a3a36c6f2556b2cac7fb3dedffd8290389398fa8. Six GitHub metadata endpoints, required inputs answered under existing user authority; tag/history discovery only, fixed source verification before admission.
+
+V402 T2810 fixed license source inspection before acquisition: portable-release/npm-legal/fixed-source-profile.json SHA256 e35fc9b643a0b6fdd05e9a3e3df711b935800d019a468e2e65d8fd8cf260cfa9. Commit-fixed bounded contents, exact original Git blobs/SHA256 required; includes Next official redistributed marker sources for comparison. No license grant inferred from metadata or runtime execution.
+
+V402 T2810 exact embedded next-env license inspection: portable-release/npm-legal/env-license-profile.json SHA256 b1d303b31e467ee557eae914dbcfb5471ad7b6ba3de0e9a91d92a5a36e146509. dotenv16.3.1 and dotenv-expand10.0.0 from fixed Next source manifest; bounded metadata/length discovery then frozen SRI archive, no install/execution or code/version change.
+
+V402 T2810 exact nested runtime license inspection: portable-release/npm-legal/nested-notice-profile.json SHA256 2ca222e24c3b6d5f3bf562a848cafcfc10537e175b9102b271ad92df8604d597. Twelve versions from commit-fixed Next16.3.4 manifest, bounded metadata then frozen SRI quarantine; no code installation/execution or dependency update.
+
+V402 T2810 nested license build-metadata inspection: portable-release/npm-legal/build-source-profile.json SHA256 f71e6557f39c0b1942941d56c66d853add159bc5e1f32f8054660f170ac2a490. Four official endpoints for exact Next source and Unistore tag discovery. No execution or admission from acquisition.
+
+V402 T2810 final fixed notice mapping inputs: portable-release/npm-legal/last-fixed-profile.json SHA256 79394ba46901bc8f0ab79c3e042c454043d201da2060c62fc63846355ce860e0. Exact observed Unistore commit and Next Babel imports; required inputs answered, no execution or runtime admission.
+
+V402322: bounded notice profiles completed with fixed Git blobs/npm SHA512 receipts;16original text files retained,3explicit notice renderings, actual129runtime manifests and12negative cases plus4source rebuilds qualify the narrow notice infrastructure. No package install/source execution, version update, corporate attribution or native admission. REFERENCE_NOTICES_ADMISSION_V402.json.
+
+V402 ARCA penultimate pre-acquisition: arca-final/source-profile.json SHA256 a6fd109306676f18b1dc51818f91cd2f10492d63f3b779e4724394005ef5e1ae. Two exact admitted public homologation WSDLs, existing user local-fixture authorization; all required purpose/environment/no-secret/no-cost/destination/bounds/adoption inputs recorded. No loginCms/fiscal operation, production metadata, native investigation or public WSDL redistribution.
+
+V402 ARCA FAIL963 before discovery: arca-final/nuget-patch/metadata-profile.json SHA256 920771d8a309bd18fb7bab35ba2dbdf73f92e4353b245dd807a191b8de54de1c. Official NuGet6.12.5 patch metadata for nine causally connected generator dependencies; bounded18responses2MB, user local-maintenance authorization and required inputs recorded. No payload use/promotion or global cache overwrite.
+
+V402 ARCA fixed patch quarantine: arca-final/nuget-patch/quarantine-profile.json SHA256 1e33ad8e5e54c4e300fcc81b5ce461c7b6b77c4a5f4cf915908044391284f667. Nine official6.12.5 archives/3625920bytes fixed by official catalog SHA512 before acquisition. No execution/admission until signature, source/notices and candidate gates.
+
+V402 NuGet6.12.5 legal supplement: arca-final/nuget-patch/legal-profile.json SHA256 452ab0c1c73ebe4bcf373b375bbf5582ca565f591c7651d572e14964e25c888e. Fixed repository LICENSE and official Apache text, no executable acquisition. All required scope inputs answered.
+
+V402 ARCA runtime MIT texts from actual fixed nuspec commits: arca-final/runtime-legal/profile.json SHA256 5a7fbece542c96f1f77b53472e773e8b991e820fe9f048bf986390757fd26e78. Two bounded legal-only reads, no version change or executable acquisition.

@@ -320,3 +320,5 @@ on-call, SLO, RPO/RTO ni una aceptación de negocio. El usuario ya pidió preser
 la parte Daybreak diferida y continuar el trabajo independiente. H queda BLOCKED
 por evidencia de release/seguridad/integración pendiente, no por falta del prompt.
 La nueva contención de pnpm tiene pruebas acotadas y no elimina esas condiciones.
+
+V402320: G/H ANSWERED para la decisión explícita LIBRARY_INFRASTRUCTURE, según LIBRARY_ADVISORY_GH_V402.md; nueve dimensiones reconciliadas en LIBRARY_ASSURANCE_REVIEW_V402.json. critical_unknowns vacío para este scope; trabajo conocido T2810/ARCA y dossier último no equivale a incertidumbre humana. El gate release no está aprobado todavía; el expediente legacy de proyecto no habilita producción.

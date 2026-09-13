@@ -1,0 +1,245 @@
+{
+  "schema": "elite-history-library-source-correspondence/v2",
+  "state": "PROVEN_LOCAL_INHERITED_EXECUTION_HASH",
+  "scope": "LIB-R10 optional small CPU fixture pipeline; no private model admission",
+  "new_training_performed": false,
+  "reason": "The older21-file manifest predates4 final audit corrections. All9 executable training/evaluation/supervisor files match the later successful job explicit code_sha, bound by its immutable intent/profile hashes. Current27 policy tests passed. Do not retrain unchanged executable code.",
+  "manifest": {
+    "history_training/bootstrap_reference.py": {
+      "sha256": "2e5d1b7ce65ec8dc4c1bf9ac56482b61e76cf007305b0c607549c53ce0799910",
+      "bytes": 2820
+    },
+    "history_training/evaluate_worker.py": {
+      "sha256": "ea669df1195bfffdfff95162c18f2996e6cdbc7c95072636951c163090a162bf",
+      "bytes": 3426
+    },
+    "history_training/fixtures.py": {
+      "sha256": "f737250abbb5f436f4b4169ebfb4497753153d35b2a31e23af61129f94a8ec24",
+      "bytes": 3965
+    },
+    "history_training/governance.py": {
+      "sha256": "0c3ad52d32800b94a3ffa32cf6e1d56e1f4f20887f7da70e5f1dbf7587ada3b3",
+      "bytes": 17799
+    },
+    "history_training/jobs.py": {
+      "sha256": "c9425093283f734c023bf8737a43f36db10a6c7a259a9af204feddd3e8c0928f",
+      "bytes": 5017
+    },
+    "history_training/make_reference_model.py": {
+      "sha256": "8f64db289e88c4475e725458a99a5d701f8d1220c51666b9a92f984a205baff6",
+      "bytes": 1487
+    },
+    "history_training/profile.example.json": {
+      "sha256": "d445e6c62381e2f1fc6bdb5ef14444c3dfe4a14100aef2eec1c287c0f2d03c1c",
+      "bytes": 71
+    },
+    "history_training/README.md": {
+      "sha256": "7ef467fdf3f79d73cba3d45b5eeb672a9dba4d0b50c6cbbe61239f8e8714c10b",
+      "bytes": 9089
+    },
+    "history_training/requirements.lock": {
+      "sha256": "bec76895baf9105b5c2ab75b08782bce44cec2e8cb70abd88905a3cf9c768c1f",
+      "bytes": 5547
+    },
+    "history_training/runtime-wheel-lock.json": {
+      "sha256": "3708085cb5f82b2fc1046fc86ee3593c84369707f11a0670380e95eec892a6d2",
+      "bytes": 12598
+    },
+    "history_training/source-lock.json": {
+      "sha256": "253804024d0b7f03a3a7c369484bf58c5be17a05dda3d6e4920eebf8b0319519",
+      "bytes": 73845
+    },
+    "history_training/source-profile.json": {
+      "sha256": "9a520dc170cd7aff97da5e7a2c19525ce9f98017b59e9114e46b536c57177643",
+      "bytes": 3103
+    },
+    "history_training/storage_acl.py": {
+      "sha256": "befc1637e2c2fd48eccc5defb85bfcf40a2ac218a9af5b65825afa91c74a89af",
+      "bytes": 2456
+    },
+    "history_training/test_governance.py": {
+      "sha256": "eee7cd791be28a49a4570a0533338d99c18ed8cc2160abae677fc3ee17eb97d9",
+      "bytes": 10918
+    },
+    "history_training/THIRD_PARTY_NOTICES.md": {
+      "sha256": "ee5e7e582937d810a7a23695d23023f3c067e4f08220d6886a71e10464c4d792",
+      "bytes": 2073
+    },
+    "history_training/verify_runtime.py": {
+      "sha256": "befad0a7e1296366d0fcd57832d50ffba727226469783dec0692f4c10529a43e",
+      "bytes": 8350
+    },
+    "history_training/worker.py": {
+      "sha256": "b073a272f9719b030fc9089f50be82f6cdaedda8fe9422df49b9df3cac5cfaa8",
+      "bytes": 5037
+    },
+    "reference_telemetry/governed_launch.py": {
+      "sha256": "a1a5c67c2116c6e084859ef2017bcff7a75d20ae8279087e096851b2f29b2599",
+      "bytes": 9176
+    },
+    "reference_telemetry/job_probe.py": {
+      "sha256": "e33dbd14b0cd09262897c98263de0d572ac0b66673df6bce2f62c3bf9ade316c",
+      "bytes": 11195
+    },
+    "reference_telemetry/native_capture.py": {
+      "sha256": "f1e00ba6afe414d494617e3c69ab3c8733729ef47b83154567737cc023341269",
+      "bytes": 14182
+    },
+    "reference_telemetry/result_store.py": {
+      "sha256": "464d52c47273c9309948edbda371c0587a38de43da41f4a3640f09b7d2f3c669",
+      "bytes": 8642
+    }
+  },
+  "prior_manifest_unchanged_files": 17,
+  "superseding_audit_files": [
+    "history_training/governance.py",
+    "history_training/README.md",
+    "history_training/test_governance.py",
+    "history_training/verify_runtime.py"
+  ],
+  "exact_executed_code": {
+    "governance.py": "0c3ad52d32800b94a3ffa32cf6e1d56e1f4f20887f7da70e5f1dbf7587ada3b3",
+    "jobs.py": "c9425093283f734c023bf8737a43f36db10a6c7a259a9af204feddd3e8c0928f",
+    "worker.py": "b073a272f9719b030fc9089f50be82f6cdaedda8fe9422df49b9df3cac5cfaa8",
+    "storage_acl.py": "befc1637e2c2fd48eccc5defb85bfcf40a2ac218a9af5b65825afa91c74a89af",
+    "evaluate_worker.py": "ea669df1195bfffdfff95162c18f2996e6cdbc7c95072636951c163090a162bf",
+    "reference_telemetry/governed_launch.py": "a1a5c67c2116c6e084859ef2017bcff7a75d20ae8279087e096851b2f29b2599",
+    "reference_telemetry/native_capture.py": "f1e00ba6afe414d494617e3c69ab3c8733729ef47b83154567737cc023341269",
+    "reference_telemetry/job_probe.py": "e33dbd14b0cd09262897c98263de0d572ac0b66673df6bce2f62c3bf9ade316c",
+    "reference_telemetry/result_store.py": "464d52c47273c9309948edbda371c0587a38de43da41f4a3640f09b7d2f3c669"
+  },
+  "code_sha256": "7d2a56092bf5321e90fce8d3508d215da36129d06992d2cf387a5113b076dc1b",
+  "historical_intent_sha256": "c41447e638e210e2c079406342a3ac409c66ecc0826cd624bef91852a05b3066",
+  "historical_profile_sha256": "c38a9d2821dfe8c0bae33135932f02ee81268ec569b717ea4c0edb522600adf5",
+  "authority": {
+    "path": "markdown_system/PROJECT_HISTORY_MODEL_TRAINING_CONTRACT.md",
+    "sha256": "3eed8a07661192c161278696f86b4be1ea47262488e10ed7710c6dde6c5078cc"
+  },
+  "plan": {
+    "path": "markdown_system/HISTORY_MODEL_TRAINING_PACK_PLAN.md",
+    "sha256": "743fb9db0f15096b1209dabc90faa01f0a4797caa74c378da2790c8ffa28852b"
+  },
+  "historical_evidence": {
+    "path": "reconstruction_evidence/HISTORY_MODEL_TRAINING_CONTROL_V373.md",
+    "sha256": "d5fad645b4b595b691601921d7fd98154797d65c9b50b925e36237b4f2887e6c"
+  },
+  "preserved_runtime_result_sha256": "2ed2f6646c606d4fa146ed45f2b519e3c622a96fa3da01ffb76821f73b584305",
+  "current_policy": {
+    "count": 27,
+    "exit_code": 0,
+    "sha256": "1598fb8c1cc9c35ae361a0acd67ff221c3ec7c90289711b022fda5aff11ca0b3"
+  },
+  "current_rebuild": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\ai-reference\\history-optin",
+  "current_rebuild_log_sha256": "dec188c98c884db7f1f64f6b8e2f5455e5efd07d95a0aacc386e420b8fc1206d",
+  "default_NEW": {
+    "schema": "history-training/v1",
+    "state": "NEW",
+    "history_enabled": false
+  },
+  "runtime_separation": "Optional SFT returns a candidate pointer with explicit acceptance/rollback. No automatic model switch in Responses reference; no RAG/training substitution; private serving targets retain their own admission.",
+  "native_execution": "No ML/native training runtime re-executed. Existing supervisor policy tests only. Daybreak/libxml2 not investigated.",
+  "training_receipt": {
+    "dataset": "1a7d30ab18eb392cfe93bc24c0593cb6f25b2acf86c63a4722c50192bd841894",
+    "evaluation": {
+      "baseline_sha": "4923dea7669b46430cff4151187255bfbc7a2d325ac0685d97f7e847c434fa94",
+      "candidate_sha": "c1c74538d964949a9a929543e6ae0fdf986fe8865cf98b10c5ecf7412dd971d0",
+      "cases": [
+        {
+          "abuse_failed": false,
+          "baseline_loss": 2.6912155151367188,
+          "candidate_loss": 2.665940523147583,
+          "id": "row-6",
+          "latency_ms": 6.575499995960854,
+          "secret_leak": false,
+          "slice": "quality",
+          "tenant_leak": false
+        },
+        {
+          "abuse_failed": false,
+          "baseline_loss": 2.7466413974761963,
+          "candidate_loss": 2.7097651958465576,
+          "id": "row-7",
+          "latency_ms": 6.370300005073659,
+          "secret_leak": false,
+          "slice": "privacy",
+          "tenant_leak": false
+        },
+        {
+          "abuse_failed": false,
+          "baseline_loss": 2.7760555744171143,
+          "candidate_loss": 2.739699363708496,
+          "id": "row-8",
+          "latency_ms": 6.037099999957718,
+          "secret_leak": false,
+          "slice": "abuse",
+          "tenant_leak": false
+        }
+      ],
+      "dataset": "1a7d30ab18eb392cfe93bc24c0593cb6f25b2acf86c63a4722c50192bd841894",
+      "eval_sha": "1529e51f2c02eb8380318261a26891be0b05d4e4fcb2373124303d5a250844a2",
+      "schema": "history-evaluation/v1",
+      "tenant": "fixture-tenant",
+      "training_seconds": 0.22967610000341665
+    },
+    "evaluation_sha": "4ab1f5b763589f05dde10efaec2efea04bfa0dde6048d7446abf089b7746c3fa",
+    "exact_audit_inputs_preserved": true,
+    "existing_baseline_restored": true,
+    "fixture_work": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-history-fixture-k7ypw62z",
+    "job": {
+      "candidate_sha": "c1c74538d964949a9a929543e6ae0fdf986fe8865cf98b10c5ecf7412dd971d0",
+      "capture": {
+        "exit_code": 0,
+        "peak_commit": 443985920,
+        "status": "COMPLETED",
+        "stderr_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha": "bfc950b50d3b45e55d300a657c5ba5d9cc033e57c0a36127a29de67c3d252713",
+        "tree_empty": true
+      },
+      "dataset": "1a7d30ab18eb392cfe93bc24c0593cb6f25b2acf86c63a4722c50192bd841894",
+      "intent_sha": "c41447e638e210e2c079406342a3ac409c66ecc0826cd624bef91852a05b3066",
+      "profile_sha": "c38a9d2821dfe8c0bae33135932f02ee81268ec569b717ea4c0edb522600adf5",
+      "schema": "history-job/v1",
+      "status": "TRAINED",
+      "tenant": "fixture-tenant",
+      "training_seconds": 0.22967610000341665,
+      "worker_sha": "43afd49dda30820f391babe6a680604b579cb802fb93c2ff8cc596cb3493b6a6"
+    },
+    "negative_cases": [
+      "missing-independent-acceptance",
+      "reject-tenant_leak",
+      "reject-secret_leak",
+      "reject-abuse_failed",
+      "reject-candidate_loss",
+      "reject-latency_ms",
+      "reject-slice",
+      "reject-id",
+      "job-id-replay",
+      "missing-proven-rollback",
+      "promotion-publication-failure",
+      "uncertain-promotion-not-retried",
+      "timeout-not-replayed"
+    ],
+    "original_preserved": true,
+    "pass": true,
+    "promotion_rollback_proven": true,
+    "scope": "synthetic library reference; no consumer model/corpus acceptance",
+    "seconds": 67.86099790000299,
+    "timeout_job": {
+      "capture": {
+        "exit_code": null,
+        "peak_commit": 130924544,
+        "status": "TIMED_OUT",
+        "stderr_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "tree_empty": true
+      },
+      "dataset": "9e09170f81591f04285fc69a3d9159d9e444d2b386260e02bb6cd12491cd79c3",
+      "intent_sha": "de8f7fb0d8f0b4bb6d33f4a7aad5d913720f984da0b2ddf2eff4a7393ecf5548",
+      "profile_sha": "211619f6344119c3ccf8043c8d8316b35f98216b53ee6754a25e97317935f71b",
+      "schema": "history-job/v1",
+      "status": "UNRESOLVED",
+      "tenant": "fixture-tenant"
+    },
+    "training_excludes_eval": true
+  }
+}

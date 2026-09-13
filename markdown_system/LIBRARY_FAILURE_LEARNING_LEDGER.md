@@ -3559,3 +3559,327 @@ V401 / FAIL719 tooling recurrence: a readiness --report path outside project roo
 | LIB-FAIL-2529 | V402 / FAIL819 | CRLF payloads and obsolete compiler-API assumption | Explicit LF; exact before/after, Python AST and installed Next/SWC output equivalence; original diagnostics retained | CORRECTED | reconstruction_evidence/COMMUNICATIONS_RUNTIME_V402.md |
 | LIB-FAIL-2530 | V402 / FAIL820 | Future-effective contact reached model/domain | Existing resolver requires current effective_at; actual RED then zero-call durable handoff regression | CORRECTED | reconstruction_evidence/COMMUNICATIONS_RUNTIME_V402.md |
 | LIB-FAIL-2531 | V402 / FAIL818/821 | Independent profiles omitted internal dependency closure or selected a test of an absent feature | Select actual fence/contact ownership, preserve broader omnichannel test in full profile; exact rebuild and compile test packages | CORRECTED | reconstruction_evidence/COMMUNICATIONS_RUNTIME_V402.md |
+
+| LIB-FAIL-2532 | V402 / FAIL822 | Harness guessed a SQL column before reading the selected schema | Use actual entry_id from accounting0011; preserve rejected probe, stop owned PG and rerun only added downgrade probe | CORRECTED_HARNESS | reconstruction_evidence/FX_JOURNAL_CONNECTION_V402.md |
+
+| LIB-FAIL-2533 | V402 / FAIL823 | New funding composition broadened a hash-bound handover profile silently | Preserve legacy provider-only semantics; require explicit revision3 and exact stored-value coverage option | CORRECTED_IN_STAGING | reconstruction_evidence/STORED_VALUE_TENDER_V402.md |
+
+| LIB-FAIL-2534 | V402 / FAIL824 | CORRECTED_IN_STAGING | Stored-value lease checked before outbox wait; expired effect committed in real PG regression. | Enforce at transaction commit; preserve gift-expiry-red and verify complete rollback. |
+
+| LIB-FAIL-2535 | V402 / FAIL825–827 | CORRECTED_IN_STAGING | Host logger, fixture extraction, strict TS optional type and browser locator corrected against observed code/UI. | Preserve RED logs; host/vet/build,49tests and connected browser PASS; packaging still pending. |
+
+| LIB-FAIL-2536 | V402 / FAIL828 | Unmanifested initializer/bytecode after hash verification | Execute verified in-memory source with empty package path and isolated Python; actual RED/3GREEN and IPC/host PASS | CORRECTED_IN_STAGING | reconstruction_evidence/STORED_VALUE_SOURCE_CLOSURE_V402.md |
+| LIB-FAIL-2537 | V402 / FAIL829 | Pack format added LF to exact upstream license | Optional final_newline=false, strict validation, exact-byte/updater/legacy gates; canonical tooling0.3.0 | CORRECTED | reconstruction_evidence/STORED_VALUE_SOURCE_CLOSURE_V402.md |
+
+| LIB-FAIL-2538 | V402 / FAIL830 | Exact EOF test lacked explicit release registration | Both allowlists include exact reviewed filename; next run passed boundary, full release still pending | CORRECTED_REGISTRATION | reconstruction_evidence/WARRANTY_SOURCE_SCOPE_V402.md |
+| LIB-FAIL-2539 | V402 / FAIL831 | Stale JSON receipt distribution/profile77 guards | Reconcile public/local evidence and current selection under T2810, retain negatives; do not repeat broad gate without delta | OPEN | reconstruction_evidence/WARRANTY_SOURCE_SCOPE_V402.md |
+
+- LIB-FAIL-2540 / V402 / FAIL832: extraction helper boundary/SQL-alias false positive corrected in staging. Preserve partial mutation and resume tail; no full script replay or compile-as-runtime claim. Evidence: `reconstruction_evidence/WARRANTY_CONNECTED_TERMS_V402.md`.
+
+- LIB-FAIL-2541 / V402 / FAIL833: Aligned Go-field search failed before product edits; precompute assertions and resume tail after preserved snapshot. Corrected in staging; RED retained. Evidence `reconstruction_evidence/WARRANTY_CONNECTED_CLAIM_V402.md`.
+
+- LIB-FAIL-2542 / V402 / FAIL834: Fixture repository call omitted domain-prepared appointment version; use existing service and exact same business profile, preserve CAS. Corrected in staging; RED retained. Evidence `reconstruction_evidence/WARRANTY_CONNECTED_CLAIM_V402.md`.
+
+- LIB-FAIL-2543 / V402 / FAIL835: Warranty mapping omitted initial reservation version/status; preserve original stock writer and provide its prepared domain contract. Corrected in staging; RED retained. Evidence `reconstruction_evidence/WARRANTY_CONNECTED_CLAIM_V402.md`.
+
+- LIB-FAIL-2544 / V402 / FAIL836: Source decimal formatter returns740; compare exact numeric value rather than requiring740.0000 text. Never modify source math for fixture presentation. Corrected in staging; RED retained. Evidence `reconstruction_evidence/WARRANTY_CONNECTED_CLAIM_V402.md`.
+
+- LIB-FAIL-2545 / V402 / FAIL837: Keep execution evidence producer within160characters; resume rejected checkpoint at same revision after metadata repair. Corrected with RED retained. Evidence `reconstruction_evidence/WARRANTY_INTERFACE_AND_PORTABILITY_V402.md`.
+
+- LIB-FAIL-2546 / V402 / FAIL838: Include intentionally denied HTTP calls in attempt counters; distinguish committed request, recovery GET and explicit replay. Corrected with RED retained. Evidence `reconstruction_evidence/WARRANTY_INTERFACE_AND_PORTABILITY_V402.md`.
+
+- LIB-FAIL-2547 / V402 / FAIL839: Historical unslotted appointment fixture requires ends_at null; preserve original schema and separate lease probe from real scheduling proof. Corrected with RED retained. Evidence `reconstruction_evidence/WARRANTY_INTERFACE_AND_PORTABILITY_V402.md`.
+
+- LIB-FAIL-2548 / V402 / FAIL840: Optional identifier fields need unique present values, not one NULL per tenant. The connected supply probe exposed a real second-unit rejection. Preserve RED and prove both missing and duplicate present identifiers before canonical publication; no fabricated VIN.
+
+- LIB-FAIL-2548 closure / V402 / FAIL840 CORRECTED_CANONICAL: three serial factory/stock rows and seven events exact; duplicates refused, populated down refused intact, empty down/up PASS; four profiles exact. See reconstruction_evidence/SERIAL_OPTIONAL_IDENTIFIERS_V402.md.
+
+- LIB-FAIL-2549 / V402 / FAIL841: Transport integration tests must follow existing postgres_test ownership when HTTP adapters import the repository. Check this dependency before adding imports; fix test packaging, never production architecture solely for a test. RED: serial-supply-http-first/connected.log; no runtime claim from compile failure.
+
+- LIB-FAIL-2549 closure / FAIL841: external test package removes cycle; actual HTTP/host/protected effects and source-exact composition PASS. No runtime claim from initial compile failure.
+
+- LIB-FAIL-2550 / FAIL842: Derive helper assertions from the exact observed canonical header before modifying candidates. A failed preparer is not atomic: inspect completed edits and resume its unexecuted tail, preserving before snapshots. Catalog migration72 has six serial_quality occurrences in its approval header, not seven.
+
+- LIB-FAIL-2551 / FAIL843: Use purpose-specific package identifiers such as digestPattern; package-wide hex conflicts with an encoding/hex import in another file. A migrated database is not proof of tests that failed compilation. Copied harness selectors and result labels must name the actual new claim before execution.
+
+- LIB-FAIL-2552 / FAIL844: Independent immutable command events cannot share a resource/type/version identity. Use command aggregate identity and version1 with the real publication generation in payload; preserve the existing outbox uniqueness contract. Legal and technical reviews are distinct commands on one draft.
+
+- LIB-FAIL-2553 / FAIL845: A source owner with creation/version1 and activation/version2 does not support reactivation under the same identity. For immutable catalog rollback, create a fresh effective price book from the approved historical snapshot and activate it once; prove exact header/entry equality and retain old quote references. Do not retrofit an invented source event version.
+
+- LIB-FAIL-2554 / FAIL846: Read shared response-writer headers before composing cache policy. Public catalog conditional requests need a dedicated writer; keep the existing private no-store default. Assert response headers as well as changing ETags; manually sending If-None-Match does not prove the emitted caching policy.
+
+- LIB-FAIL-2555 / FAIL847: The latest-named helper is not necessarily the successful recipe. External dependency junction builds already require the documented Next --webpack CLI. Reuse the last PASS command; keep the RED and avoid repeating unchanged schema/SEO tests.
+
+- LIB-FAIL-2556 / FAIL848: Fixed-size synthetic cryptographic inputs must use explicit byte constructors, not hand-counted prose strings. The host rejected33bytes as intended; retain RED and correct only the fixture.
+
+- LIB-FAIL-2557 / FAIL849: Derive dependency IDs from pack metadata, never filename expansion. Exact output-set comparison caught omitted storefront dependency before publication; resume the staged plan tail, not earlier owner mutations.
+
+- LIB-FAIL-2550–2557 closure / FAIL842–849: preparer containment and catalog source/command/cache/build/key/selection corrections incorporated canonically. No weakened source constraints or tests. CATALOG_CONNECTED_RELEASE_V402.md/json.
+
+- LIB-FAIL-2558 / FAIL850: A task closure must atomically align roadmap checkbox and execution task_progress. Checkpoint prevented drift before event append. Repair at the same revision with original RED log retained, not a new task or repeated product suite.
+
+- LIB-FAIL-2559 / FAIL851: Match observed accessible role/name for a select inside a wrapping label; label-text matching may include option text. Preserve the snapshot and cap per-action waits. Actual training generic-bypass/audit/duplicate guards passed independently.
+
+- LIB-FAIL-2559 closure / FAIL851: training locator correction published in exact91/1228 composition with observed role/name; bounded12s expectation timeout, no weakened assertion or product gate. Retain original90s RED.
+
+- LIB-FAIL-2560 / FAIL852: Composition publication must update active control correspondence before readiness validation. Existing control receipts bind the former plan; retain them as history and issue a new source/delta-backed receipt rather than editing old runtime evidence.
+
+- LIB-FAIL-2561 / FAIL853: In PG synthetic fixture statements, reuse a UUID parameter as ($1::uuid)::text when building a label. Context-dependent UUID/text inference can reject setup before the tested owner; classify it separately from a domain failure.
+
+- LIB-FAIL-2562 / FAIL854: Keep NextRequest fixture options concretely inferred under exactOptionalPropertyTypes. Broad DOM RequestInit casts can introduce nullable fields absent from the actual request. Fix the fixture typing, retain strict compiler gates.
+
+- LIB-FAIL-2563 / FAIL855: Apply observed role/name selectors to controlled textareas after their values change, as well as selects. Label text matching can include descendant content although the accessibility name remains stable. Keep fixed role/name and existing bounded timeout.
+
+- LIB-FAIL-2561–2563 closure / FAIL853–855: candidate fixture/type/locator corrections published in93/1248 reference with no source semantics bypass. Current source and all RED/PASS receipts retained.
+
+- LIB-FAIL-2564 / FAIL856: Unicode transport goldens must also satisfy domain text invariants. Put whitespace separators inside bounded strings, not at trimmed boundaries; retain rejection rules and test both typed Go and TypeScript values.
+
+- LIB-FAIL-2565 / FAIL857: block-bodied JSX handlers require both function and attribute braces. Use standalone TypeScript diagnostics before repeating a failed build.
+
+- LIB-FAIL-2566 / FAIL858: new navigation IDs also need matching dictionary entries; registry labels alone do not control the rendered shell. Check browser screenshots and preserve transaction evidence independently of a label correction.
+
+- LIB-FAIL-2564–2566 closure / FAIL856–858:95/1264canonical supply role with precise fixture/syntax/translation fixes. Historical failed outputs retained; transaction evidence not replayed for dictionary-only change.
+
+- LIB-FAIL-2567 / FAIL859: distinguish signed inventory ledger amounts from positive service cost presentation. Bind fixture assertions to the existing owner contract; preserve successful UI evidence and verify the existing durable result without replaying writes.
+
+- LIB-FAIL-2568 / FAIL860: generated Python source needs one escape level for newline arguments. Inspect partial outputs and resume only the failed tail; preserve already verified pack bytes.
+
+- LIB-FAIL-2567–2568 closure / FAIL859–860:97/1278canonical warranty role preserves signed FIFO issue and positive service presentation. Only failed expectation/tail fixed; successful browser writes not replayed.
+
+- LIB-FAIL-2569 / FAIL861: never use ordinary source words as global code-generation placeholders. Use direct interpolation/bounded unique tokens and syntax-check extraction before any runtime test.
+
+- LIB-FAIL-2570 / FAIL862: interface signatures copied between Go packages require package-qualified domain types, including result tuples. Compile the adapter before starting a database fixture.
+
+- LIB-FAIL-2571 / FAIL863: transport/fixtures must include retained SQL constraints, not only service validators. For negative interval-overlap tests, satisfy the earlier exact unique key so the intended guard is exercised.
+
+- LIB-FAIL-2569–2571 closure / FAIL861–863:99/1299canonical network role, original SQL guards preserved byhash, narrow fixtures corrected and full new claims proven locally.
+
+- LIB-FAIL-2572 / FAIL864: human-language search must select explicit admitted Unicode semantics rather than inherit C-locale lower(). PostgreSQL18 built-in pg_unicode_fast supplies full case mapping without ICU/new dependency. Keep fixture cluster locale C to detect regressions; prove Unicode search and require the collation at activation.
+
+- LIB-FAIL-2573 / FAIL865: export-training-content creates its compile directory beside the output; keep that absent output inside the consumer module-resolution tree. Move only the completed output receipt afterward. A failed export does not justify replaying prior source mutations.
+
+- LIB-FAIL-2574 / FAIL866: JSON fixture arrays are not compile-time tuples under noUncheckedIndexedAccess. Use a checked fixture accessor before field access; do not loosen TypeScript or cast the entire fixture blindly.
+
+- LIB-FAIL-2575 / FAIL867: inspect bounded course and response contracts before extending curricula. Keep max4lessons/max8courses and create a separate explicit course; align the exercised profile and materialized profile without increasing transport budgets.
+
+- LIB-FAIL-2572–2575 closure / FAIL864–867:102/1324canonical helpCMS/shared21guides/profile2. Original kernel/15guides retained, Unicode semantics explicit, no guard relaxation.
+
+- LIB-FAIL-2576 / FAIL868: reporting state filters must follow the actual domain/database terminal values. A plausible status name from another CRM is not evidence. Keep a converted/lost/new fixture in the query-owner regression and preserve the original RED.
+
+- LIB-FAIL-2577 / FAIL869: partial source mutators are not atomic. Inventory completed outputs and execute only the failed tail; derive match counts from the target function rather than an unrelated GET layout.
+
+- LIB-FAIL-2578 / FAIL870: isolated tenant UUIDs still share globally unique tenant codes. Namespaced fixture codes must follow database constraints; do not rerun a completed preceding test for a fixture setup failure.
+
+- LIB-FAIL-2579 / FAIL871: a reporting fixture invoking a domain writer must satisfy that writer’s preconditions. A source-order reversal requires cancelled state; projection tests do not authorize bypassing or weakening it.
+
+- LIB-FAIL-2580 / FAIL872: prove expiration with a separately created expired fixture. An immutable survey definition cannot be time-travelled by UPDATE for testing.
+
+- LIB-FAIL-2581 / FAIL873: connected serial facts are not independent rows. Reporting fixtures must create the minimal dependency through the admitted writer and its guarded transaction, then assert the new projection; no full unrelated journey replay.
+
+- LIB-FAIL-2582 / FAIL874: consult the historical failure record before reusing its identifier. A later body-consumption defect is separate from a previously closed generic sender/recovery defect. Preserve both histories and bind the current regression to original and corrected bytes.
+
+- LIB-FAIL-2576–2582 closure / FAIL868–874: role metrics canonical103/1343. Original-source lead/BFF regressions, correct fixture guards and named PG/browser/source/fuzz checks, no constraint weakening. Older FAIL457 closure preserved.
+
+- LIB-FAIL-2583 / FAIL875: inspect fixed compiler exports before invoking historical JS APIs. Tooling API migration does not justify installing an unadmitted version; an existing pinned parser can inventory syntax with its own receipt and no product incorporation.
+
+- LIB-FAIL-2584 / FAIL876: JSX event-handler bodies are executable expressions, not attribute labels. Classify direct values separately and audit missed dynamic text; preserve meaningful separators in translation batches. A complete catalog is not an interface integration proof.
+
+- LIB-FAIL-2585 / FAIL877: display locale and content locale are separate values. Codemods must inspect bindings and grouped declarations, plan all changes before writing, and emit compact parser failures instead of a bundled source line.
+
+- LIB-FAIL-2586 / FAIL878: natural-language literals can be durable audit data. Exclude wire reasons from translation and prove serialized/storage arguments unchanged. Inventory UI outside app/components; do not mark a mixed server-utility module use-client merely to localize its rendering.
+
+- LIB-FAIL-2587 / FAIL879: fixed runtime values derived through string indexing can remain optional to strict TypeScript. Add an explicit checked test-fixture boundary rather than changing immutable content or weakening compiler checks.
+
+- LIB-FAIL-2588 / FAIL880: browser locale is a context option. Changing extra HTTP headers may not replace Chromium navigation language; inspect captured document headers and use explicit independent locale contexts for negotiation/isolation tests.
+
+- LIB-FAIL-2589 / FAIL881: literal content can appear in both editor and reader elements. Assert the reader paragraph within its article role; exact text alone is not an unambiguous locator.
+
+- LIB-FAIL-2583–2589 closure / FAIL875–881: private locale canonical104/1363; all RED retained, exact90serialization/storage expressions, source-bound guides/courses and actual bilingual browser recovery; no product guard weakening.
+
+V402 / LEARN2590 / FAIL882 MARKETPLACE_OWNER_INVENTORY: Owner lookup incorrectly assumed JSON manifest fields and guessed inventory/migration paths; the copied 1363-file candidate was intact. Resume verified files without recopying; use actual FILE headers and filename inventory. Official HTTPS acquisition succeeded for all six URLs after web extraction returned403; preserve transport discrepancy, not a provider-access blocker.
+
+V402 / LEARN2591 / FAIL883 MARKETPLACE_MESSAGE_SCHEMA: First new unit compilation rejected a guessed Metadata field in channels.Message. The admitted fence hashes Text; remove the redundant metadata field and retain the immutable approval payload as the authoritative body. Evidence: marketplace-first-unit.log; compile and targeted contract tests must pass before promotion.
+
+V402 / LEARN2592 / FAIL884 MARKETPLACE_FIXTURE_RESPONSE_CONTROLLER: The first PG/HTTP fixture stopped before provider effects because its response recorder hid the real connection required by the new five-second read deadline. Add Unwrap to the test recorder, preserving the actual ResponseController and fail-closed product deadline. Keep marketplace-connected-pg-first logs; source publication/migrations succeeded, provider path remains unproven until rerun.
+
+V402 / LEARN2593 / FAIL885 MARKETPLACE_SOURCE_SQL_OWNER: The new source join referenced p.snapshot_sha256 even though the admitted publication owner stores the hash and canonical snapshot on its draft. Correct the binding to d.snapshot_sha256/d.snapshot_canonical, retaining the current-publication view and original catalog transaction advisory lock. No provider effects occurred; retain marketplace-connected-pg-response-controller logs. This is a new SQL glue defect, not an upstream or credential failure.
+
+V402 / LEARN2594 / FAIL886 MARKETPLACE_FIXTURE_ROLE_SCOPE: The negative organization fixture used the root wildcard permission, which intentionally bypasses organization restrictions in the original identity owner. Replace the fixture with the exact catalog/marketplace permission set before testing wrong-organization denial. Preserve source-owner RED logs; do not weaken or rewrite the existing root authorization semantics.
+
+V402 / LEARN2595 / FAIL887 MARKETPLACE_JSONB_BODY_CANONICAL: PG persisted approval and claimed the send, but the HTTP mapper compared canonical body bytes with JSONB output whitespace, so it failed closed as unknown before the provider mutation. Canonicalize the stored body with the existing approval serializer before comparison and sending; retain exact semantic approval and wire hashes, reject duplicate keys. Add a JSONB whitespace regression and cross-User-Product path tampering test. Scoped-role RED retained; no uncertainty was reset to permit a write.
+
+V402 / LEARN2596 / FAIL888 MARKETPLACE_FUZZ_SOURCE_BOUNDARY: The isolated fuzz closure accidentally included dependency files named fuzz_test.go in addition to the intended target; the existing stored-value fixture then failed before the new fuzz campaign because its data was intentionally not copied. Rebuild a separate v2 closure allowing only internal/marketplacebridge/fuzz_test.go. Keep original module manifests/runtime sources, preserve the RED log and do not repeat unrelated business tests.
+
+V402 / LEARN2597 / FAIL889 MARKETPLACE_PACK_TEXT_EOL: The pack builder rejected two new JSON texts emitted with Windows default CRLF. Normalize only those candidate text line endings to UTF-8 LF, record before/after hashes, and resume the still-unpublished package after its two existing-owner drafts. Official HTML snapshots and proven Go/PG behavior are unchanged. Always set newline explicitly for composed text artifacts.
+
+V402 / LEARN2598 / FAIL890 MARKETPLACE_PROFILE_COMPILE_SELECTION: The reduced-profile compile command included internal/approval even though those profiles select only the application slot delta and omit that package. Their three selected packages compiled; the aggregate command correctly failed for the extra path. Derive the corrected package list from materialized directories and preserve first RED logs. No tests or unrelated journey suites are rerun; only the corrected compile aggregate is required.
+
+- LIB-FAIL-2590–2598 / FAIL882–890 closure: marketplace mutation canonical105/1379. Corrections and RED receipts in MARKETPLACE_MUTATION_RELEASE_V402.json; original source owners, guards and single-attempt semantics retained.
+
+V402 / LEARN2599 / FAIL891 MARKETPLACE_CHECKPOINT_FILE_WRITE: Checkpoint303 preparation encountered OSError22 opening the existing preparation receipt for write. The2658byte receipt remained valid, drive health/space and normal Archive attribute were checked; cause is not established. State remains302 with EVID148 already appended and two303 correspondence receipts minted. Resume only the remaining gate/report/checkpoint tail using atomic replacement; do not rerun publication or append duplicate evidence.
+
+V402 / LEARN2600 / FAIL892 MARKETPLACE_MULTIPART_BOUNDARY: The first initial-publication unit run rejected every media upload before provider I/O: the deterministic multipart boundary used a14character prefix plus64hex characters, exceeding Go MIME boundary maximum70. Reduce only the glue prefix to six characters. Preserve marketplace-initial-first-unit.log; existing mutation regressions passed. No provider effect or canonical product promotion occurred. The corrected delta must pass before incorporation.
+
+V402304 / LEARN2600 / FAIL892 closure: MIME boundary length includes the full fixed hash; validate the standard-library limit before sending. Canonical initial-media/publication owner0.2.0; RED and corrected evidence preserved.
+
+V402304 / LEARN2601 / FAIL893 MARKETPLACE_PATCH_DELIMITERS CORRECTED: Three orchestration patch submissions were rejected by JavaScript parsing before apply_patch executed because literal Markdown fences were embedded in a template literal. No partial file edit occurred. Corrected submissions use plain text or chr(96) for generated fences. This recurrence is tool-input glue failure, not provider/account or product failure; preserve completed mutations and do not rerun them.
+
+V402 / LEARN2602 / FAIL894 MARKETPLACE_CONTENT_TERMINAL_FIXTURE: The first connected CONTENT proof correctly rejected a multi-item User Product before any content PUT, but the new test expected a guessed delivery state failed instead of the original fence state failed_terminal. Correct only the fixture expectation; preserve marketplace-content-pg-first evidence, including accepted media upload and zero content writes. Do not weaken or rename the admitted fence state.
+
+V402305 / LEARN2602 / FAIL894 closure: use the actual durable owner state, not a guessed status label. Original fence rejected unsafe multi-item propagation correctly; canonical source and corrected proof retained.
+
+V402 / LEARN2603 / FAIL895 MERCHANT_SDK_QUERY_FIXTURE: The initial actual-SDK fixture rejected GET before any insert because it compared the whole URL against a path without query. The pinned generated REST transport always adds $alt=json;enum-encoding=int. Validate the path and that exact documented/generated transport query separately. Preserve merchant-sdk-worker-first.json; no product write occurred. The SDK/source integrity loader worked and is not replaced by a hand-written HTTP surrogate.
+
+V402 / LEARN2604 / FAIL896 MERCHANT_SCA_IDENTITY_COVERAGE: Targeted OSV2.5.1 scan exited0, but the independent exact20-package identity comparison failed. Preserve merchant-connected-sca/scan.json and result.json; do not call the scan complete until every installed pinned package is accounted for. Inspect actual parser output before correcting the receipt projection or scanner input. No dependency/runtime version or product code changed.
+
+V402 / FAIL896 CLOSED: OSV returned20 unique fixed PyPI identities with zero vulnerabilities;22 raw rows include two normalized-name aliases. The receipt comparator had treated PEP440-equivalent3.19/3.19.0 and3.0/3.0.0 as different versions. Exact wheel/metadata pins remain unchanged. Compare names canonically and versions with official pip-vendored packaging.Version; preserve the original scan and FAIL receipt. coverage-result.json proves20/20 without another network scan.
+
+V402 / LEARN2605 / FAIL897 UTF8_RECEIPT_ENVELOPE CLOSED: the isolated Python receipt closer lacked -X utf8 and stopped on the first canonical Markdown read after writing its successful SCA receipt. No canonical history changed. Explicit UTF8 reads and idempotent receipt verification resume the tail; original network scan is not repeated.
+
+V402 / LEARN2606 / FAIL898 / FAIL898 SCHEDULE_STATUS_FIXTURE_SECRET: initial connected test passed source/manual approval, no early dispatch and12concurrent callers->1actual adapter POST, then rejected the synthetic signed status. The test signed with app-secret while the reused appSecretFixture returns test-app-secret. Correct the fixture signer to that existing synthetic constant; no provider verifier/authentication product code changes. Preserve scheduled-communications-pg-first result/log; remaining cancellation/reschedule/recovery/optout cases were not yet reached.
+
+V402 / LEARN2607 / FAIL899 / FAIL899 SCHEDULE_STATUS_OWNER_LABEL: after correcting the synthetic signature, the original signed observer inserted one status and the send/job were accepted/completed. The new test expected delivered, while the admitted status projection deliberately returns observed_delivered (existing router/history tests prove that contract). Correct only the test expectation; preserve scheduled-communications-pg-signature RED. No product status label or delivery guarantee is changed. Future fixture assertions must be read from the actual owner contract, not guessed.
+
+V402 / LEARN2608 / FAIL900 / FAIL900 SCHEDULE_TEMPLATE_RECEIPT_RECOVERY: the connected test preserved a real fixture template send/receipt then lost stdout; the shared Python recovery verifier only supported conversational text. Add the exact existing approved-template payload builder to that verifier; retain the text branch and every source/request/recipient/profile/response/time binding. No recovery network call or resend. Preserve scheduled-communications-pg-observed RED, then verify both message kinds and tampering before the connected rerun.
+
+V402 / LEARN2609 / FAIL901 / FAIL901 SCHEDULE_HOST_BASELINE_COUNT: the delta host runner retained 79 from its Merchant predecessor although the scheduled composition has 80 up migrations. The assertion stopped before PostgreSQL started. Correct the observed exact migration count; preserve scheduled-communications-host-first and this traceback. No migration or expected application behavior weakened.
+
+V402 / LEARN2610 / FAIL902 / FAIL902 SCHEDULE_HOST_FIXTURE_SCOPE: the original constructor-only fixture used a nonexistent tenant/connection. On running its status loop against PostgreSQL, the original owner correctly reported RECONCILE_REQUIRED for that absent connection. Bind the host fixture to the exact already-created scheduled fixture tenant/org/connection, retaining all original scope validation; no provider traffic or connected journey is repeated. Preserve scheduled-communications-host-count RED.
+
+V402 / LEARN2611 / FAIL903 / FAIL903 SCHEDULE_FUZZ_SOURCE_CLOSURE: baseline compilation of the isolated fuzz closure failed because the Go-only copier omitted the actual business-policy go:embed JSON and replaced nested payment module manifests. No fuzz inputs or product failure occurred. Include those exact source dependencies with hashes before the finite run; preserve scheduled-communications-fuzz.log RED. Isolated closures must include embedded assets and local replacement manifests, not only *.go.
+
+V402307: FAIL898–903 correction closure307: construct fixtures from exact owner contracts and complete source dependencies; retain native receipt recovery for every supported payload kind. Three affected profiles exact. SCHEDULED_COMMUNICATIONS_RELEASE_V402.md/json.
+
+V402 / LEARN2612 / FAIL904 / FAIL904 CAMPAIGN_FIXTURE_QUOTE_NAME: the newly composed connected proof reused quote for both its existing Python-string quoting helper and a domain quotation value. Compilation stopped before any test body ran;81 migrations themselves passed. Rename the domain fixture value, retain campaign-connected-pg-first RED, and resume that exact already-migrated owned database rather than repeat migrations. No product change.
+
+V402 / LEARN2613 / FAIL905 / FAIL905 CAMPAIGN_RESUME_EXPECTED_BASELINE: the copied host-resume harness required a prior whole-test PASS; this fixture intentionally had a compile-only failure after successful migrations. It stopped before PostgreSQL startup. Narrow the resume condition to the exact observed FAIL/connected, successful migration/final-stop receipts and build-failed log with no test execution; retain all runtime/path/migration ownership checks. No product or fixture expectation changed.
+
+V402 / LEARN2614 / FAIL906 / FAIL906 CAMPAIGN_FIXTURE_LEAD_TRANSITION: the campaign source-drift fixture attempted forbidden new->qualified and the original CRM trigger rejected it. Earlier campaign create/replay/manual review/two-step dispatch/unknown predecessor/recovery/stop/marketing opt-out cases had passed. Use the actual original TransitionLeadAs new->contacted path with version1 and outbox evidence, then prepare the next campaign from contacted. No CRM rule or product campaign guard weakened; preserve campaign-connected-pg-guard RED.
+
+V402 / LEARN2615 / FAIL907 / FAIL907 CAMPAIGN_PARTIAL_DECISION_RECOVERY: partial preparation/review correctly remained visible, but retrying the batch treated the already-decided first request as DECISION_UNCONFIRMED because the original HumanApprovals owner deliberately returns ErrNotPending. Add a read-only exact recovery branch for that error, bound to the same request hash, actor, decision, reason and unique immutable decision. Never reset/reapprove or synthesize a reviewer. Preserve campaign-connected-pg-partial RED and rerun only the partial-progress proof.
+
+V402 / LEARN2616 / FAIL908 / FAIL908 CAMPAIGN_PUBLICATION_BUILDER_QUOTING: a Python generator used the same triple-quote delimiter for its enclosing script and Markdown payload. It failed parsing before producing or publishing any canonical file. Correct the enclosing delimiter and inspect the generated count/source-link assertions before publication. The candidate code and all passing runtime/rebuild receipts are unchanged.
+
+V402308: FAIL904–908 closure308: use observed owner fixtures/transition rules; recover an immutable existing decision only with exact actor/hash/decision/reason, without creating another approval/job. CAMPAIGN_CONNECTED_RELEASE_V402.md/json.
+
+V402 / LEARN2617 / FAIL909 / FAIL909 CHECKPOINT_TASK_CHECKBOX_CORRESPONDENCE: T2805 was marked completed in state308 and its receipt, but the roadmap task checkbox still said pending. The checkpoint correctly refused to append event308. Correct the task row to the actually proven local scope, refresh hashes and run only checkpoint/resume/plan on the existing revision308; do not replay publication, proofs or the revision-increment helper. Original rejected log retained.
+
+V402 / LEARN2618 / FAIL910 / IDENTITY_REBASE_MODULE_LINK: exact1451-output copy and26-file rebase completed; os.symlink failed with Windows privilege1314 before tests or runner creation. Replaced only the absent node_modules link with a native PowerShell junction to the already verified contained consumer. No installation, elevation or source replay. Future Windows candidate runtime links use Junction. RESOLVED_LOCAL.
+
+V402 / LEARN2619 / FAIL911 / IDENTITY_TYPECHECK_ENTRYPOINT: host12boundaries/activation/shutdown and18TypeScript regressions passed. The typecheck launcher guessed @typescript/native-preview/bin/tsgo.js; this composition exposes its pinned TypeScript7 native wrapper at node_modules/typescript/bin/tsc. Node refused the absent path before compiling any source. Correct to the observed existing entrypoint and resume only types/vet/build; preserve original types.log. No toolchain download/version change.
+
+V402 / LEARN2620 / FAIL912 / IDENTITY_CANDIDATE_RELEASE_REVIEW: saved0062 down migration unconditionally removed live session/revocation evidence; Go profile accepted a bridge URL path the TypeScript owner rejected; worker accepted a non-JSON media-type prefix. Before promotion, add populated rollback refusal, align exact root bridge URL validation and parse media type. Targeted host/profile and empty/populated rollback proofs required; prior lifecycle PASS remains valid for unchanged runtime SQL/SDK flow.
+
+V402 / LEARN2621 / FAIL913 / PORTAL_STANDALONE_TEST_OWNERSHIP: the new protocol test read a config file owned only by the full Go lifecycle pack. Full composition passed, but standalone web would lack that fixture. Inline the exact nonsecret example in the test so the existing TypeScript pack remains independently testable. Four profiles contain this test and need updated exact rebuilds; the backend-only receipt is reusable because its plan, packs and577outputs are byte-identical.
+
+FAIL910 follow-up: nested pwsh -Command did not bind positional args for the standalone junction setup; no tests executed. Used direct PowerShell New-Item -Literal known path/target pattern already proven. Keep shell setup native; do not treat -Command suffixes as script parameters. RESOLVED_LOCAL.
+
+V402309: FAIL910–913 local closure: preserve known tool entrypoints and module ownership; exact rebases do not overwrite later modules; session rollback must preserve durable revocation evidence. IDENTITY_PORTAL_RELEASE_V402.md/json.
+
+V402 / LEARN2622 / FAIL914 / J5_EXPLICIT_BOOTSTRAP_PERMISSION: network root creation and its UI offered bootstrap only through the global * permission, while the admitted portal profile explicitly rejects *. Preserve compatibility for existing owners but allow the narrow network:bootstrap capability together with network:admin; provider remains role authority. Prove root creation with no wildcard, scoped ongoing administration and denial after role withdrawal using signed OIDC tokens and original HTTP/PG owner.
+
+V402 / LEARN2623 / FAIL915 / J5_FIXTURE_OWNER_IMPORT: separating the passing cross-owner fixture into its actual portal/network owners retained an unused time import in the portal test. Compilation refused before test execution; remove only that unused import and retain owner-closure RED. No product change or protocol test rerun required; the signed network fixture itself is requalified after owning its issuer helper.
+
+V402 / LEARN2624 / FAIL916 / J5_FIXTURE_TENANT_CODE: the new signed-issuer fixture resumed the existing owned database but reused the first test tenant_code, globally unique in the original schema. It failed before any domain command. Derive the synthetic code from the new fixture UUID; retain earlier tenant/evidence and owner-fixed RED. Each repeatable fixture must isolate both primary IDs and natural unique keys.
+
+V402310: FAIL914–916 local closure: explicit bootstrap is distinct from global privilege; test owners must own issuer helpers; isolate natural keys when reusing disposable databases. IDENTITY_J5_RELEASE_V402.md/json.
+
+V402 / LEARN2625 / FAIL917 / PNPM_REGISTRY_HEAD_SIZE: all467read-only HEAD requests returned200 without Content-Length; no artifact body was acquired. The header-size assumption was wrong. Preserve license-header-receipts.json and probe one actual Range0-0 contract before batching it. Do not repeat HEAD requests or treat missing size as zero/known.
+
+V402 / LEARN2626 / FAIL918 / PNPM_INSPECTION_HELPER_CONTRACT: local lock generator passed a Path to blocks(text), rejected before any acquisition or output. Read the existing helper signature; now pass UTF-8 text and compare the returned raw bytes. RESOLVED_LOCAL.
+
+V402 / LEARN2627 / FAIL919 / PNPM_WASM_FLAG_DISCOVERY: Node24.20 rejects guessed --no-expose-wasm before running JavaScript. No pnpm invocation or changes. Inspect the actual V8/Node options before selecting a built-in local execution restriction; do not claim the unsupported flag works.
+
+V402 / LEARN2628 / FAIL920 / PNPM_PACKAGING_REGEX_REPLACEMENT: JSON-escaped Spanish claim passed as regex replacement triggered bad escape before any canonical publication. Candidate pack/source files already exist; use a callable replacement and resume only the metadata/plan/result tail. Do not rerun prefix or duplicate README. RESOLVED_LOCAL.
+
+V402311: FAIL917–920 closure: probe real HTTP/options/helper contracts before batching; preserve partial packaging and resume exact tail. Restricted runtime and preservation tests prove actual boundaries. PNPM_LOCAL_RUNTIME_V402.md/json.
+
+V402 / LEARN2629 / FAIL921 / COMPLETE_GO_GRAPH_OFFLINE_MISS: three current module graphs resolved from cache, but standalone official_payment_webhooks needs uncached exact module metadata. GOPROXY=off refused before SCA. Preserve successful graphs and negative log; identify only missing metadata using go list -m -e, acquire fixed official metadata with checksum/profile evidence, then resume this graph and the scan tail. Do not rerun domain tests or relax version pins.
+
+V402 / LEARN2630 / FAIL922 / GO_GRAPH_SECURITY_FLOOR_REGRESSION: current GO_ENTERPRISE_BACKEND_CORE0.4.5 go.mod no longer preserves admitted x/mod0.40 floor fromV313; full graph selects vulnerable0.37 (GO-2026-6179/6180). Official current Go advisories confirm fixed0.40. Restore the canonical owner floor using already admitted/cache-verified module; preserve graph and demonstrate compiled package/binary correspondence so no unchanged domain journeys rerun.
+
+V402 / LEARN2631 / FAIL923 / GO_METADATA_ERROR_INTERPRETATION: GoMod in the -e record names an existing checksum-valid file, not the missing metadata. A file-only GOPROXY diagnosed missing .info for exactly two versions; selecting fewer JSON fields does not avoid it. One unnecessary .mod response matched existing bytes and no cache file was replaced. An unquoted PowerShell comma argument was rejected before Go ran; quote native arguments. Retain diagnostics and resolve only the two .info files. RESOLVED_LOCAL after the following verified acquisition.
+
+V402 / LEARN2632 / FAIL924 / DEVSKIM_FAILURE_DIAGNOSTIC_MASK: the admitted runner failed a dotnet invocation but its strict-mode error formatter indexed [-20..-1] on fewer than20lines, hiding the actual cause. Candidate changes only formatting to Select-Object -Last20; preserve initial log and record actual command/error on the next bounded attempt. Return this correction to the canonical DevSkim owner before continuing.
+
+V402 / LEARN2633 / FAIL925 / DEVSKIM_SDK_INCOMPLETE: retained dotnet10.0.400 passes --version but its shared10.0.11 contains only32files and lacks System.Security.Cryptography.dll; restore fails before source compilation. Preserve original failed logs. Reacquire the same official SDK ZIP with published SHA512 to an absent isolated destination; do not repair or overwrite old evidence, change SDK version or conflate host-executable hash with full SDK integrity.
+
+V402 / LEARN2634 / FAIL926 / SARIF_UNICODE_PROJECTION: Python splitlines counted Unicode paragraph separators in golden JSON as newlines, so draft displayed lines differed from SARIF LF coordinates. Final per-occurrence review uses exact UTF16 charOffset/charLength and source SHA plus independently computed LF line; golden digest spans inspected. No source change or analyzer rerun; initial draft retained. RESOLVED_LOCAL.
+
+V402312: FAIL921–926: no confundir executable-version con SDK completo; investigar error real antes de repetir; source-bound deltas permiten conservar pruebas inalteradas; SARIF UTF16 preserva ubicaciones de fixtures Unicode. COMPOSITION_SECURITY_RELEASE_V402.md/json.
+
+V402 / LEARN2635 / FAIL927 / DOCUMENT_MIGRATION_COUNT: initial document harness assumed the highest migration number85 equals the selected count. The current composition intentionally omits historical63/64; there are83 selected up migrations. Failure occurred before PostgreSQL start or migration execution. Derive the exact baseline set from the1481file inventory and add only0085; never infer count from filenames. RESOLVED_LOCAL.
+
+V402 / LEARN2636 / FAIL928 / DOCUMENT_HARNESS_CACHE: inherited historical probe environment selected an older isolated GOMODCACHE, missing the already verified AWS modules. Setup passed83migrations and empty down/up; Go test stopped before any document test. Pin the known verified C:/Users/NL/go/pkg/mod cache explicitly, keep GOPROXY=off, retain migration receipts and resume the existing owned database without rebuilding it. RESOLVED_LOCAL.
+
+V402 / LEARN2637 / FAIL929 / DOCUMENT_TIDY_FLOOR_SUM: go mod tidy removed unused security-floor checksum entries; restoring the x/mod0.40 require line alone allowed compilation but full readonly module-graph resolution correctly refused. Merge the exact prior verified go.sum entries with new AWS entries, reject any conflicting hash, retain the floor comment and resolve the complete graph before publication. No module version or compiled source change. RESOLVED_LOCAL.
+
+V402 / LEARN2638 / FAIL930 / DOCUMENT_NOTICE_MULTIPLE_OWNERS: final wording was updated in only the first of two mutually selected THIRD_PARTY_NOTICES owners. Four exact-profile verifiers caught a one-file mismatch; code and other files matched. Update both declared canonical owners from the same candidate text, retain failed receipts and rebuild only the affected profiles. Never select the first owner when alternative profiles own the same target path.
+
+V402313: FAIL927–930: reusar setup probado; distinguir count de número; resolver grafo completo tras tidy; conservar múltiples owners alternativos del mismo output. DOCUMENT_REFERENCE_RELEASE_V402.md/json.
+
+V402 / LEARN2639 / FAIL931 / DOCUMENT_CHECKPOINT_CURSOR_LENGTH: checkpoint313 rejected next_action over800characters before event insertion. The state revision was already advanced by the helper. Shorten the cursor, refresh receipts, and execute only checkpoint/resume/plan tail with event313; never rerun the revision-incrementing prefix. RESOLVED_LOCAL.
+
+FAIL-20260913-932 OPEN — T2807 review: conversation store completes/retries without attempt generation or live lease; retention does not filter history/replay. Responses continuation omits instructions, which official API does not inherit. Reproduce against current owner, fix canonically and retain regression evidence before local promotion. Historical training already has admitted HISTORY-MODEL-TRAINING-PIPELINE0.1.0 (LIB-R10); reuse, do not invent another trainer.
+
+V402314: LEARN2640: fence cada transición con generación y reloj DB; no inferir retención por columna expires_at; previous_response_id no hereda instructions. FAIL932/933 resueltos para delta, no cierre T2807. AI_RUNTIME_GOVERNANCE_V402.md/json.
+
+FAIL-20260913-934 OPEN — T2807 connected audit: domain gateway accepts quote quantity but drops it from the single-vehicle quote contract; order-status customer endpoint uses the shared service subject instead of the resolved contact. Complete reference composition with existing domain owners, contact-bound status and explicit single-unit guard. Existing EvalSuite also accepts NaN threshold/nil assertion and lacks cancelable per-case/required-case reporting; adapt existing owner, no model-quality claim from fixtures.
+
+V402315: LEARN2641: probar tools contra owners reales, no sólo HTTP simulado; no descartar cantidades ni sustituir subject del contacto. Caso crítico no se compensa por promedio. Evidencia audit-final prevalece mediante hash ejecutado, no por nombre final de archivo. AI_CONNECTED_REFERENCE_RELEASE_V402.md/json.
+
+FAIL-20260913-937 RESOLVED_LOCAL: textual checkpoint revision replacement altered the Python314 runtime path. Missing executable rejected before validation/event; correct fixed path and resume only the tail. Do not use global numeric replacement for runtime-bearing scripts.
+
+LIB-FAIL-2642 / FAIL938: a materialized source tree is not a deployable release. Bind all local module paths, native tools, frontend install/build identity, selected artifacts and rollback observations; do not infer delivery from compilation or generic Dockerfile tags.
+
+FAIL-20260913-939 OPEN — First T2808 Go and Next builds PASS; standalone copy rejected nested pnpm paths at MAX_PATH. Preserve build-a result/logs, fix only delivery projection with extended local paths, confined link flattening and finite budgets. Do not rerun successful compilation to diagnose a copy-only failure.
+
+FAIL-20260913-940 OPEN — Local operator contention test found lock-file read before byte-range lock and leaked handle on failure; lock first, close on contention. FAIL939 follow-up: Next standalone on Windows retains junctions into the exact installed consumer; projection correctly rejected an undeclared root. Declare only that same qualified consumer node_modules as an additional read root, flatten with budgets, reject every other escape.
+
+FAIL-20260913-941 OPEN — Local rollout/failed-candidate rollback/controller recovery and order replay actually succeeded; fixture assertion used ID instead of JSON id. Shutdown correctly emptied every process tree but wrapper misclassified Next native cleanup: its pinned start-server.js intentionally exits 143 on SIGTERM, and synthetic emit must pass the signal name. Correct bridge to that actual contract; accept 143 only after requested graceful web stop, require Go0 and wrapper0. Reuse unchanged compiled artifacts for this lifecycle delta.
+
+FAIL-20260913-942 OPEN — Two independent full Go/Next builds from exact source both run, but complete artifact comparison rejects differing Next preview keys and absolute RSC resource identities. Go binary and unchanged dependency/source/notices bytes match. Pin public LOCAL fixture preview cache via the exact Next16.3.4 cache contract and require an explicit absent, stable build workspace; archive the owned completed workspace before the second independent build. Preserve both failed comparisons. Never call different chunks byte-identical or patch application bundles to hide drift.
+
+V402316: LEARN2643: comparabilidad binaria requiere controlar preview inputs y rutas RSC del framework; no borrar diferencias ni atribuir un generador local al upstream. Probar artefacto sin build workspace y rollback con un efecto durable, además del hash. LOCAL_REFERENCE_DELIVERY_V402.md/json.
+
+FAIL-20260913-943 OPEN — T2809 scope audit: current production-shaped API host lacks the existing closed-attribute OTel/Prometheus middleware; the qualified instrument() lives in a separate synthetic identity executable. Reuse the exact middleware in an importable owner, bind optional loopback metrics to the real host identity, and connect local alert/retention/load evidence. Do not promote the synthetic principal or claim production operations from reference proofs.
+
+LEARN2645 / FAIL944: declare formatter normalization in source correspondence; avoid standard-library names for staging helpers.
+
+V402317: LEARN2644: el binario integrado requiere su propia señal/fallo/alerta/recovery; mover middleware no transporta la identidad sintética ni el PASS histórico. Mantener cohortes de locks y límites reales de retención; selección parcial de módulos debe cerrar los replace locales. LOCAL_REFERENCE_OPERATIONS_V402.md/json.
+
+FAIL-20260913-945 OPEN — T2801 residual source audit: GO_CUSTOMER_SURVEY_API still calculates NPS in AUTHORED business code, matching an explicit V402 provenance rejection. Preserve the old owner and find/admit a narrow official source implementation; do not relabel by citing Bain formula or passing tests. T2809 closed317 is unaffected.
+LEARN2646 / FAIL946: long-lived service descendants may keep captured pipes open after the launcher exits. Use file-backed process logs and observed owner-specific cleanup; do not wait on pipe EOF as service readiness.
+
+V402319: LEARN2647: source provenance requires a declared actual derived implementation called by the consumer, while preserving explicit local type/privacy/presentation differences; original upstream cases plus local rational oracle and connected data path qualify distinct claims. NPS_SOURCE_ADAPTATION_V402.md/json.
+
+LEARN2648: registrar respuestas de alcance y controles locales permite resolver preguntas sin inventar credenciales ni garantías; distinguir trabajo conocido de release de critical_unknowns, y no promover assurance sólo porque su documento esté completo.
+LEARN2649 / FAIL947: filesystem privacy checks must honor path-platform case semantics; lower-case provider API endpoints are not macOS user directories. Correct the detector, preserve real-path negatives, and do not rewrite the valid provider contract to satisfy a scanner.
+LEARN2650 / FAIL948: public historical evidence needs portable locators; retain original artifact hashes and original render separately. Scan the full selected text cohort once before retrying a global gate, rather than discovering one stale locator per full run.
+LEARN2651 / FAIL949: exact block reconstruction does not imply the outer pack documentation contract passes. Batch the actual structural validator across the current catalog before another full integration run; preserve payload hashes when correcting headings.
+
+LEARN2652: A historical exact-source audit cannot silently become a current-release audit. Keep historical receipts and explicitly bind the successor revision to later delta evidence.
+
+LEARN2653: Freeze the complete public evidence set before deriving documentation counters; adding a successor audit is an inventory delta even when every product byte is unchanged.
+
+LEARN2654: Discover legal scope from actual runtime files, including nested manifests without versions. Retain original README/inline notices, declare any standard-term rendering, and distinguish unshipped build inputs. A top-level package list or MIT label alone is not a complete runtime notice catalogue.
+
+LEARN2655: Verify serialized adverse fixture bytes before asserting rejection; archive helpers may normalize the exact condition the test intends to exercise.
+
+LEARN2656: A signed candidate must be verified against an independently trusted policy; an embedded signer file is evidence, not its own authority. Preserve actual failure staging and freeze consumed source/profile bytes before final attestation.
+
+LEARN2657: Windows OpenSSH may install explicit key ACLs after directory restriction. Verify the generated file DACL and public correspondence; repair access-only on the existing task-owned key, preserving the key and failed receipt. Local candidate keys never become corporate identity claims.
+
+LEARN2658: qualify the actual generated-tool bootstrap and empty NuGet cache in the selected source layout. Signed ZIP hash differs from NuGet signed-content identity; preserve both. Dependency replacement must propagate to the executing host. Normalize AUTHORED serialization only; keep VERBATIM legal bytes. Runtime CLI/MSBuild parameters are not compositor variables. Real HTTP/PG/Go/UDS/.NET reconciliation catches null-array bugs isolated suites miss.
+
+LEARN2659: A deterministic ZIP wall-clock timestamp is insufficient if its Unix epoch is derived in the host timezone. Interpret the fixed timestamp explicitly as UTC and assert the actual gate expression against the builder epoch; preserve before bytes.
+
+LEARN2660: after adding a selected pack block, reconcile dedicated profile count assertions together with aggregate profile locks. Derive all affected counts in one pass; do not repeat product builds for a stale maintenance assertion.
+
+LEARN2661: corresponding-source archives must preserve admitted input bytes even when a framework writes generated declarations into its build workspace. Retain a narrowly verified derived file separately; reject unexplained changes. LEARN2662: never mutate checkpoint-bound canonical records during full verification; finalize and checkpoint first.
+
+LEARN2663: In PowerShell @($null) is one element. Do not wrap an optional vulnerabilities property in @() before enumeration; test the exact official clean-package JSON and a positive/malformed case in both producer and verifier.
+
+LEARN2664: qualify the extracted ZIP, not only the original build directory. File-only archives omit empty scope folders; recreate declared junction parents. Compare dependency identities by ecosystem/purl, and preserve unversioned source records without fabricated versions.
+
+LEARN2665: retain exact per-notice source metadata when composing owner packs; a generic AUTHORED glue description must not replace VERBATIM/ADAPTED source identity. Compare block payloads to avoid redundant builds for metadata-only corrections.

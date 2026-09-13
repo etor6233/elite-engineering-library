@@ -516,3 +516,89 @@ V401 FAIL807: the three explicit frozen offline installs succeeded without downl
 V401 reconciliación final: comparación12571/12571idéntica completada antes de la solicitud de detenerla; no se detuvo proceso. FAIL807 separa las3instalaciones iniciales offline de un exec Next que descargó71paquetes por configuración omitida. Exec corregido con store/offline explícitos PASS sin descargas. Historial/log anterior retenido; no prueba global de ausencia de red. reconstruction_evidence/PNPM_ZIP_CONTAINMENT_V401.md
 
 V402 communications: no external dependency version update. Reused exact Go OAuth/OIDC, Meta SDK/Python, Node/Next and PG graph; added materializable license notices and runtime/adapter preflight. Canonical normalization preserves Python AST/JavaScript output with receipts. Current global SCA and pnpm runtime admission remain pending; prior scans are not promoted to this revision.
+
+V402 FX posting glue changes no dependency version; existing Go/PG and accounting graph preserved. Current global SCA remains assigned to T2803; source/compile evidence is not its substitute.
+
+V402 stored-value source extraction introduces no pip or Go/Node dependency version change; existing pinned CPython/Go/PG/Next runtime retained. Odoo selected source LGPL admission and source closure in STORED_VALUE_CONNECTED_RELEASE_V402.md. Full composition SCA remains T2803; do not substitute source/build evidence for it.
+
+V402 connected warranty changes no external Go/Python/Node version. Existing Go1.26.8/PG18.6 owners retained; selected BC MIT scalar source admitted separately, not AL runtime. Composition security remains T2803.
+
+V402 inventory0.17.1 changes only authored SQL/test blocks; no runtime/SDK/dependency update. PG18 NULLS DISTINCT semantics checked against official constraints documentation. Notices counts updated; existing source locks preserved.
+
+V402 J2: zero dependency/runtime/provider changes. Existing Go1.26.8/PG18.6 locks retained.18AUTHORED integration blocks, five owner revisions; notices and exact reconstructed outputs recorded in SERIAL_SUPPLY_CONNECTED_RELEASE_V402.json.
+
+V402 J3: no dependency/runtime/provider upgrades. Go1.26.8/PG18.6/Node24.20.0 and existing Next/React/Zod/Playwright locks reused.36AUTHORED glue blocks/11owner revisions, full hashes and G0–G8 in CATALOG_CONNECTED_RELEASE_V402.json.
+
+V402 training: no dependency/runtime/provider version change. Existing Go1.26.8/PG18.6/Node24.20.0/Next/React/Zod/OIDC/Playwright locks reused.26new AUTHORED glue files/9revisions and exact affected compositions in TRAINING_CONNECTED_RELEASE_V402.json.
+
+V402 catalog role authoring: no new dependency/runtime/provider/version.20AUTHORED glue files and10revisions around admitted owners; unchanged official runtime/SDK/adapted source locks. Hash/proof CATALOG_ROLE_AUTHORING_RELEASE_V402.json.
+
+V402 supply role: no new dependency/runtime/provider.16AUTHORED composition/forms/fixtures and7revisions; existing official/adapted-source locks unchanged. Exact source/admission/proof SUPPLY_ROLE_RELEASE_V402.json.
+
+V402 warranty role: no new dependency/runtime/provider.14AUTHORED projection/forms/fixtures and7revisions; existing official/adapted-source locks unchanged. WARRANTY_ROLE_RELEASE_V402.json.
+
+V402 network role: no new dependency/runtime/provider.21AUTHORED glue blocks and6revisions; original dependencies and four fulfillment SQL hashes retained. NETWORK_ROLE_RELEASE_V402.json.
+
+V402 helpCMS: no new dependency/runtime. Existing PostgreSQL18.6 built-in pg_unicode_fast selected explicitly for Unicode lower; official docs18 locked in HELP_CMS_RELEASE_V402.json receipts.23newAUTHORED glue blocks, kernel/sourceguides/training revisions; unchanged dependency pins.
+
+V402 role KPIs: no new dependency/runtime/upstream. Original Go/PG/Next/Odoo source/notice pins retained.19AUTHORED read-model/transport/UI/proof blocks and7revised output hashes; exact5profiles. ROLE_METRICS_RELEASE_V402.json.
+
+V402 private locale: no new dependency/runtime/provider. Existing fixed Node Intl/Next/React/session owners;20AUTHORED translation/glue/proof additions,45revised output hashes and four exact changed profiles. PRIVATE_LOCALE_RELEASE_V402.json.
+
+V402 marketplace mutations: no dependency/runtime/SDK update;16AUTHORED glue/proof blocks. Official HTTP contract snapshots URL/SHA in MARKETPLACE_MUTATION_RELEASE_V402.json. Existing module manifests and source-derived domain owners unchanged.
+
+V402304 initial Mercado Libre: no dependency/runtime/SDK update.8new AUTHORED bindings/proofs. Original go.mod/go.sum and all upstream derived algorithms stay exact; source/admission in MARKETPLACE_INITIAL_RELEASE_V402.json.
+
+V402305 CONTENT: no dependency/runtime/SDK update;7new AUTHORED bindings/proofs. Existing module manifests, upstream algorithms and provider contract pins unchanged. MARKETPLACE_CONTENT_RELEASE_V402.json.
+
+V402306: No dependency upgrade. Same Google Merchant1.8.0 and20hash-locked wheels restored offline;1041installed file hashes matched. Targeted OSV2.5.1 exact20/20 PASS. Base Python3.14.4 pinned by setup receipt. MERCHANT_CONNECTED_RELEASE_V402.md/json.
+
+V402307: No dependency or runtime upgrade; exact original Go/module/Meta source pins reused. Only typed scheduling/approval/host/recovery glue changes. SCHEDULED_COMMUNICATIONS_RELEASE_V402.md/json.
+
+V402308: No dependency/runtime/upstream upgrade. Original pinned CRM/approval/jobs/Meta/fence/quote-order reused. New typed campaign/policy/API/host glue only. CAMPAIGN_CONNECTED_RELEASE_V402.md/json.
+
+V402309: No dependency/runtime/upstream upgrade. Existing official OIDC/jose/zod/pgx/Go service broker retained;26new AUTHORED glue files and6revised. Whole composition SCA/source admission remains T2803. IDENTITY_PORTAL_RELEASE_V402.md/json.
+
+V402310: No dependency/runtime/upstream upgrade.4new AUTHORED fixtures/contract and3revised permission/fixture files; existing official sources unchanged. IDENTITY_J5_RELEASE_V402.md/json.
+
+V402311: Existing Node24.20/pnpm11.25 artifacts unchanged; exact ZIP-disabled local selection now qualified under --jitless --no-addons.477npm/Python SCA identities zero findings; any artifact/consumer/advisory delta reopens. No raw pnpm PATH promotion. PNPM_LOCAL_RUNTIME_V402.md/json.
+
+V402 / GO_GRAPH_SECURITY_FLOOR_REGRESSION: current GO_ENTERPRISE_BACKEND_CORE0.4.5 go.mod no longer preserves admitted x/mod0.40 floor fromV313; full graph selects vulnerable0.37 (GO-2026-6179/6180). Official current Go advisories confirm fixed0.40. Restore the canonical owner floor using already admitted/cache-verified module; preserve graph and demonstrate compiled package/binary correspondence so no unchanged domain journeys rerun.
+
+V402 / FAIL925 exact .NET10.0.400 SDK recovery. Profile composition-security-311/dotnet-recovery-profile.json binds Microsoft official release metadata SHA and exact ZIP SHA512 before acquisition. Same-version isolated restoration, not a version upgrade; old SDK retained.
+
+V402312: FAIL922 RESOLVED_LOCAL: x/mod0.40 floor restaurado, x/tools0.49 resuelto; current SCA0. SDK10.0.400 recuperado íntegro por SHA512, sin upgrade; rollback conserva RED/source snapshots. Cualquier nuevo advisory reabre. COMPOSITION_SECURITY_RELEASE_V402.md/json.
+
+V402313: T2806 root37=22previos+15SDK fijados, SCAunion0; ningún upgrade. go.sum conserva todos los checksums anteriores, incluido floor0.40. DOCUMENT_REFERENCE_RELEASE_V402.md/json.
+
+V402314: Delta IA mantiene todos los go.mod/go.sum/locks y notices exactos de313. No adquisición ni rescan de grafo sin delta. AI_RUNTIME_GOVERNANCE_V402.md/json.
+
+V402315: T2807 root/nested Go locks y notices sin cambios de versión. Histórico usa su exacto code_sha de ejecución posterior y27policy tests, sin ML/native training nuevo. AI_CONNECTED_REFERENCE_RELEASE_V402.md/json.
+
+V402316: Ninguna versión incorporada. Dos instalaciones nuevas por el entrypoint pnpm ya admitido, dos builds exactos. Catálogos de notices observados; seis correspondencias de texto npm pendientes de T2810 antes de redistribución ejecutable. LOCAL_REFERENCE_DELIVERY_V402.md/json.
+
+V402317: Root compone las versiones de telemetría ya admitidas en V375. MVS selecciona x/sync0.22.0 y x/text0.40.0; x/mod0.40.0 y checksums previos conservados.78módulos públicos/4locales, SCAactual0; verifica caché y reconstrucción del binario. Rollback: cohorte316 completa, sin downgrade automático de DB. LOCAL_REFERENCE_OPERATIONS_V402.md/json.
+
+V402319: No Go/Node/runtime dependency change. New source-only MIT numerical adaptation with exact original source/test/license retained. Root go.mod/go.sum byte-identical317; prior78module SCA receipt carried without rerun. Rollback prior survey caller/owner together; no DB migration delta. NPS_SOURCE_ADAPTATION_V402.md/json.
+
+V402320:532/804 contenidos para uso privado de receta311, grafo477SCA0 y ejecuciones locales316. Native/general redistribution sigue rechazada y el bundle se excluye del archivo final; T2810 debe probar la exclusión y la entrada usando esta ruta. Seis textos legales npm de la distribución ejecutable se conservan como trabajo conocido T2810, no como espera de credenciales.
+
+V402322: no Go/Node/runtime dependency version or app code change.24notice/glue files plus builder invocation. Exact installed71 and runtime129manifests checked; native build-only inputs excluded, not admitted for redistribution. All previous dependency manifest bytes retained; final exact artifact SCA still required by TEST07. Prior missing-text list is superseded for the actual runtime by REFERENCE_NOTICES_RELEASE_V402.
+
+V402323: no Go/Node/.NET/runtime dependency change. Signed gate now scans exactly explicit dependency_manifest_refs; final complete selected manifest set/SCA remains required. Test signatures use synthetic external fixture keys and synthetic verifier SBOM/OSV, never a real security scan.
+
+V402324: no dependency/tool version changed. Signed-driver five AUTHORED files plus guide use admitted builders. Local Ed25519 identity uses exact Authenticode Microsoft OpenSSH; no private key redistribution. Final SCA remains after ARCA.
+
+V402325 ARCA: original svcutil8.0.0 retained but6.12.1 dependency runtime rejected GHSA-g4vj-cjjj-v7hg. Exact signed NuGet9package cluster6.12.5, fixed NuGet.Client commit c92125011405028c945371a89e1a1eb0e735456d, admitted ADAPTED local-WSDL-only runtime; two exact generation builds/8negative cases/12manifest OSV0. Official SDK10.0.400/runtime10.0.11 and five runtime NuGet versions unchanged, current signatures/notices/locks verified. Root Go/Node graph unchanged. Final whole-release scan remains required.
+
+V402326: no dependency changed. Two AUTHORED signed gate/test files fix host-timezone interpretation;0.2.1 selected in four profiles. Real final SCA follows both product builds.
+
+V402328 no dependency changed. CI0.1.7 fixes exact-source packaging; two AUTHORED blocks. Durable local byte-exact input preservation is not a new source admission or permission to redistribute the restricted installer.
+
+V402329 dependency graph unchanged. Corrected local report parser, no package update or exclusion. Actual prior graph scan0 findings; final signed report generated with the corrected gate.
+
+V402330 no dependency changes. Gate0.2.3/CI0.1.8 modify five AUTHORED glue/test blocks, actual SPDX/ZIP-runtime regressions and delta lint qualified.
+
+V402331 CI0.1.9 metadata only; all1653source files identical to signed-build330 input. No dependency/build delta.
+
+V402 final actual OSV2.5.1 report covers454package records/335identities with0vulnerability records;437SPDXpackage records include9unversioned source identities. No dependency upgrade after qualified ARCA325 graph; current signed reference binds all locks.

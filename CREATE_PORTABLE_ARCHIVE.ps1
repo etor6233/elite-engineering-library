@@ -70,7 +70,8 @@ $releaseRootMarkdown = @(
   'TOOLCHAINS_BUILDS_PACKAGING_FFI.md'
 )
 $releaseRootScripts = @('materialize_markdown_pack.ps1', 'VERIFY_LIBRARY.ps1', 'VERIFY_EXECUTABLE_LIBRARY.ps1', 'CREATE_PORTABLE_ARCHIVE.ps1', 'INSTALL_AGENT_BRIDGE.ps1')
-$releaseMarkdownSystemScripts = @('update_pack_from_tree.ps1', 'test_update_pack_from_tree.ps1', 'test_install_agent_bridge.ps1', 'test_library_maintenance_state.ps1', 'test_agent_bridge_safety.ps1', 'test_toolchain_resolution.ps1', 'test_agent_entry_lifecycle.ps1', 'project_local_secrets.ps1', 'test_project_local_secrets.ps1')
+$releaseRootMetadata = @('.gitignore','.gitattributes')
+$releaseMarkdownSystemScripts = @('update_pack_from_tree.ps1', 'test_update_pack_from_tree.ps1', 'test_pack_exact_eof.ps1', 'test_public_release_policy.ps1', 'test_install_agent_bridge.ps1', 'test_library_maintenance_state.ps1', 'test_agent_bridge_safety.ps1', 'test_toolchain_resolution.ps1', 'test_agent_entry_lifecycle.ps1', 'project_local_secrets.ps1', 'test_project_local_secrets.ps1')
 
 function Relative-ToLibrary([string] $Path) {
   [IO.Path]::GetRelativePath($libraryRoot, $Path).Replace('\', '/')
@@ -80,6 +81,7 @@ function Test-LocalMaintenanceEntry([IO.FileSystemInfo] $Item, [int] $Checkpoint
   # AUTHORED distribution boundary, not approval of any local record.
   $localFiles = @(
     'PROJECT_READINESS_RECORD.md', 'PROJECT_READINESS_GATE.json', 'PROJECT_READINESS_REPORT.json',
+    'PROJECT_LIBRARY_READINESS_GATE.json',
     'PROJECT_DEPENDENCY_UPDATE_RECORD.md', 'PROJECT_AUTHORITY_FRESHNESS_RECORD.md',
     'PROJECT_VULNERABILITY_MONITORING_RECORD.md', 'PROJECT_OFFICIAL_SOURCE_PROFILE_RECORD.md',
     'PROJECT_BLUEPRINT.md', 'PROJECT_AUTHORITY_MAP.md', 'PROJECT_EXTERNAL_SOURCE_LOCK.md',
@@ -118,8 +120,56 @@ function Test-LocalMaintenanceEntry([IO.FileSystemInfo] $Item, [int] $Checkpoint
   return $true
 }
 
+# AUTHORED strict selection metadata reader, shared byte-for-byte by both entrypoints.
+function Get-ReleaseInputPolicy {
+  $parent = Join-Path $libraryRoot 'markdown_system'
+  $path = Join-Path $parent 'PUBLIC_RELEASE_INPUT_POLICY.md'
+  if (-not (Test-Path -LiteralPath $path)) { return $null }
+  foreach ($part in @($parent,$path)) {
+    $item = Get-Item -LiteralPath $part -Force
+    if (($item.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) { throw 'Release policy is a symlink/reparse point' }
+  }
+  $item = Get-Item -LiteralPath $path -Force
+  if ($item.PSIsContainer -or $item.Length -gt 65536) { throw 'Release policy must be a bounded regular file' }
+  $raw = [IO.File]::ReadAllText($path,[Text.UTF8Encoding]::new($false,$true))
+  $matches = [regex]::Matches($raw,'(?s)```json\s*(?<json>.*?)\s*```')
+  if ($matches.Count -ne 1) { throw 'Release policy requires exactly one JSON block' }
+  $doc = [Text.Json.JsonDocument]::Parse([string]$matches[0].Groups['json'].Value)
+  try {
+    $root = $doc.RootElement
+    if ($root.ValueKind -ne [Text.Json.JsonValueKind]::Object) { throw 'Release policy must be an object' }
+    $keys = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+    foreach ($prop in $root.EnumerateObject()) {
+      if (-not $keys.Add($prop.Name)) { throw 'Release policy duplicate field' }
+    }
+    $expected = @('schema','json_files','text_logs','franchise_pack_ids','franchise_files')
+    if ($keys.Count -ne $expected.Count -or @($expected | Where-Object { -not $keys.Contains($_) }).Count) { throw 'Release policy unknown/missing field' }
+    if ($root.GetProperty('schema').GetString() -cne 'elite-public-release-input-policy/v1') { throw 'Release policy schema mismatch' }
+    $result = @{ schema = 'elite-public-release-input-policy/v1' }
+    foreach ($field in @('json_files','text_logs','franchise_pack_ids')) {
+      $array = $root.GetProperty($field)
+      if ($array.ValueKind -ne [Text.Json.JsonValueKind]::Array) { throw 'Release policy array required' }
+      $list = [Collections.Generic.List[string]]::new()
+      $seen = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+      foreach ($entry in $array.EnumerateArray()) {
+        if ($entry.ValueKind -ne [Text.Json.JsonValueKind]::String) { throw 'Release policy string item required' }
+        $name = $entry.GetString()
+        $pattern = switch ($field) { 'json_files' { '^[A-Z][A-Z0-9_]*\.json$' } 'text_logs' { '^[A-Z][A-Z0-9_]*\.log$' } 'franchise_pack_ids' { '^[A-Z][A-Z0-9-]+$' } }
+        if ($name -cnotmatch $pattern -or -not $seen.Add($name)) { throw 'Release policy unsafe/duplicate item' }
+        $list.Add($name)
+      }
+      $result[$field] = @($list.ToArray())
+    }
+    $count = $root.GetProperty('franchise_files').GetInt32()
+    if ($count -lt 1 -or $result.franchise_pack_ids.Count -lt 1) { throw 'Release policy empty franchise lock' }
+    $result.franchise_files = $count
+    return $result
+  } finally { $doc.Dispose() }
+}
+
 function Get-ReleaseSourceFiles {
   $files = [Collections.Generic.List[IO.FileInfo]]::new()
+  $releasePolicy = Get-ReleaseInputPolicy
   $localStateNames = @('PROJECT_EXECUTION_STATE.json', 'PROJECT_EXECUTION_EVENTS.jsonl')
   $localStateCount = @($localStateNames | Where-Object { Test-Path -LiteralPath (Join-Path $libraryRoot $_) }).Count
   if ($localStateCount -notin @(0, 2)) { throw 'Local execution state and events must exist together' }
@@ -143,7 +193,9 @@ function Get-ReleaseSourceFiles {
           throw "Release entry is a symlink/reparse point: $(Relative-ToLibrary $child.FullName)"
         }
         if ($child.PSIsContainer) { continue }
-        if ($allowedExtensions -inotcontains $child.Extension) { throw "Unknown release file: $(Relative-ToLibrary $child.FullName)" }
+        $publicEvidence = $null -ne $releasePolicy -and $item.Name -ceq 'reconstruction_evidence' -and
+          $child.DirectoryName -ceq $item.FullName -and (@($releasePolicy.json_files) + @($releasePolicy.text_logs)) -ccontains $child.Name
+        if ($allowedExtensions -inotcontains $child.Extension -and -not $publicEvidence) { throw "Unknown release file: $(Relative-ToLibrary $child.FullName)" }
         if ($item.Name -eq 'markdown_system' -and $child.Extension -ieq '.ps1' -and $releaseMarkdownSystemScripts -inotcontains $child.Name) {
           throw "Unknown markdown_system script: $(Relative-ToLibrary $child.FullName)"
         }
@@ -152,13 +204,18 @@ function Get-ReleaseSourceFiles {
       continue
     }
 
-    if ($releaseRootMarkdown -inotcontains $item.Name -and $releaseRootScripts -inotcontains $item.Name) {
+    if ($releaseRootMarkdown -inotcontains $item.Name -and $releaseRootScripts -inotcontains $item.Name -and $releaseRootMetadata -cnotcontains $item.Name) {
       throw "Unknown top-level file: $($item.Name)"
     }
     $files.Add($item)
   }
 
   if ($files.Count -eq 0) { throw 'Release file allowlist produced no files' }
+  if ($null -ne $releasePolicy) {
+    foreach ($name in (@($releasePolicy.json_files) + @($releasePolicy.text_logs))) {
+      if (@($files | Where-Object { $_.DirectoryName -ceq (Join-Path $libraryRoot 'reconstruction_evidence') -and $_.Name -ceq $name }).Count -ne 1) { throw "Release policy named evidence missing: $name" }
+    }
+  }
   $relativePaths = @($files | ForEach-Object { Relative-ToLibrary $_.FullName })
   if (($relativePaths | Sort-Object -Unique).Count -ne $relativePaths.Count) { throw 'Duplicate release path' }
   $files | Sort-Object FullName

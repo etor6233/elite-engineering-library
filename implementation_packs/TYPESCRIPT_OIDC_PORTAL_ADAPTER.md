@@ -9,18 +9,18 @@ upstreams ni promoción integral; FAIL457 conserva los otros comandos pendientes
 
 ```yaml
 pack_id: "TS-OIDC-PORTAL-ADAPTER"
-pack_version: "0.2.5"
+pack_version: "0.3.1"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
   admission: CONDITIONED
-claim: "Abre portales Next.js mediante Authorization Code + PKCE + state + nonce, sesión JWE HttpOnly y consultas server-only al backend Go."
+claim: "Hash-bound portal lifecycle: official OIDC code/PKCE/refresh/revocation, encrypted random browser handle and bound token vault, PostgreSQL CAS/logout/revocation sweep and optional joined host. AUTHORED glue; no IdP/password implementation or live certification."
 stacks: ["Node 24", "TypeScript 7", "Next 16", "React 19", "jose 6.2.10", "openid-client 6.8.5"]
 compatible_with: ["TS-GO-API-WEB-BRIDGE 0.5.2", "GO-ENTERPRISE-QUERY-API 0.1.1"]
 incompatible_with: ["edge runtimes without the required Node.js cryptography and server-only APIs"]
 license_expression: "LicenseRef-Workspace-Owner AND MIT dependencies"
 upstream_sources: ["https://nextjs.org/docs/app/guides/authentication", "https://nextjs.org/docs/app/guides/data-security", "https://github.com/panva/openid-client"]
-verified_at: "2026-09-07"
+verified_at: "2026-09-13"
 ```
 
 Adapter web opcional. TypeScript no gobierna el backend ni las reglas de negocio. El navegador nunca recibe el access token: vive en una sesión JWE corta, `HttpOnly`, `SameSite=Lax`, marcada `Secure` en producción. El BFF sólo llama rutas literales del backend y éste vuelve a verificar token, tenant, permiso, organización y subject.
@@ -42,11 +42,21 @@ Use on the standalone Next.js BFF when staff, factory and customer portals requi
 - Session encryption uses `dir` + `A256GCM` with a key derived from a secret of at least 32 characters.
 - Login return targets use a fixed allowlist. Logout is POST and requires same origin.
 - Server-only modules are guarded by Next.js `server-only`; the browser never receives the access token.
-- No refresh token is retained. Expiry causes reauthentication until a selected revocation/rotation design is admitted.
+- Default compatibility mode retains no refresh token. When the selected hash-bound lifecycle is explicitly enabled, refresh credentials remain only in the server-side encrypted PostgreSQL vault; browser receives a random encrypted handle. See the admitted lifecycle contract and exact Go composition.
 
 ## 4. Exact file manifest
 
 ```text
+CREATE src/platform/auth/portal-access-review.connected.test.ts
+CREATE src/app/api/internal/oidc/session-maintenance/route.ts
+CREATE src/platform/auth/portal-lifecycle.connected.test.ts
+CREATE src/platform/auth/portal-lifecycle.ts
+CREATE src/platform/auth/portal-maintenance.ts
+CREATE src/platform/auth/portal-profile.test.ts
+CREATE src/platform/auth/portal-profile.ts
+CREATE src/platform/auth/portal-protocol.test.ts
+CREATE src/platform/auth/portal-protocol.ts
+CREATE src/platform/auth/portal-session-bridge.ts
 CREATE src/platform/auth/session.ts
 CREATE src/platform/auth/oidc-client.ts
 CREATE src/platform/auth/session.test.ts
@@ -69,7 +79,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local verified composition"
 license: "LicenseRef-Workspace-Owner"
-sha256: "b15257fddb724d1a7a86891b9d90754bf8b53dbe153063f35122820fd7c49f83"
+sha256: "f409de96a6db5aaf09ec9bae79234d883aa6563ad94687b9d81c8cff1ec32321"
 variables: []
 secrets_allowed: false
 ```
@@ -79,6 +89,8 @@ import "server-only";
 import { createHash } from "node:crypto";
 import { cookies } from "next/headers";
 import { EncryptJWT, jwtDecrypt, type JWTPayload } from "jose";
+import { portalLifecycleEnabled, portalProfile, portalSecret } from "./portal-profile";
+import { readPortalSession } from "./portal-lifecycle";
 
 export const FLOW_COOKIE = process.env.NODE_ENV === "production" ? "__Host-elite_oidc_flow" : "elite_oidc_flow";
 export const SESSION_COOKIE = process.env.NODE_ENV === "production" ? "__Host-elite_session" : "elite_session";
@@ -102,7 +114,7 @@ const MAX_ACCESS_TOKEN_CHARACTERS = 2_000;
 const MAX_SESSION_COOKIE_CHARACTERS = 3_800;
 
 function key() {
-  const secret = process.env.AUTH_SESSION_SECRET;
+  const secret = portalLifecycleEnabled() ? portalSecret("OIDC_PORTAL_SESSION_KEY_FILE") : process.env.AUTH_SESSION_SECRET;
   if (!secret || secret.length < 32) throw new Error("AUTH_SESSION_SECRET must contain at least 32 characters");
   return createHash("sha256").update(secret, "utf8").digest();
 }
@@ -152,6 +164,7 @@ export async function openSession(token: string): Promise<PortalSession> {
 export async function readSession(): Promise<PortalSession | null> {
   const token = (await cookies()).get(SESSION_COOKIE)?.value;
   if (!token) return null;
+  if (portalLifecycleEnabled()) return readPortalSession(portalProfile(), token);
   try { return await openSession(token); } catch { return null; }
 }
 
@@ -172,13 +185,15 @@ operation: CREATE
 provenance: AUTHORED
 source: "local verified composition"
 license: "LicenseRef-Workspace-Owner"
-sha256: "6004dcacb7c828af14cc5fffe1a8fadc74e8e5e44b02f6517ae5d263297baa4e"
+sha256: "4bf24f3334e3bc02d13d8ca0f12c1c2b9f84223bda27ff644e2530f5ef8c88b7"
 variables: []
 secrets_allowed: false
 ```
 
 ````typescript
 import * as oidc from "openid-client";
+import { portalLifecycleEnabled, portalProfile } from "./portal-profile";
+import { portalConfiguration } from "./portal-protocol";
 
 let cached: Promise<oidc.Configuration> | undefined;
 
@@ -199,10 +214,11 @@ function localInsecure(url: URL) {
   return process.env.NODE_ENV !== "production" && url.protocol === "http:" && ["localhost", "127.0.0.1"].includes(url.hostname);
 }
 
-export function applicationBaseUrl() { return secureUrl("APP_BASE_URL"); }
-export function callbackUrl() { return new URL("/api/auth/callback", applicationBaseUrl()).href; }
+export function applicationBaseUrl() { return portalLifecycleEnabled() ? new URL(portalProfile().post_logout_url) : secureUrl("APP_BASE_URL"); }
+export function callbackUrl() { return portalLifecycleEnabled() ? portalProfile().callback_url : new URL("/api/auth/callback", applicationBaseUrl()).href; }
 
 export function oidcConfiguration() {
+  if (portalLifecycleEnabled()) return portalConfiguration(portalProfile());
   const issuer = secureUrl("OIDC_ISSUER");
   cached ??= oidc.discovery(issuer, required("OIDC_CLIENT_ID"), required("OIDC_CLIENT_SECRET"), undefined, localInsecure(issuer) ? { execute: [oidc.allowInsecureRequests] } : undefined);
   return cached;
@@ -269,7 +285,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local verified composition"
 license: "LicenseRef-Workspace-Owner"
-sha256: "ab7531e3d6dc3a7311f546655abe4d89d482380392852b1accc976b923fa97ea"
+sha256: "4f9a6dcb7ccc7d9becd161fd2feb8b8951c5b61d804a18dbd74fdd2d2482b90c"
 variables: []
 secrets_allowed: false
 ```
@@ -321,6 +337,13 @@ export async function protectedPost<T>(session: PortalSession, path: string, com
     body
   });
   return readBackendResponse<T>(response);
+}
+
+// AUTHORED binary transport for the existing catalog PNG owner; fixed BFF route.
+export async function protectedPostPNG<T>(session:PortalSession,path:string,bytes:Uint8Array):Promise<T>{
+ if(!path.startsWith("/v1/admin/catalog/media/")||path.includes("..")||bytes.byteLength<1||bytes.byteLength>1048576)throw new Error("invalid bounded media request");
+ const response=await fetch(new URL(path,baseUrl()),{method:"POST",cache:"no-store",redirect:"error",signal:AbortSignal.timeout(5000),headers:{accept:"application/json",authorization:`Bearer ${session.accessToken}`,"content-type":"image/png"},body:new Uint8Array(bytes).buffer});
+ return readBackendResponse<T>(response);
 }
 ````
 
@@ -450,7 +473,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local verified composition"
 license: "LicenseRef-Workspace-Owner"
-sha256: "ad195223494dd0d2de770639802faae03f56de337e7b902565bf3d03250e4630"
+sha256: "f3f3d257c290d360ab8e4526befcdbf285fd7a9bad12135e60cb68ad43e3a98d"
 variables: []
 secrets_allowed: false
 ```
@@ -459,6 +482,7 @@ secrets_allowed: false
 import { NextResponse } from "next/server";
 import { callbackUrl, oidcClient, oidcConfiguration } from "@/platform/auth/oidc-client";
 import { cookieOptions, FLOW_COOKIE, sealFlow } from "@/platform/auth/session";
+import { portalLifecycleEnabled, portalProfile } from "@/platform/auth/portal-profile";
 
 const destinations = new Set(["/admin", "/customer", "/factory", "/franchise"]);
 
@@ -470,7 +494,7 @@ export async function GET(request: Request) {
   const state = oidcClient.randomState();
   const nonce = oidcClient.randomNonce();
   const redirect = oidcClient.buildAuthorizationUrl(configuration, {
-    redirect_uri: callbackUrl(), scope: "openid profile email", response_type: "code",
+    redirect_uri: callbackUrl(), scope: portalLifecycleEnabled() ? portalProfile().scopes.join(" ") : "openid profile email", response_type: "code",
     code_challenge: await oidcClient.calculatePKCECodeChallenge(codeVerifier), code_challenge_method: "S256", state, nonce,
   });
   const response = NextResponse.redirect(redirect, 303);
@@ -487,7 +511,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local verified composition"
 license: "LicenseRef-Workspace-Owner"
-sha256: "ae9eb07b85fc4016b01c357e18b707a8b888e693983efad5b8b860d3bc818f85"
+sha256: "e8d696b1ff6f607b7484bfda8e71a626ad2a33ebc751d3b0bd9542d0c4ec7c24"
 variables: []
 secrets_allowed: false
 ```
@@ -496,6 +520,8 @@ secrets_allowed: false
 import { NextResponse } from "next/server";
 import { applicationBaseUrl, callbackUrl, oidcClient, oidcConfiguration } from "@/platform/auth/oidc-client";
 import { cookieOptions, FLOW_COOKIE, openFlow, sealSession, SESSION_COOKIE } from "@/platform/auth/session";
+import { portalLifecycleEnabled, portalProfile } from "@/platform/auth/portal-profile";
+import { createPortalSession } from "@/platform/auth/portal-lifecycle";
 
 function stringArray(value: unknown): string[] | null {
   if (!Array.isArray(value) || value.length > 100 || value.some((item) => typeof item !== "string" || item.length < 1 || item.length > 200)) return null;
@@ -510,6 +536,13 @@ export async function GET(request: Request) {
     const configuration = await oidcConfiguration();
     const authorizationResponse = new URL(callbackUrl());
     authorizationResponse.search = new URL(request.url).search;
+    if (portalLifecycleEnabled()) {
+      const stored = await createPortalSession(portalProfile(), flow, authorizationResponse);
+      const response = NextResponse.redirect(new URL(flow.returnTo, applicationBaseUrl()), 303);
+      response.cookies.set(SESSION_COOKIE, stored.cookie, cookieOptions(stored.maxAge));
+      response.cookies.set(FLOW_COOKIE, "", cookieOptions(0));
+      return response;
+    }
     const tokens = await oidcClient.authorizationCodeGrant(configuration, authorizationResponse, { pkceCodeVerifier: flow.codeVerifier, expectedState: flow.state, expectedNonce: flow.nonce });
     const claims = tokens.claims();
     const organizations = stringArray(claims?.organization_ids);
@@ -520,8 +553,7 @@ export async function GET(request: Request) {
     response.cookies.set(SESSION_COOKIE, await sealSession({ subject: claims.sub, tenantId: claims.tenant_id, permissions, organizations, accessToken: tokens.access_token }, ttl), cookieOptions(ttl));
     response.cookies.set(FLOW_COOKIE, "", cookieOptions(0));
     return response;
-  } catch (error) {
-    console.error("OIDC callback rejected", { name: error instanceof Error ? error.name : "UnknownError", message: error instanceof Error ? error.message : "unknown failure" });
+  } catch {
     const response = NextResponse.json({ code: "OIDC_CALLBACK_REJECTED" }, { status: 400 });
     response.cookies.set(FLOW_COOKIE, "", cookieOptions(0));
     return response;
@@ -537,7 +569,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local verified composition"
 license: "LicenseRef-Workspace-Owner"
-sha256: "074fdd5ec0123b2123527121a001a8320fb0194f51f89160563b219f15ab848c"
+sha256: "f971b6cd0da6f0c27731c5fa26b8cdee103be8a8606209cd0c8c8791b8a82ef5"
 variables: []
 secrets_allowed: false
 ```
@@ -546,10 +578,22 @@ secrets_allowed: false
 import { NextResponse } from "next/server";
 import { applicationBaseUrl } from "@/platform/auth/oidc-client";
 import { cookieOptions, SESSION_COOKIE } from "@/platform/auth/session";
+import { portalLifecycleEnabled, portalProfile } from "@/platform/auth/portal-profile";
+import { logoutPortalSession } from "@/platform/auth/portal-lifecycle";
 
 export async function POST(request: Request) {
   const origin = request.headers.get("origin");
   if (origin !== applicationBaseUrl().origin) return NextResponse.json({ code: "ORIGIN_REJECTED" }, { status: 403 });
+  if (portalLifecycleEnabled()) {
+    const cookie=request.headers.get("cookie")?.split(";").map(v=>v.trim()).find(v=>v.startsWith(SESSION_COOKIE+"="))?.slice(SESSION_COOKIE.length+1);
+    if(cookie){
+      try {
+        const result=await logoutPortalSession(portalProfile(),decodeURIComponent(cookie));
+        if(!result.providerRevocationComplete) return NextResponse.json({code:"PROVIDER_REVOCATION_PENDING",local_session_revoked:true,retry:"POST /api/auth/logout"},{status:503,headers:{"cache-control":"no-store"}});
+        const response=NextResponse.redirect(result.redirect,303);response.cookies.set(SESSION_COOKIE,"",cookieOptions(0));return response;
+      } catch { return NextResponse.json({code:"LOGOUT_NOT_CONFIRMED",retry:"POST /api/auth/logout"},{status:503,headers:{"cache-control":"no-store"}}); }
+    }
+  }
   const response = NextResponse.redirect(new URL("/", applicationBaseUrl()), 303);
   response.cookies.set(SESSION_COOKIE, "", cookieOptions(0));
   return response;
@@ -615,3 +659,474 @@ The earlier cryptographic/authorization evidence remains applicable to unchanged
 V402 composed delta: Connected handover browser/BFF/Go/PostgreSQL gate; bounded body, stable server date formatting, Next PageProps signatures. AUTHORED integration glue; existing domain and fixed upstreams unchanged.
 
 V402 browser evidence: reconstruction_evidence/HANDOVER_BROWSER_V402.md. Production Webpack build includes TypeScript checking;42 direct-call and23 focused BFF/date tests PASS. Chromium desktop and mobile viewport through real BFF/API/PG cover lost-response recovery and callback invalidation. Hosted IdP/live payment/physical shipment not claimed.
+
+V402 composed delta: T2804 catalog role source/edit/review/publication transport reuses original model/price writers and catalog owner. Bounded PNG and text defaults retained. No new dependency. CATALOG_ROLE_AUTHORING_RELEASE_V402.md.
+
+### FILE: `src/app/api/internal/oidc/session-maintenance/route.ts`
+
+```yaml
+block_id: "PORTAL-EXTENSION-9:file1:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "7cb4be95905c5eb9061fd210811ec6291387b51df64d3f9254d7bda4218a5ab1"
+variables: []
+secrets_allowed: false
+```
+
+````typescript
+import {NextResponse} from "next/server";
+import {portalLifecycleEnabled,portalProfile} from "@/platform/auth/portal-profile";
+import {maintainPortalSessions} from "@/platform/auth/portal-maintenance";
+import {BackendProblem} from "@/platform/backend/public-client";
+export const maxDuration=45;
+export async function POST(request:Request){
+ if(!portalLifecycleEnabled())return NextResponse.json({code:"OIDC_LIFECYCLE_DISABLED"},{status:404});
+ if(request.body){const reader=request.body.getReader();try{const chunk=await reader.read();if(!chunk.done){void reader.cancel().catch(()=>{});return NextResponse.json({code:"EMPTY_BODY_REQUIRED"},{status:400})}}finally{reader.releaseLock()}}
+ const bearer=request.headers.get("authorization")??"";if(!/^Bearer [^\s]{1,16384}$/.test(bearer))return NextResponse.json({code:"SERVICE_IDENTITY_REQUIRED"},{status:401});
+ try{const result=await maintainPortalSessions(portalProfile(),bearer);return NextResponse.json(result,{status:result.pending?503:200,headers:{"cache-control":"no-store"}})}catch(error){return NextResponse.json({code:"SESSION_MAINTENANCE_UNAVAILABLE"},{status:error instanceof BackendProblem&&[401,403].includes(error.status)?error.status:503,headers:{"cache-control":"no-store"}})}
+}
+````
+
+### FILE: `src/platform/auth/portal-lifecycle.connected.test.ts`
+
+```yaml
+block_id: "PORTAL-EXTENSION-9:file2:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "9d53285c79e9cdaf71d6357d241e3b0f3b5f86619ceeca54e816513c142d0e19"
+variables: []
+secrets_allowed: false
+```
+
+````typescript
+import {describe,it,expect,vi,afterEach} from "vitest";
+import {GET as login} from "@/app/api/auth/login/route";
+import {GET as callback} from "@/app/api/auth/callback/route";
+import {POST as logout} from "@/app/api/auth/logout/route";
+import {SESSION_COOKIE,FLOW_COOKIE,openFlow} from "./session";
+import {portalProfile} from "./portal-profile";
+import {readPortalSession,createPortalSession} from "./portal-lifecycle";
+import {portalServiceAccessToken} from "./portal-protocol";
+import {POST as maintenance} from "@/app/api/internal/oidc/session-maintenance/route";
+
+const enabled=!!process.env.PORTAL_FIXTURE_CONTROL_URL;
+const controls=process.env.PORTAL_FIXTURE_CONTROL_URL??"http://127.0.0.1:9";
+async function control(value:unknown){const response=await fetch(controls+"/fixture/control",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(value)});expect(response.status).toBe(200)}
+async function stats(){return await(await fetch(controls+"/fixture/stats")).json() as Record<string,number>}
+async function begin(){const response=await login(new Request("http://127.0.0.1:4567/api/auth/login?return_to=/customer"));expect(response.status).toBe(303);const flow=response.cookies.get(FLOW_COOKIE)?.value;expect(flow).toBeTruthy();const authorize=await fetch(response.headers.get("location")!,{redirect:"manual"});expect(authorize.status).toBe(303);return{flow:flow!,url:authorize.headers.get("location")!}}
+async function finish(flow:{flow:string;url:string}){return callback(new Request(flow.url,{headers:{cookie:`${FLOW_COOKIE}=${flow.flow}`}}))}
+async function loginCookie(){const response=await finish(await begin());if(response.status!==303){const diagnostic=await begin();try{await createPortalSession(portalProfile(),await openFlow(diagnostic.flow),new URL(diagnostic.url))}catch(error){const e=error as {name?:string;code?:string;message?:string;cause?:{code?:string;message?:string}};throw new Error(JSON.stringify({name:e.name,code:e.code,message:/^OIDC_[A-Z_]+$/.test(e.message??"")?e.message:"SDK_FAILURE",causeCode:e.cause?.code,causeMessage:e.cause?.message?.replace(/[A-Za-z0-9_-]{60,}/g,"REDACTED"),stats:await stats()}))}}expect(response.status).toBe(303);const cookie=response.cookies.get(SESSION_COOKIE)?.value;expect(cookie).toBeTruthy();expect(cookie).not.toContain("refresh");return cookie!}
+afterEach(()=>vi.useRealTimers());
+describe.skipIf(!enabled)("official OIDC SDK → BFF route → authenticated Go bridge → PostgreSQL",()=>{
+ it("performs code/PKCE login, one concurrent refresh, lost commit recovery and durable logout",async()=>{
+  const p=portalProfile(),cookie=await loginCookie();const session=await readPortalSession(p,cookie);expect(session?.subject).toBe("person");expect(session?.permissions).toEqual(["customer:read"]);
+  const before=await stats();await control({expire:true,mode:"commit_lost"});const sessions=await Promise.all(Array.from({length:20},()=>readPortalSession(p,cookie)));expect(sessions.every(s=>s?.subject==="person")).toBe(true);expect((await stats()).refresh_grants).toBe(before.refresh_grants!+1);
+  const denied=await logout(new Request(p.post_logout_url+"api/auth/logout",{method:"POST",headers:{origin:"https://foreign.invalid",cookie:`${SESSION_COOKIE}=${cookie}`}}));expect(denied.status).toBe(403);expect(await readPortalSession(p,cookie)).not.toBeNull();
+  const done=await logout(new Request(p.post_logout_url+"api/auth/logout",{method:"POST",headers:{origin:new URL(p.post_logout_url).origin,cookie:`${SESSION_COOKIE}=${cookie}`}}));expect(done.status).toBe(303);expect(done.cookies.get(SESSION_COOKIE)?.value).toBe("");expect(await readPortalSession(p,cookie)).toBeNull();expect((await stats()).revocations).toBeGreaterThanOrEqual(2);
+ });
+ it("never reuses consumed refresh after an ambiguous provider response",async()=>{
+  const p=portalProfile(),cookie=await loginCookie();await control({expire:true,mode:"grant_lost"});const before=await stats();expect(await readPortalSession(p,cookie)).toBeNull();expect(await readPortalSession(p,cookie)).toBeNull();const after=await stats();expect(after.refresh_grants).toBe(before.refresh_grants!+1);expect(after.reauth_required).toBeGreaterThan(0);
+ });
+ it("invalidates locally before failed remote revocation and recovers explicitly",async()=>{
+  const p=portalProfile(),cookie=await loginCookie();const request=()=>new Request(p.post_logout_url+"api/auth/logout",{method:"POST",headers:{origin:new URL(p.post_logout_url).origin,cookie:`${SESSION_COOKIE}=${cookie}`}});
+  await control({mode:"revoke_unavailable"});const first=await logout(request());expect(first.status).toBe(503);expect(await first.json()).toMatchObject({local_session_revoked:true});expect(await readPortalSession(p,cookie)).toBeNull();await control({mode:""});expect((await logout(request())).status).toBe(303);
+ });
+ it("rejects bad state, replayed code, issuer/audience/expiry/nonce/tenant and excess permissions",async()=>{
+  const original=await begin();const wrong=new URL(original.url);wrong.searchParams.set("state","foreign");expect((await finish({...original,url:wrong.href})).status).toBe(400);
+  const response=await finish(original);expect(response.status).toBe(303);expect((await finish(original)).status).toBe(400);
+  for(const mode of ["wrong_issuer","wrong_audience","expired","wrong_nonce","foreign_tenant","extra_permission"]){await control({mode});expect((await finish(await begin())).status).toBe(400)}await control({mode:""});
+ });
+ it("rejects unsigned/tampered handles and accepts SDK JWKS rotation after its cache interval",async()=>{
+  const p=portalProfile(),cookie=await loginCookie();expect(await readPortalSession(p,cookie.slice(0,-4)+"bad!")).toBeNull();const before=await stats();await control({expire:true,rotate:true});vi.useFakeTimers({toFake:["Date"]});vi.setSystemTime(Date.now()+61000);expect((await readPortalSession(p,cookie))?.subject).toBe("person");expect((await stats()).jwks).toBeGreaterThan(before.jwks!);
+ });
+ it("rejects a valid ciphertext swapped between two sessions of the same profile",async()=>{
+  const p=portalProfile(),first=await loginCookie(),second=await loginCookie();expect(await readPortalSession(p,first)).not.toBeNull();await control({swap:true});expect(await readPortalSession(p,first)).toBeNull();expect(await readPortalSession(p,second)).toBeNull();await control({swap:true});expect(await readPortalSession(p,first)).not.toBeNull();
+ });
+ it("recovers provider revocation without cookies and sweeps bounded retention with durable unconfirmed counts",async()=>{
+  const p=portalProfile();await loginCookie();await control({expire_absolute:true});const request=(bearer:string)=>new Request(p.post_logout_url+"api/internal/oidc/session-maintenance",{method:"POST",headers:{authorization:bearer}});
+  expect((await maintenance(request("Bearer invalid"))).status).toBe(401);
+  const bearer="Bearer "+await portalServiceAccessToken(p);let confirmed=0;
+  for(let i=0;i<8;i++){const response=await maintenance(request(bearer));expect(response.status).toBe(200);const value=await response.json() as {claimed:number;confirmed:number};expect(value.claimed).toBeLessThanOrEqual(2);confirmed+=value.confirmed;if(!value.claimed)break}expect(confirmed).toBeGreaterThan(0);
+  await loginCookie();await control({retention:true});const response=await maintenance(request(bearer));expect(response.status).toBe(200);expect(await response.json()).toMatchObject({unconfirmed_purged:1});
+ });
+});
+````
+
+### FILE: `src/platform/auth/portal-lifecycle.ts`
+
+```yaml
+block_id: "PORTAL-EXTENSION-9:file3:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "1826dc6450e90e912fad6c391276da9c8313eb7d54a4e912bd02463dace73a3e"
+variables: []
+secrets_allowed: false
+```
+
+````typescript
+import "server-only";
+import { hkdfSync,randomBytes,createHash } from "node:crypto";
+import { EncryptJWT,jwtDecrypt,type JWTPayload } from "jose";
+import { z } from "zod";
+import { portalSecret,type PortalProfile } from "./portal-profile";
+import { portalConfiguration,portalOIDC } from "./portal-protocol";
+import { portalSessionBridge,type PortalStoredSession } from "./portal-session-bridge";
+import type { PortalSession,AuthFlow } from "./session";
+
+const atom=z.string().min(1).max(200);const values=z.array(atom).max(100).refine(a=>new Set(a).size===a.length);
+const tokenSchema=z.object({subject:atom,tenantId:atom,permissions:values,organizations:values.min(1),accessToken:z.string().min(1).max(16384),refreshToken:z.string().min(1).max(8192),idToken:z.string().min(1).max(16384),absoluteExpires:z.number().int().positive()});
+type StoredTokens=z.infer<typeof tokenSchema>;
+const flows=new Map<string,Promise<PortalSession|null>>();
+function key(p:PortalProfile,purpose:string){const secret=portalSecret("OIDC_PORTAL_SESSION_KEY_FILE");if(secret.length<32)throw new Error("OIDC_SESSION_KEY_REJECTED");return new Uint8Array(hkdfSync("sha256",secret,p.documentSHA256,purpose,32));}
+async function seal(p:PortalProfile,purpose:string,payload:JWTPayload,expires:number){let encrypted=new EncryptJWT(payload).setProtectedHeader({alg:"dir",enc:"A256GCM",typ:"JWT"}).setIssuer(p.profile_id).setAudience(purpose).setIssuedAt();if(purpose!=="portal-token-vault-v1")encrypted=encrypted.setExpirationTime(expires);return encrypted.encrypt(key(p,purpose));}
+async function open(p:PortalProfile,purpose:string,value:string){return (await jwtDecrypt(value,key(p,purpose),{issuer:p.profile_id,audience:purpose,keyManagementAlgorithms:["dir"],contentEncryptionAlgorithms:["A256GCM"]})).payload;}
+function safeSession(t:StoredTokens):PortalSession{return{subject:t.subject,tenantId:t.tenantId,permissions:t.permissions,organizations:t.organizations,accessToken:t.accessToken}}
+function checkedTokens(p:PortalProfile,result:Awaited<ReturnType<typeof portalOIDC.authorizationCodeGrant>>,absolute:number,previous?:StoredTokens):{tokens:StoredTokens;expiry:string}{
+ const claims=result.claims();if(!claims||!result.id_token||!result.refresh_token||!result.expires_in||result.expires_in<1||result.expires_in>3600||claims.iss!==p.issuer||claims.aud!==p.client_id||claims.tenant_id!==p.tenant_id||typeof claims.exp!=="number"||claims.exp*1000<=Date.now()||typeof claims.iat!=="number"||claims.iat*1000>Date.now()+30000)throw new Error("OIDC_IDENTITY_REJECTED");
+ const tokens=tokenSchema.parse({subject:claims.sub,tenantId:claims.tenant_id,permissions:claims.permissions,organizations:claims.organization_ids,accessToken:result.access_token,refreshToken:result.refresh_token,idToken:result.id_token,absoluteExpires:absolute});
+ if(tokens.organizations.some(o=>!p.organization_ids.includes(o))||tokens.permissions.some(permission=>!p.allowed_permissions.includes(permission))||(previous&&(tokens.subject!==previous.subject||tokens.tenantId!==previous.tenantId||tokens.refreshToken===previous.refreshToken)))throw new Error("OIDC_IDENTITY_REJECTED");
+ const expiry=Math.min(Date.now()+result.expires_in*1000,claims.exp*1000,absolute*1000);if(expiry<=Date.now())throw new Error("OIDC_SESSION_EXPIRED");return{tokens,expiry:new Date(expiry).toISOString()};
+}
+async function encryptTokens(p:PortalProfile,sid:string,t:StoredTokens){return seal(p,"portal-token-vault-v1",{...t,sessionID:sid,profile:p.documentSHA256},t.absoluteExpires)}
+async function decryptTokens(p:PortalProfile,sid:string,row:PortalStoredSession){const value=await open(p,"portal-token-vault-v1",row.ciphertext);if(value.sessionID!==sid||value.profile!==p.documentSHA256)throw new Error("OIDC_SESSION_BINDING_REJECTED");return tokenSchema.parse(value)}
+export async function createPortalSession(p:PortalProfile,flow:AuthFlow,currentURL:URL):Promise<{cookie:string;maxAge:number}>{
+ const c=await portalConfiguration(p);const result=await portalOIDC.authorizationCodeGrant(c,currentURL,{pkceCodeVerifier:flow.codeVerifier,expectedState:flow.state,expectedNonce:flow.nonce});
+ const absolute=Math.floor(Date.now()/1000)+p.maximum_session_seconds;const checked=checkedTokens(p,result,absolute);const sid=randomBytes(32).toString("base64url");const ciphertext=await encryptTokens(p,sid,checked.tokens);
+ const command={session_id:sid,ciphertext,access_expires_at:checked.expiry,absolute_expires_at:new Date(absolute*1000).toISOString()};
+ try{await portalSessionBridge(p,"create",command)}catch{const recovered=await portalSessionBridge(p,"read",{session_id:sid});if(recovered.state!=="active"||recovered.version!==1||recovered.ciphertext!==ciphertext)throw new Error("OIDC_SESSION_STORE_UNAVAILABLE")}
+ return{cookie:await seal(p,"portal-browser-handle-v1",{sessionID:sid,profile:p.documentSHA256},absolute),maxAge:p.maximum_session_seconds};
+}
+async function sessionID(p:PortalProfile,cookie:string){const value=await open(p,"portal-browser-handle-v1",cookie);if(typeof value.sessionID!=="string"||!/^[A-Za-z0-9_-]{43}$/.test(value.sessionID)||value.profile!==p.documentSHA256)throw new Error("OIDC_SESSION_REJECTED");return value.sessionID}
+async function revokeStored(p:PortalProfile,sid:string,row:PortalStoredSession):Promise<boolean>{
+ if(!row.revocation_pending)return true;
+  try{const tokens=await decryptTokens(p,sid,row);const c=await portalConfiguration(p);await portalOIDC.tokenRevocation(c,tokens.refreshToken,{token_type_hint:"refresh_token"});await portalOIDC.tokenRevocation(c,tokens.accessToken,{token_type_hint:"access_token"});await portalSessionBridge(p,"ack-revocation",{session_id:sid,version:row.version,operation_id:row.operation_id});return true}catch{return false}
+}
+async function resolve(p:PortalProfile,sid:string):Promise<PortalSession|null>{
+ let row=await portalSessionBridge(p,"read",{session_id:sid});if(row.state!=="active"||Date.parse(row.absolute_expires_at)<=Date.now())return null;
+ let tokens=await decryptTokens(p,sid,row);if(tokens.absoluteExpires*1000<=Date.now())return null;if(Date.parse(row.access_expires_at)>Date.now()+p.refresh_before_seconds*1000)return safeSession(tokens);
+ const operation=randomBytes(32).toString("base64url"),version=row.version;
+ try{row=await portalSessionBridge(p,"claim",{session_id:sid,version,operation_id:operation})}catch{
+  row=await portalSessionBridge(p,"read",{session_id:sid});
+  if(row.state==="active"&&row.version>version)return safeSession(await decryptTokens(p,sid,row));
+  if(row.state!=="refreshing"||row.version!==version||row.operation_id!==operation)return null;
+ }
+ if(row.state!=="refreshing"||row.operation_id!==operation||row.version!==version)return null;
+ try{
+  const result=await portalOIDC.refreshTokenGrant(await portalConfiguration(p),tokens.refreshToken);
+  const checked=checkedTokens(p,result,tokens.absoluteExpires,tokens);tokens=checked.tokens;const ciphertext=await encryptTokens(p,sid,tokens);
+  try{row=await portalSessionBridge(p,"commit",{session_id:sid,version,operation_id:operation,ciphertext,access_expires_at:checked.expiry})}catch{
+   row=await portalSessionBridge(p,"read",{session_id:sid});
+   if(row.version!==version+1||row.operation_id!==operation||row.ciphertext!==ciphertext)throw new Error("OIDC_REFRESH_COMMIT_UNKNOWN");
+  }
+  if(row.state!=="active"){await revokeStored(p,sid,row);return null}
+  return safeSession(tokens);
+ }catch{
+  try{await portalSessionBridge(p,"abort",{session_id:sid,version,operation_id:operation})}catch{/* Durable refreshing state already rejects a second grant. */}
+  return null;
+ }
+}
+export async function readPortalSession(p:PortalProfile,cookie:string):Promise<PortalSession|null>{
+ try{const sid=await sessionID(p,cookie);const key=p.documentSHA256+":"+sid;let pending=flows.get(key);if(!pending){pending=resolve(p,sid).catch(()=>null);flows.set(key,pending);void pending.finally(()=>flows.delete(key))}return await pending}catch{return null}
+}
+export async function logoutPortalSession(p:PortalProfile,cookie:string):Promise<{revoked:boolean;providerRevocationComplete:boolean;redirect:string}>{
+ const sid=await sessionID(p,cookie);let row:PortalStoredSession;
+ try{row=await portalSessionBridge(p,"revoke",{session_id:sid})}catch{row=await portalSessionBridge(p,"read",{session_id:sid});if(row.state!=="revoked")throw new Error("OIDC_LOGOUT_STORE_UNAVAILABLE")}
+ const done=await revokeStored(p,sid,row);const c=await portalConfiguration(p);const redirect=portalOIDC.buildEndSessionUrl(c,{client_id:p.client_id,post_logout_redirect_uri:p.post_logout_url}).toString();return{revoked:true,providerRevocationComplete:done,redirect};
+}
+// A worker may open only the vault whose authenticated SID hashes to the leased row.
+export async function revokePortalSweepItem(p:PortalProfile,row:PortalStoredSession,expectedSessionHash:string):Promise<boolean>{
+ try{const value=await open(p,"portal-token-vault-v1",row.ciphertext);if(typeof value.sessionID!=="string"||!/^[A-Za-z0-9_-]{43}$/.test(value.sessionID)||value.profile!==p.documentSHA256||createHash("sha256").update(value.sessionID).digest("hex")!==expectedSessionHash)return false;return revokeStored(p,value.sessionID,row)}catch{return false}
+}
+````
+
+### FILE: `src/platform/auth/portal-maintenance.ts`
+
+```yaml
+block_id: "PORTAL-EXTENSION-9:file4:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "ffe715308a01aa64a0bffcf14beda5eb7cb8925205c758e01eb20149c0181143"
+variables: []
+secrets_allowed: false
+```
+
+````typescript
+import "server-only";
+import {randomBytes} from "node:crypto";
+import {z} from "zod";
+import {readBackendResponse} from "@/platform/backend/public-client";
+import type {PortalProfile} from "./portal-profile";
+import {revokePortalSweepItem} from "./portal-lifecycle";
+const item=z.object({session_id_sha256:z.string().regex(/^[a-f0-9]{64}$/),version:z.number().int().positive(),state:z.literal("revoked"),operation_id:z.string().max(43),ciphertext:z.string().max(32768),access_expires_at:z.string().datetime({offset:true}),absolute_expires_at:z.string().datetime({offset:true}),revocation_pending:z.literal(true)}).strict();
+const result=z.object({items:z.array(item).max(2),purged:z.number().int().min(0).max(100),unconfirmed_purged:z.number().int().min(0).max(100)}).strict();
+export async function maintainPortalSessions(p:PortalProfile,serviceBearer:string){
+ if(!/^Bearer [^\s]{1,16384}$/.test(serviceBearer))throw new Error("PORTAL_SERVICE_REQUIRED");
+ // Go verifies this inbound service bearer before exposing/claiming any record.
+ const response=await fetch(new URL("/v1/private/portal-sessions/sweep",p.bridge_url),{method:"POST",redirect:"error",cache:"no-store",signal:AbortSignal.timeout(5000),headers:{authorization:serviceBearer,"content-type":"application/json","X-Portal-Profile-SHA256":p.documentSHA256},body:JSON.stringify({operation_id:randomBytes(32).toString("base64url")})});
+ const batch=result.parse(await readBackendResponse<unknown>(response));const completed=await Promise.all(batch.items.map(row=>revokePortalSweepItem(p,row,row.session_id_sha256)));
+ return {claimed:batch.items.length,confirmed:completed.filter(Boolean).length,pending:completed.filter(v=>!v).length,purged:batch.purged,unconfirmed_purged:batch.unconfirmed_purged};
+}
+````
+
+### FILE: `src/platform/auth/portal-profile.test.ts`
+
+```yaml
+block_id: "PORTAL-EXTENSION-9:file5:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "ab23be4ca0cca49c4402fba1c028fb9e650b2ee38bafbc470e934c24abca91ee"
+variables: []
+secrets_allowed: false
+```
+
+````typescript
+import {describe,it,expect} from "vitest";
+import {createHash} from "node:crypto";
+import {parsePortalProfile} from "./portal-profile";
+function fixture(){return{schema:"elite.oidc.portal-lifecycle.v1",profile_id:"fixture",revision:1,transport:"TLS",issuer:"https://issuer.invalid",authorization_endpoint:"https://issuer.invalid/authorize",token_endpoint:"https://issuer.invalid/token",jwks_endpoint:"https://issuer.invalid/jwks",revocation_endpoint:"https://issuer.invalid/revoke",end_session_endpoint:"https://issuer.invalid/logout",client_id:"portal",callback_url:"https://portal.invalid/api/auth/callback",post_logout_url:"https://portal.invalid/",bridge_url:"https://backend.invalid",backend_audience:"api",service_client_id:"service",service_subject:"service",service_scopes:["portal-session:manage"],service_audience_parameter:"api",tenant_id:"tenant",organization_ids:["org"],allowed_permissions:["customer:read"],scopes:["openid","offline_access"],maximum_session_seconds:3600,refresh_before_seconds:30,retention_seconds:86400}}
+function parse(value:unknown){const bytes=Buffer.from(JSON.stringify(value));return parsePortalProfile(bytes,createHash("sha256").update(bytes).digest("hex"))}
+describe("hash-bound portal profile",()=>{
+ it("accepts explicit TLS profile and prevents mutation",()=>{const p=parse(fixture());expect(p.tenant_id).toBe("tenant");expect(()=>p.organization_ids.push("foreign")).toThrow()});
+ it.each([['transport',{transport:"LOOPBACK_FIXTURE"}],['HTTP',{issuer:"http://issuer.invalid"}],['secret URL',{token_endpoint:"https://user:secret@issuer.invalid/token"}],['wildcard',{allowed_permissions:["*"]}],['duplicate',{organization_ids:["org","org"]}],['missing refresh',{scopes:["openid"]}],['callback origin',{post_logout_url:"https://foreign.invalid/"}],['bridge path',{bridge_url:"https://backend.invalid/path"}],['audience',{service_audience_parameter:"foreign"}],['refresh margin',{refresh_before_seconds:300,maximum_session_seconds:300}],['unknown',{unknown:true}]])("rejects %s",(_name,change)=>{expect(()=>parse({...fixture(),...(change as object)})).toThrow()});
+ it("rejects changed bytes and duplicate root names",()=>{const bytes=Buffer.from(JSON.stringify(fixture()));expect(()=>parsePortalProfile(bytes,"0".repeat(64))).toThrow();const duplicate=Buffer.from('{"profile_id":"other",'+bytes.toString().slice(1));expect(()=>parsePortalProfile(duplicate,createHash("sha256").update(duplicate).digest("hex"))).toThrow()});
+});
+````
+
+### FILE: `src/platform/auth/portal-profile.ts`
+
+```yaml
+block_id: "PORTAL-EXTENSION-9:file6:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "17f05c39141020c2434bf758b445b77fc00313df3c67fa1972fa39de24f2a2e6"
+variables: []
+secrets_allowed: false
+```
+
+````typescript
+import "server-only";
+import { createHash } from "node:crypto";
+import { openSync, closeSync, readSync, fstatSync } from "node:fs";
+import { z } from "zod";
+
+const atom = z.string().min(1).max(200).regex(/^[^\s\x00]+$/).refine(v => v !== "*");
+const set = z.array(atom).min(1).max(100).refine(v => new Set(v).size === v.length);
+const schema = z.object({
+  schema: z.literal("elite.oidc.portal-lifecycle.v1"), profile_id: atom, revision: z.literal(1), transport: z.enum(["TLS", "LOOPBACK_FIXTURE"]),
+  issuer: z.string(), authorization_endpoint: z.string(), token_endpoint: z.string(), jwks_endpoint: z.string(), revocation_endpoint: z.string(), end_session_endpoint: z.string(),
+  client_id: atom, callback_url: z.string(), post_logout_url: z.string(), bridge_url: z.string(), backend_audience: atom,
+  service_client_id: atom, service_subject: atom, service_scopes: set, service_audience_parameter: z.string(),
+  tenant_id: atom, organization_ids: set, allowed_permissions: set, scopes: set,
+  maximum_session_seconds: z.number().int().min(300).max(86400), refresh_before_seconds: z.number().int().min(5).max(300),
+  retention_seconds:z.number().int().min(3600).max(604800),
+}).strict();
+export type PortalProfile = z.infer<typeof schema> & { documentSHA256: string };
+export function boundedFile(path: string, max: number): Buffer {
+  const fd = openSync(path, "r");
+  try { if (!fstatSync(fd).isFile()) throw new Error("OIDC_CONFIGURATION_REJECTED"); const bytes = Buffer.alloc(max + 1); let used = 0; while (used < bytes.length) { const n = readSync(fd, bytes, used, bytes.length - used, null); if (!n) break; used += n; } if (used > max) throw new Error("OIDC_CONFIGURATION_REJECTED"); return bytes.subarray(0, used); }
+  finally { closeSync(fd); }
+}
+export function portalSecret(name: string): string {
+  const path = process.env[name]; if (!path) throw new Error("OIDC_CONFIGURATION_REJECTED");
+  const value = new TextDecoder("utf-8", { fatal: true }).decode(boundedFile(path, 4096)).replace(/\r?\n$/, "");
+  if (!value || /[\x00\r\n]/.test(value)) throw new Error("OIDC_CONFIGURATION_REJECTED"); return value;
+}
+export function parsePortalProfile(raw: Uint8Array, digest: string): PortalProfile {
+  if (!raw.length || raw.length > 16384 || !/^[a-f0-9]{64}$/.test(digest) || createHash("sha256").update(raw).digest("hex") !== digest) throw new Error("OIDC_CONFIGURATION_REJECTED");
+  const text = new TextDecoder("utf-8", { fatal: true }).decode(raw);
+  // Schema contains only scalar/array members. JSON token walk rejects duplicate root names.
+  const keys: string[] = []; let depth = 0; const tokens = text.match(/"(?:[^"\\]|\\.)*"|[{}\[\]:,]|[^\s{}\[\]:,]+/g) ?? [];
+  for (let i=0;i<tokens.length;i++) { const token=tokens[i]; if (token==="{"||token==="[") depth++; else if(token==="}"||token==="]") depth--; else if(depth===1 && token?.startsWith('"') && tokens[i+1]===":") keys.push(JSON.parse(token) as string); }
+  if (new Set(keys).size !== keys.length) throw new Error("OIDC_CONFIGURATION_REJECTED");
+  const p=schema.parse(JSON.parse(text));
+  for (const rawURL of [p.issuer,p.authorization_endpoint,p.token_endpoint,p.jwks_endpoint,p.revocation_endpoint,p.end_session_endpoint,p.callback_url,p.post_logout_url,p.bridge_url]) {
+    const u=new URL(rawURL); const local=["127.0.0.1","[::1]"].includes(u.hostname);
+    if(u.username||u.password||u.search||u.hash||rawURL.length>2048||!(p.transport==="TLS" ? u.protocol==="https:" : local&&["http:","https:"].includes(u.protocol))) throw new Error("OIDC_CONFIGURATION_REJECTED");
+  }
+  if(!p.callback_url.endsWith("/api/auth/callback")||p.callback_url.slice(0,-18)+"/"!==p.post_logout_url||p.bridge_url.endsWith("/")||new URL(p.bridge_url).pathname!=="/"||!p.scopes.includes("openid")||!p.scopes.includes("offline_access")||p.refresh_before_seconds*2>=p.maximum_session_seconds||(p.service_audience_parameter!==""&&p.service_audience_parameter!==p.backend_audience)) throw new Error("OIDC_CONFIGURATION_REJECTED");
+  return Object.freeze({...p, organization_ids:Object.freeze([...p.organization_ids]) as unknown as string[], allowed_permissions:Object.freeze([...p.allowed_permissions]) as unknown as string[], scopes:Object.freeze([...p.scopes]) as unknown as string[], service_scopes:Object.freeze([...p.service_scopes]) as unknown as string[],documentSHA256:digest});
+}
+export function portalLifecycleEnabled() { const value=process.env.OIDC_PORTAL_LIFECYCLE_ENABLED; if(value!==undefined&&value!=="false"&&value!=="true")throw new Error("OIDC_CONFIGURATION_REJECTED");return value==="true"; }
+export function portalProfile(): PortalProfile {
+  if(!portalLifecycleEnabled())throw new Error("OIDC_LIFECYCLE_DISABLED");
+  const path=process.env.OIDC_PORTAL_PROFILE_FILE, hash=process.env.OIDC_PORTAL_PROFILE_SHA256;
+  if(!path||!hash)throw new Error("OIDC_CONFIGURATION_REJECTED");
+  const p=parsePortalProfile(boundedFile(path,16384),hash);
+  if(process.env.NODE_ENV==="production"&&p.transport!=="TLS")throw new Error("OIDC_CONFIGURATION_REJECTED");
+  if(process.env.APP_BASE_URL&&new URL(process.env.APP_BASE_URL).origin!==new URL(p.callback_url).origin)throw new Error("OIDC_CONFIGURATION_REJECTED");
+  return p;
+}
+````
+
+### FILE: `src/platform/auth/portal-protocol.test.ts`
+
+```yaml
+block_id: "PORTAL-EXTENSION-9:file7:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "a8e8e668d3c560bced9ad1e543f523436efb194c2c25ada24f908ac756cea8ae"
+variables: []
+secrets_allowed: false
+```
+
+````typescript
+import {describe,it,expect,vi,afterEach} from "vitest";
+import {mkdtempSync,writeFileSync,rmSync} from "node:fs";
+import {tmpdir} from "node:os";
+import {join} from "node:path";
+import {createHash} from "node:crypto";
+import {parsePortalProfile} from "./portal-profile";
+import {portalConfiguration} from "./portal-protocol";
+let serial=0;
+const directories:string[]=[];
+afterEach(()=>{vi.unstubAllGlobals();vi.unstubAllEnvs();for(const directory of directories.splice(0))rmSync(directory,{recursive:true,force:true})});
+function configured(){const directory=mkdtempSync(join(tmpdir(),"elite-portal-protocol-fixture-"));directories.push(directory);const secret=join(directory,"synthetic-secret");writeFileSync(secret,"synthetic-fixture-credential");vi.stubEnv("OIDC_PORTAL_CLIENT_SECRET_FILE",secret);const example={"schema":"elite.oidc.portal-lifecycle.v1","profile_id":"reference-portal","revision":1,"transport":"TLS","issuer":"https://issuer.invalid","authorization_endpoint":"https://issuer.invalid/authorize","token_endpoint":"https://issuer.invalid/token","jwks_endpoint":"https://issuer.invalid/jwks","revocation_endpoint":"https://issuer.invalid/revoke","end_session_endpoint":"https://issuer.invalid/logout","client_id":"reference-portal","callback_url":"https://portal.invalid/api/auth/callback","post_logout_url":"https://portal.invalid/","bridge_url":"https://backend.invalid","backend_audience":"reference-api","service_client_id":"reference-portal-maintenance","service_subject":"reference-portal-maintenance","service_scopes":["portal-session:manage"],"service_audience_parameter":"reference-api","tenant_id":"00000000-0000-4000-8000-000000000001","organization_ids":["00000000-0000-4000-8000-000000000002"],"allowed_permissions":["customer:read"],"scopes":["openid","offline_access"],"maximum_session_seconds":3600,"refresh_before_seconds":30,"retention_seconds":86400} as Record<string,unknown>;const bytes=Buffer.from(JSON.stringify({...example,profile_id:"protocol-boundary-"+(++serial)}));return parsePortalProfile(bytes,createHash("sha256").update(bytes).digest("hex"))}
+describe("official SDK transport response boundary",()=>{
+ it("cancels a streamed discovery body over262144bytes with one request",async()=>{const p=configured();let cancelled=false,calls=0;vi.stubGlobal("fetch",vi.fn(async()=>{calls++;return new Response(new ReadableStream<Uint8Array>({start(controller){controller.enqueue(new Uint8Array(262145))},cancel(){cancelled=true}}),{headers:{"content-type":"application/json"}})}));await expect(portalConfiguration(p)).rejects.toThrow();expect(calls).toBe(1);expect(cancelled).toBe(true)});
+ it("passes the bounded valid discovery through the official SDK and refuses metadata endpoint drift",async()=>{const p=configured();const metadata={issuer:p.issuer,authorization_endpoint:p.authorization_endpoint,token_endpoint:p.token_endpoint,jwks_uri:p.jwks_endpoint,revocation_endpoint:p.revocation_endpoint,end_session_endpoint:p.end_session_endpoint,response_types_supported:["code"],subject_types_supported:["public"],id_token_signing_alg_values_supported:["RS256"],token_endpoint_auth_methods_supported:["client_secret_basic"]};const seen:string[]=[];vi.stubGlobal("fetch",vi.fn(async(input:unknown,init:RequestInit)=>{seen.push(String(input));expect(init.redirect).toBe("error");expect(init.signal).toBeDefined();return new Response(JSON.stringify(metadata),{headers:{"content-type":"application/json"}})}));expect((await portalConfiguration(p)).serverMetadata().issuer).toBe(p.issuer);expect(seen).toEqual([p.issuer+"/.well-known/openid-configuration"]);const changed=configured();vi.stubGlobal("fetch",vi.fn(async()=>new Response(JSON.stringify({...metadata,token_endpoint:"https://foreign.invalid/token"}),{headers:{"content-type":"application/json"}})));await expect(portalConfiguration(changed)).rejects.toThrow("OIDC_METADATA_REJECTED")});
+});
+````
+
+### FILE: `src/platform/auth/portal-protocol.ts`
+
+```yaml
+block_id: "PORTAL-EXTENSION-9:file8:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "8ee530b6ae65f7a24370071ee89c96284d27c4a18de4822131d374ffa5242ee2"
+variables: []
+secrets_allowed: false
+```
+
+````typescript
+import "server-only";
+import * as oidc from "openid-client";
+import { createHash } from "node:crypto";
+import { portalSecret, type PortalProfile } from "./portal-profile";
+
+const configurations=new Map<string,Promise<oidc.Configuration>>();
+function boundedFetch(p:PortalProfile): oidc.CustomFetch {
+ const endpoints=new Set([p.issuer.replace(/\/$/,"")+"/.well-known/openid-configuration",p.token_endpoint,p.jwks_endpoint,p.revocation_endpoint]);
+ return async(input,init)=>{
+  const url=String(input);if(!endpoints.has(url))throw new Error("OIDC_ENDPOINT_REJECTED");
+  const body=init.body instanceof Uint8Array?new Uint8Array(init.body):init.body;
+  const response=await fetch(input,{method:init.method,headers:init.headers,...(body!==undefined?{body}:{}),...(init.duplex?{duplex:init.duplex}:{}),redirect:"error",signal:AbortSignal.any([AbortSignal.timeout(10000),...(init.signal?[init.signal]:[])])});
+  if(!response.body)return response;
+  const reader=response.body.getReader();let received=0;const chunks:Uint8Array[]=[];let complete=false;
+  try{while(true){const chunk=await reader.read();if(chunk.done){complete=true;break}received+=chunk.value.byteLength;if(received>262144)throw new Error("OIDC_RESPONSE_TOO_LARGE");chunks.push(chunk.value)};const bytes=new Uint8Array(received);let position=0;for(const chunk of chunks){bytes.set(chunk,position);position+=chunk.byteLength};return new Response(bytes,{status:response.status,statusText:response.statusText,headers:response.headers});}
+  finally{if(!complete)void reader.cancel().catch(()=>{});reader.releaseLock()}
+ };
+}
+export async function portalConfiguration(p:PortalProfile,service=false):Promise<oidc.Configuration>{
+ const secret=portalSecret(service?"OIDC_PORTAL_SERVICE_CLIENT_SECRET_FILE":"OIDC_PORTAL_CLIENT_SECRET_FILE");
+ const cacheKey=p.documentSHA256+":"+service+":"+createHash("sha256").update(secret).digest("hex");
+ let config=configurations.get(cacheKey);
+ if(!config){if(configurations.size>=2)configurations.clear();config=(async()=>{
+  const c=await oidc.discovery(new URL(p.issuer),service?p.service_client_id:p.client_id,{id_token_signed_response_alg:"RS256"},oidc.ClientSecretBasic(secret),{[oidc.customFetch]:boundedFetch(p),timeout:10,execute:[...(p.transport==="LOOPBACK_FIXTURE"?[oidc.allowInsecureRequests]:[]),oidc.enableNonRepudiationChecks]});
+  const m=c.serverMetadata();
+  if(m.issuer!==p.issuer||m.token_endpoint!==p.token_endpoint||m.jwks_uri!==p.jwks_endpoint||m.authorization_endpoint!==p.authorization_endpoint||m.revocation_endpoint!==p.revocation_endpoint||m.end_session_endpoint!==p.end_session_endpoint||!m.id_token_signing_alg_values_supported?.includes("RS256")||(m.token_endpoint_auth_methods_supported&&!m.token_endpoint_auth_methods_supported.includes("client_secret_basic")))throw new Error("OIDC_METADATA_REJECTED");
+  return c;
+ })();configurations.set(cacheKey,config);void config.catch(()=>configurations.delete(cacheKey));}
+ return config;
+}
+let serviceToken:{key:string;value:string;expires:number}|undefined;
+const serviceFlights=new Map<string,Promise<string>>();
+export async function portalServiceAccessToken(p:PortalProfile):Promise<string>{
+ if(serviceToken?.key===p.documentSHA256&&serviceToken.expires>Date.now()+10000)return serviceToken.value;
+ const existing=serviceFlights.get(p.documentSHA256);if(existing)return existing;
+ const flight=(async()=>{serviceToken=undefined;try{const config=await portalConfiguration(p,true);const result=await oidc.clientCredentialsGrant(config,{scope:p.service_scopes.join(" "),...(p.service_audience_parameter?{audience:p.service_audience_parameter}:{})});if(!result.access_token||result.access_token.length>16384||result.token_type.toLowerCase()!=="bearer"||!result.expires_in||result.expires_in<20||result.expires_in>3600)throw new Error("OIDC_SERVICE_TOKEN_REJECTED");serviceToken={key:p.documentSHA256,value:result.access_token,expires:Date.now()+result.expires_in*1000};return result.access_token;}catch{throw new Error("OIDC_SERVICE_UNAVAILABLE")}finally{serviceFlights.delete(p.documentSHA256)}})();serviceFlights.set(p.documentSHA256,flight);return flight;
+}
+export {oidc as portalOIDC};
+````
+
+### FILE: `src/platform/auth/portal-session-bridge.ts`
+
+```yaml
+block_id: "PORTAL-EXTENSION-9:file9:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "dea8594a2ce386046e1da92f4f38647b3556851eefeb4b896b86a3a56197e9a9"
+variables: []
+secrets_allowed: false
+```
+
+````typescript
+import "server-only";
+import { z } from "zod";
+import { readBackendResponse } from "@/platform/backend/public-client";
+import { portalServiceAccessToken } from "./portal-protocol";
+import type { PortalProfile } from "./portal-profile";
+const record=z.object({version:z.number().int().positive(),state:z.enum(["active","refreshing","reauth_required","revoked"]),operation_id:z.string().max(43),ciphertext:z.string().max(32768),access_expires_at:z.string().datetime({offset:true}),absolute_expires_at:z.string().datetime({offset:true}),revocation_pending:z.boolean()}).strict();
+export type PortalStoredSession=z.infer<typeof record>;
+export type PortalSessionAction="create"|"read"|"claim"|"commit"|"abort"|"revoke"|"ack-revocation";
+export type PortalSessionCommand={session_id:string;operation_id?:string;version?:number;ciphertext?:string;access_expires_at?:string;absolute_expires_at?:string};
+export async function portalSessionBridge(p:PortalProfile,action:PortalSessionAction,command:PortalSessionCommand):Promise<PortalStoredSession>{
+ if(!/^[a-zA-Z0-9_-]{43}$/.test(command.session_id))throw new Error("PORTAL_SESSION_REJECTED");
+ const body=JSON.stringify(command);if(Buffer.byteLength(body)>40000)throw new Error("PORTAL_SESSION_REJECTED");
+ const response=await fetch(new URL("/v1/private/portal-sessions/"+action,p.bridge_url),{method:"POST",cache:"no-store",redirect:"error",signal:AbortSignal.timeout(5000),headers:{authorization:`Bearer ${await portalServiceAccessToken(p)}`,"content-type":"application/json","X-Portal-Profile-SHA256":p.documentSHA256},body});
+ return record.parse(await readBackendResponse<unknown>(response));
+}
+````
+
+
+V402 composed delta: Portal lifecycle optional host/BFF integration; IDENTITY_PORTAL_RELEASE_V402.md/json; no change to closed business journeys.
+
+### FILE: `src/platform/auth/portal-access-review.connected.test.ts`
+
+```yaml
+block_id: "J5-EXTENSION-TYPESCRIPT_OIDC_PORTAL_ADAPTER:file1:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "1b9a92995af387e975ecdf5498dd6b1b239a89a3dc22179b9cd7ea4f49252c75"
+variables: []
+secrets_allowed: false
+```
+
+````typescript
+import {describe,it,expect,vi,afterEach} from "vitest";
+import {GET as login} from "@/app/api/auth/login/route";
+import {GET as callback} from "@/app/api/auth/callback/route";
+import {POST as logout} from "@/app/api/auth/logout/route";
+import {SESSION_COOKIE,FLOW_COOKIE,openFlow} from "./session";
+import {portalProfile} from "./portal-profile";
+import {readPortalSession,createPortalSession} from "./portal-lifecycle";
+import {portalServiceAccessToken} from "./portal-protocol";
+import {POST as maintenance} from "@/app/api/internal/oidc/session-maintenance/route";
+
+const enabled=!!process.env.PORTAL_FIXTURE_CONTROL_URL;
+const controls=process.env.PORTAL_FIXTURE_CONTROL_URL??"http://127.0.0.1:9";
+async function control(value:unknown){const response=await fetch(controls+"/fixture/control",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(value)});expect(response.status).toBe(200)}
+async function stats(){return await(await fetch(controls+"/fixture/stats")).json() as Record<string,number>}
+async function begin(){const response=await login(new Request("http://127.0.0.1:4567/api/auth/login?return_to=/customer"));expect(response.status).toBe(303);const flow=response.cookies.get(FLOW_COOKIE)?.value;expect(flow).toBeTruthy();const authorize=await fetch(response.headers.get("location")!,{redirect:"manual"});expect(authorize.status).toBe(303);return{flow:flow!,url:authorize.headers.get("location")!}}
+async function finish(flow:{flow:string;url:string}){return callback(new Request(flow.url,{headers:{cookie:`${FLOW_COOKIE}=${flow.flow}`}}))}
+async function loginCookie(){const response=await finish(await begin());if(response.status!==303){const diagnostic=await begin();try{await createPortalSession(portalProfile(),await openFlow(diagnostic.flow),new URL(diagnostic.url))}catch(error){const e=error as {name?:string;code?:string;message?:string;cause?:{code?:string;message?:string}};throw new Error(JSON.stringify({name:e.name,code:e.code,message:/^OIDC_[A-Z_]+$/.test(e.message??"")?e.message:"SDK_FAILURE",causeCode:e.cause?.code,causeMessage:e.cause?.message?.replace(/[A-Za-z0-9_-]{60,}/g,"REDACTED"),stats:await stats()}))}}expect(response.status).toBe(303);const cookie=response.cookies.get(SESSION_COOKIE)?.value;expect(cookie).toBeTruthy();expect(cookie).not.toContain("refresh");return cookie!}
+afterEach(()=>vi.useRealTimers());
+describe.skipIf(!enabled)("IdP access review through official SDK and durable portal",()=>{
+ it("applies an explicit permission withdrawal on refresh without granting a replacement role",async()=>{const p=portalProfile(),cookie=await loginCookie();expect((await readPortalSession(p,cookie))?.permissions).toEqual(["customer:read"]);await control({expire:true,mode:"permission_withdrawn"});const changed=await readPortalSession(p,cookie);expect(changed?.subject).toBe("person");expect(changed?.permissions).toEqual([]);await control({mode:""})});
+ it("rejects a changed subject during refresh and never links it to the original session",async()=>{const p=portalProfile(),cookie=await loginCookie();await control({expire:true,mode:"subject_changed"});expect(await readPortalSession(p,cookie)).toBeNull();expect(await readPortalSession(p,cookie)).toBeNull();await control({mode:""})});
+ it("requires reauthentication after IdP deprovisioning and rejects a fresh authorization code",async()=>{const p=portalProfile(),cookie=await loginCookie();await control({expire:true,mode:"account_disabled"});expect(await readPortalSession(p,cookie)).toBeNull();expect(await readPortalSession(p,cookie)).toBeNull();expect((await finish(await begin())).status).toBe(400);await control({mode:""})});
+});
+````
+
+
+V402 J5 original SDK access-review fixture; IDENTITY_J5_RELEASE_V402.md/json.

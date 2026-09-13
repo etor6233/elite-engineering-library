@@ -4,7 +4,7 @@
 
 ```yaml
 pack_id: "GO-ENTERPRISE-ACCOUNTING-LEDGER-API"
-pack_version: "0.1.1"
+pack_version: "0.1.2"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -53,7 +53,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local implementation governed by pinned Microsoft BCApps evidence"
 license: "LicenseRef-Workspace-Owner"
-sha256: "2a13037520259e67baf5ea5b300f6ce06ec10cb893158d5080237082af6f9995"
+sha256: "97a1d5bcc5691333b82f76eb1dac27b732c9f0514dbc6dc626d15c6a2eefacee"
 variables: []
 secrets_allowed: false
 ```
@@ -155,6 +155,10 @@ func (s *Service) OpenPeriod(ctx context.Context, tenant string, value Period) (
 	return value, nil
 }
 func (s *Service) CreateJournal(ctx context.Context, tenant string, value Journal) (Journal, error) {
+	// Reserved for the typed conversion binding; generic input cannot forge it.
+	if value.SourceType == "FX_CONVERSION" {
+		return value, ErrInvalid
+	}
 	if tenant == "" || value.OrganizationID == "" || value.PeriodID == "" || !codePattern.MatchString(value.SourceType) || value.SourceID == "" || !currencyPattern.MatchString(value.Currency) || value.PostingDate.IsZero() || len(value.Lines) < 2 {
 		return value, ErrInvalid
 	}
@@ -281,7 +285,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local PostgreSQL implementation governed by pinned Microsoft BCApps evidence"
 license: "LicenseRef-Workspace-Owner"
-sha256: "1cf36e069d78a707cf47ac58af6fe5bb082a7410d46a7cfa2609edb02c4ccf82"
+sha256: "d31c8cdeffd16e7a308027b19d50470b6ef64ee2cdafba4b8b0524ce690d204d"
 variables: []
 secrets_allowed: false
 ```
@@ -364,8 +368,16 @@ func (r *Accounting) CreateJournal(ctx context.Context, tenant, eventID string, 
 		return err
 	}
 	defer tx.Rollback(ctx)
+	if err = createJournalInTx(ctx, tx, tenant, eventID, value); err != nil {
+		return err
+	}
+	return accountingConflict(tx.Commit(ctx))
+}
+
+// AUTHORED transaction composition seam. This is the same existing draft writer.
+func createJournalInTx(ctx context.Context, tx pgx.Tx, tenant, eventID string, value accounting.Journal) error {
 	var period string
-	err = tx.QueryRow(ctx, `select period_id from accounting.period where tenant_id=$1 and period_id=$2 and status='open' and starts_on <= ($3::timestamptz at time zone 'UTC')::date and ends_on > ($3::timestamptz at time zone 'UTC')::date for share`, tenant, value.PeriodID, value.PostingDate).Scan(&period)
+	err := tx.QueryRow(ctx, `select period_id from accounting.period where tenant_id=$1 and period_id=$2 and status='open' and starts_on <= ($3::timestamptz at time zone 'UTC')::date and ends_on > ($3::timestamptz at time zone 'UTC')::date for share`, tenant, value.PeriodID, value.PostingDate).Scan(&period)
 	if errors.Is(err, pgx.ErrNoRows) {
 		return accounting.ErrConflict
 	}
@@ -389,7 +401,7 @@ func (r *Accounting) CreateJournal(ctx context.Context, tenant, eventID string, 
 	if err != nil {
 		return accountingConflict(err)
 	}
-	return accountingConflict(tx.Commit(ctx))
+	return nil
 }
 
 func (r *Accounting) PostJournal(ctx context.Context, tenant, organization, id, actor string, expectedVersion int64, registerID, eventID string) (accounting.Journal, error) {
@@ -1197,3 +1209,5 @@ Require clean reconstruction/hash, Go format/test twice/vet/build, fresh Postgre
 ## 10. Reconstruction evidence
 
 Recorded in `reconstruction_evidence/ENTERPRISE_ACCOUNTING_LEDGER_2026-08-30_V121.md`.
+
+V402 composed delta: Connect the immutable FX conversion to the existing draft writer; preserve posting/reversal, explicit actor/account/period selection and no corporate authorship. Evidence FX_JOURNAL_CONNECTION_V402.md.

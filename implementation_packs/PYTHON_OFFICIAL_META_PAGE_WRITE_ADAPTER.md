@@ -18,13 +18,13 @@ upstream_sources: ["https://github.com/facebook/facebook-python-business-sdk/tre
 verified_at: "2026-09-11"
 ```
 
-Unpublished candidate. Wrapper/tests/contracts are AUTHORED glue invoking the
+Original leaf qualification, now selected in the canonical composition. Wrapper/tests/contracts are AUTHORED glue invoking the
 DEPENDENCY_PIN official SDK; no local domain code is attributed to Meta. License
 bytes are VERBATIM and only authorize the uses permitted by Meta Platform terms.
 The adapter does not upgrade Ads reporting's read-only admission to posting.
 Its independent narrow source/contract evidence is in seven-core-evidence.md.
 
-## 2. Applicability and conditions
+## 2. Applicability
 
 Selected Facebook Page, approved exact text and caller-held durable outbound fence.
 The leaf checks binding; it does not perform the approval or claim a database
@@ -658,21 +658,21 @@ failure and correction are preserved in PROJECT_FAILURE_LESSONS.md. No core,
 Commerce, Accounting, PG or previous fuzz suite was rerun.
 ````
 
-## 6. Configuration and runtime
+## 6. Configuration surface
 
 No embedded credential, CLI send command or global default API. The caller supplies
 app/page credentials from its own secret handling when it chooses to enable the
 adapter; fixtures use synthetic values and intercept all requests. Graph v26.0,
 SDK26.0.1, per-call timeout10s, local content bound16384bytes; debug disabled.
 
-## 7. Dependencies and license
+## 7. Dependency bill
 
 The previously admitted Meta reporting 18-wheel lock is reused exactly, with no
 new version or package. Clean isolated hash-required install, pip check and source
 comparisons passed. Source/license mapping is materialized. Preserve all wheel
 licenses and LICENSE.Meta.txt; the CAPI wheel omits its source license.
 
-## 8. Operation and rollback
+## 8. Apply order
 
 At most2 SDK requests per publish/revoke operation and1 per reconciliation; no
 queue/retry engine. The caller stores receipt or unknown state using its existing
@@ -687,8 +687,10 @@ blocks match V374 exactly; their tests are reused without rerun. The initial
 DELETE parser assumption failure is retained and corrected, with false/missing/
 timeout regressions. No live API request, PG or previous domain/fuzz suite runs.
 
-## 10. Reconstruction
+## 10. Reconstruction evidence
 
 Materialize into an absent directory; compare all7 outputs with these hashes.
 Use the locked runtime and unittest discovery command in README. This candidate
 requires independent root admission/wiring before claiming full social delivery.
+
+V402321 scope clarification: the historical leaf-only LOCAL_IMPLEMENTATION_GAP above is supplied in the complete profile by GO-META-PAGE-PUBLISHING-INFRASTRUCTURE and shared approval/persistence owners. COMMUNICATIONS_RUNTIME_V402.md records request/review/schedule, actual SDK fixture POST/GET/separately approved DELETE and unknown-outcome recovery. This leaf does not claim other social networks or unselected mutations.

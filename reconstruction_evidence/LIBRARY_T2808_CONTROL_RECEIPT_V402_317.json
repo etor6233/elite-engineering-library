@@ -1,0 +1,53 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2808",
+  "outcome": "PASS",
+  "command": "Current1583source correspondence and actual supervised OIDC/API+Next/PG/official metric/10m alert/1000replay/WAL recovery;4rebuilds and78module SCA",
+  "exit_code": 0,
+  "assertions": [
+    "Full115packs/1560outputs reconstructed exactly;5selected profiles exact",
+    "Two fresh source/install/compiler caches at an explicit stable workspace;4066artifact files byte identical",
+    "Pinned public fixture preview/action values and generated metadata normalization declared; no arbitrary-root/cross-platform binary claim",
+    "No pnpm payload redistribution; original restricted local_runtime.py performs each offline installation",
+    "Source workspace absent during current artifact deployment; generated junction map recreated only inside activation copy",
+    "Actual84migration fresh database, session lock and per-step ledger transaction; replay unchanged, mismatched ledger digest rejected",
+    "Native API+Next serve actual requests and accept fixture OIDC identity; same order remains one durable row through rollback/recovery/replay",
+    "Manual previous-binary rollback and failed candidate restore executed; pointer remains last confirmed release",
+    "Existing inherited event reused by Go host; requested NextSIGTERM143, wrapper0, every native process tree empty",
+    "14delta lint files25reviewed; no new dependency graph; six direct npm notice texts require source/parent correspondence at T2810 before executable redistribution",
+    "Containers/cloud/SCM/production are outside selected local target; no credential-only fiction for unexecuted targets",
+    "V402317: domain/role/adapter/identity/document/AI source preserved; common x/sync0.22/x/text0.40 already admitted in telemetry now selected at root. Full/backend/serverless compilation and current API real OIDC/PG/concurrent replay with that graph; rebuilt host byte-identical. Existing Next cohort exact, final full artifact/signature/notices T2810 remains open.11delta lint files34reviewed;78public modules SCA0. Native/ARCA untouched."
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "58a8cf9798f136c19cca60ec94f8a14fa49bef98d208a1043aa65cf8a7fc87ee"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_T2808_CONTROL_RECEIPT_V402_316.json",
+      "sha256": "71557b3ab30aaf02c2f29d3f1b79d2641a0826655c7fde870c0b42fb6276dc70"
+    },
+    {
+      "path": "reconstruction_evidence/LOCAL_REFERENCE_OPERATIONS_V402.json",
+      "sha256": "2312cc47f371784e4763991c8720b49901ff937242ee1d90d45b7415bc427a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/LOCAL_REFERENCE_OPERATIONS_V402.md",
+      "sha256": "a8cdab67368eda591d87897e6ab9d2fd5ae937ccc54b805723922a6421607da5"
+    },
+    {
+      "path": "reconstruction_evidence/LOCAL_REFERENCE_OPERATIONS_V402.json",
+      "sha256": "2312cc47f371784e4763991c8720b49901ff937242ee1d90d45b7415bc427a0b"
+    },
+    {
+      "path": "reconstruction_evidence/LOCAL_REFERENCE_OPERATIONS_LINT_V402.json",
+      "sha256": "a25eec0e1d6da39c1aafbdad14148446630fe2c07632d66ff6f322ba8da75edb"
+    }
+  ],
+  "inventory_sha256": "0861d7099098158a866e7ef3d93838f3f204faa1fbd458a31570f257e99ea859",
+  "live_effects_performed": false
+}

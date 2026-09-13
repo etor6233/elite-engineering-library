@@ -2,28 +2,440 @@
 
 ## Referencia local V402 aceptada
 
-**READY_FOR_LIBRARY_USE / LIBRARY_INFRASTRUCTURE / LOCAL_FIXTURES**, ejecución337 COMPLETE. T2801–T2810 y ARCA_INFRA: PROVEN_LOCAL; TEST02/03/07 PASS en el alcance local y 48/48 controles. Producción no autorizada. El gate de producto permanece DISCOVERY/BLOCK y Daybreak/libxml2 ACCESS_BLOCKED diferido.
+READY_FOR_LIBRARY_USE para LIBRARY_INFRASTRUCTURE / LOCAL_FIXTURES. Fuente330/metadatos331,116packs/1653archivos. TEST02/03/07 PASS local,48/48 controles de este alcance. Daybreak/libxml2 ACCESS_BLOCKED diferido; producción no autorizada. Véase `reconstruction_evidence/LIBRARY_INFRA_READY_V402.md` y el validator release del registro local.
 
-Este estado corresponde a los [artefactos V402 identificados por SHA](../README.md#dos-zips-cuál-usar-para-qué). El pulido público no incorpora los cambios de implementación pendientes de publicación. El [expediente de gates](../reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md) fija el límite. El bloque superior del gap map canónico ligado al checkpoint337 permanece sin modificar.
+| Control | Estado | Evidencia/alcance |
+|---|---|---|
+| T2801 | PROVEN_LOCAL | G/H answered; exact source/admissions, local assurance and contained failures; no critical unknowns for library scope. |
+| T2802 | PROVEN_LOCAL | Connected quotation/order/fixture payment/handover/receipt; configured FX/stored-value/loyalty/warranty/supply/catalog; blueprint exclusions preserved. |
+| T2803 | PROVEN_LOCAL | Composition identity/object/org boundaries, supply-chain exact SCA0 and reviewed security lint; Daybreak excluded. |
+| T2804 | PROVEN_LOCAL | Role mutations and recovery, required localized private UI/help/training in the same source cohort. |
+| T2805 | PROVEN_LOCAL | WA/Page and ML offline mutations/reconciliation plus configured communication wiring; live account credentials pending. |
+| T2806 | PROVEN_LOCAL | Fixture document receive/extract/review/commit reference; native detector/provider targets not fabricated. |
+| T2807 | PROVEN_LOCAL | Connected governed runtime/tools/budgets/handoff and fixture evals; provider credential pending. |
+| T2808 | PROVEN_LOCAL | Exact current artifact API/web activation and existing durable row; rollback/recovery proof bound to identical API and launcher. |
+| T2809 | PROVEN_LOCAL | Finite local native host/supervisor/real alert and synthetic load; block retention policy; permanent target operations candidate. |
+| T2810 | PROVEN_LOCAL | Two independent exact source trees, NEW/EXISTING preservation, two actual builds, deterministic ZIP/SPDX/SLSA/signature/independent extraction. |
+| ARCA_INFRA | PROVEN_LOCAL | Go/UDS/.NET/WSAA/WSFE infrastructure, generated clients, fixture authorization/reconciliation/credit/parameters/restart; user credentials only for provider connection. |
+
+No hay pendientes de código REQUIRED dentro de esta composición local. Proveedores live: CONDITIONED credenciales; operación productiva/regulatoria se acepta en el target. Payroll/POS/promociones generales/referrals/reviews públicas/waitlist son NONE_WITH_REASON del blueprint, nunca equivalencias inventadas. T2809 permanente conserva CANDIDATE_TARGET honesto.
+
+V402335 distribution delta: HTTP metrics verifier count corrected8→11 against the exact admitted pack;13static counts and21-file history selection audited. Product1653files unchanged. Final frozen Preflight/portable distribution qualification pending. Evidence: `reconstruction_evidence/LIBRARY_PREFLIGHT_COUNT_REPAIR_V402.md`.
 
 ## Registro histórico conservado
 
-> **HISTÓRICO — NO VIGENTE — no usar para estado actual**
->
-> Todo el contenido desplegable siguiente, incluidas sus tablas, porcentajes, expresiones «actual/vigente», T280x pendientes y siguientes acciones, conserva el estado de su revisión original. No reabre ni sustituye el cierre local337.
-
-<details>
-<summary>HISTÓRICO — NO VIGENTE — no usar para estado actual</summary>
+El texto siguiente es evidencia histórica y no reemplaza el estado vigente anterior.
 
 # Franchise Gap Map — cobertura conectada y brechas reales
 
-Estado vigente V401 / checkpoint272, 2026-09-11. Owner: roadmap sección10.
+Estado vigente V402 / checkpoint331, 2026-09-13. Scope LIBRARY_INFRASTRUCTURE.
+Perfil116packs/1653archivos exactos fuera de la biblioteca;205packs/2360blocks.
+45/48controles históricos: TEST02/03/07 siguen abiertos. Ese conteo no mide
+el porcentaje del objetivo ni declara producción o READY global.
 
-45/48 controles cerrados; TEST02/03/07 bloqueados. El perfil actual compone
-70packs/820archivos (encuestas V400; último Preflight previo265, sin atribuirlo a este delta), no el inventario histórico inferior.
-La auditoría de21cores V374 y la corrección SECUREOPS1.1.4 aportan evidencia;
-no acreditan integración completa ni reemplazan FAIL385.
+| Control | Estado vigente | Evidencia y siguiente paso |
+|---|---|---|
+| T2802 | PROVEN_LOCAL | Dominio quote→order→SDK fixture→callback/reconcile→handover→recibo; FX posting, gift/loyalty, garantíaJ4, supplyJ2 y catálogoJ3. T2802_CONNECTED_CLOSURE_V402 + correspondencia312. |
+| T2804 | PROVEN_LOCAL | Escrituras por rol, catálogo/supply/garantía/red, CMS/21guías/5cursos/KPIs y localeprivado es/en consolidados. PRIVATE_LOCALE_RELEASE_V402.md/json +7evidencias previas. |
+| T2805 | PROVEN_LOCAL | ML PRICE/STOCK/PAUSE/RESUME PROVEN_LOCAL conectado a catálogo/ATP/aprobación/fence; MARKETPLACE_MUTATION_RELEASE_V402. MEDIA/CREATE inicial PROVEN_LOCAL con catálogo/PNG→aprobaciones→provider→GET; MARKETPLACE_INITIAL_RELEASE_V402. CONTENT existente PROVEN_LOCAL para único ítem sin ventas; MARKETPLACE_CONTENT_RELEASE_V402. Google Merchant upsert/refresh conectado PROVEN_LOCAL con SDK real, PG/queue/GET; MERCHANT_CONNECTED_RELEASE_V402. Recordatorios CRM→jobs→adapter→estado/recovery PROVEN_LOCAL; SCHEDULED_COMMUNICATIONS_RELEASE_V402. Scope de publishers ML/Merchant consolidado; otros writes no seleccionados NONE_WITH_REASON. Campañas/audiencia CRM/consentimiento de marketing→pasos revisados→jobs/adapter→suppression/recibos→observación quote/order PROVEN_LOCAL; CAMPAIGN_CONNECTED_RELEASE_V402 consolida el alcance T2805 seleccionado. WA/Page baseV402 conservado. |
+| T2803 | PROVEN_LOCAL | Base312 más deltas313–317. Grafo actual78módulos públicos SCA0;11archivos de lint/34revisados. Fuentes y binarios exactos; ARCA325:12manifiestos SCA0/22archivos lint26revisados y UDS real resuelve1539; Daybreak reservado. |
+| T2806 | PROVEN_LOCAL | Pipeline fixture demostrado en313113/1518; carryforward316 a115/1560 por fuentes exactas. DOCUMENT_REFERENCE_RELEASE_V402.md/json. |
+| T2807 | PROVEN_LOCAL | Runtime/PG/contacto/tools/budget/handoff conectados;11evals requeridos, host y WA2casos PASS. LIB-R1021archivos,27policy y code_sha V373. AI_CONNECTED_REFERENCE_RELEASE_V402.md/json. |
+| T2808 | PROVEN_LOCAL | Dos builds4066archivos idénticos, base vacía84/replay/drift, API+Next/rollback/recovery/pedido único/stop árbol vacío y arranque sin workspace. LOCAL_REFERENCE_DELIVERY_V402.md/json. |
+| T2809 | PROVEN_LOCAL | Host OIDC/API+Next, middleware oficial, alerta real10m, reparación/1000replays/WAL/recovery/stop. Retención de bloques y Collector histórico diferenciados; producción permanente CANDIDATE_TARGET. LOCAL_REFERENCE_OPERATIONS_V402.md/json. |
+| T2801 | LOCAL_REVIEW_PROVEN / FINAL_RELEASE_PENDING | G/H y assurance revisados320; aceptación final contra la cohorte firmada. |
+| T2810 | DRIVER_CONTRACT_PROVEN / FINAL_ARTIFACT_PENDING | Selector321, notices322, gate firmado323, driver/identidad324 probados. ARCA325 probado; siguen dos builds de la cohorte completa/SCA/firma/destino durable NEW-EXISTING. SIGNED_BUILD_DRIVER_V402.md/json. |
+| ARCA_INFRA | PROVEN_LOCAL — penúltimo completado en infra | Factura/crédito/CMS/Go/UDS/.NET/PG/reconciliación/reinicio;440archivos portables,2generaciones exactas/8negativos,12manifiestos SCA0. Conexión homologación CONDITIONED credenciales usuario. ARCA_CONNECTED_INFRA_V402.md/json. |
+| Daybreak/libxml2 | ACCESS_BLOCKED — último | Sólo expediente y trigger, no investigación. No bloquea el HECHO de infraestructura. |
 
+T2804 no reabre los journeys anteriores como lecturas/demos:45salidas de
+presentación cambian,1298salidas previas permanecen exactas,20nuevas son glue/
+traducción/ensayo.90expresiones de serialización/recovery intactas; navegador
+es→respuesta perdida→en→GET de la misma referencia;3escriturasdurables,0duplicados.
+21guías y5cursos conservan sus fuentes/hashes; CMS/IDs/wire permanecen originales.
+J5identidad, aceptación de target y operación productiva siguen en sus owners.
+
+Payoll/POS/promociones generales/referrals/reviews públicas/waitlist conservan
+NONE_WITH_REASON demostrado en T2802; no se inventa equivalencia universal.
+GO-I18N-CORE/GO-DASHBOARDS-CORE aislados no son promovidos por este cierre.
+Fuentes y notices fijados; AUTHORED declarado sin atribución corporativa.
+
+
+Delta308:16nuevos/7revisados;1428salidas previas exactas.2perfiles afectados exactos;6campañas/10jobs/4POST/1pedido ypartial2requests/jobs/decisions sin duplicados. T2805 cerrado local; sigue T2803 sin Daybreak.
+
+
+Delta309:26nuevos/6revisados;1445salidas previas exactas. Portal SDK/Go/PG,16CAS->1owner,18TS tests,host/rollback/fuzz y5perfiles exactos. T2803 continúa enJ5/source/SCA. IDENTITY_PORTAL_RELEASE_V402.md/json.
+
+
+Delta310:4nuevos/3revisados;1474salidas anteriores exactas. J5 SDK access-review3casos yHTTP/PG2org/3recibos/3outbox sinwildcard;4perfiles exactos. T2803 sigue source/SCA. IDENTITY_J5_RELEASE_V402.md/json.
+
+
+Delta311: PNPM0.9.0/14files,5nuevos/2revisados.3instalaciones restringidas/11negativos/8tests,477identidades SCA y2rebuilds exactos.445archivos desde proyección verificada. Perfil109/1481 y receipts310 intactos. Sigue T2803 composición; PNPM_LOCAL_RUNTIME_V402.md/json.
+
+
+Delta312: backend0.4.6/DevSkim0.1.1,3revisados/1478intactos,5rebuilds exactos. Dos API byte-idénticas; SCA0; lint triado. T2803 local cerrado; sigue T2806. ARCA sigue penúltimo, incluido finding1539.
+
+
+Delta313: T2806 cerrado local; seis perfiles exactos,4Go builds,37root modules/zero-finding union,24lint revisados. Native detectors simulados explícitos; Daybreak sigue último diferido. Sigue T2807.
+
+
+Delta316:115/1560; dos artefactos4066exactos y deploy aislado. T2808 cerrado local; seis correspondencias npm de notices y release firmado pertenecen al cierre T2810, nunca a una afirmación legal/productiva automática.
+
+
+Delta317:116/1583; T2809 cerrado para referencia local finita; T2801 assurance/G-H sigue. No se presenta CANDIDATE_TARGET permanente como espera de credencial solamente.
+
+
+Delta318 T2801: FAIL945 sigue OPEN: NPS original AUTHORED; tres fuentes oficiales de release PostHog MIT fijadas en cuarentena, aún sin adaptación/admisión. NPS_SOURCE_DISCOVERY_V402.md/json. Perfil116/1583 intacto; no promoción por reputación.
+
+
+Delta319: NPS residual corregido con PostHog MIT ADAPTED llamado por Summary PG; nueve casos originales, oráculo/fuzz y HTTP/OIDC/PG/restart PASS. FAIL945/946 cerrados localmente; T2801 global sigue en cierre G/H.
+
+
+V402326 T2810: durable NEW materialization1653exact; gate0.2.1 UTC regression/full source rebuild PASS. Final actual two builds/SCA/signature/acceptance in progress. ARCA_INFRA remains PROVEN_LOCAL325.
+
+
+V402327 T2810: NEW/EXISTING y preservación PASS; contador del perfil firmado alineado a11 tras FAIL973. Preflight final/builds/firma en curso, sin delta de producto326.
+
+
+V402328 T2810: CI0.1.7 original-source/Next derivation fix,16fixtures/1653actual projection/rebuild PASS. Durable inputs retained; new current two builds/signature/acceptance ongoing.
+
+
+V402329 T2810: gate0.2.2 fixes false OSV count977; actual graph454packages/0vulnerabilities,17assertions/1653rebuild PASS. New current full builds/signature in progress.
+
+
+V402330 T2810/T2808: fixes978SPDX coverage and979ZIP parent directories qualified against real329 artifacts.1653exact source,1648unchanged; current330signed release in progress.
+
+
+V402331: metadata source labels19corrected; CI0.1.9 with all1653source bytes unchanged from330. Current330build/signature remains valid for these bytes.
+
+## Registro histórico conservado
+
+### Corte307 supersedido por308 para estado vigente
+
+# Franchise Gap Map — cobertura conectada y brechas reales
+
+Estado vigente V402 / checkpoint307, 2026-09-13. Scope LIBRARY_INFRASTRUCTURE.
+Perfil107packs/1435archivos exactos fuera de la biblioteca;202packs/2199blocks.
+45/48controles históricos: TEST02/03/07 siguen abiertos. Ese conteo no mide
+el porcentaje del objetivo ni declara producción o READY global.
+
+| Control | Estado vigente | Evidencia y siguiente paso |
+|---|---|---|
+| T2802 | PROVEN_LOCAL | Dominio quote→order→SDK fixture→callback/reconcile→handover→recibo; FX posting, gift/loyalty, garantíaJ4, supplyJ2 y catálogoJ3. T2802_CONNECTED_CLOSURE_V402 + correspondencia307. |
+| T2804 | PROVEN_LOCAL | Escrituras por rol, catálogo/supply/garantía/red, CMS/21guías/5cursos/KPIs y localeprivado es/en consolidados. PRIVATE_LOCALE_RELEASE_V402.md/json +7evidencias previas. |
+| T2805 | IN_PROGRESS | ML PRICE/STOCK/PAUSE/RESUME PROVEN_LOCAL conectado a catálogo/ATP/aprobación/fence; MARKETPLACE_MUTATION_RELEASE_V402. MEDIA/CREATE inicial PROVEN_LOCAL con catálogo/PNG→aprobaciones→provider→GET; MARKETPLACE_INITIAL_RELEASE_V402. CONTENT existente PROVEN_LOCAL para único ítem sin ventas; MARKETPLACE_CONTENT_RELEASE_V402. Google Merchant upsert/refresh conectado PROVEN_LOCAL con SDK real, PG/queue/GET; MERCHANT_CONNECTED_RELEASE_V402. Recordatorios CRM→jobs→adapter→estado/recovery PROVEN_LOCAL; SCHEDULED_COMMUNICATIONS_RELEASE_V402. Scope de publishers ML/Merchant consolidado; otros writes no seleccionados NONE_WITH_REASON. Pendiente campañas/segmentación→drip/suppression→conversión. WA/Page baseV402 conservado. |
+| T2803 | PENDING | Identidad/J5/admin/revocación, composición/source/SCA; sin investigar Daybreak. |
+| T2806/T2807 | PENDING | Pipeline documental fixture y runtimeIA/evals gobernados. |
+| T2808/T2809 | PENDING/BLOCKED | Delivery/rollback portable y operación/observabilidad local. |
+| T2801/T2810 | PREPARATION_PROVEN/PENDING | Assurance G/H y cierre local; rebuild independiente/ZIPfirmado/ensayoNEW-EXISTING/destino durable. |
+| ARCA_INFRA | PENDING — penúltimo | Infraestructura completa y fixtures sin pedir CUIT/certificados; credenciales luego. |
+| Daybreak/libxml2 | ACCESS_BLOCKED — último | Sólo expediente y trigger, no investigación. No bloquea el HECHO de infraestructura. |
+
+T2804 no reabre los journeys anteriores como lecturas/demos:45salidas de
+presentación cambian,1298salidas previas permanecen exactas,20nuevas son glue/
+traducción/ensayo.90expresiones de serialización/recovery intactas; navegador
+es→respuesta perdida→en→GET de la misma referencia;3escriturasdurables,0duplicados.
+21guías y5cursos conservan sus fuentes/hashes; CMS/IDs/wire permanecen originales.
+J5identidad, aceptación de target y operación productiva siguen en sus owners.
+
+Payoll/POS/promociones generales/referrals/reviews públicas/waitlist conservan
+NONE_WITH_REASON demostrado en T2802; no se inventa equivalencia universal.
+GO-I18N-CORE/GO-DASHBOARDS-CORE aislados no son promovidos por este cierre.
+Fuentes y notices fijados; AUTHORED declarado sin atribución corporativa.
+
+
+Delta307:17nuevos/9revisados;1409salidas previas exactas. Tres perfiles afectados reconstruidos; appointment/approval/job/adapter/status/recovery,host/mTLS/rollback,boundaries/fuzz PASS. T2802/T2804 conservados; T2805 sigue por campañas.
+
+
+### Historial previo
+
+
+### Corte306 supersedido por307 para estado vigente
+
+# Franchise Gap Map — cobertura conectada y brechas reales
+
+Estado vigente V402 / checkpoint306, 2026-09-13. Scope LIBRARY_INFRASTRUCTURE.
+Perfil106packs/1418archivos exactos fuera de la biblioteca;201packs/2182blocks.
+45/48controles históricos: TEST02/03/07 siguen abiertos. Ese conteo no mide
+el porcentaje del objetivo ni declara producción o READY global.
+
+| Control | Estado vigente | Evidencia y siguiente paso |
+|---|---|---|
+| T2802 | PROVEN_LOCAL | Dominio quote→order→SDK fixture→callback/reconcile→handover→recibo; FX posting, gift/loyalty, garantíaJ4, supplyJ2 y catálogoJ3. T2802_CONNECTED_CLOSURE_V402 + correspondencia306. |
+| T2804 | PROVEN_LOCAL | Escrituras por rol, catálogo/supply/garantía/red, CMS/21guías/5cursos/KPIs y localeprivado es/en consolidados. PRIVATE_LOCALE_RELEASE_V402.md/json +7evidencias previas. |
+| T2805 | IN_PROGRESS | ML PRICE/STOCK/PAUSE/RESUME PROVEN_LOCAL conectado a catálogo/ATP/aprobación/fence; MARKETPLACE_MUTATION_RELEASE_V402. MEDIA/CREATE inicial PROVEN_LOCAL con catálogo/PNG→aprobaciones→provider→GET; MARKETPLACE_INITIAL_RELEASE_V402. CONTENT existente PROVEN_LOCAL para único ítem sin ventas; MARKETPLACE_CONTENT_RELEASE_V402. Google Merchant upsert/refresh conectado PROVEN_LOCAL con SDK real, PG/queue/GET; MERCHANT_CONNECTED_RELEASE_V402. Pendiente verificar mappings restantes realmente seleccionados y comunicaciones/reminders/segmentación→conversión. WA/Page baseV402 conservado. |
+| T2803 | PENDING | Identidad/J5/admin/revocación, composición/source/SCA; sin investigar Daybreak. |
+| T2806/T2807 | PENDING | Pipeline documental fixture y runtimeIA/evals gobernados. |
+| T2808/T2809 | PENDING/BLOCKED | Delivery/rollback portable y operación/observabilidad local. |
+| T2801/T2810 | PREPARATION_PROVEN/PENDING | Assurance G/H y cierre local; rebuild independiente/ZIPfirmado/ensayoNEW-EXISTING/destino durable. |
+| ARCA_INFRA | PENDING — penúltimo | Infraestructura completa y fixtures sin pedir CUIT/certificados; credenciales luego. |
+| Daybreak/libxml2 | ACCESS_BLOCKED — último | Sólo expediente y trigger, no investigación. No bloquea el HECHO de infraestructura. |
+
+T2804 no reabre los journeys anteriores como lecturas/demos:45salidas de
+presentación cambian,1298salidas previas permanecen exactas,20nuevas son glue/
+traducción/ensayo.90expresiones de serialización/recovery intactas; navegador
+es→respuesta perdida→en→GET de la misma referencia;3escriturasdurables,0duplicados.
+21guías y5cursos conservan sus fuentes/hashes; CMS/IDs/wire permanecen originales.
+J5identidad, aceptación de target y operación productiva siguen en sus owners.
+
+Payoll/POS/promociones generales/referrals/reviews públicas/waitlist conservan
+NONE_WITH_REASON demostrado en T2802; no se inventa equivalencia universal.
+GO-I18N-CORE/GO-DASHBOARDS-CORE aislados no son promovidos por este cierre.
+Fuentes y notices fijados; AUTHORED declarado sin atribución corporativa.
+
+
+Delta306:24nuevos/1revisado;1393salidas previas exactas. Cuatro perfiles reconstruidos; SDK/API/PG/cola/host/rollback/fuzz/OSV20de20 PASS. Sin cierre global ni repetición de T2802/T2804.
+
+
+### Historial previo
+
+
+### Corte305 supersedido por306 para estado vigente
+
+# Franchise Gap Map — cobertura conectada y brechas reales
+
+Estado vigente V402 / checkpoint305, 2026-09-13. Scope LIBRARY_INFRASTRUCTURE.
+Perfil105packs/1394archivos exactos fuera de la biblioteca;200packs/2158blocks.
+45/48controles históricos: TEST02/03/07 siguen abiertos. Ese conteo no mide
+el porcentaje del objetivo ni declara producción o READY global.
+
+| Control | Estado vigente | Evidencia y siguiente paso |
+|---|---|---|
+| T2802 | PROVEN_LOCAL | Dominio quote→order→SDK fixture→callback/reconcile→handover→recibo; FX posting, gift/loyalty, garantíaJ4, supplyJ2 y catálogoJ3. T2802_CONNECTED_CLOSURE_V402 + correspondencia305. |
+| T2804 | PROVEN_LOCAL | Escrituras por rol, catálogo/supply/garantía/red, CMS/21guías/5cursos/KPIs y localeprivado es/en consolidados. PRIVATE_LOCALE_RELEASE_V402.md/json +7evidencias previas. |
+| T2805 | IN_PROGRESS | ML PRICE/STOCK/PAUSE/RESUME PROVEN_LOCAL conectado a catálogo/ATP/aprobación/fence; MARKETPLACE_MUTATION_RELEASE_V402. MEDIA/CREATE inicial PROVEN_LOCAL con catálogo/PNG→aprobaciones→provider→GET; MARKETPLACE_INITIAL_RELEASE_V402. CONTENT existente PROVEN_LOCAL para único ítem sin ventas; MARKETPLACE_CONTENT_RELEASE_V402. Pendiente Google Merchant/otros feeds/mappings y comunicaciones/reminders/segmentación→conversión. WA/Page baseV402 conservado. |
+| T2803 | PENDING | Identidad/J5/admin/revocación, composición/source/SCA; sin investigar Daybreak. |
+| T2806/T2807 | PENDING | Pipeline documental fixture y runtimeIA/evals gobernados. |
+| T2808/T2809 | PENDING/BLOCKED | Delivery/rollback portable y operación/observabilidad local. |
+| T2801/T2810 | PREPARATION_PROVEN/PENDING | Assurance G/H y cierre local; rebuild independiente/ZIPfirmado/ensayoNEW-EXISTING/destino durable. |
+| ARCA_INFRA | PENDING — penúltimo | Infraestructura completa y fixtures sin pedir CUIT/certificados; credenciales luego. |
+| Daybreak/libxml2 | ACCESS_BLOCKED — último | Sólo expediente y trigger, no investigación. No bloquea el HECHO de infraestructura. |
+
+T2804 no reabre los journeys anteriores como lecturas/demos:45salidas de
+presentación cambian,1298salidas previas permanecen exactas,20nuevas son glue/
+traducción/ensayo.90expresiones de serialización/recovery intactas; navegador
+es→respuesta perdida→en→GET de la misma referencia;3escriturasdurables,0duplicados.
+21guías y5cursos conservan sus fuentes/hashes; CMS/IDs/wire permanecen originales.
+J5identidad, aceptación de target y operación productiva siguen en sus owners.
+
+Payoll/POS/promociones generales/referrals/reviews públicas/waitlist conservan
+NONE_WITH_REASON demostrado en T2802; no se inventa equivalencia universal.
+GO-I18N-CORE/GO-DASHBOARDS-CORE aislados no son promovidos por este cierre.
+Fuentes y notices fijados; AUTHORED declarado sin atribución corporativa.
+
+
+Delta305:7nuevos/7revisados en el owner ML;1380salidas previas exactas. Dos perfiles exactos; source/API/PG/scope/recovery/host/fuzz/downgrade PASS. No cierre global ni repetición de T2802/T2804.
+
+
+### Historial previo
+
+
+### Corte304 supersedido por305 para estado vigente
+
+# Franchise Gap Map — cobertura conectada y brechas reales
+
+Estado vigente V402 / checkpoint304, 2026-09-13. Scope LIBRARY_INFRASTRUCTURE.
+Perfil105packs/1387archivos exactos fuera de la biblioteca;200packs/2151blocks.
+45/48controles históricos: TEST02/03/07 siguen abiertos. Ese conteo no mide
+el porcentaje del objetivo ni declara producción o READY global.
+
+| Control | Estado vigente | Evidencia y siguiente paso |
+|---|---|---|
+| T2802 | PROVEN_LOCAL | Dominio quote→order→SDK fixture→callback/reconcile→handover→recibo; FX posting, gift/loyalty, garantíaJ4, supplyJ2 y catálogoJ3. T2802_CONNECTED_CLOSURE_V402 + correspondencia304. |
+| T2804 | PROVEN_LOCAL | Escrituras por rol, catálogo/supply/garantía/red, CMS/21guías/5cursos/KPIs y localeprivado es/en consolidados. PRIVATE_LOCALE_RELEASE_V402.md/json +7evidencias previas. |
+| T2805 | IN_PROGRESS | ML PRICE/STOCK/PAUSE/RESUME PROVEN_LOCAL conectado a catálogo/ATP/aprobación/fence; MARKETPLACE_MUTATION_RELEASE_V402. MEDIA/CREATE inicial PROVEN_LOCAL con catálogo/PNG→aprobaciones→provider→GET; MARKETPLACE_INITIAL_RELEASE_V402. Pendiente contenido de ítems existentes, otros feeds/mappings y comunicaciones/reminders/segmentación→conversión. WA/Page baseV402 conservado. |
+| T2803 | PENDING | Identidad/J5/admin/revocación, composición/source/SCA; sin investigar Daybreak. |
+| T2806/T2807 | PENDING | Pipeline documental fixture y runtimeIA/evals gobernados. |
+| T2808/T2809 | PENDING/BLOCKED | Delivery/rollback portable y operación/observabilidad local. |
+| T2801/T2810 | PREPARATION_PROVEN/PENDING | Assurance G/H y cierre local; rebuild independiente/ZIPfirmado/ensayoNEW-EXISTING/destino durable. |
+| ARCA_INFRA | PENDING — penúltimo | Infraestructura completa y fixtures sin pedir CUIT/certificados; credenciales luego. |
+| Daybreak/libxml2 | ACCESS_BLOCKED — último | Sólo expediente y trigger, no investigación. No bloquea el HECHO de infraestructura. |
+
+T2804 no reabre los journeys anteriores como lecturas/demos:45salidas de
+presentación cambian,1298salidas previas permanecen exactas,20nuevas son glue/
+traducción/ensayo.90expresiones de serialización/recovery intactas; navegador
+es→respuesta perdida→en→GET de la misma referencia;3escriturasdurables,0duplicados.
+21guías y5cursos conservan sus fuentes/hashes; CMS/IDs/wire permanecen originales.
+J5identidad, aceptación de target y operación productiva siguen en sus owners.
+
+Payoll/POS/promociones generales/referrals/reviews públicas/waitlist conservan
+NONE_WITH_REASON demostrado en T2802; no se inventa equivalencia universal.
+GO-I18N-CORE/GO-DASHBOARDS-CORE aislados no son promovidos por este cierre.
+Fuentes y notices fijados; AUTHORED declarado sin atribución corporativa.
+
+
+Delta304:8nuevos/9revisados dentro del mismo owner Mercado Libre;1370salidas previas exactas. Dos perfiles exactos y source/API/PG/host/recovery/fuzz/downgrade PASS. No cierre global ni repetición de T2802/T2804.
+
+
+### Historial previo
+
+
+### Corte303 supersedido por304 para estado vigente
+
+# Franchise Gap Map — cobertura conectada y brechas reales
+
+Estado vigente V402 / checkpoint303, 2026-09-13. Scope LIBRARY_INFRASTRUCTURE.
+Perfil105packs/1379archivos exactos fuera de la biblioteca;200packs/2143blocks.
+45/48controles históricos: TEST02/03/07 siguen abiertos. Ese conteo no mide
+el porcentaje del objetivo ni declara producción o READY global.
+
+| Control | Estado vigente | Evidencia y siguiente paso |
+|---|---|---|
+| T2802 | PROVEN_LOCAL | Dominio quote→order→SDK fixture→callback/reconcile→handover→recibo; FX posting, gift/loyalty, garantíaJ4, supplyJ2 y catálogoJ3. T2802_CONNECTED_CLOSURE_V402 + correspondencia303. |
+| T2804 | PROVEN_LOCAL | Escrituras por rol, catálogo/supply/garantía/red, CMS/21guías/5cursos/KPIs y localeprivado es/en consolidados. PRIVATE_LOCALE_RELEASE_V402.md/json +7evidencias previas. |
+| T2805 | IN_PROGRESS | ML PRICE/STOCK/PAUSE/RESUME PROVEN_LOCAL conectado a catálogo/ATP/aprobación/fence; MARKETPLACE_MUTATION_RELEASE_V402. Pendiente publicación inicial/media/contenido, otros feeds/mappings y comunicaciones/reminders/segmentación→conversión. WA/Page baseV402 conservado. |
+| T2803 | PENDING | Identidad/J5/admin/revocación, composición/source/SCA; sin investigar Daybreak. |
+| T2806/T2807 | PENDING | Pipeline documental fixture y runtimeIA/evals gobernados. |
+| T2808/T2809 | PENDING/BLOCKED | Delivery/rollback portable y operación/observabilidad local. |
+| T2801/T2810 | PREPARATION_PROVEN/PENDING | Assurance G/H y cierre local; rebuild independiente/ZIPfirmado/ensayoNEW-EXISTING/destino durable. |
+| ARCA_INFRA | PENDING — penúltimo | Infraestructura completa y fixtures sin pedir CUIT/certificados; credenciales luego. |
+| Daybreak/libxml2 | ACCESS_BLOCKED — último | Sólo expediente y trigger, no investigación. No bloquea el HECHO de infraestructura. |
+
+T2804 no reabre los journeys anteriores como lecturas/demos:45salidas de
+presentación cambian,1298salidas previas permanecen exactas,20nuevas son glue/
+traducción/ensayo.90expresiones de serialización/recovery intactas; navegador
+es→respuesta perdida→en→GET de la misma referencia;3escriturasdurables,0duplicados.
+21guías y5cursos conservan sus fuentes/hashes; CMS/IDs/wire permanecen originales.
+J5identidad, aceptación de target y operación productiva siguen en sus owners.
+
+Payoll/POS/promociones generales/referrals/reviews públicas/waitlist conservan
+NONE_WITH_REASON demostrado en T2802; no se inventa equivalencia universal.
+GO-I18N-CORE/GO-DASHBOARDS-CORE aislados no son promovidos por este cierre.
+Fuentes y notices fijados; AUTHORED declarado sin atribución corporativa.
+
+
+Delta303:16nuevos/4revisados,1359salidas previas exactas. Nuevo tipo de aprobación manual y montaje opcional conservan T2802/T2804; no se reejecutan journeys sin delta. Cuatro perfiles exactos, pruebas/host/fuzz/downgrade PASS. No claim de producción o T2805 completo.
+
+
+### Historial previo
+
+
+### Corte302 supersedido por303 para estado vigente
+
+# Franchise Gap Map — cobertura conectada y brechas reales
+
+Estado vigente V402 / checkpoint302, 2026-09-13. Scope LIBRARY_INFRASTRUCTURE.
+Perfil104packs/1363archivos exactos fuera de la biblioteca;199packs/2127blocks.
+45/48controles históricos: TEST02/03/07 siguen abiertos. Ese conteo no mide
+el porcentaje del objetivo ni declara producción o READY global.
+
+| Control | Estado vigente | Evidencia y siguiente paso |
+|---|---|---|
+| T2802 | PROVEN_LOCAL | Dominio quote→order→SDK fixture→callback/reconcile→handover→recibo; FX posting, gift/loyalty, garantíaJ4, supplyJ2 y catálogoJ3. T2802_CONNECTED_CLOSURE_V402 + correspondencia302. |
+| T2804 | PROVEN_LOCAL | Escrituras por rol, catálogo/supply/garantía/red, CMS/21guías/5cursos/KPIs y localeprivado es/en consolidados. PRIVATE_LOCALE_RELEASE_V402.md/json +7evidencias previas. |
+| T2805 | PENDING — siguiente | Mappings de proveedores, mutaciones/reconciliación ML y remanentes de comunicaciones/automatización. WA/Page baseV402 conservado; falta cerrar el claim conectado restante. |
+| T2803 | PENDING | Identidad/J5/admin/revocación, composición/source/SCA; sin investigar Daybreak. |
+| T2806/T2807 | PENDING | Pipeline documental fixture y runtimeIA/evals gobernados. |
+| T2808/T2809 | PENDING/BLOCKED | Delivery/rollback portable y operación/observabilidad local. |
+| T2801/T2810 | PREPARATION_PROVEN/PENDING | Assurance G/H y cierre local; rebuild independiente/ZIPfirmado/ensayoNEW-EXISTING/destino durable. |
+| ARCA_INFRA | PENDING — penúltimo | Infraestructura completa y fixtures sin pedir CUIT/certificados; credenciales luego. |
+| Daybreak/libxml2 | ACCESS_BLOCKED — último | Sólo expediente y trigger, no investigación. No bloquea el HECHO de infraestructura. |
+
+T2804 no reabre los journeys anteriores como lecturas/demos:45salidas de
+presentación cambian,1298salidas previas permanecen exactas,20nuevas son glue/
+traducción/ensayo.90expresiones de serialización/recovery intactas; navegador
+es→respuesta perdida→en→GET de la misma referencia;3escriturasdurables,0duplicados.
+21guías y5cursos conservan sus fuentes/hashes; CMS/IDs/wire permanecen originales.
+J5identidad, aceptación de target y operación productiva siguen en sus owners.
+
+Payoll/POS/promociones generales/referrals/reviews públicas/waitlist conservan
+NONE_WITH_REASON demostrado en T2802; no se inventa equivalencia universal.
+GO-I18N-CORE/GO-DASHBOARDS-CORE aislados no son promovidos por este cierre.
+Fuentes y notices fijados; AUTHORED declarado sin atribución corporativa.
+
+
+### Historial previo
+
+
+### Corte301 supersedido por302 para estado vigente
+
+# Franchise Gap Map — cobertura conectada y brechas reales
+
+Estado vigente V402 / checkpoint301, 2026-09-12. Owner: roadmap sección10.
+
+Alcance: LIBRARY_INFRASTRUCTURE local/fixtures/sandbox. El perfil vigente compone
+103packs/1343archivos, reconstruidos exactamente fuera de la biblioteca. 45/48
+controles históricos aprobados; TEST02/03/07 todavía abiertos. Ese conteo no mide
+el porcentaje del objetivo. T2802 PROVEN_LOCAL para dominio de referencia; los restantes owners se mantienen explícitos. T2802_CONNECTED_CLOSURE_V402.md/json.
+
+La cadena cotización→pedido→pago mediante SDK contra fixture→callback firmado→
+reconciliación→preparación inicial→checklist→aceptación→recibo comercial está
+conectada en V402. El frontend de entrega prueba respuesta perdida y recuperación;
+refund/hold invalida la vigencia actual del recibo sin reescribir su historia.
+Fuentes: CONNECTED_PAYMENT_HANDOVER_V402.md y HANDOVER_BROWSER_V402.md.
+
+FX0.2.0 conecta el recibo de conversión exacta al escritor contable existente:
+borrador durable, posting explícito, balance y reversión. Cuentas/período son
+inputs explícitos; no se inventa una política de ganancias o valuación.
+Evidencia: FX_JOURNAL_CONNECTION_V402.md. WhatsApp y Facebook Page ya tienen
+infraestructura de escritura/recuperación probada en COMMUNICATIONS_RUNTIME_V402.md;
+sus límites de runtime IA/operación se mantienen en T2807/T2809.
+
+No reabrir esas partes como “sólo lectura” o “no existe creador inicial”. Gift/loyalty
+ya está compuesto con checkout/entrega, HTTP/host/UI y fuentes/notices exactos;
+waitlist/reviews/payroll y los parciales conservan evaluación por blueprint.
+Los escenarios históricos se reutilizan sólo con correspondencia de fuentes;
+no se suman como nuevos tests de esta revisión. Producción no autorizada.
+
+Garantía V402 publicada: términos vendidos/ack→pedido/pago fixture→handover y
+activación; J4 cuatro casos HTTP con reserva/FIFO/aprobación/trabajo/calidad/
+cliente/fábrica, rollback y recuperación. Dos packs y seis owners exactos,
+notices/locks incluidos. UI por rol T2804 pendiente. Evidencia actual:
+WARRANTY_CONNECTED_RELEASE_V402.md/json; los deltas286–288 se conservan.
+
+Daybreak/libxml2 se trata como ACCESS_BLOCKED diferido por instrucción del usuario;
+no es un blocker de HECHO para infraestructura. Su expediente/trigger es el último
+paso, sin investigar ahora. ARCA infraestructura continúa penúltimo, sin secretos.
+
+Capacitación V402 incorporada: intento/lectura/respuestas/evaluación humana y
+recuperación conectados a los owners audit/approval/outbox.15guías fijadas, cuatro
+currículos, navegador alumno/revisor,4hechos/4eventos y0grants. PROVEN_LOCAL para
+este recorrido; T2804 conserva otras escrituras por rol/J5/CMS/guías nuevas/
+KPIs/i18n privado. TRAINING_CONNECTED_RELEASE_V402.md/json.
+
+Autoría de catálogo por rol V402 PROVEN_LOCAL: desde modelo/variantes/precios
+iniciales, PNG y snapshot hasta ocho revisiones y tres publicaciones/rollback,
+con16POST y recuperación GET. Fuente/host/down/goldens/fuzz y93/1248exactos en
+CATALOG_ROLE_AUTHORING_RELEASE_V402.md/json. Continúan J5/CMS/
+guías/KPIs/localización privada; el editor no cierra todo T2804.
+
+Suministro por rol V402 PROVEN_LOCAL: alta orden/cantidades→fábrica→series/
+calidad/reemplazo→despacho→recepción parcial/cuarentena/rechazo/reinspección→
+stock disponible.23POST,2respuestas recuperadas porGET sin repetir,1orden/
+3series/2stocks disponibles;95/1264exactos. SUPPLY_ROLE_RELEASE_V402.md/json.
+Continúan J5/CMS/guías/KPIs/i18n privado, sin cierre global deT2804.
+
+Garantía por rol V402 PROVEN_LOCAL: términos/consentimiento/activación→reclamo/
+diagnóstico/plan/revisión independiente/trabajo/calidad/corrección/aceptación/
+conciliación, cancelación y exclusión.18POST,15pasos,1cerrado/2cancelados,
+2respuestas recuperadas GET sin repetir;97/1278exactos.
+WARRANTY_ROLE_RELEASE_V402.md/json. Siguen J5/CMS/guías/KPIs/i18n bajoT2804.
+
+Red/acuerdos/sucursales por rol V402 PROVEN_LOCAL:13POST,3organizaciones y1acuerdo,
+2respuestas recuperadas GET;99/1299exactos. NETWORK_ROLE_RELEASE_V402.md/json.
+J5 estructura frontend cerrado estrechamente; identidad/admin/readiness siguen
+en sus controles. CMS/guías/KPIs/i18n privados siguen bajoT2804.
+
+CMS/guías/capacitación V402 PROVEN_LOCAL en102/1324:2artículos/6versiones desde
+forms, historial/archivo/recuperaciónGET;21guías(15previasintactas) y5currículos
+revision2 conreviewhumano. HELP_CMS_RELEASE_V402.md/json. Las referencias
+anteriores aCMS/guías pendientes quedan supersedidas por este cierre estrecho.
+T2804 sigue exclusivamenteKPIs/i18n privado; J5identidad/readiness enT2803/8/1.
+
+KPIs por rol V402 PROVEN_LOCAL103/1343:12familias operativas y puntos/NPS
+con fuentes actuales, permisos y alcance; dinero exacto por moneda/estado,
+sin sumar programas. Browser2respuestasNPS y0metricPOSTs, PG/source/fuzz
+y5rebuildsexactos. ROLE_METRICS_RELEASE_V402.md/json. Las notas previas que
+dejan estosKPIs pendientes quedan supersedidas por este cierre estrecho.
+T2804 conserva únicamente i18n privado/negociación porusuario. J5identidad
+yreadiness siguen T2803/8/1. Body nuevoFAIL874 cerrado; viejoFAIL457 ya cerrado.
+
+
+### Historial previo
+
+
+Los párrafos V2xx–V401 siguientes describen sus revisiones originales. Los estados
+vigentes de recorridos/cores se encuentran en las tablas de las secciones1–2.
 
 V393: perfil BFF0.5.16 omite Sharp opcional y desactiva optimización runtime; lock152→122sin versiones nuevas,122stanzas y12571archivos restantes exactos,8534artefactos firmados exactos;294tests/1skip previo,92fases/4agendas/4lecturas/4cancelaciones PASS,OSV122/0.4packs reconstruidos/805files,68/797; HTTPbinario idéntico. No Sharp fix ni reapertura V386; native/tooling restantes yTEST02/03/07 abiertos,45/48. Ver reconstruction_evidence/OPTIONAL_IMAGE_DEPENDENCY_CONTAINMENT_V393.md.
 
@@ -125,12 +537,11 @@ cores a importar. Mandan admisión, condiciones y evidencia de la revisión exac
 - **Candidato aislado:** investigar/reparar; no componer automáticamente.
 - **Productiva:** sólo con evidencia del target. Ninguna fila recibe ese estado aquí.
 
-El perfil integral actual selecciona 68 packs/795 archivos. Los 21 cores antes citados como
-“cubiertos” siguen fuera de él. Reconciliación vigente:4owners alternativos tienen recorridos
-de referencia concretos (observabilidad, SLO, SEO e i18n),9conservan solapamiento parcial
-y8no tienen integración funcional demostrada. Estas categorías no son21cierres ni un porcentaje
-de TEST02: cada fila conserva los límites y pendientes de su claim. No son 21 funciones ausentes ni 21 módulos
-que haya que incorporar. La conciliación exacta, owners, hashes, límites y
+El perfil integral actual selecciona 103 packs/1343 archivos. Los 21 cores históricos
+no se incorporan por reputación ni por el nombre. Las categorías numéricas4/9/8
+pertenecen al diagnóstico V293; FX y publicación Page tienen sucesores conectados
+V402. La tabla siguiente es la conciliación vigente, con límites explícitos por claim.
+No son21cierres ni un porcentaje de TEST02; tampoco21módulos que importar. La conciliación exacta, owners, hashes, límites y
 fuentes oficiales están en
 [CORE_OWNER_RECONCILIATION_V293](../reconstruction_evidence/CORE_OWNER_RECONCILIATION_V293.md).
 
@@ -140,39 +551,40 @@ fuentes oficiales están en
 |---|---|---|
 | Captación pública | V260: navegador/BFF/Go/PostgreSQL, replay y consentimiento de fixture | Revalidar delta y conectar seguimiento/venta; políticas y proveedor live separados |
 | Agenda/confirmación | Gates actuales lead/cita y confirmación con sesión/Go/PostgreSQL | Cobertura completa por rol, reglas aprobadas y operación |
-| Estado WhatsApp + ayuda | V278: consulta autorizada durable, recuperación y guía versionada | Envío real, supervisor/alerta y ayuda/capacitación de los demás recorridos |
-| Cotización/pedido | V294: portal/BFF/OIDC/Go/PostgreSQL, 12 fases/4 proyectos, pedido único/GET/ayuda; importes/estados/vigencia legibles. Mismos pedidos→Commerce: reserva única y solicitud payment created; reinicio PostgreSQL idéntico | UI operativa/autorización HTTP de stock/pago/entrega y proveedor real; Firefox teardown intermitente y operación pendientes |
-| Supply/fábrica/stock | Owners PostgreSQL existentes y tests históricos | Journeys cruzados actuales, UX, concurrencia, recovery y aceptación |
-| Pagos/devolución/fiscal | Workers/ledgers y adapters existentes con condiciones | Ensayo integrado de misma revisión y habilitación externa requerida |
+| Estado WhatsApp + ayuda | V402: inbox firmado, identidad/contacto actual, runtime seleccionado, propuesta/aprobación humana, envío con fence y estado/recuperación; navegador y broker OIDC de servicio | Presupuesto IA durable/evals T2807 y supervisor/alerta/retención global T2809; cuentas/grants del target aparte |
+| Cotización/pedido | V402: quote→order→stock→SDK pago fixture→callback/reconciliación→handover inicial→checklist/aceptación→recibo comercial; browser de entrega y recuperación reales | T2802 consolidado en T2802_CONNECTED_CLOSURE_V402.md/json; aceptación live y política del target no se heredan. No repetir creador inicial ni cobro fixture como ausentes |
+| Supply/fábrica/stock | V402 J2 PROVEN_LOCAL backend/API/host: demanda/cantidades→PO→confirmación→series/calidad→ASN dividido→recepción parcial/cuarentena/revisión→stock ATP;30versiones, rollback/concurrencia/recovery | Backend SERIAL_SUPPLY_CONNECTED_RELEASE_V402.md/json; UI desde alta inicial PROVEN_LOCAL en95/1264 con23POST, SUPPLY_ROLE_RELEASE_V402.md/json. i18n/CMS/J5 siguen T2804; producción/ops no inferidas |
+| Catálogo J3 | V402 PROVEN_LOCAL:3snapshots/12reviews/5publicaciones, rollback, precio/search/cache, Next/Chromium y feed fence/reconciliación | Canónico89/1202; CATALOG_CONNECTED_RELEASE_V402.md/json. Editor por rol PROVEN_LOCAL en93/1248, CATALOG_ROLE_AUTHORING_RELEASE_V402.md/json; i18n privado T2804 y mapping SDK de marketplace T2805 permanecen abiertos |
+| Pagos/devolución/fiscal | V402: SDK Stripe/MP, callback verificado y reconciliación local, receipt histórico/estado actual y devolución/hold conectados | Gift/loyalty asistido PROVEN_LOCAL incorporado84/1112; ARCA infraestructura penúltimo; habilitación/cuentas/fiscalidad del target separadas |
 | Seguridad/infraestructura | Secure operations y gates específicos | Ejecución contra target, no equivalencia de configuración con operación |
-| Frontend por rol | V381 panel/vistas; V382 lecturas admin/factory/customer y montos,4navegadores contra Go/PG, subpermisos/scope reales | Operaciones completas, recovery integral, alta de personas y capacitación no equivalentes a estas lecturas |
+| Frontend por rol | Operaciones, entrega, catálogo, supply, garantía, red/acuerdos, CMS/guías, capacitación yKPIs conectados BFF/Go/PG; evidenciasV402 | Resta i18n privadoT2804; J5identidad/admin/revocación/readiness conservaT2803/8/1 |
 | Capacitación y soporte | V380:15/15guías existentes; V381:vistas de entrada filtradas por permisos | Práctica/evaluación/progreso cuando aplique, actualización y escalamiento por journey |
 
 ## 2. Conciliación de los 21 cores fuera del perfil
 
 | Core | Estado | Lo existente que se reutiliza | Brecha real | Tarea owner |
 |---|---|---|---|---|
-| GO-DASHBOARDS-CORE | Solapamiento parcial | Overview: pedidos/leads/stock/casos/envíos desde PostgreSQL; V381 panel/vistas por permiso probado en4navegadores. | KPIs de puntos/reseñas/NPS y operaciones de todos los roles no equivalentes a navegación. | T2802/T2804 |
-| GO-FX-CORE | Sin equivalente demostrado | Monedas y unidades menores existentes; no prueba conversión. | Tasas versionadas, fuente, redondeo, vigencia y asientos FX durables. | T2802 |
-| GO-GIFT-CARDS-CORE | Sin equivalente demostrado | Pagos/pedidos no son saldo de gift card. | Emisión/canje/reversión durable, permisos, checkout y conciliación. | T2802 |
-| GO-HELP-CENTER-CORE | Solapamiento parcial; índice de guías existentes cerrado | V380:15/15guías versionadas existentes,15perfiles de permiso,13extracciones exactas y8casos/4navegadores;900decisiones de acceso y60enlaces. | CMS/publicación/archivo, histórico, documentos confidenciales, tareas sin guía previa y capacitación evaluada/progreso por rol no equivalentes. | T2804 |
-| GO-I18N-CORE | Owner alternativo probado en recorrido público | V378: es/en/fallback español, plurales/números y zona de mercado; home→catálogo→lead→turno,12casos y efectos PostgreSQL exactos. | Portales privados, contenido multilingüe y negociación por usuario siguen sin integración; no sustituir el helper binario por un motor CLDR. | T2804 |
-| GO-LOYALTY-CORE | Sin equivalente demostrado | Pedidos/pagos no acreditan ledger de puntos. | Earn/burn/reversión durable conectado a compra y reglas aprobadas. | T2802 |
+| GO-DASHBOARDS-CORE | Alternativa aislada no promovida; owners conectados PROVEN_LOCAL | V402:12familias operativas con source/tenant/org/subject, dinero exacto por moneda/estado, ledger por programa y NPS mínimo/retención; browser actual2respuestas | ROLE_METRICS_RELEASE_V402.md/json103/1343. Sin BI genérico, profit/GL o reviews/POS fuera del blueprint. | T2804 KPI cerrado local; i18n sigue |
+| GO-FX-CORE | Owner alternativo conectado PROVEN_LOCAL en claim acotado | V402 FX0.2.0: snapshot/fuente/fecha/redondeo exactos→recibo durable→borrador en accounting→posting→balance→reversal;12concurrentes→1, recovery y downgrade seguro | Sin feed live ni motor de diferencias de cambio/remeasurement; nueva política necesita selección/admisión. No importar GO-FX-CORE en memoria. Evidencia FX_JOURNAL_CONNECTION_V402.md | T2802 |
+| GO-GIFT-CARDS-CORE | Owner alternativo conectado PROVEN_LOCAL, asistido y acotado | V402 Odoo derivado + aprobación/PG; gift parcial→SDK→recibo y cobertura total→recibo local→entrega con cero provider payments, portal/reviewer/recovery | Python/Go0.1.0 incorporados en84/1112; fuente/notices/locks y cinco reconstrucciones exactas. No emisión pública bearer/eWallet ni venta inicial de gift: origen confirmado fixture explícito; programas/fiscalidad del target no inferidos. Ver STORED_VALUE_CONNECTED_RELEASE_V402.md | T2802 |
+| GO-HELP-CENTER-CORE | Kernel original preservado; CMS/guías conectados PROVEN_LOCAL | V402:CMS por organización/es/en, borrador/publicación/archivo/historial/GETrecovery,6POST;21guías compartidas/5currículosrev2/humanreview,15guías anteriores intactas | HELP_CMS_RELEASE_V402.md/json102/1324. No autoingestión documental ni incorporación deCMS a cursos/IA; contenido privado requiere revisión explícita. | T2804 CMS/guías/capacitación cerrado local |
+| GO-I18N-CORE | Público probado; contenidoCMSes/en pororganización probado | V378público yV402CMS preservan idioma deartículo, búsquedaUnicode yselección explícita | Negociación porusuario ytextos de todos los portales privados siguenT2804; no motorCLDRpropio | T2804 |
+| GO-LOYALTY-CORE | Owner alternativo conectado PROVEN_LOCAL, perfil de referencia | V402 earn/burn/inversa y descuento derivado→menor cobro SDK→handover/recibo; perfil3 explícito, portal/revisión separada y lease al COMMIT | Fuente/loader/notices/pack/rebuild local completos84/1112. Reglas del fixture declaradas; no motor universal de promociones/loyalty. Ver STORED_VALUE_CONNECTED_RELEASE_V402.md | T2802 |
 | GO-MARKETING-CORE | Solapamiento parcial | Ingreso de leads, reporting Ads y notificaciones con owners separados ya presentes. | Segmentación/drip, supresión/consentimiento, campaña→conversión y proveedor real. | T2805/T2807 |
 | GO-OBSERVABILITY-CORE | Candidato aislado; owner alternativo probado en referencia | V372 prueba main/CLI refund, OTLP/mTLS, tres señales, alertas, carga, retención y recovery con owners refund/reference. El core aislado sigue fuera del perfil. | No extender ese ensayo a toda API/CLI ni presentar el core como SDK OTel. Equivalencia general, admisión del candidato y target mantienen sus gates. | T2809 |
-| GO-ONBOARDING-CORE | Solapamiento parcial | Organizaciones/acuerdos con rutas y persistencia; sesión/permisos son otro owner. | Alta de persona, activación, práctica, evaluación/progreso/reentrenamiento por rol. | T2803/T2804 |
-| GO-PAYROLL-CORE | Sin equivalente demostrado | Ledger empresarial no calcula ni liquida nómina. | Política laboral/fiscal, liquidación durable, recibos y aprobación; no sólo configuración de deducción. | T2802 |
-| GO-POS-CORE | Solapamiento parcial | Pedidos, precio servidor, intentos de pago y fiscalidad tienen owners durables. | Caja/turnos/tender/vuelto/dispositivos/offline cuando requeridos y UX de mostrador. | T2802/T2804 |
-| GO-PROMOTIONS-CORE | Solapamiento parcial | Price books activos y líneas server-side; reutilizar ese cálculo. | Cupones, límites de uso concurrente, acumulación, expiración y reversión ligados a pedido. | T2802 |
-| GO-REFERRALS-CORE | Solapamiento parcial | Origen del lead/canal e identidad CRM reutilizables. | Código de referido, elegibilidad/antifraude y recompensa durable por conversión. | T2802/T2805 |
+| GO-ONBOARDING-CORE | Owners alternativos conectados; coreaislado no promovido | ResourceCreate, capacitación/progresoevaluado,5currículosrev2, red/acuerdo/sucursal desdeformsV402 | IdP/bootstrap/admin/leastprivilege/revocación/aceptación enT2803/8/1; i18n/KPIT2804. Sincontratolaboral/autogrants. | T2803/T2804; J5final al cierre |
+| GO-PAYROLL-CORE | NONE_WITH_REASON para perfil de referencia | No wage contract, payroll run, employment deduction or payslip journey in J1–J5. Resource employee/contractor identifies appointment staffing, not employment/payroll accounting. No payroll claim or existing isolated-core promotion. | Selección explícita del target reabre admisión. No se afirma equivalencia del core ni se reduce48superficies/J1–J5. T2802_REFERENCE_SCOPE_V402.md/json | T2802: decisión de alcance |
+| GO-POS-CORE | NONE_WITH_REASON para perfil de referencia | Reference J1 uses server-price quotation/order and hosted provider checkout or approved stored value. No cash drawer, change, terminal peripherals or offline retail journey selected. Those capabilities need explicit target scope. | Selección explícita del target reabre admisión. No se afirma equivalencia del core ni se reduce48superficies/J1–J5. T2802_REFERENCE_SCOPE_V402.md/json | T2802: decisión de alcance |
+| GO-PROMOTIONS-CORE | NONE_WITH_REASON para perfil de referencia | The reference uses versioned price books and the already admitted named loyalty discount program. General coupon stacking/campaign coupon codes are not required by J1–J5; no equivalence to the isolated promotions core claimed. | Selección explícita del target reabre admisión. No se afirma equivalencia del core ni se reduce48superficies/J1–J5. T2802_REFERENCE_SCOPE_V402.md/json | T2802: decisión de alcance |
+| GO-REFERRALS-CORE | NONE_WITH_REASON para perfil de referencia | Lead source attribution exists; a rewarded referral program, invite code and reward policy are not required by J1–J5. No inferred reward/financial rule. | Selección explícita del target reabre admisión. No se afirma equivalencia del core ni se reduce48superficies/J1–J5. T2802_REFERENCE_SCOPE_V402.md/json | T2802: decisión de alcance |
 | GO-REMINDERS-CORE | Solapamiento parcial | Jobs PostgreSQL, worker/status notificaciones y fence ya existen; V275–V278. | Programación de cada recordatorio, cancelación/reagenda y envío permitido; no confundir aviso de estado con scheduler completo. | T2805/T2809 |
-| GO-REVIEWS-CORE | Sin equivalente demostrado | Identidad de cliente no demuestra reseña moderada/publicada. | Compra verificada, moderación durable, publicación/frontend y protección antiabuso. | T2802/T2804 |
-| GO-SEO-CORE | Owner alternativo probado en referencia HTTP | V377: canonical/robots/sitemap/JSON-LD, tres configuraciones HTTP y dos rutas reales; V378 alinea locale de metadata/JSON-LD. | Publicación/indexación, contenido y URLs multilingües y target permanecen pendientes; no importar el core en memoria. | T2804 |
+| GO-REVIEWS-CORE | NONE_WITH_REASON para perfil de referencia | Reference feedback is the connected private survey owner. Public review publication/moderation/ranking is not selected in J1–J5; survey is not claimed equivalent to public reviews. | Selección explícita del target reabre admisión. No se afirma equivalencia del core ni se reduce48superficies/J1–J5. T2802_REFERENCE_SCOPE_V402.md/json | T2802: decisión de alcance |
+| GO-SEO-CORE | Owner alternativo PROVEN_LOCAL HTTP/Next | V402 J3 añade detalle real por modelo, canonical/sitemap/robots desde publicación aprobada, cuatro versiones Chromium y404 | Indexación externa/URLs multilingües del target no inferidas; PUBLIC_INDEXING_ENABLED por configuración. CATALOG_CONNECTED_RELEASE_V402.md/json | T2804 contenido/roles |
 | GO-SLO-CORE | Owner alternativo probado en referencia HTTP | V375 conecta el handler/order/PostgreSQL real con métricas oficiales y la regla canónica: fallo500, hold real10min, reparación y replay sin duplicados. | SLI/objetivo/routing/respuesta humana y cobertura de los demás servicios requieren evidencia propia; el Budget en memoria no se importa ni se presenta como backend SLO. | T2809 |
-| GO-SOCIAL-POSTING-CORE | Sin equivalente demostrado | Reporting read-only NO es publicación social. | Adapter oficial de escritura admitido, aprobación, cuotas, publicación/confirmación/reconciliación y revocación. | T2805 |
-| GO-SURVEYS-CORE | Owner conectado CONDITIONED en V400 | GO-CUSTOMER-SURVEY-API + TS-CUSTOMER-SURVEY-PORTAL: respuesta durable, autorización, recuperación, retención y UX/reporting probados. Core aislado intacto. | Política/pregunta/aviso/fechas/mínimo y distribución de invitación del target; campaña, carga y admisión integral no demostradas. | T2802/T2804 parcial |
-| GO-WAITLIST-CORE | Sin equivalente demostrado | Agenda/capacidad no demuestra FIFO ni promoción de lista de espera. | Cola durable, liberación/concurrencia, oferta/expiración y notificación sin sobrecupo. | T2802 |
-| GO-WARRANTY-CLAIMS-CORE | Solapamiento parcial | Casos de servicio PostgreSQL, lecturas scope cliente/org y devoluciones ya existentes. | Elegibilidad/términos/estados específicos de garantía y recorrido completo de reclamo con recuperación. | T2802/T2804 |
+| GO-SOCIAL-POSTING-CORE | Owner alternativo conectado PROVEN_LOCAL para Page texto | V402: Meta SDK26.0.1 Page.create_feed, PagePost GET/DELETE; aprobación, agenda/worker, presupuesto de reintentos y reconciliación PG del efecto ambiguo | Otros formatos/redes no seleccionados no heredan equivalencia. Despliegue/ops/SCA global siguen owners; cuenta y permisos Page se aportan después. Evidencia COMMUNICATIONS_RUNTIME_V402.md | T2805 |
+| GO-SURVEYS-CORE | Owner conectado CONDITIONED en V400 | GO-CUSTOMER-SURVEY-API + TS-CUSTOMER-SURVEY-PORTAL: respuesta durable, autorización, recuperación, retención y UX/reporting probados. Core aislado intacto. | Política/pregunta/aviso/fechas/mínimo y distribución de invitación del target; campaña, carga y admisión integral no demostradas. | T2804/T2805 campaña; T2809 carga; dominio T2802 consolidado |
+| GO-WAITLIST-CORE | NONE_WITH_REASON para perfil de referencia | J1/J4 select explicit capacity-controlled appointments. Full capacity rejects admission. No FIFO waiting offer/promotion policy is selected; no waitlist equivalence claim. | Selección explícita del target reabre admisión. No se afirma equivalencia del core ni se reduce48superficies/J1–J5. T2802_REFERENCE_SCOPE_V402.md/json | T2802: decisión de alcance |
+| GO-WARRANTY-CLAIMS-CORE | Owner alternativo conectado PROVEN_LOCAL, canónico | V402 J1/J4 dominio y frontend completo por rol;18POST,1cerrado/2cancelados, FIFO/costo740, recuperación GET y separación humana | WARRANTY_CONNECTED_RELEASE_V402.md/json y WARRANTY_ROLE_RELEASE_V402.md/json. Revisión actual99/1299 conserva ese owner; JWT/SCA integralT2803, i18n/CMS T2804. Acuse interno sin pago/fiscalidad. | T2802 dominio cerrado; T2804 UI estrecho probado |
 
 Ninguna fila autoriza una nueva regla fiscal, laboral, monetaria o comercial.
 Para capacidades REQUIRED sin pack compatible admitido, aplicar el procedimiento
@@ -196,8 +608,8 @@ de conversaciones permanecen separados de eventos live y de derivados para IA.
 
 T2802/T2804: no repetir aceptación/cotización/stock/entrega/retorno V294–V312 ni
 telemetría V372/V375 o el recorrido público V377/V378 sin delta. Los21owners
-conservan8integraciones no demostradas y9solapamientos parciales, además de límites
-explícitos de4referencias. Siguiente selección: cerrar un claim funcional completo
+conservan la evaluación por claim de la tabla vigente; el conteo8/9/4 corresponde
+al diagnóstico histórico V293 y no resume los nuevos cierres V402. Siguiente selección: cerrar un claim funcional completo
 con fuente admitida y regla existente; no crear una política monetaria/laboral para sumar un PASS.
 T2803/T2805/T2806/T2807/T2808/T2809 conservan sus dependencias y alcance; no se
 cancelan por esta priorización. T2801 readiness/assurance permanece bloqueado.

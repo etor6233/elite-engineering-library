@@ -4,7 +4,7 @@
 
 ```yaml
 pack_id: "GO-CONNECTED-WHATSAPP-HOST"
-pack_version: "0.1.0"
+pack_version: "0.3.1"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: RECONSTRUCTIBLE
@@ -15,7 +15,7 @@ compatible_with: ["GO-ELECTROMOBILITY-APPLICATION", "GO-APP-WIRING", "GO-OIDC-SE
 incompatible_with: ["unbound tenant/provider/account", "production certification inferred from fixtures", "implicit source or business-policy attribution"]
 license_expression: "LicenseRef-Workspace-Owner"
 upstream_sources: ["Existing exact source and dependency records of the selected owners"]
-verified_at: "2026-09-11"
+verified_at: "2026-09-13"
 ```
 
 ## 2. Applicability
@@ -48,7 +48,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "8a5850bd096ce24f87a94276b9e90d78c79fd0a683e3a441ceaf05cd5e1c0ff4"
+sha256: "8c6d6e921949b055a1c0c3521037c2e36250115b1b2294eb847b252f044729e5"
 variables: []
 secrets_allowed: false
 ```
@@ -93,6 +93,8 @@ import (
 var errWhatsAppHost = errors.New("WhatsApp host configuration, authenticated identity or reporting unavailable")
 
 type whatsappHostConfig struct {
+	CampaignPolicyFile           string                     `json:"campaign_policy_file,omitempty"`
+	CampaignPolicySHA256         string                     `json:"campaign_policy_sha256,omitempty"`
 	Schema                       string                     `json:"schema"`
 	ReferenceFixture             bool                       `json:"reference_fixture"`
 	TenantID                     string                     `json:"tenant_id"`
@@ -276,6 +278,7 @@ func selectWhatsAppIdentity(ctx context.Context, c whatsappHostConfig, verifier 
 }
 
 type whatsappHost struct {
+	extraRun    func(context.Context) error
 	modules     []httpapi.EnterpriseModule
 	ingress     *whatsappbridge.WebhookReceiver
 	worker      *whatsappbridge.StatusWorker
@@ -292,7 +295,18 @@ func (h *whatsappHost) Register(mux *http.ServeMux, v identity.Verifier) {
 	mux.Handle("/v1/providers/whatsapp/webhook", h.ingress)
 }
 func (h *whatsappHost) run(ctx context.Context) error {
-	return h.worker.Run(ctx, h.identity, h.reporter, h.interval)
+	if h.extraRun == nil {
+		return h.worker.Run(ctx, h.identity, h.reporter, h.interval)
+	}
+	child, cancel := context.WithCancel(ctx)
+	defer cancel()
+	done := make(chan error, 2)
+	go func() { done <- h.worker.Run(child, h.identity, h.reporter, h.interval) }()
+	go func() { done <- h.extraRun(child) }()
+	first := <-done
+	cancel()
+	second := <-done
+	return errors.Join(first, second)
 }
 func (h *whatsappHost) close() error { return h.reporter.Close() }
 
@@ -374,6 +388,9 @@ func prepareWhatsAppHost(ctx context.Context, pool *pgxpool.Pool, verifier ident
 	if e != nil || len(key) < 32 || len(key) > 128 {
 		return nil, errWhatsAppHost
 	}
+	if (c.CampaignPolicyFile != "" || c.CampaignPolicySHA256 != "") && lookup("WHATSAPP_SCHEDULE_ENABLED") != "true" {
+		return nil, errWhatsAppHost
+	}
 	base, e := whatsappbridge.NewPostgresAppointmentApprovals(pool, key, c.Purpose, c.PolicyVersion)
 	if e != nil {
 		return nil, errWhatsAppHost
@@ -409,6 +426,11 @@ func prepareWhatsAppHost(ctx context.Context, pool *pgxpool.Pool, verifier ident
 	if e != nil {
 		return nil, errWhatsAppHost
 	}
+	contactDomain, e := postgres.NewConversationDomain(pool, a.Gateway, c.TenantID, c.OrganizationID)
+	if e != nil {
+		return nil, errWhatsAppHost
+	}
+	a.Conversation.Domain = contactDomain
 	// Dispatcher is deliberately absent from the host execution path. Runtime
 	// completion becomes a proposal; a separate authenticated human approves it.
 	observer := &whatsappbridge.StatusObserver{TenantID: c.TenantID, Profile: profile, Process: c.Process, ReconcilerSHA256: c.ReconcilerSHA256, Secrets: secrets, Approvals: base}
@@ -439,7 +461,18 @@ func prepareWhatsAppHost(ctx context.Context, pool *pgxpool.Pool, verifier ident
 	if e != nil {
 		return nil, e
 	}
-	return &whatsappHost{modules: []httpapi.EnterpriseModule{appointments, module}, ingress: ingress, worker: worker, identity: serviceIdentity, reporter: reporter, interval: time.Duration(c.PollSeconds) * time.Second, application: a}, nil
+	h := &whatsappHost{modules: []httpapi.EnterpriseModule{appointments, module}, ingress: ingress, worker: worker, identity: serviceIdentity, reporter: reporter, interval: time.Duration(c.PollSeconds) * time.Second, application: a}
+	if lookup("WHATSAPP_SCHEDULE_ENABLED") != "" && lookup("WHATSAPP_SCHEDULE_ENABLED") != "false" {
+		if lookup("WHATSAPP_SCHEDULE_ENABLED") != "true" || whatsappScheduleFactory == nil {
+			reporter.Close()
+			return nil, errWhatsAppHost
+		}
+		if e = whatsappScheduleFactory(ctx, h, c, pool, base, sender, fence); e != nil {
+			reporter.Close()
+			return nil, e
+		}
+	}
+	return h, nil
 }
 
 func dialWhatsAppReporter(ctx context.Context, c whatsappHostConfig, lookup func(string) string) (*whatsappbridge.JSONStatusReporter, error) {
@@ -521,6 +554,8 @@ func validateWhatsAppProviderProfile(ctx context.Context, p whatsappbridge.Proce
 	}
 	return nil
 }
+
+var whatsappScheduleFactory func(context.Context, *whatsappHost, whatsappHostConfig, *pgxpool.Pool, *whatsappbridge.PostgresAppointmentApprovals, *whatsappbridge.Sender, *postgres.OutboundDeliveryStore) error
 ````
 
 ### FILE: `cmd/electromobility-api/whatsapp_test.go`
@@ -680,7 +715,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "adcd336339d28b30d1e5df73204de9f8b0d820a23fce6f85c206e866baa994b1"
+sha256: "ed53d408dd4f00e9159fdaee3d0568d4f86c581eb47fcb55e311e25edcb26b23"
 variables: []
 secrets_allowed: false
 ```
@@ -711,7 +746,7 @@ import (
 	"elite.local/enterprise/internal/whatsappbridge"
 )
 
-func whatsappTLSFixture(t *testing.T) (whatsappHostConfig, map[string]string, <-chan []byte) {
+func whatsappTLSFixture(t *testing.T, linesPerConnection ...int) (whatsappHostConfig, map[string]string, <-chan []byte) {
 	t.Helper()
 	key, e := ecdsa.GenerateKey(elliptic.P256(), rand.Reader)
 	if e != nil {
@@ -751,8 +786,16 @@ func whatsappTLSFixture(t *testing.T) (whatsappHostConfig, map[string]string, <-
 			func(conn net.Conn) {
 				defer conn.Close()
 				_ = conn.SetDeadline(time.Now().Add(3 * time.Second))
-				line, e := bufio.NewReader(conn).ReadBytes('\n')
-				if e == nil {
+				lines := 1
+				if len(linesPerConnection) == 1 {
+					lines = linesPerConnection[0]
+				}
+				reader := bufio.NewReader(conn)
+				for i := 0; i < lines; i++ {
+					line, e := reader.ReadBytes('\n')
+					if e != nil {
+						return
+					}
 					output <- line
 				}
 			}(conn)
@@ -821,7 +864,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "9738d89af8028d6a79a081739319735266f082ac4c6e40c2e5f1308329bc5b0e"
+sha256: "b53f80bb2e1a460914e2fe2877f0441a91adaf822dcf899faf1b1734aac78a12"
 variables: []
 secrets_allowed: false
 ```
@@ -844,6 +887,7 @@ import (
 	"elite.local/enterprise/internal/approval"
 	"elite.local/enterprise/internal/conversationruntime"
 	"elite.local/enterprise/internal/platform/identity"
+	"elite.local/enterprise/internal/platform/postgres"
 	"elite.local/enterprise/internal/whatsappbridge"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
@@ -930,6 +974,9 @@ func TestWhatsAppHostAssemblesExistingOwners(t *testing.T) {
 		t.Fatal(e)
 	}
 	defer h.close()
+	if _, ok := h.(*whatsappHost).application.Conversation.Domain.(*postgres.ConversationDomain); !ok {
+		t.Fatal("host did not install contact-bound domain status")
+	}
 	if h.(*whatsappHost).application == nil || h.(*whatsappHost).application.Conversation == nil || h.(*whatsappHost).worker == nil || h.(*whatsappHost).ingress == nil || len(h.(*whatsappHost).modules) != 2 {
 		t.Fatal("missing existing owner")
 	}
@@ -1260,3 +1307,9 @@ Three changed-identity/assembly/broker tests passed on the composed source, incl
 
 See reconstruction_evidence/COMMUNICATIONS_RUNTIME_V402.md and exact composition receipt. Current in-process LLM economy/approval persistence remains a separate T2807 task; this host does not close it by wiring.
 
+
+V402 composed delta: Scheduled WhatsApp exact source/approval/job/host glue and template receipt recovery; SCHEDULED_COMMUNICATIONS_RELEASE_V402.md/json.
+
+V402 composed delta: Optional campaign source/typed job scope and fixed policy host hook; appointment compatibility proven; CAMPAIGN_CONNECTED_RELEASE_V402.md/json.
+
+V402 composed delta: T2807 connected reference315: real domain quotation and contact-bound order status, explicit single-vehicle limit, revalidated contact, structured history roles, per-case required eval gates and canonical host mounting. Local fixtures only. AI_CONNECTED_REFERENCE_RELEASE_V402.md/json. No new upstream dependency or live model quality claim.

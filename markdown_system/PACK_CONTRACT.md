@@ -72,6 +72,24 @@ contenido completo o patch inequívoco
 
 `VERBATIM` exige que el texto pueda redistribuirse bajo la licencia declarada y preserve notices. `ADAPTED` registra qué cambió. `AUTHORED` indica composición propia gobernada por referencias, no copia de upstream.
 
+### Terminación de archivo exacta (extensión compatible V402)
+
+Cada bloque ejecutable declara `sha256` sobre los bytes UTF-8 sin BOM del archivo,
+con saltos internos LF. El contenido usa un fence de cuatro backticks. El campo
+opcional `final_newline: false` conserva fuentes que no terminan en LF; el salto
+antes del fence de cierre es sólo separador de Markdown. Sin el campo, o con
+`true`, se conserva el comportamiento histórico: cada línea de contenido aporta
+su LF, incluidos los saltos finales múltiples. Un bloque sin líneas genera un
+archivo vacío. `false` admite ese vacío, pero rechaza una última línea vacía que
+contradiga la terminación declarada. Valores distintos de los booleanos literales
+y campos duplicados fallan antes de escribir, igual que un SHA incorrecto.
+
+El actualizador preserva ausencia/presencia de LF y archivos vacíos; no agrega
+un byte a una licencia VERBATIM para satisfacer el formato. Fuentes con CRLF/BOM
+no son VERBATIM tras normalizar: requieren expediente explícito o un formato que
+conserve sus bytes. La extensión no cambia los packs históricos sin este campo.
+Regresión ejecutable: `markdown_system/test_pack_exact_eof.ps1`.
+
 ## 6. Configuration surface
 
 Tabla de variables con tipo, default seguro, validación, secreto/no secreto, mutabilidad y efecto. Toda combinación inválida debe fallar antes de servir tráfico.

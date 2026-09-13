@@ -1,0 +1,425 @@
+{
+  "schema": "elite-library-assurance-review/v1",
+  "scope": "LIBRARY_INFRASTRUCTURE",
+  "state": "PROVEN_LOCAL",
+  "execution_revision": 332,
+  "production_authorized": false,
+  "critical_unknowns": [],
+  "source_revision": {
+    "source_revision": 330,
+    "metadata_revision": 331,
+    "plan": {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "4aaa1fb70a613dace854645c2d053097c6d8b3173cb8c2f6db80aedb9e04e672"
+    },
+    "inventory_files": 1653,
+    "provenance": {
+      "path": "reconstruction_evidence/LIBRARY_REFERENCE_PROVENANCE_V402.json",
+      "sha256": "72419fd412bceeb21e8a73201d7f9fa98de0113582661f5577009db91d3c5156"
+    },
+    "inventory": {
+      "path": "reconstruction_evidence/LIBRARY_REFERENCE_INVENTORY_V402.json",
+      "sha256": "a68cc43097e13bb742a8f10f259a6389e1f015a912b9df44c5f008f2c7eec088"
+    }
+  },
+  "rounds": {
+    "G": {
+      "status": "ANSWERED",
+      "prompt": {
+        "path": "PROJECT_ADVISORY_G.md",
+        "sha256": "885e37ed58370fc5f39bc8f26de1b4310d2004461ca0f8260e7e5640a6f52c32"
+      }
+    },
+    "H": {
+      "status": "ANSWERED",
+      "prompt": {
+        "path": "PROJECT_ADVISORY_H.md",
+        "sha256": "80834e9cfba3057b911daa5ca79d74053783d36ace96ead8b2607a16fc78884a"
+      }
+    }
+  },
+  "answers": {
+    "path": "reconstruction_evidence/LIBRARY_ADVISORY_GH_V402.md",
+    "sha256": "6764b30deeab21c83401c1d8e12d75ed63ff51a8ccb7dc1042e0bd10702e9a2b"
+  },
+  "control_receipts": {
+    "T2801": {
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2801_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "a29302980bd12fc43a2a8bb9658becc069d3171473e26ea09bd22b55d218f264"
+      }
+    },
+    "T2802": {
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2802_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "0533bc1fc2d628fd12110f2e4e73e3eb51145966596c10d548e6557373a2131c"
+      }
+    },
+    "T2803": {
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2803_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "7257f6bd7bdfd255b2c6f5364b728f86048bdcad20277d4eb20800d0321dc0f2"
+      }
+    },
+    "T2804": {
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2804_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "ab52c43aabda2f00cacc0e00fd38197a7f40aec7d726efe382fd829f3bc32c9b"
+      }
+    },
+    "T2805": {
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2805_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "d4c00bbd775704d0c14b40173a1caaed61e30f9da100644cc4ecc957047be674"
+      }
+    },
+    "T2806": {
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2806_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "03dc6c16a46d28390434561091ef66af81944f31bd5a9ec2ead5beeea3d05512"
+      }
+    },
+    "T2807": {
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2807_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "87a5b6b82ec9d5e57fba113292b27dfdf80987eba6bd342c84eb33089a32d780"
+      }
+    },
+    "T2808": {
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2808_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "22f97f5363cba2c0ed1f670ac925240c1774cba9f57e6cabfca0948c5c0c0809"
+      }
+    },
+    "T2809": {
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2809_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "afd62366a5a13f43aaa63ab96d40078fcbe68b37c556c9eed2b8fa5ed6c6c39e"
+      }
+    },
+    "T2810": {
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2810_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "4a6e4cc192bfd61389de646b846715f8a895b73df58a554137b5b4be87aeb069"
+      }
+    },
+    "ARCA_INFRA": {
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_ARCA_INFRA_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "31c1e210f07b58d3b4c9dc44a128141e91dec689f296b5966814f181508e2eba"
+      }
+    }
+  },
+  "dimensions": {
+    "functional_correctness": [
+      "T2802",
+      "T2804"
+    ],
+    "integration_contracts": [
+      "T2802",
+      "T2805",
+      "T2806",
+      "T2807"
+    ],
+    "security_privacy": [
+      "T2803"
+    ],
+    "resilience_failure": [
+      "T2805",
+      "T2807",
+      "T2808",
+      "T2809"
+    ],
+    "performance_efficiency": [
+      "T2809"
+    ],
+    "operability_observability": [
+      "T2809"
+    ],
+    "recovery_rollback": [
+      "T2808",
+      "T2809"
+    ],
+    "release_supply_chain": [
+      "T2810"
+    ],
+    "usability_accessibility": [
+      "T2804"
+    ]
+  },
+  "source_claim_matrix": [
+    {
+      "claim": "Precio/importes/balance/reversión",
+      "decision": "Narrow ADAPTED owners invoked by original Commerce/Accounting callers",
+      "sources": [
+        "BC_EXACT_AMOUNT_ADAPTATION_V402.md",
+        "BC_SALES_CONTRACT_ADAPTATION_V402.md"
+      ],
+      "limit": "Single configured pricebook/currency, explicit exact representation; no entire BC platform or statutory/fiscal accounting"
+    },
+    {
+      "claim": "Cotización/pago/handover/liberación",
+      "decision": "Selected BC transfer plus official payment SDKs; durable typed orchestration, identity, consent and replay remain AUTHORED glue",
+      "sources": [
+        "CONNECTED_PAYMENT_HANDOVER_V402.md",
+        "T2802_CONNECTED_CLOSURE_V402.md"
+      ],
+      "limit": "Fixture endpoints and explicit selected handover/checklist/policy profile; no live capture or physical delivery acceptance"
+    },
+    {
+      "claim": "Políticas/rate/agenda",
+      "decision": "Configuration-selected bounds, agreement basis-point rate and exact PG numeric operators; persistence/CAS enforce the supplied contract, no inferred commercial policy",
+      "sources": [
+        "BUSINESS_POLICY_PROFILE_V402.md",
+        "BC_SALES_POLICY_BOUNDARIES_V402.md"
+      ],
+      "limit": "Original source provenance retained; no vendor policy attribution or generalized schedule/pricing engine"
+    },
+    {
+      "claim": "FX/gift/loyalty/warranty/supply/catalog",
+      "decision": "T2802 current selected source owners and fixtures, followed by connected role/provider deltas; historical standalone core names do not confer equivalence",
+      "sources": [
+        "T2802_CONNECTED_CLOSURE_V402.md"
+      ],
+      "limit": "Payroll/POS/general promotions/referrals/public reviews/waitlist remain blueprint NONE_WITH_REASON; no REQUIRED capability deleted"
+    },
+    {
+      "claim": "NPS",
+      "decision": "Residual substantive AUTHORED calculation replaced with actual PostHog MIT adaptation; PG Summary invokes it",
+      "sources": [
+        "NPS_SOURCE_ADAPTATION_V402.md",
+        "NPS_SOURCE_ADMISSION_V402.json"
+      ],
+      "limit": "Unrounded int64/float64 mapping and privacy threshold explicit; no whole PostHog/runtime claim"
+    },
+    {
+      "claim": "Local support code",
+      "decision": "Typed DTOs, bounds, caches/fixture doubles, host/SDK/SQL binding, test oracles, configuration and packaging retain AUTHORED provenance",
+      "sources": [
+        "COMPOSITION_SECURITY_RELEASE_V402.md",
+        "AI_CONNECTED_REFERENCE_RELEASE_V402.md"
+      ],
+      "limit": "Exact final per-file inventory verified; no business-source equivalence inferred from local glue or corporate reputation."
+    }
+  ],
+  "failure_dispositions": {
+    "FAIL-20260907-384": {
+      "state": "CONTAINED_LOCAL",
+      "evidence": [
+        "PROJECT_EXECUTION_STATE.json",
+        "PROJECT_EXECUTION_EVENTS.jsonl",
+        "reconstruction_evidence/LIBRARY_ADVISORY_GH_V402.md"
+      ],
+      "remaining": "Final current artifact/selector regressions tracked under T2810/FAIL831; this is not yet archive acceptance"
+    },
+    "FAIL-20260907-385": {
+      "state": "RESOLVED_LOCAL_SCOPE",
+      "evidence": [
+        "reconstruction_evidence/T2802_CONNECTED_CLOSURE_V402.md",
+        "reconstruction_evidence/NPS_SOURCE_ADAPTATION_V402.md"
+      ],
+      "remaining": "No general 21-core enterprise-equivalence claim; unused/nonrequired claims remain excluded, final identity reconciliation part of T2810"
+    },
+    "FAIL-20260908-532": {
+      "state": "CONTAINED_LOCAL_USE",
+      "evidence": [
+        "reconstruction_evidence/PNPM_LOCAL_RUNTIME_V402.md"
+      ],
+      "remaining": "General native/binary redistribution admission stays rejected; restricted installer excluded from release and recreated locally"
+    },
+    "FAIL-20260911-804": {
+      "state": "CONTAINED_LOCAL_USE",
+      "evidence": [
+        "reconstruction_evidence/PNPM_LOCAL_RUNTIME_V402.json"
+      ],
+      "remaining": "Unmodified affected pnpm still rejected; zip-disabled bundle only under the exact admitted restrictive recipe"
+    },
+    "FAIL-20260913-945": {
+      "state": "RESOLVED_LOCAL",
+      "evidence": [
+        "reconstruction_evidence/NPS_SOURCE_ADAPTATION_V402.md"
+      ],
+      "remaining": null
+    },
+    "FAIL-20260913-946": {
+      "state": "RESOLVED_LOCAL",
+      "evidence": [
+        "reconstruction_evidence/NPS_SOURCE_ADAPTATION_V402.md"
+      ],
+      "remaining": null
+    }
+  },
+  "current_source_checks": {
+    "complete_files": 1653,
+    "exact": true,
+    "independent_materializations": 2,
+    "actual_builds": 2,
+    "sca_findings": 0,
+    "signed_verification": true,
+    "runtime_acceptance": true,
+    "prior_suites_not_repeated_without_delta": true
+  },
+  "evidence": [
+    {
+      "path": "reconstruction_evidence/PNPM_LOCAL_RUNTIME_V402.md",
+      "sha256": "b210caf287c4a38ca5f87387f7e656e09e23d835f0ad1117e3d16481c092dce0"
+    },
+    {
+      "path": "reconstruction_evidence/PNPM_LOCAL_RUNTIME_V402.json",
+      "sha256": "61eb425032a287c0c42386a851d927a6fe9f581653e1a0cfc37af413db24a560"
+    },
+    {
+      "path": "reconstruction_evidence/COMPOSITION_SECURITY_RELEASE_V402.md",
+      "sha256": "bfd4492ffea2816ecede3d260000f1ab6a907c5e97ae42820642f251be6aee0b"
+    },
+    {
+      "path": "reconstruction_evidence/LOCAL_REFERENCE_OPERATIONS_V402.md",
+      "sha256": "a8cdab67368eda591d87897e6ab9d2fd5ae937ccc54b805723922a6421607da5"
+    },
+    {
+      "path": "reconstruction_evidence/LOCAL_REFERENCE_DELIVERY_V402.md",
+      "sha256": "f726442d6200e8bcd22ecb7247a9c751c2163d53a920291e35da84297a25c5f8"
+    },
+    {
+      "path": "reconstruction_evidence/NPS_SOURCE_ADAPTATION_V402.md",
+      "sha256": "b24893a0cf0f46bed5977d0ea6deb6a732d5aadd4449cd674c6b0d3b47524250"
+    },
+    {
+      "path": "reconstruction_evidence/T2802_CONNECTED_CLOSURE_V402.md",
+      "sha256": "61f0aad2be78c44fb2a129534d2038cbf858abf83227d1981150738d2f6cbb56"
+    },
+    {
+      "path": "reconstruction_evidence/PRIVATE_LOCALE_RELEASE_V402.md",
+      "sha256": "58bdc0d78cd6fcaa8a19fcc1b370b92579176bfeaa330d5427f7df81cf98843b"
+    },
+    {
+      "path": "reconstruction_evidence/CAMPAIGN_CONNECTED_RELEASE_V402.md",
+      "sha256": "4fc7deec96b3ddc0442e04adffe5c00263e0c5597eb2398e83233728e61e611d"
+    },
+    {
+      "path": "reconstruction_evidence/DOCUMENT_REFERENCE_RELEASE_V402.md",
+      "sha256": "a859240c85aface113e9a650171e5212048fd6803b3b561c900e6bac17df3e0f"
+    },
+    {
+      "path": "reconstruction_evidence/AI_CONNECTED_REFERENCE_RELEASE_V402.md",
+      "sha256": "5352c625aa0dffa700a559ba3b4f9d2795ab7d9816cebf8045747cd0954759ca"
+    },
+    {
+      "path": "reconstruction_evidence/BC_EXACT_AMOUNT_ADAPTATION_V402.md",
+      "sha256": "ddb43950c42562048927febf09877ed30f76d7a619410ae19e5973a165ad0e62"
+    },
+    {
+      "path": "reconstruction_evidence/BC_SALES_CONTRACT_ADAPTATION_V402.md",
+      "sha256": "9521e375e7aaee14ee8c17b8a3af2e6ad99bd2763552946872bf2d4abb95e1d9"
+    },
+    {
+      "path": "reconstruction_evidence/BUSINESS_POLICY_PROFILE_V402.md",
+      "sha256": "671fc76aba4c5f3d92008aea4dfe385f8620fc39cb6ea5295d164b383c4639a5"
+    },
+    {
+      "path": "reconstruction_evidence/CONNECTED_PAYMENT_HANDOVER_V402.md",
+      "sha256": "288994c86be3f797ff3b27ac2831c4368452ac3583c774a7eaeb8e5affa5fae2"
+    }
+  ],
+  "known_remaining_work": [
+    {
+      "owner": "T2810",
+      "work": "Current complete notices/locks/source inventory admissions, exact independent full build+signature, durable target, NEW/EXISTING, verifier/archive FAIL831"
+    },
+    {
+      "owner": "ARCA_INFRA",
+      "work": "Penultimate complete local fiscal infrastructure, contracts/fixtures/NuGet and source transport finding1539"
+    },
+    {
+      "owner": "DAYBREAK_DOSSIER",
+      "work": "Last only: preserve ACCESS_BLOCKED evidence and explicit reopening trigger; no investigation"
+    }
+  ],
+  "final_acceptance": "T2801 and TEST02/03/07 remain open until release-bound receipts and ARCA are consolidated; no READY/global PASS claimed by this review.",
+  "final_acceptance_evidence": [
+    {
+      "path": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.json",
+      "sha256": "88c2361c1b10ead7af3933fce2564eacd097515d4a5f45c278480ee2a2757a42"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_EXACT_REFERENCE_V402.json",
+      "sha256": "1ed00fb0790ab68ccc501e5852c4f227021527dc8c706d7f56e282dce983dd92"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+      "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_FAIL_CONTAINMENT_V402.json",
+      "sha256": "6eb5c808bc9ca31b6aa27101f092d24471d8731371ade585020f8458d4005fe6"
+    }
+  ],
+  "verification_semantics": "Historical evidence verified means its recorded outcome and bytes were reviewed, including failures. Only selected local control outcomes are PASS; production and excluded branches never inherit acceptance.",
+  "final_failure_dispositions": {
+    "384": {
+      "state": "CONTAINED_LIBRARY_USE",
+      "basis": "Selector/NEW-EXISTING/preservation and current exact independent source/product ZIP proven; final library-distribution archive proof is kept in excluded local tasks record. No inherited production approval."
+    },
+    "385": {
+      "state": "RESOLVED_LOCAL_SCOPE",
+      "basis": "Connected REQUIRED claims and explicit blueprint NONE_WITH_REASON; no 21-core enterprise-equivalence claim."
+    },
+    "405": {
+      "state": "CONTAINED_EXCLUDED_IMPORT_BRANCH",
+      "basis": "Historical Meta onboarding/app-users HTTP429 and provider bulk conversation history contract remain unproven. Selected webhook/conversation/reconciliation and user-supplied history fixtures are separate; no claim of provider historical bulk import or access restoration."
+    },
+    "423/742": {
+      "state": "CONTAINED_REFERENCE_BROWSER_SCOPE",
+      "basis": "Historical Firefox teardown failures are not reclassified as fixed. Current selected role/localization acceptance is Chromium; prior Firefox/WebKit evidence is retained only for its exact historical cases."
+    },
+    "532/804": {
+      "state": "CONTAINED_LOCAL_USE",
+      "basis": "Only exact private restricted installer0.9.0 admitted, no addons/WASM/scripts/hooks/ZIP path. General native redistribution remains rejected; bundle absent from artifact and public library payload."
+    },
+    "735": {
+      "state": "RESOLVED_NOTICE_CORRESPONDENCE",
+      "basis": "@next/env16.3.4 carries fixed Next root MIT plus embedded dotenv/BSD notices in the actual artifact",
+      "proof": {
+        "license": "MIT",
+        "manifest": "node_modules/.pnpm/@next+env@16.3.4/node_modules/@next/env/package.json",
+        "name": "@next/env",
+        "notice_refs": [
+          "licenses/reference/next-MIT.txt",
+          "licenses/reference/dotenv-LICENSE.txt",
+          "licenses/reference/dotenv-expand-LICENSE.txt"
+        ],
+        "sha256": "229045587b8f7898b12126f99fadd1021c8c928f207f92f22146908d46899b5b",
+        "source_basis": "Next fixed source package16.3.4 MIT and declared embedded dotenv16.3.1/dotenv-expand10.0.0 BSD notices.",
+        "texts": {
+          "licenses/reference/dotenv-LICENSE.txt": "74b629b24865e1e83c5277ee84590b7937644d6fd959d0c7bdce758676cd2ced",
+          "licenses/reference/dotenv-expand-LICENSE.txt": "3726b9470c3a6b54e1ebcc1d802d37089b5a5fc97273b52b2cee578a4421ec45",
+          "licenses/reference/next-MIT.txt": "ee765244e2d59f5234d474f62e0766fa0c8b99af967fdd4c0cb8dcb0c76ea224"
+        },
+        "version": "16.3.4"
+      }
+    },
+    "978/979": {
+      "state": "RESOLVED_LOCAL",
+      "basis": "Complete actual SPDX coverage and recreated ZIP link parents;21contracts, actual extracted API/web/order/rollback/recovery/stop."
+    },
+    "980": {
+      "state": "RESOLVED_FIXTURE_HARNESS",
+      "basis": "Expired synthetic token correctly rejected401; resumed from same database/pointer with newlyissued token. No authentication bypass or repeated completed rollback."
+    },
+    "981": {
+      "state": "RESOLVED_METADATA",
+      "basis": "19notice labels mapped to exact original source receipts, payload unchanged."
+    }
+  }
+}

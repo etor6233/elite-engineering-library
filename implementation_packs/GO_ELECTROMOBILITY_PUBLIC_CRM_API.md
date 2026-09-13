@@ -4,7 +4,7 @@
 
 ```yaml
 pack_id: "GO-ELECTROMOBILITY-PUBLIC-CRM-API"
-pack_version: "0.2.3"
+pack_version: "0.4.0"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -144,7 +144,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local"
 license: "LicenseRef-Workspace-Owner"
-sha256: "45977bd13125515b62ca85ca838e69ff6305a5e3d44ea2837784e33fdb00fe6b"
+sha256: "af94e124acf73947612e62a79856930d7dc63c2ffdbbd6314f9d7bb897fdd225"
 variables: []
 secrets_allowed: false
 ```
@@ -163,12 +163,14 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
+var electromobilityPublicModelsSQL = `select m.model_id,m.model_code,m.display_name,m.vehicle_class,m.specification from catalog.vehicle_model m join platform.tenant t on t.tenant_id=m.tenant_id where t.tenant_code=$1 and t.status='active' and m.lifecycle_state='active' and m.publicly_visible=true order by m.display_name,m.model_id`
+
 type Electromobility struct{ pool *pgxpool.Pool }
 
 func NewElectromobility(pool *pgxpool.Pool) *Electromobility { return &Electromobility{pool: pool} }
 
 func (r *Electromobility) ListPublicModels(ctx context.Context, tenantCode string) ([]electromobility.Model, error) {
-	rows, err := r.pool.Query(ctx, `select m.model_id,m.model_code,m.display_name,m.vehicle_class,m.specification from catalog.vehicle_model m join platform.tenant t on t.tenant_id=m.tenant_id where t.tenant_code=$1 and t.status='active' and m.lifecycle_state='active' and m.publicly_visible=true order by m.display_name,m.model_id`, tenantCode)
+	rows, err := r.pool.Query(ctx, electromobilityPublicModelsSQL, tenantCode)
 	if err != nil {
 		return nil, err
 	}
@@ -189,7 +191,15 @@ func (r *Electromobility) CreateModel(ctx context.Context, tenantID, eventID str
 		return err
 	}
 	defer tx.Rollback(ctx)
-	_, err = tx.Exec(ctx, `insert into catalog.vehicle_model(tenant_id,model_id,model_code,display_name,vehicle_class,lifecycle_state,publicly_visible,specification)values($1,$2,$3,$4,$5,'draft',false,$6)`, tenantID, model.ID, model.Code, model.DisplayName, model.VehicleClass, model.Specification)
+	if err = r.createModelTx(ctx, tx, tenantID, eventID, model); err != nil {
+		return err
+	}
+	return tx.Commit(ctx)
+}
+
+// AUTHORED extraction: original model insert and outbox SQL/arguments retained.
+func (r *Electromobility) createModelTx(ctx context.Context, tx pgx.Tx, tenantID, eventID string, model electromobility.Model) error {
+	_, err := tx.Exec(ctx, `insert into catalog.vehicle_model(tenant_id,model_id,model_code,display_name,vehicle_class,lifecycle_state,publicly_visible,specification)values($1,$2,$3,$4,$5,'draft',false,$6)`, tenantID, model.ID, model.Code, model.DisplayName, model.VehicleClass, model.Specification)
 	if err != nil {
 		return err
 	}
@@ -198,7 +208,7 @@ func (r *Electromobility) CreateModel(ctx context.Context, tenantID, eventID str
 	if err != nil {
 		return err
 	}
-	return tx.Commit(ctx)
+	return nil
 }
 func (r *Electromobility) ResolvePublicOrganization(ctx context.Context, tenantCode, organizationCode string) (string, string, error) {
 	var tenantID, organizationID string
@@ -746,3 +756,7 @@ La composición limpia con Go core y migrations 0001/0002/0003 pasó `gofmt` sin
 ## 10. Reconstruction evidence
 
 Clean rebuild and database/HTTP gates are recorded in `reconstruction_evidence/GO_ELECTROMOBILITY_PUBLIC_CRM_API_2026-08-24_V2.md`; final library evidence rechecks version 0.2.1 in the integrated profile.
+
+V402 composed delta: J3 immutable approved catalog publication reuses original Commerce SQL/shared approval and optional host/public model owner; existing Next storefront consumes a validated published projection. No new dependencies or corporate attribution. CATALOG_CONNECTED_RELEASE_V402.md.
+
+V402 composed delta: T2804 catalog role source/edit/review/publication transport reuses original model/price writers and catalog owner. Bounded PNG and text defaults retained. No new dependency. CATALOG_ROLE_AUTHORING_RELEASE_V402.md.

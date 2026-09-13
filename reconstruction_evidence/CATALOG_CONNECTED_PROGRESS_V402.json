@@ -1,0 +1,120 @@
+{
+  "schema": "elite-catalog-connected-progress/v1",
+  "scope": "LIBRARY_INFRASTRUCTURE",
+  "status": "CONNECTED_REFERENCE_PROVEN_LOCAL_CANDIDATE",
+  "overall_ready": false,
+  "canonical_profile": {
+    "packs": 87,
+    "files": 1166
+  },
+  "candidate": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\catalog-release-connected-candidate",
+  "frozen_delta": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\catalog-connected-proven293",
+  "delta": {
+    "internal/approval/approval.go": "cb00501f192fe0ad3f83a7aed79101ba47846b01196701f467e61d8646b1b5dc",
+    "internal/approval/registry.go": "d2d9d01c0222f904d4852698bc97c3e90ab2f0172b638975468d0f3bdbafd99a",
+    "internal/catalogrelease/contract.go": "dcdba0b7305c2261035bdcaaac2991f9e0670d1a08307979aa7bc342ea3d18cb",
+    "internal/catalogrelease/feed.go": "b9a4e54ca3b0e04473f9df61e4c0df9b3f075bfe30c873e9a7fa3c20df6c94ca",
+    "internal/catalogrelease/media.go": "8440834c8cc68d963525cfef5c396d563e17a13a4dc5b912c7fa826c6d7180d2",
+    "internal/catalogrelease/media_test.go": "9bd3a2c5dc637f3a7d9ecadc4f866adfc08411380671614465a38aa50fd8c1cc",
+    "internal/catalogrelease/profile.go": "f9f7387bc8f01a87efe409d4ffa6090bd3feda95de3de52851a6d5545549ca86",
+    "internal/catalogrelease/profile_test.go": "d6c792e77f699892b937fa09af6b72551f47d8896c10b5a965372ab272e3430c",
+    "internal/platform/httpapi/catalog_release.go": "a6775d68913f2e97844dc110940366f7c03b073cba1aed352e0bbbf0a869700b",
+    "internal/platform/httpapi/catalog_release_test.go": "ad30b8cf5415640c48f90d9436aec0fbd9bc1b2777966c9bb1d9ab8b0b0dbf9e",
+    "internal/platform/postgres/catalog_feed.go": "d81857dd9c5ca99e3210866392a4b330cd8d68f086663253da23476a35f57a81",
+    "internal/platform/postgres/catalog_feed_integration_test.go": "1cea884eb30c70e7891ea3b0e35d4b7d3200abaa6fe8c00c7122ee65ea706ab8",
+    "internal/platform/postgres/catalog_public_owner.go": "c7a65ece2104306300c59b07968e7f7f015850b88698530b6948f501b0e6c53d",
+    "internal/platform/postgres/catalog_release.go": "89eab5ebde780e4a5f535922e019eed5b7dd11c8d891633748e38478b634e2bb",
+    "internal/platform/postgres/catalog_release_draft.go": "b0f8c9806bac18bdbe1d7a3743bd4047122cbd84b6c4b8a0151c94d3bc86366d",
+    "internal/platform/postgres/catalog_release_http_integration_test.go": "2740d921d85781fd87e2c4853bc39debfbca8503a78fb3944c5e1649ce02ddf4",
+    "internal/platform/postgres/catalog_release_integration_test.go": "87e2fdc7e2e789877540ef19908b67e514d9f8066301228286def345165e76c0",
+    "internal/platform/postgres/catalog_release_public.go": "f22ef6787cec2cc7d7e4ab0816ece6a2b9d81ce70971108d130fc6194170df5f",
+    "internal/platform/postgres/catalog_release_publish.go": "6e6247d574eb2630a87d34981a40438395eef0d17f7c4d60bb03ace1848c499b",
+    "internal/platform/postgres/commerce.go": "a07be25f185586d6472b58901ef87ef9a2557548c6bfca74ea056385dc22f9a9",
+    "internal/platform/postgres/electromobility.go": "36ba7b018731fceba40068307e41fccb1075e1c7d2b414bc3be312c58c52aa4c",
+    "internal/platform/postgres/human_approval.go": "68bdf18479260c62f785883aec6a74a30914d094c76829761a570347059a135a",
+    "db/migrations/0073_connected_catalog_publication.down.sql": "45dac70a21dd41f4de640bc93228735692240b88bd3323b95089f510ee5a892b",
+    "db/migrations/0073_connected_catalog_publication.up.sql": "21b9be2ddbfb43459eb9648f9aa62e5257a1b9d4bcec197282c53e3d3ee96152",
+    "db/migrations/0074_catalog_feed_fence.down.sql": "6224fa9975d454243562fcf89ff25cf14e50a13e5803ff4973608a7a6dfb53df",
+    "db/migrations/0074_catalog_feed_fence.up.sql": "44066d5beac0f81ff58bab52ee5b6f6a181c76223faf5db2d31056616d964a6d",
+    "cmd/electromobility-api/catalog_release.go": "c054c76359788dffa73e85ca75a7b012f13a227b4957699cb3e924456c758372",
+    "cmd/electromobility-api/catalog_release_test.go": "bba37a6b32e61bded592ddbed35676dac67d0f1fe6ba3e6835ae920efb26cc82",
+    "cmd/electromobility-api/main.go": "14a14787b5b2e05f42b8fa61f892937430e330e91f6e54866369282bbe747b38"
+  },
+  "receipts": [
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\catalog-release-backend-first\\result.json",
+      "sha256": "2bd25b99bff18b129df0d381c014e13e9cb691c1131392431929092cd2262f76"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\catalog-release-backend-package-fix\\result.json",
+      "sha256": "f75a4f132d9e0a93be8cf5323937b384eeb8dd5b43f8ad092231d75e1ea0964b"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\catalog-release-backend-command-events\\result.json",
+      "sha256": "15b4a218177b2a4f429984490100a28bee1076cade11255cc1576882ca08796b"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\catalog-release-backend-effective-books\\result.json",
+      "sha256": "eda67c02815eb6e39fb33c0897ea9ec3bb9724e363538224f4f869f62ad53126"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\catalog-release-http-first\\result.json",
+      "sha256": "aa9f8e136cc99ceb87e0fa4ca5482012d39aaff5ab79774fc2caedbebf5be0e7"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\catalog-release-feed-first\\result.json",
+      "sha256": "0cc3d779652778353c12e1eab0218460890ebd1fae1c47a751bbe0f0e73971fe"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\catalog-release-host-downgrade\\result.json",
+      "sha256": "6e75c94913880fdcea8d6bd8d321f2eb02e0258e3bf27b20691d8137c4ff6f0f"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\catalog-cache-policy-red.json",
+      "sha256": "ef2067e19005e00af49d466946866999948073b4f4e9083f4286417e2cddb06a"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\catalog-cache-policy-green.json",
+      "sha256": "f80f0f92f3439b4cde03ed7a972ea16883e8de2b14fbc2490ceac21ed11006b6"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\catalog-pinned-profile.json",
+      "sha256": "831293202b14c6e468abbedd3a8564db961e2e46e1b5f7f07a0d3a347f008316"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\catalog-release-admission.json",
+      "sha256": "3073673380679ce75b0ab1e0550cf7d1e40b8d27ae43547ba0ee8c808a415fcf"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\catalog-backend-proven-source.json",
+      "sha256": "506252dd4d89b6c2fe5677387be8f6abb6c69455df5f3438ef013d3b95471690"
+    }
+  ],
+  "proven": [
+    "J3 three immutable snapshots/four shared review stages each/five publications including rollback",
+    "fresh effective price book per publication through original Create/Activate SQL and event identities",
+    "model source edit isolated, public existing model/price owners and PG search match snapshot",
+    "eight concurrent identical publishes yield one effect/seven replays;13table outbox rollback",
+    "expired rollback denied and restarted repository recovers receipt",
+    "HTTP lost committed publication response GET recovery; normalized PNG and scoped FTS",
+    "four reference feed sends exact storefront bytes; terminal rejection, unknown send fenced, accepted GET reconciliation; no duplicate provider POST",
+    "basic12guard host activation and populated73down refusal/empty down-up",
+    "public200/304 cache policy red/green; bounded profile loading"
+  ],
+  "not_yet_proven": [
+    "extended feed host activation,74down and combined73/74 rollback",
+    "finite catalog fuzz",
+    "model detail route/canonical SEO URL rendered by existing Next storefront",
+    "provider-specific SDK feed mapping remains T2805; current receiver is an explicit reference protocol fixture",
+    "canonical pack/rebuild/notices publication",
+    "overall T2802/TEST02 and later ordered tasks"
+  ],
+  "source_contract_corrections": {
+    "FAIL842": "preparer assertion contained, schema tail resumed only",
+    "FAIL843": "package collision corrected candidate",
+    "FAIL844": "command outbox identity corrected candidate",
+    "FAIL845": "one-shot source price lifecycle preserved through immutable clones",
+    "FAIL846": "dedicated public writer preserves revalidation policy"
+  },
+  "provenance": "AUTHORED binding around existing admitted Catalog/Commerce/Approval/Search/OutboundDelivery; Go1.26.8 standard library PNG/HTTP DEPENDENCY_PIN usage. No corporate attribution for glue."
+}

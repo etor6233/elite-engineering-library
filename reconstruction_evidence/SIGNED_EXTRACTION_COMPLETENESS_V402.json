@@ -1,0 +1,575 @@
+{
+  "state": "PASS_DELTA_EXTRACTED_ACTIVATION_AND_SBOM",
+  "revision": 330,
+  "packs": {
+    "PORTABLE_SIGNED_RELEASE_EVIDENCE_GATE.md": {
+      "before_pack_sha256": "521a510919a5759a5e80a1f0cf42745952e2b8196b05289b1ae764bf03eaac69",
+      "after_pack_sha256": "e3b90ec4a94d79910e004c621c6e7e4b0958f2998bbd3aedcf6ad4d08d5dbf2c",
+      "version": "0.2.3",
+      "changes": [
+        {
+          "path": "portable_release_evidence_gate/build_release.ps1",
+          "before_sha256": "abddbac8ceda12fa36ac27c04d4a4fdabd00bd2e4bb5d9fe9caf8efacaaee7eb",
+          "after_sha256": "914cf248aa18472bc406f1e0bdfc7459baa7256b32d25745e5b7e40cf0f1e479"
+        },
+        {
+          "path": "portable_release_evidence_gate/verify_release.ps1",
+          "before_sha256": "c3a9ac113d88a3e6fdf83879e31ba5ad1473271b4d54009a47a13c2c4c5b5e99",
+          "after_sha256": "9e5b6e9143a83b130002368e02a0a897941607b1c80321db6bb1413dd5256610"
+        },
+        {
+          "path": "portable_release_evidence_gate/test_release_contract.py",
+          "before_sha256": "3bb3f7ab5c6288a60f0a52f8fbf3aa9d24b3cf00cd3414f6600757f6d4b59821",
+          "after_sha256": "445c8e7c97fa93b86c3c0ed4e191ff82c969d290f1458dbc810e6ab11fad035f"
+        }
+      ]
+    },
+    "PORTABLE_CI_QUALITY_GATE_RUNNER.md": {
+      "before_pack_sha256": "ae8d23a66a82d9f17237f3d4a70f880465dad6c5fb61612f94dd3f7a73fae346",
+      "after_pack_sha256": "2a6b3944259e09d5b04d7d5cccbc31a03bf60238167e75ef468e52e8c86f8e90",
+      "version": "0.1.8",
+      "changes": [
+        {
+          "path": "ci/web_local_stop.cjs",
+          "before_sha256": "64e40945fbefc669900f336a50db15f37c27d1798a4e3c43479e7e3dfd975a36",
+          "after_sha256": "4d6f649fafa5357d0ca7519488c5b830f2c44d9e97e1ed396d76ac3b11463155"
+        },
+        {
+          "path": "ci/test_signed_reference.py",
+          "before_sha256": "09461f1943e188a8415ba8e0ce44bf347894a61334bdc4af6a363de2b1088e3d",
+          "after_sha256": "78e34aa7692ef51820866e265e530483473e580d31136c5ad3a04d008b972749"
+        }
+      ]
+    }
+  },
+  "full_files": 1653,
+  "unchanged_files": 1648,
+  "changed": [
+    "portable_release_evidence_gate/build_release.ps1",
+    "portable_release_evidence_gate/verify_release.ps1",
+    "portable_release_evidence_gate/test_release_contract.py",
+    "ci/web_local_stop.cjs",
+    "ci/test_signed_reference.py"
+  ],
+  "real_scan_packages": 454,
+  "unique_versioned": 326,
+  "unique_unversioned_source_records": 9,
+  "sbom_packages": 437,
+  "regression": {
+    "builder_helper_cases": 12,
+    "fixture_private_keys_outside_product": true,
+    "gate_files": {
+      "build_release.ps1": "914cf248aa18472bc406f1e0bdfc7459baa7256b32d25745e5b7e40cf0f1e479",
+      "verify_pack.ps1": "9cb879f54092fc6d88673fc88d4dbe2d69d2d2201c428c7709729f03cde1d225",
+      "verify_release.ps1": "9e5b6e9143a83b130002368e02a0a897941607b1c80321db6bb1413dd5256610"
+    },
+    "logs": {
+      "builder-helpers.log": "e1916833368b9e879e7a1e3ab8f8ba29576948fdab5e11e32c515c96ab35f790",
+      "keygen-1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "keygen-2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reject-artifact-change.log": "d7c05390186d26c5bbedc7fe36ec21085cafad72639f7eb46cbc62914cc64894",
+      "reject-backslash.log": "6c1fbaeb3ef00a77d67c8aa75defe930cb1b875774eb489a173801782971160e",
+      "reject-dot-part.log": "6c1fbaeb3ef00a77d67c8aa75defe930cb1b875774eb489a173801782971160e",
+      "reject-drive.log": "6c1fbaeb3ef00a77d67c8aa75defe930cb1b875774eb489a173801782971160e",
+      "reject-internal-policy.log": "c15c57b1e29e5bec25c9486c0f685dad863c1e851d7d6992b248c13310bbe5c5",
+      "reject-namespace.log": "6cd29258618779c904e3bf9fcc69ac9c57112b5d50aa43cca76a1128afb633a7",
+      "reject-swapped-signer.log": "03ccd71455f31a22ab21b3be4a915cbd36b208d44cfec38dea65a25903c3ef88",
+      "sign-1.log": "5359d85d5a2aed027630790aa87106e284ec52718d39876e504a1c4966e989e9",
+      "sign-2.log": "51a352d433132078d0fbbc138abd78208ac38c3af68751e2307d1925fdc37cc6",
+      "sign-3.log": "947bfeedbde5384282f7a0f7cb78a8d236645659d5528d952a0cb2526f5ec510",
+      "sign-4.log": "1290e9f3f2578f7a68dde60ec776a27a3668372b664a4e3d5c09867274f21fd6",
+      "sign-5.log": "35b0d0bb5536371e32004dd02f661fd3debcc14841e95d1576cab236171af6f7",
+      "valid-external-policy.log": "d4b141f386b080d5c2b7400107d8adbaf11a62327098aaf3f0e0bda9efba7d88"
+    },
+    "real_release_built": false,
+    "real_sca_performed": false,
+    "signed_verifier_cases": 8,
+    "state": "PASS_VERIFIER_FIXTURES_ONLY",
+    "user_signing_key_used": false,
+    "zip_separator_case": 1
+  },
+  "actual_sbom_log_sha256": "63f7fd4d2dc7626d19b65a678e24829984c68605ec3578305ab2cacf1dbb90bb",
+  "activation": {
+    "state": "PASS",
+    "scope": "LOCAL_FIXTURES",
+    "current_binary_source_revision": 329,
+    "launcher_delta_revision": 330,
+    "steps": [
+      {
+        "migrations": 84,
+        "source": "activation329/result.json",
+        "step": "previous-fresh-migration-proof-reused"
+      },
+      {
+        "receipt": {
+          "candidate": {
+            "inventory": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\qualification\\artifact329-inventory.json",
+            "inventory_sha256": "0f279c61d7287bf57c5b0ce641c97f3cf7ddd3f82fba813baba197901a056e04",
+            "root": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\artifact-v402-r329",
+            "source_sha256": "f8fd12c76bd1d243593ba379a5a6d215e17c8122175ab746992b3ad443841861"
+          },
+          "health": {
+            "api": {
+              "body_sha256": "6489d6d7a33c5d40e18fc61eeb6c34c341279ee61816394dde5189aa4ad8fae5",
+              "status": 200
+            },
+            "web": {
+              "body_sha256": "fab50b7923c2f495019495cc1a062b3eb73368da4c98e5d161fb1983688420d0",
+              "status": 200
+            }
+          },
+          "migration_action": "NONE",
+          "previous": null,
+          "schema": "elite-local-activation/v1",
+          "state": "ACTIVE",
+          "stopped_previous": null
+        },
+        "step": "activate"
+      },
+      {
+        "receipt": {
+          "candidate": {
+            "inventory": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\local-delivery\\build-final-a\\artifact-inventory.json",
+            "inventory_sha256": "637588441ab04a297037088931d2e193a1b22304eedab9dd8537ddfcbc7f1409",
+            "root": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\local-delivery\\build-final-a\\artifact",
+            "source_sha256": "f286ee230fd7907bd934fb546d2194e2bbb4a076bea5c1babcfdae2087958dd0"
+          },
+          "health": {
+            "api": {
+              "body_sha256": "6489d6d7a33c5d40e18fc61eeb6c34c341279ee61816394dde5189aa4ad8fae5",
+              "status": 200
+            },
+            "web": {
+              "body_sha256": "af55d32f16b74762b15d67d48738e05f7deabd8b3840cc40000935a262c4421f",
+              "status": 200
+            }
+          },
+          "migration_action": "NONE",
+          "previous": {
+            "inventory": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\qualification\\artifact329-inventory.json",
+            "inventory_sha256": "0f279c61d7287bf57c5b0ce641c97f3cf7ddd3f82fba813baba197901a056e04",
+            "root": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\artifact-v402-r329",
+            "source_sha256": "f8fd12c76bd1d243593ba379a5a6d215e17c8122175ab746992b3ad443841861"
+          },
+          "schema": "elite-local-activation/v1",
+          "state": "ACTIVE",
+          "stopped_previous": {
+            "exit_code": 0,
+            "observed_peak_job_bytes": 215457792,
+            "shutdown_state": "EXITED_DURING_GRACE",
+            "status": "CANCELLED",
+            "stderr_sha256": "42350ad6bfbfd8777430db8c28d8f3d65c6ad10a43be39dec41569b36e70e966",
+            "stdout_sha256": "1074382112f2913b48bb38abd77fbdb586fd1ea598e4f9ce5bfe9c4fda6e6ecb",
+            "tree_empty": true
+          }
+        },
+        "step": "manual-rollback-previous-binary"
+      },
+      {
+        "receipt": {
+          "candidate": {
+            "inventory": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\qualification\\artifact329-inventory.json",
+            "inventory_sha256": "0f279c61d7287bf57c5b0ce641c97f3cf7ddd3f82fba813baba197901a056e04",
+            "root": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\artifact-v402-r329",
+            "source_sha256": "f8fd12c76bd1d243593ba379a5a6d215e17c8122175ab746992b3ad443841861"
+          },
+          "health": {
+            "api": {
+              "body_sha256": "6489d6d7a33c5d40e18fc61eeb6c34c341279ee61816394dde5189aa4ad8fae5",
+              "status": 200
+            },
+            "web": {
+              "body_sha256": "b3a9e48a534ab7e464a129eea12d443e17eb01c922caf1bef6c98d783ad2a5ad",
+              "status": 200
+            }
+          },
+          "migration_action": "NONE",
+          "previous": {
+            "inventory": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\local-delivery\\build-final-a\\artifact-inventory.json",
+            "inventory_sha256": "637588441ab04a297037088931d2e193a1b22304eedab9dd8537ddfcbc7f1409",
+            "root": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\local-delivery\\build-final-a\\artifact",
+            "source_sha256": "f286ee230fd7907bd934fb546d2194e2bbb4a076bea5c1babcfdae2087958dd0"
+          },
+          "schema": "elite-local-activation/v1",
+          "state": "ACTIVE",
+          "stopped_previous": {
+            "exit_code": 0,
+            "observed_peak_job_bytes": 212525056,
+            "shutdown_state": "EXITED_DURING_GRACE",
+            "status": "CANCELLED",
+            "stderr_sha256": "4dd2ad6846ad1312ec9d28ed338bd15d1764bdde407535e50d9470e1c54b0f0e",
+            "stdout_sha256": "6e3857d3c46e79e6fee9c4fb8b72abd16c2513820df0530dc78dcb59a1e2a900",
+            "tree_empty": true
+          }
+        },
+        "step": "redeploy-current"
+      },
+      {
+        "pointer_restored": true,
+        "step": "failed-candidate-rollback"
+      },
+      {
+        "receipt": {
+          "exit_code": 0,
+          "observed_peak_job_bytes": 213757952,
+          "shutdown_state": "EXITED_DURING_GRACE",
+          "status": "CANCELLED",
+          "stderr_sha256": "520de8dd50df96777927df77b88081e47f182dedfaaaa34014272913ab1ae0d5",
+          "stdout_sha256": "ec789bf4b98b5b61529e281a2d8830a06f647fcce335dba55e3786c535b2249c",
+          "tree_empty": true
+        },
+        "step": "failure-stop"
+      },
+      {
+        "migrations": 84,
+        "source": "activation329/result.json",
+        "step": "previous-fresh-migration-proof-reused"
+      },
+      {
+        "health": {
+          "api": {
+            "body_sha256": "6489d6d7a33c5d40e18fc61eeb6c34c341279ee61816394dde5189aa4ad8fae5",
+            "status": 200
+          },
+          "web": {
+            "body_sha256": "caa692fd9e36f679d178cf08280aa9ade218bc3d5227feb26d3e2fc03fa992be",
+            "status": 200
+          }
+        },
+        "step": "recover-committed-pointer-after-stop"
+      },
+      {
+        "durable_rows": 1,
+        "same_order": true,
+        "step": "replay-after-recovery"
+      },
+      {
+        "receipt": {
+          "exit_code": 0,
+          "observed_peak_job_bytes": 213356544,
+          "shutdown_state": "EXITED_DURING_GRACE",
+          "status": "CANCELLED",
+          "stderr_sha256": "49e38116e836aa8e64df6a47bab8986e64072aea82793a037f24045d9f3e4272",
+          "stdout_sha256": "9ffcfb9dc74d840313ec7e195c03b2defde746c0e127ea366199839855eee15a",
+          "tree_empty": true
+        },
+        "step": "stop"
+      }
+    ],
+    "seconds": 235.749,
+    "resumed_without_repeating_completed_steps": true,
+    "harness_correction": "Fresh fixture token; original219.814second run correctly received401 after120second token expiry. Expiry policy unchanged.",
+    "accounts_used": false,
+    "live_effects": false,
+    "receipts": {
+      "activation329-fixed330\\result.json": "dc91f009e7798b6a308a242cd5f2615b07115f9ab91d637ba426f6d0de655417",
+      "activation329-resume330\\result.json": "82d3f10b4b9d5d324ece58c2d7a45ba66cb61ed459b613a5cab58088faaafc2b"
+    }
+  },
+  "activation_receipt_sha256": "9f950fe697bfb66da95d5a79e500e966818ecc3cb03bcb64d8d92dd64c9e2d26",
+  "junction_regression": {
+    "state": "PASS",
+    "empty_parent_created": true,
+    "real_node_module_resolution": true,
+    "graceful_stop": true
+  },
+  "dependencies_changed": false,
+  "current_source330_product_built": false,
+  "lint": {
+    "files": {
+      "portable_release_evidence_gate/build_release.ps1": "914cf248aa18472bc406f1e0bdfc7459baa7256b32d25745e5b7e40cf0f1e479",
+      "portable_release_evidence_gate/verify_release.ps1": "9e5b6e9143a83b130002368e02a0a897941607b1c80321db6bb1413dd5256610",
+      "portable_release_evidence_gate/test_release_contract.py": "445c8e7c97fa93b86c3c0ed4e191ff82c969d290f1458dbc810e6ab11fad035f",
+      "ci/web_local_stop.cjs": "4d6f649fafa5357d0ca7519488c5b830f2c44d9e97e1ed396d76ac3b11463155",
+      "ci/test_signed_reference.py": "78e34aa7692ef51820866e265e530483473e580d31136c5ad3a04d008b972749"
+    },
+    "findings": [
+      {
+        "ruleId": "DS197836",
+        "level": "error",
+        "message": {
+          "text": "Do not take the hash of low-entropy content."
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "portable_release_evidence_gate\\build_release.ps1"
+              },
+              "region": {
+                "startLine": 176,
+                "startColumn": 179,
+                "endLine": 176,
+                "endColumn": 216,
+                "charOffset": 16691,
+                "charLength": 37,
+                "snippet": {
+                  "text": "",
+                  "rendered": {
+                    "markdown": "``"
+                  }
+                },
+                "sourceLanguage": "powershell"
+              }
+            }
+          }
+        ],
+        "properties": {
+          "tags": [
+            "Cryptography.HashAlgorithm.InsufficientEntropy"
+          ],
+          "DevSkimSeverity": "Important",
+          "DevSkimConfidence": "High"
+        }
+      },
+      {
+        "ruleId": "DS197836",
+        "level": "error",
+        "message": {
+          "text": "Do not take the hash of low-entropy content."
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "portable_release_evidence_gate\\build_release.ps1"
+              },
+              "region": {
+                "startLine": 170,
+                "startColumn": 159,
+                "endLine": 170,
+                "endColumn": 786,
+                "charOffset": 14985,
+                "charLength": 627,
+                "snippet": {
+                  "text": "",
+                  "rendered": {
+                    "markdown": "``"
+                  }
+                },
+                "sourceLanguage": "powershell"
+              }
+            }
+          }
+        ],
+        "properties": {
+          "tags": [
+            "Cryptography.HashAlgorithm.InsufficientEntropy"
+          ],
+          "DevSkimSeverity": "Important",
+          "DevSkimConfidence": "High"
+        }
+      },
+      {
+        "ruleId": "DS197836",
+        "level": "error",
+        "message": {
+          "text": "Do not take the hash of low-entropy content."
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "portable_release_evidence_gate\\test_release_contract.py"
+              },
+              "region": {
+                "startLine": 75,
+                "startColumn": 271,
+                "endLine": 75,
+                "endColumn": 311,
+                "charOffset": 9360,
+                "charLength": 40,
+                "snippet": {
+                  "text": "",
+                  "rendered": {
+                    "markdown": "``"
+                  }
+                },
+                "sourceLanguage": "python"
+              }
+            }
+          }
+        ],
+        "properties": {
+          "tags": [
+            "Cryptography.HashAlgorithm.InsufficientEntropy"
+          ],
+          "DevSkimSeverity": "Important",
+          "DevSkimConfidence": "High"
+        }
+      },
+      {
+        "ruleId": "DS197836",
+        "level": "error",
+        "message": {
+          "text": "Do not take the hash of low-entropy content."
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "portable_release_evidence_gate\\test_release_contract.py"
+              },
+              "region": {
+                "startLine": 72,
+                "startColumn": 36,
+                "endLine": 72,
+                "endColumn": 470,
+                "charOffset": 7974,
+                "charLength": 434,
+                "snippet": {
+                  "text": "",
+                  "rendered": {
+                    "markdown": "``"
+                  }
+                },
+                "sourceLanguage": "python"
+              }
+            }
+          }
+        ],
+        "properties": {
+          "tags": [
+            "Cryptography.HashAlgorithm.InsufficientEntropy"
+          ],
+          "DevSkimSeverity": "Important",
+          "DevSkimConfidence": "High"
+        }
+      },
+      {
+        "ruleId": "DS197836",
+        "level": "error",
+        "message": {
+          "text": "Do not take the hash of low-entropy content."
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "portable_release_evidence_gate\\verify_release.ps1"
+              },
+              "region": {
+                "startLine": 84,
+                "startColumn": 81,
+                "endLine": 84,
+                "endColumn": 565,
+                "charOffset": 6993,
+                "charLength": 484,
+                "snippet": {
+                  "text": "",
+                  "rendered": {
+                    "markdown": "``"
+                  }
+                },
+                "sourceLanguage": "powershell"
+              }
+            }
+          }
+        ],
+        "properties": {
+          "tags": [
+            "Cryptography.HashAlgorithm.InsufficientEntropy"
+          ],
+          "DevSkimSeverity": "Important",
+          "DevSkimConfidence": "High"
+        }
+      },
+      {
+        "ruleId": "DS173237",
+        "level": "error",
+        "message": {
+          "text": "Do not store tokens or keys in source code."
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "portable_release_evidence_gate\\build_release.ps1"
+              },
+              "region": {
+                "startLine": 12,
+                "startColumn": 8,
+                "endLine": 12,
+                "endColumn": 74,
+                "charOffset": 399,
+                "charLength": 66,
+                "snippet": {
+                  "text": "",
+                  "rendered": {
+                    "markdown": "``"
+                  }
+                },
+                "sourceLanguage": "powershell"
+              }
+            }
+          }
+        ],
+        "properties": {
+          "tags": [
+            "Implementation.Privacy.Token"
+          ],
+          "DevSkimSeverity": "Important",
+          "DevSkimConfidence": "Medium"
+        }
+      }
+    ],
+    "no_whole_scanner_or_native_suite_rerun": true,
+    "triage": [
+      {
+        "file": "build_release.ps1",
+        "rule": "DS197836",
+        "line": 176,
+        "disposition": "REVIEWED_INTEGRITY_OR_FIXTURE",
+        "reason": "SHA256 integrity of manifests/files/signature metadata; not password hashing or entropy generation."
+      },
+      {
+        "file": "build_release.ps1",
+        "rule": "DS197836",
+        "line": 170,
+        "disposition": "REVIEWED_INTEGRITY_OR_FIXTURE",
+        "reason": "SHA256 integrity of manifests/files/signature metadata; not password hashing or entropy generation."
+      },
+      {
+        "file": "test_release_contract.py",
+        "rule": "DS197836",
+        "line": 75,
+        "disposition": "REVIEWED_INTEGRITY_OR_FIXTURE",
+        "reason": "Explicit synthetic fixture integrity hashes, not secret or actual dependency safety claim."
+      },
+      {
+        "file": "test_release_contract.py",
+        "rule": "DS197836",
+        "line": 72,
+        "disposition": "REVIEWED_INTEGRITY_OR_FIXTURE",
+        "reason": "Explicit synthetic fixture integrity hashes, not secret or actual dependency safety claim."
+      },
+      {
+        "file": "verify_release.ps1",
+        "rule": "DS197836",
+        "line": 84,
+        "disposition": "REVIEWED_INTEGRITY_OR_FIXTURE",
+        "reason": "SHA256 integrity of manifests/files/signature metadata; not password hashing or entropy generation."
+      },
+      {
+        "file": "build_release.ps1",
+        "rule": "DS173237",
+        "line": 12,
+        "disposition": "REVIEWED_INTEGRITY_OR_FIXTURE",
+        "reason": "Exact public OSV SHA256 binary pin, not a key."
+      }
+    ],
+    "unresolved": 0,
+    "new_blockers": 0
+  },
+  "G0_G8": {
+    "G0": "Complete signed dependency identities and recreate ZIP-omitted directories",
+    "G1": "Five existing AUTHORED glue/test blocks; no third-party code or dependency update",
+    "G2": "Exact pack before/after SHA and actual prior signed artifact receipts retained",
+    "G3": "Independent1653source composition;1648unchanged",
+    "G4": "21gate assertions;real437package coverage in both helpers;Node ZIP/junction regression;real extracted329 activation/order/rollback/recovery/stop PASS",
+    "G5": "Missing source identity/wrong version/empty scan rejected; delta lint fully reviewed",
+    "G6": "Existing finite host budgets; no expanded performance claim",
+    "G7": "Prior329 signed release preserved and explicitly unqualified due incomplete SBOM; no key or history rewrite",
+    "G8": "Gate0.2.3/CI0.1.8 narrowly admitted; final330build/signature still pending"
+  }
+}

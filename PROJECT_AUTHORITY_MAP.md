@@ -149,3 +149,5 @@ FAIL772/773/774 REGRESSION_PROVEN in reconstruction_evidence/CUSTOMER_APPOINTMEN
 
 V390 checkpoint244: cancelacion cliente conectada y recuperable: receipt ligado aID/org/estado/version,guard sincrono,GETexplicito tras resultado incierto.294tests/1skip previo,typecheck/build;4navegadores,16cancelaciones/16audits/16outbox con28POSTincluidos rechazos;8regresiones lectura/fechas sin escrituras.6packs/805files reconstruidos,8589artefactos yHTTPbinario idénticos;68/797.45/48;V386diferido,TEST02integral yTEST07pendientes. Preflight244 pendiente.
 FAIL776/777/778 REGRESSION_PROVEN in reconstruction_evidence/CUSTOMER_CANCELLATION_RECOVERY_V390.md. No native/security or whole control promotion.
+
+V402320: los expedientes BC amount/sales, PostHog NPS, política configurada, controles conectados319 y pnpm restringido311 gobiernan sus claims acotados según LIBRARY_ASSURANCE_REVIEW_V402.json. El manual y una cita no conceden origen empresarial a código AUTHORED. G/H se responden desde la decisión local explícita y observaciones, sin política productiva inventada.

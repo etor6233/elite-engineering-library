@@ -1,0 +1,35 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2809",
+  "outcome": "PASS",
+  "command": "V402326 exact1653source: two release glue/test changes;1651source files unchanged; inherited local domain claims from325",
+  "exit_code": 0,
+  "assertions": [
+    "Prior control assertions and evidence retained in the exact325 receipt.",
+    "Only signed release UTC timestamp and regression changed; no domain/runtime/dependency code changes."
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "5d98da49605709ee3c018aa3f428f786f1fa164ea10acf7b2447a6b9fdc7abc1"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_T2809_CONTROL_RECEIPT_V402_325.json",
+      "sha256": "3122e6c568be99f0e99bc9227f0357b0f6bda6ce3eeb528bb680e4556b3f79a7"
+    },
+    {
+      "path": "reconstruction_evidence/SIGNED_RELEASE_EPOCH_V402.json",
+      "sha256": "f379b0ce48a8959a02800b8dde1b0b9a6f2e6201b1f2fc997c148a6f33eb7b96"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/SIGNED_RELEASE_EPOCH_V402.md",
+      "sha256": "1d46d7b7634b169cd4bedddb25e3230d256a5d613f3d9527d9ea8b4dc97c8313"
+    }
+  ],
+  "inventory_sha256": "79a52ad71230fb97a4b0142694009838a302cee2e6f465657edc048352f6da43",
+  "live_effects_performed": false
+}

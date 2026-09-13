@@ -4,7 +4,7 @@
 
 ```yaml
 pack_id: "PYTHON-META-WHATSAPP-CLOUD-ADAPTER"
-pack_version: "0.14.0"
+pack_version: "0.15.0"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -87,6 +87,8 @@ CREATE internal/whatsappbridge/reply_request.go
 CREATE microsoft_playwright_browser_gate/tests/whatsapp-connected.spec.mjs
 CREATE whatsapp_cloud/test_conversation_contract.py
 CREATE whatsapp_cloud/test_profile_validation_bridge.py
+CREATE internal/whatsappbridge/bound_receipt_recovery.go
+CREATE whatsapp_cloud/test_template_recovery.py
 ```
 
 ## 5. Materialization blocks
@@ -3260,7 +3262,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "Local verified integration of the admitted Meta signature boundary and PostgreSQL observation transactions; not upstream company code"
 license: "LicenseRef-Workspace-Owner"
-sha256: "36a91717fa18a63534497e148e0d505a9cde82bf220a8c41aad7a0a73104e9a6"
+sha256: "7bd5d53d108fde99402eb8d34a4320cbf1c0b0f8b3700803b2472f3dec85e69a"
 variables: []
 secrets_allowed: false
 ```
@@ -3360,7 +3362,7 @@ func (o *StatusObserver) anchor(ctx context.Context, db statusQuery, p identity.
 // then stores observations atomically. It never changes the send fence, creates
 // a resend, or acknowledges a durable inbox before the caller sees success.
 func (o *StatusObserver) Observe(ctx context.Context, p identity.Principal, organization, appointment, event string, receipt []byte, batches []SignedStatusWebhook) (int, error) {
-	if o == nil || o.Approvals == nil || o.Approvals.pool == nil || o.Secrets == nil || p.TenantID == "" || p.TenantID != o.TenantID || p.Subject == "" || len(p.Subject) > 255 || !p.Allowed("appointment:manage") || !p.AllowedOrganization(organization) || !((appointment != "" && notificationEventID.MatchString(event)) || (appointment == "" && strings.HasPrefix(event, "wa-reply:") && validDigest(strings.TrimPrefix(event, "wa-reply:")))) || len(o.Profile) > 32768 || !json.Valid(o.Profile) || len(receipt) == 0 || len(receipt) > 65536 || len(batches) == 0 || len(batches) > 8 {
+	if o == nil || o.Approvals == nil || o.Approvals.pool == nil || o.Secrets == nil || p.TenantID == "" || p.TenantID != o.TenantID || p.Subject == "" || len(p.Subject) > 255 || !p.Allowed("appointment:manage") || !p.AllowedOrganization(organization) || !((appointment != "" && notificationEventID.MatchString(event)) || (appointment == "" && (strings.HasPrefix(event, "wa-reply:") && validDigest(strings.TrimPrefix(event, "wa-reply:")) || strings.HasPrefix(event, "wa-schedule:") && validDigest(strings.TrimPrefix(event, "wa-schedule:"))))) || len(o.Profile) > 32768 || !json.Valid(o.Profile) || len(receipt) == 0 || len(receipt) > 65536 || len(batches) == 0 || len(batches) > 8 {
 		return 0, ErrStatusObservation
 	}
 	for _, b := range batches {
@@ -4413,7 +4415,7 @@ operation: CREATE
 provenance: ADAPTED
 source: "Meta examples signature-validation-with-webhooks-payloads/app.py, send-messages-flight-app-python/message_helper.py and template-for-ecommerce-js/routes/incomingWebhook.js at de70ee90; changes enumerated in PROVENANCE.md"
 license: "LicenseRef-Meta-Platform-API-Only"
-sha256: "04e3b9f80c2d471de3f105968e17283243bef350c9f64c0c9fc0e7ff844306c8"
+sha256: "5972992e1da001cbcd87a835eb2b119de291a95303fc7340aebc578a4c88fb7c"
 variables: []
 secrets_allowed: false
 ```
@@ -4822,9 +4824,14 @@ def recover_send_bridge(raw: bytes) -> dict[str, Any]:
     if at.tzinfo is None or at.timestamp()>datetime.now(timezone.utc).timestamp()+60:
         raise ValueError("recovery acceptance time invalid")
     request,profile=frame["request"],frame["profile"]
-    if request.get("kind")!="text_reply":
-        raise ValueError("recovery supports exact conversational reply only")
-    recipient,payload=build_reply_payload(profile,request,observed_at=at.timestamp())
+    if not isinstance(request,dict):
+        raise ValueError("recovery request must be an object")
+    if request.get("kind")=="text_reply":
+        recipient,payload=build_reply_payload(profile,request,observed_at=at.timestamp())
+    elif set(request)=={"recipient","template_name","language_code","body_parameters"}:
+        recipient,payload=build_template_payload(profile,request)
+    else:
+        raise ValueError("recovery request kind or shape is not supported")
     expected=(json.dumps(payload,ensure_ascii=False,sort_keys=True,separators=(",",":"))+"\n").encode("utf-8")
     if receipt.get("schema")!="elite-whatsapp-cloud-send-receipt/v1" or receipt.get("source_commit")!=SOURCE_COMMIT or receipt.get("automatic_business_write") is not False or receipt.get("graph_api_version")!=profile["graph_api_version"] or receipt.get("phone_number_id_sha256")!=_sha256(profile["phone_number_id"].encode("ascii")) or receipt.get("recipient_sha256")!=_sha256(recipient.encode("ascii")) or receipt.get("request_sha256")!=_sha256(expected) or receipt.get("response_sha256")!=_sha256(response_raw):
         raise ValueError("recovery evidence binding mismatch")
@@ -7946,7 +7953,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local read-only composition of admitted approval and delivery owners"
 license: "LicenseRef-Workspace-Owner"
-sha256: "b7beff2f10f586a096fe1e40c57de272fdf12814e5674f7fe31530d2e8e3a5fe"
+sha256: "f91fa1b2d120e6f2c16ed8ab935bf8ed20b0dd5ee443219b9a29a72d68a15e64"
 variables: []
 secrets_allowed: false
 ```
@@ -8006,7 +8013,7 @@ type notificationQueryer interface {
 
 func readNotificationStatus(ctx context.Context, db notificationQueryer, p identity.Principal, organization, appointment, event string) (NotificationStatus, error) {
 	value := NotificationStatus{}
-	if db == nil || p.Subject == "" || p.TenantID == "" || !p.AllowedOrganization(organization) || !((appointment != "" && p.Allowed("appointment:manage") && notificationEventID.MatchString(event)) || (appointment == "" && p.Allowed("whatsapp:approve") && strings.HasPrefix(event, "wa-reply:") && validDigest(strings.TrimPrefix(event, "wa-reply:")))) {
+	if db == nil || p.Subject == "" || p.TenantID == "" || !p.AllowedOrganization(organization) || !((appointment != "" && p.Allowed("appointment:manage") && notificationEventID.MatchString(event)) || (appointment == "" && p.Allowed("whatsapp:approve") && strings.HasPrefix(event, "wa-reply:") && validDigest(strings.TrimPrefix(event, "wa-reply:"))) || (appointment == "" && p.Allowed("notification:read") && strings.HasPrefix(event, "wa-schedule:") && validDigest(strings.TrimPrefix(event, "wa-schedule:")))) {
 		return value, ErrNotificationNotFound
 	}
 	var requestHash, recipientHash, expectedHash, expectedRecipient, providerHash, evidenceHash string
@@ -10008,7 +10015,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "e93e50776e7ea8f9704aa125e63f9046f157b175137fdf1722802a6cd87b55b9"
+sha256: "5e9f7f2d50bb3f438f75faf220fcd390edb01570ebd414eeeb2a183bf1962997"
 variables: []
 secrets_allowed: false
 ```
@@ -10019,16 +10026,11 @@ package whatsappbridge
 // AUTHORED recovery of an existing local provider acceptance receipt. It never
 // performs POST, invents a provider messageID or releases an unproved unknown.
 import (
-	"bytes"
 	"context"
 	"elite.local/enterprise/internal/outbounddelivery"
 	"elite.local/enterprise/internal/platform/identity"
-	"encoding/json"
-	"errors"
 	"io"
 	"os"
-	"os/exec"
-	"path/filepath"
 	"time"
 )
 
@@ -10066,88 +10068,7 @@ func (m *ReplyModule) Recover(ctx context.Context, p identity.Principal, key, ha
 	if err != nil || reviewer == "" || c.ConnectionID != m.approvals.connection || c.ProfileSHA256 != m.approvals.profile {
 		return outbounddelivery.Receipt{}, ErrApproval
 	}
-	request := json.RawMessage(c.Message.Text)
-	actual, err := outbounddelivery.MessageSHA256(c.Message)
-	if err != nil || actual != c.MessageSHA256 {
-		return outbounddelivery.Receipt{}, ErrApproval
-	}
-	proc := m.sender.Process
-	script := filepath.Join(proc.AdapterDirectory, "whatsapp_cloud.py")
-	if !filepath.IsAbs(proc.EvidenceDirectory) || exactFile(proc.PythonExecutable, proc.PythonSHA256) != nil || exactFile(script, proc.AdapterSHA256) != nil {
-		return outbounddelivery.Receipt{}, ErrBridge
-	}
-	root, err := os.OpenRoot(proc.EvidenceDirectory)
-	if err != nil {
-		return outbounddelivery.Receipt{}, ErrBridge
-	}
-	defer root.Close()
-	dir := digest([]byte(p.TenantID + "\x00" + key))
-	receiptRaw, err := recoverEvidence(root, filepath.Join(dir, "SEND_RECEIPT.json"))
-	if err != nil {
-		return outbounddelivery.Receipt{}, ErrBridge
-	}
-	responseRaw, err := recoverEvidence(root, filepath.Join(dir, "provider-response.json"))
-	if err != nil {
-		return outbounddelivery.Receipt{}, ErrBridge
-	}
-	raw, err := json.Marshal(struct {
-		Schema   string          `json:"schema"`
-		Binding  string          `json:"binding_sha256"`
-		Profile  json.RawMessage `json:"profile"`
-		Request  json.RawMessage `json:"request"`
-		Receipt  []byte          `json:"receipt"`
-		Response []byte          `json:"response"`
-	}{"elite-whatsapp-recover-send/v1", actual, m.sender.Profile, request, receiptRaw, responseRaw})
-	if err != nil {
-		return outbounddelivery.Receipt{}, ErrBridge
-	}
-	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
-	defer cancel()
-	cmd := exec.CommandContext(ctx, proc.PythonExecutable, "-I", "-B", script, "--recover-send-bridge")
-	cmd.Stdin = bytes.NewReader(raw)
-	cmd.Stderr = io.Discard
-	cmd.Env = []string{}
-	cmd.WaitDelay = 2 * time.Second
-	if root := os.Getenv("SystemRoot"); root != "" {
-		cmd.Env = append(cmd.Env, "SystemRoot="+root)
-	}
-	var stdout boundedOutput
-	cmd.Stdout = &stdout
-	if cmd.Run() != nil || stdout.overflow {
-		return outbounddelivery.Receipt{}, ErrBridge
-	}
-	var result result
-	d := json.NewDecoder(bytes.NewReader(stdout.Bytes()))
-	d.DisallowUnknownFields()
-	if d.Decode(&result) != nil || d.Decode(new(any)) != io.EOF || result.Schema != "elite-whatsapp-send-result/v1" || result.BindingSHA256 != actual || result.EvidenceSHA256 != digest(receiptRaw) {
-		return outbounddelivery.Receipt{}, ErrBridge
-	}
-	receipt := outbounddelivery.Receipt{ProviderMessageID: result.ProviderMessageID, EvidenceSHA256: result.EvidenceSHA256, AcceptedAt: result.AcceptedAt}
-	if receipt.Validate() != nil || receipt.AcceptedAt.Before(approvalAt) || !receipt.AcceptedAt.Before(c.ExpiresAt) {
-		return outbounddelivery.Receipt{}, ErrBridge
-	}
-	// Use the same owner's expired-lease transition; it never calls the provider.
-	// The existing row was read above, and this path cannot create a new delivery.
-	if value.Status.FenceState == "sending" {
-		claim, claimErr := m.store.Claim(ctx, c.Message, actual)
-		if claim.Replay {
-			value.Status.FenceState = "accepted"
-		} else if !errors.Is(claimErr, outbounddelivery.ErrUnknown) {
-			return outbounddelivery.Receipt{}, ErrBridge
-		}
-	}
-	if value.Status.FenceState == "accepted" {
-		var same bool
-		err = m.approvals.base.pool.QueryRow(ctx, `select evidence_sha256_hex=$3 and request_sha256_hex=$4 from communication.outbound_delivery where tenant_id=$1 and channel_code='whatsapp' and delivery_key=$2 and state='accepted'`, p.TenantID, key, receipt.EvidenceSHA256, actual).Scan(&same)
-		if err != nil || !same {
-			return outbounddelivery.Receipt{}, ErrBridge
-		}
-		return receipt, nil
-	}
-	if err = m.store.ReconcileAccepted(ctx, c.Message, actual, receipt); err != nil {
-		return outbounddelivery.Receipt{}, err
-	}
-	return receipt, nil
+	return recoverBoundProviderReceipt(ctx, m.sender, m.store, m.approvals.base.pool, p.TenantID, key, boundReceiptContext{c.Message, c.MessageSHA256, c.ExpiresAt}, approvalAt, value.Status.FenceState)
 }
 ````
 
@@ -10410,3 +10331,199 @@ reconstruidos PASS. No cierra UI, worker autónomo ni proveedor real.
 - El defecto upstream de control flow queda retenido y no se relabela como PASS.
 
 V402 composed delta: Signed raw inbox messages are projected into the existing conversation runtime with scoped current contact identity. Runtime output becomes an immutable proposal, human review gates the existing outbound fence, and status/recovery uses the same durable owners. Existing Python source retains its declared adaptation; new Go persistence/transport/tests are AUTHORED glue. Requires selected conversation, approval, contact, app and fence owners for Go composition.
+
+V402 composed delta: Scheduled WhatsApp exact source/approval/job/host glue and template receipt recovery; SCHEDULED_COMMUNICATIONS_RELEASE_V402.md/json.
+
+### FILE: `internal/whatsappbridge/bound_receipt_recovery.go`
+
+```yaml
+block_id: "PYTHON-META-WHATSAPP-CLOUD-ADAPTER:schedule-extension-file1:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "2d900dc92571cc15e01b9f1212af9662b48ced39ee9ea1c2f053ac112776e6bc"
+variables: []
+secrets_allowed: false
+```
+
+````go
+package whatsappbridge
+
+// AUTHORED extraction of the existing exact local provider receipt verifier.
+// Callers must first authorize and bind the immutable reviewed context.
+import (
+	"bytes"
+	"context"
+	"elite.local/enterprise/internal/channels"
+	"elite.local/enterprise/internal/outbounddelivery"
+	"elite.local/enterprise/internal/platform/postgres"
+	"encoding/json"
+	"errors"
+	"github.com/jackc/pgx/v5/pgxpool"
+	"io"
+	"os"
+	"os/exec"
+	"path/filepath"
+	"time"
+)
+
+type boundReceiptContext struct {
+	Message       channels.Message
+	MessageSHA256 string
+	ExpiresAt     time.Time
+}
+
+func recoverBoundProviderReceipt(ctx context.Context, sender *Sender, store *postgres.OutboundDeliveryStore, pool *pgxpool.Pool, tenant, key string, c boundReceiptContext, approvalAt time.Time, fenceState string) (outbounddelivery.Receipt, error) {
+	request := json.RawMessage(c.Message.Text)
+	actual, err := outbounddelivery.MessageSHA256(c.Message)
+	if err != nil || actual != c.MessageSHA256 {
+		return outbounddelivery.Receipt{}, ErrApproval
+	}
+	proc := sender.Process
+	script := filepath.Join(proc.AdapterDirectory, "whatsapp_cloud.py")
+	if !filepath.IsAbs(proc.EvidenceDirectory) || exactFile(proc.PythonExecutable, proc.PythonSHA256) != nil || exactFile(script, proc.AdapterSHA256) != nil {
+		return outbounddelivery.Receipt{}, ErrBridge
+	}
+	root, err := os.OpenRoot(proc.EvidenceDirectory)
+	if err != nil {
+		return outbounddelivery.Receipt{}, ErrBridge
+	}
+	defer root.Close()
+	dir := digest([]byte(tenant + "\x00" + key))
+	receiptRaw, err := recoverEvidence(root, filepath.Join(dir, "SEND_RECEIPT.json"))
+	if err != nil {
+		return outbounddelivery.Receipt{}, ErrBridge
+	}
+	responseRaw, err := recoverEvidence(root, filepath.Join(dir, "provider-response.json"))
+	if err != nil {
+		return outbounddelivery.Receipt{}, ErrBridge
+	}
+	raw, err := json.Marshal(struct {
+		Schema   string          `json:"schema"`
+		Binding  string          `json:"binding_sha256"`
+		Profile  json.RawMessage `json:"profile"`
+		Request  json.RawMessage `json:"request"`
+		Receipt  []byte          `json:"receipt"`
+		Response []byte          `json:"response"`
+	}{"elite-whatsapp-recover-send/v1", actual, sender.Profile, request, receiptRaw, responseRaw})
+	if err != nil {
+		return outbounddelivery.Receipt{}, ErrBridge
+	}
+	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
+	cmd := exec.CommandContext(ctx, proc.PythonExecutable, "-I", "-B", script, "--recover-send-bridge")
+	cmd.Stdin = bytes.NewReader(raw)
+	cmd.Stderr = io.Discard
+	cmd.Env = []string{}
+	cmd.WaitDelay = 2 * time.Second
+	if root := os.Getenv("SystemRoot"); root != "" {
+		cmd.Env = append(cmd.Env, "SystemRoot="+root)
+	}
+	var stdout boundedOutput
+	cmd.Stdout = &stdout
+	if cmd.Run() != nil || stdout.overflow {
+		return outbounddelivery.Receipt{}, ErrBridge
+	}
+	var result result
+	d := json.NewDecoder(bytes.NewReader(stdout.Bytes()))
+	d.DisallowUnknownFields()
+	if d.Decode(&result) != nil || d.Decode(new(any)) != io.EOF || result.Schema != "elite-whatsapp-send-result/v1" || result.BindingSHA256 != actual || result.EvidenceSHA256 != digest(receiptRaw) {
+		return outbounddelivery.Receipt{}, ErrBridge
+	}
+	receipt := outbounddelivery.Receipt{ProviderMessageID: result.ProviderMessageID, EvidenceSHA256: result.EvidenceSHA256, AcceptedAt: result.AcceptedAt}
+	if receipt.Validate() != nil || receipt.AcceptedAt.Before(approvalAt) || !receipt.AcceptedAt.Before(c.ExpiresAt) {
+		return outbounddelivery.Receipt{}, ErrBridge
+	}
+	// Use the same owner's expired-lease transition; it never calls the provider.
+	// The existing row was read above, and this path cannot create a new delivery.
+	if fenceState == "sending" {
+		claim, claimErr := store.Claim(ctx, c.Message, actual)
+		if claim.Replay {
+			fenceState = "accepted"
+		} else if !errors.Is(claimErr, outbounddelivery.ErrUnknown) {
+			return outbounddelivery.Receipt{}, ErrBridge
+		}
+	}
+	if fenceState == "accepted" {
+		var same bool
+		err = pool.QueryRow(ctx, `select evidence_sha256_hex=$3 and request_sha256_hex=$4 from communication.outbound_delivery where tenant_id=$1 and channel_code='whatsapp' and delivery_key=$2 and state='accepted'`, tenant, key, receipt.EvidenceSHA256, actual).Scan(&same)
+		if err != nil || !same {
+			return outbounddelivery.Receipt{}, ErrBridge
+		}
+		return receipt, nil
+	}
+	if err = store.ReconcileAccepted(ctx, c.Message, actual, receipt); err != nil {
+		return outbounddelivery.Receipt{}, err
+	}
+	return receipt, nil
+}
+````
+
+### FILE: `whatsapp_cloud/test_template_recovery.py`
+
+```yaml
+block_id: "PYTHON-META-WHATSAPP-CLOUD-ADAPTER:schedule-extension-file2:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "568a682846d967d7decb40d4b5881298a3c586146b999ab6c07dcc7252937caf"
+variables: []
+secrets_allowed: false
+```
+
+````python
+"""AUTHORED regression: preserve exact template acceptance without a resend."""
+import base64
+import copy
+import json
+from pathlib import Path
+import tempfile
+import unittest
+from unittest.mock import patch
+
+from test_whatsapp_cloud import profile, message
+from whatsapp_cloud import recover_send_bridge, send_bridge
+
+
+class TemplateRecoveryTests(unittest.TestCase):
+    def test_exact_template_and_tampered_bindings(self):
+        calls = []
+        def transport(*args):
+            calls.append(args)
+            return 200, {}, b'{"messages":[{"id":"wamid.template.recovered"}]}'
+        with tempfile.TemporaryDirectory() as temp:
+            output = Path(temp) / "receipt"
+            sent = send_bridge(json.dumps({
+                "schema": "elite-whatsapp-send-bridge/v1",
+                "binding_sha256": "a"*64, "profile": profile(), "request": message(),
+                "access_token": "synthetic-token", "output_directory": str(output)
+            }).encode(), transport)
+            frame = {
+                "schema": "elite-whatsapp-recover-send/v1",
+                "binding_sha256": "a"*64, "profile": profile(), "request": message(),
+                "receipt": base64.b64encode((output/"SEND_RECEIPT.json").read_bytes()).decode(),
+                "response": base64.b64encode((output/"provider-response.json").read_bytes()).decode()
+            }
+            with patch("whatsapp_cloud.stdlib_transport", side_effect=AssertionError("recovery attempted network")):
+                self.assertEqual(recover_send_bridge(json.dumps(frame).encode()), sent)
+                cases = []
+                changed = copy.deepcopy(frame); changed["request"]["body_parameters"][0] = "another-order"; cases.append(changed)
+                changed = copy.deepcopy(frame); changed["request"]["recipient"] = "5491112345679"; cases.append(changed)
+                changed = copy.deepcopy(frame); changed["profile"]["phone_number_id"] = "123456788"; cases.append(changed)
+                changed = copy.deepcopy(frame); changed["profile"]["graph_api_version"] = "v98.0"; cases.append(changed)
+                changed = copy.deepcopy(frame); changed["request"]["kind"] = "unknown"; cases.append(changed)
+                changed = copy.deepcopy(frame); changed["request"]["extra"] = True; cases.append(changed)
+                changed = copy.deepcopy(frame); changed["request"] = []; cases.append(changed)
+                changed = copy.deepcopy(frame); changed["response"] = base64.b64encode(b'{"messages":[{"id":"wamid.other"}]}').decode(); cases.append(changed)
+                for index, changed in enumerate(cases):
+                    with self.subTest(index=index), self.assertRaises(ValueError):
+                        recover_send_bridge(json.dumps(changed).encode())
+            self.assertEqual(len(calls), 1)
+
+
+if __name__ == "__main__":
+    unittest.main()
+````
+

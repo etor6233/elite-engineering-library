@@ -1,8 +1,6 @@
 # pnpm Artifact Selection Pack Plan
 
-Tooling separado para producir/verificar una proyección candidata de pnpm ya
-adquirido. No ejecuta, instala ni admite runtime. No se incluye automáticamente
-en perfiles de producto, ni cambia el transporte opaco de adquisición.
+Tooling separado: selección histórica y runtime local restringido0.9.0. La nueva ruta local_runtime.py prepara/verifica/ejecuta instalaciones offline de3consumers fijados con Node --jitless --no-addons. No se incluye automáticamente en perfiles de producto ni redistribuye pnpm. El transporte de adquisición conserva sus propias condiciones.
 
 ```json
 {
@@ -12,7 +10,7 @@ en perfiles de producto, ni cambia el transporte opaco de adquisición.
     {
       "path": "implementation_packs/PNPM_ARTIFACT_SELECTION_GATE.md",
       "packId": "PNPM-ARTIFACT-SELECTION-GATE",
-      "version": "0.8.0",
+      "version": "0.9.0",
       "acknowledgeConditions": true,
       "files": ["*"],
       "variables": {}
@@ -54,3 +52,5 @@ V397: PNPM-ARTIFACT-SELECTION-GATE0.6.0/7files entrega el conjunto completo de47
 V398: PNPM-ARTIFACT-SELECTION-GATE0.7.0/8files entrega fuente original next-path1.0.0, manifiesto y MPL completa en3recetas:9copias exactas/12negativos reales/90tests PASS. Commit oficial y3Git blobs verificados;4sentencias comparadas bajo adaptadores explícitos,10mutaciones rechazadas. No equivalencia runtime ni reproducibilidad pnpm. Colección47, suplementos anteriores y442payloadfiles intactos.45/48; Daybreak diferido. Ver reconstruction_evidence/NEXT_PATH_MPL_SOURCE_DELIVERY_V398.md.
 
 V401: contain_zip.py añade eliminación física de16módulos adm-zip y rechazo deZIP en candidato separado. Version0.8.0/9files. Original11.25.0 y candidato11.26.0 afectados;12.4.1 no admitido. Ver reconstruction_evidence/PNPM_ZIP_CONTAINMENT_V401.md.
+
+V402 /0.9.0 current:14files;3actual restricted offline installs,11router negatives,8preservation/recovery cases and445exact files from verified projection.477npm/Python SCA identities, six WASM hashes,42nested source matches and475package notice entries. Local runtime only; no tool redistribution, network parser/native certification or production readiness. PNPM_LOCAL_RUNTIME_V402.md/json.

@@ -1,0 +1,46 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2809",
+  "outcome": "PASS",
+  "command": "Pinned current native OIDC/API+Next with official closed OTel/Prometheus metrics, actual PG fault and unchanged10m alert/repair/1000replay/WAL/controller/native recovery",
+  "exit_code": 0,
+  "assertions": [
+    "116packs/1583outputs exact;4affected source profiles and3Go composition compilations PASS; independent host build byte-identical",
+    "Real OIDC verifier retained; RSA fixture isolated; metrics require explicit loopback enable/port and closed attributes",
+    "Actual PG table fault yieldsHTTP500; rule5m/1percent/10m/30s unchanged and actual pending/firing observed",
+    "Repair and1000replays at concurrency8 recover alert with one durable order; p95 is observation, not production SLO",
+    "Prometheus fixed-timestamp query unchanged after WAL restart;1h/64MB block policy not a strict disk cap",
+    "Existing native process/output/memory/timeout limits; current API+Next recovery/order replay/exit0/tree-empty recorded",
+    "Exact13files and5binary identities carry V372 separate Collector rotation1MiB/2backups/1day/2000observations; not current API log delivery",
+    "78public modules SCA0,11delta lint files34reviewed, official pins/notices retained and AUTHORED glue explicit",
+    "Persistent target service/HA/routing/responders/SLI/disk/DR remain CANDIDATE_TARGET, never claimed as awaiting only credentials"
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "58a8cf9798f136c19cca60ec94f8a14fa49bef98d208a1043aa65cf8a7fc87ee"
+    },
+    {
+      "path": "reconstruction_evidence/LOCAL_REFERENCE_OPERATIONS_PROVENANCE_V402.json",
+      "sha256": "62c5a7f90ea449dc328c6e0e6db110e0039fc0834667dc898cd391eb37ed1e82"
+    },
+    {
+      "path": "reconstruction_evidence/LOCAL_REFERENCE_OPERATIONS_INHERITANCE_V402.json",
+      "sha256": "d21dc1a9e91dac6a58639a3c1dedab58a9513cb98eeb6aeb56a49b9077132d1d"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/LOCAL_REFERENCE_OPERATIONS_V402.md",
+      "sha256": "a8cdab67368eda591d87897e6ab9d2fd5ae937ccc54b805723922a6421607da5"
+    },
+    {
+      "path": "reconstruction_evidence/LOCAL_REFERENCE_OPERATIONS_V402.json",
+      "sha256": "2312cc47f371784e4763991c8720b49901ff937242ee1d90d45b7415bc427a0b"
+    }
+  ],
+  "inventory_sha256": "0861d7099098158a866e7ef3d93838f3f204faa1fbd458a31570f257e99ea859",
+  "live_effects_performed": false
+}

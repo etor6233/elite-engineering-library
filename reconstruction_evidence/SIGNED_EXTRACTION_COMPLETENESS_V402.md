@@ -1,0 +1,7 @@
+# V402330 — completitud de SPDX y arranque desde ZIP
+
+FAIL978 RESOLVED_LOCAL. El SPDX original329 contenía solo el paquete raíz. OSV2.5.1 con --all-packages enumera todas las326dependencias versionadas: sus nombres SPDX son abreviados y la identidad completa se compara por purl, sin atribuciones inventadas. Nueve referencias locales sin versión omitidas por ese exportador se conservan como registros sin versión y sourceInfo OSV-UNVERSIONED. No se inventan licencia, origen o versión. El documento tiene437registros, cubre los454registros del informe OSV y335identidades únicas. Builder y verifier rechazan cobertura incompleta, versión equivocada e inventario vacío.21aserciones de contrato y el informe real PASS.
+
+FAIL979 RESOLVED_LOCAL. El ZIP de archivos no conserva directorios vacíos @next/@swc. El lanzador recrea únicamente el parent de cada junction declarada antes de montarla. Una regresión Node real verifica resolución del módulo y apagado; el artefacto329 extraído, con el lanzador corregido, pasó API+web, pedido idempotente, rollback a binario anterior, redeploy, rollback de candidato fallido, recuperación del controlador y árbol de procesos vacío. Las84migraciones/replay originales se conservaron sin repetirlas.
+
+Cinco bloques AUTHORED existentes,1648archivos intactos,1653exactos reconstruidos. No se alteró dominio, integración, dependencia ni procedencia oficial. La cohorte330 incorpora estas correcciones en el archivo fuente; su build y firma finales están en curso.329 se preserva como antecedente, no se renombra como330.

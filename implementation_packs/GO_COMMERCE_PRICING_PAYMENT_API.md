@@ -4,7 +4,7 @@
 
 ```yaml
 pack_id: "GO-COMMERCE-PRICING-PAYMENT-API"
-pack_version: "0.6.4"
+pack_version: "0.8.0"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -78,6 +78,10 @@ CREATE internal/platform/httpapi/commerce.go
 CREATE internal/platform/httpapi/commerce_test.go
 CREATE db/migrations/0053_payment_intent_reference.up.sql
 CREATE db/migrations/0053_payment_intent_reference.down.sql
+CREATE db/migrations/0066_order_funding_projection.up.sql
+CREATE db/migrations/0066_order_funding_projection.down.sql
+CREATE internal/platform/postgres/order_funding.go
+CREATE internal/platform/postgres/local_funding.go
 ```
 
 ## 5. Materialization blocks
@@ -412,7 +416,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local verified composition"
 license: "LicenseRef-Workspace-Owner"
-sha256: "32921ad0398dd5661a8a990857c434c8bd3eace6195101941deb51db6060329f"
+sha256: "a07be25f185586d6472b58901ef87ef9a2557548c6bfca74ea056385dc22f9a9"
 variables: []
 secrets_allowed: false
 ```
@@ -577,17 +581,7 @@ func (r *Commerce) CreatePriceBook(ctx context.Context, tenant, eventID string, 
 		return err
 	}
 	defer tx.Rollback(ctx)
-	_, err = tx.Exec(ctx, `insert into pricing.price_book(tenant_id,price_book_id,market,currency,valid_from,valid_until,status)values($1,$2,$3,$4,$5,$6,'draft')`, tenant, value.ID, value.Market, value.Currency, value.ValidFrom, value.ValidUntil)
-	if err != nil {
-		return err
-	}
-	for _, entry := range value.Entries {
-		if _, err = tx.Exec(ctx, `insert into pricing.price_book_entry(tenant_id,price_book_id,variant_id,amount_minor_units,tax_mode)values($1,$2,$3,$4,$5)`, tenant, value.ID, entry.VariantID, entry.AmountMinorUnits, entry.TaxMode); err != nil {
-			return err
-		}
-	}
-	_, err = tx.Exec(ctx, `insert into platform.outbox_event(tenant_id,event_id,aggregate_type,aggregate_id,aggregate_version,event_type,schema_version,occurred_at,payload)values($1,$2,'price-book',$3,1,'price-book.created',1,clock_timestamp(),jsonb_build_object('market',$4::text,'currency',$5::text))`, tenant, eventID, value.ID, value.Market, value.Currency)
-	if err != nil {
+	if err = r.createPriceBookTx(ctx, tx, tenant, eventID, value); err != nil {
 		return err
 	}
 	return tx.Commit(ctx)
@@ -598,34 +592,7 @@ func (r *Commerce) ActivatePriceBook(ctx context.Context, tenant, id, eventID st
 		return err
 	}
 	defer tx.Rollback(ctx)
-	var market, currency string
-	var from time.Time
-	var until *time.Time
-	err = tx.QueryRow(ctx, `select market,currency,valid_from,valid_until from pricing.price_book where tenant_id=$1 and price_book_id=$2 and status='draft' for update`, tenant, id).Scan(&market, &currency, &from, &until)
-	if errors.Is(err, pgx.ErrNoRows) {
-		return commerce.ErrConflict
-	}
-	if err != nil {
-		return err
-	}
-	_, err = tx.Exec(ctx, `select pg_advisory_xact_lock(hashtextextended($1,0))`, tenant+":"+market+":"+currency)
-	if err != nil {
-		return err
-	}
-	var overlap bool
-	err = tx.QueryRow(ctx, `select exists(select 1 from pricing.price_book where tenant_id=$1 and market=$2 and currency=$3 and status='active' and valid_from<coalesce($5::timestamptz,'infinity'::timestamptz) and coalesce(valid_until,'infinity'::timestamptz)>$4)`, tenant, market, currency, from, until).Scan(&overlap)
-	if err != nil {
-		return err
-	}
-	if overlap {
-		return commerce.ErrConflict
-	}
-	_, err = tx.Exec(ctx, `update pricing.price_book set status='active' where tenant_id=$1 and price_book_id=$2 and status='draft'`, tenant, id)
-	if err != nil {
-		return err
-	}
-	_, err = tx.Exec(ctx, `insert into platform.outbox_event(tenant_id,event_id,aggregate_type,aggregate_id,aggregate_version,event_type,schema_version,occurred_at,payload)values($1,$2,'price-book',$3,2,'price-book.activated',1,clock_timestamp(),jsonb_build_object('policy_sha256',$4::text))`, tenant, eventID, id, r.policy.SHA256())
-	if err != nil {
+	if err = r.activatePriceBookTx(ctx, tx, tenant, id, eventID); err != nil {
 		return err
 	}
 	return tx.Commit(ctx)
@@ -812,6 +779,10 @@ func (r *Commerce) recordPaymentIntent(ctx context.Context, tenant, eventID, ide
 	if err != nil {
 		return empty, err
 	}
+	total, err = orderProviderDue(ctx, tx, tenant, value.OrganizationID, value.OrderID, currency, total)
+	if err != nil {
+		return empty, err
+	}
 	if deriveOrder {
 		value.Currency = currency
 		value.AmountMinorUnits = total
@@ -832,7 +803,7 @@ func (r *Commerce) recordPaymentIntent(ctx context.Context, tenant, eventID, ide
 	} else if !errors.Is(err, pgx.ErrNoRows) {
 		return empty, err
 	}
-	// Every public creation path requests the entire total. Enforce initial
+	// Every public creation path requests the remaining provider due. Enforce initial
 	// intent exclusivity here, not just in the new frontend route.
 	var exists bool
 	if err := tx.QueryRow(ctx, `select exists(select 1 from payment.payment_attempt where tenant_id=$1 and order_id=$2)`, tenant, value.OrderID).Scan(&exists); err != nil {
@@ -886,6 +857,59 @@ func (r *Commerce) TransitionPayment(ctx context.Context, tenant, organization, 
 		return err
 	}
 	return tx.Commit(ctx)
+}
+
+// AUTHORED transaction extraction; original activation SQL retained.
+func (r *Commerce) activatePriceBookTx(ctx context.Context, tx pgx.Tx, tenant, id, eventID string) error {
+	var market, currency string
+	var from time.Time
+	var until *time.Time
+	err := tx.QueryRow(ctx, `select market,currency,valid_from,valid_until from pricing.price_book where tenant_id=$1 and price_book_id=$2 and status='draft' for update`, tenant, id).Scan(&market, &currency, &from, &until)
+	if errors.Is(err, pgx.ErrNoRows) {
+		return commerce.ErrConflict
+	}
+	if err != nil {
+		return err
+	}
+	_, err = tx.Exec(ctx, `select pg_advisory_xact_lock(hashtextextended($1,0))`, tenant+":"+market+":"+currency)
+	if err != nil {
+		return err
+	}
+	var overlap bool
+	err = tx.QueryRow(ctx, `select exists(select 1 from pricing.price_book where tenant_id=$1 and market=$2 and currency=$3 and status='active' and valid_from<coalesce($5::timestamptz,'infinity'::timestamptz) and coalesce(valid_until,'infinity'::timestamptz)>$4)`, tenant, market, currency, from, until).Scan(&overlap)
+	if err != nil {
+		return err
+	}
+	if overlap {
+		return commerce.ErrConflict
+	}
+	_, err = tx.Exec(ctx, `update pricing.price_book set status='active' where tenant_id=$1 and price_book_id=$2 and status='draft'`, tenant, id)
+	if err != nil {
+		return err
+	}
+	_, err = tx.Exec(ctx, `insert into platform.outbox_event(tenant_id,event_id,aggregate_type,aggregate_id,aggregate_version,event_type,schema_version,occurred_at,payload)values($1,$2,'price-book',$3,2,'price-book.activated',1,clock_timestamp(),jsonb_build_object('policy_sha256',$4::text))`, tenant, eventID, id, r.policy.SHA256())
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+// AUTHORED transaction extraction; original creation SQL/event retained.
+func (r *Commerce) createPriceBookTx(ctx context.Context, tx pgx.Tx, tenant, eventID string, value commerce.PriceBook) error {
+	_, err := tx.Exec(ctx, `insert into pricing.price_book(tenant_id,price_book_id,market,currency,valid_from,valid_until,status)values($1,$2,$3,$4,$5,$6,'draft')`, tenant, value.ID, value.Market, value.Currency, value.ValidFrom, value.ValidUntil)
+	if err != nil {
+		return err
+	}
+	for _, entry := range value.Entries {
+		if _, err = tx.Exec(ctx, `insert into pricing.price_book_entry(tenant_id,price_book_id,variant_id,amount_minor_units,tax_mode)values($1,$2,$3,$4,$5)`, tenant, value.ID, entry.VariantID, entry.AmountMinorUnits, entry.TaxMode); err != nil {
+			return err
+		}
+	}
+	_, err = tx.Exec(ctx, `insert into platform.outbox_event(tenant_id,event_id,aggregate_type,aggregate_id,aggregate_version,event_type,schema_version,occurred_at,payload)values($1,$2,'price-book',$3,1,'price-book.created',1,clock_timestamp(),jsonb_build_object('market',$4::text,'currency',$5::text))`, tenant, eventID, value.ID, value.Market, value.Currency)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 ````
 
@@ -1767,3 +1791,229 @@ Reconstruction, database integration and HTTP authorization evidence is recorded
 V402 composed delta: Payment/initial-handover composition. New behavior and tests belong to the explicit runtime/portal packs; source and library release claims remain bounded to their evidence. Existing source provenance is preserved.
 
 Canonical V402 integration: selected by the current profile with exact dependencies and caller overlays. Metadata promotion records byte reconstruction, not closure of every admission/release gate. Payload provenance is unchanged.
+
+V402 composed delta: V402 source-backed stored-value integration: exact remaining provider due, explicit payment/funding XOR, shared approval, bounded browser transport and optional host. See STORED_VALUE_OPERATOR_FLOW_V402.md; source/pack admission successor governs final claim. Existing provider-only behavior retained.
+
+
+### FILE: `db/migrations/0066_order_funding_projection.up.sql`
+
+```yaml
+block_id: "GO-COMMERCE-PRICING-PAYMENT-API:db/migrations/0066_order_funding_projection.up.sql:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "Local typed source/transaction/transport/UI/recovery glue; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "dc853c12918a17d3eea1912ceb34245bdf29ebab80d2cf98b34564d3db2abd75"
+variables: []
+secrets_allowed: false
+```
+
+````sql
+begin;
+-- AUTHORED base projection. Gross order pricing remains with sales; this view
+-- introduces no discount rule, alternate order, payment or accounting entry.
+create view payment.order_funding as
+ select tenant_id,order_id,organization_id,currency,version as order_version,
+ total_minor_units as gross_minor_units,0::bigint as gift_minor_units,
+ 0::bigint as discount_minor_units,total_minor_units as provider_due_minor_units,
+ encode(sha256(convert_to('[]','UTF8')),'hex') as contributions_sha256
+ from sales.customer_order;
+create table payment.local_funding_receipt (
+ tenant_id uuid not null,
+ funding_id text not null,
+ request_key text not null check(length(request_key) between 16 and 128),
+ request_sha256 text not null check(request_sha256 ~ '^[0-9a-f]{64}$'),
+ requested_by_subject text not null check(length(requested_by_subject) between 1 and 256),
+ receipt_raw bytea not null check(octet_length(receipt_raw) between 1 and 65536),
+ order_id text not null,
+ organization_id text not null,
+ currency text not null,
+ gross_minor_units bigint not null check(gross_minor_units>0),
+ gift_minor_units bigint not null check(gift_minor_units>=0),
+ discount_minor_units bigint not null check(discount_minor_units>=0),
+ provider_minor_units bigint not null check(provider_minor_units>=0),
+ payment_attempt_id text,
+ provider_evidence_sha256 text,
+ allocation_sha256 text not null check(allocation_sha256 ~ '^[0-9a-f]{64}$'),
+ receipt_sha256 text not null check(receipt_sha256 ~ '^[0-9a-f]{64}$'),
+ receipt jsonb not null check(jsonb_typeof(receipt)='object' and pg_column_size(receipt)<=65536),
+ created_at timestamptz not null default clock_timestamp(),
+ primary key(tenant_id,funding_id),
+ unique(tenant_id,request_key),
+ foreign key(tenant_id,order_id) references sales.customer_order(tenant_id,order_id),
+ foreign key(tenant_id,organization_id) references org.organization(tenant_id,organization_id),
+ foreign key(tenant_id,payment_attempt_id) references payment.payment_attempt(tenant_id,payment_attempt_id),
+ check(gross_minor_units::numeric=gift_minor_units::numeric+discount_minor_units::numeric+provider_minor_units::numeric),
+ check((provider_minor_units=0 and payment_attempt_id is null and provider_evidence_sha256 is null) or
+       (provider_minor_units>0 and payment_attempt_id is not null and provider_evidence_sha256 is not null and provider_evidence_sha256 ~ '^[0-9a-f]{64}$'))
+);
+create view payment.local_funding_evidence as select tenant_id,funding_id,order_id,organization_id,currency,gross_minor_units,gift_minor_units,discount_minor_units,allocation_sha256,receipt_raw,receipt_sha256,created_at from payment.local_funding_receipt where provider_minor_units=0 and payment_attempt_id is null and provider_evidence_sha256 is null;
+create index local_funding_order on payment.local_funding_receipt(tenant_id,order_id,created_at desc);
+create function payment.local_funding_immutable() returns trigger language plpgsql as $$
+begin raise exception 'local funding observation is immutable';end $$;
+create trigger local_funding_immutable before update or delete on payment.local_funding_receipt for each row execute function payment.local_funding_immutable();
+commit;
+````
+
+### FILE: `db/migrations/0066_order_funding_projection.down.sql`
+
+```yaml
+block_id: "GO-COMMERCE-PRICING-PAYMENT-API:db/migrations/0066_order_funding_projection.down.sql:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "Local typed source/transaction/transport/UI/recovery glue; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "82373b270f2c171ad97ea86b7e469272c5a4b1b88cd325c3117305e4a808fa33"
+variables: []
+secrets_allowed: false
+```
+
+````sql
+begin;
+do $$begin if exists(select 1 from payment.local_funding_receipt) then raise exception 'preserve local funding evidence';end if;end $$;
+-- No CASCADE: dependent handover columns must be rolled back explicitly first.
+drop view payment.local_funding_evidence;
+drop view payment.order_funding;
+drop table payment.local_funding_receipt;
+drop function payment.local_funding_immutable();
+commit;
+````
+
+### FILE: `internal/platform/postgres/order_funding.go`
+
+```yaml
+block_id: "GO-COMMERCE-PRICING-PAYMENT-API:internal/platform/postgres/order_funding.go:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "Local typed source/transaction/transport/UI/recovery glue; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "7aa822ccc948733553a852b3cc7934561719c7f8fd55b9f9068a46f5a2cb5097"
+variables: []
+secrets_allowed: false
+```
+
+````go
+package postgres
+
+// AUTHORED exact projection/hash glue. The selected source-derived writer owns
+// the gift/discount rules; all readers share this representation under order lock.
+import (
+	"context"
+	"crypto/sha256"
+	"elite.local/enterprise/internal/commerce"
+	"encoding/hex"
+	"encoding/json"
+	"github.com/jackc/pgx/v5"
+)
+
+type orderFundingReader interface {
+	QueryRow(context.Context, string, ...any) pgx.Row
+}
+type OrderFundingSnapshot struct {
+	TenantID            string `json:"tenant_id"`
+	OrganizationID      string `json:"organization_id"`
+	OrderID             string `json:"order_id"`
+	Currency            string `json:"currency"`
+	GrossMinor          int64  `json:"gross_minor_units"`
+	GiftMinor           int64  `json:"gift_minor_units"`
+	DiscountMinor       int64  `json:"discount_minor_units"`
+	ProviderMinor       int64  `json:"provider_minor_units"`
+	ContributionsSHA256 string `json:"contributions_sha256"`
+}
+
+func fundingHash(raw []byte) string           { h := sha256.Sum256(raw); return hex.EncodeToString(h[:]) }
+func (v OrderFundingSnapshot) SHA256() string { raw, _ := json.Marshal(v); return fundingHash(raw) }
+func readOrderFunding(ctx context.Context, q orderFundingReader, tenant, org, order, currency string, gross int64) (OrderFundingSnapshot, error) {
+	v := OrderFundingSnapshot{TenantID: tenant, OrganizationID: org, OrderID: order}
+	e := q.QueryRow(ctx, `select currency,gross_minor_units,gift_minor_units,discount_minor_units,provider_due_minor_units,contributions_sha256 from payment.order_funding where tenant_id=$1 and organization_id=$2 and order_id=$3`, tenant, org, order).Scan(&v.Currency, &v.GrossMinor, &v.GiftMinor, &v.DiscountMinor, &v.ProviderMinor, &v.ContributionsSHA256)
+	if e != nil {
+		return v, e
+	}
+	hash, e := hex.DecodeString(v.ContributionsSHA256)
+	if currency != v.Currency || gross != v.GrossMinor || gross <= 0 || v.GiftMinor < 0 || v.GiftMinor > gross || v.DiscountMinor < 0 || v.DiscountMinor > gross-v.GiftMinor || v.ProviderMinor < 0 || v.ProviderMinor != gross-v.GiftMinor-v.DiscountMinor || e != nil || len(hash) != 32 || hex.EncodeToString(hash) != v.ContributionsSHA256 {
+		return v, commerce.ErrConflict
+	}
+	return v, nil
+}
+func orderProviderDue(ctx context.Context, q orderFundingReader, tenant, org, order, currency string, gross int64) (int64, error) {
+	v, e := readOrderFunding(ctx, q, tenant, org, order, currency, gross)
+	return v.ProviderMinor, e
+}
+````
+
+### FILE: `internal/platform/postgres/local_funding.go`
+
+```yaml
+block_id: "GO-COMMERCE-PRICING-PAYMENT-API:internal/platform/postgres/local_funding.go:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "Local typed source/transaction/transport/UI/recovery glue; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "7afb4efeb0c1aa24130ac55ccc4bdb418c71f85211468ab62ccadf2eecd073bc"
+variables: []
+secrets_allowed: false
+```
+
+````go
+package postgres
+
+// AUTHORED immutable observation of already approved contributions. This is
+// not a provider capture, cash movement, general ledger or gift-card rule.
+import (
+	"bytes"
+	"context"
+	"elite.local/enterprise/internal/commerce"
+	"encoding/json"
+	"io"
+	"time"
+)
+
+const LocalFundingEffect = "ORDER_FULLY_FUNDED_BY_STORED_VALUE"
+
+type LocalFundingReceipt struct {
+	ID               string               `json:"funding_receipt_id"`
+	RequestKey       string               `json:"request_key"`
+	RequestSHA256    string               `json:"request_sha256"`
+	RequestedBy      string               `json:"requested_by"`
+	Allocation       OrderFundingSnapshot `json:"allocation"`
+	AllocationSHA256 string               `json:"allocation_sha256"`
+	ObservedAt       time.Time            `json:"observed_at"`
+	Effect           string               `json:"effect"`
+}
+type LocalFundingResult struct {
+	Receipt LocalFundingReceipt `json:"receipt"`
+	SHA256  string              `json:"receipt_sha256"`
+}
+
+// Order is locked by the caller; contributions cannot change during validation.
+func readLocalFunding(ctx context.Context, q orderFundingReader, tenant, org, order, id, evidence, currency string, gross int64) (LocalFundingResult, error) {
+	var out LocalFundingResult
+	var raw []byte
+	var storedAllocation string
+	var amount, gift, discount int64
+	var at time.Time
+	e := q.QueryRow(ctx, `select receipt_raw,receipt_sha256,allocation_sha256,gross_minor_units,gift_minor_units,discount_minor_units,created_at from payment.local_funding_evidence where tenant_id=$1 and organization_id=$2 and order_id=$3 and funding_id=$4 and currency=$5`, tenant, org, order, id, currency).Scan(&raw, &out.SHA256, &storedAllocation, &amount, &gift, &discount, &at)
+	if e != nil {
+		return out, e
+	}
+	if len(raw) > 65536 || fundingHash(raw) != out.SHA256 || out.SHA256 != evidence {
+		return out, commerce.ErrConflict
+	}
+	decoder := json.NewDecoder(bytes.NewReader(raw))
+	decoder.DisallowUnknownFields()
+	if decoder.Decode(&out.Receipt) != nil || decoder.Decode(new(any)) != io.EOF {
+		return out, commerce.ErrConflict
+	}
+	current, e := readOrderFunding(ctx, q, tenant, org, order, currency, gross)
+	if e != nil {
+		return out, e
+	}
+	r := out.Receipt
+	if current.ProviderMinor != 0 || current.GiftMinor+current.DiscountMinor <= 0 || r.ID != id || r.Effect != LocalFundingEffect || !r.ObservedAt.Equal(at) || r.Allocation != current || r.AllocationSHA256 != current.SHA256() || r.AllocationSHA256 != storedAllocation || amount != gross || gift != current.GiftMinor || discount != current.DiscountMinor {
+		return out, commerce.ErrConflict
+	}
+	return out, nil
+}
+````
+
+V402 composed delta: J3 immutable approved catalog publication reuses original Commerce SQL/shared approval and optional host/public model owner; existing Next storefront consumes a validated published projection. No new dependencies or corporate attribution. CATALOG_CONNECTED_RELEASE_V402.md.

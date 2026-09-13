@@ -13,12 +13,12 @@ foreach ($scriptName in @('VERIFY_LIBRARY.ps1', 'CREATE_PORTABLE_ARCHIVE.ps1')) 
     $ast = [Management.Automation.Language.Parser]::ParseFile((Join-Path $sourceRoot $scriptName), [ref]$tokens, [ref]$errors)
     if ($errors.Count) { throw "Parse error in $scriptName" }
     # Load only declarations from the scripts under test; never run their main body.
-    foreach ($name in @('releaseDirectories','releaseRootMarkdown','releaseRootScripts','releaseMarkdownSystemScripts','distributionManifestName')) {
+    foreach ($name in @('releaseDirectories','releaseRootMarkdown','releaseRootScripts','releaseRootMetadata','releaseMarkdownSystemScripts','distributionManifestName')) {
       $nodes = @($ast.FindAll({ param($node) $node -is [Management.Automation.Language.AssignmentStatementAst] -and $node.Left.Extent.Text -ceq ('$' + $name) }, $false))
       if ($nodes.Count -gt 1) { throw "Ambiguous declaration: $name" }
       if ($nodes.Count -eq 1) { . ([scriptblock]::Create($nodes[0].Extent.Text)) }
     }
-    foreach ($name in @('Assert-True','Relative','Relative-ToLibrary','Test-LocalMaintenanceEntry','Get-ReleaseSourceFiles')) {
+    foreach ($name in @('Assert-True','Relative','Relative-ToLibrary','Test-LocalMaintenanceEntry','Get-ReleaseInputPolicy','Get-ReleaseSourceFiles')) {
       $nodes = @($ast.FindAll({ param($node) $node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -ceq $name }, $false))
       if ($nodes.Count -gt 1) { throw "Ambiguous function: $name" }
       if ($nodes.Count -eq 1) { . ([scriptblock]::Create($nodes[0].Extent.Text)) }
@@ -42,7 +42,7 @@ foreach ($scriptName in @('VERIFY_LIBRARY.ps1', 'CREATE_PORTABLE_ARCHIVE.ps1')) 
         }
         switch ($case) {
           'intake' {
-            foreach ($name in @('PROJECT_READINESS_GATE.json','PROJECT_READINESS_RECORD.md','PROJECT_ENGINEERING_CONTRACT.json','PROJECT_ADVISORY_A.md','PROJECT_ADVISORY_H.md')) {
+            foreach ($name in @('PROJECT_READINESS_GATE.json','PROJECT_LIBRARY_READINESS_GATE.json','PROJECT_READINESS_RECORD.md','PROJECT_ENGINEERING_CONTRACT.json','PROJECT_ADVISORY_A.md','PROJECT_ADVISORY_H.md')) {
               [IO.File]::WriteAllText((Join-Path $libraryRoot $name), 'synthetic, never distribute')
             }
           }

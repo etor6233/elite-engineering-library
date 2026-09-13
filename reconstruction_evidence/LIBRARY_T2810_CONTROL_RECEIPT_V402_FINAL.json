@@ -1,0 +1,39 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-source330-metadata331-local",
+  "control": "T2810",
+  "outcome": "PASS",
+  "command": "Source330/metadata331 exact inheritance + actual signed build/verification/runtime acceptance; T2810",
+  "exit_code": 0,
+  "assertions": [
+    "Two independent exact source trees, NEW/EXISTING preservation, two actual builds, deterministic ZIP/SPDX/SLSA/signature/independent extraction.",
+    "No production/live effects authorized; source/locks/notices bound to exact inventory."
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "4aaa1fb70a613dace854645c2d053097c6d8b3173cb8c2f6db80aedb9e04e672"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.json",
+      "sha256": "88c2361c1b10ead7af3933fce2564eacd097515d4a5f45c278480ee2a2757a42"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_REFERENCE_PROVENANCE_V402.json",
+      "sha256": "72419fd412bceeb21e8a73201d7f9fa98de0113582661f5577009db91d3c5156"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.md",
+      "sha256": "fd98b23c028f7ee84da423460d6e51252196b4154282e9243371f466dc095bdf"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+      "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+    }
+  ],
+  "inventory_sha256": "a68cc43097e13bb742a8f10f259a6389e1f015a912b9df44c5f008f2c7eec088",
+  "live_effects_performed": false
+}

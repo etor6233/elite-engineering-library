@@ -1,0 +1,56 @@
+{
+  "status": "CONNECTED_LOCAL_CANDIDATE_NOT_CANONICAL",
+  "canonical_profile": {
+    "packs": 82,
+    "files": 1039
+  },
+  "candidate_source_manifest": {
+    "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\gift-tender-operator-manifest.json",
+    "sha256": "3e1a0d3b0d8a92550d39210ba8911ebf0526c8297bb3d6d94ae916f3333425e4",
+    "files": 1115
+  },
+  "receipts": {
+    "gift-expiry-red/result.json": "24b5e72dccb7a91aa53a1edf322de1dbcf8a6715616a3a42fa2111085858ec9f",
+    "gift-expiry-red/connected.log": "6a88bc2d7286c84f910ffc7e6abeaffbc8bc3af64801c40934bea3c4f71c5ffa",
+    "gift-expiry-green/result.json": "a6bd7be82b12afc46c3c7684a49fb2ce7e93bf5fe3d2971a4118978f430201cc",
+    "gift-expiry-green/connected.log": "f8582e2724a01e8288fbedffc1688ab93e4daed53d59304e2077aae62846115f",
+    "gift-http-connected-first/result.json": "939dc1297eb885ea1a32d062ee61b3953cc5041ecced6b8a3a465aba5b4d0428",
+    "gift-http-connected-first/connected.log": "9651180b749dbc0085746beac945a9a5d3a75264b502129d4c1dbcf8ca639278",
+    "gift-web-first/focused-tests.log": "0a8bfa5c2fba80e49cbaae09b9b87a601ab458c2209bd9d4b26134bee8492f19",
+    "gift-web-first/build.log": "3bba6eba726d3759e36ee23896eeedc737f8967fd4472d6757975c636e049d03",
+    "gift-web-first/typecheck.log": "c214f20b44236d01495dd0b6fdf220c012761748a174af7da97665f0fbfc0af8",
+    "gift-web-first/typecheck-corrected.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "gift-browser-pg-first/result.json": "0be1614ae3ef745ea0587452c69281c5d1e907fa13a3d8da2b7707d3924a3708",
+    "gift-browser-pg-role-locator/result.json": "95a940416cd5768fea0b3d45f3de6d558e6d53904efa60f9c67d8cca63352d04",
+    "gift-browser-pg-role-locator/connected.log": "0613ac0dc90bfa520f7f7f80ebc165c336c866f384693b37f0b59d97b934a92d",
+    "gift-tender-downgrade/result.json": "8b82f5da324c17d87550b2fd5d37aea4427f88d81ee4c727090d629fc0ff3b8d",
+    "gift-final-go-gates.json": "4f0e640c5ef9c30dde0f2d989aad300d027b0f9c590ddb0adbdbf7c397560019",
+    "gift-final-host-contract.log": "5f98b77ff6d6b89c6a68704479e34658e376ee26ccbc4435f44cd74ab4973613",
+    "gift-final-vet.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "gift-final-build.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "gift-tender-operator-manifest.json": "3e1a0d3b0d8a92550d39210ba8911ebf0526c8297bb3d6d94ae916f3333425e4",
+    "gift-tender-candidate/stored-value-browser-artifacts-2351150312/browser.log": "ce682fae8e3d9029032d2865c2fb6123db209e0e71b54beb1ed7648c5fa512cd",
+    "gift-tender-candidate/stored-value-browser-artifacts-2351150312/api-post-counts.json": "b95a525ea53bb4de2ff9420e65527d5d18b25458e56acfc4dd8a332161d0e2f6",
+    "gift-tender-candidate/stored-value-browser-artifacts-2351150312/browsers/stored-value-connected-sou-ce493-delivery-without-a-provider-chromium-desktop/stored-value-recovered-mobile.png": "5b916d50b2f68992c3a6d288941bd92746d1afead7278bb18c431d6667ccc616"
+  },
+  "no_live_accounts": true,
+  "no_new_dependency": true,
+  "browser_proven": [
+    "issue",
+    "distinct_review",
+    "redeem",
+    "distinct_review",
+    "funding",
+    "lost_response_recovery",
+    "prepare",
+    "checklist",
+    "customer_acceptance",
+    "commercial_receipt"
+  ],
+  "source_revision": "99edb6dd82b7b560930c00b03b694ba700785370",
+  "pending": [
+    "Formal source/notice/replacement admission and reusable pack packaging",
+    "Exact canonical composition/profile rebuild",
+    "Remaining T2802 blueprint capabilities"
+  ]
+}

@@ -1,0 +1,268 @@
+{
+  "schema": "elite-pnpm-local-runtime-proof/v1",
+  "state": "PROVEN_LOCAL",
+  "scope": "LIBRARY_INFRASTRUCTURE_LOCAL_OFFLINE_INSTALL",
+  "library": {
+    "packs": 204,
+    "blocks": 2250,
+    "provenance": {
+      "AUTHORED": 1950,
+      "ADAPTED": 159,
+      "VERBATIM": 141
+    }
+  },
+  "franchise": {
+    "packs": 109,
+    "files": 1481,
+    "unchanged_since_execution310": true
+  },
+  "pack": {
+    "path": "implementation_packs/PNPM_ARTIFACT_SELECTION_GATE.md",
+    "version": "0.9.0",
+    "sha256": "8a16a52ee7ed0795505765c81bf0509d40846101c790694a4f87010f479734b2",
+    "outputs": {
+      "pnpm_artifact_selection/README.md": "42afeebe676e34a6712b9959a783a24e1645a4761f3b50a36ec3d4e2be946658",
+      "pnpm_artifact_selection/selection-policy.json": "93c27e601ccc04bbadb755483186e96d3aca0bad6b37063c668e934e55bc43f6",
+      "pnpm_artifact_selection/select_artifact.py": "c3357136987d8cde019aba907f39bc23f6e1ef371169f9e9b98122a097b0f640",
+      "pnpm_artifact_selection/test_selection.py": "561ea3cc314a7a81779c04541b2fd4e201227750dd690c0d0bf87a7834008a5d",
+      "pnpm_artifact_selection/plan_install.py": "5e13ccfa6228278ff66bd992d0db6415750fcf900157e25467e03d4aee535d67",
+      "pnpm_artifact_selection/test_routing.py": "7d35af69567c2293349e226bc0dacde8aa04769a11817288375d73097c5f2680",
+      "pnpm_artifact_selection/retained-notice-catalog.json": "e4a906897aeae3dec44d63beb40514329353f41859c8d380c126df8b2d599c1e",
+      "pnpm_artifact_selection/next-path-source-evidence.json": "581c15a6e63ecc37d3c4f4fde4e701ed25532ffc141c519dd88919baf8685dd7",
+      "pnpm_artifact_selection/contain_zip.py": "eb4206e2397c5e31a56032a0cdff44923a11b22de1d5dd72226fe59f1c68263b",
+      "pnpm_artifact_selection/local-runtime-policy.json": "77956707bda8be688bbbf01b72b9182d255f882c70f99a47a68eb64204452b1d",
+      "pnpm_artifact_selection/local-runtime.cdx.json": "f879049e2ace064732fe13be363ff406744528e63c85d0c05f18b5ddb33a56b5",
+      "pnpm_artifact_selection/local-tool-notices.json": "0398c1f427a933b021563b1d1f5da9feb380f58d16aa325e62732852c7252521",
+      "pnpm_artifact_selection/local_runtime.py": "35ca06b572cdcaf5807e9bd11eccca5b8d393a6f230c8da3175ba0280ef1d2ac",
+      "pnpm_artifact_selection/test_local_runtime.py": "53a92ac24657fcdeadf2b640ec19073cc754316ce4f382b754d0c5b2f3b4a9f1"
+    }
+  },
+  "runtime_policy": {
+    "sha256": "77956707bda8be688bbbf01b72b9182d255f882c70f99a47a68eb64204452b1d",
+    "node_flags": [
+      "--jitless",
+      "--no-addons"
+    ],
+    "pnpm_bundle_sha256": "aff07c57e598640266b0ca1c795879db1bbdd2eafe71e96be34026358ba1c42b",
+    "contained_files": 445,
+    "permitted_command": "install",
+    "permitted_consumers": [
+      "enterprise-web",
+      "playwright",
+      "lighthouse"
+    ]
+  },
+  "source_inventory": {
+    "published_npm_components": 467,
+    "nested_openpgp_components": 8,
+    "nested_source_files_exact": 42,
+    "embedded_wasm_blobs_bound": 6,
+    "notice_package_entries": 475,
+    "unique_notice_texts": 279,
+    "actual_named_license_notice_members": 483
+  },
+  "sca": {
+    "scanner": "OSV2.5.1",
+    "identified_npm_python_components": 477,
+    "base_components": 472,
+    "delta_components": 5,
+    "findings": 0,
+    "wasm_independent_build_or_complete_native_sca": false,
+    "native_execution_in_installer": "WASM absent in main/worker and native addons disabled; contained claim only"
+  },
+  "tests": {
+    "restricted_installs": [
+      {
+        "consumer": "enterprise-web",
+        "state": "PASS",
+        "elapsed_seconds": 105.989,
+        "plan_sha256": "4cc8d4f879e6cbecb7e49a7156788fea90db73ce5fc5a20839d8f91767f35496",
+        "execution_result_sha256": "bbe86d6cdfb01a09240ac991c739e490dc170732ac37709b2a45bf88a5881f98",
+        "log_sha256": "949d584db04b6a8d876890bdd388b75a0196955ef49f89f4ba7ce79de2d91d6b",
+        "source_inputs": {
+          "package.json": "acc4e4bd62c13cf48e071e933266d82d067cab849f92474d71a533ebf6508951",
+          "pnpm-lock.yaml": "d6c73eb82a56c7e8d21ee89ffb402d0adb2f0c15db9c33bb8ec7035775119928",
+          "pnpm-workspace.yaml": "f52887318fe556dbdb3574622f5c6248483e843edc3b61ad98b6ae3b351571ba"
+        },
+        "positive_download_counts": 0
+      },
+      {
+        "consumer": "playwright",
+        "state": "PASS",
+        "elapsed_seconds": 5.865,
+        "plan_sha256": "13e4c689964ba63a1abb1ee7259681da01c0329b2dbc5bf8f69c2f3c72e00bac",
+        "execution_result_sha256": "de2fbeab11dd9a713d4b0dc3494fe68787b30ecaa39c56ba7dfc8e8bcb432798",
+        "log_sha256": "fa2a6e06f57f9ffede84d29e9d4ebf96265f7f1107207e79b9ba019388990e24",
+        "source_inputs": {
+          "package.json": "eabb3e705b59759748724b2be3e8720184d26b570ab51e6c8a2ee8a0bdf41b90",
+          "pnpm-lock.yaml": "63eec1e3d5bac29965e850bf751269c7a8b317929b570205a1e223544f80a470"
+        },
+        "positive_download_counts": 0
+      },
+      {
+        "consumer": "lighthouse",
+        "state": "PASS",
+        "elapsed_seconds": 27.996,
+        "plan_sha256": "0e55a1bb9e133080738bf5c377b9577abf98cd6fbb3227c4af66d5e9d176d1a7",
+        "execution_result_sha256": "79c5ca7e805e205760c820eb184e8d3d3b54bf3702caa9e5e88fefc2bf9e73c1",
+        "log_sha256": "9fdb5c6811f71827eeb1ab9357556e718ff5e375e068b9bf9403b5435eb12bf0",
+        "source_inputs": {
+          "package.json": "dcdb7fd7c346f73543643070f14c15578a3f425245b24a5398b314d26366b7bb",
+          "pnpm-lock.yaml": "c690da3a314e5275d68c4ea4a88e700dbd9a58b0da6fcbc25aec2bdc486dd9aa"
+        },
+        "positive_download_counts": 0
+      }
+    ],
+    "router_negative_cases": [
+      {
+        "case": "remove_native_restrictions",
+        "result": "REJECTED",
+        "error": "runtime plan is not the admitted recipe"
+      },
+      {
+        "case": "change_to_network_command",
+        "result": "REJECTED",
+        "error": "runtime plan is not the admitted recipe"
+      },
+      {
+        "case": "inject_environment",
+        "result": "REJECTED",
+        "error": "runtime plan is not the admitted recipe"
+      },
+      {
+        "case": "change_payload_binding",
+        "result": "REJECTED",
+        "error": "unexpected payload file"
+      },
+      {
+        "case": "changed_notice",
+        "result": "REJECTED",
+        "error": "input size/type rejected"
+      },
+      {
+        "case": "unexpected_plan_file",
+        "result": "REJECTED",
+        "error": "occupied or unexpected runtime plan entries"
+      },
+      {
+        "case": "occupied_prepare",
+        "result": "REJECTED",
+        "error": "new runtime plan requires absent target"
+      },
+      {
+        "case": "different_external_plan_hash",
+        "result": "REJECTED",
+        "error": "external runtime plan hash mismatch"
+      },
+      {
+        "case": "enterprise-web_one_shot_replay",
+        "result": "REJECTED",
+        "error": "fresh consumer without node_modules required"
+      },
+      {
+        "case": "playwright_one_shot_replay",
+        "result": "REJECTED",
+        "error": "fresh consumer without node_modules required"
+      },
+      {
+        "case": "lighthouse_one_shot_replay",
+        "result": "REJECTED",
+        "error": "fresh consumer without node_modules required"
+      }
+    ],
+    "focal_unit_tests": 8,
+    "projection_to_contained_files_exact": 445,
+    "independent_rebuilds": 2,
+    "rebuilt_files_each": 14
+  },
+  "G0_G8": {
+    "G0": "PASS narrow installer need; existing official runtime and reusable owners",
+    "G1": "PASS scoped private local use with original declarations/notices preserved; no altered-tool redistribution admission",
+    "G2": "PASS fixed official archive identities and per-file hashes; local ZIP adaptation/glue explicitly declared",
+    "G3": "PASS original acquisition/selector/planner plus separate restricted one-shot executor",
+    "G4": "PASS scoped SCA477identities/ZIP removal/native execution restrictions; no general network parser or native build claim",
+    "G5": "PASS3actual restricted installs,11negative router cases,8focal tests",
+    "G6": "PASS failure/timeout durable evidence and occupied-plan rejection; no destructive recovery",
+    "G7": "PASS2independent14-file rebuilds and445-file correspondence from verified projection",
+    "G8": "PASS local runtime recipe and notices delivered in canonical pack; product build/preflight orchestration remains T2808/T2810"
+  },
+  "limits": [
+    "Private trusted local install only; --offline is not an operating-system network sandbox.",
+    "Public/library/product ZIP must exclude altered pnpm payload; acquisition/adaptation occurs on the consuming machine.",
+    "Published registry declarations without supplied copyright are retained verbatim; no author/year invented.",
+    "Remaining exact composition SCA/lint belongs to T2803; user credentials cannot close code/evidence gaps.",
+    "Daybreak/libxml2 remains deferred; no investigation performed."
+  ],
+  "receipts": [
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\pnpm-current-closure\\license-quarantine-lock.json",
+      "sha256": "77eea28b4a9afe87e013ed986f389774a1aa05f62bd3547f48f6e69cf3b96c6e"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\pnpm-current-closure\\license-quarantine-receipt.json",
+      "sha256": "f923f8ad47957b43ea859a92ed0c26b4bf5d577f2c4f5b34373d64bdf8d2e3a0"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\pnpm-current-closure\\license-inspection.json",
+      "sha256": "f2145cf7c9a2584a54ebde9b2058375d6c8afcd851bb15748609319d44d65905"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\pnpm-current-closure\\nested-source-profile.json",
+      "sha256": "ebc15fbffbad6b28e4b47f3e78ff1e9f66a89f807b577f0d56ebf1057c454bf9"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\pnpm-current-closure\\nested-source-archive-lock.json",
+      "sha256": "dc13bed8260ee73186ad721ed521addba053fb608a70172b3d6f6d54da8de469"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\pnpm-current-closure\\nested-source-receipts.json",
+      "sha256": "5668d3c481682ceca132231ec1cbfe15047d000878c5cf8abf63a4fd6cfdf973"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\pnpm-current-closure\\license-supplement-receipts.json",
+      "sha256": "bcd12086775524445bc32a918b004737f8e7f4e22f48fcc90e86b0b5b877d773"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\pnpm-current-closure\\nested-authority-receipts.json",
+      "sha256": "ec20c544bc2062f530cea0a523e91ffcd7dd293437752f0489b030870c82e262"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\pnpm-current-closure\\embedded-wasm-correspondence.json",
+      "sha256": "14bd7d0bff4913a72a7cb2c8f732a8c77de1c40e6d17c64b5fd28a8b39479aa2"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\pnpm-current-closure\\complete-observed-components.cdx.json",
+      "sha256": "f879049e2ace064732fe13be363ff406744528e63c85d0c05f18b5ddb33a56b5"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\pnpm-current-closure\\osv.json",
+      "sha256": "6129e3c5ac1e44634a5f1a5d697c25f0e70f26f8558f2a5d5a8607e7cb6fec5d"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\pnpm-current-closure\\osv-nested-delta.json",
+      "sha256": "f985fd2387db1ffd2162d29999c0c29c1f611935e486ce4e574a18a98844fa08"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\pnpm-current-closure\\restricted-runtime-result.json",
+      "sha256": "0c33988f6b6d9fe11f23e6e8a202b822eab90b4716c7f2f27dd8f95bcd2900c8"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\pnpm-current-closure\\local-runtime-final-tests.json",
+      "sha256": "38c580d50b9ac723759c694139aeba039b0dc698b5c273b51df001ee62c9473f"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\pnpm-current-closure\\rebuild-result.json",
+      "sha256": "942b62f4e16bab6c5da8648bb7c50d432f20615db1a82dc26d2787a5bf11bd0b"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\pnpm-current-closure\\package-result.json",
+      "sha256": "b88265f44fd39848571ddebcc14dffd6ba950f58f839d38b89244b90c4e8e5ad"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\pnpm-current-closure\\runtime-admission-candidate.json",
+      "sha256": "d344a4cfea1cf2de1a52ceb5434324c377ed459c5e7c768ca9199d652539baf3"
+    }
+  ],
+  "overall_ready": false,
+  "production_authorized": false
+}

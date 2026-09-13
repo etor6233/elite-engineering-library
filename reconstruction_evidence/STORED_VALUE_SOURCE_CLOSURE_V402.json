@@ -1,0 +1,82 @@
+{
+  "scope": "LIBRARY_INFRASTRUCTURE",
+  "status": "PASS_DELTA_NOT_GLOBAL_READY",
+  "source_candidate": "gift-tender-candidate",
+  "evidence": [
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\gift-source-current-identity.json",
+      "sha256": "0e447bdd6ee1569686fab7f42f773e9c6f128c515c88478a6b735c4b4af0695c"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\gift-source-loader-delta.json",
+      "sha256": "33a5b43d261b885fa49e7585fddeb3f8925b0df79cca362efbbbab782f5e2086"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\gift-source-loader-red.log",
+      "sha256": "e575af0b0cd1e9de8254ae53edccc7511c5c61e65294278808a41c21744723a0"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\gift-source-loader-green.log",
+      "sha256": "a05abf61c7b6924265b82093705816ca38c832664a0de8ca31b6c505151a2f2d"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\gift-source-loader-ipc.log",
+      "sha256": "02b3fd597ccc0ae1f5ddbb4f1401976327127d33a008769a5324a05c7f7bc208"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\gift-source-replacement.log",
+      "sha256": "165bba6efcb84548a9a7c0f5298f907cf8400d4c68ad2d6c5fbcdb5d4ecc40c4"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\gift-source-fuzz-gates.json",
+      "sha256": "072de4a9f4994c3049499202fa96c026d54f1929f19bef97aa4c8e00edb760d8"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\gift-source-fuzz-receipt.json",
+      "sha256": "2336f8f0116778249bbb481de8d8f220a9c7236ccf773d21cc264fc9a8352c40"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\exact-eof-tooling\\gates-first\\result.json",
+      "sha256": "63cd993c640934f27f3a279e54f80d5dbcbbb8ce942d9bcf1daa6d1217bc4d93"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\exact-eof-tooling\\legacy-composer.log",
+      "sha256": "7e0790253e3485a7904671403f3b164ccdab35661cfdda6c120743f3340ef380"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\exact-eof-tooling\\legacy-updater.log",
+      "sha256": "85af8f4d81f19a524c2d37e117220617f8974b329294ffe0179f5f6d70672509"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\exact-eof-tooling\\publication.json",
+      "sha256": "dd58e4b18551b7ae4c272fb419f2410ccb39dc7a2132558a0070303a2b2a801b"
+    }
+  ],
+  "published_tooling": {
+    "before_pack_sha256": "a8505384bb3f9085d36f21f1b6471fe24cbd17b054fa87f82f1d24b7007ce9d5",
+    "after_pack_sha256": "f0f024d0faf8960bbfd72c42aff649c95e07e8f3fbe0ce30e8c8926a73c64029",
+    "version": "0.3.0",
+    "changes": [
+      {
+        "path": "tools/compose-markdown-project.ps1",
+        "before_sha256": "1e286714c7122116835264c7e28fc97cde1568eac59f6e03d8e262bc71c40fc4",
+        "after_sha256": "b9c9473f6bba428a9f1defa0a2cdb4480680c6934bff8adc2df8f328aa36d2f7"
+      }
+    ],
+    "tooling_files": {
+      "materialize_markdown_pack.ps1": "544309f93002effea5144bc41750af6fc943ca354eb447a744fabc7e8d4e5010",
+      "markdown_system/update_pack_from_tree.ps1": "9db13d941920c7d3fb07ab0f7bc56a388565cc032f849cac35494560c236b5b0",
+      "markdown_system/test_pack_exact_eof.ps1": "9dcad2a23cc5a68220071352a96fac5f0f57c4ab9edfcd1dd365b5e6f07d1361",
+      "markdown_system/PACK_CONTRACT.md": "e19f2b2a030f78eff53bdc36e740936f71c45d59d421c80c2d6713fef2aee162",
+      "implementation_packs/MARKDOWN_COMPOSITOR_CORE.md": "f0f024d0faf8960bbfd72c42aff649c95e07e8f3fbe0ce30e8c8926a73c64029"
+    },
+    "status": "PASS",
+    "cases": 42
+  },
+  "canonical_profile": {
+    "packs": 82,
+    "files": 1039,
+    "unchanged": true
+  },
+  "remaining": "Stored-value product packs, exact profile reconstruction and G0-G8 admission before T2802 promotion."
+}

@@ -4,7 +4,7 @@
 
 ```yaml
 pack_id: "GO-PAYMENT-CHECKOUT-RUNTIME"
-pack_version: "0.1.0"
+pack_version: "0.3.0"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -2407,7 +2407,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "d6aeaa87260bdedcda029c87118c0e8802f978e74a5e7134bcaac34e43dcc274"
+sha256: "1254e026bb837c14fa769bb7487140ff2f9d50373b09c95164d738a340c0e93f"
 variables: []
 secrets_allowed: false
 ```
@@ -2447,7 +2447,7 @@ func (s *PaymentCheckoutStore) PendingRequests(ctx context.Context, c paymentbri
  join integration.provider_connection conn on conn.tenant_id=p.tenant_id and conn.connection_id=$4 and conn.provider_code=p.provider_code and conn.state='active' and (conn.organization_id is null or conn.organization_id=o.organization_id)
  left join payment.provider_checkout checkout on checkout.tenant_id=p.tenant_id and checkout.payment_attempt_id=p.payment_attempt_id
  where p.tenant_id=$1 and p.provider_code=$2 and o.organization_id=$3 and p.currency=$5 and p.state='created'
- and checkout.session_id is null and p.amount_minor_units=o.total_minor_units and p.currency=o.currency
+ and checkout.session_id is null and p.amount_minor_units=(select provider_due_minor_units from payment.order_funding f where f.tenant_id=o.tenant_id and f.order_id=o.order_id and f.organization_id=o.organization_id) and p.currency=o.currency
  and o.state in ('placed','confirmed','allocated') and o.customer_principal_id is not null
  and exists(select 1 from platform.outbox_event e where e.tenant_id=p.tenant_id and e.aggregate_id=p.payment_attempt_id and e.event_type='payment.requested' and e.schema_version=1)
  and (select date_trunc('second',min(e.occurred_at))+interval '23 hours' from platform.outbox_event e where e.tenant_id=p.tenant_id and e.aggregate_id=p.payment_attempt_id and e.event_type='payment.requested' and e.schema_version=1)>clock_timestamp()+interval '31 minutes'
@@ -2489,6 +2489,10 @@ func lockCheckoutRequest(ctx context.Context, tx pgx.Tx, c paymentbridge.Scope, 
 		return r, err
 	}
 	err = tx.QueryRow(ctx, `select tenant_id,payment_attempt_id,order_id,provider_code,currency,amount_minor_units from payment.payment_attempt where tenant_id=$1 and payment_attempt_id=$2 and order_id=$3 for update`, c.TenantID, attempt, order).Scan(&r.TenantID, &r.PaymentAttemptID, &r.OrderID, &r.ProviderCode, &r.Currency, &r.AmountMinor)
+	if err != nil {
+		return r, err
+	}
+	total, err = orderProviderDue(ctx, tx, c.TenantID, c.OrganizationID, order, currency, total)
 	if err != nil {
 		return r, err
 	}
@@ -3110,7 +3114,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "c05f4b63f75e16bbb9180e937e82b4ce88a4434c92c71bfa2fecace8b7264ec8"
+sha256: "a0dd7bc1c0f6c673c245001715331b60395bbf9eda8d6b03d781ebe4a16982b6"
 variables: []
 secrets_allowed: false
 ```
@@ -3148,7 +3152,7 @@ func (s *CustomerCheckoutReader) CustomerCheckout(ctx context.Context, tenant, o
 	rows, err := s.pool.Query(ctx, `select o.order_id,b.provider_code,b.checkout_url,b.expires_at
  from sales.customer_order o
  join crm.customer_profile customer on customer.tenant_id=o.tenant_id and customer.customer_principal_id=o.customer_principal_id and customer.status='active'
- join payment.payment_attempt p on p.tenant_id=o.tenant_id and p.order_id=o.order_id and p.provider_code=$5 and p.state='pending' and p.amount_minor_units=o.total_minor_units and p.currency=o.currency
+ join payment.payment_attempt p on p.tenant_id=o.tenant_id and p.order_id=o.order_id and p.provider_code=$5 and p.state='pending' and p.amount_minor_units=(select provider_due_minor_units from payment.order_funding f where f.tenant_id=o.tenant_id and f.order_id=o.order_id and f.organization_id=o.organization_id) and p.currency=o.currency
  join payment.provider_checkout b on b.tenant_id=p.tenant_id and b.payment_attempt_id=p.payment_attempt_id and b.provider_code=p.provider_code and b.connection_id=$6 and b.account_ref=$7 and b.live_mode=$8 and b.session_id is not null and b.checkout_url is not null and b.checkout_url<>'' and b.expires_at>clock_timestamp() and b.checkout_state in ('open','preference-created')
  join integration.provider_connection c on c.tenant_id=b.tenant_id and c.connection_id=b.connection_id and c.provider_code=b.provider_code and c.state='active' and (c.organization_id is null or c.organization_id=o.organization_id)
  where o.tenant_id=$1 and o.organization_id=$2 and o.customer_principal_id=$3 and o.order_id=$4 and o.state in ('placed','confirmed','allocated') and o.currency=$9
@@ -3535,7 +3539,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "3e91c0e323360965b6bb284a6df95c4c8d40d355a060a29f655570419a7aed04"
+sha256: "67c14056e98c97b99092a35065f654cf239b7c2cd6c231db322d7775a93483bd"
 variables: []
 secrets_allowed: false
 ```
@@ -3605,6 +3609,7 @@ type connectedProvider struct {
 	attempt, account, order         string
 	expires                         int64
 	posts, sessionGets, paymentGets int
+	amount                          int64
 	refund                          int64
 	loseResponse                    bool
 }
@@ -3612,6 +3617,10 @@ type connectedProvider struct {
 func (f *connectedProvider) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	f.mu.Lock()
 	defer f.mu.Unlock()
+	amount := f.amount
+	if amount == 0 {
+		amount = 123456
+	}
 	w.Header().Set("Content-Type", "application/json")
 	if r.Header.Get("Authorization") != "Bearer sk_test_fixture" {
 		f.t.Error("missing exact fixture credential")
@@ -3629,7 +3638,7 @@ func (f *connectedProvider) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				f.t.Error(err)
 			}
 			f.expires, _ = strconv.ParseInt(r.Form.Get("expires_at"), 10, 64)
-			if r.Form.Get("metadata[payment_attempt_id]") != f.attempt || r.Form.Get("payment_intent_data[metadata][payment_attempt_id]") != f.attempt || r.Form.Get("metadata[order_id]") != "order" || r.Form.Get("line_items[0][price_data][unit_amount]") != "123456" || r.Header.Get("Idempotency-Key") != f.attempt {
+			if r.Form.Get("metadata[payment_attempt_id]") != f.attempt || r.Form.Get("payment_intent_data[metadata][payment_attempt_id]") != f.attempt || r.Form.Get("metadata[order_id]") != "order" || r.Form.Get("line_items[0][price_data][unit_amount]") != strconv.FormatInt(amount, 10) || r.Header.Get("Idempotency-Key") != f.attempt {
 				f.t.Error("checkout escaped order contract")
 			}
 			if f.loseResponse {
@@ -3647,13 +3656,13 @@ func (f *connectedProvider) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			intent = "null"
 			checkoutURL = `"https://checkout.stripe.com/c/pay/cs_test_fixture"`
 		}
-		fmt.Fprintf(w, `{"id":"cs_test_fixture","object":"checkout.session","mode":"payment","amount_total":123456,"currency":"ars","client_reference_id":%q,"metadata":{"order_id":%q,"payment_attempt_id":%q},"status":"complete","payment_status":"paid","livemode":false,"url":%s,"payment_intent":%s,"expires_at":%d}`, f.attempt, f.order, f.attempt, checkoutURL, intent, f.expires)
+		fmt.Fprintf(w, `{"id":"cs_test_fixture","object":"checkout.session","mode":"payment","amount_total":%d,"currency":"ars","client_reference_id":%q,"metadata":{"order_id":%q,"payment_attempt_id":%q},"status":"complete","payment_status":"paid","livemode":false,"url":%s,"payment_intent":%s,"expires_at":%d}`, amount, f.attempt, f.order, f.attempt, checkoutURL, intent, f.expires)
 	case "/v1/payment_intents/pi_fixture":
 		f.paymentGets++
 		if r.Method != "GET" || r.URL.Query().Get("expand[0]") != "latest_charge" {
 			f.t.Error("payment must be expanded official GET")
 		}
-		fmt.Fprintf(w, `{"id":"pi_fixture","amount":123456,"amount_received":123456,"currency":"ars","status":"succeeded","livemode":false,"metadata":{"order_id":%q,"payment_attempt_id":%q},"latest_charge":{"id":"ch_fixture","amount":123456,"amount_captured":123456,"amount_refunded":%d,"currency":"ars","captured":true,"disputed":false,"livemode":false}}`, f.order, f.attempt, f.refund)
+		fmt.Fprintf(w, `{"id":"pi_fixture","amount":%d,"amount_received":%d,"currency":"ars","status":"succeeded","livemode":false,"metadata":{"order_id":%q,"payment_attempt_id":%q},"latest_charge":{"id":"ch_fixture","amount":%d,"amount_captured":%d,"amount_refunded":%d,"currency":"ars","captured":true,"disputed":false,"livemode":false}}`, amount, amount, f.order, f.attempt, amount, amount, f.refund)
 	default:
 		f.t.Errorf("unrecognized provider HTTP %s", r.URL.Path)
 		w.WriteHeader(500)
@@ -3678,42 +3687,19 @@ func connectedPool(t *testing.T) *pgxpool.Pool {
 	return pool
 }
 func connectedInputs(t *testing.T, pool *pgxpool.Pool, provider string) (string, commerce.PaymentAttempt) {
+	return connectedInputsWithAllocation(t, pool, provider, nil)
+}
+func connectedInputsWithAllocation(t *testing.T, pool *pgxpool.Pool, provider string, before func(*testing.T, *pgxpool.Pool, string) int64, quoteHook ...func(*testing.T, *pgxpool.Pool, string) int64) (string, commerce.PaymentAttempt) {
 	t.Helper()
 	ctx := context.Background()
-	ids := randomid.Generator{}
-	tenant := ids.New()
-	statements := []string{
-		`insert into platform.tenant(tenant_id,tenant_code,legal_name,display_name)values($1::uuid,'connected-'||replace(($1::uuid)::text,'-',''),'Synthetic','Synthetic')`,
-		`insert into org.organization(tenant_id,organization_id,organization_code,display_name,organization_type)values($1,'store','store','Synthetic','store')`,
-		`insert into catalog.vehicle_model(tenant_id,model_id,model_code,display_name,vehicle_class,lifecycle_state)values($1,'model','model','Synthetic','bicycle','active')`,
-		`insert into catalog.vehicle_variant(tenant_id,variant_id,model_id,variant_code,display_name,battery_specification,lifecycle_state)values($1,'variant','model','variant','Synthetic','{}','active')`,
-		`insert into crm.customer_profile(tenant_id,customer_principal_id,display_name,email_normalized)values($1,'customer','Synthetic','fixture@example.test')`,
-		`insert into crm.lead(tenant_id,lead_id,organization_id,customer_principal_id,model_id,lifecycle_state,source_code,contact_payload)values($1,'lead','store','customer','model','new','fixture','{}')`,
-		`insert into pricing.price_book(tenant_id,price_book_id,market,currency,valid_from,status)values($1,'retail','AR','ARS',clock_timestamp()-interval '1 day','active')`,
-		`insert into pricing.price_book_entry(tenant_id,price_book_id,variant_id,amount_minor_units,tax_mode)values($1,'retail','variant',123456,'inclusive')`,
-		`insert into inventory.stock_unit(tenant_id,stock_unit_id,organization_id,variant_id,serial_number,state,version,received_at)values($1,'stock','store','variant','SERIAL-SYNTHETIC','available',1,clock_timestamp())`,
-	}
-	for _, q := range statements {
-		if _, err := pool.Exec(ctx, q, tenant); err != nil {
-			t.Fatal(err)
-		}
-	}
-	if _, err := pool.Exec(ctx, `insert into integration.provider_connection(tenant_id,connection_id,provider_code,organization_id,secret_ref)values($1,'checkout',$2,'store','FIXTURE_ONLY_NOT_A_SECRET')`, tenant, provider); err != nil {
-		t.Fatal(err)
-	}
-	repo := db.NewFranchiseJourney(pool)
-	if _, _, err := repo.CreateQuoteAs(ctx, tenant, "quote-key", franchisejourney.Quote{ID: "quote", OrganizationID: "store", LeadID: "lead", VariantID: "variant", PriceBookID: "retail", ValidUntil: time.Now().UTC().Add(time.Hour)}, strings.Repeat("a", 64), ids.New(), "operator"); err != nil {
-		t.Fatal(err)
-	}
-	if _, err := repo.AcceptQuote(ctx, tenant, "store", "customer", "quote", 1, strings.Repeat("a", 64), "order", "line", ids.New(), ids.New()); err != nil {
-		t.Fatal(err)
-	}
-	sales := commerce.NewService(db.NewCommerce(pool), ids)
-	if err := sales.AllocateStockAs(ctx, tenant, "store", "order", "line", "stock", 1, 1, "operator"); err != nil {
-		t.Fatal(err)
+	tenant := connectedSeedOrder(t, pool, provider, quoteHook...)
+	sales := commerce.NewService(db.NewCommerce(pool), randomid.Generator{})
+	expectedAmount := int64(123456)
+	if before != nil {
+		expectedAmount = before(t, pool, tenant)
 	}
 	payment, err := sales.RequestOrderPayment(ctx, tenant, "store", "order", provider, "connected-payment-key-0001", "operator")
-	if err != nil || payment.State != "created" || payment.AmountMinorUnits != 123456 {
+	if err != nil || payment.State != "created" || payment.AmountMinorUnits != expectedAmount {
 		t.Fatal(payment, err)
 	}
 	replay, err := sales.RequestOrderPayment(ctx, tenant, "store", "order", provider, "connected-payment-key-0001", "operator")
@@ -3735,11 +3721,14 @@ type connectedRun struct {
 }
 
 func newConnectedRun(t *testing.T, loss bool) *connectedRun {
+	return newConnectedRunWithAllocation(t, loss, nil)
+}
+func newConnectedRunWithAllocation(t *testing.T, loss bool, before func(*testing.T, *pgxpool.Pool, string) int64, quoteHook ...func(*testing.T, *pgxpool.Pool, string) int64) *connectedRun {
 	t.Helper()
 	ctx := context.Background()
 	pool := connectedPool(t)
-	tenant, payment := connectedInputs(t, pool, "stripe")
-	f := &connectedProvider{t: t, attempt: payment.ID, account: "acct_fixture", order: "order", loseResponse: loss}
+	tenant, payment := connectedInputsWithAllocation(t, pool, "stripe", before, quoteHook...)
+	f := &connectedProvider{t: t, attempt: payment.ID, account: "acct_fixture", order: "order", loseResponse: loss, amount: payment.AmountMinorUnits}
 	server := httptest.NewServer(f)
 	t.Cleanup(server.Close)
 	destination, _ := url.Parse(server.URL)
@@ -4222,6 +4211,51 @@ func TestPaymentMaterializedHandoverProfile(t *testing.T) {
 	}
 	t.Logf("MATERIALIZED_HANDOVER_PROFILE_PG_PASS tenant=%s materializer_file_loader=true same_owners=true live_mode_mismatch_denied=true profile_hash_persisted=true live_proven=false", r.tenant)
 }
+
+func connectedSeedOrder(t *testing.T, pool *pgxpool.Pool, provider string, quoteHook ...func(*testing.T, *pgxpool.Pool, string) int64) string {
+	t.Helper()
+	ctx := context.Background()
+	ids := randomid.Generator{}
+	tenant := ids.New()
+	statements := []string{
+		`insert into platform.tenant(tenant_id,tenant_code,legal_name,display_name)values($1::uuid,'connected-'||replace(($1::uuid)::text,'-',''),'Synthetic','Synthetic')`,
+		`insert into org.organization(tenant_id,organization_id,organization_code,display_name,organization_type)values($1,'store','store','Synthetic','store')`,
+		`insert into catalog.vehicle_model(tenant_id,model_id,model_code,display_name,vehicle_class,lifecycle_state)values($1,'model','model','Synthetic','bicycle','active')`,
+		`insert into catalog.vehicle_variant(tenant_id,variant_id,model_id,variant_code,display_name,battery_specification,lifecycle_state)values($1,'variant','model','variant','Synthetic','{}','active')`,
+		`insert into crm.customer_profile(tenant_id,customer_principal_id,display_name,email_normalized)values($1,'customer','Synthetic','fixture@example.test')`,
+		`insert into crm.lead(tenant_id,lead_id,organization_id,customer_principal_id,model_id,lifecycle_state,source_code,contact_payload)values($1,'lead','store','customer','model','new','fixture','{}')`,
+		`insert into pricing.price_book(tenant_id,price_book_id,market,currency,valid_from,status)values($1,'retail','AR','ARS',clock_timestamp()-interval '1 day','active')`,
+		`insert into pricing.price_book_entry(tenant_id,price_book_id,variant_id,amount_minor_units,tax_mode)values($1,'retail','variant',123456,'inclusive')`,
+		`insert into inventory.stock_unit(tenant_id,stock_unit_id,organization_id,variant_id,serial_number,state,version,received_at)values($1,'stock','store','variant','SERIAL-SYNTHETIC','available',1,clock_timestamp())`,
+	}
+	for _, q := range statements {
+		if _, err := pool.Exec(ctx, q, tenant); err != nil {
+			t.Fatal(err)
+		}
+	}
+	if _, err := pool.Exec(ctx, `insert into integration.provider_connection(tenant_id,connection_id,provider_code,organization_id,secret_ref)values($1,'checkout',$2,'store','FIXTURE_ONLY_NOT_A_SECRET')`, tenant, provider); err != nil {
+		t.Fatal(err)
+	}
+	repo := db.NewFranchiseJourney(pool)
+	if _, _, err := repo.CreateQuoteAs(ctx, tenant, "quote-key", franchisejourney.Quote{ID: "quote", OrganizationID: "store", LeadID: "lead", VariantID: "variant", PriceBookID: "retail", ValidUntil: time.Now().UTC().Add(time.Hour)}, strings.Repeat("a", 64), ids.New(), "operator"); err != nil {
+		t.Fatal(err)
+	}
+	version := int64(1)
+	if len(quoteHook) > 1 {
+		t.Fatal("one quote hook maximum")
+	}
+	if len(quoteHook) == 1 {
+		version = quoteHook[0](t, pool, tenant)
+	}
+	if _, err := repo.AcceptQuote(ctx, tenant, "store", "customer", "quote", version, strings.Repeat("a", 64), "order", "line", ids.New(), ids.New()); err != nil {
+		t.Fatal(err)
+	}
+	sales := commerce.NewService(db.NewCommerce(pool), ids)
+	if err := sales.AllocateStockAs(ctx, tenant, "store", "order", "line", "stock", 1, 1, "operator"); err != nil {
+		t.Fatal(err)
+	}
+	return tenant
+}
 ````
 
 ### FILE: `internal/platform/postgres/payment_dispatch_fence.go`
@@ -4334,3 +4368,7 @@ Run the affected Go unit/HTTP/host tests, bounded native fuzz where the selected
 V402: the complete77pack/915file reference was reconstructed into an absent external destination; every output matched the frozen source inventory. PostgreSQL57migrations and16 connected tests passed without skips, plus vet/build and the explicitly enumerated unit/host cases. Finite fuzz and frontend contract receipts are separately bound to identical files. See reconstruction_evidence/CONNECTED_PAYMENT_HANDOVER_V402.md and CONNECTED_DELTA_ASSURANCE_V402.md. Current SAST/SCA, whole-library operations/performance/portable release and remaining capabilities retain their own gates; no live production or complete TEST02 claim.
 
 Canonical V402 integration: selected by the current profile with exact dependencies and caller overlays. Metadata promotion records byte reconstruction, not closure of every admission/release gate. Payload provenance is unchanged.
+
+V402 composed delta: V402 source-backed stored-value integration: exact remaining provider due, explicit payment/funding XOR, shared approval, bounded browser transport and optional host. See STORED_VALUE_OPERATOR_FLOW_V402.md; source/pack admission successor governs final claim. Existing provider-only behavior retained.
+
+V402 composed delta: Connected warranty reuses existing transaction/approval/stock/service owners; SQL ordering and public wrapper behavior retained. Optional host factory fails closed. Exact source tested in WARRANTY_INTERFACE_AND_PORTABILITY_V402.md; no new dependency or corporate attribution.

@@ -1,0 +1,814 @@
+{
+  "schema": "elite-arca-connected-infrastructure/v1",
+  "state": "PROVEN_LOCAL",
+  "execution_revision": 325,
+  "control": "ARCA_INFRA",
+  "scope": "LIBRARY_INFRASTRUCTURE",
+  "library": {
+    "packs": 205,
+    "blocks": 2360,
+    "provenance": {
+      "ADAPTED": 164,
+      "AUTHORED": 2028,
+      "VERBATIM": 168
+    }
+  },
+  "franchise": {
+    "packs": 116,
+    "files": 1653
+  },
+  "delta": {
+    "arca/fiscal/arca-ws-contracts.lock.json": "27626a456e1e84c92a0fb3072639cde3c220ef08ee193fa67e8d4364bed02c1d",
+    "tools/generate-arca-wsfe-client.ps1": "3cad533df8cec2c5579fc4355258d2d3919623351e3ec2693c5339b685df670d",
+    "tools/test-arca-wsfe-generator.ps1": "c8361e91b0f6c6540a376e0bcc3f54401598b9576c6811ad8c3480e5150b87bb",
+    "arca/fiscal/dotnet-runtime.lock.json": "b2d8ee57c5a7b26d48c4f746477984a9b1fe5e5ef92878cad3435c7b8c28f34e",
+    "arca/fiscal/dotnet-sdk.lock.json": "0442876714bd8c3bbd291bec77abfcb420a125e3f31efe0ae20b1612be404004",
+    "arca/fiscal/generated-lock/packages.lock.json": "39dc2452537df003ed8e3254373fa86de0dfbb557a33ba60c2e99ea3df6af42d",
+    "arca/fiscal/nuget-runtime.lock.json": "6e49e740b40e7a8e3036a4ac386c0115d94b2ef12f1d50fdb0f84733b2c5591c",
+    "arca/fiscal/runtime-legal/ObjectPool-LICENSE.txt": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310",
+    "arca/fiscal/runtime-legal/Runtime-LICENSE.TXT": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310",
+    "arca/fiscal/svcutil-adaptation.lock.json": "62ba00145fb4c3f5626c20a2f8f45c80bbef316e2b3ff1a6bb9dffd6b66c743f",
+    "arca/fiscal/svcutil-legal/Apache-2.0.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "arca/fiscal/svcutil-legal/NuGet.Client-LICENSE.txt": "f1e3c903178e459ebd0c25d2dc65ebf11163c0a0d3ae46690943dffd5813040e",
+    "arca/fiscal/svcutil/packages.lock.json": "a90d08e55dab62af0ccec74a944e591d37a23c8c5e950f95d9bddf16a85e4218",
+    "docs/provenance/arca-local-admission-v402.json": "f5dc206daefb230a7c565a0bf3ac0d4f5e5b5737b59c4060a82f242485858361",
+    "tools/assemble_arca_svcutil.py": "915b120440e2b9244fa2042fd225ae593b1813458064c8c72e904c55a6ea6bf5",
+    "tools/test_arca_offline_build.py": "1a06e2fa9703a9a238df6f5e88adf46ac5c5eaa2b7ec07e009f1db7562fd102b",
+    "arca/credentials/integration/Elite.Arca.Wsaa.Transport/Elite.Arca.Wsaa.Transport.csproj": "891473ddf3503cc3df14ae30fce52335d3e7589cf58e94687ebf7bc621d1f34a",
+    "arca/credentials/integration/Elite.Arca.Wsaa.Transport/packages.lock.json": "e795876298ad858baa373a2a351132d2a2690a66c8ea80516df5b7b29885c317",
+    "arca/credentials/integration/Elite.Arca.Wsaa.Transport/GeneratedWsaaTransport.cs": "000e55f7f32609540b08d72e3e099c289ce9c8a895cb3d223f734ea374979cfe",
+    "arca/credentials/integration-tests/Elite.Arca.Wsaa.Transport.Tests/Elite.Arca.Wsaa.Transport.Tests.csproj": "018b673209779ce3291e03b7fa35b02261ae11b9cfab9dc9523d2557087206aa",
+    "arca/credentials/integration-tests/Elite.Arca.Wsaa.Transport.Tests/packages.lock.json": "f12eaf3dc3498f4f24bacda497347bb4f70f4c2b865b14a7b79c0fbbed14d9a4",
+    "arca/credentials/integration-tests/Elite.Arca.Wsaa.Transport.Tests/Program.cs": "ee28bbc0b56c98cb384aee1deec11cddce3cef2ccc78f610e6190bfdd5b50ca6",
+    "arca/credentials/tests/Elite.Arca.Credentials.Tests/Elite.Arca.Credentials.Tests.csproj": "c2919dcb275e1224e9fd59c9ebf8300854de43a4196f7b12aebd9ca79fc817cb",
+    "arca/credentials/tests/Elite.Arca.Credentials.Tests/packages.lock.json": "74bcd5d1fcdb61aafe47185107202d3e91391ce889876a5a3327950544c878cf",
+    "arca/credentials/tests/Elite.Arca.Credentials.Tests/Program.cs": "917e63398272aada2621e42be6e453622ad949e17c9e230d4371b495ae9ffa0a",
+    "tools/test-arca-wsaa-credential-core.ps1": "4ac7cefe2cf789c2abafb4d9c8b2f48bed3b25537fff295081d1ea5bedf973be",
+    "arca/fiscal/bridge/src/Elite.Arca.Wsfe.Bridge/WsfeBridge.cs": "df9a5e979516d5af3a1a7ea6902b4e0dd9ce35b4836d2025b790f95b1d2e908a",
+    "arca/fiscal/bridge/tests/Elite.Arca.Wsfe.Bridge.Tests/Program.cs": "7dffaa14030067c7f3839f1995bb4bea05e7f1c2c90dae5b1095b2ff81560f6c",
+    "internal/platform/postgres/fiscal.go": "fd4777085eaf06802543fdc86e7761768edad81bbeec0c62337889342573627e",
+    "internal/platform/postgres/fiscal_integration_test.go": "c4268a20e4a7436672c998a0e1573ff053848546345881b9dbf2e68c41676f88",
+    "internal/platform/httpapi/fiscal_connected_reference_test.go": "42fc0e164001a0681b344683f010978dd2cc49ed265fa1701b3dda69916c0b56",
+    "internal/fiscal/wsfeipc/provider.go": "bc9a92f73e025ec60bf90a02c73886461288414317d967b7c304c0dc903db577",
+    "internal/fiscal/wsfeipc/provider_test.go": "70ed3aae1f6c90739c53e373d44854c81341b0139245e62bab21ea46ba537cda",
+    "arca/fiscal/worker/fixtures/Elite.Arca.Wsfe.Fixture/Elite.Arca.Wsfe.Fixture.csproj": "f84ce0b3b0ae4dccfba4dc0bf3bed475fe888b7e6ccc917ace3b01d7b58fca33",
+    "arca/fiscal/worker/fixtures/Elite.Arca.Wsfe.Fixture/FixtureParameters.cs": "6a144ed9a2b53b65d6d3cfa21c13234357616db766378484c1dc823006fcd002",
+    "arca/fiscal/worker/fixtures/Elite.Arca.Wsfe.Fixture/Program.cs": "45be2119f23ab658117fed445a890e6e0608a73c456a1782eb801b126adf30a3",
+    "arca/fiscal/worker/fixtures/Elite.Arca.Wsfe.Fixture/packages.lock.json": "491bd6344247876ff0cc67e35da754618abb4ea48128d3df248e2e8c4488be90",
+    "docs/ARCA_LOCAL_REFERENCE.md": "f4f919cf51a2d532756a4427281ee118c75a4543a59a31db2efe65c2fdfdc50a",
+    "internal/fiscal/wsfeipc/serialization_test.go": "e82673059e72910fd8b21e43cc4c577c43a34adc585b7b0c656eb5db42c4cc5f",
+    "ci/build_local_reference.py": "68bd8eb393c6238d58c6457192453ff652a50eb8971c6d619e419689332d5b4b",
+    "ci/build_signed_reference.ps1": "69cbb6cf001b1b52ade5b8adeb43a06d615fb7b097c70a2f332d48f93e4e6b56",
+    "ci/test_signed_reference.py": "f70759c2be369e8393efe1e89249de79cc56927db9d96f06b546f107f4d4c272",
+    "ci/local-build-inputs.template.json": "2049f60f1db59918e98b0992b15013409caed555d1c13bce7e36f5ed8cbff4fd",
+    "ci/arca-build-inputs.template.json": "b8f767f232b956ba72ad588b455b7eff636bb163528fe5cea17956754b2768dc",
+    "ci/build_arca_reference.py": "7f6c3339adf91d5abc5f4a347599295070634030a6162a9853f186f931df7349"
+  },
+  "unchanged_previous_files": 1608,
+  "connected": {
+    "state": "PASS_LOCAL_CONNECTED_PORTABLE_RUNTIME",
+    "migrations": 84,
+    "domain": {
+      "tenant": "de933f5a-5f08-4ae2-af7c-5104d48d9c43",
+      "invoice": "d7a2c8ed-4962-49c1-aca7-1df489929ea1",
+      "credit": "f4fb68fb-02ec-422a-bbb5-9aee05545619",
+      "stats": {
+        "authorize": 2,
+        "cms": 1,
+        "consult": 1,
+        "last": 2,
+        "scope": "LOCAL_FIXTURES"
+      }
+    },
+    "fixture_host_exit": 0,
+    "scope": "HTTP handlers/injected narrow identity -> captured payment fixture/PG -> actual Go processor -> UDS/.NET CMS/typed SOAP fixture -> response-loss reconciliation -> original/credit and PG restart; no ARCA network/account action",
+    "steps": [
+      {
+        "step": "pg-start",
+        "exit_code": 0,
+        "seconds": 0.494,
+        "log_sha256": "46038efb813fbca18a92272496901190638dea3f97b51f7af0daa1ca2eb13818"
+      },
+      {
+        "step": "create-db",
+        "exit_code": 0,
+        "seconds": 0.553,
+        "log_sha256": "c4f0e6a1d4c0f5670985351933a6e3b37f82d0e083b70cd21e88d7d6258dd588"
+      },
+      {
+        "step": "migrations",
+        "exit_code": 0,
+        "seconds": 1.625,
+        "log_sha256": "bc0e87cd17c413e4989f97018963df09da548bdc5295520bba73c09d4fe18c25"
+      },
+      {
+        "step": "http-dotnet-pg",
+        "exit_code": 0,
+        "seconds": 7.395,
+        "log_sha256": "65c813c0b2aea232587ab608a6397203a51e0263dc44574d112fffd0698a541a"
+      },
+      {
+        "step": "pg-stop-before-recovery",
+        "exit_code": 0,
+        "seconds": 0.659,
+        "log_sha256": "3589d2bd01f8295cc7c9ec3f5e07625fcd347ccb6f33f2d80edafe5f5217c1fb"
+      },
+      {
+        "step": "pg-restart",
+        "exit_code": 0,
+        "seconds": 0.446,
+        "log_sha256": "46038efb813fbca18a92272496901190638dea3f97b51f7af0daa1ca2eb13818"
+      },
+      {
+        "step": "fiscal-recovery",
+        "exit_code": 0,
+        "seconds": 2.514,
+        "log_sha256": "3fba93f596950b4d6b9972f5fe6680d13f8031e9f63b6d700952458c14910446"
+      },
+      {
+        "step": "pg-final-stop",
+        "exit_code": 0,
+        "seconds": 0.167,
+        "log_sha256": "3589d2bd01f8295cc7c9ec3f5e07625fcd347ccb6f33f2d80edafe5f5217c1fb"
+      }
+    ],
+    "owned_processes_stopped": true
+  },
+  "five_dotnet_test_projects": "PASS_LOCAL_FIXTURES",
+  "portable_build": {
+    "state": "PASS",
+    "seconds": 34.665,
+    "artifact_files": 440,
+    "steps": [
+      {
+        "exit_code": 0,
+        "log_sha256": "2b7ef36693d4337e0de7d4c303644ce91d6fcad42821ee8f333d7ac6cda43644",
+        "seconds": 0.259,
+        "step": "arca-tool"
+      },
+      {
+        "exit_code": 0,
+        "log_sha256": "16edf6bdf57853ba25814bf53f9c8b1b16b5d65d542aae7b98b3f7bf4f09297c",
+        "seconds": 8.685,
+        "step": "arca-generate"
+      },
+      {
+        "exit_code": 0,
+        "log_sha256": "338f866d65d740dc75250c4afedebcfbe81b492e21729fb46f0a00f2c05a238a",
+        "seconds": 1.303,
+        "step": "arca-worker-restore"
+      },
+      {
+        "exit_code": 0,
+        "log_sha256": "55afe5e26ea2e7c05e95cacd1247afab7524df91115b1c965e088beb63c7b84f",
+        "seconds": 2.888,
+        "step": "arca-worker-publish"
+      },
+      {
+        "exit_code": 0,
+        "log_sha256": "a0b717452f0f7fa3f66cf4573c678db6245fbe10930fd17fa7322c0fc9ab3137",
+        "seconds": 0.812,
+        "step": "arca-fixture-restore"
+      },
+      {
+        "exit_code": 0,
+        "log_sha256": "a843f5d4748228f1675934994b6519560f231d75fb9f1b562b5807eb09b37ff5",
+        "seconds": 2.113,
+        "step": "arca-fixture-publish"
+      },
+      {
+        "exit_code": 0,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "seconds": 8.195,
+        "step": "arca-fiscal-worker"
+      },
+      {
+        "exit_code": 0,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "seconds": 1.685,
+        "step": "arca-parameter-worker"
+      },
+      {
+        "exit_code": 0,
+        "log_sha256": "5f2e566714c68f4655ac0e645a7ecf3148719160e13b1950fa2bfd1eac4830ff",
+        "seconds": 0.047,
+        "step": "arca-runtime"
+      }
+    ],
+    "runtime_files": 339,
+    "SDK_files": 5577,
+    "fresh_nuget_cache": true
+  },
+  "startup_rejections": {
+    "state": "PASS_FAIL_CLOSED",
+    "cases": [
+      {
+        "case": "homologation-requires-explicit-environment",
+        "exit_code": 1,
+        "provider_action": false
+      },
+      {
+        "case": "fixture-explicit-opt-in",
+        "exit_code": 3762504530,
+        "provider_action": false
+      },
+      {
+        "case": "fiscal-go-config",
+        "exit_code": 2,
+        "provider_action": false
+      },
+      {
+        "case": "parameter-go-config",
+        "exit_code": 2,
+        "provider_action": false
+      }
+    ]
+  },
+  "independent_generations": [
+    {
+      "exit_code": 0,
+      "seconds": 7.254,
+      "fresh_nuget_cache": true,
+      "log_sha256": "16edf6bdf57853ba25814bf53f9c8b1b16b5d65d542aae7b98b3f7bf4f09297c"
+    },
+    {
+      "exit_code": 0,
+      "seconds": 6.798,
+      "fresh_nuget_cache": true,
+      "log_sha256": "16edf6bdf57853ba25814bf53f9c8b1b16b5d65d542aae7b98b3f7bf4f09297c"
+    }
+  ],
+  "trust_contracts": {
+    "state": "PASS_OFFLINE_TRUST_CONTRACTS",
+    "cases": [
+      {
+        "case": "tool-drift",
+        "state": "PASS_REJECTED"
+      },
+      {
+        "case": "forged-receipt",
+        "state": "PASS_REJECTED"
+      },
+      {
+        "case": "extra-tool-file",
+        "state": "PASS_REJECTED"
+      },
+      {
+        "case": "missing-tool-file",
+        "state": "PASS_REJECTED"
+      },
+      {
+        "case": "feed-drift",
+        "state": "PASS_REJECTED"
+      },
+      {
+        "case": "wsdl-drift",
+        "state": "PASS_REJECTED"
+      },
+      {
+        "case": "offline-required",
+        "state": "PASS_REJECTED"
+      },
+      {
+        "case": "original-archive-drift",
+        "state": "PASS_REJECTED"
+      }
+    ],
+    "actual_generation_claim": "Separate two independent fresh-cache generation receipts required"
+  },
+  "signed_driver_regression": {
+    "actual_product_build_performed": false,
+    "cases": [
+      {
+        "accepted": true,
+        "case": "valid",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "changed-artifact",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "wrong-source",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "failed-receipt",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "occupied-output",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "changed-inventory",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "coherent-wrong-source",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "python-pin",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "source-pin",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "overlap",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "partial-build",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "already-complete",
+        "state": "PASS"
+      }
+    ],
+    "state": "PASS_CONTRACT_FIXTURES_ONLY"
+  },
+  "source_rebuilds": [
+    {
+      "plan": "ENTERPRISE_BACKEND_PACK_PLAN.md",
+      "exit_code": 0,
+      "files": 676,
+      "log_sha256": "b7cb3c489cdb5fcb9b0c819fb45d6c98d585fe1a240a919a70efc4ca00e9c203",
+      "seconds": 5.26,
+      "exact": true,
+      "mismatches": []
+    },
+    {
+      "plan": "FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "exit_code": 0,
+      "files": 1653,
+      "log_sha256": "6e3c8daf0226b144a579cd57156eddefac04096de344865d8cb4c30c6874b687",
+      "seconds": 10.58,
+      "exact": true,
+      "mismatches": []
+    },
+    {
+      "plan": "FRANCHISE_SERVERLESS_PACK_PLAN.md",
+      "exit_code": 0,
+      "files": 997,
+      "log_sha256": "2d2105cc9ea65813184fd7a395e03dee4af6bc96a4a1cedf4b3ff06b8636e2f7",
+      "seconds": 6.62,
+      "exact": true,
+      "mismatches": []
+    },
+    {
+      "plan": "HTTP_METRICS_REFERENCE_PACK_PLAN.md",
+      "exit_code": 0,
+      "files": 1653,
+      "log_sha256": "3f4cc73ce920c12292596a82ddb4799506623509b955c6b0b3513cbab7f5102d",
+      "seconds": 10.22,
+      "exact": true,
+      "mismatches": []
+    }
+  ],
+  "sca": {
+    "tool": "OSV2.5.1",
+    "manifests": 12,
+    "exit_code": 0,
+    "findings": [],
+    "generator_declared_packages": 31,
+    "runtime_package_versions_changed": false,
+    "generator_patch": "nine official NuGet6.12.5 DLLs; actual adapted runtime and preserved original rejected6.12.1"
+  },
+  "lint": {
+    "distinct_current_files": 22,
+    "raw_findings": 26,
+    "unresolved": 0
+  },
+  "G0_G8": {
+    "schema": "elite-arca-local-source-admission/v1",
+    "scope": "LIBRARY_INFRASTRUCTURE_LOCAL_FIXTURES",
+    "state": "LOCAL_CONDITIONS_SATISFIED",
+    "corporate_authorship_claim": false,
+    "original_tool": {
+      "id": "dotnet-svcutil",
+      "version": "8.0.0",
+      "sha256": "b889780662e42d0e132e91c1821d1dcf810728a3775af226a1c8cca0ea6a2d8a",
+      "bytes": 17915141,
+      "repository": "https://github.com/dotnet/wcf",
+      "revision": "f0f500d91854533ec5a0223c0df693f1040f947b"
+    },
+    "dependency_patches": [
+      {
+        "name": "NuGet.Common",
+        "version": "6.12.5",
+        "archive": "nuget.common.6.12.5.nupkg",
+        "url": "https://api.nuget.org/v3-flatcontainer/nuget.common/6.12.5/nuget.common.6.12.5.nupkg",
+        "sha256": "ce6388abd817f29be5fb5183544a03d209518b1b4bb9c88b62cfc195eb52a6a6",
+        "sha512": "AQl6orTBqvGZhf3Xv6q6MSOFITX8JGCV4LB65f/exH1c7gY8TzigeM5SEmp4KAScBC2dMS3SR52DjHlqU2Yd4g==",
+        "bytes": 198920,
+        "member": "lib/netstandard2.0/NuGet.Common.dll",
+        "dll_sha256": "b7c7a302253019ae45ed0984f621628c1dd8e4a4617c7897f2ab975b124e7022",
+        "assembly_identity": {
+          "assemblyVersion": "6.12.5.1",
+          "fileVersion": "6.12.5.1"
+        },
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/NuGet/NuGet.Client",
+          "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+        },
+        "license": "Apache-2.0"
+      },
+      {
+        "name": "NuGet.Configuration",
+        "version": "6.12.5",
+        "archive": "nuget.configuration.6.12.5.nupkg",
+        "url": "https://api.nuget.org/v3-flatcontainer/nuget.configuration/6.12.5/nuget.configuration.6.12.5.nupkg",
+        "sha256": "68805fc5aa8c1b70a87819f63c061108154d67d4c5ddebe7e8097429bd1aa2c3",
+        "sha512": "mvgbfg3TtD9EIHtwPFB/RUdnReweK5Evto2bnioOhZ/okUnNfezzm9nngs7zXxO1XhN6Mwyg/TtBZHqiaXAM1Q==",
+        "bytes": 237762,
+        "member": "lib/netstandard2.0/NuGet.Configuration.dll",
+        "dll_sha256": "1a4413da8adc9de2c7cf5ad4a61a6aaff5c064c17ff61682f29caceb13d8ef98",
+        "assembly_identity": {
+          "assemblyVersion": "6.12.5.1",
+          "fileVersion": "6.12.5.1"
+        },
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/NuGet/NuGet.Client",
+          "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+        },
+        "license": "Apache-2.0"
+      },
+      {
+        "name": "NuGet.DependencyResolver.Core",
+        "version": "6.12.5",
+        "archive": "nuget.dependencyresolver.core.6.12.5.nupkg",
+        "url": "https://api.nuget.org/v3-flatcontainer/nuget.dependencyresolver.core/6.12.5/nuget.dependencyresolver.core.6.12.5.nupkg",
+        "sha256": "a3caffbca8ce66d028a4be195929ee4dc381bf33a41557548e2739a9cd8d5fa4",
+        "sha512": "01wQEQ3gE2NIIefCKDYHSZyjv/Li1m1PibGqtPxiASy/8LZKzE5YP4kMPETDTadZE7wgYBR0SaBboK9TSL3Fcw==",
+        "bytes": 224338,
+        "member": "lib/net5.0/NuGet.DependencyResolver.Core.dll",
+        "dll_sha256": "8b48fa8984b9d20c79d22345aae8babc6538d772e1911854e1a2bd7e18f25080",
+        "assembly_identity": {
+          "assemblyVersion": "6.12.5.1",
+          "fileVersion": "6.12.5.1"
+        },
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/NuGet/NuGet.Client",
+          "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+        },
+        "license": "Apache-2.0"
+      },
+      {
+        "name": "NuGet.Frameworks",
+        "version": "6.12.5",
+        "archive": "nuget.frameworks.6.12.5.nupkg",
+        "url": "https://api.nuget.org/v3-flatcontainer/nuget.frameworks/6.12.5/nuget.frameworks.6.12.5.nupkg",
+        "sha256": "0ebc6d8a7a5ed87b11eb038a33f01abd3c987d5359c7ec56691d816160007fc4",
+        "sha512": "TUYyZjrgmpVsaHQhQTJVwcwJk3gQDj5EGlVEDF1stZeygaBGBqpMYjrBDnbXWJ5SREto0qB+89Tgf69iEJMlkQ==",
+        "bytes": 187590,
+        "member": "lib/netstandard2.0/NuGet.Frameworks.dll",
+        "dll_sha256": "2f15d8ffa9d89249408576fbbd33b3ba95d843f3e005d68b2df3b38883d6018a",
+        "assembly_identity": {
+          "assemblyVersion": "6.12.5.1",
+          "fileVersion": "6.12.5.1"
+        },
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/NuGet/NuGet.Client",
+          "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+        },
+        "license": "Apache-2.0"
+      },
+      {
+        "name": "NuGet.LibraryModel",
+        "version": "6.12.5",
+        "archive": "nuget.librarymodel.6.12.5.nupkg",
+        "url": "https://api.nuget.org/v3-flatcontainer/nuget.librarymodel/6.12.5/nuget.librarymodel.6.12.5.nupkg",
+        "sha256": "1e4e4fb53e20645230c7c5922f74e8cf6b3c03fdad4ef46252266644c8e136cc",
+        "sha512": "vvKxyXght56LMo490Azxo0rDN8Ol3VK/CZRMols3+e0teX4Mg+jNbYWRZsVMrn72ccHX5RyZLcpiFPf/Ze5/kw==",
+        "bytes": 122771,
+        "member": "lib/netstandard2.0/NuGet.LibraryModel.dll",
+        "dll_sha256": "57f53f6eab386e2c9750ebb8928cdd850bca0d19b95882119283f85f22f2f7c6",
+        "assembly_identity": {
+          "assemblyVersion": "6.12.5.1",
+          "fileVersion": "6.12.5.1"
+        },
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/NuGet/NuGet.Client",
+          "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+        },
+        "license": "Apache-2.0"
+      },
+      {
+        "name": "NuGet.Packaging",
+        "version": "6.12.5",
+        "archive": "nuget.packaging.6.12.5.nupkg",
+        "url": "https://api.nuget.org/v3-flatcontainer/nuget.packaging/6.12.5/nuget.packaging.6.12.5.nupkg",
+        "sha256": "055f46a4b6b188eabf9a1ea2593779ab7456c2202c1ab7442feedf4735fa8de0",
+        "sha512": "saME99gCPEcKmWfTYAMlhAAdqNIK3EC2H9zeTarmw+xM2QWfe3bFs8sKU+TK7zFXsTjb740QxJl0cFb+zpeGHg==",
+        "bytes": 978104,
+        "member": "lib/net5.0/NuGet.Packaging.dll",
+        "dll_sha256": "cb9fb410ecca1aa3a7866a9843e724888e0d4ca89c16939602d9ead9a583a7af",
+        "assembly_identity": {
+          "assemblyVersion": "6.12.5.1",
+          "fileVersion": "6.12.5.1"
+        },
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/NuGet/NuGet.Client",
+          "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+        },
+        "license": "Apache-2.0"
+      },
+      {
+        "name": "NuGet.ProjectModel",
+        "version": "6.12.5",
+        "archive": "nuget.projectmodel.6.12.5.nupkg",
+        "url": "https://api.nuget.org/v3-flatcontainer/nuget.projectmodel/6.12.5/nuget.projectmodel.6.12.5.nupkg",
+        "sha256": "fed1f2e465fe58bca189022a13f3a326460244503a0c8bab7975e0cc8482507b",
+        "sha512": "cHs/kM/kLwxFtD3nsJhPOfP46Jf8NnLyPSGuHjeKUSnv75Omc9fD43dat19QNVFakN9XiG0eIJJn51n//xf4Sw==",
+        "bytes": 431059,
+        "member": "lib/net5.0/NuGet.ProjectModel.dll",
+        "dll_sha256": "cf0fc7ff6460041f7b1a59c49f6cdf96458214693331253b31346a8ea28d07f6",
+        "assembly_identity": {
+          "assemblyVersion": "6.12.5.1",
+          "fileVersion": "6.12.5.1"
+        },
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/NuGet/NuGet.Client",
+          "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+        },
+        "license": "Apache-2.0"
+      },
+      {
+        "name": "NuGet.Protocol",
+        "version": "6.12.5",
+        "archive": "nuget.protocol.6.12.5.nupkg",
+        "url": "https://api.nuget.org/v3-flatcontainer/nuget.protocol/6.12.5/nuget.protocol.6.12.5.nupkg",
+        "sha256": "8ba5cece263e1c08c88da2b2a8ee9a6aab1bb9096fc500bd9a63ed1b83362c9f",
+        "sha512": "GjaXqS0khbWj2tE/+VtC8wSZb6gzI+3btIas/BqUb7n9cqGxW31FSdnoCZyIksJ9mkWCRVSiu87bY390raAzyw==",
+        "bytes": 1103641,
+        "member": "lib/net5.0/NuGet.Protocol.dll",
+        "dll_sha256": "ebd7fa89ff74dd9e319ff665fb2745c1b35257343646cf1b8ab0cb8d1d153fd2",
+        "assembly_identity": {
+          "assemblyVersion": "6.12.5.1",
+          "fileVersion": "6.12.5.1"
+        },
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/NuGet/NuGet.Client",
+          "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+        },
+        "license": "Apache-2.0"
+      },
+      {
+        "name": "NuGet.Versioning",
+        "version": "6.12.5",
+        "archive": "nuget.versioning.6.12.5.nupkg",
+        "url": "https://api.nuget.org/v3-flatcontainer/nuget.versioning/6.12.5/nuget.versioning.6.12.5.nupkg",
+        "sha256": "be84bf180f5b73f756f13c662500193129353bd1b152995a3903e75633055e6e",
+        "sha512": "G1Yn/eTPoySAcE3gaq+269TMhmT5u2E5v+dJCOBoXVORt9JOj1I0bJ+mrPwB0zDIfh1jR6oWYakzFz5KuwZJgA==",
+        "bytes": 141735,
+        "member": "lib/netstandard2.0/NuGet.Versioning.dll",
+        "dll_sha256": "d5a12b276b0a0d0ed96ef9e333d4903fe03657e523ee0735fc5b40dfdea2187f",
+        "assembly_identity": {
+          "assemblyVersion": "6.12.5.1",
+          "fileVersion": "6.12.5.1"
+        },
+        "repository": {
+          "type": "git",
+          "url": "https://github.com/NuGet/NuGet.Client",
+          "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+        },
+        "license": "Apache-2.0"
+      }
+    ],
+    "generated_clients": {
+      "schema": "elite-arca-generated-client/v3",
+      "environment": "Homologation",
+      "contracts": [
+        {
+          "service": "wsaa",
+          "url": "https://wsaahomo.afip.gov.ar/ws/services/LoginCms?WSDL",
+          "wsdl_sha256": "c8910060052496f248b125e676085db689e0f21b2f32728417725c376b97b4b3",
+          "generated_sha256": "910a9e267718e663424972d2dd10d1f757e14f617e8a0d1afab8580bd6c450ea"
+        },
+        {
+          "service": "wsfev1",
+          "url": "https://wswhomo.afip.gov.ar/wsfev1/service.asmx?WSDL",
+          "wsdl_sha256": "16f5b8450c35a2cfc0187f07d6236162bb57b663954a1e1f0267e71afe90af24",
+          "generated_sha256": "e4608d9e113f293945a0fadf7a8c5f018ae0a2e19568ea450772be8bd1ec9d61"
+        }
+      ],
+      "dotnet_sdk": "10.0.400",
+      "dotnet_svcutil": "8.0.0",
+      "generator_provenance": "ADAPTED_RUNTIME_COMPOSITION",
+      "generator_inventory_sha256": "6cd7b6c492565f4ccf90f3a703fc59220c0b72614b5c09dbf649e278c79c5bc8",
+      "sca_state": "NOT_RUN_OFFLINE_RELEASE_SCA_REQUIRED",
+      "production_admitted": false
+    },
+    "gates": {
+      "G0": "Required local fiscal boundary, no credentials or real fiscal rules inferred",
+      "G1": "Official public WSDL, original fixed signed svcutil and signed fixed NuGet patches; only pinned local WSDL mode qualified",
+      "G2": "Exact upstream identities/source commits in locks; original archive preserved; tool composition is ADAPTED and assembly/build glue AUTHORED",
+      "G3": "MIT/Apache originals, package notices and .NET notices retained; no company attribution to glue",
+      "G4": "Two independent fresh-cache generations reproduce both fixed clients;8adverse trust cases,5dotnet test projects and real84migration HTTP/Go/UDS/.NET/CMS fixture",
+      "G5": "Exact OSV2.5.1,12explicit manifests including31package generator projection,zero findings;21file DevSkim26findings individually reviewed,zero unresolved",
+      "G6": "Actual440file portable fiscal build plus connected replay/reconciliation,original+credit,7parameters and PostgreSQL restart;4shipped-process startup refusals",
+      "G7": "Deterministic fixed source/assembly/SDK/runtime/NuGet inventories; no raw pnpm, no secret material or vulnerable original generator in artifact",
+      "G8": "Canonical owner promotion limited to demonstrated local fixture contracts; final full franchise independent builds/signature/durable acceptance are separate T2810 gates"
+    },
+    "runtime_condition": "CONDITIONED_USER_CREDENTIALS_FOR_HOMOLOGATION",
+    "production_admitted": false,
+    "production_constraints": "Fiscal policy/authorization/target acceptance belongs to future materialized project; fixture proof is not live certification",
+    "daybreak": "OUT_OF_SCOPE_DEFERRED_NO_INVESTIGATION"
+  },
+  "serialization": [
+    {
+      "path": "arca/fiscal/arca-ws-contracts.lock.json",
+      "before_sha256": "14e4353d569e83ca91dfc92480f976965d93476cd7367a16779c536bef0b0ef6",
+      "after_sha256": "27626a456e1e84c92a0fb3072639cde3c220ef08ee193fa67e8d4364bed02c1d",
+      "transform": "AUTHORED_CANONICAL_LF_WITH_FINAL_NEWLINE"
+    },
+    {
+      "path": "arca/fiscal/dotnet-runtime.lock.json",
+      "before_sha256": "523edcb8b4dcb5347b407e8154c54a513f896e5f692339932d6ec7f0ba184036",
+      "after_sha256": "b2d8ee57c5a7b26d48c4f746477984a9b1fe5e5ef92878cad3435c7b8c28f34e",
+      "transform": "AUTHORED_CANONICAL_LF_WITH_FINAL_NEWLINE"
+    },
+    {
+      "path": "arca/fiscal/dotnet-sdk.lock.json",
+      "before_sha256": "664a6e555dc9dd50bea7aedf52ba86157398f94419759c04516f791618cf92ff",
+      "after_sha256": "0442876714bd8c3bbd291bec77abfcb420a125e3f31efe0ae20b1612be404004",
+      "transform": "AUTHORED_CANONICAL_LF_WITH_FINAL_NEWLINE"
+    },
+    {
+      "path": "arca/fiscal/generated-lock/packages.lock.json",
+      "before_sha256": "2369554e56777ca5570a393f4fd73a19b70c7839747f5479263715feb472a57e",
+      "after_sha256": "39dc2452537df003ed8e3254373fa86de0dfbb557a33ba60c2e99ea3df6af42d",
+      "transform": "AUTHORED_CANONICAL_LF_WITH_FINAL_NEWLINE"
+    },
+    {
+      "path": "arca/fiscal/nuget-runtime.lock.json",
+      "before_sha256": "147b4a7d6ec59ff71972cef3ef9d6bf6c97e15c453bf48c44d8654fd3dae3bab",
+      "after_sha256": "6e49e740b40e7a8e3036a4ac386c0115d94b2ef12f1d50fdb0f84733b2c5591c",
+      "transform": "AUTHORED_CANONICAL_LF_WITH_FINAL_NEWLINE"
+    },
+    {
+      "path": "arca/fiscal/svcutil-adaptation.lock.json",
+      "before_sha256": "c5af8809cf1fa08459fb0fade3bd4b0d39cbc9b0672a8cdf19d2db68b2169892",
+      "after_sha256": "62ba00145fb4c3f5626c20a2f8f45c80bbef316e2b3ff1a6bb9dffd6b66c743f",
+      "transform": "AUTHORED_CANONICAL_LF_WITH_FINAL_NEWLINE"
+    },
+    {
+      "path": "arca/fiscal/worker/fixtures/Elite.Arca.Wsfe.Fixture/packages.lock.json",
+      "before_sha256": "53f61dc60321f8b898ec33a441cb0be13617234327340092e3836f602a4aa66b",
+      "after_sha256": "491bd6344247876ff0cc67e35da754618abb4ea48128d3df248e2e8c4488be90",
+      "transform": "AUTHORED_CANONICAL_LF_WITH_FINAL_NEWLINE"
+    },
+    {
+      "path": "ci/test_signed_reference.py",
+      "before_sha256": "60f3e3ed66a93014c84eeba5ad120a73f3e5d94259835831260e8a42a9fbba16",
+      "after_sha256": "f70759c2be369e8393efe1e89249de79cc56927db9d96f06b546f107f4d4c272",
+      "transform": "AUTHORED_CANONICAL_LF_WITH_FINAL_NEWLINE"
+    },
+    {
+      "path": "docs/provenance/arca-local-admission-v402.json",
+      "before_sha256": "4b605348b2a22259580096f9e9275cfaadaf663aa6d7b78816ad427e48e6ffe0",
+      "after_sha256": "f5dc206daefb230a7c565a0bf3ac0d4f5e5b5737b59c4060a82f242485858361",
+      "transform": "AUTHORED_CANONICAL_LF_WITH_FINAL_NEWLINE"
+    },
+    {
+      "path": "tools/generate-arca-wsfe-client.ps1",
+      "before_sha256": "596135cb6a9091bacaf4295f33401b4764fbb6516cdebe1b2483005e8e524eab",
+      "after_sha256": "3cad533df8cec2c5579fc4355258d2d3919623351e3ec2693c5339b685df670d",
+      "transform": "AUTHORED_CANONICAL_LF_WITH_FINAL_NEWLINE"
+    },
+    {
+      "path": "tools/test-arca-wsfe-generator.ps1",
+      "before_sha256": "335956a3f35b9ff028eb02eb4b81fa8c42cf770072fd39dda8cab2208bb19996",
+      "after_sha256": "c8361e91b0f6c6540a376e0bcc3f54401598b9576c6811ad8c3480e5150b87bb",
+      "transform": "AUTHORED_CANONICAL_LF_WITH_FINAL_NEWLINE"
+    }
+  ],
+  "future_external_condition": "USER_CREDENTIALS_FOR_HOMOLOGATION",
+  "production_admitted": false,
+  "current_full_product_signed": false,
+  "receipts": [
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/source-profile.json",
+      "sha256": "a6fd109306676f18b1dc51818f91cd2f10492d63f3b779e4724394005ef5e1ae"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/source-receipt.json",
+      "sha256": "d9fa51a0db72c29633b9dec5fd81b3063b96b86367319971b79a3768a9233d7d"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/svcutil-correspondence.json",
+      "sha256": "c104baa73f788874f5c7754589a7a11f8d9e0117aca9a6608dc4cd829986f197"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/nuget-patch/metadata-result.json",
+      "sha256": "2d9c45ac02b5704de697e48c9d04c6c46257a8045eee29345553692405bb8d77"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/nuget-patch/archive-inspection.json",
+      "sha256": "76ff45d737a0f7d42e69b1a4ced5e1b54ae427cab6d57cafe717d3ff488ec9e2"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/nuget-patch/legal-receipt.json",
+      "sha256": "1e1cda442172a94c6ded17a87cbf6c819fbf829e570f734fef05e0e0af6a468f"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/nuget-patch/signature-result.json",
+      "sha256": "08a136fa286661d8c162b28a6f11abc6f94dd2d5252bfb8677d49381bd0891d3"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/runtime-nuget-signature-result.json",
+      "sha256": "4968c2be2479c18d54686e02060e8decf0c903acb8bec5063bbc4f80cfe0ea6c"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/runtime-legal/receipt.json",
+      "sha256": "e7becaa0f9b077235ce813d493d4584eaf18de8b267f5f335fbc9aee5e5a7a41"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/dotnet-result.json",
+      "sha256": "b53a590309e1336d29b337ecbe0b85716a249d3028c90ba70dae27f006dff0a0"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/connected-result.json",
+      "sha256": "c05e2b05e9139503cc1f45233f7d75ad065173209763edad29e87a73510f710e"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/connected-portable-result.json",
+      "sha256": "bc58ea196afcab71b93f5efc60dfe633740789d1138ac9633b283899cb1e19f8"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/portable-startup-rejections.json",
+      "sha256": "edc56b430e89eb5c749550dfcf4ac01657558091058bfdf2c44965d3a0e996ea"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/generation-adapted-r2/result.json",
+      "sha256": "019ce5aa4143d7c5bcc003f052d3fadc0883dce9f1d3ccae5bb2dec7c6a14c51"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/generation-adapted-r3/result.json",
+      "sha256": "dbef8240a9b3e5fbfe1589e0f24cc0a003ae4189b359b57c924602c08890e8f5"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/trust-contracts/result.json",
+      "sha256": "d7442fe49a6602f5e78b5eb380860430c03e3e3c0c5d3601bc28f82b90b80b6b"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/driver-regression/result.json",
+      "sha256": "c1ad1b99d57ca8cb310f3a8b67f1164cbffe18b36ed1b0250f996907361f5426"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/build-qualification-r4/result.json",
+      "sha256": "443dc75238839b14782e3de8d2f8b38f3b5b5171fc98928f25b0d71d46db8859"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/dotnet-fixed-r2-sca-result.json",
+      "sha256": "604535b6c1dc9d08f205c205fb5729c092f00f32a2f49d70518bb4df46ae7f04"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/lint-profile.json",
+      "sha256": "50b2d5be1357fe096aa03a9769cfcc68f907115bc26e6ab98cfb0127de560067"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/final-lint-profile.json",
+      "sha256": "10524a11e0656868b26c817f7fd53cab2cac12f2a7f5f536e434b5965e033be5"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/normalization325.json",
+      "sha256": "d08a4ad03cd009691727209570fbff3cf03aac8db25402a307b20ef555b792f4"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/metadata970-correction.json",
+      "sha256": "eb872d2893fb00d7db5fab07171b0b4c306d1d1b2c4e40f136bdfd92759b5a4c"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/package325.json",
+      "sha256": "64aef81954fecf451d1c9d4f9667a995e9b461481408b3276cc30a2b74342262"
+    },
+    {
+      "path": "LOCAL_EVIDENCE_ROOT/arca-final/composition325.json",
+      "sha256": "60421a45fccc59ef66e4c3f58252f7aae27d1bf6f139e58ed14932e9ad87c5c1"
+    }
+  ]
+}

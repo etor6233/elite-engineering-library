@@ -1,0 +1,104 @@
+{
+  "state": "PASS_SOURCE_CORRESPONDENCE",
+  "middleware_relocation": "Package main->core and exported name instrument->Instrument, followed by exact pinned gofmt normalization; result equals current file byte for byte. No algorithm or official runtime source changed.",
+  "gofmt_sha256": "fb2cbb401a286d555a83ccbaaad586238418ba2aeb156a8836d5d50eed2feca8",
+  "original_middleware_sha256": "0c259b32e3cf15b371178aa8d92c658774913607f6d6435abf7b9d2d96377883",
+  "current_middleware_sha256": "1f0c37188994a824fcb1f2e9412dd5691e5258f55f010a16a551c78f7d66db12",
+  "existing_windows_reference_files": [
+    {
+      "path": "reference_telemetry/governed_launch.py",
+      "sha256": "a1a5c67c2116c6e084859ef2017bcff7a75d20ae8279087e096851b2f29b2599",
+      "historical_reconstruction": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v372-7df147a09fe84a21962b3a63d2cca278\\reference-rebuilt5\\reference_telemetry\\governed_launch.py"
+    },
+    {
+      "path": "reference_telemetry/job_probe.py",
+      "sha256": "e33dbd14b0cd09262897c98263de0d572ac0b66673df6bce2f62c3bf9ade316c",
+      "historical_reconstruction": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v372-7df147a09fe84a21962b3a63d2cca278\\reference-rebuilt5\\reference_telemetry\\job_probe.py"
+    },
+    {
+      "path": "reference_telemetry/native_capture.py",
+      "sha256": "f1e00ba6afe414d494617e3c69ab3c8733729ef47b83154567737cc023341269",
+      "historical_reconstruction": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v372-7df147a09fe84a21962b3a63d2cca278\\reference-rebuilt5\\reference_telemetry\\native_capture.py"
+    },
+    {
+      "path": "reference_telemetry/README.md",
+      "sha256": "8cd8af13123d8e00a1f1a05fc3a5b2efeeb3fa0a835e5062c8893173209e291c",
+      "historical_reconstruction": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v372-7df147a09fe84a21962b3a63d2cca278\\reference-final\\reference_telemetry\\README.md"
+    },
+    {
+      "path": "reference_telemetry/result_store.py",
+      "sha256": "464d52c47273c9309948edbda371c0587a38de43da41f4a3640f09b7d2f3c669",
+      "historical_reconstruction": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v372-7df147a09fe84a21962b3a63d2cca278\\reference-rebuilt5\\reference_telemetry\\result_store.py"
+    },
+    {
+      "path": "reference_telemetry/run_reference_runtime.py",
+      "sha256": "997b21d7c4a9f4982c52785402bc14afd38359bb85ec37694b3f33669f965a87",
+      "historical_reconstruction": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v372-7df147a09fe84a21962b3a63d2cca278\\reference-rebuilt5\\reference_telemetry\\run_reference_runtime.py"
+    },
+    {
+      "path": "reference_telemetry/runtime-lock.example.json",
+      "sha256": "455a9992d6a7fe36ba844973ad99511895800776d80341fca21736203ed0b322",
+      "historical_reconstruction": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v372-7df147a09fe84a21962b3a63d2cca278\\reference-rebuilt5\\reference_telemetry\\runtime-lock.example.json"
+    },
+    {
+      "path": "reference_telemetry/seed.sql",
+      "sha256": "6fa405b703985ccbde52f1d3f37f130826d10d0056afbcccd667b0a557792b9a",
+      "historical_reconstruction": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v372-7df147a09fe84a21962b3a63d2cca278\\reference-rebuilt5\\reference_telemetry\\seed.sql"
+    },
+    {
+      "path": "reference_telemetry/test_capture.py",
+      "sha256": "8a78f1c54d788edb18e5d97a1cb2f4ca8c490af5adb0db0aaae2bad28873bf38",
+      "historical_reconstruction": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v372-7df147a09fe84a21962b3a63d2cca278\\reference-rebuilt5\\reference_telemetry\\test_capture.py"
+    },
+    {
+      "path": "reference_telemetry/test_governed_launch.py",
+      "sha256": "7000903fd4e56fc07dbdc3ebad6436f432902b32f28009be0b55c7c6e49ab3de",
+      "historical_reconstruction": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v372-7df147a09fe84a21962b3a63d2cca278\\reference-rebuilt5\\reference_telemetry\\test_governed_launch.py"
+    },
+    {
+      "path": "reference_telemetry/test_reference_profile.py",
+      "sha256": "fc6501c0260bda4c8fce417c8f7c556408603d86849d72e313921781bb689148",
+      "historical_reconstruction": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v372-7df147a09fe84a21962b3a63d2cca278\\reference-rebuilt5\\reference_telemetry\\test_reference_profile.py"
+    },
+    {
+      "path": "reference_telemetry/test_result_store.py",
+      "sha256": "2b3cd608d606413228778e400ca017f4bb671662e795e0e9d95c093376afd314",
+      "historical_reconstruction": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v372-7df147a09fe84a21962b3a63d2cca278\\reference-rebuilt5\\reference_telemetry\\test_result_store.py"
+    },
+    {
+      "path": "reference_telemetry/test_shutdown.py",
+      "sha256": "6abe6e0507aea4d6e40ad2aa4228fc0cedb622cbdfefb074bd8e672186aedb79",
+      "historical_reconstruction": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v372-7df147a09fe84a21962b3a63d2cca278\\reference-rebuilt5\\reference_telemetry\\test_shutdown.py"
+    }
+  ],
+  "exact_runtime_binaries": [
+    {
+      "name": "prometheus",
+      "sha256": "b64d74caa4531929f1a4021b3ef06fbfaa04347a4f2944ba29eed2a3a08b3d87",
+      "bytes": 140342784
+    },
+    {
+      "name": "promtool",
+      "sha256": "2d8428b4e7480a08e6c9b24c0e180669281192a361d92f63a3ba1421165eddf5",
+      "bytes": 117974528
+    },
+    {
+      "name": "elite-otelcol",
+      "sha256": "40482c27d43ddd5fae9d47939da889a0416cb3102e17c3b7832e9c5d7c9570a3",
+      "bytes": 51707904
+    },
+    {
+      "name": "telemetry-reference",
+      "sha256": "a84ff065e1666101d161f8915169ef0ff155702f47c4f037b2a4ce2044bef7a6",
+      "bytes": 9433600
+    },
+    {
+      "name": "refund-host",
+      "sha256": "972f596b6b5ee35d294df75f6ecb7dcab40c0a44186a497c73fa5d93f8770fa0",
+      "bytes": 17196032
+    }
+  ],
+  "inherited_observation": "V372 separate refund/Collector pipeline: file rotation1MiB/2backups/1day,2000observations, restart same bytes; does not describe new API logs",
+  "new_observation": "V402317 actual API+Next metric/fault/alert/replay/WAL/supervisor has independent runtime receipt",
+  "no_unchanged_96_native_tests_or_380_official_tests_rerun": true
+}

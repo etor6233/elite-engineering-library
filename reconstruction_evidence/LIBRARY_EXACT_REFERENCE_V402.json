@@ -1,0 +1,71 @@
+{
+  "compositor_log_sha256": "2de13057da7e9de68e50b66602fbf80050a172e3c35c073d1205d80471aed37b",
+  "inventory_sha256": "9929cf8b15302fa3179bf97456d688517b8bbeb9caab6b5ffa96d88fc2afed5c",
+  "roots": [
+    {
+      "files": 1653,
+      "materialization_record_sha256": "1ce4be215ffa8781cc185d626e6a04b0acf1e31016d7cee86cebe24495dd58ef",
+      "metadata_excluded_from_selected_source_tree": [
+        "MATERIALIZATION_RECORD.md"
+      ],
+      "name": "a",
+      "selected_source_root": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\source-reference330-a"
+    },
+    {
+      "files": 1653,
+      "materialization_record_sha256": "9dd71b8580818faa97649f361085e9bd4628bf972c65aced510707b3bd7bc4e2",
+      "metadata_excluded_from_selected_source_tree": [
+        "MATERIALIZATION_RECORD.md"
+      ],
+      "name": "b",
+      "selected_source_root": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\source-reference330-b"
+    }
+  ],
+  "scope": "EXACT_SELECTED_SOURCE_FILES",
+  "seconds": 52.91,
+  "source_files": 1653,
+  "source_revision": 330,
+  "state": "PASS_TWO_INDEPENDENT_MATERIALIZATIONS",
+  "metadata_revision": 331,
+  "metadata_only_delta": {
+    "state": "PASS_METADATA_ONLY",
+    "source_revision": 330,
+    "metadata_revision": 331,
+    "notice_labels_corrected": [
+      "licenses/reference/next-MIT.txt",
+      "licenses/reference/constants-browserify-README.md.txt",
+      "licenses/reference/data-uri-to-buffer-README.md.txt",
+      "licenses/reference/http-proxy-agent-README.md.txt",
+      "licenses/reference/https-proxy-agent-README.md.txt",
+      "licenses/reference/punycode-LICENSE-MIT.txt.txt",
+      "licenses/reference/setimmediate-LICENSE.txt.txt",
+      "licenses/reference/string-hash-README.md.txt",
+      "licenses/reference/unistore-README.md.txt",
+      "licenses/reference/edge-runtime-cookies-LICENSE.md.txt",
+      "licenses/reference/edge-runtime-ponyfill-LICENSE.md.txt",
+      "licenses/reference/edge-runtime-primitives-LICENSE.md.txt",
+      "licenses/reference/babel-core-LICENSE.txt",
+      "licenses/reference/dotenv-LICENSE.txt",
+      "licenses/reference/dotenv-expand-LICENSE.txt",
+      "licenses/reference/unistore-MIT-terms.txt",
+      "licenses/reference/client-only-MIT-terms.txt",
+      "licenses/reference/client-only-package.json.txt",
+      "licenses/reference/babel-packages-inline-notices.txt"
+    ],
+    "source_lock_sha256": "18b20c9a287eb5ad12217db27f58384812d2d36a7a74c8355390db94f9bdd47b",
+    "pack_before_sha256": "2a6b3944259e09d5b04d7d5cccbc31a03bf60238167e75ef468e52e8c86f8e90",
+    "pack_after_sha256": "cfa50fb671da3c85441c35c1890dcfecbfe741b2c52ced844aa5961ae2c098e7",
+    "pack_version": "0.1.9",
+    "all_selected_source_files_unchanged": true,
+    "source_files": 1653,
+    "plans": [
+      "ENTERPRISE_BACKEND_PACK_PLAN.md",
+      "FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "FRANCHISE_SERVERLESS_PACK_PLAN.md",
+      "HTTP_METRICS_REFERENCE_PACK_PLAN.md"
+    ],
+    "new_dependencies": false,
+    "new_build_required": false
+  },
+  "provenance_sha256": "72419fd412bceeb21e8a73201d7f9fa98de0113582661f5577009db91d3c5156"
+}

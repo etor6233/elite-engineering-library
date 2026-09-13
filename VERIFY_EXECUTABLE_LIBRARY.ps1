@@ -620,10 +620,10 @@ function Invoke-LibraryAudit {
   }
 
   $httpMetricsRoot = Join-Path $tempRoot 'http-metrics-reference'
-  Invoke-Checked 'http-metrics-reference-eight-file-materialization' $libraryRoot {
+  Invoke-Checked 'http-metrics-reference-materialization' $libraryRoot {
     & pwsh -NoProfile -File (Join-Path $libraryRoot 'materialize_markdown_pack.ps1') -PackFile (Join-Path $libraryRoot 'implementation_packs/GO_HTTP_METRICS_REFERENCE.md') -Destination $httpMetricsRoot
     if ($LASTEXITCODE -ne 0) { Fail 'HTTP metrics reference materialization failed' }
-    if (@(Get-ChildItem -LiteralPath $httpMetricsRoot -Recurse -File).Count -ne 8) { Fail 'HTTP metrics reference file count drifted' }
+    if (@(Get-ChildItem -LiteralPath $httpMetricsRoot -Recurse -File).Count -ne 11) { Fail 'HTTP metrics reference file count drifted' }
   }
   Invoke-Checked 'http-metrics-reference-harness-syntax-and-help' $httpMetricsRoot {
     & $readinessPython -B -c "import ast,pathlib; ast.parse(pathlib.Path('reference_http_metrics/run_reference.py').read_text(encoding='utf-8'))"

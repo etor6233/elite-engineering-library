@@ -1,0 +1,50 @@
+{
+  "scope": "CANDIDATE_NOT_CANONICAL",
+  "canonical_franchise": {
+    "packs": 82,
+    "files": 1039
+  },
+  "evidence": [
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\gift-tender-connected-manifest.json",
+      "sha256": "a9d4ce3ed73df06c9690e060e017a2572f2e7a981b65485757452adc43d26d4d"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\STORED_VALUE_TENDER_ADMISSION.candidate.md",
+      "sha256": "acebd468fe7e640496ab2f50ebdbd64a24c61da4ad3e98340272b4f17abdb1a7"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\gift-loyalty-focal-receipt.json",
+      "sha256": "7846ee5029ff6c489d67334f1e3cf915f458e22bb6e4198b691aaa57a6a6e5fa"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\stored-value-pg-third\\result.json",
+      "sha256": "250ca91a74d228a6532df2fc71e71c8909eaf0870b734fdbb1998f145e8d09fc"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\gift-tender-pg-first\\result.json",
+      "sha256": "6114c8078bd2654f038e0185d89ea5bbc83b91458e23e4b6b396fdbaa263ceae"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\gift-tender-policy-red\\result.json",
+      "sha256": "1f51e7d7cfa14ce54c7c4e7da463fd89ee7060b3483747b816547a4258b6979b"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\gift-tender-policy-red\\connected.log",
+      "sha256": "60181e12cf18319532bfc1dc78632adf503c6cbe0c15ad36e13d4eded7b0e968"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\gift-tender-fixed-green\\result.json",
+      "sha256": "0c3aa4f3f43323a50844f18594a6f9ea374d4e1bbd6ab5aef809a9cd8c558bd8"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\gift-zero-funding-first\\result.json",
+      "sha256": "d7bf066fe4e08f33dc98d6e4b132bfddead442fcc8c6a586d7f52ac1994cf5ef"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\gift-zero-funding-first\\connected.log",
+      "sha256": "f5606f763159a2580cf3cc16c4cdb438f4b963ec9f51f8d7f700b91f00fab15a"
+    }
+  ],
+  "ready": false
+}

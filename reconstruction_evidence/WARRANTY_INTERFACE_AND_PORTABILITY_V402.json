@@ -1,0 +1,334 @@
+{
+  "schema": "elite-warranty-interface-evidence/v1",
+  "scope": "LIBRARY_INFRASTRUCTURE",
+  "status": "PROVEN_LOCAL_STAGING",
+  "canonical_product_unchanged": true,
+  "candidate": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-connected-candidate",
+  "frozen_delta": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-interface-proven-source",
+  "baseline_outputs": 1112,
+  "files": [
+    {
+      "path": "cmd/electromobility-api/main.go",
+      "sha256": "24ee297a14dd96646b13334cfcb504e6325aebbff19a82f2ef2dec01f33fa89f",
+      "baseline_sha256": "6a1f8b309a62c35d6550b9b36562acc7d6521c00bf05fcd671fb66c4685efe76",
+      "kind": "changed"
+    },
+    {
+      "path": "cmd/electromobility-api/warranty.go",
+      "sha256": "87ed190936a4627f958e488851f566f618e151a7bd4e5f2ce5fd22600498aef4",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "cmd/electromobility-api/warranty_test.go",
+      "sha256": "7991b8874de9b6a442ecc77a8d29336a67ff7b31f7eda8ce4a4e8094efaa8fc3",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "cmd/warranty-profile/main.go",
+      "sha256": "dba3f721bc0594dff844153f22d7cb5407ecd399b4546f9fb28a913c13af66f1",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "cmd/warranty-profile/main_test.go",
+      "sha256": "002fae89a9c2ab590deb4c30142f923d32ba2518887b3bb7762c13cd4cd434c3",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "db/migrations/0069_warranty_terms_activation.down.sql",
+      "sha256": "2ad82e8dea6acfefb30f82572020b8dd406623a61403f739d4353f8b5562b5f3",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "db/migrations/0069_warranty_terms_activation.up.sql",
+      "sha256": "d4ab0dd7dfa5ffe1e5b77e6f8a8b14079086809f00f6de21cf2b94e004065628",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "db/migrations/0070_warranty_claim.down.sql",
+      "sha256": "f2853fc70779b57f8caf5737d7ace3d72bd16b6c71ca371de78014a4788341d5",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "db/migrations/0070_warranty_claim.up.sql",
+      "sha256": "374bd24812e0c3bb7c6578e4cc1f1486865855fdd5249a8c6619f0bf0681b3e5",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "deploy/warranty/profile.reference.json",
+      "sha256": "ed494deafc6fc950d7edb4ac1b8809897762a794ab9baed539427c64de61d8d0",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "docs/provenance/BC_WARRANTY_DERIVATION.json",
+      "sha256": "bfabfdfce49c7bab337b26faf5903b584a2c3d073fc4eb3a35254707c58d2da2",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "docs/provenance/source/ServiceItemLine.Table.al",
+      "sha256": "32b4fcf60b25d363d31ef6a1927b1f051eb4ef4ef48d9ca6b2ecc04844a854ff",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "docs/WARRANTY_REFERENCE.md",
+      "sha256": "340a32a0317216cfe66586b16726e99913e7024ed2387196d033ee201f8b1158",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/approval/approval.go",
+      "sha256": "921cb06d310cea6855c2dc54372a09cfac14dc225c79481e59942a76ffd836fc",
+      "baseline_sha256": "e475effe66a8d7d05b06c451f82e8d67621bf24a2dc6949c4f4ca5d071d15841",
+      "kind": "changed"
+    },
+    {
+      "path": "internal/approval/registry.go",
+      "sha256": "19c1c2e1d54995a48cf36e2b99b0573f466c226e5e0333e1488d2d3af94d224d",
+      "baseline_sha256": "ce0a2e66e2997780ed928ab29449d2e8046b0ee73bbe5773b5e961160ac52328",
+      "kind": "changed"
+    },
+    {
+      "path": "internal/approval/warranty_test.go",
+      "sha256": "dcfcfe58ecebd6e8f6780986ea4cd0b25c3a84f86988c52f8b4c207f66d29077",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/platform/httpapi/warranty.go",
+      "sha256": "ff3cec6fe9ca255ba21012b1f444a6dec82480c8850f95b5423fdf31cbc2d5b0",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/platform/httpapi/warranty_test.go",
+      "sha256": "7ad62ae0c3a0845ec70e1dc3cf869d005cb5dd602eccd1cb8f47f522a4b2230c",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/platform/postgres/bulk_inventory.go",
+      "sha256": "725600dcdde3431274c56ca34df8523df15d019b352beb0becd8becb85bb7b5d",
+      "baseline_sha256": "d4147e29c8f2c141de02624a07493d3fea8ddd50f932c85171f49cbe7eb4e754",
+      "kind": "changed"
+    },
+    {
+      "path": "internal/platform/postgres/commercial_release_connected_integration_test.go",
+      "sha256": "62b6fb12c55d5d99b856f5bad78d89e27b94986ed3a89e8cbe66b49cfda63b79",
+      "baseline_sha256": "78594fbe266a1eb0d5acc8458e309aadb2d2eceffe80d0ed61a218e33eea1c3e",
+      "kind": "changed"
+    },
+    {
+      "path": "internal/platform/postgres/fulfillment.go",
+      "sha256": "0d3e3a6d15d29e61a32386028def1e648b4bc223cbf56f1d7ff61a656d5d834d",
+      "baseline_sha256": "4c83537a813d6c99b20d8e69db20278b6bd3f51bdb180d5749e6fa884186aa96",
+      "kind": "changed"
+    },
+    {
+      "path": "internal/platform/postgres/human_approval.go",
+      "sha256": "4dfc7b2a13967e62d53f1d8ad32b7496cccc976a544bf55b097b5550954fefb9",
+      "baseline_sha256": "fd5707f62f794f7b9dc01f914ddd6c7a331e687535dcbecb443dd9dfcdb5b995",
+      "kind": "changed"
+    },
+    {
+      "path": "internal/platform/postgres/payment_connected_integration_test.go",
+      "sha256": "67c14056e98c97b99092a35065f654cf239b7c2cd6c231db322d7775a93483bd",
+      "baseline_sha256": "487739128c099e08128628f528bfba3b1264389b939cd0cdc5be8e1349c6963c",
+      "kind": "changed"
+    },
+    {
+      "path": "internal/platform/postgres/warranty_claim.go",
+      "sha256": "4a244a31191a584367c74f4fb5f75c5f59e59b4a26d22dc6fe912c9110f87254",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/platform/postgres/warranty_claim_integration_test.go",
+      "sha256": "539c5e2aee6f7b950d2641726f87b22bfa674554b931d7eaba5dd424d6ec2e98",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/platform/postgres/warranty_claim_work.go",
+      "sha256": "1452f707dbe48845e0fd9fcfefb3136585c0ed3459924c7553977aabd970cfb8",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/platform/postgres/warranty_connected_integration_test.go",
+      "sha256": "a540ac6f2ddf0cfcaff1af20908d856a6cf4edc8bf94868a5bbff429a70cc769",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/platform/postgres/warranty_expiry_integration_test.go",
+      "sha256": "468b44425a4d793f0dfc9d9b79e2317d99c337572bc9373049f335391cb02478",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/platform/postgres/warranty_http_integration_test.go",
+      "sha256": "c4b93c70df57023e17c7233bc84f869f84fee49b46c0b090a70b4a72a2487ffe",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/platform/postgres/warranty_terms.go",
+      "sha256": "238efbd6fc8fc58820909c50f7edc02aa7a81528ad33756202f87c43778b609a",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/warrantyclaim/claim.go",
+      "sha256": "7eb6b360e05af35fcaaa94e696ccc501b288e602bbd298e3c3090a92dd8060ee",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/warrantyclaim/contract.go",
+      "sha256": "96a22374a8395b44d6f4ca7c00e32b39baff94169ce34a458ecbf246cad180ad",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/warrantyclaim/contract_test.go",
+      "sha256": "6e3d531f3f28a06042efa3fc4d95a6ba8776a66b813ba8bc0c027d86d2128fc0",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/warrantyclaim/profile_fuzz_test.go",
+      "sha256": "ebdda2da89db3957f59727e12b1107af82959e16399ffd4157447f15fff8d76f",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/warrantyclaim/terms.go",
+      "sha256": "df054beb8e04032f68871ecaeda88f6e3710d793fe9090e32f0b8a897afecdee",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/warrantycoverage/coverage.go",
+      "sha256": "b58ea1d8947358d265abbde254074fb2d8233855984c0affffe5171cc19a9a8f",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/warrantycoverage/coverage_test.go",
+      "sha256": "a75caaf3dbd508f1f61889d7bd30dd88da3067e8b3f15146bfa9e20cb780bc16",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/warrantycoverage/fuzz_test.go",
+      "sha256": "ad8c40cca68b8e56c64c311b674187a0f96802527d97c7ca49d02751fac20a9a",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/warrantycoverage/testdata/official_date_vectors.json",
+      "sha256": "dd5c76d26f2ef7c02fa92fd3f5206ad9477968fd6b5db60472333c6c582c21f2",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "tools/rebuild_warranty_date_vectors.py",
+      "sha256": "c6dbb0b72aa6c3b72ae05f1a55137251754b621a21418c98fdf3d31c1740607f",
+      "baseline_sha256": null,
+      "kind": "new"
+    }
+  ],
+  "receipts": [
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-api-transport-first.log",
+      "sha256": "b7ac7faba249277560d61ca4e9a2cd656e848ba73be081408a1fb89686b08ecc"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-api-host-compile-first.log",
+      "sha256": "273f66abd8f09cd25f50eaa275031b11409c7fdbab6c02debc186dadcc415da2"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-connected-http-connected-first\\result.json",
+      "sha256": "e85a03ca5e0804667618abb34299c971a1f75188593952c0d4cb55816698ed39"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-connected-http-host-downgrade\\result.json",
+      "sha256": "4e74291b0cf3e3cfb9cbe0e0b514f75dc1859eba1b8fc32665edccd479cd83b9"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-connected-http-host-downgrade\\connected.log",
+      "sha256": "218d43cac0aa21974446e578830b7819b86bcde623c5421c2d7c7f467d712b21"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-connected-http-host-downgrade\\host.log",
+      "sha256": "6a07e74a18ec5739fa8fa9760c34aa1b423c0d5d92a84d36dbc6acd796fea41c"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-connected-expiry-first\\result.json",
+      "sha256": "6c0989263bee4e45442f28a59a5e2e7315e09841913d6dfceb06c60c76097e31"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-connected-expiry-historical-binding\\result.json",
+      "sha256": "19a4e32cd50bbc679b7f1ea932577ad21df42e87cbf121702e24334f2a2e7050"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-connected-expiry-historical-binding\\connected.log",
+      "sha256": "5dcb4cd73a2c71cbfd48772b230a1b18d0ae4c687b56bbca7087f668a5ebd342"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-profile-builder-first.log",
+      "sha256": "9171aab44878eabf613521821c3640935b29847263bf5afc739e5ebb4393ddf9"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-profile-vet-first.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-profile-fuzz-source.json",
+      "sha256": "c0a1e70f73d3468f217349327018c89fe832abac44ef87d826a020b4d60f444c"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-profile-fuzz-profile.json",
+      "sha256": "379498312158fabae893d8ff7392fa2701bd5dfa0488649daee5365bbc0c10c6"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-profile-fuzz-receipt.json",
+      "sha256": "8a4d362e3e05febe8ad39a3249e06b5ba0d175d13394ad16fce5345eaf082f73"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-profile-fuzz.log",
+      "sha256": "a03547a9c0d0ea9921bef1a7eb2e86af2f7ec6f77df31845955cf664fc082184"
+    }
+  ],
+  "tests": {
+    "http_transport_cases": 10,
+    "connected_claim_cases": 4,
+    "lost_commit_responses": 2,
+    "host_tests": 2,
+    "populated_downgrade_rejected": true,
+    "empty_down_up": true,
+    "minimum_pending_lease_seconds": 60,
+    "expiry_at_commit": "PASS",
+    "builder_two_identical_outputs": "PASS",
+    "native_fuzz_budget": "2s",
+    "native_fuzz_executions": 103752,
+    "no_skipped_pg_tests": true,
+    "postgres_stopped": true
+  },
+  "limits": [
+    "HTTP claim verifier is an explicit principal fixture; JWT cryptography/browser evidence belongs to identity/role target gates",
+    "Fuzz is exact-source profile/calendar subset, not full franchise/stock/security",
+    "Canonical pack/source/notices/rebuild publication next; role UI belongs to T2804",
+    "Internal service acknowledgement, no live payment or legal warranty claim"
+  ]
+}

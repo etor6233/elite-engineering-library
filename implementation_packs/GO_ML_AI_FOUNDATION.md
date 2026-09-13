@@ -4,7 +4,7 @@
 
 ```yaml
 pack_id: "GO-ML-AI-FOUNDATION"
-pack_version: "0.2.0"
+pack_version: "0.2.1"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -39,6 +39,7 @@ Rechace este pack para: un modelo cuyo proveedor no se adapte al borde `LLMProvi
 ## 4. Exact file manifest
 
 ```text
+CREATE internal/aifoundation/eval_governance_test.go
 CREATE internal/aifoundation/model.go
 CREATE internal/aifoundation/contract.go
 CREATE internal/aifoundation/safety.go
@@ -548,7 +549,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local"
 license: "LicenseRef-Workspace-Owner"
-sha256: "4e1b8f5fb9359e1407e914f70329f194692523f39cc9cbf79fcfda9c3652bf2b"
+sha256: "741e769b6e76228d1ea3830ef54d20cee66d9b38b53abfca7b9d930875a54dc7"
 variables: []
 secrets_allowed: false
 ```
@@ -559,6 +560,9 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"math"
+	"strings"
+	"time"
 )
 
 // Assertion judges a response against a versioned expectation.
@@ -566,9 +570,10 @@ type Assertion func(CompletionResponse) bool
 
 // EvalCase is a single golden test.
 type EvalCase struct {
-	ID     string
-	Input  CompletionRequest
-	Assert Assertion
+	Required bool
+	ID       string
+	Input    CompletionRequest
+	Assert   Assertion
 }
 
 // EvalSuite is a versioned golden set plus a release threshold.
@@ -579,7 +584,14 @@ type EvalSuite struct {
 }
 
 // EvalResult summarizes a run and its release decision.
+type EvalCaseResult struct {
+	ID       string
+	Required bool
+	Passed   bool
+}
+
 type EvalResult struct {
+	Cases      []EvalCaseResult
 	Total      int
 	Passed     int
 	PassRate   float64
@@ -588,28 +600,56 @@ type EvalResult struct {
 
 // Run executes every case and computes the release decision.
 func (s EvalSuite) Run(p LLMProvider) (EvalResult, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
+	defer cancel()
+	return s.RunContext(ctx, p)
+}
+
+func (s EvalSuite) RunContext(ctx context.Context, p LLMProvider) (EvalResult, error) {
+	if ctx == nil || strings.TrimSpace(s.ID) == "" {
+		return EvalResult{}, errors.New("aifoundation: eval identity/context required")
+	}
 	if p == nil {
 		return EvalResult{}, errors.New("aifoundation: nil provider")
 	}
 	if len(s.Cases) == 0 {
 		return EvalResult{}, errors.New("aifoundation: empty eval suite")
 	}
-	if s.MinPassRate < 0 || s.MinPassRate > 1 {
+	if math.IsNaN(s.MinPassRate) || math.IsInf(s.MinPassRate, 0) || s.MinPassRate < 0 || s.MinPassRate > 1 {
 		return EvalResult{}, errors.New("aifoundation: min pass rate out of range")
 	}
+	seen := map[string]bool{}
+	for _, c := range s.Cases {
+		if c.Assert == nil || strings.TrimSpace(c.ID) == "" || seen[c.ID] {
+			return EvalResult{}, errors.New("aifoundation: unique eval identity and assertion required")
+		}
+		seen[c.ID] = true
+	}
 	var res EvalResult
+	requiredPassed := true
 	res.Total = len(s.Cases)
 	for _, c := range s.Cases {
-		resp, err := p.Generate(context.Background(), c.Input)
-		if err != nil {
-			return EvalResult{}, fmt.Errorf("aifoundation: case %s: %w", c.ID, err)
+		if err := ctx.Err(); err != nil {
+			return res, err
 		}
-		if c.Assert(resp) {
+		resp, err := p.Generate(ctx, c.Input)
+		if err != nil {
+			return res, fmt.Errorf("aifoundation: case %s: %w", c.ID, err)
+		}
+		if err := ctx.Err(); err != nil {
+			return res, err
+		}
+		passed := c.Assert(resp)
+		res.Cases = append(res.Cases, EvalCaseResult{ID: c.ID, Required: c.Required, Passed: passed})
+		if c.Required && !passed {
+			requiredPassed = false
+		}
+		if passed {
 			res.Passed++
 		}
 	}
 	res.PassRate = float64(res.Passed) / float64(res.Total)
-	res.GatePassed = res.PassRate >= s.MinPassRate
+	res.GatePassed = requiredPassed && res.PassRate >= s.MinPassRate
 	return res, nil
 }
 ````
@@ -1209,3 +1249,57 @@ Sin dependencias de terceros. La reconstrucción no requiere red.
 
 Véase `reconstruction_evidence/GO_ML_AI_FOUNDATION_2026-09-02_V175.md`.
 
+
+V402 composed delta: T2807 connected reference315: real domain quotation and contact-bound order status, explicit single-vehicle limit, revalidated contact, structured history roles, per-case required eval gates and canonical host mounting. Local fixtures only. AI_CONNECTED_REFERENCE_RELEASE_V402.md/json. No new upstream dependency or live model quality claim.
+
+### FILE: `internal/aifoundation/eval_governance_test.go`
+
+```yaml
+block_id: "GO-ML-AI-FOUNDATION-CONNECTED-REFERENCE:file1:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "afb279c72fa005999c06d3655fccd6703dd1c125324eb90dffe81dc713fb4703"
+variables: []
+secrets_allowed: false
+```
+
+````go
+package aifoundation
+
+import (
+	"context"
+	"math"
+	"testing"
+)
+
+func TestEvalRequiredCasesCannotHideBehindAverage(t *testing.T) {
+	s := EvalSuite{ID: "reference-v1", MinPassRate: 0.5, Cases: []EvalCase{{ID: "ordinary", Assert: func(CompletionResponse) bool { return true }}, {ID: "tenant-isolation", Required: true, Assert: func(CompletionResponse) bool { return false }}}}
+	r, e := s.Run(fakeProvider{})
+	if e != nil || r.GatePassed || len(r.Cases) != 2 || r.Cases[1].Passed {
+		t.Fatal(r, e)
+	}
+}
+func TestEvalRejectsUnboundedOrAmbiguousDecision(t *testing.T) {
+	yes := func(CompletionResponse) bool { return true }
+	for _, s := range []EvalSuite{
+		{ID: "nan", MinPassRate: math.NaN(), Cases: []EvalCase{{ID: "one", Assert: yes}}},
+		{ID: "nil", MinPassRate: 1, Cases: []EvalCase{{ID: "one"}}},
+		{ID: "duplicate", MinPassRate: 1, Cases: []EvalCase{{ID: "same", Assert: yes}, {ID: "same", Assert: yes}}},
+	} {
+		if _, e := s.Run(fakeProvider{}); e == nil {
+			t.Fatal("invalid eval accepted", s.ID)
+		}
+	}
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+	s := EvalSuite{ID: "canceled", MinPassRate: 1, Cases: []EvalCase{{ID: "one", Assert: yes}}}
+	if _, e := s.RunContext(ctx, fakeProvider{}); e != context.Canceled {
+		t.Fatal(e)
+	}
+}
+````
+
+
+V402315: existing owners compose a single local AI runtime and required-case evaluation. Read docs/AI_REFERENCE_START.md. Historical SFT uses its separate admitted opt-in plan and exact later execution hash; no new training engine or inferred private model quality.

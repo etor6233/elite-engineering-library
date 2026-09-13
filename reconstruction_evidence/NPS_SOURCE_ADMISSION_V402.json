@@ -1,0 +1,135 @@
+{
+  "state": "PASS_BOUNDED_SOURCE_ADMISSION",
+  "scope": "only selected numerical owner, not connected project admission",
+  "gates": {
+    "G0": {
+      "status": "PASS",
+      "evidence": "Official released immutable commit, HTTPS raw paths, verified Git blob identities and SHA-256; current tree agrees for selected source. No enterprise code selected."
+    },
+    "G1": {
+      "status": "PASS",
+      "evidence": "Exact original root LICENSE retained, MIT applies to selected non-ee core; copyright and exclusions intact. No independent upstream runtime or imported third-party snippets selected."
+    },
+    "G2": {
+      "status": "PASS",
+      "evidence": "AUTHORITY/required source audit prohibits authored business arithmetic. Explicit adaptation replaces only calculation; auth/config/minimum/consent remain scoped glue. Existing JSON numeric contract preserved."
+    },
+    "G3": {
+      "status": "PASS",
+      "evidence": "Pure scalar function, typed validated grouped counts from existing PG 0..6/7..8/9..10 query. No new database state, schema, workflow or deployment. Caller validates before call."
+    },
+    "G4": {
+      "status": "PASS",
+      "evidence": "Nine original selected TS cases pass; six typed Go equivalents and exact rational oracle/int64 boundaries pass, finite fuzz416153 executions, vet PASS. Whole upstream suite not claimed."
+    },
+    "G5": {
+      "status": "PASS",
+      "evidence": "No I/O, secrets, network, dynamic imports or allocations in arithmetic; validated bounded int64 subtraction. Auth/tenant/reporting threshold remain in caller. New module graph is empty; upstream product advisories cannot propagate into unselected runtime. Product caller still requires connected regression."
+    },
+    "G6": {
+      "status": "PASS",
+      "evidence": "Constant work and fixed-size value return, no queue/retry/timeout/remote state; finite3s fuzz and local test timing recorded. No low-latency or production SLO claim. No migration, so rollback is complete prior source cohort."
+    },
+    "G7": {
+      "status": "PASS",
+      "evidence": "Fixed commit/source-lock and original tests retained; re-open on changes to selected code, arithmetic contract or relevant advisory. Reporting/privacy business choice remains explicit. No new operated service."
+    },
+    "G8": {
+      "status": "PASS",
+      "evidence": "Eight files in existing compatible owner reconstruct exactly from pack in absent target. Tests/oracle/source/license/docs/conditions preserved. Isolated reusable candidate only; actual composed caller requires project tests before control closure."
+    }
+  },
+  "original_tests": {
+    "state": "PASS",
+    "selected_original_cases": 9,
+    "whole_upstream_suite_claim": false,
+    "node_sha256": "5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5",
+    "module_install": false,
+    "runtime_imports": [
+      "node:assert/strict"
+    ],
+    "original_implementation_lines": [
+      [
+        300,
+        316
+      ],
+      [
+        340,
+        350
+      ],
+      [
+        354,
+        372
+      ],
+      [
+        379,
+        382
+      ]
+    ],
+    "original_test_lines": [
+      843,
+      990
+    ],
+    "selected_code_sha256": "0485aeb9d2fb265d50626a9bb81cf625afadc802d09829ecac0ebea85e2ebe4a",
+    "selected_assertions_sha256": "ad54dcfde2913ec36bd607ab3e8129a7122ea22aef6a10feaf33efa283130be5",
+    "harness_sha256": "0d118812a072a6e7dcfb30f50080e3e6b24c08801fa36ca9bb4ea53717c20d34",
+    "log_sha256": "fa8153d15625aabc91e3e7e82343767d81eac4bab9dc629ea94811cedc25068d",
+    "adaptation_status": "NOT_YET_IMPLEMENTED",
+    "contract_delta_to_preserve": "Upstream formats one decimal; existing API unrounded float64 and externally supplied privacy minimum remain explicit adapters, not upstream semantics."
+  },
+  "candidate_tests": {
+    "state": "PASS",
+    "scope": "isolated candidate; not yet product adoption",
+    "tests": [
+      {
+        "name": "unit",
+        "exit_code": 0,
+        "seconds": 1.736,
+        "log": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\library-assurance\\nps-unit.log",
+        "sha256": "748d663c555759ddecb68f1577b824a8ddb743a8d22d1d995522e6c5db08a4de"
+      },
+      {
+        "name": "vet",
+        "exit_code": 0,
+        "seconds": 0.808,
+        "log": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\library-assurance\\nps-vet.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "fuzz",
+        "exit_code": 0,
+        "seconds": 10.121,
+        "log": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\library-assurance\\nps-fuzz.log",
+        "sha256": "6dfa23b72973b9f593c2b4a522c67c3ca75094042765407f9fdac30895831a47"
+      }
+    ],
+    "go_sha256": "21761eceb9302062c9623fb699f332c8c7fe000f15f70efe8da01a2cfbbc16b9",
+    "sources": {
+      "docs/posthog-nps.md": "2a48b97048c3a11d9ae8a5501c0e980cbff6f619f1cabc89e8bd526f780e0964",
+      "third_party/posthog-nps/LICENSE": "6d82d67dba42eb94ba10f1e986d2eec338c22fb7c5216c2c0ebdecd83d53a029",
+      "third_party/posthog-nps/utils.test.ts.txt": "7b3b24fe2d6d4525113657629991e0d0056b2c8fcf91e6bd2a906b1c280bd565",
+      "third_party/posthog-nps/utils.ts.txt": "a43ed06c7eaffbe5bde3fe515177e512ebc4e6bce24dbef253ed100cbb1a08c1",
+      "internal/posthognps/nps.go": "0132848b6af8b978e739726fc2f57e04df8d65e7b62814e472e0a95d134c032f",
+      "internal/posthognps/nps_fuzz_test.go": "4b75d99b116377ac26896c399f720b9a3ad2cd7d0bf3b2706cb356b60e9f429d",
+      "internal/posthognps/nps_test.go": "3e606d755bab78d6d8efab67c868258c200e81edb42da72b3c19c346f31afb8b"
+    },
+    "new_runtime_dependencies": 0
+  },
+  "rebuild": {
+    "state": "PASS",
+    "files": {
+      "docs/posthog-nps.md": "2a48b97048c3a11d9ae8a5501c0e980cbff6f619f1cabc89e8bd526f780e0964",
+      "third_party/posthog-nps/LICENSE": "6d82d67dba42eb94ba10f1e986d2eec338c22fb7c5216c2c0ebdecd83d53a029",
+      "third_party/posthog-nps/utils.test.ts.txt": "7b3b24fe2d6d4525113657629991e0d0056b2c8fcf91e6bd2a906b1c280bd565",
+      "third_party/posthog-nps/utils.ts.txt": "a43ed06c7eaffbe5bde3fe515177e512ebc4e6bce24dbef253ed100cbb1a08c1",
+      "internal/posthognps/nps.go": "0132848b6af8b978e739726fc2f57e04df8d65e7b62814e472e0a95d134c032f",
+      "internal/posthognps/nps_fuzz_test.go": "4b75d99b116377ac26896c399f720b9a3ad2cd7d0bf3b2706cb356b60e9f429d",
+      "internal/posthognps/nps_test.go": "3e606d755bab78d6d8efab67c868258c200e81edb42da72b3c19c346f31afb8b",
+      "third_party/posthog-nps/source-lock.json": "536596b594484460b396be0214d78e0bd81bd45f3e9ea4f6582374a5dfcbe153"
+    },
+    "pack_sha256": "4e1d41a8a4c81d8381017440408c223f4e37bfc4338694dc4b82034ba037bb63",
+    "plan_sha256": "81c585dc3066a0182158fd17fcf3eb06885fbe1b2c85e632babe91f992e9beaa",
+    "rebuild_log_sha256": "eb0ef6ee29964dc64bbd79eb8a4c41a9740df66a7c69e5007463b4d33ef54343",
+    "destination": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\library-assurance\\nps-rebuilt"
+  }
+}

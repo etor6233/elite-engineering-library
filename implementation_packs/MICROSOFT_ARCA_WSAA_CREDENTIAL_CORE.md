@@ -4,7 +4,7 @@
 
 ```yaml
 pack_id: "MICROSOFT-ARCA-WSAA-CREDENTIAL-CORE"
-pack_version: "0.1.0"
+pack_version: "0.1.1"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -15,7 +15,7 @@ compatible_with: ["MICROSOFT-ARCA-WSFE-GENERATED-CLIENT@0.2.x", "ARCA-WSAA-OFFIC
 incompatible_with: []
 license_expression: "LicenseRef-Workspace-Owner; Microsoft dependency retains MIT terms"
 upstream_sources: ["https://www.arca.gob.ar/ws/documentacion/wsaa.asp", "https://www.arca.gob.ar/ws/WSAA/WSAAmanualDev.pdf", "https://www.arca.gob.ar/ws/documentacion/manuales/manual-desarrollador-ARCA-COMPG.pdf", "https://learn.microsoft.com/dotnet/api/system.security.cryptography.pkcs.signedcms.computesignature", "https://learn.microsoft.com/security/engineering/cryptographic-recommendations"]
-verified_at: "2026-08-30"
+verified_at: "2026-09-13"
 ```
 
 All eighteen files are local `AUTHORED` integration code governed by ARCA protocol documents, the exact generated interface and Microsoft platform APIs. No file is represented as copied Microsoft or ARCA product source.
@@ -410,14 +410,15 @@ operation: CREATE
 provenance: AUTHORED
 source: "local exact composition with generated Microsoft WCF client"
 license: "LicenseRef-Workspace-Owner"
-sha256: "1037cb0c1c4cab2e40c1a255f43a6c253f2fb27b36a22b7bcc4a88e9d0c09799"
-variables: ["GeneratedClientRoot"]
+sha256: "891473ddf3503cc3df14ae30fce52335d3e7589cf58e94687ebf7bc621d1f34a"
+variables: []
 secrets_allowed: false
 ```
 ````xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
+    <GeneratedClientRoot Condition="'$(GeneratedClientRoot)' == ''">$(MSBuildThisFileDirectory)../../../fiscal/generated</GeneratedClientRoot>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -542,8 +543,8 @@ operation: CREATE
 provenance: AUTHORED
 source: "local generated-interface integration harness"
 license: "LicenseRef-Workspace-Owner"
-sha256: "54d334daa3e64467bd8a4cf67d7cf7b804a1b759df5cbed2c17f3162abb744d9"
-variables: ["GeneratedClientRoot"]
+sha256: "018b673209779ce3291e03b7fa35b02261ae11b9cfab9dc9523d2557087206aa"
+variables: []
 secrets_allowed: false
 ```
 ````xml
@@ -551,6 +552,7 @@ secrets_allowed: false
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net10.0</TargetFramework>
+    <GeneratedClientRoot Condition="'$(GeneratedClientRoot)' == ''">$(MSBuildThisFileDirectory)../../../fiscal/generated</GeneratedClientRoot>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -789,7 +791,7 @@ provenance: AUTHORED
 source: "local locked restore/build/test/vulnerability runner"
 license: "LicenseRef-Workspace-Owner"
 sha256: "4ac7cefe2cf789c2abafb4d9c8b2f48bed3b25537fff295081d1ea5bedf973be"
-variables: ["DotnetExecutable", "Root", "GeneratedClientRoot"]
+variables: []
 secrets_allowed: false
 ```
 ````powershell
@@ -845,3 +847,5 @@ Require 18/18 reconstruction, four locked restores, zero-warning builds, nine cr
 ## 10. Reconstruction evidence
 
 Recorded in `reconstruction_evidence/MICROSOFT_ARCA_WSAA_CREDENTIAL_CORE_2026-08-30_V125.md`.
+
+V402 composed delta: V402325 connected local ARCA fixture, fixed offline generated-tool adaptation, explicit legal/source pins and portable .NET/Go build. See ARCA_CONNECTED_INFRA_V402 evidence; only future homologation credentials conditioned, no productive fiscal claim.

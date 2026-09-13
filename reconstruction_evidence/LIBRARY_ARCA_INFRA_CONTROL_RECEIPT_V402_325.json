@@ -1,0 +1,33 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "ARCA_INFRA",
+  "outcome": "PASS",
+  "command": "Real portable fiscal build and HTTP/PG/Go/UDS/.NET/CMS fixture/reconciliation/restart;two independent generated clients,SCA and exact4profiles",
+  "exit_code": 0,
+  "assertions": [
+    "No user credentials requested,provided or used",
+    "Actual local original/credit,response-loss reconciliation,7parameter kinds andPGrestart pass",
+    "Exact1653materialized outputs and440file fiscal artifact proven; full-franchise signed release is separate",
+    "CONDITIONED_USER_CREDENTIALS only for future homologation connection; production requires future project acceptance"
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "d1ab3f8dfd55b600541db7483bf1dd2925452756bf0926aca3355c2339b051b5"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/ARCA_CONNECTED_INFRA_V402.md",
+      "sha256": "1c8f16a6806c6d6da42e73f9d8f8b200d0f646b971356ea1ef8263aadbb2512d"
+    },
+    {
+      "path": "reconstruction_evidence/ARCA_CONNECTED_INFRA_V402.json",
+      "sha256": "c1239595fc03f1913a4b305b77fd5beafeb6f40d1523b4009a132b6adcac6a55"
+    }
+  ],
+  "inventory_sha256": "327a0ceccc26c0c0b31b67792b4292a140198b4605a965b3ca884ff42696c8a3",
+  "live_effects_performed": false
+}

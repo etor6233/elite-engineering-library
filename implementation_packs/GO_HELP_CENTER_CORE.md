@@ -4,17 +4,17 @@
 
 ```yaml
 pack_id: "GO-HELP-CENTER-CORE"
-pack_version: "0.1.2"
+pack_version: "0.2.0"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
   admission: CONDITIONED
 claim: "Referencia AUTHORED de artículos en memoria por tupla tenant/id, concurrencia optimista acotada a int64 y estados draft→published→archived; búsqueda local substring, sin adapter externo ni autorización del actor."
 stacks: ["Go 1.26.8"]
-compatible_with: ["uso aislado; integración con backend/buscador aún no admitida"]
+compatible_with: ["uso aislado original", "GO-CONNECTED-HELP-CMS V402; funciones puras, PostgreSQL18 y autorización explícita"]
 incompatible_with: ["artículo sin título/cuerpo", "versión obsoleta", "transición inválida"]
 license_expression: "LicenseRef-Workspace-Owner"
-upstream_sources: ["https://go.dev"]
+upstream_sources: []
 verified_at: "2026-09-10"
 ```
 
@@ -47,7 +47,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local"
 license: "LicenseRef-Workspace-Owner"
-sha256: "5c8e958ab4ef1262fbfed2583b99f23d50cce20f27715031cb347e2ac47cd844"
+sha256: "b85cd4107cecb74a11977abf06051f1be407aca826953193a897f597920c1cba"
 variables: []
 secrets_allowed: false
 ```
@@ -137,9 +137,7 @@ func (s *Store) Create(a Article) error {
 	if _, ok := s.articles[key(a.TenantID, a.ID)]; ok {
 		return ErrDuplicate
 	}
-	a.State = StateDraft
-	a.Version = 1
-	a.UpdatedAt = time.Now().UTC()
+	a = prepareDraft(a, time.Now().UTC())
 	s.articles[key(a.TenantID, a.ID)] = a
 	return nil
 }
@@ -152,20 +150,11 @@ func (s *Store) Update(tenant, id string, title, body string, expectedVersion in
 	if !ok {
 		return ErrNotFound
 	}
-	if a.Version != expectedVersion {
-		return ErrVersion
+	updated, err := ReviseArticle(a, title, body, expectedVersion, time.Now().UTC())
+	if err != nil {
+		return err
 	}
-	if strings.TrimSpace(title) == "" || strings.TrimSpace(body) == "" {
-		return ErrInvalidArticle
-	}
-	if a.Version == math.MaxInt64 {
-		return ErrVersionExhausted
-	}
-	a.Title = title
-	a.Body = body
-	a.Version++
-	a.UpdatedAt = time.Now().UTC()
-	s.articles[key(tenant, id)] = a
+	s.articles[key(tenant, id)] = updated
 	return nil
 }
 
@@ -186,19 +175,11 @@ func (s *Store) transition(tenant, id string, expectedVersion int64, from, to St
 	if !ok {
 		return ErrNotFound
 	}
-	if a.Version != expectedVersion {
-		return ErrVersion
+	updated, err := transitionArticle(a, expectedVersion, from, to, time.Now().UTC())
+	if err != nil {
+		return err
 	}
-	if a.State != from {
-		return ErrBadTransition
-	}
-	if a.Version == math.MaxInt64 {
-		return ErrVersionExhausted
-	}
-	a.State = to
-	a.Version++
-	a.UpdatedAt = time.Now().UTC()
-	s.articles[key(tenant, id)] = a
+	s.articles[key(tenant, id)] = updated
 	return nil
 }
 
@@ -238,6 +219,59 @@ func (s *Store) String() string {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	return fmt.Sprintf("helpcenter(%d)", len(s.articles))
+}
+
+// AUTHORED storage boundary extraction. Existing source validation/version/state
+// rules retained; caller loads a valid article and owns authorization/persistence.
+func prepareDraft(a Article, now time.Time) Article {
+	a.State = StateDraft
+	a.Version = 1
+	a.UpdatedAt = now
+	return a
+}
+func NewDraft(a Article, now time.Time) (Article, error) {
+	if err := validate(a); err != nil {
+		return Article{}, err
+	}
+	return prepareDraft(a, now), nil
+}
+func ReviseArticle(a Article, title, body string, expectedVersion int64, now time.Time) (Article, error) {
+	if a.Version != expectedVersion {
+		return Article{}, ErrVersion
+	}
+	if strings.TrimSpace(title) == "" || strings.TrimSpace(body) == "" {
+		return Article{}, ErrInvalidArticle
+	}
+	if a.Version == math.MaxInt64 {
+		return Article{}, ErrVersionExhausted
+	}
+	a.Title = title
+	a.Body = body
+	a.Version++
+	a.UpdatedAt = now
+	return a, nil
+}
+
+func PublishArticle(a Article, expectedVersion int64, now time.Time) (Article, error) {
+	return transitionArticle(a, expectedVersion, StateDraft, StatePublished, now)
+}
+func ArchiveArticle(a Article, expectedVersion int64, now time.Time) (Article, error) {
+	return transitionArticle(a, expectedVersion, StatePublished, StateArchived, now)
+}
+func transitionArticle(a Article, expectedVersion int64, from, to State, now time.Time) (Article, error) {
+	if a.Version != expectedVersion {
+		return Article{}, ErrVersion
+	}
+	if a.State != from {
+		return Article{}, ErrBadTransition
+	}
+	if a.Version == math.MaxInt64 {
+		return Article{}, ErrVersionExhausted
+	}
+	a.State = to
+	a.Version++
+	a.UpdatedAt = now
+	return a, nil
 }
 ````
 
@@ -736,3 +770,11 @@ licencia local, prueba por invariante, fuente semántica y dictamen de equivalen
 se mantienen separados. El lenguaje/stdlib no es fuente de un negocio empresarial.
 No cambia este claim, API, permiso de composición ni las condiciones de integración.
 La revisión 0.1.1 y sus bytes quedan preservados en el expediente anterior.
+
+V402 composed delta: Pure article lifecycle functions extracted while retaining isolated Store behavior;12legacytests/16seeds. Durable authenticated usage proven only through GO-CONNECTED-HELP-CMS in V402, not an in-memory Store promotion.
+
+V402: NewDraft/ReviseArticle/PublishArticle/ArchiveArticle son funciones puras
+extraídas con reglas y clocks explícitos. Store sigue siendo referencia aislada.
+El companion durable AUTHORED GO-CONNECTED-HELP-CMS satisface condiciones de
+persistencia/auth/recovery sólo en la composición probada; no promueve Search
+a buscador externo ni atribuye el core a Go/Google. HELP_CMS_RELEASE_V402.

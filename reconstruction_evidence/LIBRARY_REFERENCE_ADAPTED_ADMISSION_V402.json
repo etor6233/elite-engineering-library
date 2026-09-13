@@ -1,0 +1,193 @@
+{
+  "schema": "elite-library-admission/v1",
+  "revision": "V402-source330-metadata331-local",
+  "mode": "ADAPTED",
+  "role": "BUSINESS_LOGIC",
+  "files": [
+    "cmd/meta-lead-import/main.go",
+    "db/migrations/0025_serial_inventory_reservation_transfer.down.sql",
+    "db/migrations/0025_serial_inventory_reservation_transfer.up.sql",
+    "db/migrations/0026_bulk_lot_bin_costing.down.sql",
+    "db/migrations/0026_bulk_lot_bin_costing.up.sql",
+    "db/migrations/0027_operational_warehouse_fefo.down.sql",
+    "db/migrations/0027_operational_warehouse_fefo.up.sql",
+    "db/migrations/0028_bulk_transfer_in_transit.down.sql",
+    "db/migrations/0028_bulk_transfer_in_transit.up.sql",
+    "db/migrations/0029_bulk_transfer_specific_cost.down.sql",
+    "db/migrations/0029_bulk_transfer_specific_cost.up.sql",
+    "db/migrations/0030_bulk_transfer_partial_posting.down.sql",
+    "db/migrations/0030_bulk_transfer_partial_posting.up.sql",
+    "db/migrations/0031_warehouse_bin_replenishment.down.sql",
+    "db/migrations/0031_warehouse_bin_replenishment.up.sql",
+    "db/migrations/0032_warehouse_transfer_crossdock.down.sql",
+    "db/migrations/0032_warehouse_transfer_crossdock.up.sql",
+    "db/migrations/0033_item_unit_of_measure.down.sql",
+    "db/migrations/0033_item_unit_of_measure.up.sql",
+    "db/migrations/0034_bulk_uom_packaging.down.sql",
+    "db/migrations/0034_bulk_uom_packaging.up.sql",
+    "db/migrations/0035_warehouse_handling_uom.down.sql",
+    "db/migrations/0035_warehouse_handling_uom.up.sql",
+    "db/migrations/0036_warehouse_pick_replenishment_uom.down.sql",
+    "db/migrations/0036_warehouse_pick_replenishment_uom.up.sql",
+    "db/migrations/0037_sales_order_warehouse_demand.down.sql",
+    "db/migrations/0037_sales_order_warehouse_demand.up.sql",
+    "db/migrations/0038_customer_sales_shipment.down.sql",
+    "db/migrations/0038_customer_sales_shipment.up.sql",
+    "db/migrations/0039_connected_carrier_delivery.down.sql",
+    "db/migrations/0039_connected_carrier_delivery.up.sql",
+    "db/migrations/0044_omnichannel_lead_ingress.up.sql",
+    "db/migrations/0045_lead_candidate_promotion.up.sql",
+    "db/tests/0038_customer_sales_shipment.test.sql",
+    "db/tests/0039_connected_carrier_delivery.test.sql",
+    "internal/bcamounts/amounts.go",
+    "internal/bcfx/exchange.go",
+    "internal/bcfx/selection.go",
+    "internal/bcsales/quote.go",
+    "internal/inventorycontrol/bulk.go",
+    "internal/inventorycontrol/bulk_test.go",
+    "internal/inventorycontrol/bulk_transfer.go",
+    "internal/inventorycontrol/bulk_transfer_test.go",
+    "internal/inventorycontrol/item_uom.go",
+    "internal/inventorycontrol/item_uom_test.go",
+    "internal/inventorycontrol/service.go",
+    "internal/inventorycontrol/service_test.go",
+    "internal/inventorycontrol/warehouse.go",
+    "internal/inventorycontrol/warehouse_breakbulk.go",
+    "internal/inventorycontrol/warehouse_crossdock.go",
+    "internal/inventorycontrol/warehouse_replenishment.go",
+    "internal/inventorycontrol/warehouse_test.go",
+    "internal/leadpromotion/promotion.go",
+    "internal/leadpromotion/promotion_test.go",
+    "internal/leadstream/event.go",
+    "internal/leadstream/google_ads.go",
+    "internal/leadstream/handler.go",
+    "internal/leadstream/mercadolibre_questions.go",
+    "internal/leadstream/meta_import.go",
+    "internal/leadstream/meta_import_test.go",
+    "internal/leadstream/meta_webhook.go",
+    "internal/leadstream/meta_webhook_test.go",
+    "internal/leadstream/store.go",
+    "internal/llmopenai/responses_tools.go",
+    "internal/llmopenai/responses_tools_test.go",
+    "internal/platform/postgres/bc_accounting_sql.go",
+    "internal/platform/postgres/bc_price_sql.go",
+    "internal/platform/postgres/bulk_inventory.go",
+    "internal/platform/postgres/bulk_inventory_integration_test.go",
+    "internal/platform/postgres/bulk_transfer.go",
+    "internal/platform/postgres/bulk_transfer_integration_test.go",
+    "internal/platform/postgres/fulfillment_transport.go",
+    "internal/platform/postgres/fulfillment_transport_integration_test.go",
+    "internal/platform/postgres/inventorycontrol.go",
+    "internal/platform/postgres/inventorycontrol_integration_test.go",
+    "internal/platform/postgres/item_uom.go",
+    "internal/platform/postgres/item_uom_integration_test.go",
+    "internal/platform/postgres/lead_ingress.go",
+    "internal/platform/postgres/lead_promotion.go",
+    "internal/platform/postgres/lead_promotion_integration_test.go",
+    "internal/platform/postgres/meta_import_integration_test.go",
+    "internal/platform/postgres/sales_shipment.go",
+    "internal/platform/postgres/sales_warehouse.go",
+    "internal/platform/postgres/sales_warehouse_integration_test.go",
+    "internal/platform/postgres/warehouse.go",
+    "internal/platform/postgres/warehouse_breakbulk.go",
+    "internal/platform/postgres/warehouse_breakbulk_integration_test.go",
+    "internal/platform/postgres/warehouse_crossdock.go",
+    "internal/platform/postgres/warehouse_crossdock_integration_test.go",
+    "internal/platform/postgres/warehouse_integration_test.go",
+    "internal/platform/postgres/warehouse_packaging.go",
+    "internal/platform/postgres/warehouse_packaging_flow_integration_test.go",
+    "internal/platform/postgres/warehouse_replenishment.go",
+    "internal/platform/postgres/warehouse_replenishment_integration_test.go",
+    "internal/posthognps/nps.go",
+    "internal/posthognps/nps_test.go",
+    "internal/warrantycoverage/coverage.go",
+    "licenses/reference/babel-packages-inline-notices.txt",
+    "licenses/reference/client-only-MIT-terms.txt",
+    "licenses/reference/unistore-MIT-terms.txt",
+    "meta_lead_reconciliation/fetch_leads.py",
+    "meta_lead_reconciliation/test_fetch_leads.py",
+    "microsoft_playwright_browser_gate/LICENSE.playwright.txt",
+    "odoo_loyalty/engine.py",
+    "pnpm_artifact_selection/next-path-source-evidence.json",
+    "pnpm_artifact_selection/plan_install.py",
+    "pnpm_artifact_selection/retained-notice-catalog.json",
+    "portable_release_evidence_gate/fixtures/openssh-ed25519.pub.b64",
+    "portable_release_evidence_gate/fixtures/openssh-ed25519.sig.b64",
+    "portable_release_evidence_gate/fixtures/openssh-namespace.b64",
+    "portable_release_evidence_gate/fixtures/openssh-signed-data.b64",
+    "src/proxy.ts",
+    "test_odoo_loyalty_derived.py",
+    "tiktok_lead_adapter/adapter.py",
+    "whatsapp_cloud/upstream/LICENSE",
+    "whatsapp_cloud/whatsapp_cloud.py"
+  ],
+  "source_lock": {
+    "path": "reconstruction_evidence/LIBRARY_REFERENCE_PROVENANCE_V402.json",
+    "sha256": "72419fd412bceeb21e8a73201d7f9fa98de0113582661f5577009db91d3c5156"
+  },
+  "gates": {
+    "G0": {
+      "status": "PASS",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+        "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+      }
+    },
+    "G1": {
+      "status": "PASS",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+        "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+      }
+    },
+    "G2": {
+      "status": "PASS",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+        "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+      }
+    },
+    "G3": {
+      "status": "PASS",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+        "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+      }
+    },
+    "G4": {
+      "status": "PASS",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+        "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+      }
+    },
+    "G5": {
+      "status": "PASS",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+        "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+      }
+    },
+    "G6": {
+      "status": "PASS",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+        "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+      }
+    },
+    "G7": {
+      "status": "PASS",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+        "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+      }
+    },
+    "G8": {
+      "status": "PASS",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+        "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+      }
+    }
+  }
+}

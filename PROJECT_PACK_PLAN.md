@@ -6,11 +6,11 @@ Estado V402: preparación local `READY_FOR_LIBRARY_WORK`; T2801 final y release 
 |---|---|---|---|
 | 1 | PROJECT-START-READINESS-VALIDATOR | 0.7.0 | staging separado; once archivos reconstruidos, 102 tests; modos PROJECT y LIBRARY_INFRASTRUCTURE separados |
 | 2 | EXECUTION-VALIDATOR | 1.3.1 | engineering_execution_kit en staging; mantener estado/eventos en raíz; completar implementation_assurance antes de expansión |
-| 3 | MARKDOWN-COMPOSITOR | 0.2.2 | tooling en staging; selección estable bajo StrictMode, destino nuevo y rechazo de colisiones; V285 |
+| 3 | MARKDOWN-COMPOSITOR | 0.3.0 | tooling en staging; selección estable bajo StrictMode, destino nuevo y rechazo de colisiones; V285 |
 
 No se agregan estos outputs a la fuente portable ni se mezclan con los archivos de negocio.
 La selección integral de producto continúa en markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md,
-82 packs/1032 archivos al inicio V402, sujeta al inventario ejecutable vigente, al gate de infraestructura y a los gates propios de cada target.
+106 packs/1418 archivos al inicio V402, sujeta al inventario ejecutable vigente, al gate de infraestructura y a los gates propios de cada target.
 
 Código canónico: paths y digests en PROJECT_EXTERNAL_SOURCE_LOCK.md.
 Reproducción: materialize_markdown_pack.ps1 con PackFile exacto y Destination ausente;

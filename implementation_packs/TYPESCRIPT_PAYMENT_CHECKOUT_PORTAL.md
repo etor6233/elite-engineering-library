@@ -4,7 +4,7 @@
 
 ```yaml
 pack_id: "TS-PAYMENT-CHECKOUT-PORTAL"
-pack_version: "0.1.0"
+pack_version: "0.1.1"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -118,32 +118,36 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "153b13fa7a9296e8d56014763c1a5cec44951b15da5f8e6cec79703e74388568"
+sha256: "8e8eed64e7b5d6fd7e1ed865efdac9f300f2bda1eb2111b72dc28dfc325944b9"
 variables: []
 secrets_allowed: false
 ```
 
 ````tsx
 "use client";
+import {usePrivateI18n} from "@/platform/i18n/private-provider";
+
 import { useState } from "react";
 import { checkoutSchema } from "@/platform/payments/checkout";
 
 export function CustomerCheckoutActions({orderId,organizationId}:{orderId:string;organizationId:string}){
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
  const [pending,setPending]=useState(false),[message,setMessage]=useState("");
  async function openCheckout(){
   setPending(true);setMessage("");
   try{
    const query=new URLSearchParams({orderId,organizationId});
    const response=await fetch("/api/enterprise/checkout?"+query,{cache:"no-store",redirect:"error",credentials:"same-origin",headers:{accept:"application/json"},signal:AbortSignal.timeout(7000)});
-   if(response.status===404){setMessage("El pago todavía no está disponible para este pedido.");return;}
+   if(response.status===404){setMessage(t("p0237"));return;}
    if(!response.ok)throw new Error("checkout unavailable");
    const value=checkoutSchema.parse(await response.json());
    if(value.order_id!==orderId)throw new Error("checkout does not match order");
    window.location.assign(value.url);
-  }catch{setMessage("No pudimos abrir el pago. Volvé a intentarlo más tarde.");}
+  }catch{setMessage(t("p0238"));}
   finally{setPending(false);}
  }
- return <div><button type="button" disabled={pending} onClick={openCheckout}>{pending?"Abriendo pago…":"Continuar con el pago"}</button><p role="status" aria-live="polite">{message}</p></div>;
+ return <div><button type="button" disabled={pending} onClick={openCheckout}>{pending?t("p0239"):t("p0240")}</button><p role="status" aria-live="polite">{message}</p></div>;
 }
 ````
 
@@ -198,3 +202,5 @@ Run the affected Go unit/HTTP/host tests, bounded native fuzz where the selected
 V402: the complete77pack/915file reference was reconstructed into an absent external destination; every output matched the frozen source inventory. PostgreSQL57migrations and16 connected tests passed without skips, plus vet/build and the explicitly enumerated unit/host cases. Finite fuzz and frontend contract receipts are separately bound to identical files. See reconstruction_evidence/CONNECTED_PAYMENT_HANDOVER_V402.md and CONNECTED_DELTA_ASSURANCE_V402.md. Current SAST/SCA, whole-library operations/performance/portable release and remaining capabilities retain their own gates; no live production or complete TEST02 claim.
 
 Canonical V402 integration: selected by the current profile with exact dependencies and caller overlays. Metadata promotion records byte reconstruction, not closure of every admission/release gate. Payload provenance is unchanged.
+
+V402 composed delta: T2804 private es/en display, per-user/tenant preference and browser negotiation;1198messages,21exact guides,5hash-bound curricula; original commands/content/policies preserved. PRIVATE_LOCALE_RELEASE_V402.md/json. AUTHORED glue; no new dependency or corporate attribution.

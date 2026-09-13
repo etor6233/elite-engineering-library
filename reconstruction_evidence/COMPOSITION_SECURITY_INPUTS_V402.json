@@ -1,0 +1,117 @@
+{
+  "schema": "elite-exact-composition-sca-input/v1",
+  "composition_files": 1481,
+  "composition_inventory_sha256": "17e56881ab893d14cc024a027deced8b62cb80f2f512276493645bdb9d9e8072",
+  "go_executable_sha256": "21761eceb9302062c9623fb699f332c8c7fe000f15f70efe8da01a2cfbbc16b9",
+  "inputs": [
+    {
+      "path": "go.mod",
+      "sha256": "8bef60cbf2e8a8d222667aa9ab2010b2fbc57d614008f62f2a8d650fe0f17075"
+    },
+    {
+      "path": "go.sum",
+      "sha256": "29f2ea90a3d57c8f0261f832e27362d27f5acc1c010639cf90450a8f48c84fd6"
+    },
+    {
+      "path": "google_ads_reporting/requirements-windows-py314.lock",
+      "sha256": "b48ac7347fe788d8c2aa60ab03c7e24ed22179d70faa232a52085f0d31947f73"
+    },
+    {
+      "path": "google_lighthouse_web_quality_gate/pnpm-lock.yaml",
+      "sha256": "c690da3a314e5275d68c4ea4a88e700dbd9a58b0da6fcbc25aec2bdc486dd9aa"
+    },
+    {
+      "path": "google_merchant_product_sync/requirements-windows-py314.lock",
+      "sha256": "4b9f2dec1970d8a3a3ee1caf6309407d70cbaf70468c7f350fc911b012f0cd25"
+    },
+    {
+      "path": "mercadolibre_marketplace/go.mod",
+      "sha256": "c942e5ce737c8c1e783b3f908bf61aaabc73470bbb86eeedaf5ceee7e38114fa"
+    },
+    {
+      "path": "meta_ads_reporting/requirements-windows-py314.lock",
+      "sha256": "a4b4b65d2a19be4bb51892bcb25a4e8127f7b2c16b8f49a2f40b319797314e19"
+    },
+    {
+      "path": "meta_lead_reconciliation/requirements-windows-py314.lock",
+      "sha256": "a4b4b65d2a19be4bb51892bcb25a4e8127f7b2c16b8f49a2f40b319797314e19"
+    },
+    {
+      "path": "meta_page_write/requirements-windows-py314.lock",
+      "sha256": "a4b4b65d2a19be4bb51892bcb25a4e8127f7b2c16b8f49a2f40b319797314e19"
+    },
+    {
+      "path": "microsoft_playwright_browser_gate/pnpm-lock.yaml",
+      "sha256": "63eec1e3d5bac29965e850bf751269c7a8b317929b570205a1e223544f80a470"
+    },
+    {
+      "path": "official_payment_webhooks/go.mod",
+      "sha256": "fc6106ab8e8e4ab2dde71a6210e5d4b31cc674e62088947e29eb8e025387b141"
+    },
+    {
+      "path": "official_payment_webhooks/go.sum",
+      "sha256": "6f564169198e386498d553a0c9a1e7bce16b619d4e88d640429ad1f3ff74dc06"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "d6c73eb82a56c7e8d21ee89ffb402d0adb2f0c15db9c33bb8ec7035775119928"
+    },
+    {
+      "path": "return_refund_worker/go.mod",
+      "sha256": "32f96cb7d5255316b23ab3f597d5fa6ef508a64fd444c0ece5cd9e3ca9803aba"
+    },
+    {
+      "path": "return_refund_worker/go.sum",
+      "sha256": "ea80bd93ebcdd4c1cd14c9b759c419f1c903ccd007b57014e16827fbfb14a13a"
+    },
+    {
+      "path": "tiktok_ads_reporting/requirements.lock",
+      "sha256": "610bdd481a970f93b33b8d019428d8f30a4c78a4da4e057c3f096c91fe30ba34"
+    },
+    {
+      "path": "tiktok_lead_adapter/requirements.lock",
+      "sha256": "610bdd481a970f93b33b8d019428d8f30a4c78a4da4e057c3f096c91fe30ba34"
+    }
+  ],
+  "go_graphs": [
+    {
+      "input": "go.mod",
+      "modules": 24,
+      "external": 22
+    },
+    {
+      "input": "return_refund_worker/go.mod",
+      "modules": 19,
+      "external": 18
+    },
+    {
+      "input": "mercadolibre_marketplace/go.mod",
+      "modules": 1,
+      "external": 0
+    },
+    {
+      "input": "official_payment_webhooks/go.mod",
+      "modules": 8,
+      "external": 7
+    }
+  ],
+  "pnpm_locks": [
+    "pnpm-lock.yaml",
+    "microsoft_playwright_browser_gate/pnpm-lock.yaml",
+    "google_lighthouse_web_quality_gate/pnpm-lock.yaml"
+  ],
+  "python_requirement_locks": [
+    "meta_lead_reconciliation/requirements-windows-py314.lock",
+    "google_ads_reporting/requirements-windows-py314.lock",
+    "meta_ads_reporting/requirements-windows-py314.lock",
+    "tiktok_ads_reporting/requirements.lock",
+    "tiktok_lead_adapter/requirements.lock",
+    "google_merchant_product_sync/requirements-windows-py314.lock",
+    "meta_page_write/requirements-windows-py314.lock"
+  ],
+  "go_python_unique": 73,
+  "deferred_input_prefixes": [
+    "arca/"
+  ],
+  "no_package_execution_or_install": true
+}

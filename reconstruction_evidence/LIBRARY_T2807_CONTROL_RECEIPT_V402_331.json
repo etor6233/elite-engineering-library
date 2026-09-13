@@ -1,0 +1,36 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2807",
+  "outcome": "PASS",
+  "command": "V402331 metadata-only source labels;1653materialized bytes identical to330",
+  "exit_code": 0,
+  "assertions": [
+    "Every selected source byte unchanged.",
+    "Nineteen notice source labels now bind their exact existing official receipts.",
+    "Prior local control proof and active330build inputs retained."
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "4aaa1fb70a613dace854645c2d053097c6d8b3173cb8c2f6db80aedb9e04e672"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_T2807_CONTROL_RECEIPT_V402_330.json",
+      "sha256": "114ca484532abefca9922fe4c6e92190191987814d193ee4b6616c4441cb08dd"
+    },
+    {
+      "path": "reconstruction_evidence/REFERENCE_NOTICE_METADATA_V402.json",
+      "sha256": "1d2c20c2839a1fe116940a51c0ca25b5cde08130f826b8b57ff37c87d232725b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/REFERENCE_NOTICE_METADATA_V402.md",
+      "sha256": "c534a91e6f541e64cc50cc8b9d5c83db744672316f3e98746fd91968a5ce8b15"
+    }
+  ],
+  "inventory_sha256": "b827c89f4809d8dbacfb2d050c291f20f52d8802608bddc8827038badad4ba59",
+  "live_effects_performed": false
+}

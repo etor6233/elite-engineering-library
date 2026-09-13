@@ -1,0 +1,70 @@
+{
+  "schema": "elite-document-root-graph-correspondence/v1",
+  "state": "PASS",
+  "root_modules": 37,
+  "prior_root_modules": 22,
+  "added_sdk_modules": 15,
+  "changed_preexisting_versions": 0,
+  "modules": {
+    "cloud.google.com/go/compute/metadata": "v0.3.0",
+    "github.com/aws/aws-sdk-go-v2": "v1.44.0",
+    "github.com/aws/aws-sdk-go-v2/config": "v1.32.38",
+    "github.com/aws/aws-sdk-go-v2/credentials": "v1.19.37",
+    "github.com/aws/aws-sdk-go-v2/feature/ec2/imds": "v1.18.38",
+    "github.com/aws/aws-sdk-go-v2/internal/configsources": "v1.4.40",
+    "github.com/aws/aws-sdk-go-v2/internal/endpoints/v2": "v2.7.40",
+    "github.com/aws/aws-sdk-go-v2/internal/v4a": "v1.4.39",
+    "github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding": "v1.13.17",
+    "github.com/aws/aws-sdk-go-v2/service/internal/presigned-url": "v1.13.38",
+    "github.com/aws/aws-sdk-go-v2/service/signin": "v1.5.7",
+    "github.com/aws/aws-sdk-go-v2/service/sso": "v1.33.7",
+    "github.com/aws/aws-sdk-go-v2/service/ssooidc": "v1.38.7",
+    "github.com/aws/aws-sdk-go-v2/service/sts": "v1.45.7",
+    "github.com/aws/aws-sdk-go-v2/service/textract": "v1.45.0",
+    "github.com/aws/smithy-go": "v1.28.1",
+    "github.com/coreos/go-oidc/v3": "v3.20.0",
+    "github.com/davecgh/go-spew": "v1.1.1",
+    "github.com/go-jose/go-jose/v4": "v4.1.4",
+    "github.com/google/uuid": "v1.6.0",
+    "github.com/jackc/pgpassfile": "v1.0.0",
+    "github.com/jackc/pgservicefile": "v0.0.0-20240606120523-5a60cdf6a761",
+    "github.com/jackc/pgx/v5": "v5.10.0",
+    "github.com/jackc/puddle/v2": "v2.2.2",
+    "github.com/kr/pretty": "v0.3.0",
+    "github.com/mercadopago/sdk-go": "v1.14.0",
+    "github.com/pmezard/go-difflib": "v1.0.0",
+    "github.com/stretchr/objx": "v0.1.0",
+    "github.com/stretchr/testify": "v1.11.1",
+    "github.com/stripe/stripe-go/v86": "v86.3.0",
+    "golang.org/x/mod": "v0.40.0",
+    "golang.org/x/oauth2": "v0.36.0",
+    "golang.org/x/sync": "v0.21.0",
+    "golang.org/x/text": "v0.39.0",
+    "golang.org/x/tools": "v0.49.0",
+    "gopkg.in/check.v1": "v1.0.0-20201130134442-10cb98267c6c",
+    "gopkg.in/yaml.v3": "v3.0.1"
+  },
+  "root_go_mod_sha256": "34962e3fc973f9b246cccb9ad362e646d01213b02706466dd89245b528c5a1e2",
+  "root_go_sum_sha256": "5f4a04a17f44d921b8af2ec25a8363f89bdc9bf1c14740508f152899293d5075",
+  "root_graph_sha256": "3a907b048ac31a9b21e9aa31838d4225115c4228c209a5e86760369d6ce16b13",
+  "go_mod_verify_sha256": "b4537ed75f533f993f371954de47e42a793b8e5b0587577de7e27fb3e50696bd",
+  "sca_evidence": [
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\composition-security-311\\fixed-scan-result.json",
+      "sha256": "71c218d498f9a816ee211cc657d28487625a9ab84aec89d9cfccd6435e926b71"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\composition-security-311\\fixed-osv.json",
+      "sha256": "68eda39814743849592a85e1d15b39df0826b02d1de5ebbd520b5cd919a8ee61"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\document-connected\\sdk-reference-proof.json",
+      "sha256": "2c7551d2dff70c56aeb8134c0058df7a5bff66112e3267bb0784b8072fbccfcd"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\document-connected\\sdk-sca.json",
+      "sha256": "370e8cf62b3f8254869660ae2f2db9f27d333ff6994e4e182ef647ff6c98b463"
+    }
+  ],
+  "claim": "Exact union of two current zero-finding scans; no new/unscanned module identity. Existing other Go/Python/pnpm locks unchanged; new secure-file gate is standard-library Python plus separately conditioned native tools."
+}

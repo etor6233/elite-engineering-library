@@ -4,7 +4,7 @@
 
 ```yaml
 pack_id: "GO-INITIAL-HANDOVER-API"
-pack_version: "0.2.0"
+pack_version: "0.4.0"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -63,6 +63,8 @@ CREATE internal/platform/httpapi/handover_context_test.go
 CREATE internal/platform/postgres/handover_browser_integration_test.go
 CREATE internal/platform/postgres/handover_context.go
 CREATE internal/platform/postgres/handover_context_integration_test.go
+CREATE db/migrations/0068_handover_funding_evidence.up.sql
+CREATE db/migrations/0068_handover_funding_evidence.down.sql
 ```
 
 ## 5. Materialization blocks
@@ -806,7 +808,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "1971f0d99a7e68ec0d41171ae77967b71c7153b07225845a1d7fee7d565c5607"
+sha256: "a97d933c6e3d35444bd78150da2c5f051b33bf00be8372a79ecc574e4a254943"
 variables: []
 secrets_allowed: false
 ```
@@ -834,9 +836,18 @@ func SupportedCommercialReleaseOptions() HandoverProfileOptions {
 	return opts
 }
 
+// Explicit additive selection; revisions1/2 retain provider-only coverage.
+func SupportedStoredValueReleaseOptions() HandoverProfileOptions {
+	opts := SupportedCommercialReleaseOptions()
+	opts.PaymentCoverage = "FULL_ORDER_WITH_STORED_VALUE"
+	return opts
+}
+func (p HandoverReleaseContract) AllowsStoredValueFunding(tenant, org string) bool {
+	return p.AllowsScope(tenant, org) && p.profile != nil && p.profile.storedValue
+}
 func supportedHandoverAlgorithm(revision int, options HandoverProfileOptions) bool {
 	return revision == HandoverSupportedAlgorithmRevision && options == SupportedHandoverProfileOptions() ||
-		revision == CommercialReleaseAlgorithmRevision && options == SupportedCommercialReleaseOptions()
+		revision == CommercialReleaseAlgorithmRevision && options == SupportedCommercialReleaseOptions() || revision == 3 && options == SupportedStoredValueReleaseOptions()
 }
 
 func (p HandoverReleaseContract) AllowsCommercialRelease(tenant, organization string) bool {
@@ -858,6 +869,7 @@ type CommercialReleaseReceipt struct {
 	HandoverID            string    `json:"handover_id"`
 	OrderID               string    `json:"order_id"`
 	PaymentAttemptID      string    `json:"payment_attempt_id"`
+	FundingReceiptID      string    `json:"funding_receipt_id,omitempty"`
 	ObservationSHA256     string    `json:"observation_sha256"`
 	ObservationGeneration int64     `json:"observation_generation"`
 	HandoverVersion       int       `json:"handover_version"`
@@ -1005,7 +1017,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "4fa99592c9877938cac35f98235075c24361deb6f9b59051636f07502cee37b5"
+sha256: "a76a026a7218f7dde93978e3f8239dd8340ce8dd29f06f62366d9693b409865b"
 variables: []
 secrets_allowed: false
 ```
@@ -1063,6 +1075,7 @@ type PrepareHandoverCommand struct {
 	OrderID           string `json:"order_id"`
 	OrderLineID       string `json:"order_line_id"`
 	PaymentAttemptID  string `json:"payment_attempt_id"`
+	FundingReceiptID  string `json:"funding_receipt_id,omitempty"`
 	ObservationSHA256 string `json:"observation_sha256"`
 	IdempotencyKey    string `json:"-"`
 }
@@ -1072,6 +1085,7 @@ type HandoverPreparation struct {
 	OrderLineID       string    `json:"order_line_id"`
 	ReservationID     string    `json:"reservation_id"`
 	PaymentAttemptID  string    `json:"payment_attempt_id"`
+	FundingReceiptID  string    `json:"funding_receipt_id,omitempty"`
 	ObservationSHA256 string    `json:"observation_sha256"`
 	ContractID        string    `json:"contract_id"`
 	ContractSHA256    string    `json:"contract_sha256"`
@@ -1131,7 +1145,7 @@ func (s *HandoverPreparationService) Prepare(ctx context.Context, tenant, actor 
 		return empty, false, ErrReleaseConditioned
 	}
 	if tenant == "" || actor == "" || len(actor) > 256 || !validPreparationID(command.OrganizationID) || !validPreparationID(command.OrderID) ||
-		!validPreparationID(command.OrderLineID) || !validPreparationID(command.PaymentAttemptID) || len(command.IdempotencyKey) < 8 || len(command.IdempotencyKey) > 128 {
+		!validPreparationID(command.OrderLineID) || !validHandoverFunding(command, s.contract, tenant) || len(command.IdempotencyKey) < 8 || len(command.IdempotencyKey) > 128 {
 		return empty, false, ErrInvalid
 	}
 	hash, err := hex.DecodeString(command.ObservationSHA256)
@@ -1161,6 +1175,13 @@ func (s *HandoverPreparationService) Result(ctx context.Context, tenant, organiz
 		return HandoverPreparation{}, ErrInvalid
 	}
 	return s.repository.InitialHandoverResult(ctx, tenant, organization, order, key)
+}
+
+func validHandoverFunding(c PrepareHandoverCommand, p HandoverReleaseContract, tenant string) bool {
+	if c.FundingReceiptID != "" {
+		return c.PaymentAttemptID == "" && validPreparationID(c.FundingReceiptID) && p.AllowsStoredValueFunding(tenant, c.OrganizationID)
+	}
+	return validPreparationID(c.PaymentAttemptID)
 }
 ````
 
@@ -1278,7 +1299,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "6c34bf0f19d54a115184821a6a68082828fb1a6dfad2fbe48df9e7d2e74c27ab"
+sha256: "37f8c5061e3ae2899a0137e47204c808368029a373e3b5c193c075dd239b30ee"
 variables: []
 secrets_allowed: false
 ```
@@ -1355,6 +1376,7 @@ type handoverProfileBinding struct {
 	id, sha, tenant, organization string
 	provider, account, connection string
 	releaseEffect                 string
+	storedValue                   bool
 	mode                          bool
 	age                           time.Duration
 }
@@ -1391,7 +1413,7 @@ func LoadHandoverProfile(raw []byte, a HandoverProfileActivation) (HandoverRelea
 	}
 	id := d.ProfileID + "@" + strconv.Itoa(d.Revision)
 	age := time.Duration(d.MaximumObservationAgeSeconds) * time.Second
-	bound := &handoverProfileBinding{id: id, sha: a.DocumentSHA256, tenant: d.TenantID, organization: d.OrganizationID, mode: *d.ExpectedLiveMode, age: age, provider: d.ProviderCode, account: d.ProviderAccountRef, connection: d.ProviderConnectionID, releaseEffect: d.Options.ReleaseEffect}
+	bound := &handoverProfileBinding{id: id, sha: a.DocumentSHA256, tenant: d.TenantID, organization: d.OrganizationID, mode: *d.ExpectedLiveMode, age: age, provider: d.ProviderCode, account: d.ProviderAccountRef, connection: d.ProviderConnectionID, releaseEffect: d.Options.ReleaseEffect, storedValue: d.AlgorithmRevision == 3 && d.Options == SupportedStoredValueReleaseOptions()}
 	return HandoverReleaseContract{ID: id, DocumentSHA256: a.DocumentSHA256, Scope: d.Scope, ExpectedLiveMode: *d.ExpectedLiveMode, MaximumObservationAge: age, profile: bound}, nil
 }
 
@@ -2001,7 +2023,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "0f34a467f979ac331f68e71fb60261a90504b805113bbdd01919c0ef2db9843f"
+sha256: "93d4e35f3d69a1e5b696a9bcc17f21f46344aa360e5abac85fd44257b488ea45"
 variables: []
 secrets_allowed: false
 ```
@@ -2037,6 +2059,7 @@ func (m InitialHandoverModule) Register(mux *http.ServeMux, verifier identity.Ve
 			OrganizationID    string `json:"organization_id"`
 			OrderLineID       string `json:"order_line_id"`
 			PaymentAttemptID  string `json:"payment_attempt_id"`
+			FundingReceiptID  string `json:"funding_receipt_id"`
 			ObservationSHA256 string `json:"observation_sha256"`
 		}
 		if !decodeStrict(w, r, &input) {
@@ -2046,7 +2069,7 @@ func (m InitialHandoverModule) Register(mux *http.ServeMux, verifier identity.Ve
 		if !ok {
 			return
 		}
-		value, replay, err := m.Service.Prepare(r.Context(), actor.TenantID, actor.Subject, franchisejourney.PrepareHandoverCommand{OrganizationID: input.OrganizationID, OrderID: r.PathValue("id"), OrderLineID: input.OrderLineID, PaymentAttemptID: input.PaymentAttemptID, ObservationSHA256: input.ObservationSHA256, IdempotencyKey: r.Header.Get("Idempotency-Key")})
+		value, replay, err := m.Service.Prepare(r.Context(), actor.TenantID, actor.Subject, franchisejourney.PrepareHandoverCommand{OrganizationID: input.OrganizationID, OrderID: r.PathValue("id"), OrderLineID: input.OrderLineID, PaymentAttemptID: input.PaymentAttemptID, FundingReceiptID: input.FundingReceiptID, ObservationSHA256: input.ObservationSHA256, IdempotencyKey: r.Header.Get("Idempotency-Key")})
 		if initialHandoverError(w, err) {
 			return
 		}
@@ -2247,7 +2270,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "a084b79f6b4874197c54e9adba884ef5a4a9bb37fe03a22fbbbc46acdabaf0ef"
+sha256: "3ccbbd76289b856f8195cc5b5fe2cdd40df48daa37076ade5dad7d31b088158c"
 variables: []
 secrets_allowed: false
 ```
@@ -2266,11 +2289,11 @@ import (
 	"github.com/jackc/pgx/v5"
 )
 
-const commercialReleaseColumns = `r.release_id,r.organization_id,r.handover_id,r.order_id,r.payment_attempt_id,r.observation_sha256_hex,r.observation_generation,r.handover_version,r.acceptance_sha256_hex,r.checklist_id,r.checklist_version,r.contract_id,r.contract_sha256_hex,r.effect,r.released_by_subject,r.recorded_at,r.valid_until`
+const commercialReleaseColumns = `r.release_id,r.organization_id,r.handover_id,r.order_id,coalesce(r.payment_attempt_id,''),coalesce(r.funding_receipt_id,''),r.observation_sha256_hex,r.observation_generation,r.handover_version,r.acceptance_sha256_hex,r.checklist_id,r.checklist_version,r.contract_id,r.contract_sha256_hex,r.effect,r.released_by_subject,r.recorded_at,r.valid_until`
 
 func scanCommercialRelease(row pgx.Row) (franchisejourney.CommercialReleaseReceipt, error) {
 	var r franchisejourney.CommercialReleaseReceipt
-	err := row.Scan(&r.ID, &r.OrganizationID, &r.HandoverID, &r.OrderID, &r.PaymentAttemptID, &r.ObservationSHA256, &r.ObservationGeneration, &r.HandoverVersion, &r.AcceptanceSHA256, &r.ChecklistID, &r.ChecklistVersion, &r.ContractID, &r.ContractSHA256, &r.Effect, &r.ReleasedBy, &r.RecordedAt, &r.ValidUntil)
+	err := row.Scan(&r.ID, &r.OrganizationID, &r.HandoverID, &r.OrderID, &r.PaymentAttemptID, &r.FundingReceiptID, &r.ObservationSHA256, &r.ObservationGeneration, &r.HandoverVersion, &r.AcceptanceSHA256, &r.ChecklistID, &r.ChecklistVersion, &r.ContractID, &r.ContractSHA256, &r.Effect, &r.ReleasedBy, &r.RecordedAt, &r.ValidUntil)
 	if errors.Is(err, pgx.ErrNoRows) {
 		err = franchisejourney.ErrNotFound
 	}
@@ -2298,7 +2321,7 @@ func lockCommercialRelease(ctx context.Context, tx pgx.Tx, tenant, organization,
 	c := franchisejourney.PrepareHandoverCommand{OrganizationID: organization, ObservationSHA256: evidence}
 	var id, sha, scope string
 	var age int64
-	err := tx.QueryRow(ctx, `select order_id,order_line_id,payment_attempt_id,contract_id,contract_sha256_hex,contract_scope,maximum_observation_age_ns from sales.delivery_handover_preparation where tenant_id=$1 and organization_id=$2 and handover_id=$3`, tenant, organization, handover).Scan(&c.OrderID, &c.OrderLineID, &c.PaymentAttemptID, &id, &sha, &scope, &age)
+	err := tx.QueryRow(ctx, `select order_id,order_line_id,coalesce(payment_attempt_id,''),coalesce(funding_receipt_id,''),contract_id,contract_sha256_hex,contract_scope,maximum_observation_age_ns from sales.delivery_handover_preparation where tenant_id=$1 and organization_id=$2 and handover_id=$3`, tenant, organization, handover).Scan(&c.OrderID, &c.OrderLineID, &c.PaymentAttemptID, &c.FundingReceiptID, &id, &sha, &scope, &age)
 	if errors.Is(err, pgx.ErrNoRows) {
 		return v, franchisejourney.ErrConflict
 	}
@@ -2323,10 +2346,10 @@ func lockCommercialRelease(ctx context.Context, tx pgx.Tx, tenant, organization,
 	if err != nil {
 		return v, err
 	}
-	var observed time.Time
+	observed := facts.evidenceAt
+	v.ObservationGeneration = facts.generation
 	var expires *time.Time
-	err = tx.QueryRow(ctx, `select o.generation,o.observed_at,s.expires_at,clock_timestamp() from payment.provider_observation o
- join inventory.serial_reservation s on s.tenant_id=o.tenant_id and s.reservation_id=$3 where o.tenant_id=$1 and o.payment_attempt_id=$2`, tenant, c.PaymentAttemptID, facts.reservation).Scan(&v.ObservationGeneration, &observed, &expires, &v.RecordedAt)
+	err = tx.QueryRow(ctx, `select expires_at,clock_timestamp() from inventory.serial_reservation where tenant_id=$1 and reservation_id=$2`, tenant, facts.reservation).Scan(&expires, &v.RecordedAt)
 	if err != nil {
 		return v, err
 	}
@@ -2343,6 +2366,7 @@ func lockCommercialRelease(ctx context.Context, tx pgx.Tx, tenant, organization,
 	v.HandoverID = handover
 	v.OrderID = c.OrderID
 	v.PaymentAttemptID = c.PaymentAttemptID
+	v.FundingReceiptID = c.FundingReceiptID
 	v.ObservationSHA256 = evidence
 	v.ContractID = p.ID
 	v.ContractSHA256 = p.DocumentSHA256
@@ -2392,8 +2416,8 @@ func (r *FranchiseJourney) CommitInitialCommercialRelease(ctx context.Context, t
 	}
 	v.ID = id
 	v.ReleasedBy = actor
-	_, err = tx.Exec(ctx, `insert into sales.commercial_release_receipt(tenant_id,release_id,organization_id,handover_id,order_id,payment_attempt_id,observation_sha256_hex,observation_generation,handover_version,acceptance_sha256_hex,checklist_id,checklist_version,contract_id,contract_sha256_hex,effect,released_by_subject,recorded_at,valid_until)
- values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18)`, tenant, v.ID, v.OrganizationID, v.HandoverID, v.OrderID, v.PaymentAttemptID, v.ObservationSHA256, v.ObservationGeneration, v.HandoverVersion, v.AcceptanceSHA256, v.ChecklistID, v.ChecklistVersion, v.ContractID, v.ContractSHA256, v.Effect, v.ReleasedBy, v.RecordedAt, v.ValidUntil)
+	_, err = tx.Exec(ctx, `insert into sales.commercial_release_receipt(tenant_id,release_id,organization_id,handover_id,order_id,payment_attempt_id,observation_sha256_hex,observation_generation,handover_version,acceptance_sha256_hex,checklist_id,checklist_version,contract_id,contract_sha256_hex,effect,released_by_subject,recorded_at,valid_until,funding_receipt_id)
+ values($1,$2,$3,$4,$5,nullif($6,''),$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,nullif($19,''))`, tenant, v.ID, v.OrganizationID, v.HandoverID, v.OrderID, v.PaymentAttemptID, v.ObservationSHA256, v.ObservationGeneration, v.HandoverVersion, v.AcceptanceSHA256, v.ChecklistID, v.ChecklistVersion, v.ContractID, v.ContractSHA256, v.Effect, v.ReleasedBy, v.RecordedAt, v.ValidUntil, v.FundingReceiptID)
 	if err != nil {
 		return empty, false, err
 	}
@@ -2459,7 +2483,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "c29a4a094941c2571025d8c9ef03aec25f8385fcf70fed7e196429f8b5c73f83"
+sha256: "62b6fb12c55d5d99b856f5bad78d89e27b94986ed3a89e8cbe66b49cfda63b79"
 variables: []
 secrets_allowed: false
 ```
@@ -2496,27 +2520,17 @@ func TestCommercialReleaseOfficialSDKConnected(t *testing.T) {
 	if err := r.pool.QueryRow(ctx, `select evidence_sha256_hex from payment.provider_observation where tenant_id=$1`, r.tenant).Scan(&hash); err != nil {
 		t.Fatal(err)
 	}
-	python := os.Getenv("HANDOVER_PROFILE_PYTHON")
-	if python == "" {
-		t.Fatal("explicit admitted Python runtime required")
-	}
-	out := filepath.Join(t.TempDir(), "policy")
-	cmd := exec.CommandContext(ctx, python, "-X", "utf8", "-B", filepath.Join("..", "..", "..", "tools", "materialize_handover_profile.py"), "--output", out, "--profile-id", "franchise-commercial", "--tenant-id", r.tenant, "--organization-id", "store", "--expected-mode", "sandbox", "--payment-provider", "stripe", "--payment-account-ref", "acct_fixture", "--payment-connection-id", "checkout", "--release-effect", "commercial-receipt", "--activate")
-	if body, err := cmd.CombinedOutput(); err != nil {
-		t.Fatalf("materializer %v %s", err, body)
-	}
-	raw, err := os.ReadFile(filepath.Join(out, "activation.json"))
-	if err != nil {
-		t.Fatal(err)
-	}
-	var a franchisejourney.HandoverProfileActivation
-	if err = json.Unmarshal(raw, &a); err != nil {
-		t.Fatal(err)
-	}
-	policy, err := franchisejourney.LoadHandoverProfileFile(filepath.Join(out, "profile.json"), a)
-	if err != nil || !policy.AllowsCommercialRelease(r.tenant, "store") {
-		t.Fatal("hash-bound commercial profile", err)
-	}
+	assertConnectedCommercialRelease(t, r, hash)
+}
+
+func assertConnectedCommercialRelease(t *testing.T, r *connectedRun, hash string, stored ...bool) {
+	assertConnectedCommercialReleaseWithHandoverHook(t, r, hash, nil, stored...)
+}
+
+func assertConnectedCommercialReleaseWithHandoverHook(t *testing.T, r *connectedRun, hash string, hook func(*testing.T, *connectedRun, string), stored ...bool) {
+	t.Helper()
+	ctx := context.Background()
+	policy, a := connectedCommercialProfile(t, r, len(stored) == 1 && stored[0])
 	repo := db.NewFranchiseJourney(r.pool)
 	ids := randomid.Generator{}
 	svc, err := franchisejourney.NewHandoverPreparationService(repo, ids, policy)
@@ -2545,6 +2559,9 @@ func TestCommercialReleaseOfficialSDKConnected(t *testing.T) {
 	current, err := svc.ValidateCommercialRelease(ctx, r.tenant, "store", prepared.Handover.ID)
 	if err != nil || !current.Current {
 		t.Fatal("checkpoint not current", err)
+	}
+	if hook != nil {
+		hook(t, r, prepared.Handover.ID)
 	}
 	r.provider.mu.Lock()
 	posts, sessionGets, paymentGets := r.provider.posts, r.provider.sessionGets, r.provider.paymentGets
@@ -2576,6 +2593,36 @@ func TestCommercialReleaseOfficialSDKConnected(t *testing.T) {
 		t.Fatal("duplicate or missing durable effect", err)
 	}
 	t.Logf("COMMERCIAL_RELEASE_OFFICIAL_SDK_PG_PASS quote_order_allocate_create_checkout_signed_callback_durable_job_get_payment_prepare_checklist_accept_commit_release=true post_callback_current=false refund_current=false profile_materialized=true receipts=1 events=1 provider_posts=1 live_proven=false")
+}
+
+func connectedCommercialProfile(t *testing.T, r *connectedRun, storedValue bool) (franchisejourney.HandoverReleaseContract, franchisejourney.HandoverProfileActivation) {
+	t.Helper()
+	ctx := context.Background()
+	python := os.Getenv("HANDOVER_PROFILE_PYTHON")
+	if python == "" {
+		t.Fatal("explicit admitted Python runtime required")
+	}
+	out := filepath.Join(t.TempDir(), "policy")
+	cmd := exec.CommandContext(ctx, python, "-X", "utf8", "-B", filepath.Join("..", "..", "..", "tools", "materialize_handover_profile.py"), "--output", out, "--profile-id", "franchise-commercial", "--tenant-id", r.tenant, "--organization-id", "store", "--expected-mode", "sandbox", "--payment-provider", "stripe", "--payment-account-ref", "acct_fixture", "--payment-connection-id", "checkout", "--release-effect", "commercial-receipt", "--activate")
+	if storedValue {
+		cmd.Args = append(cmd.Args, "--funding", "stored-value")
+	}
+	if body, err := cmd.CombinedOutput(); err != nil {
+		t.Fatalf("materializer %v %s", err, body)
+	}
+	raw, err := os.ReadFile(filepath.Join(out, "activation.json"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	var a franchisejourney.HandoverProfileActivation
+	if err = json.Unmarshal(raw, &a); err != nil {
+		t.Fatal(err)
+	}
+	policy, err := franchisejourney.LoadHandoverProfileFile(filepath.Join(out, "profile.json"), a)
+	if err != nil || !policy.AllowsCommercialRelease(r.tenant, "store") {
+		t.Fatal("hash-bound commercial profile", err)
+	}
+	return policy, a
 }
 ````
 
@@ -2947,7 +2994,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "9da7d25451ff5fbad7c2270cf3ae71b331c4a3fc88b1852442b0b4785b7c27b1"
+sha256: "cf3ad018508e0ba2b94eef478fd42699480d0d2d8ddc536ea31b9247b5114b17"
 variables: []
 secrets_allowed: false
 ```
@@ -2978,7 +3025,7 @@ func readInitialHandover(ctx context.Context, q handoverPreparationReader, tenan
 	var items []byte
 	value.Handover.ChecklistItems = []franchisejourney.ChecklistItem{}
 	err := q.QueryRow(ctx, `select h.handover_id,h.organization_id,h.order_id,h.customer_principal_id,h.stock_unit_id,h.state,h.version,
-      p.order_line_id,p.reservation_id,p.payment_attempt_id,p.observation_sha256_hex,p.contract_id,p.contract_sha256_hex,p.prepared_by_subject,p.prepared_at,i.request_sha256_hex,
+      p.order_line_id,p.reservation_id,coalesce(p.payment_attempt_id,''),coalesce(p.funding_receipt_id,''),p.observation_sha256_hex,p.contract_id,p.contract_sha256_hex,p.prepared_by_subject,p.prepared_at,i.request_sha256_hex,
       h.customer_accepted_at,coalesce(h.acceptance_evidence_sha256_hex,''),coalesce(h.checklist_id,''),coalesce(h.checklist_version,0),coalesce(t.title,''),h.checklist_completed_at,coalesce(h.supersedes_handover_id,''),
       coalesce((select jsonb_agg(jsonb_build_object('id',ci.item_id,'ordinal',ci.ordinal,'prompt',ci.prompt,'response_type',ci.response_type,'required',ci.required) order by ci.ordinal,ci.item_id) from sales.delivery_checklist_item ci where ci.tenant_id=h.tenant_id and ci.organization_id=h.organization_id and ci.checklist_id=h.checklist_id and ci.checklist_version=h.checklist_version),'[]'::jsonb)
       from platform.idempotency_record i
@@ -2991,7 +3038,7 @@ func readInitialHandover(ctx context.Context, q handoverPreparationReader, tenan
       and i.status='completed' and i.resource_type='delivery-handover' and i.response_code=201
       and i.response_body->>'handover_id'=h.handover_id`, tenant, organization, order, key).Scan(
 		&value.Handover.ID, &value.Handover.OrganizationID, &value.Handover.OrderID, &value.Handover.CustomerSubject, &value.Handover.StockUnitID, &value.Handover.State, &value.Handover.Version,
-		&value.OrderLineID, &value.ReservationID, &value.PaymentAttemptID, &value.ObservationSHA256, &value.ContractID, &value.ContractSHA256, &value.PreparedBy, &value.PreparedAt, &requestHash,
+		&value.OrderLineID, &value.ReservationID, &value.PaymentAttemptID, &value.FundingReceiptID, &value.ObservationSHA256, &value.ContractID, &value.ContractSHA256, &value.PreparedBy, &value.PreparedAt, &requestHash,
 		&value.Handover.CustomerAcceptedAt, &value.Handover.AcceptanceEvidence, &value.Handover.ChecklistID, &value.Handover.ChecklistVersion, &value.Handover.ChecklistTitle, &value.Handover.ChecklistCompletedAt, &value.Handover.SupersedesHandoverID, &items)
 	if errors.Is(err, pgx.ErrNoRows) {
 		return value, "", franchisejourney.ErrNotFound
@@ -3020,7 +3067,7 @@ func (r *FranchiseJourney) EvaluateInitialHandoverRelease(ctx context.Context, t
 	command := franchisejourney.PrepareHandoverCommand{OrganizationID: organization, ObservationSHA256: observationSHA}
 	var contractID, contractSHA, scope string
 	var age int64
-	err = tx.QueryRow(ctx, `select order_id,order_line_id,payment_attempt_id,contract_id,contract_sha256_hex,contract_scope,maximum_observation_age_ns from sales.delivery_handover_preparation where tenant_id=$1 and organization_id=$2 and handover_id=$3`, tenant, organization, handover).Scan(&command.OrderID, &command.OrderLineID, &command.PaymentAttemptID, &contractID, &contractSHA, &scope, &age)
+	err = tx.QueryRow(ctx, `select order_id,order_line_id,coalesce(payment_attempt_id,''),coalesce(funding_receipt_id,''),contract_id,contract_sha256_hex,contract_scope,maximum_observation_age_ns from sales.delivery_handover_preparation where tenant_id=$1 and organization_id=$2 and handover_id=$3`, tenant, organization, handover).Scan(&command.OrderID, &command.OrderLineID, &command.PaymentAttemptID, &command.FundingReceiptID, &contractID, &contractSHA, &scope, &age)
 	if errors.Is(err, pgx.ErrNoRows) {
 		return value, franchisejourney.ErrConflict
 	}
@@ -3059,14 +3106,18 @@ func (r *FranchiseJourney) EvaluateInitialHandoverRelease(ctx context.Context, t
 	return value, nil
 }
 
-type handoverScopeFacts struct{ customer, stock, reservation string }
+type handoverScopeFacts struct {
+	customer, stock, reservation string
+	evidenceAt                   time.Time
+	generation                   int64
+}
 
 // Order -> payment attempt -> observation is the same lock order as the payment
 // reconciler. Time/freshness is evaluated only after these locks are held.
 func lockInitialHandoverScope(ctx context.Context, tx pgx.Tx, tenant string, command franchisejourney.PrepareHandoverCommand, policy franchisejourney.HandoverReleaseContract) (handoverScopeFacts, error) {
 	var facts handoverScopeFacts
 	profileProvider, profileAccount, profileConnection, boundProfile := policy.PaymentBinding()
-	if boundProfile {
+	if boundProfile && command.FundingReceiptID == "" {
 		var active string
 		err := tx.QueryRow(ctx, `select connection_id from integration.provider_connection where tenant_id=$1 and connection_id=$2 and provider_code=$3 and state='active' and (organization_id is null or organization_id=$4) for share`, tenant, profileConnection, profileProvider, command.OrganizationID).Scan(&active)
 		if errors.Is(err, pgx.ErrNoRows) {
@@ -3088,46 +3139,73 @@ func lockInitialHandoverScope(ctx context.Context, tx pgx.Tx, tenant string, com
 	if total <= 0 || (state != "placed" && state != "confirmed" && state != "paid" && state != "allocated") {
 		return facts, franchisejourney.ErrConflict
 	}
-	var paymentProvider, paymentReference, paymentState, paymentCurrency, paymentOrder string
-	var paymentAmount int64
-	err = tx.QueryRow(ctx, `select provider_code,coalesce(provider_reference,''),state,currency,amount_minor_units,order_id from payment.payment_attempt where tenant_id=$1 and payment_attempt_id=$2 for update`, tenant, command.PaymentAttemptID).Scan(&paymentProvider, &paymentReference, &paymentState, &paymentCurrency, &paymentAmount, &paymentOrder)
-	if errors.Is(err, pgx.ErrNoRows) {
+	gross := total
+	total, err = orderProviderDue(ctx, tx, tenant, command.OrganizationID, command.OrderID, currency, total)
+	if err != nil || total < 0 {
 		return facts, franchisejourney.ErrConflict
 	}
-	if err != nil {
-		return facts, err
+	if total != gross && !policy.AllowsStoredValueFunding(tenant, command.OrganizationID) {
+		return facts, franchisejourney.ErrReleaseConditioned
 	}
-	if paymentState != "captured" || paymentReference == "" || paymentOrder != command.OrderID || paymentCurrency != currency || paymentAmount != total {
-		return facts, franchisejourney.ErrConflict
-	}
-	var observedOrder, observedOrganization, observedProvider, observedReference, observedCurrency, evidence, providerStatus, account string
-	var observedAmount, received, refunded, generation int64
-	var live, hold bool
+
 	var observedAt *time.Time
-	err = tx.QueryRow(ctx, `select order_id,organization_id,provider_code,provider_reference,currency,amount_minor_units,received_minor_units,refunded_minor_units,provider_status,live_mode,account_ref,coalesce(evidence_sha256_hex,''),observed_at,hold,generation
-      from payment.provider_observation where tenant_id=$1 and payment_attempt_id=$2 for update`, tenant, command.PaymentAttemptID).Scan(&observedOrder, &observedOrganization, &observedProvider, &observedReference, &observedCurrency, &observedAmount, &received, &refunded, &providerStatus, &live, &account, &evidence, &observedAt, &hold, &generation)
-	if errors.Is(err, pgx.ErrNoRows) {
-		return facts, franchisejourney.ErrConflict
-	}
-	if err != nil {
-		return facts, err
-	}
-	if hold || generation < 1 || observedAt == nil || evidence != command.ObservationSHA256 || observedOrder != command.OrderID || observedOrganization != command.OrganizationID || observedProvider != paymentProvider || observedReference != paymentReference || observedCurrency != currency || observedAmount != total || received != total || refunded != 0 || live != policy.ExpectedLiveMode || !((paymentProvider == "stripe" && providerStatus == "succeeded") || (paymentProvider == "mercadopago" && providerStatus == "approved")) || account == "" {
-		return facts, franchisejourney.ErrConflict
-	}
-	if boundProfile {
-		if observedProvider != profileProvider || account != profileAccount {
+	if command.FundingReceiptID != "" {
+		if command.PaymentAttemptID != "" || total != 0 || !policy.AllowsStoredValueFunding(tenant, command.OrganizationID) {
 			return facts, franchisejourney.ErrConflict
 		}
-		var exact bool
-		err = tx.QueryRow(ctx, `select exists(select 1 from payment.provider_checkout where tenant_id=$1 and payment_attempt_id=$2 and provider_code=$3 and account_ref=$4 and connection_id=$5 and live_mode=$6)`, tenant, command.PaymentAttemptID, profileProvider, profileAccount, profileConnection, policy.ExpectedLiveMode).Scan(&exact)
+		local, e := readLocalFunding(ctx, tx, tenant, command.OrganizationID, command.OrderID, command.FundingReceiptID, command.ObservationSHA256, currency, gross)
+		if e != nil {
+			return facts, franchisejourney.ErrConflict
+		}
+		observedAt = &local.Receipt.ObservedAt
+		facts.generation = 1
+	} else {
+		if command.PaymentAttemptID == "" || total <= 0 {
+			return facts, franchisejourney.ErrConflict
+		}
+		var paymentProvider, paymentReference, paymentState, paymentCurrency, paymentOrder string
+		var paymentAmount int64
+		err = tx.QueryRow(ctx, `select provider_code,coalesce(provider_reference,''),state,currency,amount_minor_units,order_id from payment.payment_attempt where tenant_id=$1 and payment_attempt_id=$2 for update`, tenant, command.PaymentAttemptID).Scan(&paymentProvider, &paymentReference, &paymentState, &paymentCurrency, &paymentAmount, &paymentOrder)
+		if errors.Is(err, pgx.ErrNoRows) {
+			return facts, franchisejourney.ErrConflict
+		}
 		if err != nil {
 			return facts, err
 		}
-		if !exact {
+		if paymentState != "captured" || paymentReference == "" || paymentOrder != command.OrderID || paymentCurrency != currency || paymentAmount != total {
 			return facts, franchisejourney.ErrConflict
 		}
+		var observedOrder, observedOrganization, observedProvider, observedReference, observedCurrency, evidence, providerStatus, account string
+		var observedAmount, received, refunded, generation int64
+		var live, hold bool
+		err = tx.QueryRow(ctx, `select order_id,organization_id,provider_code,provider_reference,currency,amount_minor_units,received_minor_units,refunded_minor_units,provider_status,live_mode,account_ref,coalesce(evidence_sha256_hex,''),observed_at,hold,generation
+      from payment.provider_observation where tenant_id=$1 and payment_attempt_id=$2 for update`, tenant, command.PaymentAttemptID).Scan(&observedOrder, &observedOrganization, &observedProvider, &observedReference, &observedCurrency, &observedAmount, &received, &refunded, &providerStatus, &live, &account, &evidence, &observedAt, &hold, &generation)
+		if errors.Is(err, pgx.ErrNoRows) {
+			return facts, franchisejourney.ErrConflict
+		}
+		if err != nil {
+			return facts, err
+		}
+		if hold || generation < 1 || observedAt == nil || evidence != command.ObservationSHA256 || observedOrder != command.OrderID || observedOrganization != command.OrganizationID || observedProvider != paymentProvider || observedReference != paymentReference || observedCurrency != currency || observedAmount != total || received != total || refunded != 0 || live != policy.ExpectedLiveMode || !((paymentProvider == "stripe" && providerStatus == "succeeded") || (paymentProvider == "mercadopago" && providerStatus == "approved")) || account == "" {
+			return facts, franchisejourney.ErrConflict
+		}
+		if boundProfile && command.FundingReceiptID == "" {
+			if observedProvider != profileProvider || account != profileAccount {
+				return facts, franchisejourney.ErrConflict
+			}
+			var exact bool
+			err = tx.QueryRow(ctx, `select exists(select 1 from payment.provider_checkout where tenant_id=$1 and payment_attempt_id=$2 and provider_code=$3 and account_ref=$4 and connection_id=$5 and live_mode=$6)`, tenant, command.PaymentAttemptID, profileProvider, profileAccount, profileConnection, policy.ExpectedLiveMode).Scan(&exact)
+			if err != nil {
+				return facts, err
+			}
+			if !exact {
+				return facts, franchisejourney.ErrConflict
+			}
+		}
+		facts.generation = generation
+
 	}
+	facts.evidenceAt = *observedAt
 	var customerStatus string
 	err = tx.QueryRow(ctx, `select status from crm.customer_profile where tenant_id=$1 and customer_principal_id=$2 for share`, tenant, facts.customer).Scan(&customerStatus)
 	if errors.Is(err, pgx.ErrNoRows) {
@@ -3141,14 +3219,18 @@ func lockInitialHandoverScope(ctx context.Context, tx pgx.Tx, tenant string, com
 	}
 	var variant string
 	var lineCount, paymentCount int
-	err = tx.QueryRow(ctx, `select l.variant_id,l.allocated_stock_unit_id,(select count(*) from sales.customer_order_line where tenant_id=$1 and order_id=$2),(select count(*) from payment.payment_attempt where tenant_id=$1 and order_id=$2 and state<>'failed') from sales.customer_order_line l where l.tenant_id=$1 and l.order_id=$2 and l.line_id=$3 and l.quantity=1 and l.allocated_stock_unit_id is not null for share of l`, tenant, command.OrderID, command.OrderLineID).Scan(&variant, &facts.stock, &lineCount, &paymentCount)
+	err = tx.QueryRow(ctx, `select l.variant_id,l.allocated_stock_unit_id,(select count(*) from sales.customer_order_line where tenant_id=$1 and order_id=$2),(select count(*) from payment.payment_attempt where tenant_id=$1 and order_id=$2 and state not in ('failed','refunded')) from sales.customer_order_line l where l.tenant_id=$1 and l.order_id=$2 and l.line_id=$3 and l.quantity=1 and l.allocated_stock_unit_id is not null for share of l`, tenant, command.OrderID, command.OrderLineID).Scan(&variant, &facts.stock, &lineCount, &paymentCount)
 	if errors.Is(err, pgx.ErrNoRows) {
 		return facts, franchisejourney.ErrConflict
 	}
 	if err != nil {
 		return facts, err
 	}
-	if lineCount != 1 || paymentCount != 1 {
+	expectedPayments := 1
+	if command.FundingReceiptID != "" {
+		expectedPayments = 0
+	}
+	if lineCount != 1 || paymentCount != expectedPayments {
 		return facts, franchisejourney.ErrConflict
 	}
 	var stock string
@@ -3217,11 +3299,11 @@ func (r *FranchiseJourney) PrepareInitialHandover(ctx context.Context, tenant, a
 	if err != nil {
 		return empty, false, err
 	}
-	_, err = tx.Exec(ctx, `insert into sales.delivery_handover_preparation(tenant_id,handover_id,organization_id,order_id,order_line_id,reservation_id,payment_attempt_id,observation_sha256_hex,contract_id,contract_sha256_hex,contract_scope,maximum_observation_age_ns,prepared_by_subject)values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)`, tenant, handoverID, command.OrganizationID, command.OrderID, command.OrderLineID, facts.reservation, command.PaymentAttemptID, command.ObservationSHA256, policy.ID, policy.DocumentSHA256, policy.Scope, int64(policy.MaximumObservationAge), actor)
+	_, err = tx.Exec(ctx, `insert into sales.delivery_handover_preparation(tenant_id,handover_id,organization_id,order_id,order_line_id,reservation_id,payment_attempt_id,observation_sha256_hex,contract_id,contract_sha256_hex,contract_scope,maximum_observation_age_ns,prepared_by_subject,funding_receipt_id)values($1,$2,$3,$4,$5,$6,nullif($7,''),$8,$9,$10,$11,$12,$13,nullif($14,''))`, tenant, handoverID, command.OrganizationID, command.OrderID, command.OrderLineID, facts.reservation, command.PaymentAttemptID, command.ObservationSHA256, policy.ID, policy.DocumentSHA256, policy.Scope, int64(policy.MaximumObservationAge), actor, command.FundingReceiptID)
 	if err != nil {
 		return empty, false, err
 	}
-	if err = writeJourneyOutbox(ctx, tx, tenant, eventID, "delivery-handover", handoverID, 1, "delivery-handover.prepared", map[string]any{"organization_id": command.OrganizationID, "order_id": command.OrderID, "order_line_id": command.OrderLineID, "payment_attempt_id": command.PaymentAttemptID, "observation_sha256": command.ObservationSHA256, "contract_id": policy.ID, "contract_sha256": policy.DocumentSHA256, "actor_subject": actor}); err != nil {
+	if err = writeJourneyOutbox(ctx, tx, tenant, eventID, "delivery-handover", handoverID, 1, "delivery-handover.prepared", map[string]any{"organization_id": command.OrganizationID, "order_id": command.OrderID, "order_line_id": command.OrderLineID, "payment_attempt_id": command.PaymentAttemptID, "funding_receipt_id": command.FundingReceiptID, "observation_sha256": command.ObservationSHA256, "contract_id": policy.ID, "contract_sha256": policy.DocumentSHA256, "actor_subject": actor}); err != nil {
 		return empty, false, err
 	}
 	result, err := tx.Exec(ctx, `update platform.idempotency_record set status='completed',response_code=201,response_body=jsonb_build_object('handover_id',$3::text),resource_type='delivery-handover',resource_id=$3,locked_until=null where tenant_id=$1 and scope='initial-handover' and idempotency_key=$2 and status='processing'`, tenant, command.IdempotencyKey, handoverID)
@@ -3572,7 +3654,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "a24c419c5e85c59d1e05aa172d6c477be773bd3f57b99e1eebb2aa5541241df1"
+sha256: "e3ca221f68070851a618424fa4dc8b2dd22c3ec602515a7ebbb0b55e80b8ed00"
 variables: []
 secrets_allowed: false
 ```
@@ -3602,6 +3684,7 @@ def main():
     p.add_argument("--authority-reference", default="docs/initial-handover-reference.md")
     p.add_argument("--decision-reference", default="handover-policy/DECISION.md")
     p.add_argument("--release-effect", choices=("read-only", "commercial-receipt"), default="read-only", help="Select the durable receipt explicitly; no physical shipment or money posting")
+    p.add_argument("--funding", choices=("provider-only", "stored-value"), default="provider-only", help="Explicitly select revision3 with immutable approved stored-value funding")
     p.add_argument("--activate", action="store_true", help="Explicitly activate this exact supported profile; does not prove live readiness")
     a = p.parse_args()
     if not re.fullmatch(r"[a-z][a-z0-9._-]{0,79}", a.profile_id) or not 1 <= a.revision <= 1000000:
@@ -3615,17 +3698,19 @@ def main():
         p.error("invalid organization or documentary reference")
     if not 1 <= a.maximum_observation_age_seconds <= 900:
         p.error("maximum observation age must be 1..900 seconds")
+    if a.funding == "stored-value" and a.release_effect != "commercial-receipt":
+        p.error("stored-value funding requires the explicit commercial receipt profile")
     mode = a.expected_mode == "live"
     policy = {
         "schema": "elite-handover-profile/v1", "profile_id": a.profile_id,
         "revision": a.revision, "algorithm": "single-unit-full-observed-payment",
-        "algorithm_revision": 2 if a.release_effect == "commercial-receipt" else 1, "scope": "MATERIALIZED_PROFILE",
+        "algorithm_revision": 3 if a.funding == "stored-value" else 2 if a.release_effect == "commercial-receipt" else 1, "scope": "MATERIALIZED_PROFILE",
         "tenant_id": a.tenant_id, "organization_id": a.organization_id,
         "provider_code": a.payment_provider, "provider_account_ref": a.payment_account_ref,
         "provider_connection_id": a.payment_connection_id,
         "expected_live_mode": mode,
         "maximum_observation_age_seconds": a.maximum_observation_age_seconds,
-        "options": {"quantity": 1, "payment_coverage": "FULL_ORDER",
+        "options": {"quantity": 1, "payment_coverage": "FULL_ORDER_WITH_STORED_VALUE" if a.funding == "stored-value" else "FULL_ORDER",
                     "stock_selection": "ALLOCATED_SERIALIZED_UNIT",
                     "reservation": "ACTIVE_MATCHING", "refunds": "ZERO",
                     "disputes": "DENY", "acceptance": "CUSTOMER_AND_REQUIRED_CHECKLIST",
@@ -3645,7 +3730,7 @@ def main():
                 f"Profile: {a.profile_id}@{a.revision}. Expected provider mode: {a.expected_mode}.\n"
                 "This selects the existing single-unit/full-observed-payment algorithm.\n"
                 "The options do not grant credit, change pricing/tax rules or post shipping.\n"
-                f"Selected release effect: {a.release_effect}. A receipt records a committed checkpoint; current validity requires a new generation/freshness/acceptance check.\n"
+                f"Funding selection: {a.funding}. Selected release effect: {a.release_effect}. A receipt records a committed checkpoint; current validity requires a new generation/freshness/acceptance check.\n"
                 "The receipt never posts inventory or proves physical dispatch, taxation or production readiness.\n"
                 "Authority/decision references are documentary, not secret or live-readiness proof.\n"
                 f"Activation explicitly selected: {a.activate}. Production readiness remains unproven.\n")
@@ -3673,7 +3758,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "ad511a2f74e4210853cdd90d02a38215fb55ab70991d4e9501842d9eeea57891"
+sha256: "a781bb90180445e92b802df10b69f1f865b8fa378bff5a687d4f02998492042d"
 variables: []
 secrets_allowed: false
 ```
@@ -3693,6 +3778,7 @@ type HandoverOperatorContext struct {
 	OrderID           string    `json:"order_id"`
 	OrderLineID       string    `json:"order_line_id"`
 	PaymentAttemptID  string    `json:"payment_attempt_id"`
+	FundingReceiptID  string    `json:"funding_receipt_id,omitempty"`
 	ObservationSHA256 string    `json:"observation_sha256"`
 	Handover          *Handover `json:"handover,omitempty"`
 	CanPrepare        bool      `json:"can_prepare"`
@@ -4137,7 +4223,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "2acd7f34b5b39e33e19a7b4ab558cad979ef7122b1c15af7b130ac16a395c3d9"
+sha256: "712901c92cbf83768450b7da46187c4c9f725564ad37c57333b8475d8fbfc928"
 variables: []
 secrets_allowed: false
 ```
@@ -4164,11 +4250,12 @@ func (r *FranchiseJourney) InitialHandoverOperatorContext(ctx context.Context, t
 	}
 	defer tx.Rollback(ctx)
 	c := franchisejourney.PrepareHandoverCommand{OrganizationID: org, OrderID: order}
-	err = tx.QueryRow(ctx, `select l.line_id,a.payment_attempt_id,o.evidence_sha256_hex from sales.customer_order s
- join sales.customer_order_line l on l.tenant_id=s.tenant_id and l.order_id=s.order_id
- join payment.payment_attempt a on a.tenant_id=s.tenant_id and a.order_id=s.order_id
- join payment.provider_observation o on o.tenant_id=a.tenant_id and o.payment_attempt_id=a.payment_attempt_id
- where s.tenant_id=$1 and s.organization_id=$2 and s.order_id=$3 and l.quantity=1 and l.allocated_stock_unit_id is not null and a.state='captured' and o.evidence_sha256_hex is not null`, tenant, org, order).Scan(&c.OrderLineID, &c.PaymentAttemptID, &c.ObservationSHA256)
+	err = tx.QueryRow(ctx, `select l.line_id,coalesce(a.payment_attempt_id,''),case when a.payment_attempt_id is null then coalesce(f.funding_id,'') else '' end,coalesce(o.evidence_sha256_hex,f.receipt_sha256)
+ from sales.customer_order s join sales.customer_order_line l on l.tenant_id=s.tenant_id and l.order_id=s.order_id
+ left join payment.payment_attempt a on a.tenant_id=s.tenant_id and a.order_id=s.order_id and a.state='captured'
+ left join payment.provider_observation o on o.tenant_id=a.tenant_id and o.payment_attempt_id=a.payment_attempt_id
+ left join lateral(select funding_id,receipt_sha256 from payment.local_funding_evidence where tenant_id=s.tenant_id and order_id=s.order_id and organization_id=s.organization_id order by created_at desc,funding_id desc limit 1)f on true
+ where s.tenant_id=$1 and s.organization_id=$2 and s.order_id=$3 and l.quantity=1 and l.allocated_stock_unit_id is not null and (o.evidence_sha256_hex is not null or (a.payment_attempt_id is null and f.funding_id is not null))`, tenant, org, order).Scan(&c.OrderLineID, &c.PaymentAttemptID, &c.FundingReceiptID, &c.ObservationSHA256)
 	if errors.Is(err, pgx.ErrNoRows) {
 		return v, franchisejourney.ErrNotFound
 	}
@@ -4196,6 +4283,7 @@ func (r *FranchiseJourney) InitialHandoverOperatorContext(ctx context.Context, t
 	v.OrderID = order
 	v.OrderLineID = c.OrderLineID
 	v.PaymentAttemptID = c.PaymentAttemptID
+	v.FundingReceiptID = c.FundingReceiptID
 	v.ObservationSHA256 = c.ObservationSHA256
 	v.CanPrepare = v.Handover == nil
 	v.ReleaseEffect = "READ_ONLY_ELIGIBILITY"
@@ -4315,3 +4403,64 @@ Canonical V402 integration: selected by the current profile with exact dependenc
 V402 composed delta: Connected handover browser/BFF/Go/PostgreSQL gate; bounded body, stable server date formatting, Next PageProps signatures. AUTHORED integration glue; existing domain and fixed upstreams unchanged.
 
 V402 browser evidence: reconstruction_evidence/HANDOVER_BROWSER_V402.md. Production Webpack build includes TypeScript checking;42 direct-call and23 focused BFF/date tests PASS. Chromium desktop and mobile viewport through real BFF/API/PG cover lost-response recovery and callback invalidation. Hosted IdP/live payment/physical shipment not claimed.
+
+V402 composed delta: V402 source-backed stored-value integration: exact remaining provider due, explicit payment/funding XOR, shared approval, bounded browser transport and optional host. See STORED_VALUE_OPERATOR_FLOW_V402.md; source/pack admission successor governs final claim. Existing provider-only behavior retained.
+
+
+### FILE: `db/migrations/0068_handover_funding_evidence.up.sql`
+
+```yaml
+block_id: "GO-INITIAL-HANDOVER-API:db/migrations/0068_handover_funding_evidence.up.sql:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "Local typed source/transaction/transport/UI/recovery glue; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "2d3b85bc44247780858b01ae28e6f03726d9bdfab60aeec5fe761ce42252d6fe"
+variables: []
+secrets_allowed: false
+```
+
+````sql
+begin;
+-- AUTHORED sum-type relationship: real provider payment OR local full funding.
+alter table sales.delivery_handover_preparation alter column payment_attempt_id drop not null;
+alter table sales.delivery_handover_preparation add column funding_receipt_id text;
+alter table sales.delivery_handover_preparation add constraint initial_handover_funding_kind check ((payment_attempt_id is not null) <> (funding_receipt_id is not null));
+alter table sales.delivery_handover_preparation add foreign key(tenant_id,funding_receipt_id) references payment.local_funding_receipt(tenant_id,funding_id);
+alter table sales.commercial_release_receipt alter column payment_attempt_id drop not null;
+alter table sales.commercial_release_receipt add column funding_receipt_id text;
+alter table sales.commercial_release_receipt add constraint commercial_release_funding_kind check ((payment_attempt_id is not null) <> (funding_receipt_id is not null));
+alter table sales.commercial_release_receipt add constraint commercial_local_funding_generation check(funding_receipt_id is null or observation_generation=1);
+alter table sales.commercial_release_receipt add foreign key(tenant_id,funding_receipt_id) references payment.local_funding_receipt(tenant_id,funding_id);
+commit;
+````
+
+### FILE: `db/migrations/0068_handover_funding_evidence.down.sql`
+
+```yaml
+block_id: "GO-INITIAL-HANDOVER-API:db/migrations/0068_handover_funding_evidence.down.sql:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "Local typed source/transaction/transport/UI/recovery glue; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "dc5a76d6d1ea2516aae385a58d516017883c135f8bcfe0ed30e96de09e952b0f"
+variables: []
+secrets_allowed: false
+```
+
+````sql
+begin;
+do $$begin
+ if exists(select 1 from sales.delivery_handover_preparation where funding_receipt_id is not null) or exists(select 1 from sales.commercial_release_receipt where funding_receipt_id is not null) then raise exception 'preserve local-funded delivery history';end if;
+end $$;
+alter table sales.commercial_release_receipt drop constraint commercial_release_funding_kind;
+alter table sales.commercial_release_receipt drop constraint commercial_local_funding_generation;
+alter table sales.commercial_release_receipt drop column funding_receipt_id;
+alter table sales.commercial_release_receipt alter column payment_attempt_id set not null;
+alter table sales.delivery_handover_preparation drop constraint initial_handover_funding_kind;
+alter table sales.delivery_handover_preparation drop column funding_receipt_id;
+alter table sales.delivery_handover_preparation alter column payment_attempt_id set not null;
+commit;
+````
+
+V402 composed delta: Connected warranty reuses existing transaction/approval/stock/service owners; SQL ordering and public wrapper behavior retained. Optional host factory fails closed. Exact source tested in WARRANTY_INTERFACE_AND_PORTABILITY_V402.md; no new dependency or corporate attribution.

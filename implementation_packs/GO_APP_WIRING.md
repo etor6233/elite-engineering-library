@@ -4,7 +4,7 @@
 
 ```yaml
 pack_id: "GO-APP-WIRING"
-pack_version: "0.2.0"
+pack_version: "0.2.1"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -153,7 +153,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local"
 license: "LicenseRef-Workspace-Owner"
-sha256: "73396b4dbab245c66b8250a185ee2b39d58812241f10470b55203bc51b5def67"
+sha256: "b79f89913f11c4afc73ff61b4ca3a3a57c0cbed3a0bc4d827bbe62214c9aab28"
 variables: []
 secrets_allowed: false
 ```
@@ -233,7 +233,9 @@ func New(cfg Config) (*App, error) {
 		Threshold: 0.9,
 	}
 	appr := approval.NewRegistry(cfg.ApprovalPolicy)
-	runtime := &conversationruntime.Runtime{Config: cfg.Conversation, Store: cfg.ConversationStore, Model: llm, Resolver: cfg.ContactResolver, Domain: gw, Economy: eco, Approval: appr, Safety: safety}
+	cfg.Conversation.TokenBudget = cfg.LLMTokenBudget
+	cfg.Conversation.ModelRevision = cfg.LLMModel
+	runtime := &conversationruntime.Runtime{Config: cfg.Conversation, Store: cfg.ConversationStore, Model: llm, Resolver: cfg.ContactResolver, Domain: gw, Approval: appr, Safety: safety}
 	if err := runtime.Validate(); err != nil {
 		return nil, err
 	}
@@ -262,7 +264,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local"
 license: "LicenseRef-Workspace-Owner"
-sha256: "edbfe7b326633f8e53f3ff9e549da96dca622fd2dde520bfddcade7cc8550a59"
+sha256: "e583d959f14c6ac7c0d862e25fe5184d1f34fdce5fe8f3740c7c43364a91d11f"
 variables: []
 secrets_allowed: false
 ```
@@ -304,12 +306,12 @@ func (s *appStore) Claim(_ context.Context, _ channels.Message, hash string) (co
 		return conversationruntime.Claim{Replay: true, State: conversationruntime.StateCompleted, ResponseText: s.response}, nil
 	}
 	s.hash = hash
-	return conversationruntime.Claim{}, nil
+	return conversationruntime.Claim{Generation: 1}, nil
 }
 func (*appStore) History(context.Context, channels.Message, int) ([]conversationruntime.HistoryMessage, error) {
 	return nil, nil
 }
-func (s *appStore) Complete(_ context.Context, _ channels.Message, hash string, completion conversationruntime.Completion) error {
+func (s *appStore) Complete(_ context.Context, _ channels.Message, hash string, generation int, completion conversationruntime.Completion) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	if hash != s.hash {
@@ -318,7 +320,9 @@ func (s *appStore) Complete(_ context.Context, _ channels.Message, hash string, 
 	s.response = completion.ResponseText
 	return nil
 }
-func (*appStore) FailRetryable(context.Context, channels.Message, string, string) error { return nil }
+func (*appStore) FailRetryable(context.Context, channels.Message, string, int, string) error {
+	return nil
+}
 
 type appResolver struct{}
 
@@ -528,6 +532,14 @@ func contains(list []string, s string) bool {
 	}
 	return false
 }
+
+func (*appStore) Reserve(_ context.Context, _ channels.Message, _ string, _ int, cap, tokens int64) error {
+	if tokens > cap {
+		return conversationruntime.ErrBudgetExceeded
+	}
+	return nil
+}
+func (*appStore) PinTool(context.Context, channels.Message, string, int, string) error { return nil }
 ````
 
 ## 6. Configuration surface
@@ -552,3 +564,5 @@ Materializar 3/3, aplicar `gofmt`, ejecutar tests del app con servidores HTTP co
 ## 10. Reconstruction evidence
 
 V236: tres archivos reconstruidos byte-exactos/gofmt; E2E de cita en memoria y cotización con PostgreSQL real probaron que replay no repite inferencia ni dominio. Véase `reconstruction_evidence/GO_CONNECTED_CONVERSATION_RUNTIME_2026-09-04_V236.md`.
+
+V402 composed delta: T2807 delta314: generation/lease fencing, expired history/replay refusal, durable per-attempt token reservation, pinned tool intent/contact/policy and explicit continuation instructions. AUTHORED glue; no new upstream dependencies. AI_RUNTIME_GOVERNANCE_V402.md/json. T2807 connected eval/history closure remains open.

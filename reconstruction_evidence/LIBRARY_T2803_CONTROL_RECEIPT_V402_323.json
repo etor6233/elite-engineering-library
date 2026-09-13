@@ -1,0 +1,54 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2803",
+  "outcome": "PASS",
+  "command": "Exact1616source inheritance:1612previous unchanged, signed-gate scripts/docs/test delta only;3rebuilds and local trust/path/source/failure fixtures, no app or dependency delta",
+  "exit_code": 0,
+  "assertions": [
+    "Original OIDC lifecycle and J5 role/bootstrap fixtures remain exactly source-bound",
+    "1481canonical selected outputs with declared provenance and exact owner hashes",
+    "Current4Go/3pnpm/7Python lock inputs:OSV2.5.1zero findings after admitted x/mod0.40 floor restored",
+    "Both Go API binaries,320compiled packages and2065sourcefiles byte-identical before/after floor change",
+    "Adapted DevSkim reconstructed with300officialtests/NuGetSCA0 and short-error regression",
+    "1307files linted:1842rawfindings/1841reviewed nonblocking/1ARCApenultimate occurrence; zero untriaged/nonARCA blockers; no blanket suppressions",
+    "pnpm restricted private local installer admission311 preserved; no altered-tool redistribution claim",
+    "Five affected profiles rebuild exactly; no source/corporate attribution invention",
+    "Scope excludes penultimate fiscal completion and user-deferred Daybreak/libxml2; no production/offensive/interprocedural security claim",
+    "V402313:1474prior files unchanged;7changed add optional document host hook/new approval kind/SDK dependency closure/conditional notices.37new files:15document glue,5SDK notices,17reused owners. Existing authorization/commerce/comms policies preserved. Six profiles exact;4Go profiles build; T2806 human review/fencing tested. SCA evidence exact union,24delta lint dispositions; ARCA1539 remains deferred.",
+    "V402314:1510prior files unchanged;8changed only runtime/app/Responses/store and their tests;5new governance/test/migration files. Prior domain/frontend/docs/identity/provider bytes and dependency graph unchanged. PG active generation/retention, durable budget, pinned tool intent and explicit continuation verified;13delta lint files9reviewed findings; ARCA1539 unchanged. Whole T2807 still open.",
+    "V402315:1516prior files unchanged;7changed for AI domain/host/runtime/roles/evals plus7new glue/tests/docs/runner. Existing quotation owner unchanged; gateway now refuses discarded quantities; contact-bound status and revalidation tested.11required PG/real domain evals, host and2original WA provider/recovery tests PASS.13delta lint files5reviewed findings, no new dependency graph; ARCA1539 unchanged. T2807 closed local.",
+    "V402316:1527prior outputs exact;3changed host/Next config/container template;12new AUTHORED delivery blocks and18existing exact pnpm/supervisor files. Native API+Next build/deploy/manual and failed-candidate rollback/recovery/order replay/stop tree empty; stable fixture build recipe exact and isolated from source workspace.14delta lint files25reviewed. Dependency locks unchanged; notices source correspondence remains explicit T2810 work before executable redistribution; ARCA1539/native deferred.",
+    "V402317: domain/role/adapter/identity/document/AI source preserved; common x/sync0.22/x/text0.40 already admitted in telemetry now selected at root. Full/backend/serverless compilation and current API real OIDC/PG/concurrent replay with that graph; rebuilt host byte-identical. Existing Next cohort exact, final full artifact/signature/notices T2810 remains open.11delta lint files34reviewed;78public modules SCA0. Native/ARCA untouched.",
+    "V402319: NPS source-only delta; three prior caller/docs files changed and eight new qualified files.1580previous files exact; root Go/Node dependencies unchanged, four source profiles exact. Five Go delta lint0. Prior source/runtime proofs retain their explicit scope; final full artifact remains T2810.",
+    "V402322: all application/runtime dependency bytes unchanged319. New notice collector and sources bind actual129historical runtime manifests; no final current binary or release signature inferred. Final ARCA cohort/build remains T2810.",
+    "V402323 signed gate0.2.0 requires independent trusted policy and exact scan inputs; application/dependency bytes unchanged322. Synthetic verifier/SCA fixtures never substitute final artifact build/scan/signature."
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "e7e87085ebb0ef2930055aad99d88f0ddce9275cf999d73d1d67bae671ab3a2d"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_T2803_CONTROL_RECEIPT_V402_322.json",
+      "sha256": "b8246138bb891635ad4d47ae746221b477f6247cd35d91044dfc91f13f8545f8"
+    },
+    {
+      "path": "reconstruction_evidence/SIGNED_RELEASE_CONTRACT_V402.json",
+      "sha256": "e0b66747fdca1130254c02b062cfe70410d627137dd1ca5b5122355fc7250550"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/SIGNED_RELEASE_CONTRACT_V402.md",
+      "sha256": "58d571c89d98adbe8c1b1e40eb47385104c15726047004b2ed5cdcde762bba2a"
+    },
+    {
+      "path": "reconstruction_evidence/SIGNED_RELEASE_CONTRACT_V402.json",
+      "sha256": "e0b66747fdca1130254c02b062cfe70410d627137dd1ca5b5122355fc7250550"
+    }
+  ],
+  "inventory_sha256": "e4d9c7bf9370b4cd6fd6f26a46baf9aa006d7b75d418c5d2bc8b49bdc6a7de8c",
+  "live_effects_performed": false
+}

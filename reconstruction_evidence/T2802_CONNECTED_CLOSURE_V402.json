@@ -1,0 +1,74 @@
+{
+  "schema": "elite-connected-domain-closure/v1",
+  "scope": "LIBRARY_INFRASTRUCTURE",
+  "control": "T2802",
+  "status": "PROVEN_LOCAL",
+  "revision": "V402-execution294",
+  "franchise": {
+    "packs": 89,
+    "files": 1202
+  },
+  "claims": [
+    "quote/order/provider SDK fixture/callback/reconciliation/initial handover/checklist/acceptance/commercial receipt",
+    "FX durable journal posting/balance/reversal",
+    "source-derived gift/loyalty tender connected to provider or local funding and delivery",
+    "sold warranty terms and J4 claim/stock/FIFO/approval/quality/recovery",
+    "J2 demand/PO quantities/factory/serial QA/ASN/receiving/quarantine/release",
+    "J3 draft/reviews/immutable publish/effective price/search/actual storefront/reference feed/rollback",
+    "six named non-selected subcores NONE_WITH_REASON; no universal equivalence claimed"
+  ],
+  "evidence": [
+    {
+      "path": "reconstruction_evidence/CONNECTED_PAYMENT_HANDOVER_V402.md",
+      "sha256": "288994c86be3f797ff3b27ac2831c4368452ac3583c774a7eaeb8e5affa5fae2"
+    },
+    {
+      "path": "reconstruction_evidence/HANDOVER_BROWSER_V402.md",
+      "sha256": "4f81def7578814f24c539f2870c0f5edb9448e7413acde3ac88c94033fcce637"
+    },
+    {
+      "path": "reconstruction_evidence/FX_JOURNAL_CONNECTION_V402.md",
+      "sha256": "b964a1390092a838b96a715de9f98888ec6bc3dc0ca88a1a48ed2facdf18fbf6"
+    },
+    {
+      "path": "reconstruction_evidence/STORED_VALUE_CONNECTED_RELEASE_V402.md",
+      "sha256": "ed54d73a61758737ec39bf34b6dc70bb28c334dbe05c29ac9b9adc370640fe3c"
+    },
+    {
+      "path": "reconstruction_evidence/WARRANTY_CONNECTED_RELEASE_V402.md",
+      "sha256": "6cc0afd9f21bf2711191ec7919b355a7e046b8379689097555b105d8bcfa15f7"
+    },
+    {
+      "path": "reconstruction_evidence/SERIAL_SUPPLY_CONNECTED_RELEASE_V402.md",
+      "sha256": "6dc2f76ffc9649df5737ad0156922300797139f2afefed42108f23474a2f74ca"
+    },
+    {
+      "path": "reconstruction_evidence/CATALOG_CONNECTED_RELEASE_V402.md",
+      "sha256": "c1ed9702b9266772ce8d0fb811ad24883ab341fb8f227f9f9b06fd6acef5dd8e"
+    },
+    {
+      "path": "reconstruction_evidence/T2802_REFERENCE_SCOPE_V402.md",
+      "sha256": "49a25944d32d2d5a63a32396d373aed86d23dc1388700d7275665775005ce8a2"
+    },
+    {
+      "path": "reconstruction_evidence/COMMUNICATIONS_RUNTIME_V402.md",
+      "sha256": "988e11bb9a60b6a1ffe1f14264d49aaf941c1ddc396c16ce1c2874c3c4386dda"
+    }
+  ],
+  "composition": {
+    "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+    "sha256": "c52772c319b64f1b0d32ac293f3b4b8dfef75a2af3504a2ce7be75791015abe8"
+  },
+  "source_correspondence": {
+    "path": "reconstruction_evidence/CATALOG_CONNECTED_RELEASE_V402.json",
+    "sha256": "20a5251d71ab57c69546c6b16daee0bf4f4123f7c84f463ffd58ea23a52f70df"
+  },
+  "remaining_owners": {
+    "T2804": "Required role writes, help/CMS/training/J5 and selected private i18n/KPIs",
+    "T2805": "Provider-specific mutations/reconciliation, campaign/reminder composition",
+    "T2803": "Composition identity/SCA including tooling admission; no Daybreak",
+    "T2801": "Final all-file assurance and current authorities, G/H",
+    "T2806-T2810": "Document/AI/delivery/ops/independent signed portable release as ordered"
+  },
+  "production_authorized": false
+}

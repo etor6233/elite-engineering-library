@@ -4,21 +4,21 @@
 
 ```yaml
 pack_id: "CONTAINER-PACKAGING-CORE"
-pack_version: "0.1.1"
+pack_version: "0.1.2"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
   admission: CONDITIONED
 claim: "Materializa packaging OCI multi-stage, runtime no-root y una topología Compose local endurecida con validación ejecutable."
 stacks: ["Dockerfile 1.18", "Compose Specification", "Python 3.14 stdlib"]
-compatible_with: ["GO-ELECTROMOBILITY-APPLICATION 0.6.x", "PG-TX-FOUNDATION 0.1.x", "ELECTROMOBILITY-FRANCHISE-MODULES 0.1.x"]
+compatible_with: ["GO-ELECTROMOBILITY-APPLICATION >=1.22.2 <2.0.0", "PG-TX-FOUNDATION 0.1.x", "ELECTROMOBILITY-FRANCHISE-MODULES 0.1.x"]
 incompatible_with: []
 license_expression: "LicenseRef-Workspace-Owner AND Apache-2.0/MIT image dependencies"
 upstream_sources: ["https://docs.docker.com/build/", "https://docs.docker.com/compose/compose-file/", "https://hub.docker.com/_/golang", "https://hub.docker.com/_/debian"]
 verified_at: "2026-08-25"
 ```
 
-The defaults use maintained versioned image families; production must replace tags with reviewed multi-architecture digests in its release lock. Docker/Podman was unavailable during this authoring run, so image execution remains an explicit condition.
+Image defaults are intentionally absent. Container execution is outside the Windows local reference admission; choose and admit exact image digests, target and runtime before using this template. Docker/Podman execution remains unqualified. The source context now includes all selected local Go modules.
 
 ## 2. Applicability
 
@@ -81,25 +81,24 @@ operation: CREATE
 provenance: AUTHORED
 source: "local"
 license: "LicenseRef-Workspace-Owner"
-sha256: "6a79f3bfadd68d28e29d96971dbdd466d3bcc06f099b97a27be3190ded04f431"
+sha256: "0c6db00f02eb69dcf8f3fd69f23de125ab4654034c60765c2137d44aeb001ce6"
 variables: []
 secrets_allowed: false
 ```
 
 ````dockerfile
-# syntax=docker/dockerfile:1.18
-ARG GO_IMAGE=golang:1.26-trixie
-ARG RUNTIME_IMAGE=gcr.io/distroless/static-debian13:nonroot
+# Container execution is outside the Windows local reference admission.
+# Select and admit immutable image digests before using this template.
+ARG GO_IMAGE
+ARG RUNTIME_IMAGE
 
 FROM ${GO_IMAGE} AS build
 WORKDIR /src
-COPY go.mod go.sum ./
+COPY . ./
 RUN --mount=type=cache,target=/go/pkg/mod,sharing=locked go mod download
-COPY cmd ./cmd
-COPY internal ./internal
 ARG TARGETOS=linux
 ARG TARGETARCH=amd64
-RUN --mount=type=cache,target=/go/pkg/mod,sharing=locked --mount=type=cache,target=/root/.cache/go-build,sharing=locked CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -trimpath -buildvcs=true -ldflags="-s -w -buildid=" -o /out/electromobility-api ./cmd/electromobility-api
+RUN --mount=type=cache,target=/go/pkg/mod,sharing=locked --mount=type=cache,target=/root/.cache/go-build,sharing=locked CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -trimpath -buildvcs=false -ldflags="-s -w -buildid=" -o /out/electromobility-api ./cmd/electromobility-api
 
 FROM ${RUNTIME_IMAGE} AS runtime
 WORKDIR /
@@ -335,3 +334,5 @@ Clean reconstruction, hashes and static negative gates are recorded in `reconstr
 - Go Docker Official Image: https://hub.docker.com/_/golang
 - PostgreSQL Docker Official Image: https://hub.docker.com/_/postgres
 - Distroless repository and support policy: https://github.com/GoogleContainerTools/distroless
+
+V402 composed delta: Local delivery316: native stop owner reused, Next standalone exact build identity, container template without mutable defaults and complete local module context. Local fixture qualification only; docs/LOCAL_REFERENCE_DELIVERY.md.

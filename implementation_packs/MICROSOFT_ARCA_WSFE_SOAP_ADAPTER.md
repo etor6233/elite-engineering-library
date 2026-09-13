@@ -4,18 +4,18 @@
 
 ```yaml
 pack_id: "MICROSOFT-ARCA-WSFE-SOAP-ADAPTER"
-pack_version: "0.3.0"
+pack_version: "0.3.1"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
   admission: CONDITIONED
 claim: "Mapea el owner fiscal y `CbtesAsoc` exactos y adquiere siete clases de parámetros desde operaciones WSFEv1 generadas, con respuestas deterministas seguras, consulta 602 fail-closed y cero secretos retornados."
-stacks: [".NET SDK 10.0.400", "dotnet-svcutil 8.0.0", "WCF 10.0.652802", "ARCA WSFEv1 4.6"]
+stacks: [".NET SDK 10.0.400", "dotnet-svcutil 8.0.0", "WCF 10.0.652802", "ARCA WSFEv1 hash-locked homologation WSDL"]
 compatible_with: ["MICROSOFT-ARCA-WSFE-GENERATED-CLIENT 0.2.x", "MICROSOFT-ARCA-WSAA-CREDENTIAL-CORE 0.1.x", "GO-ARCA-FISCAL-ISSUANCE-API 0.6.x"]
 incompatible_with: []
 license_expression: "LicenseRef-Workspace-Owner AND ARCA public specification AND Microsoft dependency licenses"
 upstream_sources: ["https://www.arca.gob.ar/ws/documentacion/manuales/manual-desarrollador-ARCA-COMPG.pdf", "https://learn.microsoft.com/dotnet/core/additional-tools/dotnet-svcutil-guide", "https://github.com/dotnet/wcf", "https://dotnet.microsoft.com/download/dotnet/10.0"]
-verified_at: "2026-08-31"
+verified_at: "2026-09-13"
 ```
 
 Los catorce bloques son `AUTHORED`: importan el proxy generado y el credential core sin incorporar WSDL, proxy, token, sign, certificado, clave privada, mensajes del proveedor o tablas fiscales inventadas. No se atribuyen a ARCA ni Microsoft.
@@ -314,7 +314,7 @@ public sealed class GeneratedWsfeParameterSoap(Generated.ServiceSoap client) : I
 block_id: "MS-ARCA-WSFE-ADAPTER:bridge:v1"
 operation: CREATE
 path: "arca/fiscal/bridge/src/Elite.Arca.Wsfe.Bridge/WsfeBridge.cs"
-sha256: "948bd4164e673e72bb73dff9144ec307ef258613f130cc85cc0c125046de38a8"
+sha256: "df9a5e979516d5af3a1a7ea6902b4e0dd9ce35b4836d2025b790f95b1d2e908a"
 provenance: AUTHORED
 source: "local exact mapping governed by ARCA manual 4.6"
 license: "LicenseRef-Workspace-Owner"
@@ -432,6 +432,8 @@ public sealed class WsfeBridge(IWsaaAccessSource credentials, IWsfeSoap soap)
 
     private static void Validate(FiscalInvoice value, bool requireNumber)
     {
+        if (value.VatLines is null || value.OtherTaxLines is null || value.AssociatedVouchers is null)
+            throw new ArgumentException("Fiscal collections must be arrays, not null.", nameof(value));
         if (value.Currency != "ARS" || value.TaxpayerCuit.Length != 11 || value.TaxpayerCuit.Any(c => !char.IsAsciiDigit(c)) || !long.TryParse(value.RecipientDocument, NumberStyles.None, CultureInfo.InvariantCulture, out _) || value.PointOfSale is < 1 or > 99999 || value.VoucherType is < 1 or > 999 || value.Concept is < 1 or > 3 || value.RecipientDocumentType is < 0 or > 999 || value.RecipientVatConditionId is < 1 or > 999 || (requireNumber && value.VoucherNumber <= 0))
             throw new ArgumentException("Fiscal invoice identity is invalid.", nameof(value));
         var total = checked(value.NetMinorUnits + value.VatMinorUnits + value.ExemptMinorUnits + value.NonTaxedMinorUnits + value.OtherTaxMinorUnits);
@@ -562,7 +564,7 @@ secrets_allowed: false
 block_id: "MS-ARCA-WSFE-ADAPTER:tests:v1"
 operation: CREATE
 path: "arca/fiscal/bridge/tests/Elite.Arca.Wsfe.Bridge.Tests/Program.cs"
-sha256: "e7e7fa86684981929390ad5d5427847e7b72511f76bc18dfb43144e4af6c3212"
+sha256: "7dffaa14030067c7f3839f1995bb4bea05e7f1c2c90dae5b1095b2ff81560f6c"
 provenance: AUTHORED
 source: "local contract tests governed by ARCA manual 4.6"
 license: "LicenseRef-Workspace-Owner"
@@ -647,7 +649,14 @@ var creditWithoutAssociation = new FiscalInvoice
 };
 await ThrowsAsync<ArgumentException>(() => bridge.AuthorizeAsync(creditWithoutAssociation), "credit without association");
 
-Console.WriteLine("ARCA_WSFE_BRIDGE_TEST_PASS cases=15 secrets_returned=0 production_admitted=false");
+foreach (var field in new[] { "VatLines", "OtherTaxLines", "AssociatedVouchers" })
+{
+    var malformed = System.Text.Json.Nodes.JsonNode.Parse(System.Text.Json.JsonSerializer.Serialize(invoice))!;
+    malformed[field] = null;
+    var nullCollections = System.Text.Json.JsonSerializer.Deserialize<FiscalInvoice>(malformed.ToJsonString())!;
+    await ThrowsAsync<ArgumentException>(() => bridge.AuthorizeAsync(nullCollections), "null collection " + field);
+}
+Console.WriteLine("ARCA_WSFE_BRIDGE_TEST_PASS cases=18 secrets_returned=0 production_admitted=false");
 
 static void Check(bool condition, string name)
 {
@@ -1092,3 +1101,5 @@ Require 14/14 hash-exact materialization, .NET 10.0.400, locked offline restore 
 ## 10. Reconstruction evidence
 
 V128 closes the owner fields required by this adapter; V129 records invoice mapping and V131 records exact parameter acquisition. V145 adds `CbtesAsoc` from the Microsoft-generated ARCA contract. Pack hashes, builds/tests/scan and remaining live conditions are recorded in `reconstruction_evidence/ARCA_ASSOCIATED_VOUCHER_EXECUTION_INVENTORY_2026-08-31_V145.md`.
+
+V402 composed delta: V402325 connected local ARCA fixture, fixed offline generated-tool adaptation, explicit legal/source pins and portable .NET/Go build. See ARCA_CONNECTED_INFRA_V402 evidence; only future homologation credentials conditioned, no productive fiscal claim.

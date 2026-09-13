@@ -1,0 +1,57 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2806",
+  "outcome": "PASS",
+  "command": "Current1583source correspondence and actual supervised OIDC/API+Next/PG/official metric/10m alert/1000replay/WAL recovery;4rebuilds and78module SCA",
+  "exit_code": 0,
+  "assertions": [
+    "REQUIRED supplier-invoice reference;20other classes individually excluded for this reference, private corpus not inferred",
+    "Authenticated bounded original+job atomic intake and fixed public fixture identity",
+    "Official pinned SDK serialization and full response/evidence chain; detector/provider simulation explicit and isolated to exact public SHA",
+    "Existing real secure-file gate subprocess wired for PROVIDER; no HTTP-provided evidence or simulated fallback",
+    "Four fields reviewed with original and exact response bytes; required values enforced in service and DB",
+    "Independent human approval; no automatic threshold approval; immutable proposal and exact hash",
+    "Atomic approval/document/outbox under injected outbox failure; response-loss replay creates one commit",
+    "Existing job-generation fencing, finite retry/terminal quarantine, exhausted crash and stale profile refusal",
+    "Original/commit survive host restart; empty rollback works, populated rollback refuses",
+    "37root modules exact union of prior22 and pinned15SDK zero-finding scans; no prior module version changed",
+    "28delta executable/config files scanned,24findings reviewed; unchanged source evidence retained; no untriaged new issue",
+    "Six selected profiles exact,4Go builds, notices original and mapped; no production/OCR/scanner-effectiveness claim",
+    "V402314:1510prior files unchanged;8changed only runtime/app/Responses/store and their tests;5new governance/test/migration files. Prior domain/frontend/docs/identity/provider bytes and dependency graph unchanged. PG active generation/retention, durable budget, pinned tool intent and explicit continuation verified;13delta lint files9reviewed findings; ARCA1539 unchanged. Whole T2807 still open.",
+    "V402315:1516prior files unchanged;7changed for AI domain/host/runtime/roles/evals plus7new glue/tests/docs/runner. Existing quotation owner unchanged; gateway now refuses discarded quantities; contact-bound status and revalidation tested.11required PG/real domain evals, host and2original WA provider/recovery tests PASS.13delta lint files5reviewed findings, no new dependency graph; ARCA1539 unchanged. T2807 closed local.",
+    "V402316:1527prior outputs exact;3changed host/Next config/container template;12new AUTHORED delivery blocks and18existing exact pnpm/supervisor files. Native API+Next build/deploy/manual and failed-candidate rollback/recovery/order replay/stop tree empty; stable fixture build recipe exact and isolated from source workspace.14delta lint files25reviewed. Dependency locks unchanged; notices source correspondence remains explicit T2810 work before executable redistribution; ARCA1539/native deferred.",
+    "V402317: domain/role/adapter/identity/document/AI source preserved; common x/sync0.22/x/text0.40 already admitted in telemetry now selected at root. Full/backend/serverless compilation and current API real OIDC/PG/concurrent replay with that graph; rebuilt host byte-identical. Existing Next cohort exact, final full artifact/signature/notices T2810 remains open.11delta lint files34reviewed;78public modules SCA0. Native/ARCA untouched."
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "58a8cf9798f136c19cca60ec94f8a14fa49bef98d208a1043aa65cf8a7fc87ee"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_T2806_CONTROL_RECEIPT_V402_316.json",
+      "sha256": "d9d3e401437628f2356e5b468a7f76ac26536bc5935dd1237ebe511bb4322066"
+    },
+    {
+      "path": "reconstruction_evidence/LOCAL_REFERENCE_OPERATIONS_V402.json",
+      "sha256": "2312cc47f371784e4763991c8720b49901ff937242ee1d90d45b7415bc427a0b"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/LOCAL_REFERENCE_OPERATIONS_V402.md",
+      "sha256": "a8cdab67368eda591d87897e6ab9d2fd5ae937ccc54b805723922a6421607da5"
+    },
+    {
+      "path": "reconstruction_evidence/LOCAL_REFERENCE_OPERATIONS_V402.json",
+      "sha256": "2312cc47f371784e4763991c8720b49901ff937242ee1d90d45b7415bc427a0b"
+    },
+    {
+      "path": "reconstruction_evidence/LOCAL_REFERENCE_OPERATIONS_LINT_V402.json",
+      "sha256": "a25eec0e1d6da39c1aafbdad14148446630fe2c07632d66ff6f322ba8da75edb"
+    }
+  ],
+  "inventory_sha256": "0861d7099098158a866e7ef3d93838f3f204faa1fbd458a31570f257e99ea859",
+  "live_effects_performed": false
+}

@@ -1,0 +1,520 @@
+{
+  "state": "PASS_LOCAL",
+  "files": 11,
+  "findings": 34,
+  "untriaged": 0,
+  "new_blockers": 0,
+  "sarif_sha256": "0186960a43b4fe7789788e0c20b441400a3d1ff2b75471ccf15bd39916557670",
+  "rows": [
+    {
+      "index": 0,
+      "rule_id": "DS162092",
+      "path": "ci/test_local_release.py",
+      "file_sha256": "2518f7ea15761580823854b93070adaf8a7eba9a55126aa5eb30a3327af9b821",
+      "region": {
+        "startLine": 20,
+        "startColumn": 137,
+        "charOffset": 1589,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 1,
+      "rule_id": "DS162092",
+      "path": "ci/test_local_release.py",
+      "file_sha256": "2518f7ea15761580823854b93070adaf8a7eba9a55126aa5eb30a3327af9b821",
+      "region": {
+        "startLine": 20,
+        "startColumn": 53,
+        "charOffset": 1505,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 2,
+      "rule_id": "DS137138",
+      "path": "ci/test_local_release.py",
+      "file_sha256": "2518f7ea15761580823854b93070adaf8a7eba9a55126aa5eb30a3327af9b821",
+      "region": {
+        "startLine": 16,
+        "startColumn": 106,
+        "charOffset": 1189,
+        "charLength": 75
+      },
+      "matched_text_sha256": "3ddc1430134333baaf42b18082ee0c67f738e2c1ef0c1da6af13b17cbc120bd2",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Negative test input: remote HTTP issuer is required to fail runtime_config."
+    },
+    {
+      "index": 3,
+      "rule_id": "DS162092",
+      "path": "ci/run_observed_reference.py",
+      "file_sha256": "ed307f01885921d0b19c0a2b9f0069661df27be6acdbb8cb1ffbd6b2e07e259b",
+      "region": {
+        "startLine": 107,
+        "startColumn": 101,
+        "charOffset": 9773,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 4,
+      "rule_id": "DS440001",
+      "path": "ci/run_observed_reference.py",
+      "file_sha256": "ed307f01885921d0b19c0a2b9f0069661df27be6acdbb8cb1ffbd6b2e07e259b",
+      "region": {
+        "startLine": 105,
+        "startColumn": 225,
+        "charOffset": 9574,
+        "charLength": 5
+      },
+      "matched_text_sha256": "96c00bda2e8e39115dde05672c6d15ca90d4b2719c71cf01c45dd519e1e3b505",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "TLS1.3 minimum and mutual certificate verification on both Prometheus sides; no deprecated protocol accepted."
+    },
+    {
+      "index": 5,
+      "rule_id": "DS162092",
+      "path": "ci/run_observed_reference.py",
+      "file_sha256": "ed307f01885921d0b19c0a2b9f0069661df27be6acdbb8cb1ffbd6b2e07e259b",
+      "region": {
+        "startLine": 104,
+        "startColumn": 219,
+        "charOffset": 9308,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 6,
+      "rule_id": "DS162092",
+      "path": "ci/run_observed_reference.py",
+      "file_sha256": "ed307f01885921d0b19c0a2b9f0069661df27be6acdbb8cb1ffbd6b2e07e259b",
+      "region": {
+        "startLine": 101,
+        "startColumn": 53,
+        "charOffset": 8797,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 7,
+      "rule_id": "DS440001",
+      "path": "ci/run_observed_reference.py",
+      "file_sha256": "ed307f01885921d0b19c0a2b9f0069661df27be6acdbb8cb1ffbd6b2e07e259b",
+      "region": {
+        "startLine": 99,
+        "startColumn": 98,
+        "charOffset": 8587,
+        "charLength": 7
+      },
+      "matched_text_sha256": "f661b90cf0cb8bef4c119078d8b817218496e4cf5b7d85bc3eeee6f4ac22a3b9",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "TLS1.3 minimum and mutual certificate verification on both Prometheus sides; no deprecated protocol accepted."
+    },
+    {
+      "index": 8,
+      "rule_id": "DS162092",
+      "path": "ci/run_observed_reference.py",
+      "file_sha256": "ed307f01885921d0b19c0a2b9f0069661df27be6acdbb8cb1ffbd6b2e07e259b",
+      "region": {
+        "startLine": 95,
+        "startColumn": 29,
+        "charOffset": 8031,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 9,
+      "rule_id": "DS162092",
+      "path": "ci/run_observed_reference.py",
+      "file_sha256": "ed307f01885921d0b19c0a2b9f0069661df27be6acdbb8cb1ffbd6b2e07e259b",
+      "region": {
+        "startLine": 81,
+        "startColumn": 33,
+        "charOffset": 6759,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 10,
+      "rule_id": "DS162092",
+      "path": "ci/run_observed_reference.py",
+      "file_sha256": "ed307f01885921d0b19c0a2b9f0069661df27be6acdbb8cb1ffbd6b2e07e259b",
+      "region": {
+        "startLine": 57,
+        "startColumn": 42,
+        "charOffset": 4501,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 11,
+      "rule_id": "DS162092",
+      "path": "ci/serve_local_reference.py",
+      "file_sha256": "37e6952d1026dd12e9786dbe3ee12eee8f0a2020fa9abac24a662625329c161e",
+      "region": {
+        "startLine": 20,
+        "startColumn": 70,
+        "charOffset": 1634,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 12,
+      "rule_id": "DS162092",
+      "path": "ci/run_observed_reference.py",
+      "file_sha256": "ed307f01885921d0b19c0a2b9f0069661df27be6acdbb8cb1ffbd6b2e07e259b",
+      "region": {
+        "startLine": 43,
+        "startColumn": 84,
+        "charOffset": 3749,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 13,
+      "rule_id": "DS162092",
+      "path": "ci/serve_local_reference.py",
+      "file_sha256": "37e6952d1026dd12e9786dbe3ee12eee8f0a2020fa9abac24a662625329c161e",
+      "region": {
+        "startLine": 17,
+        "startColumn": 91,
+        "charOffset": 1441,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 14,
+      "rule_id": "DS197836",
+      "path": "ci/run_observed_reference.py",
+      "file_sha256": "ed307f01885921d0b19c0a2b9f0069661df27be6acdbb8cb1ffbd6b2e07e259b",
+      "region": {
+        "startLine": 36,
+        "startColumn": 117,
+        "charOffset": 2922,
+        "charLength": 145
+      },
+      "matched_text_sha256": "ce84f3d982bbc813cc4f833eef4304d545a4a49fb6502b5fff78366a6fa004c3",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "SHA-256 binds a binary/file/inventory or names its digest; no password hashing. Existing provider HMAC authenticates provider messages, not low-entropy password storage."
+    },
+    {
+      "index": 15,
+      "rule_id": "DS162092",
+      "path": "ci/serve_local_reference.py",
+      "file_sha256": "37e6952d1026dd12e9786dbe3ee12eee8f0a2020fa9abac24a662625329c161e",
+      "region": {
+        "startLine": 17,
+        "startColumn": 29,
+        "charOffset": 1379,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 16,
+      "rule_id": "DS162092",
+      "path": "ci/serve_local_reference.py",
+      "file_sha256": "37e6952d1026dd12e9786dbe3ee12eee8f0a2020fa9abac24a662625329c161e",
+      "region": {
+        "startLine": 16,
+        "startColumn": 61,
+        "charOffset": 1290,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 17,
+      "rule_id": "DS162092",
+      "path": "ci/run_observed_reference.py",
+      "file_sha256": "ed307f01885921d0b19c0a2b9f0069661df27be6acdbb8cb1ffbd6b2e07e259b",
+      "region": {
+        "startLine": 27,
+        "startColumn": 73,
+        "charOffset": 1917,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 18,
+      "rule_id": "DS162092",
+      "path": "cmd/electromobility-api/http_metrics_test.go",
+      "file_sha256": "9b46ba0d8a3c1a02121b5faa1b645d072c69a21adec8332d93af713757898b1b",
+      "region": {
+        "startLine": 20,
+        "startColumn": 10,
+        "charOffset": 590,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 19,
+      "rule_id": "DS162092",
+      "path": "ci/serve_local_reference.py",
+      "file_sha256": "37e6952d1026dd12e9786dbe3ee12eee8f0a2020fa9abac24a662625329c161e",
+      "region": {
+        "startLine": 16,
+        "startColumn": 22,
+        "charOffset": 1251,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 20,
+      "rule_id": "DS162092",
+      "path": "ci/test_local_release.py",
+      "file_sha256": "2518f7ea15761580823854b93070adaf8a7eba9a55126aa5eb30a3327af9b821",
+      "region": {
+        "startLine": 16,
+        "startColumn": 68,
+        "charOffset": 1151,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 21,
+      "rule_id": "DS162092",
+      "path": "ci/local_release.py",
+      "file_sha256": "26120750ef65f3d7e39eb11fa6aa62f7928b8dd82ed217f808dd1165cd1a94f6",
+      "region": {
+        "startLine": 42,
+        "startColumn": 106,
+        "charOffset": 2729,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 22,
+      "rule_id": "DS197836",
+      "path": "ci/serve_local_reference.py",
+      "file_sha256": "37e6952d1026dd12e9786dbe3ee12eee8f0a2020fa9abac24a662625329c161e",
+      "region": {
+        "startLine": 11,
+        "startColumn": 74,
+        "charOffset": 702,
+        "charLength": 62
+      },
+      "matched_text_sha256": "96a449e9a002af312d6efc847290d18265dd3ac965cfe8a07400748305bb99ed",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "SHA-256 binds a binary/file/inventory or names its digest; no password hashing. Existing provider HMAC authenticates provider messages, not low-entropy password storage."
+    },
+    {
+      "index": 23,
+      "rule_id": "DS162092",
+      "path": "cmd/electromobility-api/http_metrics_test.go",
+      "file_sha256": "9b46ba0d8a3c1a02121b5faa1b645d072c69a21adec8332d93af713757898b1b",
+      "region": {
+        "startLine": 11,
+        "startColumn": 100,
+        "charOffset": 309,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 24,
+      "rule_id": "DS197836",
+      "path": "ci/run_observed_reference.py",
+      "file_sha256": "ed307f01885921d0b19c0a2b9f0069661df27be6acdbb8cb1ffbd6b2e07e259b",
+      "region": {
+        "startLine": 24,
+        "startColumn": 126,
+        "charOffset": 1557,
+        "charLength": 17
+      },
+      "matched_text_sha256": "71e552607316ad41910f13f56999b4e66ff33402527b897ac485965ce517c40f",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "SHA-256 binds a binary/file/inventory or names its digest; no password hashing. Existing provider HMAC authenticates provider messages, not low-entropy password storage."
+    },
+    {
+      "index": 25,
+      "rule_id": "DS162092",
+      "path": "ci/local_release.py",
+      "file_sha256": "26120750ef65f3d7e39eb11fa6aa62f7928b8dd82ed217f808dd1165cd1a94f6",
+      "region": {
+        "startLine": 42,
+        "startColumn": 45,
+        "charOffset": 2668,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 26,
+      "rule_id": "DS162092",
+      "path": "ci/test_local_release.py",
+      "file_sha256": "2518f7ea15761580823854b93070adaf8a7eba9a55126aa5eb30a3327af9b821",
+      "region": {
+        "startLine": 11,
+        "startColumn": 134,
+        "charOffset": 717,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 27,
+      "rule_id": "DS162092",
+      "path": "cmd/electromobility-api/http_metrics.go",
+      "file_sha256": "ea9851a4219190984c60311867850bd96ef5b019aded9c3c7639f76276a66fbf",
+      "region": {
+        "startLine": 21,
+        "startColumn": 46,
+        "charOffset": 566,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 28,
+      "rule_id": "DS162092",
+      "path": "cmd/electromobility-api/http_metrics_test.go",
+      "file_sha256": "9b46ba0d8a3c1a02121b5faa1b645d072c69a21adec8332d93af713757898b1b",
+      "region": {
+        "startLine": 11,
+        "startColumn": 84,
+        "charOffset": 293,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 29,
+      "rule_id": "DS197836",
+      "path": "ci/serve_local_reference.py",
+      "file_sha256": "37e6952d1026dd12e9786dbe3ee12eee8f0a2020fa9abac24a662625329c161e",
+      "region": {
+        "startLine": 9,
+        "startColumn": 30,
+        "charOffset": 460,
+        "charLength": 45
+      },
+      "matched_text_sha256": "949ed3a0faa695ec270b02ae81ba01ac5ba76b03acb4d622659c2e00f88e91d7",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "SHA-256 binds a binary/file/inventory or names its digest; no password hashing. Existing provider HMAC authenticates provider messages, not low-entropy password storage."
+    },
+    {
+      "index": 30,
+      "rule_id": "DS197836",
+      "path": "ci/run_observed_reference.py",
+      "file_sha256": "ed307f01885921d0b19c0a2b9f0069661df27be6acdbb8cb1ffbd6b2e07e259b",
+      "region": {
+        "startLine": 18,
+        "startColumn": 48,
+        "charOffset": 873,
+        "charLength": 31
+      },
+      "matched_text_sha256": "2fbdb40c8bd3acc0e72536ac10bd16007f430b70d34a4a2fccf9714ca11539be",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "SHA-256 binds a binary/file/inventory or names its digest; no password hashing. Existing provider HMAC authenticates provider messages, not low-entropy password storage."
+    },
+    {
+      "index": 31,
+      "rule_id": "DS162092",
+      "path": "ci/local_release.py",
+      "file_sha256": "26120750ef65f3d7e39eb11fa6aa62f7928b8dd82ed217f808dd1165cd1a94f6",
+      "region": {
+        "startLine": 16,
+        "startColumn": 46,
+        "charOffset": 709,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 32,
+      "rule_id": "DS162092",
+      "path": "ci/test_local_release.py",
+      "file_sha256": "2518f7ea15761580823854b93070adaf8a7eba9a55126aa5eb30a3327af9b821",
+      "region": {
+        "startLine": 11,
+        "startColumn": 50,
+        "charOffset": 633,
+        "charLength": 9
+      },
+      "matched_text_sha256": "12ca17b49af2289436f303e0166030a21e525d266e209267433801a8fd4071a0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "Explicit trusted-local endpoint or negative fixture; remote values rejected. Loopback is the scope boundary, not forgotten production debug configuration."
+    },
+    {
+      "index": 33,
+      "rule_id": "DS197836",
+      "path": "cmd/electromobility-api/main.go",
+      "file_sha256": "057a3f33cdb105e67c8b3026467c432cbb7c9f6afafc16dd54137cdfa9153e6c",
+      "region": {
+        "startLine": 128,
+        "startColumn": 132,
+        "charOffset": 4810,
+        "charLength": 41
+      },
+      "matched_text_sha256": "093e3bbe5b9be070d9ee0d56d1fd0c806cd2693f9cd6d3be55397a89ffbeedd0",
+      "disposition": "REVIEWED_LOCAL_SCOPE",
+      "reason": "SHA-256 binds a binary/file/inventory or names its digest; no password hashing. Existing provider HMAC authenticates provider messages, not low-entropy password storage."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "ARCA_INFRA",
+  "outcome": "PASS",
+  "command": "V402329 exact1653source,1650unchanged;3release/parser tests changed, inherited local control proof unchanged",
+  "exit_code": 0,
+  "assertions": [
+    "Local control scope retained in prior hash-bound receipt.",
+    "Only release gate/verifier/test changed; no domain, role, identity, provider, document, AI, fiscal or dependency mutation.",
+    "Actual official graph report has454package records/0vulnerabilities; both corrected parsers and17contract assertions PASS."
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "d21876c286988cb6fa44d8768ce3ca184c63c249a1ac076079961a2fe73e4160"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_ARCA_INFRA_CONTROL_RECEIPT_V402_328.json",
+      "sha256": "382fec1ee108543ad41f6a31296e62d7e7b08b10214194f18f3251066ce458eb"
+    },
+    {
+      "path": "reconstruction_evidence/SIGNED_OSV_REPORT_PARSING_V402.json",
+      "sha256": "b2686ee2f8d54037467540f797cb8e128feeddc6b300a65b42ccf3eda0096cc5"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/SIGNED_OSV_REPORT_PARSING_V402.md",
+      "sha256": "9821a962604e20f50ca903c7cc18008ff825d8d1f30b3553ad00ade5172b0d4e"
+    }
+  ],
+  "inventory_sha256": "882fd106b7da51a48fbc2f5b744918da88a0e9b362ba0486557c27e469e43c36",
+  "live_effects_performed": false
+}

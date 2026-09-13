@@ -1,0 +1,45 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2802",
+  "outcome": "PASS",
+  "command": "C:/Python314/python.exe -X utf8 -B C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\record-scheduled-checkpoint307.py; exact1435 source correspondence, no unchanged journey reruns",
+  "exit_code": 0,
+  "assertions": [
+    "quote/order/provider SDK fixture/callback/reconciliation/initial handover/checklist/acceptance/commercial receipt",
+    "FX durable journal posting/balance/reversal",
+    "source-derived gift/loyalty tender connected to provider or local funding and delivery",
+    "sold warranty terms and J4 claim/stock/FIFO/approval/quality/recovery",
+    "J2 demand/PO quantities/factory/serial QA/ASN/receiving/quarantine/release",
+    "J3 draft/reviews/immutable publish/effective price/search/actual storefront/reference feed/rollback",
+    "six named non-selected subcores NONE_WITH_REASON; no universal equivalence claimed",
+    "1435 current outputs exact;1409 previous unchanged,9 reviewed approval/WhatsApp glue deltas,17 new AUTHORED schedule/recovery/host files. Three affected profiles rebuilt exactly; connected appointment/jobs/adapter/status/recovery,host/mTLS/rollback,boundaries/fuzz PASS. T2805 campaign work remains."
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "461e116d2659ebfe8c098ef9c14bfeea2ec2f7c1f8c72c62c8745af3ce4669c2"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_T2802_CONTROL_RECEIPT_V402_306.json",
+      "sha256": "d685cc09bbce153dea688e71158a353257cd258ce7702dcca3dffe5ae1443143"
+    },
+    {
+      "path": "reconstruction_evidence/SCHEDULED_COMMUNICATIONS_RELEASE_V402.json",
+      "sha256": "9e7dd78ebbc312cebb1b5ed9a693f68facc6d7ba7512621fd0befcb308c9e272"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/SCHEDULED_COMMUNICATIONS_RELEASE_V402.md",
+      "sha256": "009db69abf6100b2618dbe46353dbc88b1571fac7dcd594d674072c25ce668b5"
+    },
+    {
+      "path": "reconstruction_evidence/SCHEDULED_COMMUNICATIONS_RELEASE_V402.json",
+      "sha256": "9e7dd78ebbc312cebb1b5ed9a693f68facc6d7ba7512621fd0befcb308c9e272"
+    }
+  ],
+  "inventory_sha256": "4ca729614de07155c0bfffd015f7fc22522d464e6d1d137d2807b9af633e8396",
+  "live_effects_performed": false
+}

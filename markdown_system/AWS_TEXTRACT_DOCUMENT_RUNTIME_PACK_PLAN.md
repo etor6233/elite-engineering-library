@@ -40,7 +40,7 @@ Este perfil materializa la lane AWS completa anterior al negocio: adquisición o
     {
       "path": "implementation_packs/GO_AWS_TEXTRACT_DOCUMENT_RUNTIME.md",
       "packId": "GO-AWS-TEXTRACT-DOCUMENT-RUNTIME",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "acknowledgeConditions": true,
       "files": [
         "*"
@@ -82,3 +82,5 @@ Este perfil materializa la lane AWS completa anterior al negocio: adquisición o
 ```
 
 Antes de adquirir se aprueba el source AWS exacto. El usuario debe aportar cuenta/owner, bucket ya configurado, IAM, KMS, modo/fecha de retención, lifecycle y costo; el adapter nunca habilita Object Lock. El gate local debe emitir un receipt `ADMITTED` que coincida con el archivo; cualquier original que se conserve usa checksum, owner esperado, `If-None-Match`, VersionId y retención verificada. El runtime Go deriva región, operación, features, Queries y AdapterId/Version sólo de una clase `REQUIRED`; Textractor aporta el parser/CLI oficial AWS 1.10.0 con wheel/grafo hash-locked, pruebas Queries 2/1 y suite determinista Linux 69/16, sin sustituir el runner seguro ni habilitar `CALL_TEXTRACT` en offline. Luego la evaluación conserva `automatic_storage_authorized=false` hasta que corpus/ground truth/política prueben cero falsos bajo el contrato del proyecto. La orquestación enlaza esos receipts, exige revisión hash-bound cuando corresponde, persiste idempotentemente y conserva evidencia final. Toda clase `CONFIGURATION_REQUIRED` o `BLOCKED_*` permanece sin automatizar. Storage de evidencia no equivale a persistencia de campos comerciales; IAM, presupuesto, cuotas, residencia, reconciliación y sandbox real siguen siendo entradas obligatorias.
+
+V402 / T2806: documento referencia conectado; SDK original, gate de seguridad reutilizado, review humana y commit durable. DOCUMENT_REFERENCE_RELEASE_V402.md/json. FIXTURE explícito, no producción ni OCR probado.

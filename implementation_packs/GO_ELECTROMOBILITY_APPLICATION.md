@@ -11,7 +11,7 @@ cancelación. Sin dependencia ni regla de negocio nueva; no promoción integral.
 
 ```yaml
 pack_id: "GO-ELECTROMOBILITY-APPLICATION"
-pack_version: "1.11.0"
+pack_version: "1.22.3"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -22,7 +22,7 @@ compatible_with: ["GO-ENTERPRISE-BACKEND 0.4.x", "GO-ELECTROMOBILITY-PUBLIC-CRM-
 incompatible_with: []
 license_expression: "LicenseRef-Workspace-Owner AND Apache-2.0 AND MIT dependencies"
 upstream_sources: ["https://go.dev", "https://www.postgresql.org/docs/18/", "https://github.com/coreos/go-oidc"]
-verified_at: "2026-09-07"
+verified_at: "2026-09-13"
 ```
 
 ## 2. Applicability
@@ -42,6 +42,11 @@ One process owns HTTP composition while PostgreSQL remains the durable source of
 ## 4. Exact file manifest
 
 ```text
+CREATE cmd/electromobility-api/http_metrics_profile.go
+CREATE cmd/electromobility-api/native_stop_other.go
+CREATE cmd/electromobility-api/native_stop_windows.go
+CREATE cmd/electromobility-api/native_stop_windows_test.go
+CREATE cmd/electromobility-api/portal_activation.go
 CREATE cmd/electromobility-api/main.go
 CREATE cmd/electromobility-api/main_test.go
 CREATE cmd/arca-parameter-worker/main.go
@@ -198,7 +203,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local"
 license: "LicenseRef-Workspace-Owner"
-sha256: "a88b4a505a433a934c58cf4545d17d0191a8caf9283e4743e56cf83fe8d08c13"
+sha256: "057a3f33cdb105e67c8b3026467c432cbb7c9f6afafc16dd54137cdfa9153e6c"
 variables: []
 secrets_allowed: false
 ```
@@ -240,6 +245,19 @@ func (systemClock) Now() time.Time { return time.Now() }
 func main() {
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
+	ctx, nativeCleanup, err := nativeStopContext(ctx, os.Getenv("ELITE_STOP_EVENT_HANDLE"))
+	if err != nil {
+		slog.Error("native shutdown binding is invalid")
+		os.Exit(2)
+	}
+	defer func() {
+		if err := nativeCleanup(); err != nil {
+			slog.Error("native shutdown cleanup failed")
+		}
+	}()
+	if ctx.Err() != nil {
+		return
+	}
 	businessPolicy, err := selectedBusinessPolicy(os.Getenv)
 	if err != nil {
 		slog.Error("business policy profile configuration is invalid")
@@ -300,6 +318,11 @@ func main() {
 	}
 	fulfillmentService := fulfillment.NewService(postgres.NewFulfillment(pool), generator)
 	queryService := enterprisequery.NewService(postgres.NewEnterpriseQuery(pool))
+	roleMetrics, err := postgres.NewRoleMetrics(pool)
+	if err != nil {
+		slog.Error("role metrics initialization failed")
+		os.Exit(2)
+	}
 	journeyService := policyRuntime.journeyService
 	royaltyService := royalty.NewService(postgres.NewRoyalty(pool), generator)
 	accountingService := accounting.NewService(postgres.NewAccounting(pool), generator)
@@ -314,7 +337,7 @@ func main() {
 		os.Exit(2)
 	}
 	providerService := providerintegration.NewService(postgres.NewProviderIntegration(pool), providerRegistry, providerintegration.HMACSHA256{Now: time.Now, Tolerance: 5 * time.Minute})
-	modules := []httpapi.EnterpriseModule{httpapi.OperationsModule{Service: operationsService}, httpapi.InventoryControlModule{Service: inventoryControlService, Bulk: bulkInventoryService, Warehouse: warehouseService, Transfer: bulkTransferService}, httpapi.CommerceModule{Service: commerceService, PaymentProvider: paymentProvider, PaymentTenantID: paymentTenant, PaymentOrganizationID: paymentOrganization, ProviderObservedPayments: true}, httpapi.FulfillmentModule{Service: fulfillmentService}, httpapi.EnterpriseQueryModule{Service: queryService}, httpapi.FranchiseJourneyModule{Service: journeyService}, httpapi.RoyaltyModule{Service: royaltyService}, httpapi.AccountingModule{Service: accountingService}, httpapi.ProviderIntegrationModule{Service: providerService}}
+	modules := []httpapi.EnterpriseModule{httpapi.OperationsModule{Service: operationsService}, httpapi.InventoryControlModule{Service: inventoryControlService, Bulk: bulkInventoryService, Warehouse: warehouseService, Transfer: bulkTransferService}, httpapi.CommerceModule{Service: commerceService, PaymentProvider: paymentProvider, PaymentTenantID: paymentTenant, PaymentOrganizationID: paymentOrganization, ProviderObservedPayments: true}, httpapi.FulfillmentModule{Service: fulfillmentService}, httpapi.EnterpriseQueryModule{Service: queryService, Metrics: roleMetrics}, httpapi.FranchiseJourneyModule{Service: journeyService}, httpapi.RoyaltyModule{Service: royaltyService}, httpapi.AccountingModule{Service: accountingService}, httpapi.ProviderIntegrationModule{Service: providerService}}
 	if paymentHost != nil {
 		modules = append(modules, paymentHost.module)
 	}
@@ -349,7 +372,170 @@ func main() {
 		defer whatsappHost.close()
 		modules = append(modules, whatsappHost)
 	}
+
+	if storedValueModuleFactory != nil {
+		module, e := storedValueModuleFactory(ctx, pool, os.Getenv)
+		if e != nil {
+			slog.Error("stored-value activation failed")
+			os.Exit(1)
+		}
+		if module != nil {
+			modules = append(modules, module)
+		}
+	} else if enabled := os.Getenv("STORED_VALUE_ENABLED"); enabled != "" && enabled != "false" {
+		slog.Error("stored-value pack is not selected")
+		os.Exit(1)
+	}
+	if warrantyModuleFactory != nil {
+		module, e := warrantyModuleFactory(ctx, pool, os.Getenv)
+		if e != nil {
+			slog.Error("warranty activation failed")
+			os.Exit(1)
+		}
+		if module != nil {
+			modules = append(modules, module)
+		}
+	} else if enabled := os.Getenv("WARRANTY_ENABLED"); enabled != "" && enabled != "false" {
+		slog.Error("warranty pack is not selected")
+		os.Exit(1)
+	}
+	if serialSupplyModuleFactory != nil {
+		module, e := serialSupplyModuleFactory(ctx, pool, os.Getenv)
+		if e != nil {
+			slog.Error("serial supply activation failed")
+			os.Exit(1)
+		}
+		if module != nil {
+			modules = append(modules, module)
+		}
+	} else if enabled := os.Getenv("SERIAL_SUPPLY_ENABLED"); enabled != "" && enabled != "false" {
+		slog.Error("serial supply pack is not selected")
+		os.Exit(1)
+	}
+	if catalogReleaseModuleFactory != nil {
+		module, e := catalogReleaseModuleFactory(ctx, pool, policyRuntime.commerceRepository, os.Getenv)
+		if e != nil {
+			slog.Error("catalog publication activation failed")
+			os.Exit(1)
+		}
+		if module != nil {
+			modules = append(modules, module)
+		}
+	} else if enabled := os.Getenv("CATALOG_RELEASE_ENABLED"); enabled != "" && enabled != "false" {
+		slog.Error("catalog publication pack is not selected")
+		os.Exit(1)
+	}
+	if marketplaceModuleFactory != nil {
+		module, e := marketplaceModuleFactory(ctx, pool, policyRuntime.commerceRepository, os.Getenv)
+		if e != nil {
+			slog.Error("marketplace mutation activation failed")
+			os.Exit(1)
+		}
+		if module != nil {
+			modules = append(modules, module)
+		}
+	} else if enabled := os.Getenv("MARKETPLACE_ENABLED"); enabled != "" && enabled != "false" {
+		slog.Error("marketplace mutation pack is not selected")
+		os.Exit(1)
+	}
+	if documentModuleFactory != nil {
+		module, e := documentModuleFactory(ctx, pool, os.Getenv)
+		if e != nil {
+			slog.Error("document configuration rejected")
+			os.Exit(2)
+		}
+		if module != nil {
+			modules = append(modules, module)
+		}
+	} else if enabled := os.Getenv("DOCUMENTS_ENABLED"); enabled != "" && enabled != "false" {
+		slog.Error("document pack is not selected")
+		os.Exit(2)
+	}
+	if merchantModuleFactory != nil {
+		module, e := merchantModuleFactory(ctx, pool, policyRuntime.commerceRepository, os.Getenv)
+		if e != nil {
+			slog.Error("Google Merchant activation failed")
+			os.Exit(1)
+		}
+		if module != nil {
+			modules = append(modules, module)
+		}
+	} else if enabled := os.Getenv("MERCHANT_ENABLED"); enabled != "" && enabled != "false" {
+		slog.Error("Google Merchant pack is not selected")
+		os.Exit(1)
+	}
+	if trainingModuleFactory != nil {
+		module, e := trainingModuleFactory(ctx, pool, os.Getenv)
+		if e != nil {
+			slog.Error("training activation failed")
+			os.Exit(1)
+		}
+		if module != nil {
+			modules = append(modules, module)
+		}
+	} else if os.Getenv("TRAINING_ENABLED") != "" && os.Getenv("TRAINING_ENABLED") != "false" {
+		slog.Error("training pack not selected")
+		os.Exit(1)
+	}
+	if networkRoleModuleFactory != nil {
+		module, e := networkRoleModuleFactory(ctx, pool, os.Getenv)
+		if e != nil {
+			slog.Error("network role activation failed")
+			os.Exit(1)
+		}
+		if module != nil {
+			modules = append(modules, module)
+		}
+	} else if os.Getenv("NETWORK_ROLE_ENABLED") != "" && os.Getenv("NETWORK_ROLE_ENABLED") != "false" {
+		slog.Error("network role pack not selected")
+		os.Exit(1)
+	}
+	if helpCMSModuleFactory != nil {
+		module, e := helpCMSModuleFactory(ctx, pool, os.Getenv)
+		if e != nil {
+			slog.Error("help CMS activation failed")
+			os.Exit(1)
+		}
+		if module != nil {
+			modules = append(modules, module)
+		}
+	} else if os.Getenv("HELP_CMS_ENABLED") != "" && os.Getenv("HELP_CMS_ENABLED") != "false" {
+		slog.Error("help CMS pack not selected")
+		os.Exit(1)
+	}
+	portalHost, err := selectedPortalHost(ctx, pool, os.Getenv)
+	if err != nil {
+		slog.Error("portal lifecycle activation is unavailable")
+		os.Exit(2)
+	}
+	if portalHost != nil {
+		modules = append(modules, portalHost)
+	}
 	handler := httpapi.NewEnterprise(orders, verifier, catalog, modules...)
+	handler, metricsRun, metricsClose, err := prepareHTTPMetrics(handler, os.Getenv)
+	if err != nil {
+		slog.Error("HTTP metrics configuration is invalid")
+		os.Exit(2)
+	}
+	var metricsDone chan error
+	if metricsRun != nil {
+		metricsDone = make(chan error, 1)
+		go func() {
+			e := metricsRun(ctx)
+			metricsDone <- e
+			if e != nil {
+				stop()
+			}
+		}()
+		defer func() {
+			c, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+			defer cancel()
+			if e := metricsClose(c); e != nil {
+				slog.Error("metrics provider shutdown failed")
+			}
+		}()
+	}
+
 	server := &http.Server{Addr: envDefault("HTTP_ADDRESS", ":8080"), Handler: handler, ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 15 * time.Second, WriteTimeout: 15 * time.Second, IdleTimeout: 60 * time.Second, MaxHeaderBytes: 1 << 20}
 	if paymentHost != nil {
 		workerContext, cancelWorkers := context.WithCancel(ctx)
@@ -370,8 +556,25 @@ func main() {
 		defer func() { cancelWorkers(); <-workersDone }()
 	}
 	slog.Info("electromobility api starting", "address", server.Addr)
+	if portalHost != nil {
+		workerContext, cancelWorkers := context.WithCancel(ctx)
+		workersDone := make(chan struct{})
+		go func() { defer close(workersDone); portalHost.run(workerContext) }()
+		defer func() { cancelWorkers(); <-workersDone }()
+	}
 	if err = httpapi.ServeUntilShutdown(ctx, server, 15*time.Second); err != nil && !errors.Is(err, context.Canceled) {
 		slog.Error("server failed")
+		os.Exit(1)
+	}
+	if metricsDone != nil {
+		stop()
+		if e := <-metricsDone; e != nil && !errors.Is(e, context.Canceled) {
+			slog.Error("metrics listener failed")
+			os.Exit(1)
+		}
+	}
+	if err := nativeStopFailure(ctx); err != nil {
+		slog.Error("native stop protocol failed")
 		os.Exit(1)
 	}
 }
@@ -408,6 +611,31 @@ func selectedFiscalModule(pool *pgxpool.Pool, generator randomid.Generator, look
 		return nil, errors.New("ARCA_ENABLED must be true or false")
 	}
 }
+
+// Optional pack hook preserves independent profiles without stored-value imports.
+var storedValueModuleFactory func(context.Context, *pgxpool.Pool, func(string) string) (httpapi.EnterpriseModule, error)
+
+// Optional warranty pack hook preserves independent profiles.
+var warrantyModuleFactory func(context.Context, *pgxpool.Pool, func(string) string) (httpapi.EnterpriseModule, error)
+
+// Optional serial supply pack preserves independent profile dependency closure.
+var serialSupplyModuleFactory func(context.Context, *pgxpool.Pool, func(string) string) (httpapi.EnterpriseModule, error)
+
+var catalogReleaseModuleFactory func(context.Context, *pgxpool.Pool, *postgres.Commerce, func(string) string) (httpapi.EnterpriseModule, error)
+
+var trainingModuleFactory func(context.Context, *pgxpool.Pool, func(string) string) (httpapi.EnterpriseModule, error)
+
+var networkRoleModuleFactory func(context.Context, *pgxpool.Pool, func(string) string) (httpapi.EnterpriseModule, error)
+
+var helpCMSModuleFactory func(context.Context, *pgxpool.Pool, func(string) string) (httpapi.EnterpriseModule, error)
+
+// Optional provider mutation composition; absence cannot silently enable effects.
+var marketplaceModuleFactory func(context.Context, *pgxpool.Pool, *postgres.Commerce, func(string) string) (httpapi.EnterpriseModule, error)
+
+// Optional Google Merchant composition; missing pack fails activation closed.
+var merchantModuleFactory func(context.Context, *pgxpool.Pool, *postgres.Commerce, func(string) string) (httpapi.EnterpriseModule, error)
+
+var documentModuleFactory func(context.Context, *pgxpool.Pool, func(string) string) (httpapi.EnterpriseModule, error)
 ````
 
 ### FILE: `internal/platform/randomid/generator.go`
@@ -754,3 +982,355 @@ V402 composed delta: Payment/initial-handover composition. New behavior and test
 Canonical V402 integration: selected by the current profile with exact dependencies and caller overlays. Metadata promotion records byte reconstruction, not closure of every admission/release gate. Payload provenance is unchanged.
 
 V402 composed delta: Optional WhatsApp host activation hook plus exact FX module composition. Disabled host reads no external inputs; absent optional pack fails closed only when explicitly enabled. No AI dependencies added to the base-only host.
+
+V402 composed delta: V402 source-backed stored-value integration: exact remaining provider due, explicit payment/funding XOR, shared approval, bounded browser transport and optional host. See STORED_VALUE_OPERATOR_FLOW_V402.md; source/pack admission successor governs final claim. Existing provider-only behavior retained.
+
+V402 composed delta: Connected warranty reuses existing transaction/approval/stock/service owners; SQL ordering and public wrapper behavior retained. Optional host factory fails closed. Exact source tested in WARRANTY_INTERFACE_AND_PORTABILITY_V402.md; no new dependency or corporate attribution.
+
+V402 composed delta: Connected J2 uses existing transaction owners and preserves public operations transitions; serial quality remains in the shared distinct-human approval owner. Optional host hook keeps narrower profiles compatible. No dependency added or corporate attribution. SERIAL_SUPPLY_CONNECTED_RELEASE_V402.md.
+
+V402 composed delta: J3 immutable approved catalog publication reuses original Commerce SQL/shared approval and optional host/public model owner; existing Next storefront consumes a validated published projection. No new dependencies or corporate attribution. CATALOG_CONNECTED_RELEASE_V402.md.
+
+V402 composed delta: T2804 connected training: existing versioned help/audit/shared approvals/outbox/BFF; opt-in host and navigation; bounded body retains original default. No new dependency or automatic grant. TRAINING_CONNECTED_RELEASE_V402.md.
+
+V402 composed delta: T2804 network role: original four fulfillment SQL bodies extracted unchanged into one transaction with immutable result; optional host, forms and GET recovery. Migration0077, no dependency/domain-rule change. NETWORK_ROLE_RELEASE_V402.md.
+
+V402 composed delta: T2804 help CMS and21same-release guides;15oldguides unchanged,5bounded training curricula revision2, no automatic grants. New optional host, shared inline text, actual browser/PG proofs. HELP_CMS_RELEASE_V402.md.
+
+V402 composed delta: T2804 role metrics use existing domain read models with exact strings, organization/customer/factory/program permissions, NPS minimum/retention and no zero on unavailable. FAIL868 converted lead and FAIL457 bounded generic body corrected. ROLE_METRICS_RELEASE_V402.md/json; no new dependency or corporate authorship.
+
+V402 composed delta: T2805 narrow connected Mercado Libre PRICE/STOCK/PAUSE/RESUME for existing User Products item: immutable current catalog + existing serial ATP + exact distinct human approval + shared one-attempt fence + GET-only recovery. MARKETPLACE_MUTATION_RELEASE_V402.md/json. AUTHORED HTTP/SQL/host/proof glue; initial publication/media and other T2805 work remain open.
+
+V402 composed delta: Optional Google Merchant host activation slot; disabled profiles unchanged; MERCHANT_CONNECTED_RELEASE_V402.md/json.
+
+### FILE: `cmd/electromobility-api/portal_activation.go`
+
+```yaml
+block_id: "PORTAL-EXTENSION-1:file1:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "eb8d00579454becb4a6b430d24c720558a1c61edc4031e304d5e95b4d9c38cad"
+variables: []
+secrets_allowed: false
+```
+
+````go
+package main
+
+// AUTHORED optional hook owned by the base API pack. No frontend/portal import.
+import (
+	"context"
+	"elite.local/enterprise/internal/platform/httpapi"
+	"errors"
+	"github.com/jackc/pgx/v5/pgxpool"
+)
+
+type portalRuntime interface {
+	httpapi.EnterpriseModule
+	run(context.Context)
+}
+
+var portalRuntimeFactory func(context.Context, *pgxpool.Pool, func(string) string) (portalRuntime, error)
+
+func selectedPortalHost(ctx context.Context, pool *pgxpool.Pool, getenv func(string) string) (portalRuntime, error) {
+	if getenv == nil {
+		return nil, errors.New("portal activation unavailable")
+	}
+	switch getenv("OIDC_PORTAL_LIFECYCLE_ENABLED") {
+	case "", "false":
+		return nil, nil
+	case "true":
+		if portalRuntimeFactory == nil {
+			return nil, errors.New("portal lifecycle pack is not selected")
+		}
+		return portalRuntimeFactory(ctx, pool, getenv)
+	default:
+		return nil, errors.New("portal lifecycle enabled must be true or false")
+	}
+}
+````
+
+
+V402 composed delta: Portal lifecycle optional host/BFF integration; IDENTITY_PORTAL_RELEASE_V402.md/json; no change to closed business journeys.
+
+V402 composed delta: T2806 connected document reference. Optional host hook, explicit bound document-review kind, exact AWS module closure and preserved security-floor checksums; no unchanged business policy modified. DOCUMENT_REFERENCE_RELEASE_V402.md/json.
+
+V402 composed delta: Local delivery316: native stop owner reused, Next standalone exact build identity, container template without mutable defaults and complete local module context. Local fixture qualification only; docs/LOCAL_REFERENCE_DELIVERY.md.
+
+### FILE: `cmd/electromobility-api/native_stop_other.go`
+
+```yaml
+block_id: "GO-ELECTROMOBILITY-APPLICATION-LOCAL-DELIVERY:file1:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "9bade57a4db708cdc464970eec0e7d129cba9cffdf48b69db89351683bbf9efa"
+variables: []
+secrets_allowed: false
+```
+
+````go
+//go:build !windows
+
+package main
+
+import (
+	"context"
+	"errors"
+)
+
+// Native handles are a Windows-only trusted-launcher protocol.
+func nativeStopContext(parent context.Context, raw string) (context.Context, func() error, error) {
+	if raw != "" {
+		return parent, func() error { return nil }, errors.New("NATIVE_STOP_PROTOCOL_FAILED")
+	}
+	ctx, cancel := context.WithCancel(parent)
+	return ctx, func() error { cancel(); return nil }, nil
+}
+
+func nativeStopFailure(context.Context) error { return nil }
+````
+
+### FILE: `cmd/electromobility-api/native_stop_windows.go`
+
+```yaml
+block_id: "GO-ELECTROMOBILITY-APPLICATION-LOCAL-DELIVERY:file2:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "97d705c2674f7d364d80d22a1029ab27978ebb5dfa15f72fad94c5a0b9668a91"
+variables: []
+secrets_allowed: false
+```
+
+````go
+//go:build windows
+
+package main
+
+// AUTHORED qualification only. The launcher supplies a trusted manual-reset
+// event; this is neither object-type authentication nor hostile-worker isolation.
+import (
+	"context"
+	"errors"
+	"strconv"
+	"sync"
+	"syscall"
+	"unsafe"
+)
+
+var errNativeStop = errors.New("NATIVE_STOP_REQUESTED")
+var errNativeProtocol = errors.New("NATIVE_STOP_PROTOCOL_FAILED")
+var stopKernel = syscall.NewLazyDLL("kernel32.dll")
+var stopDuplicate = stopKernel.NewProc("DuplicateHandle")
+var stopWait = stopKernel.NewProc("WaitForSingleObject")
+var stopClose = stopKernel.NewProc("CloseHandle")
+
+func parseStopHandle(raw string) (uintptr, error) {
+	n, err := strconv.ParseUint(raw, 10, strconv.IntSize)
+	if err != nil || n == 0 || n > uint64(^uintptr(0)>>1) || strconv.FormatUint(n, 10) != raw {
+		return 0, errNativeProtocol
+	}
+	return uintptr(n), nil
+}
+
+// Duplicate before waiting. Cleanup joins the waiter BEFORE closing its handle:
+// CloseHandle during a pending Windows wait has undefined behavior.
+// Empty raw retains the ordinary parent-context lifecycle. Cancellation stops
+// claims through the real host loop; it does not guarantee a domain commit.
+func nativeStopContext(parent context.Context, raw string) (context.Context, func() error, error) {
+	ctx, cancel := context.WithCancelCause(parent)
+	if raw == "" {
+		return ctx, func() error { cancel(context.Canceled); return nil }, nil
+	}
+	source, err := parseStopHandle(raw)
+	if err != nil {
+		cancel(err)
+		return ctx, func() error { return nil }, err
+	}
+	var owned uintptr
+	ok, _, _ := stopDuplicate.Call(^uintptr(0), source, ^uintptr(0), uintptr(unsafe.Pointer(&owned)), 0x100000, 0, 0)
+	if ok == 0 {
+		cancel(errNativeProtocol)
+		return ctx, func() error { return nil }, errNativeProtocol
+	}
+	done, joined := make(chan struct{}), make(chan struct{})
+	var once sync.Once
+	var closeErr error
+	cleanup := func() error {
+		once.Do(func() {
+			close(done)
+			<-joined
+			ok, _, _ := stopClose.Call(owned)
+			if ok == 0 {
+				closeErr = errNativeProtocol
+			}
+			cancel(context.Canceled)
+		})
+		return closeErr
+	}
+	// A pre-signaled event must not expose a live context to the first claim.
+	// The trusted launcher supplies a manual-reset event, so this read is not
+	// destructive. Other waitable object types are outside the protocol.
+	initial, _, _ := stopWait.Call(owned, 0)
+	if initial != 258 {
+		close(joined)
+		if initial == 0 {
+			cancel(errNativeStop)
+			return ctx, cleanup, nil
+		}
+		cancel(errNativeProtocol)
+		_ = cleanup()
+		return ctx, cleanup, errNativeProtocol
+	}
+	go func() {
+		defer close(joined)
+		for {
+			select {
+			case <-done:
+				return
+			case <-ctx.Done():
+				return
+			default:
+			}
+			status, _, _ := stopWait.Call(owned, 20)
+			switch status {
+			case 0:
+				cancel(errNativeStop)
+				return
+			case 258:
+			default:
+				cancel(errNativeProtocol)
+				return
+			}
+		}
+	}()
+	return ctx, cleanup, nil
+}
+
+func nativeStopFailure(ctx context.Context) error {
+	if errors.Is(context.Cause(ctx), errNativeProtocol) {
+		return errNativeProtocol
+	}
+	return nil
+}
+````
+
+### FILE: `cmd/electromobility-api/native_stop_windows_test.go`
+
+```yaml
+block_id: "GO-ELECTROMOBILITY-APPLICATION-LOCAL-DELIVERY:file3:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "4eba1980e6cf549db8636f6bc9c71065918b3048dd7b3dc0e216e997c58949a9"
+variables: []
+secrets_allowed: false
+```
+
+````go
+//go:build windows
+
+package main
+
+import (
+	"context"
+	"strconv"
+	"testing"
+	"time"
+)
+
+func TestAPINativeStopLifecycle(t *testing.T) {
+	h, _, _ := stopKernel.NewProc("CreateEventW").Call(0, 1, 0, 0)
+	if h == 0 {
+		t.Fatal("event creation")
+	}
+	defer stopClose.Call(h)
+	ctx, cleanup, err := nativeStopContext(context.Background(), strconv.FormatUint(uint64(h), 10))
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer cleanup()
+	if ctx.Err() != nil {
+		t.Fatal("premature stop")
+	}
+	stopKernel.NewProc("SetEvent").Call(h)
+	select {
+	case <-ctx.Done():
+	case <-time.After(time.Second):
+		t.Fatal("stop did not cancel host")
+	}
+	if err := cleanup(); err != nil {
+		t.Fatal(err)
+	}
+	ctx, cleanup, err = nativeStopContext(context.Background(), strconv.FormatUint(uint64(h), 10))
+	if err != nil || ctx.Err() == nil {
+		t.Fatal("pre-signaled stop must precede host startup")
+	}
+	if err := cleanup(); err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestAPINativeStopInvalidHandle(t *testing.T) {
+	for _, raw := range []string{"0", "-1", "+4", "04", "999999999999999999999999"} {
+		if _, _, err := nativeStopContext(context.Background(), raw); err == nil {
+			t.Fatal("invalid handle accepted")
+		}
+	}
+}
+````
+
+
+V402316: optional Windows local reference commands require PNPM-ARTIFACT-SELECTION-GATE0.9.0 and four exact WINDOW​​S-REFERENCE-TELEMETRY-RUNTIME0.1.0 supervisor files. Original portable runner unchanged. Read docs/LOCAL_REFERENCE_DELIVERY.md. No live production or corporate attribution.
+
+V402 composed delta: V402317 connected local API/Next telemetry, current OIDC, fixed official middleware, finite supervised alert/fault/load/WAL recovery. Historical lock kept separate; docs/LOCAL_REFERENCE_OPERATIONS.md. No production admission.
+
+### FILE: `cmd/electromobility-api/http_metrics_profile.go`
+
+```yaml
+block_id: "GO-ELECTROMOBILITY-APPLICATION-LOCAL-OPERATIONS:file1:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "cb6d02fc9f57ae944d963648aa8ae8061b49e153ef9bf3db4dbe68c0d876155f"
+variables: []
+secrets_allowed: false
+```
+
+````go
+package main
+
+import (
+	"context"
+	"errors"
+	"net/http"
+)
+
+// Optional owner hook: smaller profiles keep the same host without importing
+// metrics dependencies. Explicit activation without its owner fails closed.
+var httpMetricsFactory func(http.Handler, func(string) string) (http.Handler, func(context.Context) error, func(context.Context) error, error)
+
+func prepareHTTPMetrics(h http.Handler, lookup func(string) string) (http.Handler, func(context.Context) error, func(context.Context) error, error) {
+	switch lookup("HTTP_METRICS_ENABLED") {
+	case "", "false":
+		return h, nil, nil, nil
+	case "true":
+		if httpMetricsFactory == nil {
+			return nil, nil, nil, errors.New("HTTP metrics owner is not selected")
+		}
+		return httpMetricsFactory(h, lookup)
+	default:
+		return nil, nil, nil, errors.New("HTTP_METRICS_ENABLED must be true or false")
+	}
+}
+````
+
+
+V402317: current host profile is documented in LOCAL_REFERENCE_OPERATIONS.md; source-lock separates historical synthetic principal from current OIDC host. Narrow local proof only.

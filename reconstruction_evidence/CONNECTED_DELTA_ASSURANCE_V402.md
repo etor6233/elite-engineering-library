@@ -71,7 +71,7 @@ No se propone `implementation_assurance=proven` global en este documento. Artefa
 
 9. **Freeze y fallos de selección de harness, separados de defectos de producto.** EV40/41 conservan `connected-frozen-pg-final1`: varias pruebas se detuvieron en `requires disposable loopback handover database` por el nombre/guard de base de datos (FAIL812). EV42/43 reejecutó el alcance correcto y dejó 16 PG PASS sin SKIP; no es un RED de lógica comercial. EV44 sólo ejecutó un test SDK y corpus fuzz: HTTPAPI/host registraron `[no tests to run]` por el filtro anclado. EV45/46 corrigió la selección y obtuvo 25 PASS explícitos, pero incluyó además `TestPaymentHTTPDurableReplayPostgres`, SKIP por TEST_DATABASE_URL ausente; su gate agregado cero-SKIP fue rechazado (FAIL813). Se acredita cada PASS enumerado, se excluye el test omitido y se conserva el fallo del harness. No se repitió PostgreSQL para esa corrección de unidades.
 
-Referencia congelada: `C:\Users\NL\AppData\Local\Temp\elite-v402-library-infra\connected-frozen-reference`. Pruebas PG/SDK: EV42/43; unidades manual guard/host: EV45/46. Ninguno acredita producción live.
+Referencia congelada: `Temp/elite-v402-library-infra/connected-frozen-reference`. Pruebas PG/SDK: EV42/43; unidades manual guard/host: EV45/46. Ninguno acredita producción live.
 
 ## Pendientes exactos para incorporar a canónico
 
@@ -222,3 +222,5 @@ Cada hash completo y manifest histórico está en el JSON adjunto. `snapshot` co
 | EV46 | `connected-frozen-unit-final/run.log` | `1731129e053e1b7de8c0bf2092d27fb1074ddeba73d9ae982ec21bbda8334678` |
 
 Fuentes oficiales originales y digests de snapshots figuran en receipts. Esta tarea no realizó adquisiciones ni pruebas nuevas. G5–G8 y assurance global permanecen abiertos hasta sus evidencias propias; no son faltantes de credenciales.
+
+V402321 portability correction: Temp/ denotes the originating system temporary directory; only rendered machine-local locators changed. Original rendering SHA-256 734da8551196755b5934e3b2dba28764bcd4ffe69b0879e6794cacca6655e43f is retained outside the distributed source. Receipt/source hashes and historical outcomes above are unchanged.

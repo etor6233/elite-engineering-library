@@ -4,7 +4,7 @@
 
 ```yaml
 pack_id: "GO-FULFILLMENT-SERVICE-FRANCHISE-API"
-pack_version: "0.4.0"
+pack_version: "0.6.0"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -505,7 +505,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local verified composition"
 license: "LicenseRef-Workspace-Owner"
-sha256: "4c83537a813d6c99b20d8e69db20278b6bd3f51bdb180d5749e6fa884186aa96"
+sha256: "eb457fc6310b1d68d91815480455b69790feacf40a348a36d876015b6a467f51"
 variables: []
 secrets_allowed: false
 ```
@@ -517,6 +517,7 @@ import (
 	"context"
 	"elite.local/enterprise/internal/fulfillment"
 	"errors"
+	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
@@ -563,6 +564,15 @@ func (r *Fulfillment) OpenServiceCase(ctx context.Context, tenant, eventID strin
 		return err
 	}
 	defer tx.Rollback(ctx)
+	if err = openServiceCaseInTx(ctx, tx, tenant, eventID, v); err != nil {
+		return err
+	}
+	return tx.Commit(ctx)
+}
+
+// AUTHORED transaction composition only: original case writer SQL preserved.
+func openServiceCaseInTx(ctx context.Context, tx pgx.Tx, tenant, eventID string, v fulfillment.ServiceCase) error {
+	var err error
 	result, err := tx.Exec(ctx, `insert into service_ops.service_case(tenant_id,service_case_id,stock_unit_id,organization_id,state,severity,description,version)select $1,$2,s.stock_unit_id,$4,'opened',$5,$6,1 from inventory.stock_unit s where s.tenant_id=$1 and s.stock_unit_id=$3 and s.organization_id=$4`, tenant, v.ID, v.StockUnitID, v.OrganizationID, v.Severity, v.Description)
 	if err != nil {
 		return err
@@ -573,7 +583,7 @@ func (r *Fulfillment) OpenServiceCase(ctx context.Context, tenant, eventID strin
 	if err = outbox(ctx, tx, tenant, eventID, "service-case", v.ID, 1, "service-case.opened", `jsonb_build_object('severity',$7::text)`, v.Severity); err != nil {
 		return err
 	}
-	return tx.Commit(ctx)
+	return nil
 }
 func (r *Fulfillment) TransitionServiceCase(ctx context.Context, tenant, organization, id, current, target string, version int64, eventID string) error {
 	tx, err := r.pool.Begin(ctx)
@@ -650,6 +660,14 @@ func (r *Fulfillment) CreateOrganization(ctx context.Context, tenant, eventID st
 		return err
 	}
 	defer tx.Rollback(ctx)
+	if err = createOrganizationInTx(ctx, tx, tenant, eventID, v); err != nil {
+		return err
+	}
+	return tx.Commit(ctx)
+}
+
+// AUTHORED transaction extraction; original owner SQL and guards preserved.
+func createOrganizationInTx(ctx context.Context, tx pgx.Tx, tenant, eventID string, v fulfillment.Organization) error {
 	result, err := tx.Exec(ctx, `insert into org.organization(tenant_id,organization_id,parent_organization_id,organization_code,display_name,organization_type,status,version)
 		select t.tenant_id,$2,nullif($3,''),$4,$5,$6,'provisioning',1
 		from platform.tenant t left join org.organization p on p.tenant_id=t.tenant_id and p.organization_id=nullif($3,'')
@@ -666,7 +684,7 @@ func (r *Fulfillment) CreateOrganization(ctx context.Context, tenant, eventID st
 	if err = outbox(ctx, tx, tenant, eventID, "organization", v.ID, 1, "organization.provisioning", `jsonb_build_object('parent_organization_id',nullif($7::text,''),'organization_type',$8::text)`, v.ParentOrganizationID, v.Type); err != nil {
 		return err
 	}
-	return tx.Commit(ctx)
+	return nil
 }
 func (r *Fulfillment) TransitionOrganization(ctx context.Context, tenant, id, current, target string, version int64, eventID string) error {
 	tx, err := r.pool.Begin(ctx)
@@ -674,6 +692,14 @@ func (r *Fulfillment) TransitionOrganization(ctx context.Context, tenant, id, cu
 		return err
 	}
 	defer tx.Rollback(ctx)
+	if err = transitionOrganizationInTx(ctx, tx, tenant, id, current, target, version, eventID); err != nil {
+		return err
+	}
+	return tx.Commit(ctx)
+}
+
+// AUTHORED transaction extraction; original owner SQL and guards preserved.
+func transitionOrganizationInTx(ctx context.Context, tx pgx.Tx, tenant, id, current, target string, version int64, eventID string) error {
 	result, err := tx.Exec(ctx, `update org.organization o set status=$4,version=version+1,updated_at=clock_timestamp()
 		where tenant_id=$1 and organization_id=$2 and status=$3 and version=$5
 		and not ($4='closed' and (exists(select 1 from org.organization child where child.tenant_id=o.tenant_id and child.parent_organization_id=o.organization_id and child.status<>'closed') or exists(select 1 from franchise.agreement a where a.tenant_id=o.tenant_id and a.franchise_organization_id=o.organization_id and a.status in ('active','suspended'))))`, tenant, id, current, target, version)
@@ -686,7 +712,7 @@ func (r *Fulfillment) TransitionOrganization(ctx context.Context, tenant, id, cu
 	if err = outbox(ctx, tx, tenant, eventID, "organization", id, version+1, "organization."+target, `'{}'::jsonb`); err != nil {
 		return err
 	}
-	return tx.Commit(ctx)
+	return nil
 }
 func (r *Fulfillment) CreateAgreement(ctx context.Context, tenant, eventID string, v fulfillment.Agreement) error {
 	tx, err := r.pool.Begin(ctx)
@@ -694,6 +720,14 @@ func (r *Fulfillment) CreateAgreement(ctx context.Context, tenant, eventID strin
 		return err
 	}
 	defer tx.Rollback(ctx)
+	if err = createAgreementInTx(ctx, tx, tenant, eventID, v); err != nil {
+		return err
+	}
+	return tx.Commit(ctx)
+}
+
+// AUTHORED transaction extraction; original owner SQL and guards preserved.
+func createAgreementInTx(ctx context.Context, tx pgx.Tx, tenant, eventID string, v fulfillment.Agreement) error {
 	result, err := tx.Exec(ctx, `insert into franchise.agreement(tenant_id,agreement_id,franchise_organization_id,territory_code,terms_version,starts_on,ends_on,status,version)
 		select $1,$2,o.organization_id,$4,$5,$6,$7,'draft',1 from org.organization o where o.tenant_id=$1 and o.organization_id=$3 and o.organization_type='franchisee' and o.status='active'`, tenant, v.ID, v.OrganizationID, v.TerritoryCode, v.TermsVersion, v.StartsOn, v.EndsOn)
 	if err != nil {
@@ -705,7 +739,7 @@ func (r *Fulfillment) CreateAgreement(ctx context.Context, tenant, eventID strin
 	if err = outbox(ctx, tx, tenant, eventID, "franchise-agreement", v.ID, 1, "franchise-agreement.created", `jsonb_build_object('organization_id',$7::text)`, v.OrganizationID); err != nil {
 		return err
 	}
-	return tx.Commit(ctx)
+	return nil
 }
 func (r *Fulfillment) TransitionAgreement(ctx context.Context, tenant, organization, id, current, target string, version int64, eventID string) error {
 	tx, err := r.pool.Begin(ctx)
@@ -713,6 +747,14 @@ func (r *Fulfillment) TransitionAgreement(ctx context.Context, tenant, organizat
 		return err
 	}
 	defer tx.Rollback(ctx)
+	if err = transitionAgreementInTx(ctx, tx, tenant, organization, id, current, target, version, eventID); err != nil {
+		return err
+	}
+	return tx.Commit(ctx)
+}
+
+// AUTHORED transaction extraction; original owner SQL and guards preserved.
+func transitionAgreementInTx(ctx context.Context, tx pgx.Tx, tenant, organization, id, current, target string, version int64, eventID string) error {
 	result, err := tx.Exec(ctx, `update franchise.agreement a set status=$5,version=version+1,updated_at=clock_timestamp() where tenant_id=$1 and franchise_organization_id=$2 and agreement_id=$3 and status=$4 and version=$6 and ($5<>'active' or exists(select 1 from org.organization o where o.tenant_id=a.tenant_id and o.organization_id=a.franchise_organization_id and o.organization_type='franchisee' and o.status='active'))`, tenant, organization, id, current, target, version)
 	if err != nil {
 		return fulfillmentConstraint(err)
@@ -723,7 +765,7 @@ func (r *Fulfillment) TransitionAgreement(ctx context.Context, tenant, organizat
 	if err = outbox(ctx, tx, tenant, eventID, "franchise-agreement", id, version+1, "franchise-agreement."+target, `'{}'::jsonb`); err != nil {
 		return err
 	}
-	return tx.Commit(ctx)
+	return nil
 }
 func (r *Fulfillment) QueueMessage(ctx context.Context, tenant, eventID string, v fulfillment.Message) error {
 	tx, err := r.pool.Begin(ctx)
@@ -2339,3 +2381,7 @@ Compose with the Go application and migrations `0001`–`0039`. Run format, comp
 ## 10. Reconstruction evidence
 
 Clean reconstruction, authorization and PostgreSQL integration are recorded in `reconstruction_evidence/GO_FULFILLMENT_SERVICE_FRANCHISE_API_2026-08-24_V1.md`; network hierarchy and exact source authority for version `0.3.0` are recorded in `reconstruction_evidence/FRANCHISE_NETWORK_ADMINISTRATION_2026-08-30_V118.md`; fixed Microsoft/Amazon authority, migration `0039`, connected transport/report concurrency and the no-automatic-handover invariant for version `0.4.0` are recorded in `reconstruction_evidence/MICROSOFT_BC_AMAZON_CONNECTED_CARRIER_DELIVERY_2026-09-02_V174.md`.
+
+V402 composed delta: Connected warranty reuses existing transaction/approval/stock/service owners; SQL ordering and public wrapper behavior retained. Optional host factory fails closed. Exact source tested in WARRANTY_INTERFACE_AND_PORTABILITY_V402.md; no new dependency or corporate attribution.
+
+V402 composed delta: T2804 network role: original four fulfillment SQL bodies extracted unchanged into one transaction with immutable result; optional host, forms and GET recovery. Migration0077, no dependency/domain-rule change. NETWORK_ROLE_RELEASE_V402.md.

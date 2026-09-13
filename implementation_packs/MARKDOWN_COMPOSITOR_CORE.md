@@ -4,14 +4,14 @@
 
 ```yaml
 pack_id: "MARKDOWN-COMPOSITOR"
-pack_version: "0.2.2"
+pack_version: "0.3.0"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
   admission: CONDITIONED
 claim: "Compositor stack-neutral que valida manifests y bloques exactos, preflighta selecciones y materializa múltiples implementation packs con hashes, unicidad, variables y registro trazable."
 stacks: ["PowerShell 7+"]
-compatible_with: ["PACK_CONTRACT 1.0", "COMPOSITION_PROTOCOL 1.0"]
+compatible_with: ["PACK_CONTRACT 1.0 + optional final_newline", "COMPOSITION_PROTOCOL 1.0"]
 incompatible_with: ["packs SPEC_ONLY/SNIPPET", "admisión DISCOVERED/LICENSE_VERIFIED/CANDIDATE para composición productiva", "operaciones PATCH/DELETE sin merge explícito"]
 license_expression: "LicenseRef-Workspace-Owner"
 upstream_sources: ["https://learn.chatgpt.com/docs/agent-configuration/agents-md"]
@@ -58,7 +58,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local"
 license: "LicenseRef-Workspace-Owner"
-sha256: "1e286714c7122116835264c7e28fc97cde1568eac59f6e03d8e262bc71c40fc4"
+sha256: "b9c9473f6bba428a9f1defa0a2cdb4480680c6934bff8adc2df8f328aa36d2f7"
 variables: []
 secrets_allowed: false
 ```
@@ -234,8 +234,17 @@ function Read-Pack([string] $Path) {
     $contentLines = [Collections.Generic.List[string]]::new()
     while ($index -lt $lines.Length -and $lines[$index] -ne '````') { $contentLines.Add($lines[$index]); $index++ }
     if ($index -ge $lines.Length) { throw "unclosed content fence for $relative" }
+    $newlineFields = [regex]::Matches($blockMetadata, '(?m)^final_newline:[^\n]*$')
+    $finalNewline = $true
+    if ($newlineFields.Count -gt 1) { throw "Duplicate final_newline for $relative" }
+    if ($newlineFields.Count -eq 1) {
+      $newlineValue = [regex]::Match($newlineFields[0].Value, '^final_newline:[ \t]*(true|false)[ \t]*$')
+      if (-not $newlineValue.Success) { throw "final_newline must be true or false for $relative" }
+      $finalNewline = $newlineValue.Groups[1].Value -ceq 'true'
+    }
     $content = [string]::Join("`n", $contentLines)
-    if ($contentLines.Count -gt 0) { $content += "`n" }
+    if ($finalNewline -and $contentLines.Count -gt 0) { $content += "`n" }
+    if (-not $finalNewline -and $content.EndsWith("`n")) { throw "final_newline false conflicts with trailing empty content line for $relative" }
     $actualHash = Get-Sha256 $utf8.GetBytes($content)
     if ($actualHash -ne $declaredHash) { throw "SHA-256 mismatch for ${relative}: expected $declaredHash, got $actualHash" }
     $blocks.Add([pscustomobject]@{
@@ -673,3 +682,5 @@ Debe aprobar success path y CRLF/LF, más rechazos de condición omitida, SHA in
 ## 10. Reconstruction evidence
 
 Estado: `REBUILD_VERIFIED / CONDITIONED`. La revisión 0.2.1 pasó su suite negativa ampliada y recompuso los perfiles backend/web desde targets vacíos el 2026-08-25. V285 / 0.2.2 corrige el desempaquetado escalar de files bajo StrictMode Latest; toda la suite se ejecuta ahora con ese modo, incluyendo wildcard, array vacío, null y selección explícita única. Sigue condicionado porque sólo soporta `CREATE`, no merges `PATCH`/`DELETE`, y la compatibilidad de negocio/plataforma continúa siendo responsabilidad del plan específico.
+
+V402 composed delta: Optional final_newline false preserves exact source bytes; legacy final LF default remains. Malformed/duplicate flags and contradictory trailing empty lines fail before writes. Forty-two EOF cases and existing compositor/updater regressions PASS; source bytes unchanged after tests.

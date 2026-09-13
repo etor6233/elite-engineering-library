@@ -1,0 +1,40 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2804",
+  "outcome": "PASS",
+  "command": "C:/Python314/python.exe -X utf8 -B C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\record-marketplace-checkpoint305.py; exact1394 source correspondence, no unchanged journey reruns",
+  "exit_code": 0,
+  "assertions": [
+    "Prior T2804 PROVEN_LOCAL roles/effects/CMS/21guides/5curricula/KPIs/private es-en evidence preserved by the immutable304receipt input",
+    "1394 current outputs exact;1380 previous unchanged,7 marketplace-owner revisions,7 new AUTHORED files. All other owner and frontend files remain exact. Source/media/CONTENT API/PG proof passes; T2805 remaining feeds/comms stays open.",
+    "No role UI or preexisting role endpoint/migration output changed. The new provider infrastructure is separately scoped in T2805 and is not used to invent a global readiness claim."
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "655e9e05546aa7ce22a6faca2214369c2206cafe0dd96f5254d1e4dc14c17cd9"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_T2804_CONTROL_RECEIPT_V402_304.json",
+      "sha256": "4a5d4c04b854a15167350beb5542d783c78585fa28aaf63a3a726150c90deae4"
+    },
+    {
+      "path": "reconstruction_evidence/MARKETPLACE_CONTENT_RELEASE_V402.json",
+      "sha256": "2fa49a14b06a036f54c7c1a43a7675c173142bbba9aa86e64422138211b4aca2"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/MARKETPLACE_CONTENT_RELEASE_V402.md",
+      "sha256": "81f07523d1fa883ac166dccdb24e5927bcc09325e09e4468418b56e01b7a0302"
+    },
+    {
+      "path": "reconstruction_evidence/MARKETPLACE_CONTENT_RELEASE_V402.json",
+      "sha256": "2fa49a14b06a036f54c7c1a43a7675c173142bbba9aa86e64422138211b4aca2"
+    }
+  ],
+  "inventory_sha256": "5faaafc62cab1c5667861d7e41e67a820a403e97615a5ec16567e5f270ae442c",
+  "live_effects_performed": false
+}

@@ -26,7 +26,7 @@ V252 adds four `AUTHORED` acquisition, source-lock, verification and operator fi
 
 V253 adds five `AUTHORED` lock, installer, scanner, verifier and operator files for `GITLAB-OPENGREP-SIGNED-SAST-GATE`. They embed no OpenGrep binary or GitLab rule bytes. Installation acquires the exact signed OpenGrep 1.29.0 Windows asset, verifies it with exact Cosign 3.1.3 and acquires three exact GitLab SAST Rules 2.9.3 files. Their LGPL-2.1-only, Apache-2.0 build-tool, MIT and LGPL-3.0-only licenses/notices remain external and are copied into the generated runtime. GitLab Enterprise and Commons-Clause families are verified and excluded. Running GitLab rules with OpenGrep is an explicitly authored composition, not GitLab's Semgrep analyzer and not attributed to GitLab/OpenGrep as a product runtime.
 
-`Current-Provenance-Counts: AUTHORED=1528; ADAPTED=156; VERBATIM=113; TOTAL=1797`
+`Current-Provenance-Counts: AUTHORED=2028; ADAPTED=164; VERBATIM=168; TOTAL=2360`
 
 OpenSSH portable `V_10_2_P1` at signed commit `d01efaa1c9ed84fd9011201dbc3c7cb0a82bcee3` supplies four public `sshsig` regression blobs transported losslessly as Base64 by `PORTABLE-SIGNED-RELEASE-EVIDENCE-GATE`. Their decoded SHA-256 identities and the upstream `LICENCE` blob/hash are retained in the pack notice; no OpenSSH executable, source implementation or private key is redistributed. Windows supplies the executing `ssh-keygen`, whose Microsoft Authenticode status and exact host hash are recorded per release. Google OSV-Scanner 2.5.1 is used by exact locked executable hash to produce SCA and SPDX evidence.
 
@@ -221,3 +221,85 @@ V402 handover browser delta:18additional AUTHORED integration/UI/test files, no 
 V402 factory browser delta:10AUTHORED read projection/BFF/UI/test files, no new dependency or domain/writer change. Current library173/1707; franchise77/943. Existing operations graph remains locally authored and is not attributed to an upstream company.
 
 V402 current composition:178packs/1797blocks; franchise82packs/1032uniquefiles. The FX pack contains the same BC MIT license as the prior exact-amount pack; its selection excludes that duplicate path, without removing the standalone license. Two FX functions are ADAPTED from microsoft/BCApps@2eae56d704a1fd035d104f333602aea7091b7749; exact rounding/profile and persistence are local glue, not an AL built-in equivalence claim. Meta Page SDK remains26.0.1@788f363d15b1269ab5efb7cd00fb5e3b133cd99b; WhatsApp's original source mapping remains fixed. Service identity uses existing coreos/go-oidc3.20.0, oauth2.36.0 and their existing jose dependency; three exact license files and a dedicated notice are emitted by the broker pack. New source maps/notices are included in their packs. No dependency version or corporate authorship is inferred from application wiring. See COMMUNICATIONS_RUNTIME_V402.md and EXACT_FX_SNAPSHOT_V402.md.
+
+V402 FX journal binding: seven new AUTHORED glue files, no new dependency or source license; exact existing BC source/notice retained. FX0.2.0 and accounting0.1.2 preserve the original posting/reversal algorithm. Current178packs/1804blocks, franchise82/1039. See FX_JOURNAL_CONNECTION_V402.md.
+
+V402 stored-value connected release: Odoo Community19.0 commit99edb6dd82b7b560930c00b03b694ba700785370. Twenty-four official complete source files plus LICENSE/COPYRIGHT copies are VERBATIM; engine and fixture expectations are ADAPTED LGPL-3.0-only. Source paths/SHA/Gitblob and source-replacement/notices ship with PYTHON_ODOO_STORED_VALUE_CALCULATOR0.1.0. The authored Python module glue is LGPL; Go/SQL/TS wrappers are AUTHORED workspace integration. No company authorship inferred. LGPL LICENSE43529bytes SHAabc09dad5f84a76e1b0279237053cae16c03228ab27d8d467677054c2bd17eeb is preserved without final LF. Full corresponding selected source, modifications and rights are described in docs/provenance/ODOO_STORED_VALUE_NOTICES.md. Counts180packs/1877blocks; franchise84/1112.
+
+V402 warranty: BCApps2eae56d704a1fd035d104f333602aea7091b7749 MIT, complete ServiceItemLine.Table.al32b4fcf60b25d363d31ef6a1927b1f051eb4ef4ef48d9ca6b2ecc04844a854ff and license VERBATIM. Only date predicates ADAPTED; connected sold-policy/PG/HTTP/host/materializer is AUTHORED glue. Product notices docs/provenance/BC_WARRANTY_NOTICES.md preserve the distinction. No AL runtime or corporate workflow claim. Two new packs, one shared selected license;182packs/1911blocks,86/1145franchise.
+
+V402 optional identifiers: three AUTHORED migration/regression blocks, no new third-party material; SERIAL_OPTIONAL_IDENTIFIERS_V402.md. Current182/1914, franchise86/1148.
+
+V402 serial J2:18new AUTHORED blocks and5AUTHORED owner revisions; no added third-party material. Existing inventory provenance remains. SERIAL_SUPPLY_CONNECTED_RELEASE_V402.md/json.
+
+V402 catalog J3:36new AUTHORED blocks and11owner revisions; no new third-party material or dependency. Existing source/SDK/license locks unchanged; CATALOG_CONNECTED_RELEASE_V402.md/json.
+
+V402 training:26new AUTHORED glue blocks and9owner revisions; existing15public guides retain local content authorship. No new dependencies, upstream code or corporate attribution. TRAINING_CONNECTED_RELEASE_V402.md/json.
+
+V402 catalog authoring:20new AUTHORED glue blocks and10owner revisions; original model/price writers retained, no new dependency/source attribution. CATALOG_ROLE_AUTHORING_RELEASE_V402.md/json.
+
+V402 supply role:16new AUTHORED glue blocks,7owner revisions; original Operations/BindPlan retained, no new dependency/source attribution. SUPPLY_ROLE_RELEASE_V402.md/json.
+
+V402 warranty role:14new AUTHORED projections/forms/fixtures,7owner revisions; original warranty/coverage/approval/FIFO retained. No new dependency or corporate attribution. WARRANTY_ROLE_RELEASE_V402.md/json.
+
+V402 network role:21new AUTHORED glue blocks,6revisions. Original four Fulfillment SQL bodies preserved byhash; no new dependency/corporate attribution. NETWORK_ROLE_RELEASE_V402.md/json.
+
+V402 helpCMS:23newAUTHORED glue blocks, existing kernel extraction and21shared guides. No new dependency/corporate attribution; original15guides retained. HELP_CMS_RELEASE_V402.md/json.
+
+V402 role KPIs:19newAUTHORED glue/proof blocks,7existing outputs revised; no new dependency/upstream/company attribution. ROLE_METRICS_RELEASE_V402.md/json.
+
+V402 private locale:20new AUTHORED glue/translation/proof blocks,45revised outputs. No new dependency or corporate attribution; existing source pins and notices unchanged. PRIVATE_LOCALE_RELEASE_V402.md/json.
+
+V402 marketplace mutation:16new AUTHORED HTTP/SQL/host/fixture/proof blocks. No new external code or dependency; prior source/license/notices retained. MARKETPLACE_MUTATION_RELEASE_V402.md/json.
+
+V402304:8AUTHORED initial-marketplace composition/proof files; no third-party code/dependency added. Official contract URL/SHA in MARKETPLACE_INITIAL_RELEASE_V402.json; all prior license obligations retained.
+
+V402305:7AUTHORED existing-marketplace content bindings/proof files. No external code or dependency update. Eight original official HTTP contract pins and all prior license obligations retained.
+
+V402306:24AUTHORED Go/Python/SQL/runtime/proof binding files around unchanged Google Merchant SDK1.8.0 and20exact wheels. No Google source reattribution. Original wheel license payloads and Apache-2.0/MIT/MPL-2.0/BSD/PSF obligations retained;1041installed files hash verified. MERCHANT_CONNECTED_RELEASE_V402.json.
+
+V402307:17new AUTHORED schedule/SQL/host/proof files;9revised glue files, original Meta source and third-party license bytes unchanged. SCHEDULED_COMMUNICATIONS_RELEASE_V402.json.
+
+V402308:16new AUTHORED campaign/source/SQL/host/proof files;7revised glue files, original Meta source and third-party license bytes unchanged. CAMPAIGN_CONNECTED_RELEASE_V402.json.
+
+V402309:26new AUTHORED identity/session/profile/host/test/doc glue files;6revised. Original SDK/dependency/license bytes unchanged. IDENTITY_PORTAL_RELEASE_V402.json.
+
+V402310:4new AUTHORED J5 fixture/contract files;3revised permission-routing/fixture files. Original SDK/dependency/license bytes unchanged. IDENTITY_J5_RELEASE_V402.json.
+
+V402311:5new AUTHORED orchestration/catalogue/SBOM/test files and2revised wrapper/documentation files. Embedded279upstream notice texts remain VERBATIM under their own licenses, with archive/locator/SHA per entry. No local corporate authorship claim or altered pnpm redistribution. PNPM_LOCAL_RUNTIME_V402.json.
+
+V402312: Sin nuevos bloques ni cambios de licencias:1950AUTHORED/159ADAPTED/141VERBATIM. Backend0.4.6 preserva floors oficiales admitidos; DevSkim gate0.1.1 corrige sólo glue de diagnóstico. Fuentes/licencias originales intactas. COMPOSITION_SECURITY_RELEASE_V402.md/json.
+
+V402313: 205packs/2270blocks:1966AUTHORED/159ADAPTED/145VERBATIM. Cuatro textos SDK AWS/Smithy originales y mapa15módulos; MIT fixture original. No scanner effectiveness ni atribución de glue a proveedores. DOCUMENT_REFERENCE_RELEASE_V402.md/json.
+
+V402314: Cinco bloques AUTHORED nuevos de gobernanza de conversación, sin dependencia o notice externo nuevo.205/2275;1971AUTHORED159ADAPTED145VERBATIM. AI_RUNTIME_GOVERNANCE_V402.md/json.
+
+V402315: 205/2282:1978AUTHORED159ADAPTED145VERBATIM. Siete archivos AUTHORED nuevos; notices/dependencias oficiales intactos. Histórico opt-in retiene su README/notices/pins originales. AI_CONNECTED_REFERENCE_RELEASE_V402.md/json.
+
+V402316: 205/2294:1990AUTHORED159ADAPTED145VERBATIM. Doce bloques nuevos AUTHORED;18archivos de owners admitidos seleccionados exactos. Metadata generada Next ADAPTED explícita; herramientas/dependencias sin cambio. Excepciones de notices npm del artefacto se resuelven antes de TEST07, no ocultas. LOCAL_REFERENCE_DELIVERY_V402.md/json.
+
+V402317: 205/2300:1996AUTHORED159ADAPTED145VERBATIM. Seis bloques AUTHORED de ensamblaje/ensayo/guía;17archivos existentes seleccionados. Middleware oficial sin modificación; lock distingue ejecutable histórico de actual. Obligaciones de notices de telemetría conservadas; distribución final de ejecutables requiere cierre T2810. LOCAL_REFERENCE_OPERATIONS_V402.md/json.
+
+V402319: PostHog Inc.2020–2026 MIT core, commit6fafbb9081bd15e79448af5650e02a4f9ea435cc. Two ADAPTED numerical/test blocks and three VERBATIM source/test/LICENSE; exact root license6d82d67dba42eb94ba10f1e986d2eec338c22fb7c5216c2c0ebdecd83d53a029 retained at third_party/posthog-nps/LICENSE. No ee code/runtime. Three AUTHORED glue blocks, no corporate attribution.205/2308 and116/1591. NPS_SOURCE_ADAPTATION_V402.md/json.
+
+V402321 release tooling: strict public-input selector/metadata, case-correct home-path gate, fixture regressions and current audit reconciliation are AUTHORED maintenance glue. Four pack outer-document repairs change zero payload bytes. Pack provenance1999AUTHORED/161ADAPTED/148VERBATIM (2308blocks) remains unchanged; no enterprise attribution for tooling.
+
+V402322 reference runtime notices:16VERBATIM original license/README/manifest files,3explicit ADAPTED notice renderings (no invented upstream file/owner/year),5AUTHORED metadata/collector/test/docs files. Full original notices/terms and exact source mappings materialize underlicenses/reference/.155unique text artifacts account for129runtime manifests; native/build-only exclusions remain explicit. REFERENCE_NOTICES_RELEASE_V402.md/json.
+
+V402323 signed gate: one additional AUTHORED regression file, no upstream license/fixture changes, no Microsoft authorship assigned to local orchestration. Two synthetic fixture-key families remain outside product/source and are not release identities.
+
+V402324: five AUTHORED local signed-build glue/test/template/docs blocks; no external licensing/source change, no corporate attribution. Local signing key excluded from redistribution.
+
+V402325 ARCA: four fixed original legal texts VERBATIM (MIT/Apache-2.0),18new AUTHORED glue/fixture/lock/docs blocks. External runtime composition is ADAPTED: original signed Microsoft svcutil binaries plus nine signed official NuGet6.12.5 assemblies. This is not an official Microsoft tool release; local glue is never attributed to Microsoft/ARCA. Package notices and339runtime files bind exact SDK10.0.400 archive/current10.0.11 runtime. See ARCA_CONNECTED_INFRA_V402 and its provenance table.
+
+V402326: two existing AUTHORED release orchestration/test blocks corrected for UTC epoch. Provenance counts unchanged2028AUTHORED164ADAPTED168VERBATIM; no new upstream attribution or dependency.
+
+V402328: two existing AUTHORED packaging/test blocks preserve original source plus declared Next-generated metadata. Counts unchanged2028AUTHORED164ADAPTED168VERBATIM; no new corporate/source attribution.
+
+V402329: three existing AUTHORED release/report-parser/test blocks corrected. Provenance counts unchanged2028AUTHORED164ADAPTED168VERBATIM; no dependency or upstream attribution change.
+
+V402330 five existing AUTHORED glue/test blocks corrected.2028AUTHORED/164ADAPTED/168VERBATIM unchanged. SPDX unversioned records are local metadata, never attributed third-party code.
+
+V402331:19notice metadata sources now bind their existing official receipts and exact payload hashes; no changed license, notice text, source mode or dependency.
+
+V402 final source330/metadata331: actual signed artifact notice collectors and complete SPDX coverage verified.1653selected files/116owners:1473AUTHORED glue,116ADAPTED,64VERBATIM. Current per-file/pinned-source ledger is reconstruction_evidence/LIBRARY_REFERENCE_PROVENANCE_V402.json. No installer/private key redistribution or corporate authorship inferred.

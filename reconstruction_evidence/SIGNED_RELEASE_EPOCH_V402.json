@@ -1,0 +1,63 @@
+{
+  "state": "PASS_LOCAL_EPOCH_FIX",
+  "revision": 326,
+  "failure": "FAIL-20260913-972",
+  "pack": {
+    "before_pack_sha256": "cd916ca10d4b54019c277acebed2a69f1988dd1bbc85eb28828c8c5ca3c3d09f",
+    "after_pack_sha256": "0c4699ba495b10f91119bc16c72c0857fde64a50782d27f757cfb48528e4fee5",
+    "version": "0.2.1",
+    "changes": [
+      {
+        "path": "portable_release_evidence_gate/build_release.ps1",
+        "before_sha256": "dab8ff56d0f8fb3e056c47e73e23ac54efae672ef01c5511c438d4b0e2141fc3",
+        "after_sha256": "9cbbc8b9313a2382b920f3bd3233409e4f7d0267ee27cadc7b08347dab6f89b0"
+      },
+      {
+        "path": "portable_release_evidence_gate/test_release_contract.py",
+        "before_sha256": "214b6f6204ba83ae5167a712752a3752060e559cb36e2b9c520b4b6c00c209d4",
+        "after_sha256": "053bb02a6dc3c85fda38db83f51bce37502315581424a1ab4eb9365073efaa73"
+      }
+    ]
+  },
+  "changed": [
+    "portable_release_evidence_gate/build_release.ps1",
+    "portable_release_evidence_gate/test_release_contract.py"
+  ],
+  "unchanged_files": 1651,
+  "full_exact_files": 1653,
+  "rebuild_seconds": 14.635,
+  "regression": {
+    "builder_helper_cases": 5,
+    "fixture_private_keys_outside_product": true,
+    "gate_files": {
+      "build_release.ps1": "9cbbc8b9313a2382b920f3bd3233409e4f7d0267ee27cadc7b08347dab6f89b0",
+      "verify_pack.ps1": "9cb879f54092fc6d88673fc88d4dbe2d69d2d2201c428c7709729f03cde1d225",
+      "verify_release.ps1": "78a80d7abb4428d457bd29e05641cbbfc0d299551ecabc419bb07a208c1c846c"
+    },
+    "logs": {
+      "builder-helpers.log": "e1916833368b9e879e7a1e3ab8f8ba29576948fdab5e11e32c515c96ab35f790",
+      "keygen-1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "keygen-2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reject-artifact-change.log": "42e1ff6bc222b41a9a66f6bf686c646d319502d677beade1ffcafb3294bb8d54",
+      "reject-backslash.log": "510a746e29894fc2a874c1ef0ec69f11898fdd878a30c72f35ae579378832a8f",
+      "reject-dot-part.log": "510a746e29894fc2a874c1ef0ec69f11898fdd878a30c72f35ae579378832a8f",
+      "reject-drive.log": "510a746e29894fc2a874c1ef0ec69f11898fdd878a30c72f35ae579378832a8f",
+      "reject-internal-policy.log": "0fb78e9c420c42b008072d975a4498fad3eb87915eac1fd762c1f3d9f2284063",
+      "reject-namespace.log": "9414907282ad110fce226b16777baa92f1770b5a387ab488d09f4e011c90a4f2",
+      "reject-swapped-signer.log": "1531d11fcdf6d46d5d4e0bd18e11b980885ec91f9c0ddd4bedd15449d800c6d6",
+      "sign-1.log": "0e25d67856c45e7e1a08e7a79db8df598bb22c31b0a06b5e774cc5e448b648bd",
+      "sign-2.log": "c2cd3fd151ddcf9beab37cbac2c94354bca37b26354540e76514d9b1f4b3e6e6",
+      "sign-3.log": "bb47559f74141df119c1c667fbe6c4adddfe793a6287fd2418bcfebd291cd5ba",
+      "sign-4.log": "2f5e7b836b6ba0e0bf0daee60c5f415e11e8fd00c8a9706bcab47a3fa57ab0e0",
+      "sign-5.log": "3ae6cc96df70fb2b8454f0749e5c1397e355b075ce9df8032da78f8c5109e432",
+      "valid-external-policy.log": "d4b141f386b080d5c2b7400107d8adbaf11a62327098aaf3f0e0bda9efba7d88"
+    },
+    "real_release_built": false,
+    "real_sca_performed": false,
+    "signed_verifier_cases": 8,
+    "state": "PASS_VERIFIER_FIXTURES_ONLY",
+    "user_signing_key_used": false,
+    "zip_separator_case": 1
+  },
+  "full_inventory_sha256": "79a52ad71230fb97a4b0142694009838a302cee2e6f465657edc048352f6da43"
+}

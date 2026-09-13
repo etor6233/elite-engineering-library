@@ -1,17 +1,11 @@
 # Reusable Code Readiness Roadmap
 
-> **Corte:** 2026-09-11 (V401).  
+> **Corte vigente:** 2026-09-13 (V402 / execution332); cortes anteriores conservados.  
 > **Objetivo:** convertir la biblioteca ya validada para decisiones en código tangible que Codex pueda ensamblar rápidamente sin bajar los gates de élite.
 
 ## Alcance vigente — V402 / INFRAESTRUCTURA LOCAL
 
-T2801 preparación: READY_FOR_LIBRARY_WORK con validator0.7.0, 102 tests y once archivos exactos; el release sigue bloqueado. T2802 en implementación: SDK de pagos, callback/reconciliación, handover inicial y derivaciones comerciales auditadas. No se cierran los controles por esta preparación. Evidencia: `reconstruction_evidence/LIBRARY_READINESS_PREPARATION_V402.md`.
-
-Rige reconstruction_evidence/LIBRARY_INFRA_SCOPE_V402.md por instrucción explícita
-del usuario. Orden: T2801 → T2802/TEST02 → T2804 → T2805 infra → T2803 sin Daybreak
-→ T2806/T2807 → T2808 → T2809 local → T2810 portable; ARCA infra penúltimo;
-Daybreak último diferido. Estado IN_PROGRESS.45/48 es baseline histórico, no HECHO.
-No nuevas features AUTHORED de negocio mientras se resuelve procedencia.
+READY_FOR_LIBRARY_USE, fuente330/metadatos331. T2801–T2810 y ARCA_INFRA PROVEN_LOCAL para el perfil116packs/1653archivos. TEST02/03/07 PASS local;48/48controles. Destino durable, dos builds y ZIP idénticos, firma/verificación, SCA0 y SPDX completo. Daybreak/libxml2 último diferido, producción no autorizada. Detalle y límites en `reconstruction_evidence/LIBRARY_INFRA_READY_V402.md`; los cortes siguientes son históricos.
 
 ## Historial — V401 / checkpoint272
 
@@ -444,18 +438,18 @@ Los números de la sección 1 conservan su corte histórico V258. Ninguna fila
 de cobertura ni número de tests se convierte en porcentaje de terminación.
 
 - [x] T2800 Contrastar la selección de los 21 packs citados fuera del perfil y ejecutar auditoría adversarial focal de observabilidad. Evidencia: `reconstruction_evidence/CONNECTED_COVERAGE_AUDIT_V280.md`; no equivale a cerrar los 21 negocios.
-- [ ] T2801 Resolver readiness/assurance de mantenimiento; enlazar requisitos, fuentes y pruebas existentes sin inventar aprobación. Conciliar cobertura declarada y evidencia por capability, incluyendo casos NEW/EXISTING y generación compacta de authority map/manifest. Bloquea ampliación de producto, no investigación.
+- [x] T2801 Resolver readiness/assurance de mantenimiento; enlazar requisitos, fuentes y pruebas existentes sin inventar aprobación. Conciliar cobertura declarada y evidencia por capability, incluyendo casos NEW/EXISTING y generación compacta de authority map/manifest. Bloquea ampliación de producto, no investigación.
 
 Avance V289: PROJECT_ENGINEERING_CONTRACT.json creado y validado en nivel plan; nueve dimensiones REQUIRED enlazadas a tests/evidencia, no segundo roadmap. Rebuild 15/15 y 11 tests PASS, ocho probes del contrato PASS; evidence rechaza pendientes. D generada pero PENDING, readiness BLOCKED/43. LIB-R10 exige raw intacto y derivados trazables; no importador histórico implementado. Informe: reconstruction_evidence/MAINTENANCE_ASSURANCE_RAW_BOUNDARY_V289.md.
-- [ ] T2802 Cerrar recorrido transaccional de referencia: público/lead y cita ya probados; completar respuesta, cotización/pedido y efectos conectados. Revisar supply/fábrica/inventario/contabilidad/devoluciones contra sus owners y tests existentes. Decidir equivalencias para los cores no seleccionados antes de añadir cualquier módulo; probar persistencia, reinicio, concurrencia, permisos y recuperación donde apliquen.
-- [ ] T2803 Revalidar identidad/autorización, privacidad y supply chain sobre la composición real; resolver hallazgos materiales, documentar límites de SAST y conservar bloqueos de componentes rechazados. No sumar otro scanner por fama ni confundir escaneo limpio con seguridad completa.
-- [ ] T2804 Completar frontend por rol con efectos reales, negativos, accesibilidad y responsive, conectado con ayuda/capacitación/soporte de la misma versión. Mobile/desktop/IoT sólo si hay journey requerido; exclusión explícita no es omisión.
-- [ ] T2805 Completar adapters y comunicación requeridos: montaje de recepción/conversación/respuesta, estados y reconciliación; Mercado Libre mutaciones pendientes y writes Ads sólo si seleccionados. Separar configuración/cuentas/live de código genérico. No inventar autenticación inbound TikTok, consentimiento, gasto ni reglas financieras.
-- [ ] T2806 Cerrar composición documental y de datos de referencia: recepción segura, original retenido, extracción, evaluación/revisión, mapping, commit y recuperación. Reutilizar lanes oficiales existentes; separar corpus y autorización por clase del proyecto. No prometer exactitud universal ni añadir warehouse/lakehouse/broker si no se requieren.
-- [ ] T2807 Demostrar runtime IA conectado con tools autorizadas, identidad/contacto, presupuestos, handoff y evals representativos. No contar determinismo o mocks como calidad del proveedor/modelo real; GPU sólo cuando corresponda.
-- [ ] T2808 Cerrar reconstrucción, herramientas, composición de entornos y delivery portable: build exacto, configuración, migraciones, prueba de deploy/rollback de referencia. Cloud/edge/IaC del target requieren selección y evidencia propia; sin gasto externo automático.
-- [ ] T2809 Resolver observabilidad reabierta V280 y conectar host/supervisor/identidad/reportes/alertas. Probar límites, retención, trabajos agotados, fencing publisher/outbox, carga y recuperación de referencia. Mantener separados restore lógico local y PITR/DR real; verificar costos y monitoreo de dependencias aplicables.
-- [ ] T2810 Ejecutar validación integrada, promover sólo claims demostrados, reconstruir independientemente y verificar el archivo portable exacto. Informar límites/configuración por proyecto y cero fallos críticos abiertos del scope; no heredar readiness de mantenimiento en el ZIP.
+- [x] T2802 PROVEN_LOCAL para dominio de referencia: pago/entrega, FX, gift/loyalty, warranty J1/J4, supply J2 y catálogo J3 conectados y exactos. Seis subcores NONE_WITH_REASON documentados; UI/campaña/ops/assurance conservan owners. T2802_CONNECTED_CLOSURE_V402.md/json; TEST02 integral sigue abierto.
+- [x] T2803 Revalidar identidad/autorización, privacidad y supply chain sobre la composición real; resolver hallazgos materiales, documentar límites de SAST y conservar bloqueos de componentes rechazados. No sumar otro scanner por fama ni confundir escaneo limpio con seguridad completa. — PROVEN_LOCAL312 identidad/source/SCA/lint; ARCA penúltimo/Daybreak diferido. COMPOSITION_SECURITY_RELEASE_V402.md/json.
+- [x] T2804 PROVEN_LOCAL V402/302 (PRIVATE_LOCALE_RELEASE_V402.md/json). Completar frontend por rol con efectos reales, negativos, accesibilidad y responsive, conectado con ayuda/capacitación/soporte de la misma versión. Mobile/desktop/IoT sólo si hay journey requerido; exclusión explícita no es omisión.
+- [x] T2805 PROVEN_LOCAL V402/308 (CAMPAIGN_CONNECTED_RELEASE_V402.md/json y LIBRARY_T2805_CONTROL_RECEIPT_V402_308.json). Adapters/comunicación seleccionados: WA/Page, ML mutaciones/publicación/contenido, Merchant catálogo/refresh, recordatorios y campañas/audiencia/pasos/consentimiento/reconciliación/observación quote-order. Source/security integral sigue T2803; IA/evals/importación histórica gobernada sigue T2807; retención/operación sigue T2809. Cuentas/credenciales externas no encubren código pendiente.
+- [x] T2806 Cerrar composición documental y de datos de referencia: recepción segura, original retenido, extracción, evaluación/revisión, mapping, commit y recuperación. Reutilizar lanes oficiales existentes; separar corpus y autorización por clase del proyecto. No prometer exactitud universal ni añadir warehouse/lakehouse/broker si no se requieren. — PROVEN_LOCAL313 reference receive/extract/review/commit; fixtures explícitos,113/1518, DOCUMENT_REFERENCE_RELEASE_V402.md/json.
+- [x] T2807 Demostrar runtime IA conectado con tools autorizadas, identidad/contacto, presupuestos, handoff y evals representativos. No contar determinismo o mocks como calidad del proveedor/modelo real; GPU sólo cuando corresponda. — PROVEN_LOCAL315 runtime real domain/contact/tools/budget/handoff;11required evals; exact historical training code and27policy; full113/1530. AI_CONNECTED_REFERENCE_RELEASE_V402.md/json.
+- [x] T2808 Cerrar reconstrucción, herramientas, composición de entornos y delivery portable: build exacto, configuración, migraciones, prueba de deploy/rollback de referencia. Cloud/edge/IaC del target requieren selección y evidencia propia; sin gasto externo automático. — PROVEN_LOCAL316:115/1560, two exact4066artifact builds;84migrations/replay/drift, native API+Next deploy/rollback/recovery/order/empty-tree stop. LOCAL_REFERENCE_DELIVERY_V402.md/json.
+- [x] T2809 Resolver observabilidad reabierta V280 y conectar host/supervisor/identidad/reportes/alertas. Probar límites, retención, trabajos agotados, fencing publisher/outbox, carga y recuperación de referencia. Mantener separados restore lógico local y PITR/DR real; verificar costos y monitoreo de dependencias aplicables. — PROVEN_LOCAL317:116/1583, actual OIDC/API+Next, fixed10m alert/fault/1000replay/WAL recovery/native stop; retention and permanent target candidacy explicit. LOCAL_REFERENCE_OPERATIONS_V402.md/json.
+- [x] T2810 Ejecutar validación integrada, promover sólo claims demostrados, reconstruir independientemente y verificar el archivo portable exacto. Informar límites/configuración por proyecto y cero fallos críticos abiertos del scope; no heredar readiness de mantenimiento en el ZIP.
 
 ### Asignación completa de las 48 superficies a sus tareas owner
 
@@ -1103,3 +1097,89 @@ V399: continuidad de cierre conciliada con V372/V393 y21packs/42fuentes byte-id�
 V400: encuestas conectadas con PostgreSQL/OIDC/Next, recuperación GET,4navegadores/8respuestas/8POST y retención CLI1/1/0.23archivos nuevos AUTHORED, packs GO-CUSTOMER-SURVEY-API0.1.0 y TS-CUSTOMER-SURVEY-PORTAL0.1.0, CONDITIONED.45/48sin promoción; TEST02/03/07 siguen abiertos. Ver reconstruction_evidence/CONNECTED_CUSTOMER_SURVEYS_V400.md.
 
 V401 reconciliación final: comparación12571/12571idéntica completada antes de la solicitud de detenerla; no se detuvo proceso. FAIL807 separa las3instalaciones iniciales offline de un exec Next que descargó71paquetes por configuración omitida. Exec corregido con store/offline explícitos PASS sin descargas. Historial/log anterior retenido; no prueba global de ausencia de red. reconstruction_evidence/PNPM_ZIP_CONTAINMENT_V401.md
+
+V402 / T2802 FX posting local claim closed: FX0.2.0/accounting0.1.2 compose immutable conversion with existing draft/post/reversal; real HTTP/OIDC/PG concurrency12→1, recovery, negative controls, outbox cancellation rollback and neutral reversal PASS. Migration down refuses immutable history; empty down/up PASS. Four exact profiles; franchise82/1039. T2802 remains IN_PROGRESS for gift/loyalty and remaining blueprint reconciliation; TEST02/03/07 remain open. See reconstruction_evidence/FX_JOURNAL_CONNECTION_V402.md.
+
+V402 / T2802: gift/loyalty assisted reference claim PROVEN_LOCAL and canonically composed: partial/discount SDK fixture tender or full funding receipt→handover/acceptance/commercial receipt, HTTP/role browser/recovery/commit-expiry/concurrency/source checks PASS. Old isolated cores remain outside profile. Source/notices/locks included, five exact profiles,84/1112franchise. T2802 remains IN_PROGRESS for remaining blueprint claims;45/48 historical, TEST02/03/07 open. Evidence STORED_VALUE_CONNECTED_RELEASE_V402.md.
+
+V402 / checkpoint289 / T2802: warranty sold terms→SDK fixture checkout→handover activation and J4 service→stock→review/work/quality/customer→factory acknowledgement are canonically composed86/1145. Four profiles exact;6owners updated,2packs added. Claim PROVEN_LOCAL; T2802 still needs J2/J3 and blueprint reconciliation, T2804 role UI remains open. WARRANTY_CONNECTED_RELEASE_V402.md/json.
+
+V402 / checkpoint290 / T2802: optional VIN/battery defect fixed in inventory0.17.1, migration71, final exact reference86/1148. J2 quantity/serial/ASN and J3 governed release remain REQUIRED/open. Six historical subcores NONE_WITH_REASON for explicit reference scope in T2802_REFERENCE_SCOPE_V402.md; no change to48surfaces/J1–J5. No further optional-identifier test repeat without delta.
+
+V402 / checkpoint292 / T2802 J2 PROVEN_LOCAL backend/API/host: demand quantities, supplier/factory, serial QA, split ASN/receiving/quarantine/release connected in87/1166. SERIAL_SUPPLY_CONNECTED_RELEASE_V402.md/json. Remaining T2802 J3 governed catalog; role UI T2804. No repeated unmodified V400–402 suite or global45/48 promotion.
+
+V402 checkpoint293: J3 candidato conectado con publicación/rollback/reviews/precio/search/HTTP/feed fence probados; canonical87/1166intacto. Restan detalle Next/SEO, feed host/74down/fuzz y packs antes de cierre T2802. CATALOG_CONNECTED_PROGRESS_V402.md/json.
+
+V402 checkpoint294: J3 publicado y T2802 dominio consolidado89/1202;185packs/1968blocks. Siguiente T2804 con escrituras/ayuda/capacitación reales. Sin repetir V400–402 ni promover global45/48.
+
+V402 checkpoint295 / T2804: capacitación misma release→participación durable→evaluación humana→recuperación GET PROVEN_LOCAL,91/1228exactos. Permanecen escrituras por rol/J5/CMS/guías nuevas/KPIs/i18n privado. TRAINING_CONNECTED_RELEASE_V402.md/json; siguiente cerrar esos efectos, después T2805.
+
+V402 checkpoint296 / T2804: autoría inicial de catálogo, revisión/publicación/rollback y storefront PROVEN_LOCAL desde navegador;93/1248exactos. CATALOG_ROLE_AUTHORING_RELEASE_V402.md/json. Continúan supply/warranty/J5/CMS/guías/KPIs/i18n privado; no cierre global.
+
+V402 checkpoint297 / T2804: supply por rol desde orden/cantidades hasta stock disponible, con rechazo/reemplazo/reinspección y recuperación PROVEN_LOCAL;95/1264exactos. SUPPLY_ROLE_RELEASE_V402.md/json. Sigue warranty/J5/CMS/guías/KPIs/i18n privado, no cierre global.
+
+V402 checkpoint298 / T2804: términos/consentimiento/activación y reparación completa por rol PROVEN_LOCAL en97/1278. WARRANTY_ROLE_RELEASE_V402.md/json. Sigue J5/CMS/guías/KPIs/i18n privado, sin cierre global.
+
+V402 checkpoint299 / T2804: red/acuerdos/sucursales por rol PROVEN_LOCAL99/1299. NETWORK_ROLE_RELEASE_V402.md/json. Sigue CMS/guías/KPIs/i18n privado; J5 identidad/readiness enT2803/8/1. No cierre global.
+
+V402 checkpoint300 / T2804: CMS/guías/capacitación de la misma revisión PROVEN_LOCAL102/1324. HELP_CMS_RELEASE_V402.md/json. RestanKPIs/i18nprivado; luegoT2805 yresto delorden. SinREADYglobal.
+
+V402 checkpoint301 / T2804: KPIs por rol PROVEN_LOCAL103/1343 y nuevoFAIL874 bodybound cerrado; historialFAIL457 preservado. ROLE_METRICS_RELEASE_V402.md/json. Resta i18n privado; despuésT2805 yresto estricto. Sin READYglobal.
+
+V402 checkpoint302 / T2804 PROVEN_LOCAL104/1363: roles/efectos/CMS/guías/capacitación/KPIs y localeprivado consolidados. T2805 remanente siguiente; identidadJ5/readiness/delivery enT2803/8/1. TEST02/03/07 y READYglobal siguen abiertos.
+
+V402303 / T2805 avance conectado: catálogo/ATP→aprobación→MLPRICE/STOCK/PAUSE/RESUME→fence/reconcile PROVEN_LOCAL105/1379. MARKETPLACE_MUTATION_RELEASE_V402. Publicación inicial/media/otrosmappings/automatización siguen pendientes; no cerrar T2805 ni TEST02/03/07/globalREADY por este tramo.
+
+V402304 / T2805: publicación inicial y media desde catálogo aprobado PROVEN_LOCAL,105/1387. MARKETPLACE_INITIAL_RELEASE_V402. Siguiente contenido existente/otros feeds/comms; T2805 y TEST02/03/07 siguen abiertos.
+
+V402305 / T2805: CONTENT desde catálogo/media aprobado PROVEN_LOCAL,105/1394. MARKETPLACE_CONTENT_RELEASE_V402. Siguiente Google Merchant/otros mappings/comms; T2805 y TEST02/03/07 siguen abiertos.
+
+V402306 / T2805: Google Merchant catálogo/SDK/PG/refreshqueue PROVEN_LOCAL106/1418. MERCHANT_CONNECTED_RELEASE_V402. Restan mappings seleccionados/comms; T2805/TEST02/03/07/globalREADY abiertos.
+
+V402307 / T2805: recordatorios conectados PROVEN_LOCAL107/1435; conserva ML/Merchant y WA/Page. Pendiente campaña/segmentación/drip→conversión; TEST02/03/07/globalREADY aún abiertos. SCHEDULED_COMMUNICATIONS_RELEASE_V402.
+
+V402308 / T2805 PROVEN_LOCAL108/1451: WA/Page+ML+Merchant+recordatorios+campañas/segmentación/pasos/consentimiento/conversión consolidados. SigueT2803;TEST02/03/07/globalREADY permanecen abiertos. CAMPAIGN_CONNECTED_RELEASE_V402.
+
+V402309 / T2803 sesión PROVEN_LOCAL109/1477: PKCE/refresh/CAS/logout/revocación/retención/host. Continúa J5 administración/source/SCA; sin cierre global. IDENTITY_PORTAL_RELEASE_V402.md/json.
+
+V402310 / T2803 J5 PROVEN_LOCAL109/1481: bootstrap específico/IdP access review/deprovisioning contract. Sigue source/SCA; sin cierre global. IDENTITY_J5_RELEASE_V402.md/json.
+
+V402311 / T2803 pnpm local PROVEN_LOCAL: PNPM0.9.0/14files;3restricted offline installs,11negatives,8focal tests,477identitiesSCA0findings and2exact rebuilds. Profile109/1481 unchanged; source/SCA/lint composition next; no raw pnpm/PATH or production promotion. PNPM_LOCAL_RUNTIME_V402.md/json.
+
+V402312 / T2803 PROVEN_LOCAL109/1481; cinco perfiles exactos, fixed SCA0 y lint source-bound. T2806 siguiente; TEST03 integral se consolida tras deltas posteriores/ARCA/Daybreak final.
+
+V402313: T2806 PROVEN_LOCAL; sigue T2807 runtime/evals/aprendizaje histórico gobernado.
+
+V402314: T2807 en curso; runtime governance delta PASS con113/1523 exactos. Evals conectadas y LIB-R10 pendientes; no marcar control completo. AI_RUNTIME_GOVERNANCE_V402.md/json.
+
+V402315: T2807 PROVEN_LOCAL; siguiente T2808 delivery local.
+
+V402316: siguiente T2809 local.
+
+V402317: siguiente T2801 biblioteca G/H/assurance; después T2810, ARCA penúltimo y dossier nativo último.
+
+V402319: T2801 residual NPS source resolved;116/1591, current connected PG/OIDC/restart proof. Overall G/H/assurance and T2810 remain open.
+
+V402320: revisión local T2801 consolidada, G/H ANSWERED y assurance con evidencia319. La aceptación final requiere el artefacto de T2810 y ARCA; comienza esa fase de entrega sin cerrar artificialmente el checkbox T2801.
+
+V402321 T2810: portable selection and full VERIFY_LIBRARY PASS;56profiles/1591franchise outputs. FAIL831 and metadata regressions947–951 resolved. All product bytes319 retained. Next concrete release work: distinguish actual redistributed dependencies from excluded build-only tools, complete corresponding notices, then final ARCA cohort and independent signed/durable acceptance. No TEST02/03/07 final promotion yet.
+
+V402322 T2810: actual runtime notice infrastructure complete, builder wired fail-closed,129manifests/155texts/12negative tests,4exact source profiles. Current116/1615,205/2332. Final current artifact/SCA/signature/durable acceptance and ARCA penultimate remain; no full-ready or current build claimed.
+
+V402323 T2810: signed-gate contract repaired/qualified with external trust policy and preserved failure evidence.3exactprofiles1616/1616/11,14focused cases including actual failed builder; no real final product/SCA promoted. Next driver/signing identity/durable acceptance setup, then ARCA penultimate and final cohort builds.
+
+V402324 T2810: driver/publish contract12fixtures PASS,4source rebuilds1621/644/965/1621 exact,3code files lint0,protected local signing identity ready. ARCA penultimate next; final current builds/signature and durable NEW/EXISTING remain. No prior app/domain suite rerun.
+
+V402325 ARCA_INFRA PROVEN_LOCAL penúltimo completado en infraestructura. Perfil116/1653 exacto; portable fiscal440files/339runtime,actual HTTP/Go/UDS/.NET/CMS/PG/response-loss/credit/7parameters/restart,2generations/8negative inputs/12drivercases/SCA0. TEST02/03/07,T2801/T2810 globales siguen pendientes del artefacto completo firmado/durable. Daybreak sigue último expediente sin investigación.
+
+V402326 T2810: corrected actual gate epoch for Windows UTC−03,14fixture assertions PASS, independent1653source rebuild and durable NEW materialization. No unchanged domain suite rerun. Current product builds/signature/acceptance still required.
+
+V402327 T2810: durable NEW/EXISTING preservation and overwrite rejection pass; final Preflight repaired stale10/11 maintenance assertion, awaiting rerun; product builds continue unchanged326.
+
+V402328 T2810: first full326build completed; source mismatch correctly rejected. CI0.1.7 correction16fixtures and actual1653projection exact; independent1653rebuild. Two current full builds using durable inputs now running. No unchanged domain suite rerun.
+
+V402329 T2810: both real328builds and ZIPs equal; OSV actual454packages/0vulnerabilities. Fixed false counter977 in both gate/verifier with17assertions/actual report proof. Current329full builds running; signature/durable acceptance remains.
+
+V402330 T2810/T2808: real extracted329 activation/rollback/recovery PASS with fixed launcher;437SPDX entries cover454OSV records. Current330two builds/signature and final library acceptance pending.
+
+V402331 metadata-only correction19notice labels, CI0.1.9;1653source bytes unchanged from current330build. Full final acceptance remains in progress.

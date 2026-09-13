@@ -4,7 +4,7 @@
 
 ```yaml
 pack_id: "TS-CUSTOMER-SURVEY-PORTAL"
-pack_version: "0.1.1"
+pack_version: "0.1.2"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -322,16 +322,20 @@ operation: CREATE
 provenance: AUTHORED
 source: "local; existing admitted reference contracts, no external business source copied"
 license: "LicenseRef-Workspace-Owner"
-sha256: "c1f4bb1f4253e6ade51d514fc2665fb0b9439806ed4752978c7eeac76ffc0fc8"
+sha256: "bb90357422c9207258ca04119e22973f37ba9ae5d97e466f2f50113fc973a7e7"
 variables: []
 secrets_allowed: false
 ```
 ````tsx
 "use client";
+import {usePrivateI18n} from "@/platform/i18n/private-provider";
+
 import { useRef, useState, type FormEvent } from "react";
 import { answerSchema, resultSchema, type SurveyAnswer, type SurveyDefinition, type SurveySubmission } from "@/platform/surveys/contract";
 
 export function CustomerSurvey({ organization, definition, initialAnswer }: { organization: string; definition: SurveyDefinition; initialAnswer: SurveyAnswer | null }) {
+ const {locale:privateLocale,t,controlled}=usePrivateI18n();
+
  const [answer, setAnswer] = useState(initialAnswer); const [score, setScore] = useState(""); const [consent, setConsent] = useState(false);
  const [busy, setBusy] = useState(false); const [uncertain, setUncertain] = useState(false); const [message, setMessage] = useState("");
  const pending = useRef(false); const attempted = useRef<SurveySubmission | null>(null);
@@ -345,37 +349,37 @@ export function CustomerSurvey({ organization, definition, initialAnswer }: { or
    if (!response.ok) throw new Error("confirmation unavailable");
    const value = resultSchema.parse(await response.json());
    if (value.answer.score !== input.score || value.answer.consent_version !== input.consent_version) throw new Error("receipt mismatch");
-   setAnswer(value.answer); setMessage("Tu respuesta quedó guardada.");
-  } catch { setUncertain(true); setMessage("No pudimos confirmar el resultado. Consultá la respuesta guardada antes de realizar otra acción."); }
+   setAnswer(value.answer); setMessage(t("p0281"));
+  } catch { setUncertain(true); setMessage(t("p0282")); }
   finally { pending.current = false; setBusy(false); }
  }
  async function recover() {
   if (pending.current) return; pending.current = true; setBusy(true);
   try {
    const response = await fetch(url + "&view=response", { cache: "no-store", signal: AbortSignal.timeout(7000) });
-   if (response.status === 404) { setMessage("Todavía no hay una respuesta disponible. Podés volver a consultar."); return; }
+   if (response.status === 404) { setMessage(t("p0283")); return; }
    if (!response.ok) throw new Error("read unavailable");
    const value = answerSchema.parse(await response.json());
    if (value.consent_version !== definition.consent_version) throw new Error("version mismatch");
-   setAnswer(value); setUncertain(false); setMessage("Recuperamos tu respuesta guardada.");
-  } catch { setMessage("No pudimos consultar tu respuesta. Volvé a consultar cuando se restablezca la conexión."); }
+   setAnswer(value); setUncertain(false); setMessage(t("p0284"));
+  } catch { setMessage(t("p0285")); }
   finally { pending.current = false; setBusy(false); }
  }
  return <section lang="es" aria-labelledby="survey-question">
   <h1 id="survey-question" className="pageTitle">{definition.prompt}</h1>
-  {answer ? <div className="notice"><p>Respuesta guardada: <strong data-testid="survey-stored-score">{answer.score}</strong> de 10.</p><p>No se enviará una nueva respuesta.</p></div> :
+  {answer ? <div className="notice"><p>{t("p0286")} <strong data-testid="survey-stored-score">{answer.score}</strong> {t("p0287")}</p><p>{t("p0288")}</p></div> :
    <form onSubmit={submit} aria-describedby="survey-result">
-    <label>Puntuación<select name="score" required value={score} disabled={busy || uncertain || !definition.accepting} onChange={event => setScore(event.target.value)}>
-     <option value="">Elegí una puntuación</option>{Array.from({ length: 11 }, (_, n) => <option key={n} value={n}>{n}</option>)}
+    <label>{t("p0289")}<select name="score" required value={score} disabled={busy || uncertain || !definition.accepting} onChange={event => setScore(event.target.value)}>
+     <option value="">{t("p0290")}</option>{Array.from({ length: 11 }, (_, n) => <option key={n} value={n}>{n}</option>)}
     </select></label>
     <p>{definition.consent_notice}</p>
-    <label><input name="consent" type="checkbox" checked={consent} required disabled={busy || uncertain || !definition.accepting} onChange={event => setConsent(event.target.checked)} />Leí y acepto el aviso mostrado para esta encuesta.</label>
-    <button type="submit" disabled={busy || uncertain || !definition.accepting || score === "" || !consent}>{busy ? "Procesando…" : "Enviar respuesta"}</button>
-    {!definition.accepting ? <p>Esta encuesta no admite nuevas respuestas.</p> : null}
+    <label><input name="consent" type="checkbox" checked={consent} required disabled={busy || uncertain || !definition.accepting} onChange={event => setConsent(event.target.checked)} />{t("p0291")}</label>
+    <button type="submit" disabled={busy || uncertain || !definition.accepting || score === "" || !consent}>{busy ? t("p0292") : t("p0293")}</button>
+    {!definition.accepting ? <p>{t("p0294")}</p> : null}
    </form>}
-  {uncertain && !answer ? <button type="button" onClick={recover} disabled={busy}>Consultar respuesta guardada</button> : null}
+  {uncertain && !answer ? <button type="button" onClick={recover} disabled={busy}>{t("p0295")}</button> : null}
   <p id="survey-result" role="status" aria-live="polite">{message}</p>
-  <details><summary>Ayuda con esta encuesta</summary><p>Elegí una puntuación de 0 a 10 y revisá el aviso antes de enviar. Se guarda una respuesta por persona y encuesta.</p><p>Si se interrumpe la conexión, consultá la respuesta guardada. La consulta no vuelve a enviar el formulario.</p><p>Ayuda de encuestas, versión 1.0.0.</p></details>
+  <details><summary>{t("p0296")}</summary><p>{t("p0297")}</p><p>{t("p0298")}</p><p>{t("p0031")}</p></details>
  </section>;
 }
 
@@ -388,11 +392,12 @@ operation: CREATE
 provenance: AUTHORED
 source: "local; existing admitted reference contracts, no external business source copied"
 license: "LicenseRef-Workspace-Owner"
-sha256: "812e3b4181ac3c8692885dee5091aada69fafb8894d3b0e0412f450b1377785c"
+sha256: "fa13f9dd93ef86526a17e4405e6f2de88de82f3a237a66cc61db478135fe087b"
 variables: []
 secrets_allowed: false
 ```
 ````tsx
+import {loadPrivateI18n} from "@/platform/i18n/load-private-i18n";
 import Link from "next/link";
 import type { Route } from "next";
 import { redirect, notFound } from "next/navigation";
@@ -404,13 +409,15 @@ import { definitionSchema, answerSchema, surveyID, type SurveyAnswer } from "@/p
 import { CustomerSurvey } from "@/components/customer-survey";
 
 export default async function CustomerSurveyPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+ const {locale:privateLocale,t,controlled}=await loadPrivateI18n();
+
  if ((await loadBusinessConfig()).features.customer_surveys !== true) notFound();
  const query = await searchParams; const id = query.surveyId, org = query.organizationId;
- if (Object.keys(query).length !== 2 || !surveyID.safeParse(id).success || !surveyID.safeParse(org).success) return <section lang="es"><h1 className="pageTitle">Encuestas</h1><p>Abrí el enlace de la encuesta que recibiste. Si el enlace está incompleto, solicitá uno nuevo.</p></section>;
+ if (Object.keys(query).length !== 2 || !surveyID.safeParse(id).success || !surveyID.safeParse(org).success) return <section lang="es"><h1 className="pageTitle">{t("p0063")}</h1><p>{t("p0064")}</p></section>;
  const survey = id as string, organization = org as string;
  const href = "/customer/surveys?surveyId=" + encodeURIComponent(survey) + "&organizationId=" + encodeURIComponent(organization);
  const session = await readSession(); if (!session) redirect(("/api/auth/login?return_to=" + encodeURIComponent(href)) as Route);
- if (!allowed(session, "customer:self") || (!session.organizations.includes(organization) && !session.organizations.includes("*"))) return <section lang="es"><h1 className="pageTitle">Acceso denegado</h1><p>No tenés acceso a esta encuesta.</p></section>;
+ if (!allowed(session, "customer:self") || (!session.organizations.includes(organization) && !session.organizations.includes("*"))) return <section lang="es"><h1 className="pageTitle">{t("p0006")}</h1><p>{t("p0065")}</p></section>;
  try {
   const path = "/v1/customer/surveys/" + encodeURIComponent(survey);
   const definition = definitionSchema.parse(await protectedGet<unknown>(session, path, { organization_id: organization }));
@@ -420,7 +427,7 @@ export default async function CustomerSurveyPage({ searchParams }: { searchParam
   catch (error) { if (!(error instanceof BackendProblem && error.status === 404 && error.code === "SURVEY_NOT_AVAILABLE")) throw error; }
   return <CustomerSurvey organization={organization} definition={definition} initialAnswer={answer} />;
  } catch {
-  return <section lang="es"><h1 className="pageTitle">Encuesta no disponible</h1><p>No pudimos cargar la encuesta. Tu respuesta no se envió desde esta página.</p><Link href={href as Route}>Volver a consultar</Link></section>;
+  return <section lang="es"><h1 className="pageTitle">{t("p0066")}</h1><p>{t("p0067")}</p><Link href={href as Route}>{t("p0033")}</Link></section>;
  }
 }
 
@@ -433,11 +440,12 @@ operation: CREATE
 provenance: AUTHORED
 source: "local; existing admitted reference contracts, no external business source copied"
 license: "LicenseRef-Workspace-Owner"
-sha256: "2cd4348f92104fb2d616363d15f4eab83115882e1f6ae44b84c3c8179e9b819b"
+sha256: "c6af14d2747d191f8fdff4eeaf2b84611ccd2e061a1092685032ef7f478b4fad"
 variables: []
 secrets_allowed: false
 ```
 ````tsx
+import {loadPrivateI18n} from "@/platform/i18n/load-private-i18n";
 import Link from "next/link";
 import type { Route } from "next";
 import { notFound, redirect } from "next/navigation";
@@ -446,17 +454,19 @@ import { readSession, allowed } from "@/platform/auth/session";
 import { protectedGet } from "@/platform/backend/protected-client";
 import { summarySchema, surveyID } from "@/platform/surveys/contract";
 export default async function SurveySummaryPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+ const {locale:privateLocale,t,controlled}=await loadPrivateI18n();
+
  if ((await loadBusinessConfig()).features.customer_surveys !== true) notFound();
  const query = await searchParams;
- if (Object.keys(query).length !== 2 || !surveyID.safeParse(query.surveyId).success || !surveyID.safeParse(query.organizationId).success) return <section lang="es"><h1 className="pageTitle">Resultados de encuestas</h1><p>Abrí el enlace de resultados de la encuesta configurada.</p></section>;
+ if (Object.keys(query).length !== 2 || !surveyID.safeParse(query.surveyId).success || !surveyID.safeParse(query.organizationId).success) return <section lang="es"><h1 className="pageTitle">{t("p0021")}</h1><p>{t("p0022")}</p></section>;
  const id = query.surveyId as string, organization = query.organizationId as string;
  const href = "/admin/surveys?surveyId=" + encodeURIComponent(id) + "&organizationId=" + encodeURIComponent(organization);
  const session = await readSession(); if (!session) redirect(("/api/auth/login?return_to=" + encodeURIComponent(href)) as Route);
- if (!allowed(session, "surveys:read") || (!session.organizations.includes(organization) && !session.organizations.includes("*"))) return <section lang="es"><h1 className="pageTitle">Acceso denegado</h1><p>No tenés acceso a estos resultados.</p></section>;
+ if (!allowed(session, "surveys:read") || (!session.organizations.includes(organization) && !session.organizations.includes("*"))) return <section lang="es"><h1 className="pageTitle">{t("p0006")}</h1><p>{t("p0023")}</p></section>;
  try {
   const value = summarySchema.parse(await protectedGet<unknown>(session, "/v1/admin/surveys/" + encodeURIComponent(id) + "/summary", { organization_id: organization }));
-  return <section lang="es"><h1 className="pageTitle">Resultados de la encuesta</h1><p>Respuestas: {value.responses}</p>{value.available ? <p>NPS: <strong data-testid="survey-nps">{value.nps!.toFixed(2)}</strong></p> : <p>El resultado todavía no está disponible según el mínimo de respuestas configurado.</p>}<p>El resultado describe estas respuestas. No demuestra que la muestra represente a todos los clientes.</p><details><summary>Ayuda de resultados</summary><p>El cálculo resta el porcentaje de puntuaciones de 0 a 6 al de puntuaciones de 9 a 10. Las de 7 y 8 se incluyen en el total.</p><p>Ayuda de encuestas, versión 1.0.0.</p></details></section>;
- } catch { return <section lang="es"><h1 className="pageTitle">Resultados no disponibles</h1><Link href={href as Route}>Volver a consultar</Link></section>; }
+  return <section lang="es"><h1 className="pageTitle">{t("p0024")}</h1><p>{t("p0025")} {value.responses}</p>{value.available ? <p>{t("p0026")} <strong data-testid="survey-nps">{value.nps!.toFixed(2)}</strong></p> : <p>{t("p0027")}</p>}<p>{t("p0028")}</p><details><summary>{t("p0029")}</summary><p>{t("p0030")}</p><p>{t("p0031")}</p></details></section>;
+ } catch { return <section lang="es"><h1 className="pageTitle">{t("p0032")}</h1><Link href={href as Route}>{t("p0033")}</Link></section>; }
 }
 
 ````
@@ -567,3 +577,5 @@ root. Exact file manifest and hashes bind the rebuilt sources to tested bytes.
 This is CONDITIONED for this narrow reference, not 48/48 or target approval.
 
 V400 final0.1.1: source bytes unchanged; compatibility binds atomic Go survey migration0.1.1. Existing browser evidence remains exact for all8web sources.
+
+V402 composed delta: T2804 private es/en display, per-user/tenant preference and browser negotiation;1198messages,21exact guides,5hash-bound curricula; original commands/content/policies preserved. PRIVATE_LOCALE_RELEASE_V402.md/json. AUTHORED glue; no new dependency or corporate attribution.

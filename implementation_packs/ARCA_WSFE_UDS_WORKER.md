@@ -4,18 +4,18 @@
 
 ```yaml
 pack_id: "ARCA-WSFE-UDS-WORKER"
-pack_version: "0.3.0"
+pack_version: "0.3.1"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
   admission: CONDITIONED
 claim: "Conecta emisión, comprobantes asociados y siete consultas paramétricas del owner fiscal Go con WSAA/WSFE .NET por Unix socket local, sin TCP, con JSON estricto, secretos fuera y aprobación separada."
-stacks: ["Go 1.26.7", ".NET SDK 10.0.400", "ASP.NET Core Kestrel UDS", "WCF 10.0.652802", "PostgreSQL 18.6", "ARCA WSFEv1 4.6"]
+stacks: ["Go 1.26.8", ".NET SDK 10.0.400", "ASP.NET Core Kestrel UDS", "WCF 10.0.652802", "PostgreSQL 18.6", "ARCA WSFEv1 hash-locked homologation WSDL"]
 compatible_with: ["MICROSOFT-ARCA-WSFE-GENERATED-CLIENT 0.2.x", "MICROSOFT-ARCA-WSAA-CREDENTIAL-CORE 0.1.x", "MICROSOFT-ARCA-WSFE-SOAP-ADAPTER 0.3.x", "GO-ARCA-FISCAL-ISSUANCE-API 0.6.x", "GO-ELECTROMOBILITY-APPLICATION 1.5.x"]
 incompatible_with: []
 license_expression: "LicenseRef-Workspace-Owner AND Microsoft dependency licenses AND ARCA public specification"
 upstream_sources: ["https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.server.kestrel.core.kestrelserveroptions.listenunixsocket?view=aspnetcore-10.0", "https://learn.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel/security-considerations?view=aspnetcore-10.0", "https://pkg.go.dev/net", "https://github.com/dotnet/wcf", "https://www.arca.gob.ar/ws/documentacion/manuales/manual-desarrollador-ARCA-COMPG.pdf"]
-verified_at: "2026-08-31"
+verified_at: "2026-09-13"
 ```
 
 Los trece bloques son `AUTHORED`: componen APIs públicas oficiales, el proxy generado y packs previamente verificados; no son código copiado de Microsoft, Google, ARCA o Go. No contienen WSDL, proxy generado, certificado, clave privada, Token, Sign, credenciales ni mensajes del proveedor.
@@ -31,6 +31,12 @@ PostgreSQL y `fiscal.Processor` conservan emisión; `ParameterRegistry` conserva
 ## 4. Exact file manifest
 
 ```text
+CREATE arca/fiscal/worker/fixtures/Elite.Arca.Wsfe.Fixture/Elite.Arca.Wsfe.Fixture.csproj
+CREATE arca/fiscal/worker/fixtures/Elite.Arca.Wsfe.Fixture/FixtureParameters.cs
+CREATE arca/fiscal/worker/fixtures/Elite.Arca.Wsfe.Fixture/Program.cs
+CREATE arca/fiscal/worker/fixtures/Elite.Arca.Wsfe.Fixture/packages.lock.json
+CREATE docs/ARCA_LOCAL_REFERENCE.md
+CREATE internal/fiscal/wsfeipc/serialization_test.go
 CREATE cmd/arca-fiscal-worker/main.go
 CREATE internal/fiscal/wsfeipc/provider.go
 CREATE internal/fiscal/wsfeipc/provider_test.go
@@ -165,7 +171,7 @@ func run(ctx context.Context, processor *fiscal.Processor) error {
 block_id: "ARCA-WSFE-UDS-WORKER:go-provider:v1"
 operation: CREATE
 path: "internal/fiscal/wsfeipc/provider.go"
-sha256: "2230176dd42a8dec6b3f44b23ea83bef74e44d9c3c07c81502934b1b31aca056"
+sha256: "bc9a92f73e025ec60bf90a02c73886461288414317d967b7c304c0dc903db577"
 provenance: AUTHORED
 source: "local adapter governed by official Go net.Dialer DialContext documentation"
 license: "LicenseRef-Workspace-Owner"
@@ -286,7 +292,7 @@ func (p *Provider) FetchParameters(ctx context.Context, taxpayerCUIT, kind strin
 	if result.Kind != kind || !validHash(result.ResponseHash) || len(result.Items) == 0 {
 		return fiscal.ParameterSnapshot{}, ErrProtocol
 	}
-	return fiscal.ParameterSnapshot{TaxpayerCUIT: taxpayerCUIT, Kind: result.Kind, VoucherClass: result.VoucherClass, Items: result.Items, ResponseHash: result.ResponseHash, ProviderCodes: append([]string(nil), result.ProviderCodes...)}, nil
+	return fiscal.ParameterSnapshot{TaxpayerCUIT: taxpayerCUIT, Kind: result.Kind, VoucherClass: result.VoucherClass, Items: result.Items, ResponseHash: result.ResponseHash, ProviderCodes: append([]string{}, result.ProviderCodes...)}, nil
 }
 
 func (p *Provider) LastAuthorized(ctx context.Context, invoice fiscal.Invoice) (int64, string, error) {
@@ -313,7 +319,7 @@ func (p *Provider) authorization(ctx context.Context, path string, invoice fisca
 	if err := p.post(ctx, path, request(invoice), &result); err != nil {
 		return fiscal.Authorization{}, err
 	}
-	value := fiscal.Authorization{Found: result.Found, Authorized: result.Authorized, ResponseHash: result.ResponseHash, ProviderCodes: append([]string(nil), result.ProviderCodes...)}
+	value := fiscal.Authorization{Found: result.Found, Authorized: result.Authorized, ResponseHash: result.ResponseHash, ProviderCodes: append([]string{}, result.ProviderCodes...)}
 	if result.CAE != nil {
 		value.CAE = *result.CAE
 	}
@@ -380,7 +386,7 @@ func request(value fiscal.Invoice) wireInvoice {
 		Currency: value.Currency, VoucherNumber: value.VoucherNumber, TotalMinorUnits: value.TotalMinorUnits, NetMinorUnits: value.NetMinorUnits,
 		VATMinorUnits: value.VATMinorUnits, ExemptMinorUnits: value.ExemptMinorUnits, NonTaxedMinorUnits: value.NonTaxedMinorUnits, OtherTaxMinorUnits: value.OtherTaxMinorUnits,
 		IssuedOn: date(value.IssuedOn), ServiceFrom: optionalDate(value.ServiceFrom), ServiceUntil: optionalDate(value.ServiceUntil), PaymentDueOn: optionalDate(value.PaymentDueOn),
-		VATLines: append([]fiscal.VATLine(nil), value.VATLines...), OtherTaxLines: append([]fiscal.OtherTaxLine(nil), value.OtherTaxLines...),
+		VATLines: append([]fiscal.VATLine{}, value.VATLines...), OtherTaxLines: append([]fiscal.OtherTaxLine{}, value.OtherTaxLines...),
 		AssociatedVouchers: associated,
 	}
 }
@@ -411,7 +417,7 @@ func validHash(value string) bool {
 block_id: "ARCA-WSFE-UDS-WORKER:go-provider-tests:v1"
 operation: CREATE
 path: "internal/fiscal/wsfeipc/provider_test.go"
-sha256: "62f8ecb814b7913bd21ed66cb4062376134987877722a98d515410468fd2cfbd"
+sha256: "70ed3aae1f6c90739c53e373d44854c81341b0139245e62bab21ea46ba537cda"
 provenance: AUTHORED
 source: "local Unix-socket contract tests"
 license: "LicenseRef-Workspace-Owner"
@@ -492,7 +498,7 @@ func TestUnixProviderExactSchemaAndFailClosedResponses(t *testing.T) {
 		t.Fatalf("consulted=%+v err=%v", consulted, err)
 	}
 	authorized, err := provider.Authorize(context.Background(), invoice)
-	if err != nil || !authorized.Found || !authorized.Authorized || authorized.CAE != "41124578989845" || authorized.CAEExpiresOn == nil {
+	if err != nil || !authorized.Found || !authorized.Authorized || authorized.CAE != "41124578989845" || authorized.CAEExpiresOn == nil || authorized.ProviderCodes == nil {
 		t.Fatalf("authorized=%+v err=%v", authorized, err)
 	}
 	parameters, err := provider.FetchParameters(context.Background(), "33693450239", "vat_rate", nil)
@@ -1315,3 +1321,364 @@ Require 13/13 hash-exact materialization; Go full test, focal UDS contract, vet/
 ## 10. Reconstruction evidence
 
 V130 records issuance IPC; V132 records parameter UDS, persistence and separate approval. V145 records associated-voucher transport in `reconstruction_evidence/ARCA_ASSOCIATED_VOUCHER_EXECUTION_INVENTORY_2026-08-31_V145.md`.
+
+V402 composed delta: V402325 connected local ARCA fixture, fixed offline generated-tool adaptation, explicit legal/source pins and portable .NET/Go build. See ARCA_CONNECTED_INFRA_V402 evidence; only future homologation credentials conditioned, no productive fiscal claim.
+
+### FILE: `arca/fiscal/worker/fixtures/Elite.Arca.Wsfe.Fixture/Elite.Arca.Wsfe.Fixture.csproj`
+
+```yaml
+block_id: "ARCA_WSFE_UDS_WORKER-V402325:file1:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "f84ce0b3b0ae4dccfba4dc0bf3bed475fe888b7e6ccc917ace3b01d7b58fca33"
+variables: []
+secrets_allowed: false
+```
+
+````text
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors><RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <NuGetAudit>true</NuGetAudit><NuGetAuditMode>all</NuGetAuditMode>
+  </PropertyGroup>
+  <ItemGroup><ProjectReference Include="../../Elite.Arca.Wsfe.Worker/Elite.Arca.Wsfe.Worker.csproj" /></ItemGroup>
+</Project>
+````
+
+### FILE: `arca/fiscal/worker/fixtures/Elite.Arca.Wsfe.Fixture/FixtureParameters.cs`
+
+```yaml
+block_id: "ARCA_WSFE_UDS_WORKER-V402325:file2:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "6a144ed9a2b53b65d6d3cfa21c13234357616db766378484c1dc823006fcd002"
+variables: []
+secrets_allowed: false
+```
+
+````text
+using Elite.Arca.Wsfe.Bridge;
+using Generated = Elite.Arca.Wsfe.Generated;
+
+sealed class FakeParameters : IWsfeParameterSoap
+{
+    internal Generated.FEAuthRequest? LastAuth { get; private set; }
+    internal bool Error { get; set; }
+    internal bool Duplicate { get; set; }
+    internal bool MismatchedClass { get; set; }
+    private Generated.Err[]? Errors => Error ? [new Generated.Err { Code = 500, Msg = "provider message secret" }] : null;
+    private static Generated.Evt[] Events => [new Generated.Evt { Code = 10, Msg = "provider message" }];
+    private T Capture<T>(Generated.FEAuthRequest auth, T response) { LastAuth = auth; return response; }
+
+    public Task<Generated.CbteTipoResponse> VoucherTypesAsync(Generated.FEAuthRequest auth, CancellationToken cancellationToken) => Task.FromResult(Capture(auth, new Generated.CbteTipoResponse { ResultGet = [new Generated.CbteTipo { Id = 1, Desc = "Factura A", FchDesde = "20100101", FchHasta = "" }], Errors = Errors, Events = Events }));
+    public Task<Generated.ConceptoTipoResponse> ConceptsAsync(Generated.FEAuthRequest auth, CancellationToken cancellationToken) => Task.FromResult(Capture(auth, new Generated.ConceptoTipoResponse { ResultGet = [new Generated.ConceptoTipo { Id = 1, Desc = "Productos", FchDesde = "20100101", FchHasta = "" }], Errors = Errors }));
+    public Task<Generated.DocTipoResponse> DocumentTypesAsync(Generated.FEAuthRequest auth, CancellationToken cancellationToken)
+    {
+        var items = Duplicate ? new[] { Doc(), Doc() } : [Doc()];
+        return Task.FromResult(Capture(auth, new Generated.DocTipoResponse { ResultGet = items, Errors = Errors }));
+    }
+    public Task<Generated.IvaTipoResponse> VatRatesAsync(Generated.FEAuthRequest auth, CancellationToken cancellationToken) => Task.FromResult(Capture(auth, new Generated.IvaTipoResponse { ResultGet = [new Generated.IvaTipo { Id = "5", Desc = "21%", FchDesde = "20100101", FchHasta = "" }], Errors = Errors }));
+    public Task<Generated.FETributoResponse> OtherTaxesAsync(Generated.FEAuthRequest auth, CancellationToken cancellationToken) => Task.FromResult(Capture(auth, new Generated.FETributoResponse { ResultGet = [new Generated.TributoTipo { Id = 99, Desc = "Otros", FchDesde = "20100101", FchHasta = "" }], Errors = Errors }));
+    public Task<Generated.FEPtoVentaResponse> PointsOfSaleAsync(Generated.FEAuthRequest auth, CancellationToken cancellationToken) => Task.FromResult(Capture(auth, new Generated.FEPtoVentaResponse { ResultGet = [new Generated.PtoVenta { Nro = 12, EmisionTipo = "CAE", Bloqueado = "N", FchBaja = "" }], Errors = Errors }));
+    public Task<Generated.CondicionIvaReceptorResponse> RecipientVatConditionsAsync(Generated.FEAuthRequest auth, string voucherClass, CancellationToken cancellationToken) => Task.FromResult(Capture(auth, new Generated.CondicionIvaReceptorResponse { ResultGet = [new Generated.CondicionIvaReceptor { Id = 1, Desc = "IVA Responsable Inscripto", Cmp_Clase = MismatchedClass ? "B" : voucherClass }], Errors = Errors }));
+    private static Generated.DocTipo Doc() => new() { Id = 80, Desc = "CUIT", FchDesde = "20100101", FchHasta = "" };
+}
+````
+
+### FILE: `arca/fiscal/worker/fixtures/Elite.Arca.Wsfe.Fixture/Program.cs`
+
+```yaml
+block_id: "ARCA_WSFE_UDS_WORKER-V402325:file3:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "45be2119f23ab658117fed445a890e6e0608a73c456a1782eb801b126adf30a3"
+variables: []
+secrets_allowed: false
+```
+
+````text
+// AUTHORED local fixture composition. No live transport or user certificate.
+using System.Security.Cryptography;
+using System.Security.Cryptography.Pkcs;
+using System.Security.Cryptography.X509Certificates;
+using System.Xml;
+using Elite.Arca.Credentials;
+using Elite.Arca.Wsfe.Bridge;
+using Elite.Arca.Wsfe.Worker;
+using Generated = Elite.Arca.Wsfe.Generated;
+
+if (args.Length != 1 || Environment.GetEnvironmentVariable("ELITE_ARCA_FIXTURE") != "1")
+    throw new InvalidOperationException("Explicit local fixture mode and one Unix socket path required.");
+using var rsa = RSA.Create(2048);
+var request = new CertificateRequest("CN=Elite Local ARCA Fixture Only", rsa, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+using var certificate = request.CreateSelfSigned(DateTimeOffset.UtcNow.AddMinutes(-1), DateTimeOffset.UtcNow.AddHours(2));
+var wsaa = new FixtureWsaa();
+using var credentials = new WsaaCredentialProvider(WsaaOptions.ElectronicInvoice, new SystemUtcClock(),
+    new LoginTicketRequestFactory(WsaaOptions.ElectronicInvoice, new SystemUtcClock(), new MonotonicLoginTicketIdSource()),
+    new CmsRequestSigner(), certificate, wsaa);
+var access = new CredentialAccessSource(credentials);
+var soap = new FixtureSoap();
+var operations = new BridgeFiscalOperations(new WsfeBridge(access, soap), new WsfeParameterBridge(access, new FakeParameters()));
+await using var app = WorkerHost.Build([], args[0], operations);
+app.MapGet("/fixture/stats", () => new { scope = "LOCAL_FIXTURES", last = soap.LastCalls, authorize = soap.AuthorizeCalls, consult = soap.ConsultCalls, cms = wsaa.Calls });
+app.MapPost("/fixture/stop", (IHostApplicationLifetime lifetime) => { lifetime.StopApplication(); return Results.Ok(new { stopping = true }); });
+await app.StartAsync();
+WorkerHost.SecureSocket(args[0]);
+if (app.Urls.Count == 0 || app.Urls.Any(value => !value.Contains("unix:", StringComparison.OrdinalIgnoreCase) && !value.Contains(args[0], StringComparison.OrdinalIgnoreCase)))
+    throw new InvalidOperationException("Fixture must expose only the Unix socket.");
+Console.WriteLine("ARCA_CONNECTED_FIXTURE_READY uds_only=true live_transport=false");
+await app.WaitForShutdownAsync();
+
+sealed class FixtureWsaa : IWsaaTransport
+{
+    public int Calls;
+    public Task<string> LoginCmsAsync(string cmsBase64, CancellationToken cancellationToken)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+        var cms = new SignedCms(); cms.Decode(Convert.FromBase64String(cmsBase64)); cms.CheckSignature(verifySignatureOnly: true);
+        if (cms.ContentInfo.Content.Length == 0) throw new InvalidDataException("Empty signed fixture request.");
+        Interlocked.Increment(ref Calls);
+        var expiration = XmlConvert.ToString(DateTimeOffset.UtcNow.AddHours(1));
+        return Task.FromResult($"<loginTicketResponse><header><expirationTime>{expiration}</expirationTime></header><credentials><token>public-fixture-token</token><sign>public-fixture-sign</sign></credentials></loginTicketResponse>");
+    }
+}
+
+sealed class FixtureSoap : IWsfeSoap
+{
+    private readonly object sync = new();
+    private readonly Dictionary<(long Cuit, int Point, int Type, long Number), Generated.FECompConsResponse> issued = [];
+    public int LastCalls, AuthorizeCalls, ConsultCalls;
+    private static void Auth(Generated.FEAuthRequest auth)
+    {
+        if (auth.Token != "public-fixture-token" || auth.Sign != "public-fixture-sign") throw new InvalidDataException("Fixture credential mapping failed.");
+    }
+    public Task<Generated.FERecuperaLastCbteResponse> LastAuthorizedAsync(Generated.FEAuthRequest auth, int pointOfSale, int voucherType, CancellationToken cancellationToken)
+    {
+        Auth(auth); Interlocked.Increment(ref LastCalls);
+        lock (sync) return Task.FromResult(new Generated.FERecuperaLastCbteResponse { PtoVta = pointOfSale, CbteTipo = voucherType, CbteNro = checked((int)issued.Keys.Where(k => k.Cuit == auth.Cuit && k.Point == pointOfSale && k.Type == voucherType).Select(k => k.Number).DefaultIfEmpty(0).Max()) });
+    }
+    public Task<Generated.FECompConsultaResponse> ConsultAsync(Generated.FEAuthRequest auth, Generated.FECompConsultaReq request, CancellationToken cancellationToken)
+    {
+        Auth(auth); Interlocked.Increment(ref ConsultCalls);
+        lock (sync) return Task.FromResult(issued.TryGetValue((auth.Cuit, request.PtoVta, request.CbteTipo, request.CbteNro), out var result)
+            ? new Generated.FECompConsultaResponse { ResultGet = result }
+            : new Generated.FECompConsultaResponse { Errors = [new Generated.Err { Code = 602, Msg = "fixture absent" }] });
+    }
+    public Task<Generated.FECAEResponse> AuthorizeAsync(Generated.FEAuthRequest auth, Generated.FECAERequest request, CancellationToken cancellationToken)
+    {
+        Auth(auth); var count = Interlocked.Increment(ref AuthorizeCalls);
+        var detail = request.FeDetReq.Single(); var header = request.FeCabReq;
+        if (detail.ImpTotal != 121 || detail.ImpNeto != 100 || detail.ImpIVA != 21 || !detail.CondicionIVAReceptorIdSpecified || detail.MonId != "PES")
+            throw new InvalidDataException("Exact fixture invoice mapping failed.");
+        lock (sync)
+        {
+            if (header.CbteTipo == 8 && (detail.CbtesAsoc is not { Length: 1 } || !issued.ContainsKey((auth.Cuit, detail.CbtesAsoc[0].PtoVta, detail.CbtesAsoc[0].Tipo, detail.CbtesAsoc[0].Nro))))
+                throw new InvalidDataException("Credit fixture must reference issued original.");
+            issued.Add((auth.Cuit, header.PtoVta, header.CbteTipo, detail.CbteDesde), new Generated.FECompConsResponse { PtoVta = header.PtoVta, CbteTipo = header.CbteTipo, CbteDesde = detail.CbteDesde, CbteHasta = detail.CbteHasta, Resultado = "A", CodAutorizacion = "41124578989845", FchVto = "20300913" });
+        }
+        // Provider commits before losing its first response. Retry must consult.
+        if (count == 1) throw new IOException("Deliberate fixture response loss after authorization.");
+        return Task.FromResult(new Generated.FECAEResponse { FeCabResp = new Generated.FECAECabResponse { PtoVta = header.PtoVta, CbteTipo = header.CbteTipo, CantReg = 1, Resultado = "A" }, FeDetResp = [new Generated.FECAEDetResponse { CbteDesde = detail.CbteDesde, CbteHasta = detail.CbteHasta, Resultado = "A", CAE = "41124578989845", CAEFchVto = "20300913" }] });
+    }
+}
+````
+
+### FILE: `arca/fiscal/worker/fixtures/Elite.Arca.Wsfe.Fixture/packages.lock.json`
+
+```yaml
+block_id: "ARCA_WSFE_UDS_WORKER-V402325:file4:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "491bd6344247876ff0cc67e35da754618abb4ea48128d3df248e2e8c4488be90"
+variables: []
+secrets_allowed: false
+```
+
+````json
+{
+  "version": 1,
+  "dependencies": {
+    "net10.0": {
+      "System.Security.Cryptography.Pkcs": {
+        "type": "Transitive",
+        "resolved": "10.0.11",
+        "contentHash": "8IV+rI3xN/Mkq9MsSX7VZTv9T9Wt+tyhHLwBX9VNZBk8m8kknEs1JeTSjI2x9M2L/fSja+c2WSE5n5Yy0GXdoQ=="
+      },
+      "System.ServiceModel.Http": {
+        "type": "Transitive",
+        "resolved": "10.0.652802",
+        "contentHash": "G02XZvmccf42QCU5MjviBIg69MSMAVHwL1inVPsNSpfp5g+t5BkQM3DyvWRLN4qmeFDWSF/mA1rIYONIDu/6Dg==",
+        "dependencies": {
+          "System.ServiceModel.Primitives": "10.0.652802"
+        }
+      },
+      "System.ServiceModel.Primitives": {
+        "type": "Transitive",
+        "resolved": "10.0.652802",
+        "contentHash": "ULfGNl75BNXkpF42wNV2CDXJ64dUZZEa8xO2mBsc4tqbW9QjruxjEB6bAr4Z/T1rNU+leOztIjCJQYsBGFWYlw=="
+      },
+      "elite.arca.credentials": {
+        "type": "Project",
+        "dependencies": {
+          "System.Security.Cryptography.Pkcs": "[10.0.11, )"
+        }
+      },
+      "elite.arca.wsfe.bridge": {
+        "type": "Project",
+        "dependencies": {
+          "Elite.Arca.Credentials": "[1.0.0, )",
+          "Elite.Arca.Wsfe.Generated": "[1.0.0, )"
+        }
+      },
+      "elite.arca.wsfe.generated": {
+        "type": "Project",
+        "dependencies": {
+          "System.Security.Cryptography.Pkcs": "[10.0.11, )",
+          "System.ServiceModel.Http": "[10.0.652802, )"
+        }
+      },
+      "elite.arca.wsfe.worker": {
+        "type": "Project",
+        "dependencies": {
+          "Elite.Arca.Credentials": "[1.0.0, )",
+          "Elite.Arca.Wsfe.Bridge": "[1.0.0, )",
+          "Elite.Arca.Wsfe.Generated": "[1.0.0, )"
+        }
+      }
+    }
+  }
+}
+````
+
+### FILE: `docs/ARCA_LOCAL_REFERENCE.md`
+
+```yaml
+block_id: "ARCA_WSFE_UDS_WORKER-V402325:file5:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "f4f919cf51a2d532756a4427281ee118c75a4543a59a31db2efe65c2fdfdc50a"
+variables: []
+secrets_allowed: false
+```
+
+````markdown
+# ARCA: referencia local y conexión de homologación
+
+El artefacto contiene los dos workers Go, el worker SOAP/UDS .NET, un host de
+fixtures explícito y el runtime Microsoft .NET/ASP.NET 10.0.11 fijado. Los clientes
+WSAA/WSFE se generan desde los dos WSDL oficiales fijados; sus fuentes y receipt
+quedan en `arca/generated-source`. No contiene certificados ni secretos de usuario.
+
+## Ensayo local
+
+Usar únicamente una base PostgreSQL de fixtures con las migraciones del mismo
+artefacto. El API debe apuntar a esa misma base. No conectar el fixture fiscal a
+datos reales. La identidad fiscal y las operaciones de punto de venta/factura
+son las del contrato HTTP materializado y mantienen autorización por organización.
+
+En tres terminales PowerShell abiertas en la raíz del artefacto:
+
+```powershell
+# Terminal 1: host de homologación simulada; genera su certificado efímero local.
+$env:ELITE_ARCA_FIXTURE = '1'
+$env:ARCA_WSFE_SOCKET = Join-Path $env:TEMP 'elite-arca-reference.sock'
+& .\arca\dotnet\dotnet.exe .\arca\fixture\Elite.Arca.Wsfe.Fixture.dll $env:ARCA_WSFE_SOCKET
+```
+
+```powershell
+# Terminal 2: configurar DATABASE_URL para la base local de fixtures.
+$env:ARCA_WSFE_SOCKET = Join-Path $env:TEMP 'elite-arca-reference.sock'
+$env:FISCAL_WORKER_ID = 'reference-fiscal-1'
+& .\arca\go\arca-fiscal-worker.exe
+```
+
+```powershell
+# Terminal 3: la misma DATABASE_URL y el mismo socket.
+$env:ARCA_WSFE_SOCKET = Join-Path $env:TEMP 'elite-arca-reference.sock'
+$env:FISCAL_PARAMETER_WORKER_ID = 'reference-parameters-1'
+& .\arca\go\arca-parameter-worker.exe
+```
+
+El fixture reproduce una respuesta perdida después de autorizar; el worker Go
+consulta el comprobante y reconcilia su estado durable sin volver a emitirlo.
+También acepta la nota de crédito asociada y las siete consultas de parámetros.
+Sus valores son datos sintéticos para el ensayo, no reglas fiscales aplicables.
+Los procesos interactivos se detienen con Ctrl+C; la aceptación automatizada
+cierra el fixture por su endpoint de control privado UDS y verifica PostgreSQL
+después de un reinicio.
+
+## Cuando el usuario aporte sus credenciales
+
+La conexión de homologación usa el mismo socket y los mismos workers Go. Reemplazar
+el host de fixtures por `arca/worker/Elite.Arca.Wsfe.Worker.dll` ejecutado con el
+runtime incluido. Sus entradas son `ARCA_ENVIRONMENT=homologation`,
+`ARCA_WSFE_SOCKET`, `ARCA_CERTIFICATE_THUMBPRINT` y
+`ARCA_CERTIFICATE_STORE=CurrentUser|LocalMachine`; el certificado con clave privada
+debe existir en el almacén indicado. El CUIT/punto de venta pertenece a la
+configuración de la organización en PostgreSQL, nunca al código generado.
+
+Estado de la conexión externa: `CONDITIONED_USER_CREDENTIALS`. El worker falla
+cerrado si faltan sus entradas. Este artefacto no habilita facturación productiva;
+las reglas fiscales, autorización del contribuyente y aceptación real se aplican
+cuando se materialice el proyecto concreto.
+
+## Reconstrucción
+
+`ci/build_signed_reference.ps1` llama al builder local, que incluye
+`ci/build_arca_reference.py`. Los inputs externos del build se fijan por SHA-256:
+SDK/runtime, PowerShell, archivo original svcutil, nueve parches NuGet oficiales,
+los dos WSDL y cinco paquetes de runtime. Cada build crea su propia caché NuGet
+vacía y restaura sólo desde el directorio local comprobado. No ejecutar un
+`dotnet tool restore` sobre el manifiesto histórico svcutil8.0.0: el generador
+admitido es la composición adaptada definida en `svcutil-adaptation.lock.json`.
+La adaptación es glue local declarado; no es una publicación oficial de Microsoft.
+
+El release conserva licencias originales, fuentes correspondientes y el grafo
+de dependencias. La generación offline no afirma haber consultado vulnerabilidades:
+el gate de release ejecuta SCA sobre los manifiestos explícitos de esta revisión.
+````
+
+### FILE: `internal/fiscal/wsfeipc/serialization_test.go`
+
+```yaml
+block_id: "ARCA_WSFE_UDS_WORKER-V402325:file6:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "e82673059e72910fd8b21e43cc4c577c43a34adc585b7b0c656eb5db42c4cc5f"
+variables: []
+secrets_allowed: false
+```
+
+````go
+package wsfeipc
+
+import (
+ "encoding/json"
+ "testing"
+)
+
+func TestEmptyFiscalWireCollectionsRemainArrays(t *testing.T) {
+ invoice := fixtureInvoice()
+ invoice.VATLines = nil
+ invoice.OtherTaxLines = nil
+ invoice.AssociatedVouchers = nil
+ raw,err := json.Marshal(request(invoice));if err!=nil{t.Fatal(err)}
+ var payload map[string]json.RawMessage;if err=json.Unmarshal(raw,&payload);err!=nil{t.Fatal(err)}
+ for _,field:=range []string{"vat_lines","other_tax_lines","associated_vouchers"}{if string(payload[field])!="[]"{t.Fatalf("%s=%s: .NET collection contract requires an array",field,payload[field])}}
+}
+````
+

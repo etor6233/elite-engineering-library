@@ -3,7 +3,7 @@
   "level": "preparation",
   "production_authorized": false,
   "record": "PROJECT_LIBRARY_READINESS_GATE.json",
-  "record_sha256": "b996f3c84ddb623d83a46d9423063242d331d8cacc458165f0b691aa765b169a",
+  "record_sha256": "660dfb75162016f37a9113d6c3318cb46d878e65204e984e9d031d2948e49614",
   "schema": "elite-library-readiness-report/v1",
   "scope": "LIBRARY_INFRASTRUCTURE",
   "status": "READY_FOR_LIBRARY_WORK"

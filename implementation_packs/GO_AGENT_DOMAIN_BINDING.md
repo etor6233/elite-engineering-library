@@ -4,7 +4,7 @@
 
 ```yaml
 pack_id: "GO-AGENT-DOMAIN-BINDING"
-pack_version: "0.4.0"
+pack_version: "0.4.1"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -35,6 +35,7 @@ Use para conectar el runtime a los owners existentes, sin duplicar CRM, agenda, 
 ## 4. Exact file manifest
 
 ```text
+CREATE internal/domainbind/quantity_test.go
 CREATE internal/domainbind/config.go
 CREATE internal/domainbind/gateway.go
 CREATE internal/domainbind/gateway_test.go
@@ -137,7 +138,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local"
 license: "LicenseRef-Workspace-Owner"
-sha256: "7829c722655985d90932b9dd7fa3bf0098fd8db2ae0ce33fd1c61a7fe5418c23"
+sha256: "b4302bc524b5338ac4299f5011f6d0301ba73f1dcb64a1b0a1f2798713053261"
 variables: []
 secrets_allowed: false
 ```
@@ -335,6 +336,10 @@ func (g *Gateway) CreateQuoteCommand(ctx context.Context, tenantID string, comma
 
 // CreateQuoteFor creates a quote for the resolved contact scope.
 func (g *Gateway) CreateQuoteFor(ctx context.Context, tenantID string, scope Scope, command CommandIdentity, in agenttools.QuoteInput) (string, error) {
+	// The selected quotation owner represents one vehicle, not a quantity line.
+	if in.Quantity != 1 {
+		return "", errors.New("domainbind: reference quote requires exactly one vehicle")
+	}
 	if err := g.validateTenant(tenantID); err != nil {
 		return "", err
 	}
@@ -717,3 +722,52 @@ Materializar 3/3, comparar hashes, ejecutar `gofmt`, tests de HTTP/token/replay/
 ## 10. Reconstruction evidence
 
 V236: tres archivos reconstruidos byte-exactos y gofmt-idempotentes; dos contactos conservaron scopes diferentes; bearer actual y claves/timestamps estables pasaron en tests focales y en la suite de 48 paquetes. Véase `reconstruction_evidence/GO_CONNECTED_CONVERSATION_RUNTIME_2026-09-04_V236.md`.
+
+V402 composed delta: T2807 connected reference315: real domain quotation and contact-bound order status, explicit single-vehicle limit, revalidated contact, structured history roles, per-case required eval gates and canonical host mounting. Local fixtures only. AI_CONNECTED_REFERENCE_RELEASE_V402.md/json. No new upstream dependency or live model quality claim.
+
+### FILE: `internal/domainbind/quantity_test.go`
+
+```yaml
+block_id: "GO-AGENT-DOMAIN-BINDING-CONNECTED-REFERENCE:file1:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "c3d4e439bff82189076ed7e89d82351a6ab52dd3492b88c23ac0ff40b54cd87a"
+variables: []
+secrets_allowed: false
+```
+
+````go
+package domainbind
+
+import (
+	"context"
+	"elite.local/enterprise/internal/agenttools"
+	"net/http"
+	"net/http/httptest"
+	"testing"
+	"time"
+)
+
+func TestQuoteQuantityCannotBeSilentlyDiscarded(t *testing.T) {
+	calls := 0
+	s := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) { calls++; w.WriteHeader(201) }))
+	defer s.Close()
+	g, e := NewGateway(testConfig(s.URL))
+	if e != nil {
+		t.Fatal(e)
+	}
+	for _, n := range []int{0, -1, 2, 100} {
+		if _, e = g.CreateQuoteCommand(context.Background(), "tenant-id", CommandIdentity{IdempotencyKey: "synthetic-quantity-key", OccurredAt: time.Now()}, agenttools.QuoteInput{Product: "scooter", Quantity: n}); e == nil {
+			t.Fatal("quantity accepted", n)
+		}
+	}
+	if calls != 0 {
+		t.Fatal("invalid quantities caused effects", calls)
+	}
+}
+````
+
+
+V402315: existing owners compose a single local AI runtime and required-case evaluation. Read docs/AI_REFERENCE_START.md. Historical SFT uses its separate admitted opt-in plan and exact later execution hash; no new training engine or inferred private model quality.

@@ -2,13 +2,13 @@
 
 Documento honesto de cierre: qué está materializado, qué código reusable aún
 falta y qué sólo puede demostrarse en el proyecto target antes de promover una
-franquicia. Inventario actualizado V400, 2026-09-11. Inventario raíz: 167 packs, 1.587 archivos materializables, 850 Markdown y 56 perfiles. Audit V258: 160 packs,
+franquicia. Inventario actualizado V402335, 2026-09-13. Inventario raíz: 205 packs, 2.360 archivos materializables, 972 Markdown y 56 perfiles. Audit V258: 160 packs,
 121 fuentes oficiales, un resolver de capabilities ausentes, DevSkim adaptado,
 OpenGrep/GitLab preservado pero bloqueado por el SCA actual de Cosign, release
 portable OSV/SPDX/in-toto/SLSA/OpenSSH, assurance de implementación y 16 adapters. Estos PASS no
 sustituyen los gates live.
 
-El perfil integral vigente selecciona 820 archivos desde 70 packs sin duplicar
+El perfil integral vigente selecciona 1653 archivos desde 116 packs sin duplicar
 paths; ese conteo también queda comprobado por `VERIFY_LIBRARY.ps1`.
 
 V306: emisión de cotización con clave retenida, consulta scoped y actor atómico.

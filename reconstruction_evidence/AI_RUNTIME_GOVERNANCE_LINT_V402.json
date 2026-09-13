@@ -1,0 +1,225 @@
+{
+  "state": "PASS_LOCAL",
+  "scope": "Only13 changed/new files; existing unchanged exact-source lint retained; ARCA1539 still deferred",
+  "untriaged": 0,
+  "new_blockers": 0,
+  "sarif_sha256": "f040ea77dbb7c5cede8416bf3f8ebd35a6407410160a81e3b5f24bee6c5f83cb",
+  "findings": [
+    {
+      "index": 0,
+      "rule": "DS197836",
+      "path": "internal/platform/postgres/conversation_runtime.go",
+      "source_sha256": "be0c0a5824295402a0b3febcb518a288445d13aca9816e555418961984389b3a",
+      "region": {
+        "startLine": 174,
+        "startColumn": 78,
+        "endLine": 174,
+        "endColumn": 196,
+        "charOffset": 8504,
+        "charLength": 118,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "go"
+      },
+      "matched_text": "sha256_hex=$5 and state='processing' and attempt_count=$6 and locked_until>clock_timestamp() and expires_at>clock_time",
+      "disposition": "REVIEWED_FALSE_POSITIVE_OR_EXPLICIT_FIXTURE",
+      "rationale": "SQL predicate compares a precomputed request digest and current lease; no low-entropy input is being hashed here."
+    },
+    {
+      "index": 1,
+      "rule": "DS197836",
+      "path": "internal/platform/postgres/conversation_runtime.go",
+      "source_sha256": "be0c0a5824295402a0b3febcb518a288445d13aca9816e555418961984389b3a",
+      "region": {
+        "startLine": 157,
+        "startColumn": 78,
+        "endLine": 157,
+        "endColumn": 198,
+        "charOffset": 7412,
+        "charLength": 120,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "go"
+      },
+      "matched_text": "sha256_hex=$16 and state='processing' and attempt_count=$17 and locked_until>clock_timestamp() and expires_at>clock_time",
+      "disposition": "REVIEWED_FALSE_POSITIVE_OR_EXPLICIT_FIXTURE",
+      "rationale": "SQL predicate matches the persisted request digest, attempt and live lease; regex spans the SQL text."
+    },
+    {
+      "index": 2,
+      "rule": "DS197836",
+      "path": "internal/platform/postgres/conversation_runtime.go",
+      "source_sha256": "be0c0a5824295402a0b3febcb518a288445d13aca9816e555418961984389b3a",
+      "region": {
+        "startLine": 156,
+        "startColumn": 49,
+        "endLine": 156,
+        "endColumn": 316,
+        "charOffset": 7059,
+        "charLength": 267,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "go"
+      },
+      "matched_text": "sha256_hex=$7,llm_response_id=nullif($8,''),tool_name=nullif($9,''),tool_arguments=$10,tool_result=nullif($11,''),input_tokens=$12,output_tokens=$13,reserved_tokens=$14,failure_code=nullif($15,''),locked_until=null,completed_at=clock_timestamp(),updated_at=clock_time",
+      "disposition": "REVIEWED_FALSE_POSITIVE_OR_EXPLICIT_FIXTURE",
+      "rationale": "SQL column assignment of caller-bound request/tool evidence; the SHA is an integrity link, never anonymization."
+    },
+    {
+      "index": 3,
+      "rule": "DS173237",
+      "path": "internal/platform/postgres/conversation_runtime_integration_test.go",
+      "source_sha256": "6367209d73d8f2b1ad27041fd1ee4c03cf68902451f504d94300f0b19771293f",
+      "region": {
+        "startLine": 50,
+        "startColumn": 40,
+        "endLine": 50,
+        "endColumn": 106,
+        "charOffset": 1931,
+        "charLength": 66,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "go"
+      },
+      "matched_text": "\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"",
+      "disposition": "REVIEWED_FALSE_POSITIVE_OR_EXPLICIT_FIXTURE",
+      "rationale": "Deliberate repeated-b synthetic request digest in a negative conflict fixture, not a credential."
+    },
+    {
+      "index": 4,
+      "rule": "DS197836",
+      "path": "internal/platform/postgres/conversation_lease_regression_test.go",
+      "source_sha256": "0c8eb9c03181041eb97e3ae954a99b90cea2de5e16dcf19cbe46a431584db701",
+      "region": {
+        "startLine": 67,
+        "startColumn": 159,
+        "endLine": 67,
+        "endColumn": 399,
+        "charOffset": 2663,
+        "charLength": 240,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "go"
+      },
+      "matched_text": "sha256_hex,state,attempt_count,user_text,assistant_text,response_sha256_hex,completed_at,expires_at)values($1,'whatsapp',$2,$3,$4,$5,$6,'completed',1,'private old text','private old answer',$6,clock_timestamp()-interval '2 hours',clock_time",
+      "disposition": "REVIEWED_FALSE_POSITIVE_OR_EXPLICIT_FIXTURE",
+      "rationale": "Explicit expired history SQL fixture uses a constant digest only to test retention rejection, no actual private history."
+    },
+    {
+      "index": 5,
+      "rule": "DS173237",
+      "path": "internal/platform/postgres/conversation_runtime_integration_test.go",
+      "source_sha256": "6367209d73d8f2b1ad27041fd1ee4c03cf68902451f504d94300f0b19771293f",
+      "region": {
+        "startLine": 42,
+        "startColumn": 9,
+        "endLine": 42,
+        "endColumn": 75,
+        "charOffset": 1544,
+        "charLength": 66,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "go"
+      },
+      "matched_text": "\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"",
+      "disposition": "REVIEWED_FALSE_POSITIVE_OR_EXPLICIT_FIXTURE",
+      "rationale": "Deliberate repeated-a synthetic request digest in a PostgreSQL contract fixture, not a credential."
+    },
+    {
+      "index": 6,
+      "rule": "DS197836",
+      "path": "internal/platform/postgres/conversation_runtime.go",
+      "source_sha256": "be0c0a5824295402a0b3febcb518a288445d13aca9816e555418961984389b3a",
+      "region": {
+        "startLine": 58,
+        "startColumn": 40,
+        "endLine": 58,
+        "endColumn": 155,
+        "charOffset": 2348,
+        "charLength": 115,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "go"
+      },
+      "matched_text": "sha256_hex,state,assistant_text,coalesce(locked_until>clock_timestamp(),false),attempt_count,expires_at<=clock_time",
+      "disposition": "REVIEWED_FALSE_POSITIVE_OR_EXPLICIT_FIXTURE",
+      "rationale": "SQL SELECT reads a stored digest and the DB clock; no hash function invocation."
+    },
+    {
+      "index": 7,
+      "rule": "DS162092",
+      "path": "internal/app/app_test.go",
+      "source_sha256": "e583d959f14c6ac7c0d862e25fe5184d1f34fdce5fe8f3740c7c43364a91d11f",
+      "region": {
+        "startLine": 83,
+        "startColumn": 31,
+        "endLine": 83,
+        "endColumn": 40,
+        "charOffset": 2508,
+        "charLength": 9,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "go"
+      },
+      "matched_text": "localhost",
+      "disposition": "REVIEWED_FALSE_POSITIVE_OR_EXPLICIT_FIXTURE",
+      "rationale": "The loopback localhost URL is confined to fullConfig in the app test file. Connected tests replace it with their owned httptest server; it is not a production debug listener."
+    },
+    {
+      "index": 8,
+      "rule": "DS197836",
+      "path": "internal/platform/postgres/conversation_governance.go",
+      "source_sha256": "f389724e387dcb6279aa9e2511bacd2c136f630f432663f00829911ef19489d0",
+      "region": {
+        "startLine": 14,
+        "startColumn": 64,
+        "endLine": 14,
+        "endColumn": 159,
+        "charOffset": 402,
+        "charLength": 95,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "go"
+      },
+      "matched_text": "sha256_hex=$4 and attempt_count=$5 and locked_until>clock_timestamp() and expires_at>clock_time",
+      "disposition": "REVIEWED_FALSE_POSITIVE_OR_EXPLICIT_FIXTURE",
+      "rationale": "SQL request digest comparison under a row lock, not a low-entropy hashing operation."
+    }
+  ]
+}

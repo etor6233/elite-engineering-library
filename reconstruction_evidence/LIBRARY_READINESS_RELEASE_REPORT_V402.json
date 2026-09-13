@@ -1,24 +1,10 @@
 {
-  "errors": [
-    "ARCA_INFRA: PROVEN_LOCAL required",
-    "T2801: PROVEN_LOCAL required",
-    "T2802: PROVEN_LOCAL required",
-    "T2803: PROVEN_LOCAL required",
-    "T2804: PROVEN_LOCAL required",
-    "T2805: PROVEN_LOCAL required",
-    "T2806: PROVEN_LOCAL required",
-    "T2807: PROVEN_LOCAL required",
-    "T2808: PROVEN_LOCAL required",
-    "T2809: PROVEN_LOCAL required",
-    "T2810: PROVEN_LOCAL required",
-    "reference: exact fields required: first_root,inventory,second_root",
-    "unresolved local blockers prevent release readiness"
-  ],
+  "errors": [],
   "level": "release",
   "production_authorized": false,
   "record": "PROJECT_LIBRARY_READINESS_GATE.json",
-  "record_sha256": "b996f3c84ddb623d83a46d9423063242d331d8cacc458165f0b691aa765b169a",
+  "record_sha256": "7cec77a8a53cce4e9ed2711b060d175bbcbe2ad750796c62f4a8f9086e528da4",
   "schema": "elite-library-readiness-report/v1",
   "scope": "LIBRARY_INFRASTRUCTURE",
-  "status": "BLOCKED"
+  "status": "READY_FOR_LIBRARY_USE"
 }

@@ -10,9 +10,11 @@ Use este perfil cuando el proyecto privado Go/TypeScript necesita un baseline lo
     {
       "path": "implementation_packs/MICROSOFT_DEVSKIM_ADAPTED_SAST_GATE.md",
       "packId": "MICROSOFT-DEVSKIM-ADAPTED-SAST-GATE",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "acknowledgeConditions": true,
-      "files": ["*"],
+      "files": [
+        "*"
+      ],
       "variables": {}
     }
   ]
@@ -34,3 +36,5 @@ materializar 4/4
 ```
 
 La salida sigue `REBUILD_VERIFIED / CONDITIONED`. Sólo el receipt del proyecto, el scope real y la aceptación de findings permiten contar el lint como ejecutado; nunca permiten afirmar que el producto completo es seguro.
+
+V402 composition security delta: fixed Go graph floor and bounded DevSkim failure diagnostics. COMPOSITION_SECURITY_RELEASE_V402.md/json.

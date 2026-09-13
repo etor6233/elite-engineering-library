@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0.0",
-  "revision": 278,
+  "revision": 337,
   "project": {
     "id": "elite-library-maintenance",
     "mode": "EXISTING",
     "rigor": "HIGH"
   },
-  "phase": "IMPLEMENTATION",
-  "status": "BLOCKED",
+  "phase": "COMPLETE",
+  "status": "COMPLETE",
   "baseline": {
     "kind": "EXISTING",
     "captured_at": "2026-09-07T13:35:06Z",
@@ -22,51 +22,34 @@
     "spec": "spec",
     "plan": "maintenance-plan",
     "tasks": "roadmap",
-    "convergence": null,
+    "convergence": "evid-177",
     "failure_ledger": "failures",
     "dependency_record": "dependencies",
     "freshness_record": "freshness",
     "monitoring_record": "monitoring",
     "production_admission": null
   },
-  "active_slice": {
-    "id": "library-connected-commerce",
-    "objective": "Complete SDK payment callback/reconciliation and initial handover with traced business derivations in an external local reference",
-    "journey_ids": [
-      "quote-order-payment-handover"
-    ],
-    "capability_ids": [
-      "commerce",
-      "payment",
-      "delivery"
-    ],
-    "task_ids": [
-      "T2802"
-    ]
-  },
+  "active_slice": null,
   "task_progress": {
-    "pending": [
-      "T2803",
+    "pending": [],
+    "in_progress": [],
+    "blocked": [],
+    "completed": [
+      "T2800",
+      "T2802",
       "T2804",
       "T2805",
+      "T2803",
       "T2806",
       "T2807",
       "T2808",
-      "T2810"
-    ],
-    "in_progress": [
-      "T2802"
-    ],
-    "blocked": [
+      "T2809",
       "T2801",
-      "T2809"
-    ],
-    "completed": [
-      "T2800"
+      "T2810"
     ]
   },
   "context": {
-    "summary": "V402 communications/FX published:178packs/1797blocks; franchise82/1032 exact. WhatsApp signed inbox/runtime/human approval/fenced send/status plus real browser and renewable OIDC service identity. Meta Page scheduled host and FX conversion receipts connected. Six affected profiles rebuilt; three Go profiles compile product/test packages with zero tests credited. FAIL819/820/821 corrected; global TEST02/03/07 and broader gates remain open.",
+    "summary": "COMPLETE: library infrastructure READY;48/48 local controls;exact signed reference,executable checks/archive/portable NEW-EXISTING PASS;generic tools blocked,local alternatives qualified.",
     "must_read_refs": [
       "v402",
       "v402-preparation",
@@ -222,56 +205,46 @@
     ]
   },
   "open": {
-    "blockers": [
-      "Readiness/authority map/implementation_assurance integral no demostrados; engineering contract existe con plan PASS y assurance BLOCKED.",
-      "GO-OBSERVABILITY-CORE0.3.0 CANDIDATE: contador V291, logger V292 e histograma V301 corregidos; politica target,race,integracion,exportacion,retencion,carga y operacion sin demostrar.",
-      "V300 lectura/recuperacion de handover corregidas; falta creador inicial/frontend y regla comercial de liberacion ya preguntada. Cobro/proveedor/callback/reconciliacion y cierre stock/pedido/transporte pendientes. Firefox423 previo sigue abierto.",
-      "V295 credenciales: target/IdP/proveedores sin elegir y documentacion completa Meta leads/TikTok/ML inaccesible; custodia DEV probada no es gestor productivo. ARCA diferida, dependencias fiscales no habilitadas.",
-      "FAIL532: pnpm native full-license/build/SBOM/CRT evidence incomplete. Metadata signatures and source-lock SCA do not admit all native bytes; no production or redistribution promotion.",
-      "V393: active BFF omits unused Sharp/native closure and disables image optimization; remaining vendored/native SBOM/security and tooling admission are still incomplete. Historical Sharp redistribution/reproduction remains gated if that pipeline is reconsidered.",
-      "V386: user-reported Daybreak restriction. Further libxml2 vulnerability validation ACCESS_BLOCKED by user direction; no TEST03/07 promotion. Continue independent TEST02 owner integration."
-    ],
-    "failure_ids": [
-      "FAIL-20260907-384",
-      "FAIL-20260907-385",
-      "FAIL-20260907-405",
-      "FAIL-20260907-423",
-      "FAIL-20260908-532",
-      "FAIL-20260910-735",
-      "FAIL-20260910-742"
-    ]
+    "blockers": [],
+    "failure_ids": []
   },
-  "next_action": "Continue T2802 source-backed accounting FX posting and gift/loyalty tender integration; agents close durable portal refresh/logout and role onboarding/evaluation. Reuse exact unchanged tests. Then finish remaining local domain/document/AI/delivery/ops/release gates, ARCA penultimate and Daybreak last deferred as ordered.",
+  "next_action": "No required LIBRARY_INFRASTRUCTURE work remains. Use INSTALL_AGENT_BRIDGE + START_FRANCHISE + verify with the durable source/reference and signed artifact. Provider credentials are an optional later user step; do not request them now. ARCA infrastructure complete, live homologation conditioned. Daybreak/libxml2 last dossier deferred until explicit user request and permitted access. Production target acceptance remains separate. Exact final archive/product/source hashes and empty checklist are in A-G report, durable START_REFERENCE_V402.md and final distribution receipt. No repeat of completed suites without a relevant delta.",
   "release": {
-    "target": "NONE",
-    "id": null,
-    "digest": null,
-    "status": "NONE",
-    "evidence_refs": []
+    "target": "LOCAL",
+    "id": "elite-library-v402-source330-meta331",
+    "digest": "sha256:cd24757744d01dbc37b666495d659f76824a8a680015eee469187e975542591f",
+    "status": "VERIFIED",
+    "evidence_refs": [
+      "evid-177",
+      "evid-178",
+      "evid-179",
+      "evid-180",
+      "evid-181"
+    ]
   },
   "evidence": [
     {
       "id": "inventory",
       "kind": "inventory",
       "path": "README.md",
-      "sha256": "0e55d8534bf3ccf716e0a00e5fb106656208f72ed76a168fbf4d38f5cd991e7f",
-      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "sha256": "f17bc0cfc40216cd6c98c2d70450daa5edbde007bdfb67c9bc95bcad4b2220ab",
+      "produced_at": "2026-09-13T20:14:39.319925Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
       "id": "roadmap",
       "kind": "delta_scope",
       "path": "REUSABLE_CODE_READINESS_ROADMAP.md",
-      "sha256": "8afe6cabe26ac419e2b971354c1540a1dbf7758a9cd91c1760bef4933d228cd2",
-      "produced_at": "2026-09-11T23:40:57.105630Z",
+      "sha256": "591ee397bbedca92bdd566802a9c7ddfb0220f247bd5b085e8bfacce1212bb11",
+      "produced_at": "2026-09-13T20:49:08.184067Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
       "id": "failures",
       "kind": "failure_ledger",
       "path": "PROJECT_FAILURE_LESSONS.md",
-      "sha256": "3cc8c7831a646efdfc25b9e15842b94b84aabe9613536fa75244b40fba04c7dd",
-      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "sha256": "ac4cecaec7b0e71aa546e77aebbf06d3053cb8186065a94f8af092957e107b9e",
+      "produced_at": "2026-09-13T20:50:02.820807Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
@@ -302,16 +275,16 @@
       "id": "whatsapp-owner",
       "kind": "canonical_pack_owner",
       "path": "implementation_packs/PYTHON_META_WHATSAPP_CLOUD_ADAPTER.md",
-      "sha256": "bd152a408efdcbcf68a53a9cb904c8c34183137691e7482f89683662426735b3",
-      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "sha256": "46ab3b4e880ebcdea37a022fee0312c3972c3e9dc77643f240498f55f7334893",
+      "produced_at": "2026-09-13T07:49:42.647218Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
       "id": "portal-owner",
       "kind": "canonical_pack_owner",
       "path": "implementation_packs/TYPESCRIPT_FRANCHISE_JOURNEY_PORTALS.md",
-      "sha256": "4b8f9c82a655ef14fd501c38de95ca4a7812c10c09202974ad68db577a7ba611",
-      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "sha256": "0a8b0186336b01e6d4019c9072cc8dccae6699a4b964a29bfee494d6abfe7b55",
+      "produced_at": "2026-09-13T03:50:11.080708Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
@@ -326,8 +299,8 @@
       "id": "bridge-owner",
       "kind": "canonical_pack_owner",
       "path": "implementation_packs/TYPESCRIPT_GO_API_WEB_BRIDGE.md",
-      "sha256": "39e29ea3fb5479ecb726fe6abaac4e0be08ab1b4ce51e6af4b120300adbc1fb4",
-      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "sha256": "2747c056e4b5035e6a2a99e0bd43b0762c3c3866bc883c8fac8ccb434cc67697",
+      "produced_at": "2026-09-13T14:00:01.267389Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
@@ -366,8 +339,8 @@
       "id": "readiness-record",
       "path": "PROJECT_READINESS_RECORD.md",
       "kind": "readiness_record",
-      "sha256": "e19c29bd5209014a394e114cd0e3c48a3e32bc6ff057d59363ea17240bb59b86",
-      "produced_at": "2026-09-11T23:16:31.267556Z",
+      "sha256": "53ab1266c2b17a81070acd8f936bf69b3e2e754fe091b1dc888730b1b367347f",
+      "produced_at": "2026-09-13T15:18:26.231974Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
@@ -382,8 +355,8 @@
       "id": "readiness-input",
       "path": "PROJECT_READINESS_GATE.json",
       "kind": "readiness_input",
-      "sha256": "99e3f08d4b0aa4f70650ca8bbf4a52eaa4b287bffeb91b970a9aa5ae5358d500",
-      "produced_at": "2026-09-11T23:16:31.267556Z",
+      "sha256": "251c7b8efc5f06bcba41ff239aeca3cac3aad81ed19d50ae8602e03b7f57bd05",
+      "produced_at": "2026-09-13T15:18:26.231974Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
@@ -406,24 +379,24 @@
       "id": "library-verifier",
       "path": "VERIFY_LIBRARY.ps1",
       "kind": "maintenance_control",
-      "sha256": "092a0311b48cb404e7cdbae096210f88618265cee446178915ef368fd10c1d4d",
-      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "sha256": "2c309a14b1307f9399c610db1721d9b0ce1e7847a46efece92666f9556e0a7dc",
+      "produced_at": "2026-09-13T18:41:13.635206Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
       "id": "portable-archive",
       "path": "CREATE_PORTABLE_ARCHIVE.ps1",
       "kind": "maintenance_control",
-      "sha256": "12d4973627a5771193bb4a2d77f390f186422944097f5ebbc27792dac48f9b0c",
-      "produced_at": "2026-09-08T16:48:10.174578Z",
+      "sha256": "eef1153a02d44486988e59a37455cdff5be8f7c81310c83b22e5f032c95a9e23",
+      "produced_at": "2026-09-13T15:55:45.266312Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
       "id": "maintenance-tests",
       "path": "markdown_system/test_library_maintenance_state.ps1",
       "kind": "regression_tests",
-      "sha256": "9750688f7c2697e881c615603321dcc28cb57c438a1cea5711d70b66773f985b",
-      "produced_at": "2026-09-08T16:48:10.174578Z",
+      "sha256": "1abc37f58329a3e2ebcddd7b184dfdec5119705a8536825ddb5e59d7a2843fa3",
+      "produced_at": "2026-09-13T15:55:45.266312Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
@@ -470,24 +443,24 @@
       "id": "authority-map",
       "path": "PROJECT_AUTHORITY_MAP.md",
       "kind": "authority_map",
-      "sha256": "5347450c1c8d87e58c92fff2707005fffee73ca7fe92c9dccbb419f3b7d5d23a",
-      "produced_at": "2026-09-11T17:44:39.827581Z",
+      "sha256": "fe76e9d53e2f87fee7f381698ad4c04e900c1e7500738e9ea2a0309780df49ef",
+      "produced_at": "2026-09-13T15:18:26.231974Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
       "id": "source-lock",
       "path": "PROJECT_EXTERNAL_SOURCE_LOCK.md",
       "kind": "source_lock",
-      "sha256": "2ecb2d026e7fa3c0399bb3c98460e5f5ceb3e4ea15bf0d4b99621f57bc02b34a",
-      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "sha256": "c4ce0a6f2f120b409842228fbff32e2bcbc27f655a7d8876f9a1beaeca5c5922",
+      "produced_at": "2026-09-13T16:19:01.341615Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
       "id": "pack-plan",
       "path": "PROJECT_PACK_PLAN.md",
       "kind": "pack_plan",
-      "sha256": "273ec767aad973772b1140abb8a7632664a5304b10f161c750e2ab7652c58580",
-      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "sha256": "eb55ab4d8bfd64272160bbb10648cd9543882508021ae65a7fbefd666b2e8fd1",
+      "produced_at": "2026-09-13T06:50:38.552405Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
@@ -550,48 +523,48 @@
       "id": "dependencies",
       "path": "PROJECT_DEPENDENCY_UPDATE_RECORD.md",
       "kind": "dependency_record",
-      "sha256": "e863e4cd8ffcccc653684ab9c3fbd11c178390f6f194a12763b042cc174e094f",
-      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "sha256": "8cbb9bf3da33c42c7cee99a5bb1d9c883430949f7324a2fe9ab862b8ccff559e",
+      "produced_at": "2026-09-13T20:14:39.319925Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
       "id": "freshness",
       "path": "PROJECT_AUTHORITY_FRESHNESS_RECORD.md",
       "kind": "freshness_record",
-      "sha256": "6de6a5167b5c81e38707481c4437d24cadc81fbf9deb513d35852061a3b6deea",
-      "produced_at": "2026-09-11T23:40:57.105630Z",
+      "sha256": "5d454e3b9c83dddf2a02ae9ea5e8eee407a5d7d1a559285622f103c67b81dcfe",
+      "produced_at": "2026-09-13T20:14:39.319925Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
       "id": "monitoring",
       "path": "PROJECT_VULNERABILITY_MONITORING_RECORD.md",
       "kind": "monitoring_record",
-      "sha256": "b9e87612a9ea2bfd2aaf2b430adc2e3aecb54cc265d2c87035338e7a2661a3a9",
-      "produced_at": "2026-09-10T17:58:35.890402Z",
+      "sha256": "edcb619c4f4022ad77e1c8bbddfd3fcd501c0ce670d0e7719ab7f4cb20a20433",
+      "produced_at": "2026-09-13T06:50:38.552405Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
       "id": "official-profiles",
       "path": "PROJECT_OFFICIAL_SOURCE_PROFILE_RECORD.md",
       "kind": "source_profile_record",
-      "sha256": "1f1f0c26a79e42fe0e0dcb87167b372309c98df20edf7f78539e0ba5f3317e94",
-      "produced_at": "2026-09-11T20:28:04.341373Z",
+      "sha256": "0bea06bf54700179447fb394892799cc0e5e0c023be3fd025b55f5a1da632722",
+      "produced_at": "2026-09-13T18:20:17.236283Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
       "id": "compositor-owner",
       "path": "implementation_packs/MARKDOWN_COMPOSITOR_CORE.md",
       "kind": "canonical_pack_owner",
-      "sha256": "a8505384bb3f9085d36f21f1b6471fe24cbd17b054fa87f82f1d24b7007ce9d5",
-      "produced_at": "2026-09-07T15:15:15Z",
+      "sha256": "f0f024d0faf8960bbfd72c42aff649c95e07e8f3fbe0ce30e8c8926a73c64029",
+      "produced_at": "2026-09-12T16:52:58.888487Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
       "id": "executable-runner",
       "path": "VERIFY_EXECUTABLE_LIBRARY.ps1",
       "kind": "maintenance_control",
-      "sha256": "be9a1319bed5c545e3fee0b13c7e475b58c79e7116b0d87b83739b3e5e5685f4",
-      "produced_at": "2026-09-11T23:40:57.105630Z",
+      "sha256": "c2ecab51844657f1bedb2befa47b62cd9cec89bfb0dabe5aa8beb21bca5e36a6",
+      "produced_at": "2026-09-13T20:34:41.801952Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
@@ -654,8 +627,8 @@
       "id": "engineering-contract",
       "path": "PROJECT_ENGINEERING_CONTRACT.json",
       "kind": "engineering_contract",
-      "sha256": "452a2e59bc423ab560c88ce90d35541a20dbbd2325d692c836eee0fbc565d75d",
-      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "sha256": "245d0e34b22d71a388128652cc8c32700e8eb76c57362cd38bd9b273f831f633",
+      "produced_at": "2026-09-13T20:53:57.184972Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
@@ -710,8 +683,8 @@
       "id": "gap-map",
       "path": "markdown_system/FRANCHISE_GAP_MAP.md",
       "kind": "coverage_map",
-      "sha256": "16773c9b52410ed8ec101112738db51ae8a3f714c27daa5dd6888d0486d18270",
-      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "sha256": "c72117518385d3a11fb54d1a5ef38e106a65a046481250abcee4d423e859f171",
+      "produced_at": "2026-09-13T20:34:41.801952Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
@@ -758,8 +731,8 @@
       "id": "composition-owner",
       "path": "implementation_packs/GO_ELECTROMOBILITY_APPLICATION.md",
       "kind": "canonical_pack_owner",
-      "sha256": "46f80eae954e4a58b58fcb1d329fd5cea075f69b7cea29e309dca17558da58d2",
-      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "sha256": "a39a602fcbbfbd70f2a025e96a21ca8ba3bc54a10b46acd0c4230aecb98376de",
+      "produced_at": "2026-09-13T14:40:43.931416Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
@@ -774,8 +747,8 @@
       "id": "commerce-owner",
       "path": "implementation_packs/GO_COMMERCE_PRICING_PAYMENT_API.md",
       "kind": "canonical_pack_owner",
-      "sha256": "d84ca5e9fb7f6ea6f2e28cb0479ff105c17bdacdd45dd5677a2cd19d69509fcd",
-      "produced_at": "2026-09-12T00:07:37.182067Z",
+      "sha256": "481fc092c9f954636f4c380fac3fb03df81f071ff9ababbfad3631271237742c",
+      "produced_at": "2026-09-12T22:11:22.428621Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
@@ -862,8 +835,8 @@
       "id": "oidc-owner",
       "path": "implementation_packs/TYPESCRIPT_OIDC_PORTAL_ADAPTER.md",
       "kind": "canonical_pack_owner",
-      "sha256": "d1bd265c3fc461bb4814fc94f78b8232a0c0f6c0b41f628be77c873edbcb954b",
-      "produced_at": "2026-09-12T00:55:54.098739Z",
+      "sha256": "e2c2a15bb1b8c939ba98b91cdef79451cbe329e55b446e2bfa3ba42065f75e9e",
+      "produced_at": "2026-09-13T09:14:09.975942Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
@@ -1038,8 +1011,8 @@
       "id": "legacy-web-owner",
       "path": "implementation_packs/TYPESCRIPT_ENTERPRISE_WEB_GOLDEN_PATH.md",
       "kind": "maintenance_audit",
-      "sha256": "7c0c6b9d51104136edd72539aa4b54f0be068ccea4d5d75d5d8bc814ce99f99a",
-      "produced_at": "2026-09-08T07:16:11.451913+00:00",
+      "sha256": "73c42c46a84ceecb2df618b9a9b4838607a0813d66d3e6a433c81909756badb4",
+      "produced_at": "2026-09-13T14:40:43.931416Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
@@ -1174,16 +1147,16 @@
       "id": "pnpm-selection-owner",
       "path": "implementation_packs/PNPM_ARTIFACT_SELECTION_GATE.md",
       "kind": "authored_candidate_projection_owner",
-      "sha256": "c7799b3eae550f8b50e83c786fc3d4e70686df9a0d5a686a73795fd3ec34a66a",
-      "produced_at": "2026-09-11T23:16:31.267556Z",
+      "sha256": "8a16a52ee7ed0795505765c81bf0509d40846101c790694a4f87010f479734b2",
+      "produced_at": "2026-09-13T10:10:21.547359Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
       "id": "pnpm-selection-plan",
       "path": "markdown_system/PNPM_ARTIFACT_SELECTION_PACK_PLAN.md",
       "kind": "projection_tooling_plan",
-      "sha256": "35df7dd828b53f7e826bdfd5aa61d8882ba7980d935ae468aba2ac7d9459982b",
-      "produced_at": "2026-09-11T23:16:31.267556Z",
+      "sha256": "e5b518d8ce1f744b135d271439f1f189e8174dc428ab673d48782a8a8ea4d834",
+      "produced_at": "2026-09-13T10:10:21.547359Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
@@ -1550,8 +1523,8 @@
       "id": "helpcenter-owner",
       "path": "implementation_packs/GO_HELP_CENTER_CORE.md",
       "kind": "canonical_pack_owner",
-      "sha256": "7669198e3df9d82e4fa76ddb53ec730ac642a6133ffae1ed93547e8e1d60d47e",
-      "produced_at": "2026-09-10T15:40:00.048234Z",
+      "sha256": "e76c5ec1a88dc84882e446af4448c60ac04163aa6d1e6a076b5836161bc79082",
+      "produced_at": "2026-09-13T01:39:55.507772Z",
       "producer": "agent-observed-source-and-tests-not-production-admission"
     },
     {
@@ -1726,16 +1699,16 @@
       "id": "http-reference-owner",
       "path": "implementation_packs/GO_HTTP_METRICS_REFERENCE.md",
       "kind": "http_reference_qualification",
-      "sha256": "fd149ac383f417fac5da8e5928acfcade6a7b21db8d5805451093a4881b3abbe",
-      "produced_at": "2026-09-11T22:53:25.149157Z",
+      "sha256": "00aad47aec6767fcc2e125822e5a5dc261edcd4f8014e24910fabd3b0aa7cded",
+      "produced_at": "2026-09-13T14:40:43.931416Z",
       "producer": "actual-canonical-rebuild-and-finite-synthetic-runtime"
     },
     {
       "id": "http-reference-plan",
       "path": "markdown_system/HTTP_METRICS_REFERENCE_PACK_PLAN.md",
       "kind": "http_reference_qualification",
-      "sha256": "b362a209856e3a53c8d7c686a57ff1c56f055320665cdae3e9f47c739814cca1",
-      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "sha256": "86e8e7249f8c4df9939b0ff815f03844e4191de6e89491ad0deb4cb21bcb755d",
+      "produced_at": "2026-09-13T19:59:25.999132Z",
       "producer": "actual-canonical-rebuild-and-finite-synthetic-runtime"
     },
     {
@@ -1990,16 +1963,16 @@
       "id": "library-readiness",
       "path": "PROJECT_LIBRARY_READINESS_GATE.json",
       "kind": "readiness_record",
-      "sha256": "b996f3c84ddb623d83a46d9423063242d331d8cacc458165f0b691aa765b169a",
-      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "sha256": "7cec77a8a53cce4e9ed2711b060d175bbcbe2ad750796c62f4a8f9086e528da4",
+      "produced_at": "2026-09-13T20:14:39.319925Z",
       "producer": "V402 explicit user scope and canonical validator plus source inspection"
     },
     {
       "id": "library-readiness-report",
       "path": "reconstruction_evidence/LIBRARY_READINESS_PREPARATION_REPORT_V402.json",
       "kind": "readiness_report",
-      "sha256": "a7872ffc739bbcbe69f9434d7013f4c4daa9c9cbb52b1e6456869b82f7698f6f",
-      "produced_at": "2026-09-12T01:37:37.798127Z",
+      "sha256": "6aa2e7b6e3e8616b4d9ea96cdd1b4d5521ab16f27a2b048d8d51c3c4c3217a69",
+      "produced_at": "2026-09-13T19:59:25.999132Z",
       "producer": "V402 explicit user scope and canonical validator plus source inspection"
     },
     {
@@ -2046,8 +2019,8 @@
       "id": "evid-111",
       "path": "reconstruction_evidence/PAYMENT_SDK_RECONCILIATION_V402.md",
       "kind": "implementation_delta",
-      "sha256": "0f2c9be1cbb5d34840ec8d779cdbfde210278131454e02297b801d6205127e7c",
-      "produced_at": "2026-09-12T00:07:22.575817Z",
+      "sha256": "97c151f6eb1034ae4370659a77d826eec715048d92b58d375e64288c75530430",
+      "produced_at": "2026-09-13T15:55:45.266312Z",
       "producer": "Official dependency-pinned hosted checkout and payment GET adapter0.3.0; SDK transport tests and source/SCA/12file reconstruction"
     },
     {
@@ -2086,8 +2059,8 @@
       "id": "evid-116",
       "path": "reconstruction_evidence/CONNECTED_DELTA_ASSURANCE_V402.md",
       "kind": "implementation_delta",
-      "sha256": "734da8551196755b5934e3b2dba28764bcd4ffe69b0879e6794cacca6655e43f",
-      "produced_at": "2026-09-12T00:41:45.435454Z",
+      "sha256": "09f5170810ca9618a6651e2147e87d1606981f4c14942f17290b1873ac90d0cc",
+      "produced_at": "2026-09-13T15:55:45.266312Z",
       "producer": "V402 exact source, reconstruction and focused runtime receipts; claim and remaining gates in the linked artifact"
     },
     {
@@ -2129,6 +2102,494 @@
       "sha256": "988e11bb9a60b6a1ffe1f14264d49aaf941c1ddc396c16ce1c2874c3c4386dda",
       "produced_at": "2026-09-12T01:37:30.540465Z",
       "producer": "Connected WhatsApp human browser/PG, renewable OIDC service identity and Meta Page host;1032 exact franchise outputs"
+    },
+    {
+      "id": "evid-122",
+      "path": "reconstruction_evidence/FX_JOURNAL_CONNECTION_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "b964a1390092a838b96a715de9f98888ec6bc3dc0ca88a1a48ed2facdf18fbf6",
+      "produced_at": "2026-09-12T15:06:28.096281Z",
+      "producer": "FX receipt to durable existing journal posting and reversal; concurrency/recovery and safe downgrade;1039 exact franchise outputs"
+    },
+    {
+      "id": "evid-123",
+      "path": "reconstruction_evidence/STORED_VALUE_TENDER_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "d47a4687701ef5cd2f7123fef3a71ace2341bcf859f025fee24ad23f5667a5ec",
+      "produced_at": "2026-09-12T15:43:18.332144Z",
+      "producer": "Candidate source-backed stored value: partial SDK tender and full funding receipt through handover/release; canonical promotion pending"
+    },
+    {
+      "id": "evid-124",
+      "path": "reconstruction_evidence/STORED_VALUE_OPERATOR_FLOW_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "d3aee6b382ae7f1261ced865cd3bd90b03980d4ea52722ed977e05cc01c3c820",
+      "produced_at": "2026-09-12T16:14:07.849329Z",
+      "producer": "Candidate stored-value HTTP/portal to delivery; exact int64, commit expiry, browser recovery, host and safe downgrade; packaging pending"
+    },
+    {
+      "id": "evid-125",
+      "path": "reconstruction_evidence/STORED_VALUE_SOURCE_CLOSURE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "5687ebe1fec49f072123a56cc4d3ba75130e542b9269df5ecfe7270111073b6a",
+      "produced_at": "2026-09-12T16:52:58.431042Z",
+      "producer": "Stored-value source closure, source replacement/fuzz and canonical exact-EOF materializer; product packaging pending"
+    },
+    {
+      "id": "evid-126",
+      "path": "reconstruction_evidence/STORED_VALUE_CONNECTED_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "ed54d73a61758737ec39bf34b6dc70bb28c334dbe05c29ac9b9adc370640fe3c",
+      "produced_at": "2026-09-12T17:02:58.217585Z",
+      "producer": "Canonical gift/loyalty assisted tender to delivery, exact source/notices and five profiles; remaining T2802 blueprint claims open"
+    },
+    {
+      "id": "evid-127",
+      "path": "reconstruction_evidence/WARRANTY_SOURCE_SCOPE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "8bb5a469f2b44e502cea236f5934fa2402d77d0f1aa37623d04488c2a13f2170",
+      "produced_at": "2026-09-12T17:12:49.316605Z",
+      "producer": "Required warranty J1/J4 source inspection, remaining scope classification candidate and explicit distribution failures"
+    },
+    {
+      "id": "evid-128",
+      "path": "reconstruction_evidence/WARRANTY_DATE_ADMISSION_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "e1969d84cbe26fbb1556e2e32b1cb214ed1efba22b8b783cc5f506e5444b4ea4",
+      "produced_at": "2026-09-12T17:29:16.775649Z",
+      "producer": "Narrow fixed-source warranty date admission,1280vectors/native fuzz/eight exact files; staged full reference ready for workflow integration"
+    },
+    {
+      "id": "evid-129",
+      "path": "reconstruction_evidence/WARRANTY_CONNECTED_TERMS_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "66935cc28b7dad78b5473fdfa2826efe5d33248ce4ce9d30bdbb5a33e0848b6f",
+      "produced_at": "2026-09-12T17:55:37.916238Z",
+      "producer": "Versioned sold warranty consent and activation connected to real local quote/payment/handover; rollback/recovery/scope/calendar proved; J4 remains pending"
+    },
+    {
+      "id": "evid-130",
+      "path": "reconstruction_evidence/WARRANTY_CONNECTED_CLAIM_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "294a265da013c09f5e2d896539373ab83c195583ab095455921a9e60e2e777eb",
+      "produced_at": "2026-09-12T18:28:11.134282Z",
+      "producer": "Connected warranty J1/J4 backend:4claims, approval, FIFO, rollback, customer/factory closure; API/host/publication pending"
+    },
+    {
+      "id": "evid-131",
+      "path": "reconstruction_evidence/WARRANTY_INTERFACE_AND_PORTABILITY_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "abfc1a77853408d92a59d0effe3571f4c293c7d2fd3c4b07ad4d487e48905ae3",
+      "produced_at": "2026-09-12T19:07:19.349098Z",
+      "producer": "Warranty HTTP/host/CLI, commit-expiry, safe downgrade and exact-source fuzz proved locally; canonical publication next"
+    },
+    {
+      "id": "evid-132",
+      "path": "reconstruction_evidence/WARRANTY_CONNECTED_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "6cc0afd9f21bf2711191ec7919b355a7e046b8379689097555b105d8bcfa15f7",
+      "produced_at": "2026-09-12T19:22:07.762906Z",
+      "producer": "Warranty sold terms and J4 claim canonically composed; two packs, six owners, four exact profiles and distinct source notices"
+    },
+    {
+      "id": "evid-133",
+      "path": "reconstruction_evidence/T2802_REFERENCE_SCOPE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "49a25944d32d2d5a63a32396d373aed86d23dc1388700d7275665775005ce8a2",
+      "produced_at": "2026-09-12T19:39:26.985831Z",
+      "producer": "Reference subcapabilities classified with blueprint evidence; J2 supply and J3 catalog remain REQUIRED"
+    },
+    {
+      "id": "evid-134",
+      "path": "reconstruction_evidence/SERIAL_OPTIONAL_IDENTIFIERS_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "9e27c78e79db435c0bd0e65e8adbd0cc896f1e7fc622724f47bb19fcf890ba7f",
+      "produced_at": "2026-09-12T19:39:26.985831Z",
+      "producer": "Optional serial identifier defect fixed canonically; unique known values, safe downgrade and four exact profiles"
+    },
+    {
+      "id": "evid-135",
+      "path": "reconstruction_evidence/SERIAL_SUPPLY_CONNECTED_BACKEND_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "60525385328b36f71938773b3d6c7772527fb7be5ace9b26243af5e8af25d083",
+      "produced_at": "2026-09-12T20:08:40.215171Z",
+      "producer": "J2 backend connected: quantity, serial ASN, partial receipt, shared human quality, ATP, rollback and eight-to-one effect"
+    },
+    {
+      "id": "evid-136",
+      "path": "reconstruction_evidence/SERIAL_SUPPLY_CONNECTED_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "6dc2f76ffc9649df5737ad0156922300797139f2afefed42108f23474a2f74ca",
+      "produced_at": "2026-09-12T20:37:16.714616Z",
+      "producer": "J2 canonical: quantities, serial QA, split ASN, receipt quarantine/release, HTTP recovery, host, rollback, exact87/1166"
+    },
+    {
+      "id": "evid-137",
+      "path": "reconstruction_evidence/CATALOG_CONNECTED_PROGRESS_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "72f8c9a55ff9e628992804f0d88ba7caa9bf90d504c9a3665a93882f87ad6600",
+      "produced_at": "2026-09-12T21:35:48.676579Z",
+      "producer": "J3 candidate: shared review, immutable catalog/price rollback, scoped HTTP/search, feed fence and recovery; publication pending"
+    },
+    {
+      "id": "evid-138",
+      "path": "reconstruction_evidence/CATALOG_CONNECTED_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "c1ed9702b9266772ce8d0fb811ad24883ab341fb8f227f9f9b06fd6acef5dd8e",
+      "produced_at": "2026-09-12T22:11:21.934744Z",
+      "producer": "J3 canonical: approved snapshot/price/search/Next storefront/feed fence, recovery, host/down/fuzz and exact89/1202"
+    },
+    {
+      "id": "evid-139",
+      "path": "reconstruction_evidence/T2802_CONNECTED_CLOSURE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "61f0aad2be78c44fb2a129534d2038cbf858abf83227d1981150738d2f6cbb56",
+      "produced_at": "2026-09-12T22:11:21.934744Z",
+      "producer": "T2802 domain PROVEN_LOCAL: payment/delivery, FX, stored value, warranty, supply and catalog; role/adapter/ops gates remain"
+    },
+    {
+      "id": "evid-140",
+      "path": "reconstruction_evidence/TRAINING_CONNECTED_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "58f5ec87956c2f56b12779394c4460a0e1149fd727a5ab8b2d444421e1503a73",
+      "produced_at": "2026-09-12T22:42:24.680353Z",
+      "producer": "T2804 training canonical: same-release help, durable participation/human review, browser recovery, host/down/fuzz; exact91/1228"
+    },
+    {
+      "id": "evid-141",
+      "path": "reconstruction_evidence/CATALOG_ROLE_AUTHORING_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "ba91ce7f2fe79adf9c1f6be53a3051397820654f2d106ee09f22b2ad7bb6c736",
+      "produced_at": "2026-09-12T23:23:28.352065Z",
+      "producer": "T2804 catalog role canonical: model/variant/book creation, PNG, four reviews, publish/restore, browser loss recovery; exact93/1248"
+    },
+    {
+      "id": "evid-142",
+      "path": "reconstruction_evidence/SUPPLY_ROLE_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "440cdd53b00d1694aa442230c62c96387ef846c76c15b20af85f63b5e6cef110",
+      "produced_at": "2026-09-12T23:48:02.068434Z",
+      "producer": "T2804 supply role canonical: order/quantities/factory/replacement/receiving/reinspection/availability and browser loss recovery; exact95/1264"
+    },
+    {
+      "id": "evid-143",
+      "path": "reconstruction_evidence/WARRANTY_ROLE_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "61736a88e3b94cefdf7c6361efd72e27fb29214922c60b237fd0044fbda97f97",
+      "produced_at": "2026-09-13T00:20:03.268759Z",
+      "producer": "T2804 warranty role: terms/consent/activation and full repair/customer acceptance/factory reconciliation, browser GET recovery; exact97/1278"
+    },
+    {
+      "id": "evid-144",
+      "path": "reconstruction_evidence/NETWORK_ROLE_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "5b96671f895ab07fbea4cb2c1150adb887be3f1841e99b48782c606a944950ab",
+      "produced_at": "2026-09-13T00:54:07.600587Z",
+      "producer": "T2804 network role: organization/agreement/branch lifecycle, original SQL, atomic results and browser GET recovery; exact99/1299"
+    },
+    {
+      "id": "evid-145",
+      "path": "reconstruction_evidence/HELP_CMS_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "73c588774a912cb54d17a6e8599a5516d3cc003be019767b6b5a7005a93dbeb4",
+      "produced_at": "2026-09-13T01:39:54.996863Z",
+      "producer": "T2804 CMS: article lifecycle/history/recovery,21shared guides and5bounded human curricula revision2; exact102/1324"
+    },
+    {
+      "id": "evid-146",
+      "path": "reconstruction_evidence/ROLE_METRICS_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "651811a10f19085e3da89be4677507fd22811f96ff82f40471fc872a0d72cae4",
+      "produced_at": "2026-09-13T02:37:01.056582Z",
+      "producer": "T2804 KPIs: source-scoped exact orders/points/NPS and role browser updates; bounded generic BFF body; exact103/1343"
+    },
+    {
+      "id": "evid-147",
+      "path": "reconstruction_evidence/PRIVATE_LOCALE_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "58bdc0d78cd6fcaa8a19fcc1b370b92579176bfeaa330d5427f7df81cf98843b",
+      "produced_at": "2026-09-13T03:50:10.684179Z",
+      "producer": "T2804 roles/effects/help/training/KPIs/private locale PROVEN_LOCAL; source-bound bilingual recovery and exact104/1363"
+    },
+    {
+      "id": "evid-148",
+      "path": "reconstruction_evidence/MARKETPLACE_MUTATION_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "260c04a9707f10d4b00ec53d2a7391fb7c309e7dfb2944fa583d4c7edd7b5d2a",
+      "produced_at": "2026-09-13T04:46:01.309758Z",
+      "producer": "T2805 existing-item ML mutations locally proven with catalog/ATP/approval/fence/recovery; exact105/1379; whole control remains open"
+    },
+    {
+      "id": "evid-149",
+      "path": "reconstruction_evidence/MARKETPLACE_INITIAL_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "733a8bcee51128ecd3db63acc57e7c6441e591961935aff4772fe17fecbdca99",
+      "produced_at": "2026-09-13T05:21:07.653595Z",
+      "producer": "T2805 initial ML PNG/media/CREATE locally proven with source/approval/fence/GET recovery; exact105/1387; remaining control work open"
+    },
+    {
+      "id": "evid-150",
+      "path": "reconstruction_evidence/MARKETPLACE_CONTENT_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "81f07523d1fa883ac166dccdb24e5927bcc09325e09e4468418b56e01b7a0302",
+      "produced_at": "2026-09-13T05:33:53.790342Z",
+      "producer": "T2805 ML CONTENT locally proven with source/media/unsold-single-item guard/approval/fence/GET; exact105/1394; other feeds/comms open"
+    },
+    {
+      "id": "evid-151",
+      "path": "reconstruction_evidence/MERCHANT_CONNECTED_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "757b8aac29a3822d5b419b12809aa1593f3c7fee6731f3fc9a70eecfd34a070f",
+      "produced_at": "2026-09-13T06:50:38.206598Z",
+      "producer": "T2805 Google Merchant source/SDK/PG/queue PROVEN_LOCAL106/1418,20/20SCA; other selected mappings/comms remain"
+    },
+    {
+      "id": "evid-152",
+      "path": "reconstruction_evidence/SCHEDULED_COMMUNICATIONS_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "009db69abf6100b2618dbe46353dbc88b1571fac7dcd594d674072c25ce668b5",
+      "produced_at": "2026-09-13T07:49:40.734390Z",
+      "producer": "T2805 scheduled CRM/jobs/WA/recovery PROVEN_LOCAL107/1435; campaign segmentation/drip/conversion remains"
+    },
+    {
+      "id": "evid-153",
+      "path": "reconstruction_evidence/CAMPAIGN_CONNECTED_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "4fc7deec96b3ddc0442e04adffe5c00263e0c5597eb2398e83233728e61e611d",
+      "produced_at": "2026-09-13T08:33:10.969527Z",
+      "producer": "T2805 selected provider/WA/Page/reminders/campaign/quote-order PROVEN_LOCAL108/1451; T2803 identity/source/SCA next"
+    },
+    {
+      "id": "evid-154",
+      "path": "reconstruction_evidence/IDENTITY_PORTAL_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "7ac6c8cc99448f563972b5ad8fad3de325c4e499220f96dfde9a6c654515e1eb",
+      "produced_at": "2026-09-13T08:58:16.494705Z",
+      "producer": "Portal lifecycle PROVEN_LOCAL109/1477: official OIDC/PG/CAS/logout/revocation/host; T2803 J5 administration/source/SCA remains open"
+    },
+    {
+      "id": "evid-155",
+      "path": "reconstruction_evidence/IDENTITY_J5_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "7d9d684f180667f48492e20adcfbfecccb83b5f8a8942bb0872abe590125e47a",
+      "produced_at": "2026-09-13T09:14:09.679945Z",
+      "producer": "J5 identity PROVEN_LOCAL109/1481: narrow bootstrap, scoped signed HTTP/PG effects and SDK access review; T2803 source/SCA remains open"
+    },
+    {
+      "id": "evid-156",
+      "path": "reconstruction_evidence/PNPM_LOCAL_RUNTIME_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "b210caf287c4a38ca5f87387f7e656e09e23d835f0ad1117e3d16481c092dce0",
+      "produced_at": "2026-09-13T10:10:21.148368Z",
+      "producer": "pnpm local runtime PROVEN_LOCAL: exact offline installer, jitless/no-addons, source/notices,477SCA identities,3installs and2rebuilds; composition next"
+    },
+    {
+      "id": "evid-157",
+      "path": "reconstruction_evidence/COMPOSITION_SECURITY_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "bfd4492ffea2816ecede3d260000f1ab6a907c5e97ae42820642f251be6aee0b",
+      "produced_at": "2026-09-13T10:47:42.740912Z",
+      "producer": "T2803 local: unchanged OIDC/J5, exact source1481, fixed Go graph SCA0,300DevSkim tests and1842triaged occurrences; ARCA1deferred;5exactprofiles"
+    },
+    {
+      "id": "evid-158",
+      "path": "reconstruction_evidence/DOCUMENT_REFERENCE_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "a859240c85aface113e9a650171e5212048fd6803b3b561c900e6bac17df3e0f",
+      "produced_at": "2026-09-13T11:52:55.305049Z",
+      "producer": "T2806 local: original/job, official SDK fixture, human review, atomic document/approval/outbox, recovery/fence,37module graph,6exact profiles113/1518"
+    },
+    {
+      "id": "evid-159",
+      "path": "reconstruction_evidence/AI_RUNTIME_GOVERNANCE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "1f0a6466be8ef48ec9ab1a0488628c7540c9e113dc52e5753129bd6922ac1631",
+      "produced_at": "2026-09-13T12:18:32.011291Z",
+      "producer": "T2807 delta: generation/retention, durable budget and tool intent, explicit continuation; PG regressions,2exact profiles113/1523; eval/history remains"
+    },
+    {
+      "id": "evid-160",
+      "path": "reconstruction_evidence/AI_CONNECTED_REFERENCE_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "5352c625aa0dffa700a559ba3b4f9d2795ab7d9816cebf8045747cd0954759ca",
+      "produced_at": "2026-09-13T12:41:17.405746Z",
+      "producer": "T2807 local: real domain/contact/tools/budget/handoff,11required evals,host/WA2cases,history exact code/27policy;3exact profiles113/1530"
+    },
+    {
+      "id": "evid-161",
+      "path": "reconstruction_evidence/LOCAL_REFERENCE_DELIVERY_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "f726442d6200e8bcd22ecb7247a9c751c2163d53a920291e35da84297a25c5f8",
+      "produced_at": "2026-09-13T14:00:00.745083Z",
+      "producer": "T2808 local:115/1560 sources,2exact4066artifact builds;84migrations/replay/drift,API+Next/rollback/recovery/order/empty-tree stop; isolated start"
+    },
+    {
+      "id": "evid-162",
+      "path": "reconstruction_evidence/LOCAL_REFERENCE_OPERATIONS_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "a8cdab67368eda591d87897e6ab9d2fd5ae937ccc54b805723922a6421607da5",
+      "produced_at": "2026-09-13T14:40:39.704563Z",
+      "producer": "T2809 local:116/1583, actual OIDC/API+Next/PG/official metrics,10m alert/repair/1000replay/WAL/native recovery;78module SCA0,34lint reviewed"
+    },
+    {
+      "id": "evid-163",
+      "kind": "source_inspection",
+      "path": "reconstruction_evidence/NPS_SOURCE_DISCOVERY_V402.md",
+      "sha256": "fd41a8833407f5b7703522bddd607e35e237da6a219dfa583b4bbdc62d425bf6",
+      "produced_at": "2026-09-13T14:50:01.977458Z",
+      "producer": "T2801 source audit: residual AUTHORED NPS;3official released PostHog MIT files fixed/quarantined; no adoption/test PASS inferred"
+    },
+    {
+      "id": "evid-164",
+      "path": "reconstruction_evidence/NPS_SOURCE_ADAPTATION_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "b24893a0cf0f46bed5977d0ea6deb6a732d5aadd4449cd674c6b0d3b47524250",
+      "produced_at": "2026-09-13T15:09:49.119670Z",
+      "producer": "PostHog MIT NPS adapted actual PG caller;9original/6typed/oracle/fuzz416153,84migration HTTP OIDC restart;4exact profiles1591,5Go lint0"
+    },
+    {
+      "id": "evid-165",
+      "path": "reconstruction_evidence/LIBRARY_ASSURANCE_REVIEW_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "c3252b2149964ca80eacc4a973b2b0727039d15cdd17e1c6fa4a8c3df42755aa",
+      "produced_at": "2026-09-13T15:18:25.768113Z",
+      "producer": "T2801 review:G/H ANSWERED,9dimensions/8current receipts1591;384contained,385local resolution,532/804restricted use;release/ARCA still required"
+    },
+    {
+      "id": "evid-166",
+      "path": "reconstruction_evidence/PORTABLE_SELECTOR_REPAIR_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "a3bed2c572e9c443cb5b1011edc9b214cb43f2fb9d9f9ce4aaff27876eadc8d0",
+      "produced_at": "2026-09-13T15:55:44.701942Z",
+      "producer": "T2810 portable selector/EOF/audit repairs;full verifier205packs/2308blocks/56profiles,franchise1591 PASS;no product delta or final signed release"
+    },
+    {
+      "id": "evid-167",
+      "path": "reconstruction_evidence/REFERENCE_NOTICES_RELEASE_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "4022e492e8187bb1e7fc422f0aa50d9b0331966c77f6e2124cbd72b37e0351dc",
+      "produced_at": "2026-09-13T16:19:00.859192Z",
+      "producer": "T2810 exact notices:129runtime manifests155texts12negative cases;4rebuilds1615;3Python8reviewed lint;no dependency delta or final artifact claim"
+    },
+    {
+      "id": "evid-168",
+      "path": "reconstruction_evidence/SIGNED_RELEASE_CONTRACT_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "58d571c89d98adbe8c1b1e40eb47385104c15726047004b2ed5cdcde762bba2a",
+      "produced_at": "2026-09-13T16:39:56.440478Z",
+      "producer": "T2810 signer contract:external trust/path/source/failed-evidence guards;14focused cases,3rebuilds1616,6lint reviewed;no final product/SCA"
+    },
+    {
+      "id": "evid-169",
+      "path": "reconstruction_evidence/SIGNED_BUILD_DRIVER_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "b97721e6c901162cd9120f2acec729409dbf0238ea2510af5719017270045817",
+      "produced_at": "2026-09-13T16:54:59.998056Z",
+      "producer": "T2810 actual-build driver contract:12fixtures,4rebuilds1621,3lint0;local key ACL/public correspondence;final product signature pending"
+    },
+    {
+      "id": "evid-170",
+      "path": "reconstruction_evidence/ARCA_CONNECTED_INFRA_V402.md",
+      "kind": "implementation_delta",
+      "sha256": "1c8f16a6806c6d6da42e73f9d8f8b200d0f646b971356ea1ef8263aadbb2512d",
+      "produced_at": "2026-09-13T18:20:16.559522Z",
+      "producer": "ARCA local:HTTP/PG/Go/UDS/.NET/CMS,reconcile+credit/restart;440portable files,2generations,SCA0,4rebuilds1653;no live admission"
+    },
+    {
+      "id": "evid-171",
+      "path": "reconstruction_evidence/SIGNED_RELEASE_EPOCH_V402.md",
+      "sha256": "1d46d7b7634b169cd4bedddb25e3230d256a5d613f3d9527d9ea8b4dc97c8313",
+      "kind": "implementation_delta",
+      "produced_at": "2026-09-13T18:34:48.055641Z",
+      "producer": "UTC epoch actual gate regression14fixtures;1653exact source and durable NEW,1651unchanged;final full builds/signature pending"
+    },
+    {
+      "id": "evid-172",
+      "path": "reconstruction_evidence/PORTABLE_FINAL_ACCEPTANCE_V402.md",
+      "sha256": "335165ac041c6374798b8b6821d1d1b9b3a4a0b6e0f9db44065f4886a4d6ae61",
+      "kind": "implementation_delta",
+      "produced_at": "2026-09-13T18:41:13.547190Z",
+      "producer": "Durable NEW/EXISTING preservation and refusal to overwrite;56profile counts derived,one stale10/11 fixed;final release in progress"
+    },
+    {
+      "id": "evid-173",
+      "path": "reconstruction_evidence/SIGNED_CORRESPONDING_SOURCE_V402.md",
+      "sha256": "8327fdc85b1ae92d0434d21c01c1cbebb1ca836b997ecd55c5601749a123799e",
+      "kind": "implementation_delta",
+      "produced_at": "2026-09-13T18:50:28.259645Z",
+      "producer": "Exact corresponding sources plus checked Next derivation;16contracts,1653actual projection/rebuild,2lint6reviewed;new full builds pending"
+    },
+    {
+      "id": "evid-174",
+      "path": "reconstruction_evidence/SIGNED_OSV_REPORT_PARSING_V402.md",
+      "sha256": "9821a962604e20f50ca903c7cc18008ff825d8d1f30b3553ad00ade5172b0d4e",
+      "kind": "implementation_delta",
+      "produced_at": "2026-09-13T19:14:56.202256Z",
+      "producer": "OSV actual454packages/0vulnerabilities;both corrected parsers/17contracts,1653rebuild,3lint6reviewed;current full release pending"
+    },
+    {
+      "id": "evid-175",
+      "path": "reconstruction_evidence/SIGNED_EXTRACTION_COMPLETENESS_V402.md",
+      "sha256": "c5ab47d4f9a0f1948e40f4c5640ae930bd4c45f1d2b581321b8855031204cf04",
+      "kind": "implementation_delta",
+      "produced_at": "2026-09-13T19:51:14.102339Z",
+      "producer": "437SPDX records cover454OSV rows;21contracts and actual extracted329API/web/order/rollback/recovery PASS;1653source exact;330release pending"
+    },
+    {
+      "id": "evid-176",
+      "path": "reconstruction_evidence/REFERENCE_NOTICE_METADATA_V402.md",
+      "sha256": "c534a91e6f541e64cc50cc8b9d5c83db744672316f3e98746fd91968a5ce8b15",
+      "kind": "implementation_delta",
+      "produced_at": "2026-09-13T19:59:25.605123Z",
+      "producer": "19notice metadata labels bind exact source receipts;CI0.1.9,1653payload files unchanged from330;no dependency or rebuild delta"
+    },
+    {
+      "id": "evid-177",
+      "path": "reconstruction_evidence/LIBRARY_INFRA_READY_V402.md",
+      "sha256": "97c433e986c3beb29b183dc30c5ccdf7b0721156268bfcaab8a559554b46b883",
+      "kind": "system_validation",
+      "produced_at": "2026-09-13T20:22:07.308028Z",
+      "producer": "Local source330/meta331 READY;48local controls,1653exact files,current signed ZIP/SCA0/SPDX/runtime proof;production excluded"
+    },
+    {
+      "id": "evid-178",
+      "path": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.json",
+      "sha256": "88c2361c1b10ead7af3933fce2564eacd097515d4a5f45c278480ee2a2757a42",
+      "kind": "rollback_or_recovery",
+      "produced_at": "2026-09-13T20:14:39.257938Z",
+      "producer": "Local source330/meta331 READY;48local controls,1653exact files,current signed ZIP/SCA0/SPDX/runtime proof;production excluded"
+    },
+    {
+      "id": "evid-179",
+      "path": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.md",
+      "sha256": "fd98b23c028f7ee84da423460d6e51252196b4154282e9243371f466dc095bdf",
+      "kind": "release",
+      "produced_at": "2026-09-13T20:14:39.257938Z",
+      "producer": "Local source330/meta331 READY;48local controls,1653exact files,current signed ZIP/SCA0/SPDX/runtime proof;production excluded"
+    },
+    {
+      "id": "evid-180",
+      "path": "reconstruction_evidence/LIBRARY_T2802_CONTROL_RECEIPT_V402_FINAL.json",
+      "sha256": "0533bc1fc2d628fd12110f2e4e73e3eb51145966596c10d548e6557373a2131c",
+      "kind": "business_acceptance",
+      "produced_at": "2026-09-13T20:15:36.397158Z",
+      "producer": "Local source330/meta331 READY;48local controls,1653exact files,current signed ZIP/SCA0/SPDX/runtime proof;production excluded"
+    },
+    {
+      "id": "evid-182",
+      "path": "reconstruction_evidence/LIBRARY_PREFLIGHT_COUNT_REPAIR_V402.md",
+      "sha256": "6cb02d39c313f6aeed34b35a449684902a7835afc04a03c92290286ba2dea290",
+      "kind": "system_validation",
+      "produced_at": "2026-09-13T20:34:41.745657Z",
+      "producer": "Root distribution count audit13plus history21; HTTP8to11fixed; product source330 unchanged"
+    },
+    {
+      "id": "evid-181",
+      "path": "specs/library-maintenance/tasks.md",
+      "sha256": "a4eb4ccacc9ae68a56a3f25d339015421c9c5be630ae05071d681365903e1a08",
+      "kind": "release",
+      "produced_at": "2026-09-13T20:53:57.137292Z",
+      "producer": "Final distribution336/current roadmap; portable NEW/EXISTING and unchanged executable335 checks; selected local qualification"
     }
   ]
 }

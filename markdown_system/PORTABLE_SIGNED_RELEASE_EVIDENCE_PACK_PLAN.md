@@ -1,5 +1,8 @@
 # Portable Signed Release Evidence Pack Plan
 
+Perfil vigente V402323: 1 packs / 11 archivos. Gate firmado0.2.0 con política externa de confianza.
+
+
 Perfil de release local para proyectos Windows que necesitan un artefacto reproducible, SBOM, SCA, provenance y firma verificable sin Git, GitHub Actions ni servicios pagos. No genera ni almacena claves; el proyecto aporta una identidad Ed25519 protegida y una política pública explícita.
 
 ```json
@@ -10,9 +13,11 @@ Perfil de release local para proyectos Windows que necesitan un artefacto reprod
     {
       "path": "implementation_packs/PORTABLE_SIGNED_RELEASE_EVIDENCE_GATE.md",
       "packId": "PORTABLE-SIGNED-RELEASE-EVIDENCE-GATE",
-      "version": "0.1.0",
+      "version": "0.2.3",
       "acknowledgeConditions": true,
-      "files": ["*"],
+      "files": [
+        "*"
+      ],
       "variables": {}
     }
   ]

@@ -1,0 +1,11 @@
+{
+  "state": "PASS_LOCAL",
+  "files": {
+    "ci/build_signed_reference.ps1": "9f862f1dd2732e6b75d4414d2e8f639f0d849a523f8202e17c84665f7911e59f",
+    "ci/publish_reference_build.py": "dc9a7fdfc6ebe609eff6b8a78deefa7ddce7b123491797923a91ddb07a3e2758",
+    "ci/test_signed_reference.py": "6eccd20255a8f155c480e28f5aab8eabec69e3aca282cb9a81abbcb9679c267b"
+  },
+  "findings": [],
+  "untriaged": 0,
+  "new_blockers": 0
+}

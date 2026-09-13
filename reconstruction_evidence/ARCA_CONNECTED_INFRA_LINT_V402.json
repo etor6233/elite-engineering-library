@@ -1,0 +1,265 @@
+{
+  "state": "REVIEWED_LOCAL_SECURITY_LINT",
+  "files": {
+    "arca/credentials/integration-tests/Elite.Arca.Wsaa.Transport.Tests/Program.cs": "ee28bbc0b56c98cb384aee1deec11cddce3cef2ccc78f610e6190bfdd5b50ca6",
+    "arca/credentials/integration/Elite.Arca.Wsaa.Transport/GeneratedWsaaTransport.cs": "000e55f7f32609540b08d72e3e099c289ce9c8a895cb3d223f734ea374979cfe",
+    "arca/credentials/tests/Elite.Arca.Credentials.Tests/Program.cs": "917e63398272aada2621e42be6e453622ad949e17c9e230d4371b495ae9ffa0a",
+    "arca/fiscal/bridge/src/Elite.Arca.Wsfe.Bridge/WsfeBridge.cs": "df9a5e979516d5af3a1a7ea6902b4e0dd9ce35b4836d2025b790f95b1d2e908a",
+    "arca/fiscal/bridge/tests/Elite.Arca.Wsfe.Bridge.Tests/Program.cs": "7dffaa14030067c7f3839f1995bb4bea05e7f1c2c90dae5b1095b2ff81560f6c",
+    "arca/fiscal/worker/fixtures/Elite.Arca.Wsfe.Fixture/FixtureParameters.cs": "6a144ed9a2b53b65d6d3cfa21c13234357616db766378484c1dc823006fcd002",
+    "arca/fiscal/worker/fixtures/Elite.Arca.Wsfe.Fixture/Program.cs": "45be2119f23ab658117fed445a890e6e0608a73c456a1782eb801b126adf30a3",
+    "ci/build_arca_reference.py": "7f6c3339adf91d5abc5f4a347599295070634030a6162a9853f186f931df7349",
+    "ci/build_local_reference.py": "68bd8eb393c6238d58c6457192453ff652a50eb8971c6d619e419689332d5b4b",
+    "ci/build_signed_reference.ps1": "69cbb6cf001b1b52ade5b8adeb43a06d615fb7b097c70a2f332d48f93e4e6b56",
+    "ci/test_signed_reference.py": "f70759c2be369e8393efe1e89249de79cc56927db9d96f06b546f107f4d4c272",
+    "internal/fiscal/wsfeipc/provider.go": "bc9a92f73e025ec60bf90a02c73886461288414317d967b7c304c0dc903db577",
+    "internal/fiscal/wsfeipc/provider_test.go": "70ed3aae1f6c90739c53e373d44854c81341b0139245e62bab21ea46ba537cda",
+    "internal/fiscal/wsfeipc/serialization_test.go": "e82673059e72910fd8b21e43cc4c577c43a34adc585b7b0c656eb5db42c4cc5f",
+    "internal/platform/httpapi/fiscal_connected_reference_test.go": "42fc0e164001a0681b344683f010978dd2cc49ed265fa1701b3dda69916c0b56",
+    "internal/platform/postgres/fiscal.go": "fd4777085eaf06802543fdc86e7761768edad81bbeec0c62337889342573627e",
+    "internal/platform/postgres/fiscal_integration_test.go": "c4268a20e4a7436672c998a0e1573ff053848546345881b9dbf2e68c41676f88",
+    "tools/assemble_arca_svcutil.py": "915b120440e2b9244fa2042fd225ae593b1813458064c8c72e904c55a6ea6bf5",
+    "tools/generate-arca-wsfe-client.ps1": "3cad533df8cec2c5579fc4355258d2d3919623351e3ec2693c5339b685df670d",
+    "tools/test-arca-wsaa-credential-core.ps1": "4ac7cefe2cf789c2abafb4d9c8b2f48bed3b25537fff295081d1ea5bedf973be",
+    "tools/test_arca_offline_build.py": "1a06e2fa9703a9a238df6f5e88adf46ac5c5eaa2b7ec07e009f1db7562fd102b",
+    "tools/test-arca-wsfe-generator.ps1": "c8361e91b0f6c6540a376e0bcc3f54401598b9576c6811ad8c3480e5150b87bb"
+  },
+  "findings": [
+    {
+      "finding": 0,
+      "rule": "DS137138",
+      "path": "internal/platform/httpapi/fiscal_connected_reference_test.go",
+      "line": 186,
+      "source_sha256": "42fc0e164001a0681b344683f010978dd2cc49ed265fa1701b3dda69916c0b56",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "HTTP message syntax over explicitly injected Unix-socket transport or in-memory test RoundTripper; no TCP/plaintext provider route. Actual portable UDS/HTTP/PG fixture passes."
+    },
+    {
+      "finding": 1,
+      "rule": "DS137138",
+      "path": "internal/fiscal/wsfeipc/provider_test.go",
+      "line": 100,
+      "source_sha256": "70ed3aae1f6c90739c53e373d44854c81341b0139245e62bab21ea46ba537cda",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "HTTP message syntax over explicitly injected Unix-socket transport or in-memory test RoundTripper; no TCP/plaintext provider route. Actual portable UDS/HTTP/PG fixture passes."
+    },
+    {
+      "finding": 2,
+      "rule": "DS137138",
+      "path": "internal/fiscal/wsfeipc/provider.go",
+      "line": 41,
+      "source_sha256": "bc9a92f73e025ec60bf90a02c73886461288414317d967b7c304c0dc903db577",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "HTTP message syntax over explicitly injected Unix-socket transport or in-memory test RoundTripper; no TCP/plaintext provider route. Actual portable UDS/HTTP/PG fixture passes."
+    },
+    {
+      "finding": 3,
+      "rule": "DS137138",
+      "path": "internal/platform/httpapi/fiscal_connected_reference_test.go",
+      "line": 162,
+      "source_sha256": "42fc0e164001a0681b344683f010978dd2cc49ed265fa1701b3dda69916c0b56",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "HTTP message syntax over explicitly injected Unix-socket transport or in-memory test RoundTripper; no TCP/plaintext provider route. Actual portable UDS/HTTP/PG fixture passes."
+    },
+    {
+      "finding": 4,
+      "rule": "DS197836",
+      "path": "ci/build_local_reference.py",
+      "line": 60,
+      "source_sha256": "68bd8eb393c6238d58c6457192453ff652a50eb8971c6d619e419689332d5b4b",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Content-integrity SHA-256 of actual file bytes or an already computed lock/receipt hash field; no password/secret derivation."
+    },
+    {
+      "finding": 5,
+      "rule": "DS162092",
+      "path": "ci/build_local_reference.py",
+      "line": 48,
+      "source_sha256": "68bd8eb393c6238d58c6457192453ff652a50eb8971c6d619e419689332d5b4b",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Explicit LOCAL_FIXTURES build endpoints on loopback; shared artifact declares fixture-only mode. No productive endpoint or credential."
+    },
+    {
+      "finding": 6,
+      "rule": "DS162092",
+      "path": "ci/build_local_reference.py",
+      "line": 48,
+      "source_sha256": "68bd8eb393c6238d58c6457192453ff652a50eb8971c6d619e419689332d5b4b",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Explicit LOCAL_FIXTURES build endpoints on loopback; shared artifact declares fixture-only mode. No productive endpoint or credential."
+    },
+    {
+      "finding": 7,
+      "rule": "DS173237",
+      "path": "internal/platform/postgres/fiscal_integration_test.go",
+      "line": 110,
+      "source_sha256": "c4268a20e4a7436672c998a0e1573ff053848546345881b9dbf2e68c41676f88",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Public exact artifact/license digest or deliberately constant test response/request hash; not an authentication token, private key or user credential."
+    },
+    {
+      "finding": 8,
+      "rule": "DS173237",
+      "path": "internal/platform/postgres/fiscal_integration_test.go",
+      "line": 105,
+      "source_sha256": "c4268a20e4a7436672c998a0e1573ff053848546345881b9dbf2e68c41676f88",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Public exact artifact/license digest or deliberately constant test response/request hash; not an authentication token, private key or user credential."
+    },
+    {
+      "finding": 9,
+      "rule": "DS173237",
+      "path": "internal/platform/postgres/fiscal_integration_test.go",
+      "line": 93,
+      "source_sha256": "c4268a20e4a7436672c998a0e1573ff053848546345881b9dbf2e68c41676f88",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Public exact artifact/license digest or deliberately constant test response/request hash; not an authentication token, private key or user credential."
+    },
+    {
+      "finding": 10,
+      "rule": "DS197836",
+      "path": "ci/build_arca_reference.py",
+      "line": 119,
+      "source_sha256": "7f6c3339adf91d5abc5f4a347599295070634030a6162a9853f186f931df7349",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Content-integrity SHA-256 of actual file bytes or an already computed lock/receipt hash field; no password/secret derivation."
+    },
+    {
+      "finding": 11,
+      "rule": "DS173237",
+      "path": "ci/build_local_reference.py",
+      "line": 12,
+      "source_sha256": "68bd8eb393c6238d58c6457192453ff652a50eb8971c6d619e419689332d5b4b",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Public exact artifact/license digest or deliberately constant test response/request hash; not an authentication token, private key or user credential."
+    },
+    {
+      "finding": 13,
+      "rule": "DS197836",
+      "path": "ci/build_arca_reference.py",
+      "line": 83,
+      "source_sha256": "7f6c3339adf91d5abc5f4a347599295070634030a6162a9853f186f931df7349",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Content-integrity SHA-256 of actual file bytes or an already computed lock/receipt hash field; no password/secret derivation."
+    },
+    {
+      "finding": 14,
+      "rule": "DS173237",
+      "path": "internal/platform/postgres/fiscal_integration_test.go",
+      "line": 83,
+      "source_sha256": "c4268a20e4a7436672c998a0e1573ff053848546345881b9dbf2e68c41676f88",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Public exact artifact/license digest or deliberately constant test response/request hash; not an authentication token, private key or user credential."
+    },
+    {
+      "finding": 15,
+      "rule": "DS173237",
+      "path": "ci/build_local_reference.py",
+      "line": 11,
+      "source_sha256": "68bd8eb393c6238d58c6457192453ff652a50eb8971c6d619e419689332d5b4b",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Public exact artifact/license digest or deliberately constant test response/request hash; not an authentication token, private key or user credential."
+    },
+    {
+      "finding": 16,
+      "rule": "DS173237",
+      "path": "internal/fiscal/wsfeipc/provider_test.go",
+      "line": 53,
+      "source_sha256": "70ed3aae1f6c90739c53e373d44854c81341b0139245e62bab21ea46ba537cda",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Public exact artifact/license digest or deliberately constant test response/request hash; not an authentication token, private key or user credential."
+    },
+    {
+      "finding": 17,
+      "rule": "DS173237",
+      "path": "internal/fiscal/wsfeipc/provider_test.go",
+      "line": 48,
+      "source_sha256": "70ed3aae1f6c90739c53e373d44854c81341b0139245e62bab21ea46ba537cda",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Public exact artifact/license digest or deliberately constant test response/request hash; not an authentication token, private key or user credential."
+    },
+    {
+      "finding": 18,
+      "rule": "DS197836",
+      "path": "arca/credentials/tests/Elite.Arca.Credentials.Tests/Program.cs",
+      "line": 31,
+      "source_sha256": "917e63398272aada2621e42be6e453622ad949e17c9e230d4371b495ae9ffa0a",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "SHA-256 signs an ephemeral RSA2048 test certificate via framework CertificateRequest; no low-entropy secret hashing or persisted private key."
+    },
+    {
+      "finding": 19,
+      "rule": "DS173237",
+      "path": "internal/fiscal/wsfeipc/provider_test.go",
+      "line": 45,
+      "source_sha256": "70ed3aae1f6c90739c53e373d44854c81341b0139245e62bab21ea46ba537cda",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Public exact artifact/license digest or deliberately constant test response/request hash; not an authentication token, private key or user credential."
+    },
+    {
+      "finding": 21,
+      "rule": "DS173237",
+      "path": "ci/build_local_reference.py",
+      "line": 10,
+      "source_sha256": "68bd8eb393c6238d58c6457192453ff652a50eb8971c6d619e419689332d5b4b",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Public exact artifact/license digest or deliberately constant test response/request hash; not an authentication token, private key or user credential."
+    },
+    {
+      "finding": 22,
+      "rule": "DS197836",
+      "path": "ci/build_arca_reference.py",
+      "line": 32,
+      "source_sha256": "7f6c3339adf91d5abc5f4a347599295070634030a6162a9853f186f931df7349",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Content-integrity SHA-256 of actual file bytes or an already computed lock/receipt hash field; no password/secret derivation."
+    },
+    {
+      "finding": 23,
+      "rule": "DS173237",
+      "path": "internal/platform/postgres/fiscal_integration_test.go",
+      "line": 67,
+      "source_sha256": "c4268a20e4a7436672c998a0e1573ff053848546345881b9dbf2e68c41676f88",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Public exact artifact/license digest or deliberately constant test response/request hash; not an authentication token, private key or user credential."
+    },
+    {
+      "finding": 24,
+      "rule": "DS197836",
+      "path": "arca/credentials/tests/Elite.Arca.Credentials.Tests/Program.cs",
+      "line": 18,
+      "source_sha256": "917e63398272aada2621e42be6e453622ad949e17c9e230d4371b495ae9ffa0a",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "SHA-256 signs an ephemeral RSA2048 test certificate via framework CertificateRequest; no low-entropy secret hashing or persisted private key."
+    },
+    {
+      "finding": 25,
+      "rule": "DS173237",
+      "path": "internal/fiscal/wsfeipc/provider_test.go",
+      "line": 42,
+      "source_sha256": "70ed3aae1f6c90739c53e373d44854c81341b0139245e62bab21ea46ba537cda",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Public exact artifact/license digest or deliberately constant test response/request hash; not an authentication token, private key or user credential."
+    },
+    {
+      "rule": "DS197836",
+      "path": "tools/generate-arca-wsfe-client.ps1",
+      "line": 115,
+      "source_sha256": "3cad533df8cec2c5579fc4355258d2d3919623351e3ec2693c5339b685df670d",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Public fixed binary/content digest or receipt hash field, not a credential/password derivation."
+    },
+    {
+      "rule": "DS173237",
+      "path": "tools/generate-arca-wsfe-client.ps1",
+      "line": 25,
+      "source_sha256": "3cad533df8cec2c5579fc4355258d2d3919623351e3ec2693c5339b685df670d",
+      "disposition": "REVIEWED_CONTEXT_NOT_ACTIONABLE",
+      "reason": "Public fixed binary/content digest or receipt hash field, not a credential/password derivation."
+    }
+  ],
+  "raw_findings": 26,
+  "untriaged": 0,
+  "new_blockers": 0,
+  "scope": "Initial21files plus3targeted files after serialization/structural wrapper delta;22distinct current files. Not interprocedural security certification."
+}

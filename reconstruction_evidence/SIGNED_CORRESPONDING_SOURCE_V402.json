@@ -1,0 +1,411 @@
+{
+  "state": "PASS_EXACT_INPUT_AND_DECLARED_GENERATION",
+  "revision": 328,
+  "pack": {
+    "before_pack_sha256": "d8d6ec5dc8ce7dbb7940eefdd84bdd36fd89f6e31c0faefe31dcbd3f91f09dfc",
+    "after_pack_sha256": "ae8d23a66a82d9f17237f3d4a70f880465dad6c5fb61612f94dd3f7a73fae346",
+    "version": "0.1.7",
+    "changes": [
+      {
+        "path": "ci/build_local_reference.py",
+        "before_sha256": "68bd8eb393c6238d58c6457192453ff652a50eb8971c6d619e419689332d5b4b",
+        "after_sha256": "5b063aaf9c2c673ac5e851b0ee804cc570b1a83b01d98b2673af9f405e52b2a4"
+      },
+      {
+        "path": "ci/test_signed_reference.py",
+        "before_sha256": "f70759c2be369e8393efe1e89249de79cc56927db9d96f06b546f107f4d4c272",
+        "after_sha256": "09461f1943e188a8415ba8e0ce44bf347894a61334bdc4af6a363de2b1088e3d"
+      }
+    ]
+  },
+  "full_files": 1653,
+  "unchanged_files": 1651,
+  "actual_previous_build_source_projection": {
+    "files": 1653,
+    "derived": {
+      "next-env.d.ts": {
+        "input_sha256": "f2b3bca04d1bfe583daae1e1f798c92ec24bb6693bd88d0a09ba6802dee362a8",
+        "generated_sha256": "1862ac4bbbc5192d4bf562161df66ea547ed3e67173100656ab606ae9797db2b",
+        "generator": "Next16.3.4 canonical route type declaration"
+      }
+    },
+    "unexplained_drift": 0
+  },
+  "regression": {
+    "actual_product_build_performed": false,
+    "cases": [
+      {
+        "accepted": true,
+        "case": "valid",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "changed-artifact",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "wrong-source",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "failed-receipt",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "occupied-output",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "changed-inventory",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "coherent-wrong-source",
+        "state": "PASS"
+      },
+      {
+        "accepted": true,
+        "case": "exact-source",
+        "state": "PASS"
+      },
+      {
+        "accepted": true,
+        "case": "generated-next-declaration",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "changed-domain-source",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "unknown-next-declaration",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "python-pin",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "source-pin",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "overlap",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "partial-build",
+        "state": "PASS"
+      },
+      {
+        "accepted": false,
+        "case": "already-complete",
+        "state": "PASS"
+      }
+    ],
+    "state": "PASS_CONTRACT_FIXTURES_ONLY"
+  },
+  "product_binaries_rebuilt": false,
+  "final_two_new_builds_required": true,
+  "lint": {
+    "files": {
+      "ci/build_local_reference.py": "5b063aaf9c2c673ac5e851b0ee804cc570b1a83b01d98b2673af9f405e52b2a4",
+      "ci/test_signed_reference.py": "09461f1943e188a8415ba8e0ce44bf347894a61334bdc4af6a363de2b1088e3d"
+    },
+    "findings": [
+      {
+        "ruleId": "DS197836",
+        "level": "error",
+        "message": {
+          "text": "Do not take the hash of low-entropy content."
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "ci\\build_local_reference.py"
+              },
+              "region": {
+                "startLine": 60,
+                "startColumn": 55,
+                "endLine": 60,
+                "endColumn": 90,
+                "charOffset": 3638,
+                "charLength": 35,
+                "snippet": {
+                  "text": "",
+                  "rendered": {
+                    "markdown": "``"
+                  }
+                },
+                "sourceLanguage": "python"
+              }
+            }
+          }
+        ],
+        "properties": {
+          "tags": [
+            "Cryptography.HashAlgorithm.InsufficientEntropy"
+          ],
+          "DevSkimSeverity": "Important",
+          "DevSkimConfidence": "High"
+        }
+      },
+      {
+        "ruleId": "DS162092",
+        "level": "note",
+        "message": {
+          "text": "Do not leave debug code in production"
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "ci\\build_local_reference.py"
+              },
+              "region": {
+                "startLine": 48,
+                "startColumn": 80,
+                "endLine": 48,
+                "endColumn": 89,
+                "charOffset": 2753,
+                "charLength": 9,
+                "snippet": {
+                  "text": "",
+                  "rendered": {
+                    "markdown": "``"
+                  }
+                },
+                "sourceLanguage": "python"
+              }
+            }
+          }
+        ],
+        "properties": {
+          "tags": [
+            "Hygiene.Network.AccessingLocalhost"
+          ],
+          "DevSkimSeverity": "ManualReview",
+          "DevSkimConfidence": "High"
+        }
+      },
+      {
+        "ruleId": "DS162092",
+        "level": "note",
+        "message": {
+          "text": "Do not leave debug code in production"
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "ci\\build_local_reference.py"
+              },
+              "region": {
+                "startLine": 48,
+                "startColumn": 30,
+                "endLine": 48,
+                "endColumn": 39,
+                "charOffset": 2703,
+                "charLength": 9,
+                "snippet": {
+                  "text": "",
+                  "rendered": {
+                    "markdown": "``"
+                  }
+                },
+                "sourceLanguage": "python"
+              }
+            }
+          }
+        ],
+        "properties": {
+          "tags": [
+            "Hygiene.Network.AccessingLocalhost"
+          ],
+          "DevSkimSeverity": "ManualReview",
+          "DevSkimConfidence": "High"
+        }
+      },
+      {
+        "ruleId": "DS173237",
+        "level": "error",
+        "message": {
+          "text": "Do not store tokens or keys in source code."
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "ci\\build_local_reference.py"
+              },
+              "region": {
+                "startLine": 12,
+                "startColumn": 17,
+                "endLine": 12,
+                "endColumn": 83,
+                "charOffset": 534,
+                "charLength": 66,
+                "snippet": {
+                  "text": "",
+                  "rendered": {
+                    "markdown": "``"
+                  }
+                },
+                "sourceLanguage": "python"
+              }
+            }
+          }
+        ],
+        "properties": {
+          "tags": [
+            "Implementation.Privacy.Token"
+          ],
+          "DevSkimSeverity": "Important",
+          "DevSkimConfidence": "Medium"
+        }
+      },
+      {
+        "ruleId": "DS173237",
+        "level": "error",
+        "message": {
+          "text": "Do not store tokens or keys in source code."
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "ci\\build_local_reference.py"
+              },
+              "region": {
+                "startLine": 11,
+                "startColumn": 9,
+                "endLine": 11,
+                "endColumn": 75,
+                "charOffset": 450,
+                "charLength": 66,
+                "snippet": {
+                  "text": "",
+                  "rendered": {
+                    "markdown": "``"
+                  }
+                },
+                "sourceLanguage": "python"
+              }
+            }
+          }
+        ],
+        "properties": {
+          "tags": [
+            "Implementation.Privacy.Token"
+          ],
+          "DevSkimSeverity": "Important",
+          "DevSkimConfidence": "Medium"
+        }
+      },
+      {
+        "ruleId": "DS173237",
+        "level": "error",
+        "message": {
+          "text": "Do not store tokens or keys in source code."
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "ci\\build_local_reference.py"
+              },
+              "region": {
+                "startLine": 10,
+                "startColumn": 7,
+                "endLine": 10,
+                "endColumn": 73,
+                "charOffset": 374,
+                "charLength": 66,
+                "snippet": {
+                  "text": "",
+                  "rendered": {
+                    "markdown": "``"
+                  }
+                },
+                "sourceLanguage": "python"
+              }
+            }
+          }
+        ],
+        "properties": {
+          "tags": [
+            "Implementation.Privacy.Token"
+          ],
+          "DevSkimSeverity": "Important",
+          "DevSkimConfidence": "Medium"
+        }
+      }
+    ],
+    "no_whole_scanner_or_native_suite_rerun": true,
+    "triage": [
+      {
+        "rule": "DS197836",
+        "line": 60,
+        "disposition": "REVIEWED_LOCAL_SCOPE",
+        "reason": "Public deterministic fixture action material, explicitly forbidden for live use; not a secret derivation or security randomness claim."
+      },
+      {
+        "rule": "DS162092",
+        "line": 48,
+        "disposition": "REVIEWED_LOCAL_SCOPE",
+        "reason": "Explicit local fixture builder endpoints; release declares LOCAL_FIXTURES and production_admitted=false."
+      },
+      {
+        "rule": "DS162092",
+        "line": 48,
+        "disposition": "REVIEWED_LOCAL_SCOPE",
+        "reason": "Explicit local fixture builder endpoints; release declares LOCAL_FIXTURES and production_admitted=false."
+      },
+      {
+        "rule": "DS173237",
+        "line": 12,
+        "disposition": "REVIEWED_LOCAL_SCOPE",
+        "reason": "Fixed public Go/Node/license SHA256 integrity pins; not tokens or secret material."
+      },
+      {
+        "rule": "DS173237",
+        "line": 11,
+        "disposition": "REVIEWED_LOCAL_SCOPE",
+        "reason": "Fixed public Go/Node/license SHA256 integrity pins; not tokens or secret material."
+      },
+      {
+        "rule": "DS173237",
+        "line": 10,
+        "disposition": "REVIEWED_LOCAL_SCOPE",
+        "reason": "Fixed public Go/Node/license SHA256 integrity pins; not tokens or secret material."
+      }
+    ],
+    "unresolved": 0,
+    "new_blockers": 0,
+    "changed_source_logic_findings": 0
+  },
+  "G0_G8": {
+    "G0": "Narrow corresponding-source packaging correction; no business algorithms added",
+    "G1": "Two existing AUTHORED glue/test blocks, same local license and unchanged upstream graph",
+    "G2": "Before/after source hashes and exact generator derivation are explicit",
+    "G3": "Independent1653file source rebuild exact;1651unchanged",
+    "G4": "16contract fixtures and actual prior build source projection PASS; new full builds pending",
+    "G5": "Two files scanned;6existing pin/fixture findings reviewed,0unresolved; source mutation rejected",
+    "G6": "No runtime performance claim changed",
+    "G7": "Failed release/build evidence retained; no overwrite or key replacement",
+    "G8": "Reusable CI0.1.7 qualified narrowly; full signed release remains separate gate"
+  }
+}

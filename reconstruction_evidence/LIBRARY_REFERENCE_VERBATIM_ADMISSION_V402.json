@@ -1,0 +1,141 @@
+{
+  "schema": "elite-library-admission/v1",
+  "revision": "V402-source330-metadata331-local",
+  "mode": "VERBATIM",
+  "role": "DEPENDENCY",
+  "files": [
+    "arca/fiscal/runtime-legal/ObjectPool-LICENSE.txt",
+    "arca/fiscal/runtime-legal/Runtime-LICENSE.TXT",
+    "arca/fiscal/svcutil-legal/Apache-2.0.txt",
+    "arca/fiscal/svcutil-legal/NuGet.Client-LICENSE.txt",
+    "aws_textract_runtime/licenses/aws-sdk-go-LICENSE.txt",
+    "aws_textract_runtime/licenses/aws-sdk-go-NOTICE.txt",
+    "aws_textract_runtime/licenses/smithy-go-LICENSE.txt",
+    "aws_textract_runtime/licenses/smithy-go-NOTICE.txt",
+    "azure_document_intelligence_official_invoice/upstream/LICENSE.txt",
+    "docs/provenance/source/ServiceItemLine.Table.al",
+    "google_lighthouse_web_quality_gate/LICENSE.lighthouse.txt",
+    "licenses/Microsoft-BCApps-MIT.txt",
+    "licenses/coreos-go-oidc-Apache-2.0.txt",
+    "licenses/go-jose-Apache-2.0.txt",
+    "licenses/golang-oauth2-BSD-3-Clause.txt",
+    "licenses/reference/babel-core-LICENSE.txt",
+    "licenses/reference/client-only-package.json.txt",
+    "licenses/reference/constants-browserify-README.md.txt",
+    "licenses/reference/data-uri-to-buffer-README.md.txt",
+    "licenses/reference/dotenv-LICENSE.txt",
+    "licenses/reference/dotenv-expand-LICENSE.txt",
+    "licenses/reference/edge-runtime-cookies-LICENSE.md.txt",
+    "licenses/reference/edge-runtime-ponyfill-LICENSE.md.txt",
+    "licenses/reference/edge-runtime-primitives-LICENSE.md.txt",
+    "licenses/reference/http-proxy-agent-README.md.txt",
+    "licenses/reference/https-proxy-agent-README.md.txt",
+    "licenses/reference/next-MIT.txt",
+    "licenses/reference/punycode-LICENSE-MIT.txt.txt",
+    "licenses/reference/setimmediate-LICENSE.txt.txt",
+    "licenses/reference/string-hash-README.md.txt",
+    "licenses/reference/unistore-README.md.txt",
+    "meta_page_write/LICENSE.Meta.txt",
+    "odoo_loyalty/COPYRIGHT",
+    "odoo_loyalty/LICENSE",
+    "odoo_loyalty/upstream/COPYRIGHT",
+    "odoo_loyalty/upstream/LICENSE",
+    "odoo_loyalty/upstream/addons/loyalty/__manifest__.py",
+    "odoo_loyalty/upstream/addons/loyalty/models/loyalty_card.py",
+    "odoo_loyalty/upstream/addons/loyalty/models/loyalty_history.py",
+    "odoo_loyalty/upstream/addons/loyalty/models/loyalty_program.py",
+    "odoo_loyalty/upstream/addons/loyalty/models/loyalty_reward.py",
+    "odoo_loyalty/upstream/addons/loyalty/models/loyalty_rule.py",
+    "odoo_loyalty/upstream/addons/loyalty/tests/test_loyalty.py",
+    "odoo_loyalty/upstream/addons/sale_loyalty/__manifest__.py",
+    "odoo_loyalty/upstream/addons/sale_loyalty/models/loyalty_card.py",
+    "odoo_loyalty/upstream/addons/sale_loyalty/models/loyalty_program.py",
+    "odoo_loyalty/upstream/addons/sale_loyalty/models/sale_order.py",
+    "odoo_loyalty/upstream/addons/sale_loyalty/models/sale_order_coupon_points.py",
+    "odoo_loyalty/upstream/addons/sale_loyalty/models/sale_order_line.py",
+    "odoo_loyalty/upstream/addons/sale_loyalty/tests/common.py",
+    "odoo_loyalty/upstream/addons/sale_loyalty/tests/test_buy_gift_card.py",
+    "odoo_loyalty/upstream/addons/sale_loyalty/tests/test_loyalty.py",
+    "odoo_loyalty/upstream/addons/sale_loyalty/tests/test_loyalty_history.py",
+    "odoo_loyalty/upstream/addons/sale_loyalty/tests/test_pay_with_gift_card.py",
+    "odoo_loyalty/upstream/addons/sale_loyalty/tests/test_program_multi_company.py",
+    "odoo_loyalty/upstream/addons/sale_loyalty/tests/test_program_numbers.py",
+    "odoo_loyalty/upstream/addons/sale_loyalty/tests/test_program_rules.py",
+    "odoo_loyalty/upstream/odoo/tools/float_utils.py",
+    "third_party/posthog-nps/LICENSE",
+    "third_party/posthog-nps/utils.test.ts.txt",
+    "third_party/posthog-nps/utils.ts.txt",
+    "whatsapp_cloud/upstream/incomingWebhook.js",
+    "whatsapp_cloud/upstream/message_helper.py",
+    "whatsapp_cloud/upstream/signature_validation_app.py"
+  ],
+  "source_lock": {
+    "path": "reconstruction_evidence/LIBRARY_REFERENCE_PROVENANCE_V402.json",
+    "sha256": "72419fd412bceeb21e8a73201d7f9fa98de0113582661f5577009db91d3c5156"
+  },
+  "gates": {
+    "G0": {
+      "status": "PASS",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+        "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+      }
+    },
+    "G1": {
+      "status": "PASS",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+        "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+      }
+    },
+    "G2": {
+      "status": "PASS",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+        "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+      }
+    },
+    "G3": {
+      "status": "PASS",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+        "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+      }
+    },
+    "G4": {
+      "status": "PASS",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+        "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+      }
+    },
+    "G5": {
+      "status": "PASS",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+        "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+      }
+    },
+    "G6": {
+      "status": "PASS",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+        "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+      }
+    },
+    "G7": {
+      "status": "PASS",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+        "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+      }
+    },
+    "G8": {
+      "status": "PASS",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_FINAL_GATE_EVIDENCE_V402.json",
+        "sha256": "79e9980f82c768a8b6e4543ef647f1647e0205ff907d51243ce3b8b5968d88c4"
+      }
+    }
+  }
+}

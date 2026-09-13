@@ -1,0 +1,612 @@
+{
+  "state": "PASS_LOCAL",
+  "files": 14,
+  "findings": [
+    {
+      "index": 0,
+      "rule": "DS162092",
+      "path": "ci/test_local_release.py",
+      "source_sha256": "29fdf0e1118af249e299c786232ca523ac0026f2699a28f748b3e9e85d095de5",
+      "region": {
+        "startLine": 17,
+        "startColumn": 137,
+        "endLine": 17,
+        "endColumn": 146,
+        "charOffset": 1324,
+        "charLength": 9,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "127.0.0.1",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "The executable is explicitly a local fixture operator/probe/test. Loopback is required by closed runtime_config validation; no live provider or remote database is admitted."
+    },
+    {
+      "index": 1,
+      "rule": "DS162092",
+      "path": "ci/test_local_release.py",
+      "source_sha256": "29fdf0e1118af249e299c786232ca523ac0026f2699a28f748b3e9e85d095de5",
+      "region": {
+        "startLine": 17,
+        "startColumn": 53,
+        "endLine": 17,
+        "endColumn": 62,
+        "charOffset": 1240,
+        "charLength": 9,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "127.0.0.1",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "The executable is explicitly a local fixture operator/probe/test. Loopback is required by closed runtime_config validation; no live provider or remote database is admitted."
+    },
+    {
+      "index": 2,
+      "rule": "DS137138",
+      "path": "ci/test_local_release.py",
+      "source_sha256": "29fdf0e1118af249e299c786232ca523ac0026f2699a28f748b3e9e85d095de5",
+      "region": {
+        "startLine": 13,
+        "startColumn": 106,
+        "endLine": 13,
+        "endColumn": 181,
+        "charOffset": 924,
+        "charLength": 75,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "http://example.com:6544'},{'api_port':6546},{'provider_key':'unexpected'}]:",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "Negative fixture: the exact runtime validator must reject this remote HTTP issuer. No request is made to this address."
+    },
+    {
+      "index": 3,
+      "rule": "DS162092",
+      "path": "ci/run_local_reference.py",
+      "source_sha256": "6a79f9f70c65dfc88e5039b90759ea1fdb6383ee0b45052b9a1b9b21eccab8a4",
+      "region": {
+        "startLine": 15,
+        "startColumn": 46,
+        "endLine": 15,
+        "endColumn": 55,
+        "charOffset": 1184,
+        "charLength": 9,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "127.0.0.1",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "The executable is explicitly a local fixture operator/probe/test. Loopback is required by closed runtime_config validation; no live provider or remote database is admitted."
+    },
+    {
+      "index": 5,
+      "rule": "DS162092",
+      "path": "ci/serve_local_reference.py",
+      "source_sha256": "89bdd9f1c34b272bfc8593f672f1ea9f01e12219d2c21127249761f1d82068ee",
+      "region": {
+        "startLine": 17,
+        "startColumn": 91,
+        "endLine": 17,
+        "endColumn": 100,
+        "charOffset": 1441,
+        "charLength": 9,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "127.0.0.1",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "The executable is explicitly a local fixture operator/probe/test. Loopback is required by closed runtime_config validation; no live provider or remote database is admitted."
+    },
+    {
+      "index": 6,
+      "rule": "DS197836",
+      "path": "ci/run_local_reference.py",
+      "source_sha256": "6a79f9f70c65dfc88e5039b90759ea1fdb6383ee0b45052b9a1b9b21eccab8a4",
+      "region": {
+        "startLine": 7,
+        "startColumn": 51,
+        "endLine": 7,
+        "endColumn": 77,
+        "charOffset": 322,
+        "charLength": 26,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "sha256','runtime','runtime",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "Broad textual match on integrity metadata/receipt/ledger hash fields. SHA256 binds public artifacts and is not used to anonymize low-entropy personal data or derive a credential."
+    },
+    {
+      "index": 8,
+      "rule": "DS162092",
+      "path": "ci/serve_local_reference.py",
+      "source_sha256": "89bdd9f1c34b272bfc8593f672f1ea9f01e12219d2c21127249761f1d82068ee",
+      "region": {
+        "startLine": 17,
+        "startColumn": 29,
+        "endLine": 17,
+        "endColumn": 38,
+        "charOffset": 1379,
+        "charLength": 9,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "127.0.0.1",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "The executable is explicitly a local fixture operator/probe/test. Loopback is required by closed runtime_config validation; no live provider or remote database is admitted."
+    },
+    {
+      "index": 9,
+      "rule": "DS162092",
+      "path": "ci/serve_local_reference.py",
+      "source_sha256": "89bdd9f1c34b272bfc8593f672f1ea9f01e12219d2c21127249761f1d82068ee",
+      "region": {
+        "startLine": 16,
+        "startColumn": 61,
+        "endLine": 16,
+        "endColumn": 70,
+        "charOffset": 1290,
+        "charLength": 9,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "127.0.0.1",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "The executable is explicitly a local fixture operator/probe/test. Loopback is required by closed runtime_config validation; no live provider or remote database is admitted."
+    },
+    {
+      "index": 11,
+      "rule": "DS162092",
+      "path": "ci/test_local_release.py",
+      "source_sha256": "29fdf0e1118af249e299c786232ca523ac0026f2699a28f748b3e9e85d095de5",
+      "region": {
+        "startLine": 13,
+        "startColumn": 68,
+        "endLine": 13,
+        "endColumn": 77,
+        "charOffset": 886,
+        "charLength": 9,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "127.0.0.1",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "The executable is explicitly a local fixture operator/probe/test. Loopback is required by closed runtime_config validation; no live provider or remote database is admitted."
+    },
+    {
+      "index": 12,
+      "rule": "DS162092",
+      "path": "ci/local_release.py",
+      "source_sha256": "2f3ec67c4031725739dcf2788d0f54cdb00df69b13d0f73b2b4083a520d1774b",
+      "region": {
+        "startLine": 42,
+        "startColumn": 106,
+        "endLine": 42,
+        "endColumn": 115,
+        "charOffset": 2625,
+        "charLength": 9,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "127.0.0.1",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "The executable is explicitly a local fixture operator/probe/test. Loopback is required by closed runtime_config validation; no live provider or remote database is admitted."
+    },
+    {
+      "index": 13,
+      "rule": "DS162092",
+      "path": "ci/serve_local_reference.py",
+      "source_sha256": "89bdd9f1c34b272bfc8593f672f1ea9f01e12219d2c21127249761f1d82068ee",
+      "region": {
+        "startLine": 16,
+        "startColumn": 22,
+        "endLine": 16,
+        "endColumn": 31,
+        "charOffset": 1251,
+        "charLength": 9,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "127.0.0.1",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "The executable is explicitly a local fixture operator/probe/test. Loopback is required by closed runtime_config validation; no live provider or remote database is admitted."
+    },
+    {
+      "index": 15,
+      "rule": "DS197836",
+      "path": "ci/serve_local_reference.py",
+      "source_sha256": "89bdd9f1c34b272bfc8593f672f1ea9f01e12219d2c21127249761f1d82068ee",
+      "region": {
+        "startLine": 11,
+        "startColumn": 74,
+        "endLine": 11,
+        "endColumn": 136,
+        "charOffset": 702,
+        "charLength": 62,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "sha256']);root=Path(r['root']);cfg=runtime_config(job['runtime",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "Broad textual match on integrity metadata/receipt/ledger hash fields. SHA256 binds public artifacts and is not used to anonymize low-entropy personal data or derive a credential."
+    },
+    {
+      "index": 16,
+      "rule": "DS162092",
+      "path": "ci/test_local_release.py",
+      "source_sha256": "29fdf0e1118af249e299c786232ca523ac0026f2699a28f748b3e9e85d095de5",
+      "region": {
+        "startLine": 11,
+        "startColumn": 134,
+        "endLine": 11,
+        "endColumn": 143,
+        "charOffset": 717,
+        "charLength": 9,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "127.0.0.1",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "The executable is explicitly a local fixture operator/probe/test. Loopback is required by closed runtime_config validation; no live provider or remote database is admitted."
+    },
+    {
+      "index": 17,
+      "rule": "DS162092",
+      "path": "ci/local_release.py",
+      "source_sha256": "2f3ec67c4031725739dcf2788d0f54cdb00df69b13d0f73b2b4083a520d1774b",
+      "region": {
+        "startLine": 42,
+        "startColumn": 45,
+        "endLine": 42,
+        "endColumn": 54,
+        "charOffset": 2564,
+        "charLength": 9,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "127.0.0.1",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "The executable is explicitly a local fixture operator/probe/test. Loopback is required by closed runtime_config validation; no live provider or remote database is admitted."
+    },
+    {
+      "index": 19,
+      "rule": "DS197836",
+      "path": "ci/migrate_local_reference.py",
+      "source_sha256": "ee7e6e1789398428d7069737eadbdc1ecbedae8b37152d1e63795631b4174fd9",
+      "region": {
+        "startLine": 21,
+        "startColumn": 110,
+        "endLine": 21,
+        "endColumn": 182,
+        "charOffset": 1033,
+        "charLength": 72,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "sha256 text not null, applied_at timestamptz not null default clock_time",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "Broad textual match on integrity metadata/receipt/ledger hash fields. SHA256 binds public artifacts and is not used to anonymize low-entropy personal data or derive a credential."
+    },
+    {
+      "index": 20,
+      "rule": "DS197836",
+      "path": "cmd/electromobility-api/main.go",
+      "source_sha256": "df53a972101b77affb61c5e463216e5378f326c612286d2a62d9edebf7c0ff3d",
+      "region": {
+        "startLine": 128,
+        "startColumn": 132,
+        "endLine": 128,
+        "endColumn": 173,
+        "charOffset": 4810,
+        "charLength": 41,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "go"
+      },
+      "matched_text": "SHA256{Now: time.Now, Tolerance: 5 * time",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "Unchanged HMACSHA256 webhook constructor binds the existing time tolerance. The matched expression is not hashing a timestamp as a secret; owner authentication tests and preceding review are preserved."
+    },
+    {
+      "index": 21,
+      "rule": "DS162092",
+      "path": "ci/test_local_release.py",
+      "source_sha256": "29fdf0e1118af249e299c786232ca523ac0026f2699a28f748b3e9e85d095de5",
+      "region": {
+        "startLine": 11,
+        "startColumn": 50,
+        "endLine": 11,
+        "endColumn": 59,
+        "charOffset": 633,
+        "charLength": 9,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "127.0.0.1",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "The executable is explicitly a local fixture operator/probe/test. Loopback is required by closed runtime_config validation; no live provider or remote database is admitted."
+    },
+    {
+      "index": 22,
+      "rule": "DS162092",
+      "path": "ci/local_release.py",
+      "source_sha256": "2f3ec67c4031725739dcf2788d0f54cdb00df69b13d0f73b2b4083a520d1774b",
+      "region": {
+        "startLine": 16,
+        "startColumn": 46,
+        "endLine": 16,
+        "endColumn": 55,
+        "charOffset": 709,
+        "charLength": 9,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "127.0.0.1",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "The executable is explicitly a local fixture operator/probe/test. Loopback is required by closed runtime_config validation; no live provider or remote database is admitted."
+    },
+    {
+      "index": 24,
+      "rule": "DS197836",
+      "path": "ci/serve_local_reference.py",
+      "source_sha256": "89bdd9f1c34b272bfc8593f672f1ea9f01e12219d2c21127249761f1d82068ee",
+      "region": {
+        "startLine": 9,
+        "startColumn": 30,
+        "endLine": 9,
+        "endColumn": 75,
+        "charOffset": 460,
+        "charLength": 45,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "sha256);require(set(job)=={'release','runtime",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "Broad textual match on integrity metadata/receipt/ledger hash fields. SHA256 binds public artifacts and is not used to anonymize low-entropy personal data or derive a credential."
+    },
+    {
+      "index": 0,
+      "rule": "DS197836",
+      "path": "ci/build_local_reference.py",
+      "source_sha256": "3347da57c6bfc1a8153748e28f9a1ec50850629f19d52c4a79954eba62473bbf",
+      "region": {
+        "startLine": 59,
+        "startColumn": 55,
+        "endLine": 59,
+        "endColumn": 90,
+        "charOffset": 3534,
+        "charLength": 35,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "sha256':sha(p),'seconds':round(time",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "Public artifact receipt hash metadata; not anonymization or credential derivation."
+    },
+    {
+      "index": 1,
+      "rule": "DS162092",
+      "path": "ci/build_local_reference.py",
+      "source_sha256": "3347da57c6bfc1a8153748e28f9a1ec50850629f19d52c4a79954eba62473bbf",
+      "region": {
+        "startLine": 47,
+        "startColumn": 80,
+        "endLine": 47,
+        "endColumn": 89,
+        "charOffset": 2649,
+        "charLength": 9,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "127.0.0.1",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "Explicit local fixture-only endpoint, validated loopback; production admission is false."
+    },
+    {
+      "index": 2,
+      "rule": "DS162092",
+      "path": "ci/build_local_reference.py",
+      "source_sha256": "3347da57c6bfc1a8153748e28f9a1ec50850629f19d52c4a79954eba62473bbf",
+      "region": {
+        "startLine": 47,
+        "startColumn": 30,
+        "endLine": 47,
+        "endColumn": 39,
+        "charOffset": 2599,
+        "charLength": 9,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "127.0.0.1",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "Explicit local fixture-only endpoint, validated loopback; production admission is false."
+    },
+    {
+      "index": 3,
+      "rule": "DS173237",
+      "path": "ci/build_local_reference.py",
+      "source_sha256": "3347da57c6bfc1a8153748e28f9a1ec50850629f19d52c4a79954eba62473bbf",
+      "region": {
+        "startLine": 12,
+        "startColumn": 17,
+        "endLine": 12,
+        "endColumn": 83,
+        "charOffset": 534,
+        "charLength": 66,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "'ed34dd8e3f0a78dbaf00d0444ce8e285b015b765379c2e17880455f70370f8e9'",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "Pinned public executable or Node license SHA256 identity; not secret material."
+    },
+    {
+      "index": 4,
+      "rule": "DS173237",
+      "path": "ci/build_local_reference.py",
+      "source_sha256": "3347da57c6bfc1a8153748e28f9a1ec50850629f19d52c4a79954eba62473bbf",
+      "region": {
+        "startLine": 11,
+        "startColumn": 9,
+        "endLine": 11,
+        "endColumn": 75,
+        "charOffset": 450,
+        "charLength": 66,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "'5c976096e04e5c2c1f091938926234cc9fbebfe9787ddd149351b3b0ecc707b5'",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "Pinned public executable or Node license SHA256 identity; not secret material."
+    },
+    {
+      "index": 5,
+      "rule": "DS173237",
+      "path": "ci/build_local_reference.py",
+      "source_sha256": "3347da57c6bfc1a8153748e28f9a1ec50850629f19d52c4a79954eba62473bbf",
+      "region": {
+        "startLine": 10,
+        "startColumn": 7,
+        "endLine": 10,
+        "endColumn": 73,
+        "charOffset": 374,
+        "charLength": 66,
+        "snippet": {
+          "text": "",
+          "rendered": {
+            "markdown": "``"
+          }
+        },
+        "sourceLanguage": "python"
+      },
+      "matched_text": "'21761eceb9302062c9623fb699f332c8c7fe000f15f70efe8da01a2cfbbc16b9'",
+      "disposition": "REVIEWED_FIXTURE_OR_FALSE_POSITIVE",
+      "rationale": "Pinned public executable or Node license SHA256 identity; not secret material."
+    }
+  ],
+  "untriaged": 0,
+  "new_blockers": 0,
+  "sarif_sha256": "765090ff9e76dbd43089aa95eb092782f995e3558ff97867e468181576aefea3",
+  "scope": "Current14executable files;13unchanged files carry exact-source dispositions, only builder re-scanned after deterministic fixture cache/stable workspace change. No native Daybreak investigation.",
+  "inherited_sarif_sha256": "4b2f098b9a7d7af228c8d20c4d611a74d141750fc18eb520c82c2209a29acb0b",
+  "changed_file_rescan": 1
+}

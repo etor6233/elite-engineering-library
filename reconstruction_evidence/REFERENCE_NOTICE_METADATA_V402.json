@@ -1,0 +1,40 @@
+{
+  "state": "PASS_METADATA_ONLY",
+  "source_revision": 330,
+  "metadata_revision": 331,
+  "notice_labels_corrected": [
+    "licenses/reference/next-MIT.txt",
+    "licenses/reference/constants-browserify-README.md.txt",
+    "licenses/reference/data-uri-to-buffer-README.md.txt",
+    "licenses/reference/http-proxy-agent-README.md.txt",
+    "licenses/reference/https-proxy-agent-README.md.txt",
+    "licenses/reference/punycode-LICENSE-MIT.txt.txt",
+    "licenses/reference/setimmediate-LICENSE.txt.txt",
+    "licenses/reference/string-hash-README.md.txt",
+    "licenses/reference/unistore-README.md.txt",
+    "licenses/reference/edge-runtime-cookies-LICENSE.md.txt",
+    "licenses/reference/edge-runtime-ponyfill-LICENSE.md.txt",
+    "licenses/reference/edge-runtime-primitives-LICENSE.md.txt",
+    "licenses/reference/babel-core-LICENSE.txt",
+    "licenses/reference/dotenv-LICENSE.txt",
+    "licenses/reference/dotenv-expand-LICENSE.txt",
+    "licenses/reference/unistore-MIT-terms.txt",
+    "licenses/reference/client-only-MIT-terms.txt",
+    "licenses/reference/client-only-package.json.txt",
+    "licenses/reference/babel-packages-inline-notices.txt"
+  ],
+  "source_lock_sha256": "18b20c9a287eb5ad12217db27f58384812d2d36a7a74c8355390db94f9bdd47b",
+  "pack_before_sha256": "2a6b3944259e09d5b04d7d5cccbc31a03bf60238167e75ef468e52e8c86f8e90",
+  "pack_after_sha256": "cfa50fb671da3c85441c35c1890dcfecbfe741b2c52ced844aa5961ae2c098e7",
+  "pack_version": "0.1.9",
+  "all_selected_source_files_unchanged": true,
+  "source_files": 1653,
+  "plans": [
+    "ENTERPRISE_BACKEND_PACK_PLAN.md",
+    "FRANCHISE_COMPLETE_PACK_PLAN.md",
+    "FRANCHISE_SERVERLESS_PACK_PLAN.md",
+    "HTTP_METRICS_REFERENCE_PACK_PLAN.md"
+  ],
+  "new_dependencies": false,
+  "new_build_required": false
+}

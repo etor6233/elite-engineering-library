@@ -1,0 +1,72 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2804",
+  "outcome": "PASS",
+  "command": "C:/Python314/python.exe -X utf8 -B C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\record-private-locale-checkpoint302.py; exact1363 composition and declared presentation-only correspondence",
+  "exit_code": 0,
+  "assertions": [
+    "Reference blueprint role writes/negative/recovery: people/resources, quotes/orders/payment/handover, catalog, supply/factory/stock, warranty and network agreements; previous exact source proofs retained",
+    "Same-release private CMS/21shared guides/5human curricula and scoped KPIs consolidated from seven canonical V402 role proofs",
+    "Private es/en typed1198message catalog; per-user/tenant preference, bounded browser negotiation, configured fallback; display never changes role grants or business policy",
+    "Exact21guide content and5profile/course bindings; original tenant content, audit reasons, terms and assessment evidence retained",
+    "Six preference/auth and five display tests,90exactserialization/storage expressions, typed/Nextbuild PASS; actual browser3durableCMSwrites and0duplicates after language switch/lost response/GET recovery",
+    "Four changed profiles104/1363full,15/247web,64/886serverless,105/1371HTTP byte exact; narrowwebtypesPASS; mobile390px inspected",
+    "Mobile/desktop/IoT only as classified by the reference blueprint; identityJ5/security/delivery/readiness and provider live gates remain distinct controls"
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "9da4fa26eae497da0ba71bc19398860db220364a409693a19453dd1e623d07a2"
+    },
+    {
+      "path": "reconstruction_evidence/ROLE_METRICS_RELEASE_V402.json",
+      "sha256": "6d70628a66d839c4300a8422aa2f08635a09fa18140b3141299b52d36e63f7a8"
+    },
+    {
+      "path": "reconstruction_evidence/PRIVATE_LOCALE_RELEASE_V402.json",
+      "sha256": "804c736cc04dd5c603e069f6c58e5b6ff61ea8a46312691b77e1ac0c87e57d25"
+    },
+    {
+      "path": "reconstruction_evidence/TRAINING_CONNECTED_RELEASE_V402.json",
+      "sha256": "f8e2ba65b7438a78415ef30d26e1df5c171771419ead493f1f7209fc20604e17"
+    },
+    {
+      "path": "reconstruction_evidence/CATALOG_ROLE_AUTHORING_RELEASE_V402.json",
+      "sha256": "26abd52c74ae8e3ea901cd0b823859c69f9791d574a889b7cf0960e9261ace93"
+    },
+    {
+      "path": "reconstruction_evidence/SUPPLY_ROLE_RELEASE_V402.json",
+      "sha256": "0b63cdf2168f7a7b290f149985a13fab00c6d7b8dea67f7d90cec5f23089cdb7"
+    },
+    {
+      "path": "reconstruction_evidence/WARRANTY_ROLE_RELEASE_V402.json",
+      "sha256": "ebbc9a4b264371c1ebc74d2bb8d7634a7141fa271abfaa9b61efe8120096927a"
+    },
+    {
+      "path": "reconstruction_evidence/NETWORK_ROLE_RELEASE_V402.json",
+      "sha256": "b0dc929b0a59d63d1423ac9d8ca5f61d1c8498134500d6d909718428cd5abf06"
+    },
+    {
+      "path": "reconstruction_evidence/HELP_CMS_RELEASE_V402.json",
+      "sha256": "1c4d91eb60ebbaad1296d0ca27ee2750b23043cd93fe6e0152ae3db85c450de7"
+    },
+    {
+      "path": "reconstruction_evidence/ROLE_METRICS_RELEASE_V402.json",
+      "sha256": "6d70628a66d839c4300a8422aa2f08635a09fa18140b3141299b52d36e63f7a8"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/PRIVATE_LOCALE_RELEASE_V402.md",
+      "sha256": "58bdc0d78cd6fcaa8a19fcc1b370b92579176bfeaa330d5427f7df81cf98843b"
+    },
+    {
+      "path": "reconstruction_evidence/PRIVATE_LOCALE_RELEASE_V402.json",
+      "sha256": "804c736cc04dd5c603e069f6c58e5b6ff61ea8a46312691b77e1ac0c87e57d25"
+    }
+  ],
+  "inventory_sha256": "1a34ffb3d11ba4a905cac243a823cd7f48e24c13c2fd2d0016ac7c0faf8a7a3a",
+  "live_effects_performed": false
+}

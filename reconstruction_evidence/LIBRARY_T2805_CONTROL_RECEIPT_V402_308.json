@@ -1,0 +1,89 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2805",
+  "outcome": "PASS",
+  "command": "C:/Python314/python.exe -X utf8 -B C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\record-campaign-checkpoint308.py; consolidate exact1451 provider/communications source and connected local receipts",
+  "exit_code": 0,
+  "assertions": [
+    "WA durable receive/conversation/proposal/distinct review/real adapter fixture/fence/signed status and receipt recovery; baseline communications proof preserved",
+    "Page exact Meta SDK/manual publication/revoke/PG reconciliation preserved",
+    "ML selected PRICE/STOCK/PAUSE/RESUME/MEDIA/CREATE/CONTENT plus GET reconciliation and source/approval/effect invariants preserved",
+    "Google Merchant actual fixed SDK/source/ATP/exact price/manual upsert/refresh/processing observation/durable queue preserved",
+    "Scheduled CRM/consent reminders/cancel/reschedule/unknown recovery and source-compatible campaign audience/timed steps/suppression/quote-order observation proven",
+    "Partial preparation/review/recovery has exact immutable identity/hash/decision/reason and no duplicate requests/jobs; source and provider scope explicitly limited to selected blueprint",
+    "No unfinished code is classified as credentials. User account/credential/policy values remain future configuration; T2803 source/security, T2807 AI and T2809 operations remain separate open controls",
+    "Current108packs/1451outputs rebuilt exactly outside canonical root; local fixtures only, no global readiness or production promotion"
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "8bf8536ba1aa282f80c5456ded48c66877b2b3e3e69c3f6620eb237a255103c0"
+    },
+    {
+      "path": "reconstruction_evidence/CAMPAIGN_CONNECTED_RELEASE_V402.json",
+      "sha256": "ebf150e7956832e474623de0807684faf8cc00ed3319219d214411f4e6dae415"
+    },
+    {
+      "path": "reconstruction_evidence/COMMUNICATIONS_RUNTIME_V402.md",
+      "sha256": "988e11bb9a60b6a1ffe1f14264d49aaf941c1ddc396c16ce1c2874c3c4386dda"
+    },
+    {
+      "path": "reconstruction_evidence/COMMUNICATIONS_RUNTIME_V402.json",
+      "sha256": "4f5d6044a08230b4a88d9dc938abc1564520084576ced0dfd238dd89fbd9c7be"
+    },
+    {
+      "path": "reconstruction_evidence/MARKETPLACE_MUTATION_RELEASE_V402.md",
+      "sha256": "260c04a9707f10d4b00ec53d2a7391fb7c309e7dfb2944fa583d4c7edd7b5d2a"
+    },
+    {
+      "path": "reconstruction_evidence/MARKETPLACE_MUTATION_RELEASE_V402.json",
+      "sha256": "30140c30411db7e25bee77d01eb976a72f04159454f01006484f9c100dc6bf99"
+    },
+    {
+      "path": "reconstruction_evidence/MARKETPLACE_INITIAL_RELEASE_V402.md",
+      "sha256": "733a8bcee51128ecd3db63acc57e7c6441e591961935aff4772fe17fecbdca99"
+    },
+    {
+      "path": "reconstruction_evidence/MARKETPLACE_INITIAL_RELEASE_V402.json",
+      "sha256": "76bb2677af4468d3219bf81e7725e2d96deac7e0fac12f561f441972efde41f3"
+    },
+    {
+      "path": "reconstruction_evidence/MARKETPLACE_CONTENT_RELEASE_V402.md",
+      "sha256": "81f07523d1fa883ac166dccdb24e5927bcc09325e09e4468418b56e01b7a0302"
+    },
+    {
+      "path": "reconstruction_evidence/MARKETPLACE_CONTENT_RELEASE_V402.json",
+      "sha256": "2fa49a14b06a036f54c7c1a43a7675c173142bbba9aa86e64422138211b4aca2"
+    },
+    {
+      "path": "reconstruction_evidence/MERCHANT_CONNECTED_RELEASE_V402.md",
+      "sha256": "757b8aac29a3822d5b419b12809aa1593f3c7fee6731f3fc9a70eecfd34a070f"
+    },
+    {
+      "path": "reconstruction_evidence/MERCHANT_CONNECTED_RELEASE_V402.json",
+      "sha256": "6a42b62c8ad83e1130b5e8c24c3e6d905ac1994cbe46d88a999b62f34182ad6f"
+    },
+    {
+      "path": "reconstruction_evidence/SCHEDULED_COMMUNICATIONS_RELEASE_V402.md",
+      "sha256": "009db69abf6100b2618dbe46353dbc88b1571fac7dcd594d674072c25ce668b5"
+    },
+    {
+      "path": "reconstruction_evidence/SCHEDULED_COMMUNICATIONS_RELEASE_V402.json",
+      "sha256": "9e7dd78ebbc312cebb1b5ed9a693f68facc6d7ba7512621fd0befcb308c9e272"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/CAMPAIGN_CONNECTED_RELEASE_V402.md",
+      "sha256": "4fc7deec96b3ddc0442e04adffe5c00263e0c5597eb2398e83233728e61e611d"
+    },
+    {
+      "path": "reconstruction_evidence/CAMPAIGN_CONNECTED_RELEASE_V402.json",
+      "sha256": "ebf150e7956832e474623de0807684faf8cc00ed3319219d214411f4e6dae415"
+    }
+  ],
+  "inventory_sha256": "938c563a981984d7217355040f05f8b9708923e56bee3044f3af4b002baf547f",
+  "live_effects_performed": false
+}

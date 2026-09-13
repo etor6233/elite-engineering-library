@@ -176,3 +176,81 @@ V402 handover browser: GO_INITIAL_HANDOVER_API0.2.0/34files; TYPESCRIPT_FRANCHIS
 V402 factory browser: GO_ENTERPRISE_QUERY_API0.2.0/11 and TYPESCRIPT_GO_API_WEB_BRIDGE0.6.0/64.18BFF cases and real browser/BFF/Go/PG; exact profile77/943. See FACTORY_BROWSER_V402.md.
 
 V402 current communications/FX: five new packs, six updated packs;178/1797library, franchise82/1032. Dedicated FX snapshot, OIDC service broker, WhatsApp host and Meta Page adapter/runtime; shared human approval0.2.0. See COMMUNICATIONS_RUNTIME_V402.md and EXACT_FX_SNAPSHOT_V402.md.
+
+V402 FX0.2.0/accounting0.1.2: conversion→durable draft→explicit posting/reversal, exact rebuild four profiles.178packs/1804blocks; franchise82/1039. Source/license unchanged, seven new AUTHORED glue files. See FX_JOURNAL_CONNECTION_V402.md.
+
+V402: Python Odoo calculator0.1.0 and Go approved stored-value tender0.1.0 connect source calculations, reviewed PG effects, partial SDK payment and full local funding through browser delivery. Seven existing owners updated;180packs/1877blocks, franchise84/1112, five exact profiles. AUTHORED glue and ADAPTED/VERBATIM LGPL source are distinct. See STORED_VALUE_CONNECTED_RELEASE_V402.md.
+
+V402 warranty: GO_BC_WARRANTY_COVERAGE_ADAPTER0.1.0 and GO_CONNECTED_WARRANTY_CLAIM0.1.0, six owners revised;182packs/1911blocks,86/1145franchise. Sold terms through J4 reconciliation PROVEN_LOCAL, role UI T2804. Four exact profiles, source/notices distinct. WARRANTY_CONNECTED_RELEASE_V402.md.
+
+V402 inventory0.17.1: optional VIN/battery uniqueness correction, additive migration71 and focused regression;182packs/1914blocks, franchise86/1148. Existing history preserved; no new third-party code.
+
+V402 GO-CONNECTED-SERIAL-SUPPLY0.1.0 and three existing owners:183packs/1932blocks, franchise87/1166. AUTHORED integration, no new upstream or ledger. SERIAL_SUPPLY_CONNECTED_RELEASE_V402.md/json.
+
+V402 connected J3: two packs, five revised owners,185packs/1968blocks and89/1202franchise. Actual approved storefront/reference feed; provider mappings remain T2805. CATALOG_CONNECTED_RELEASE_V402.md/json.
+
+V402 connected training:GO-CONNECTED-HUMAN-TRAINING0.1.0 and TS-CONNECTED-TRAINING-PORTAL0.1.0;187packs/1994blocks,91/1228franchise. Durable participation/human evaluation, no grants. TRAINING_CONNECTED_RELEASE_V402.md/json.
+
+V402 catalog role authoring:189packs/2014blocks,93/1248reference. Initial source/PNG/approval/publish/rollback from browser, two new companion packs and six revised owners. CATALOG_ROLE_AUTHORING_RELEASE_V402.md/json.
+
+V402 supply role:191packs/2030blocks,95/1264reference. Initial order/quantities through factory/QA/receiving/available stock from actual browser; two companion packs and three revised owners. SUPPLY_ROLE_RELEASE_V402.md/json.
+
+V402 warranty role:193packs/2044blocks,97/1278reference. Sold terms/consent/activation and complete repair by role; two companion packs and three revised owners. WARRANTY_ROLE_RELEASE_V402.md/json.
+
+V402 network role:195packs/2065blocks,99/1299reference. Recoverable organization/agreement/branch forms, original Fulfillment SQL, two companion packs and four revised owners. NETWORK_ROLE_RELEASE_V402.md/json.
+
+V402 helpCMS:197packs/2088blocks,102/1324reference. Durable organization-scoped plaintextCMS,21releaseguides and5bounded human training curricula revision2. Two companionpacks,10revisedowners. HELP_CMS_RELEASE_V402.md/json.
+
+V402 KPIs:198packs/2107blocks,103/1343reference.19AUTHORED source reporting/UI/proof files;6revisedowners and1connected proofpack. ROLE_METRICS_RELEASE_V402.md/json. T2804 private locale remains.
+
+V402 private locale:199packs/2127blocks,104/1363reference.20AUTHORED additions,12revisedowners plus1proofpack; T2804 PROVEN_LOCAL. PRIVATE_LOCALE_RELEASE_V402.md/json. T2805 next.
+
+V402 checkpoint303:200packs/2143blocks,full105/1379. GO_CONNECTED_MARKETPLACE_MUTATION0.1.0; approval0.8.0 and application1.20.0. Existing-item mutations PROVEN_LOCAL; T2805 initial publication/media and other mappings remain open.
+
+V402304:200packs/2151blocks;full105/1387. GO_CONNECTED_MARKETPLACE_MUTATION0.2.0 adds approved initial PNG/media/publication; exact two affected profiles. Remaining T2805 content/feeds/comms open.
+
+V402305:200packs/2158blocks;full105/1394. GO_CONNECTED_MARKETPLACE_MUTATION0.3.0 adds source-bound CONTENT for one unsold item. Other provider feeds/comms T2805 remain open.
+
+V402306: 201packs/2182blocks;full106/1418. GO_CONNECTED_GOOGLE_MERCHANT0.1.0 and optional application1.21.0; current catalog/SDK/PG upsert+refresh claim. MERCHANT_CONNECTED_RELEASE_V402.md/json.
+
+V402307: 202packs/2199blocks;full107/1435. GO_CONNECTED_SCHEDULED_WHATSAPP0.1.0; HUMAN_APPROVAL0.9.0,CONNECTED_WHATSAPP_HOST0.2.0,WHATSAPP_ADAPTER0.15.0. SCHEDULED_COMMUNICATIONS_RELEASE_V402.md/json.
+
+V402308: 203packs/2215blocks;full108/1451. GO_CONNECTED_WHATSAPP_CAMPAIGNS0.1.0;SCHEDULED_WHATSAPP0.2.0 andCONNECTED_WHATSAPP_HOST0.3.0. CAMPAIGN_CONNECTED_RELEASE_V402.md/json.
+
+V402309: 204packs/2241blocks;full109/1477. GO_OIDC_PORTAL_SESSION0.1.0;GO_ELECTROMOBILITY_APPLICATION1.22.0;TYPESCRIPT_OIDC_PORTAL_ADAPTER0.3.0. IDENTITY_PORTAL_RELEASE_V402.md/json.
+
+V402310: 204packs/2245blocks;full109/1481. NetworkGo/portal0.2.0,OIDCGo0.1.1/OIDCTypeScript0.3.1. IDENTITY_J5_RELEASE_V402.md/json.
+
+V402311: 204packs/2250blocks, profile109/1481 unchanged. PNPM-ARTIFACT-SELECTION-GATE0.9.0/14files local offline runtime. PNPM_LOCAL_RUNTIME_V402.md/json.
+
+V402312: Backend0.4.6 y DevSkim gate0.1.1;204packs/2250blocks; full109/1481 exacto. COMPOSITION_SECURITY_RELEASE_V402.md/json.
+
+V402313: GO_CONNECTED_DOCUMENT_REFERENCE0.1.0; SDKdocumental0.2.1 aporta notices originales. Full113/1518;205/2270. DOCUMENT_REFERENCE_RELEASE_V402.md/json.
+
+V402314: GO_CONNECTED_CONVERSATION_RUNTIME0.1.1, GO_APP_WIRING0.2.1, GO_OPENAI_RESPONSES_TOOL_ADAPTER0.1.1; full113/1523. AI_RUNTIME_GOVERNANCE_V402.md/json.
+
+V402315: Cinco owners IA/dominio/host/evaluación actualizados; full113/1530, serverless65/910, HTTPmetrics114/1538. T2807 PROVEN_LOCAL. AI_CONNECTED_REFERENCE_RELEASE_V402.md/json.
+
+V402316: Cinco owners revisados para delivery local; perfil115/1560, backend41/601, web15/257, serverless65/922, HTTPmetrics116/1568. T2808 PROVEN_LOCAL. LOCAL_REFERENCE_DELIVERY_V402.md/json.
+
+V402317: Cuatro owners revisados;116/1583 full y HTTP,42/607 backend,66/928 serverless. T2809 local conectado PROVEN_LOCAL; métricas opcionales en host OIDC real. LOCAL_REFERENCE_OPERATIONS_V402.md/json.
+
+V402319: GO-CUSTOMER-SURVEY-API0.2.1 adds qualified PostHog MIT NPS numerical owner;205/2308, full116/1591, backend42/615, serverless66/936, HTTP116/1591. No dependency upgrade. NPS_SOURCE_ADAPTATION_V402.md/json.
+
+V402322 PORTABLE-CI-GATE-RUNNER0.1.4 binds exact runtime notices;205/2332, full116/1615, backend42/639, serverless66/960, HTTP116/1615. No functional/runtime dependency change.
+
+V402323 PORTABLE-SIGNED-RELEASE-EVIDENCE-GATE0.2.0,11files; external trusted signer parameter is required.205/2333,full116/1616,HTTP116/1616; backend639/serverless960 unchanged322.
+
+V402324 PORTABLE-CI-GATE-RUNNER0.1.5 adds five AUTHORED signed-build glue/test/template/docs files; one guide revised.205/2338,full116/1621,backend644/serverless965/HTTP1621. Final product builds include later ARCA.
+
+V402325 ARCA connected local closure: six owners revised,22newblocks(18AUTHORED/4VERBATIM),ten existing credential files selected.205/2360;full116/1653,backend676/serverless997/HTTP1653. Portable440file fiscal component, two exact offline generations, actual UDS/PG/CMS/recovery and12manifest SCA0. Final full-franchise signed release remains T2810.
+
+V402326 PORTABLE-SIGNED-RELEASE-EVIDENCE-GATE0.2.1: UTC epoch fix, actual expression regression. Counts unchanged205/2360;full116/1653.
+
+V402328 PORTABLE-CI-GATE-RUNNER0.1.7: exact original sources plus checked Next generated declaration;16fixtures/actual1653projection PASS. Library205/2360 andfull116/1653 unchanged.
+
+V402329 PORTABLE-SIGNED-RELEASE-EVIDENCE-GATE0.2.2: official clean-package null semantics corrected in build/verifier,17contract assertions and actual454package report PASS.205/2360 and116/1653 unchanged.
+
+V402330 signed gate0.2.3 + portable CI0.1.8: full SPDX report coverage and ZIP junction parents;205packs/2360blocks,116packs/1653selected files unchanged.
+
+V402331 CI0.1.9 corrects19notice source labels;205/2360 and116/1653 unchanged. Signed artifact source330 remains exact.

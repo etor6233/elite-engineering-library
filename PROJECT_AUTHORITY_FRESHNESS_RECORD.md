@@ -576,3 +576,61 @@ AUTHORED queda limitado a glue inevitable: cualquier algoritmo de negocio local
 sin source ADAPTED/VERBATIM/DEPENDENCY_PIN admisible requiere resolución real.
 Los estados/evidencias previos se conservan; no se marca ningún pendiente PASS por
 registrar el nuevo alcance. Orden exacto y nueve criterios en el expediente V402.
+
+V402 / FAIL864 corrected C-locale search assumption using official PostgreSQL18 collation documentation and existing PG18.6 runtime. URL and exact downloaded document SHA, source before/after and regression receipt in HELP_CMS_RELEASE_V402.json; no new runtime adopted.
+
+V402 reporting freshness: current lead lifecycle terminal value is converted, not won. Original-source RED and minimal literal correction retained. Also distinguish new FAIL874 body boundary from historically closed FAIL457 sender/recovery; this before/after correction does not rewrite old evidence. ROLE_METRICS_RELEASE_V402.md/json.
+
+V402 private locale: fixed RFC9110 and ECMA402 documentation snapshots support narrow es/en display semantics, with receipts in PRIVATE_LOCALE_RELEASE_V402.json. No external source code acquired or dependency advanced. Whole-interface and wire-boundary review corrected initial inventory/codemod assumptions; historical records preserved.
+
+V402 marketplace: before, search excerpts suggested new prices write; after full official snapshot, /prices/standard explicitly unavailable, so only PUT/items is selected and GET/prices reconciles. User Products/stock modes/x-version/dynamic pricing checked against seven exact official HTTPS snapshots. Web extraction403 did not reflect origin availability; ordinary direct HTTPS200 receipts retained.
+
+V402304: initial-media admission fixes official pictures document24/03/2026. Multipart direct bytes and returned picture ID are supported; remote transforms are not SHA-equivalent. No documented source-hash recovery is invented. Bound URI/SHA and tested UNKNOWN path in MARKETPLACE_INITIAL_RELEASE_V402.json.
+
+V402305: inspected fixed official User Products answer on family_name propagation and no-sales eligibility. Require exactly one associated item with explicit zero sales before writing. No multi-item equivalence or permission inferred. MARKETPLACE_CONTENT_RELEASE_V402.json.
+
+V402306: Three current official Google Merchant Products guides/reference snapshots fixedURL/SHA. Positiveint64 version_number and distinction input acknowledgement/processing preserved. Exact source lock/receipts in proof. MERCHANT_CONNECTED_RELEASE_V402.md/json.
+
+V402307: Provider scope derived from actual ENTERPRISE_FULL_STACK_BLUEPRINT root authority; ML/Merchant selected publishers. No other product mutation or new official source asserted. SCHEDULED_COMMUNICATIONS_RELEASE_V402.md/json.
+
+V402308: Marketing/permitted audience/reconciliation requirement traced to original enterprise blueprint. Current source/consent and exact immutable decision recovery preserve original authority; no invented attribution. CAMPAIGN_CONNECTED_RELEASE_V402.md/json.
+
+V402309: Saved portal candidate rebased onto current composition preserving all later role/payment/communications modules. Current profile/rollback/media contracts corrected; no stale snapshot replacement. IDENTITY_PORTAL_RELEASE_V402.md/json.
+
+V402310: J5 external IdP authority explicit; narrow bootstrap resolves wildcard incompatibility without auto-grants or invented universal immediate revocation. IDENTITY_J5_RELEASE_V402.md/json.
+
+V402311: Header-size assumption corrected with467boundedRange probes and exact archives. Nested42source files and6WASM identities bound; published declarations without source copyright preserved honestly. Private local tool-use scope differs from redistribution. PNPM_LOCAL_RUNTIME_V402.md/json.
+
+V402 / GO_GRAPH_SECURITY_FLOOR_REGRESSION: current GO_ENTERPRISE_BACKEND_CORE0.4.5 go.mod no longer preserves admitted x/mod0.40 floor fromV313; full graph selects vulnerable0.37 (GO-2026-6179/6180). Official current Go advisories confirm fixed0.40. Restore the canonical owner floor using already admitted/cache-verified module; preserve graph and demonstrate compiled package/binary correspondence so no unchanged domain journeys rerun.
+
+V402312: Se conservó before/after del grafo vulnerable y SDK incompleto; official Go6179/6180 fixed0.40. No reputación ni atribución inventada. Lint1842 triado,1ARCA diferido visible. COMPOSITION_SECURITY_RELEASE_V402.md/json.
+
+V402313: T2806 usa snapshots oficiales existentes, tipos/contratos SDK verificados, exactgraph y current zero-finding evidence. No OCRaccuracy/confidence/producción inferidos. DOCUMENT_REFERENCE_RELEASE_V402.md/json.
+
+V402314: Referencia oficial Responses consultada2026-09-13: previous_response_id no hereda instructions. Corregida continuación local y wire regression. LIB-R10 usa contrato histórico y packV373 existente;807 era referencia equivocada. AI_RUNTIME_GOVERNANCE_V402.md/json.
+
+V402315: T2807: contrato real de cotización un vehículo, subject del pedido ligado al lead, roles/instrucciones explícitos. Recibo audit-final V373 sustituye al manifest previo4archivos; historial intacto y code_sha ligado a ejecución real. AI_CONNECTED_REFERENCE_RELEASE_V402.md/json.
+
+V402316: Next16.3.5 observado oficialmente: image cache, standalone con adapter, loading/template nonce y use-cache. Referencia con optimizer disabled, sin adapter/loading/template/cacheComponents; se conserva16.3.4. Su código fijado gobierna preview-cache, RSC identity y SIGTERM143. Aplicabilidad OCI/CI alineada a owners actuales sin promover runtime externo. LOCAL_REFERENCE_DELIVERY_V402.md/json.
+
+V402317: Documentación oficial Prometheus storage/alerting y otelhttp0.70.0 revisada: retention.size regula bloques y no elimina WAL/head; hold10m intacto. Source-lock anterior conservado como histórico, host317 con propia evidencia/hash. No repromoción por reputación. LOCAL_REFERENCE_OPERATIONS_V402.md/json.
+
+V402319: PostHog release desktop-v0.61.382 commit6fafbb9081bd15e79448af5650e02a4f9ea435cc compared with current tree: selected source blobs identical. Only immutable bytes admitted; root MIT exclusions preserved. NPS_SOURCE_ADAPTATION_V402.md/json.
+
+V402321: stale77pack selector replaced with exact116IDs/1591outputs; inventory205/2308/956/56; V374audit retained and successor21rows binds actual help-center300. Four outer pack headings and3portable locators corrected with before/after receipts. No authority/source version upgrade; original payload1591 unchanged. PORTABLE_SELECTOR_REPAIR_V402.md/json.
+
+V402323: signed gate0.1.0 Windows separator/self-contained trust assumptions corrected in successor0.2.0. Source history/public OpenSSH vector retained; Microsoft Windows ssh-keygen AuthenticodeValid exact47f009c35523b6997aff0f0528dae84f1545465479d722292499941cd5cb83b5. No upstream tool version/admission change. SIGNED_RELEASE_CONTRACT_V402.md/json.
+
+V402324: observed Windows OpenSSH file ACL differs from inherited protected directory; actual access-only correction verified without elevation. Driver source and contract receipts fixed in SIGNED_BUILD_DRIVER_V402; no upstream/source authorship change.
+
+V402 ARCA957 refinement: actual SDK verification exit0 proves metadata.contentHash equals the verified NuGet signed-package Content hash. The .nupkg.sha512 sidecar differs from that signed Content hash and remains a separate recorded observation. Raw SHA512 mismatch alone is not evidence of archive corruption; exact original SHA256 and113payload correspondence stay valid. Five current fiscal runtime packages also match their lock contentHash to verified signed Content hash. Original6.12.1 generator dependencies remain rejected963 independently.
+
+V402325: actual public homologation WSDLs refreshed2026-09-13 with unchanged fixed hashes. Generator NuGet advisory resolved through official6.12.5 cluster, not a fabricated vendor release. Production WSDL entries remain historical, unqualified by this local delta; public ARCA manual4.7 observation does not invent new fiscal rules. ARCA_CONNECTED_INFRA_V402 retains exact before/after/source evidence.
+
+V402329 correction: preliminary gate message454findings was false. Exact official OSV report contains454packages and zero vulnerability records; local parser fabricated empty IDs. Report hash and both actual parser regressions retained in SIGNED_OSV_REPORT_PARSING_V402. No advisory/dependency reinterpretation.
+
+V402330 corrects329SBOM completeness claim: signed hashes were valid, inventory was incomplete. Exact OSV2.5.1 --all-packages plus declared unversioned metadata glue now covers all actual identities. No upstream freshness/advisory claim changed.
+
+V402331: corrected19generic notice source labels using existing exact official provenance receipts; source/versions/licenses unchanged. REFERENCE_NOTICE_METADATA_V402.json binds before/after pack hashes; no re-acquisition needed.
+
+V402 final: source330 exact in current signed build and independent trees; metadata331 corrects19notice source labels. Current local acceptance and exceptions in LIBRARY_INFRA_READY_V402.md. Historical broader claims and failed receipts retained, not rewritten.

@@ -1,0 +1,34 @@
+{
+  "state": "INSPECTED_NOT_ADMITTED",
+  "commit": "6fafbb9081bd15e79448af5650e02a4f9ea435cc",
+  "profile_sha256": "1ff8b69c4e50896a8b4156cfeb80ad15b8ce569b1f6990266ae413db123f8633",
+  "sources": [
+    {
+      "path": "frontend/src/scenes/surveys/utils.ts",
+      "url": "https://raw.githubusercontent.com/PostHog/posthog/6fafbb9081bd15e79448af5650e02a4f9ea435cc/frontend/src/scenes/surveys/utils.ts",
+      "git_blob_sha1": "98066cd409963769cc829dfbe79a6f3afb7f6138",
+      "bytes": 62358,
+      "sha256": "a43ed06c7eaffbe5bde3fe515177e512ebc4e6bce24dbef253ed100cbb1a08c1",
+      "git_blob_verified": true,
+      "observed_at": "2026-09-13T14:46:44.868169+00:00"
+    },
+    {
+      "path": "frontend/src/scenes/surveys/utils.test.ts",
+      "url": "https://raw.githubusercontent.com/PostHog/posthog/6fafbb9081bd15e79448af5650e02a4f9ea435cc/frontend/src/scenes/surveys/utils.test.ts",
+      "git_blob_sha1": "339afd4b6b6c8b8fa34eff405cc212f9090552d2",
+      "bytes": 74584,
+      "sha256": "7b3b24fe2d6d4525113657629991e0d0056b2c8fcf91e6bd2a906b1c280bd565",
+      "git_blob_verified": true,
+      "observed_at": "2026-09-13T14:46:45.204514+00:00"
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/PostHog/posthog/6fafbb9081bd15e79448af5650e02a4f9ea435cc/LICENSE",
+      "git_blob_sha1": "847d9d3def03458035447bdae131e1981e2a63da",
+      "bytes": 1563,
+      "sha256": "6d82d67dba42eb94ba10f1e986d2eec338c22fb7c5216c2c0ebdecd83d53a029",
+      "git_blob_verified": true,
+      "observed_at": "2026-09-13T14:46:45.501129+00:00"
+    }
+  ]
+}

@@ -144,8 +144,17 @@ for ($index = 0; $index -lt $lines.Length; $index++) {
   }
   if ($index -ge $lines.Length) { throw "Unclosed content fence for $relative" }
 
+  $newlineFields = [regex]::Matches($metadata, '(?m)^final_newline:[^\n]*$')
+  $finalNewline = $true
+  if ($newlineFields.Count -gt 1) { throw "Duplicate final_newline for $relative" }
+  if ($newlineFields.Count -eq 1) {
+    $newlineValue = [regex]::Match($newlineFields[0].Value, '^final_newline:[ \t]*(true|false)[ \t]*$')
+    if (-not $newlineValue.Success) { throw "final_newline must be true or false for $relative" }
+    $finalNewline = $newlineValue.Groups[1].Value -ceq 'true'
+  }
   $content = [string]::Join("`n", $contentLines)
-  if ($contentLines.Count -gt 0) { $content += "`n" }
+  if ($finalNewline -and $contentLines.Count -gt 0) { $content += "`n" }
+  if (-not $finalNewline -and $content.EndsWith("`n")) { throw "final_newline false conflicts with trailing empty content line for $relative" }
   $bytes = $utf8.GetBytes($content)
   $actualHash = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($bytes)).ToLowerInvariant()
   if ($actualHash -ne $declaredHash) {

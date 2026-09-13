@@ -300,3 +300,25 @@ V398: PNPM-ARTIFACT-SELECTION-GATE0.7.0/8files entrega fuente original next-path
 V401: contención ZIP terminada en candidato pnpm aislado;16módulos adm-zip retirados,441archivos preservados/1bundle cambiado,4rechazos sinIO y3instalaciones offline reales PASS.475identidades conocidas/0hallazgos; SBOMrecursivo no cerrado;12571archivos node_modules idénticos. Pack0.8.0/9files,167/1588; pnpm general BLOCKED, TEST02/03/07 siguen abiertos,45/48; Daybreak diferido. Ver reconstruction_evidence/PNPM_ZIP_CONTAINMENT_V401.md.
 
 V401 reconciliación final: comparación12571/12571idéntica completada antes de la solicitud de detenerla; no se detuvo proceso. FAIL807 separa las3instalaciones iniciales offline de un exec Next que descargó71paquetes por configuración omitida. Exec corregido con store/offline explícitos PASS sin descargas. Historial/log anterior retenido; no prueba global de ausencia de red. reconstruction_evidence/PNPM_ZIP_CONTAINMENT_V401.md
+
+V402303 / GO_CONNECTED_MARKETPLACE_MUTATION0.1.0: AUTHORED glue on admitted owners and seven SHA-locked official HTTP contracts; G0–G8 narrow local evidence in reconstruction_evidence/MARKETPLACE_MUTATION_RELEASE_V402.md/json. No corporate authorship or whole-T2805 promotion.
+
+V402304 / GO_CONNECTED_MARKETPLACE_MUTATION0.2.0: narrow initial source PNG→manual upload→manual CREATE→GET recovery PROVEN_LOCAL. AUTHORED glue,8fixed official contracts, G0–G8 in reconstruction_evidence/MARKETPLACE_INITIAL_RELEASE_V402.md/json. Existing content/feed/comms closure remains T2805.
+
+V402305 / GO_CONNECTED_MARKETPLACE_MUTATION0.3.0: approved catalog/media→single-unsold-item CONTENT→GET recovery PROVEN_LOCAL. AUTHORED glue with original source owners, same eight official contracts. G0–G8 in MARKETPLACE_CONTENT_RELEASE_V402.md/json; T2805 feeds/comms remain.
+
+V402306: GO_CONNECTED_GOOGLE_MERCHANT0.1.0: AUTHORED current-source/ATP/approval/fence/SDK-IPC/PG/queue binding. Unchanged official Google SDK dependency pin. G0–G8 local claim only; remaining T2805 explicit. MERCHANT_CONNECTED_RELEASE_V402.md/json.
+
+V402307: GO_CONNECTED_SCHEDULED_WHATSAPP0.1.0 binds original CRM/consent/manual approval/jobs/fence/Meta adapter; G0–G8 narrow local claim. Campaign and later T280x remain open. SCHEDULED_COMMUNICATIONS_RELEASE_V402.md/json.
+
+V402308: GO_CONNECTED_WHATSAPP_CAMPAIGNS0.1.0 uses selected source/approval/job/provider owners; G0-G8 local. Consolidates T2805; global source/security staysT2803. CAMPAIGN_CONNECTED_RELEASE_V402.md/json.
+
+V402309: GO_OIDC_PORTAL_SESSION0.1.0 AUTHORED orchestration around admitted SDKs; G0-G8 narrow local session lifecycle. J5 administration and source/SCA remain T2803. IDENTITY_PORTAL_RELEASE_V402.md/json.
+
+V402310: J5 explicit bootstrap and provider-side role-review contract proven locally; full source/SCA remains T2803. IDENTITY_J5_RELEASE_V402.md/json.
+
+V402311: PNPM-ARTIFACT-SELECTION-GATE0.9.0 adds proven narrow offline local execution; reused official Node flags and existing selector/planner. AUTHORED glue only; no reputation-based admission. PNPM_LOCAL_RUNTIME_V402.md/json.
+
+V402312: T2803 PROVEN_LOCAL identidad/source/SCA/lint sobre composición109/1481. Lint sólo evidencia estrecha; scope ARCA penúltimo y Daybreak diferido permanecen separados. COMPOSITION_SECURITY_RELEASE_V402.md/json.
+
+V402313: T2806 referencia conectada PROVEN_LOCAL; AUTHORED sólo glue/fixtures, SDK DEPENDENCY_PIN y notices VERBATIM.20clases fuera de referencia explícitas. DOCUMENT_REFERENCE_RELEASE_V402.md/json.

@@ -1,0 +1,46 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2805",
+  "outcome": "PASS",
+  "command": "C:/Python314/python.exe -X utf8 -B C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\record-identity-checkpoint309.py; exact1477 source correspondence, no unchanged journey reruns",
+  "exit_code": 0,
+  "assertions": [
+    "WA durable receive/conversation/proposal/distinct review/real adapter fixture/fence/signed status and receipt recovery; baseline communications proof preserved",
+    "Page exact Meta SDK/manual publication/revoke/PG reconciliation preserved",
+    "ML selected PRICE/STOCK/PAUSE/RESUME/MEDIA/CREATE/CONTENT plus GET reconciliation and source/approval/effect invariants preserved",
+    "Google Merchant actual fixed SDK/source/ATP/exact price/manual upsert/refresh/processing observation/durable queue preserved",
+    "Scheduled CRM/consent reminders/cancel/reschedule/unknown recovery and source-compatible campaign audience/timed steps/suppression/quote-order observation proven",
+    "Partial preparation/review/recovery has exact immutable identity/hash/decision/reason and no duplicate requests/jobs; source and provider scope explicitly limited to selected blueprint",
+    "No unfinished code is classified as credentials. User account/credential/policy values remain future configuration; T2803 source/security, T2807 AI and T2809 operations remain separate open controls",
+    "Current108packs/1451outputs rebuilt exactly outside canonical root; local fixtures only, no global readiness or production promotion",
+    "1477current outputs exact;1445previous unchanged,6revised optional BFF/auth/main hooks,26new AUTHORED session/profile/host/test/docs. Business handlers and role UI unchanged. Real SDK/Go/PG lifecycle/host/standalone compatibility/profile/rollback/fuzz and5exactprofiles PASS. Source/SCA/J5 administration remain T2803."
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "8bf39765e8fac89d054d3758e3600ed52897d1c736cd8e3e2e453d2e6bf10ac5"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_T2805_CONTROL_RECEIPT_V402_308.json",
+      "sha256": "8c263db02b3d41f1113acafa1e2bc8b9a38fd1e23be75e6ff8f34e3d9d5b5441"
+    },
+    {
+      "path": "reconstruction_evidence/IDENTITY_PORTAL_RELEASE_V402.json",
+      "sha256": "b6cde44f897802f5990cab1744ab24b52ad8f033b840a8dad9a774d185c6136f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/IDENTITY_PORTAL_RELEASE_V402.md",
+      "sha256": "7ac6c8cc99448f563972b5ad8fad3de325c4e499220f96dfde9a6c654515e1eb"
+    },
+    {
+      "path": "reconstruction_evidence/IDENTITY_PORTAL_RELEASE_V402.json",
+      "sha256": "b6cde44f897802f5990cab1744ab24b52ad8f033b840a8dad9a774d185c6136f"
+    }
+  ],
+  "inventory_sha256": "d8808dd0f8843b0e0e8f57636b402254a7e77cb26ad85dca669b6c5b1ecb5085",
+  "live_effects_performed": false
+}

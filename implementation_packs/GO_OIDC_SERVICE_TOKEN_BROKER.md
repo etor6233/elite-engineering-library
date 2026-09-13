@@ -1,6 +1,6 @@
 # OIDC Service Token Broker
 
-## Metadata
+## 1. Metadata
 
 ```yaml
 pack_id: "GO-OIDC-SERVICE-TOKEN-BROKER"
@@ -18,11 +18,19 @@ upstream_sources: ["https://go.googlesource.com/oauth2/+/4d954e69a88d9e1ccb8439f
 verified_at: "2026-09-11"
 ```
 
-## Applicability
+## 2. Applicability
 
 AUTHORED boundary glue only; SDK modules are DEPENDENCY_PIN. See docs/oidc-service-token-runtime.md and provenance documents for the exact supported profile. No secrets/live account/IdP implementation. Host validates profile against its selected connector before use. Global composition SCA/security/release remains a separate gate. Profile false/disabled is not a credential probe or production authorization.
 
-## Exact file manifest
+## 3. Architecture contract
+
+One hash-bound operator profile selects issuer/token/JWKS endpoints and exact
+service authority. Pinned oauth2 obtains the grant; pinned go-oidc verifies its
+RS256 JWT. The host compares the grant authority with its existing verifier;
+this component neither implements an IdP nor grants permissions itself.
+Renewal is bounded and shared between callers; ambiguous responses fail closed.
+
+## 4. Exact file manifest
 
 ```text
 CREATE config/identity/service-token.synthetic.json
@@ -38,7 +46,7 @@ CREATE licenses/go-jose-Apache-2.0.txt
 CREATE licenses/golang-oauth2-BSD-3-Clause.txt
 ```
 
-## Materialization blocks
+## 5. Materialization blocks
 
 ### FILE: `config/identity/service-token.synthetic.json`
 
@@ -1508,3 +1516,40 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ````
 
+
+## 6. Configuration surface
+
+Use docs/oidc-service-token-runtime.md. Profile path+SHA and secret-file reference
+are separate; no secret is embedded in config/identity/service-token.synthetic.json.
+That explicit LOOPBACK_FIXTURE profile is nonproductive. A disabled host must
+not construct the broker, since construction performs discovery.
+
+## 7. Dependency bill
+
+Exact oauth2v0.36.0/go-oidc3.20.0 and existing go-jose graph are selected by the
+composed Go lock. Original BSD/Apache license texts are included under licenses/;
+docs/provenance/oidc-service-token.md and oidc-service-third-party-notices.md
+identify fixed official revisions. New wrappers/tests remain AUTHORED glue.
+
+## 8. Apply order
+
+Compose with the existing backend identity and selected host. Validate the
+profile and compare Binding before injecting AccessToken into outbound calls.
+Never silently mix static-token and grant-renewal modes. Roll back the whole
+profile/host revision; construction stays side-effect bounded and no DB migration
+is introduced. Protect and rotate the external secret reference in the target.
+
+## 9. Verification
+
+Existing SDK HTTP/TLS fixtures exercise20concurrent callers, key/secret rotation,
+22wrong-claim/lifetime responses, redirect/size/error/metadata rejection and
+finite profile fuzz. COMMUNICATIONS_RUNTIME_V402.md and the current composition
+identity/security receipts govern integration. No suite is rerun for heading
+repair321 because all11payload files remain byte-identical.
+
+## 10. Reconstruction evidence
+
+Materialize the selected source plan into an absent destination and compare
+all11files and their declared hashes. The canonical metadata and complete
+reference319 agree on these bytes. This source-adapter proof is distinct from
+live IdP provisioning, target trust policy and final release acceptance.

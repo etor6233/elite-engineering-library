@@ -20,7 +20,7 @@
     },
     {
       "path": "PROJECT_AUTHORITY_MAP.md",
-      "sha256": "5347450c1c8d87e58c92fff2707005fffee73ca7fe92c9dccbb419f3b7d5d23a"
+      "sha256": "fe76e9d53e2f87fee7f381698ad4c04e900c1e7500738e9ea2a0309780df49ef"
     },
     {
       "path": "reconstruction_evidence/LIBRARY_ASSURANCE_PREPARATION_V402.json",
@@ -32,11 +32,11 @@
     },
     {
       "path": "PROJECT_EXTERNAL_SOURCE_LOCK.md",
-      "sha256": "2ecb2d026e7fa3c0399bb3c98460e5f5ceb3e4ea15bf0d4b99621f57bc02b34a"
+      "sha256": "c4ce0a6f2f120b409842228fbff32e2bcbc27f655a7d8876f9a1beaeca5c5922"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
-      "sha256": "2043d6c6c35ce85726451a2dfaaa41d06b33c41e6bbd75a8cd7d9c6d8459763d"
+      "sha256": "e6e06a12dd9e74085c5f50bee51e114ef0ed8c294b6c0e576d84fc8260131e1b"
     },
     {
       "path": "implementation_packs/PROJECT_START_READINESS_VALIDATOR.md",

@@ -4,7 +4,7 @@
 
 ```yaml
 pack_id: "GO-SUPPLY-FACTORY-INVENTORY-API"
-pack_version: "0.16.0"
+pack_version: "0.18.0"
 status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -123,6 +123,9 @@ CREATE db/migrations/0038_customer_sales_shipment.up.sql
 CREATE db/migrations/0038_customer_sales_shipment.down.sql
 CREATE db/tests/0038_customer_sales_shipment.test.sql
 CREATE docs/inventory/MICROSOFT_BC_CUSTOMER_SHIPMENT_DERIVATION.md
+CREATE db/migrations/0071_serial_optional_identifiers.up.sql
+CREATE db/migrations/0071_serial_optional_identifiers.down.sql
+CREATE internal/platform/postgres/serial_optional_identifiers_integration_test.go
 ```
 
 ## 5. Materialization blocks
@@ -342,7 +345,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local verified composition"
 license: "LicenseRef-Workspace-Owner"
-sha256: "44245e35f8244a99f269aa64ef2d5bd988d29dd50ed96a8a7a0bba793ac2b17b"
+sha256: "ee1d2a71e2dc1cc625b9ba82a63ffb193b4b100e0b18baa8478c850207a9654d"
 variables: []
 secrets_allowed: false
 ```
@@ -354,6 +357,7 @@ import (
 	"context"
 	"elite.local/enterprise/internal/operations"
 	"encoding/json"
+	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
@@ -367,6 +371,15 @@ func (r *Operations) CreatePurchaseOrder(ctx context.Context, tenant, eventID st
 		return err
 	}
 	defer tx.Rollback(ctx)
+	if err := createPurchaseOrderInTx(ctx, tx, tenant, eventID, value); err != nil {
+		return err
+	}
+	return tx.Commit(ctx)
+}
+
+// AUTHORED extraction: existing SQL/order retained for a shared transaction.
+func createPurchaseOrderInTx(ctx context.Context, tx pgx.Tx, tenant, eventID string, value operations.PurchaseOrder) error {
+	var err error
 	_, err = tx.Exec(ctx, `insert into procurement.purchase_order(tenant_id,purchase_order_id,supplier_id,destination_organization_id,state,currency,total_minor_units,version)values($1,$2,$3,$4,$5,$6,$7,$8)`, tenant, value.ID, value.SupplierID, value.DestinationOrganizationID, value.State, value.Currency, value.TotalMinorUnits, value.Version)
 	if err != nil {
 		return err
@@ -375,7 +388,7 @@ func (r *Operations) CreatePurchaseOrder(ctx context.Context, tenant, eventID st
 	if err != nil {
 		return err
 	}
-	return tx.Commit(ctx)
+	return nil
 }
 func (r *Operations) TransitionPurchaseOrder(ctx context.Context, tenant, organization, id, current string, version int64, target, eventID string) error {
 	tx, err := r.pool.Begin(ctx)
@@ -383,6 +396,14 @@ func (r *Operations) TransitionPurchaseOrder(ctx context.Context, tenant, organi
 		return err
 	}
 	defer tx.Rollback(ctx)
+	if err := transitionPurchaseOrderInTx(ctx, tx, tenant, organization, id, current, version, target, eventID); err != nil {
+		return err
+	}
+	return tx.Commit(ctx)
+}
+
+// AUTHORED extraction: existing SQL/order retained for a shared transaction.
+func transitionPurchaseOrderInTx(ctx context.Context, tx pgx.Tx, tenant, organization, id, current string, version int64, target, eventID string) error {
 	result, err := tx.Exec(ctx, `update procurement.purchase_order set state=$6,version=version+1,updated_at=clock_timestamp() where tenant_id=$1 and destination_organization_id=$2 and purchase_order_id=$3 and state=$4 and version=$5`, tenant, organization, id, current, version, target)
 	if err != nil {
 		return err
@@ -394,7 +415,7 @@ func (r *Operations) TransitionPurchaseOrder(ctx context.Context, tenant, organi
 	if err != nil {
 		return err
 	}
-	return tx.Commit(ctx)
+	return nil
 }
 func (r *Operations) CreateProductionUnit(ctx context.Context, tenant, eventID string, value operations.ProductionUnit) error {
 	tx, err := r.pool.Begin(ctx)
@@ -402,6 +423,14 @@ func (r *Operations) CreateProductionUnit(ctx context.Context, tenant, eventID s
 		return err
 	}
 	defer tx.Rollback(ctx)
+	if err := createProductionUnitInTx(ctx, tx, tenant, eventID, value); err != nil {
+		return err
+	}
+	return tx.Commit(ctx)
+}
+
+// AUTHORED extraction: existing SQL/order retained for a shared transaction.
+func createProductionUnitInTx(ctx context.Context, tx pgx.Tx, tenant, eventID string, value operations.ProductionUnit) error {
 	result, err := tx.Exec(ctx, `insert into factory.production_unit(tenant_id,production_unit_id,purchase_order_id,variant_id,serial_number,vin,battery_serial_number,state) select $1,$2,p.purchase_order_id,$4,$5,nullif($6,''),nullif($7,''),$8 from procurement.purchase_order p where p.tenant_id=$1 and p.purchase_order_id=$3 and p.destination_organization_id=$9`, tenant, value.ID, value.PurchaseOrderID, value.VariantID, value.SerialNumber, value.VIN, value.BatterySerialNumber, value.State, value.OrganizationID)
 	if err != nil {
 		return err
@@ -413,7 +442,7 @@ func (r *Operations) CreateProductionUnit(ctx context.Context, tenant, eventID s
 	if err != nil {
 		return err
 	}
-	return tx.Commit(ctx)
+	return nil
 }
 func (r *Operations) TransitionProductionUnit(ctx context.Context, tenant, organization, id, current, target, eventID string) error {
 	tx, err := r.pool.Begin(ctx)
@@ -421,6 +450,14 @@ func (r *Operations) TransitionProductionUnit(ctx context.Context, tenant, organ
 		return err
 	}
 	defer tx.Rollback(ctx)
+	if err := transitionProductionUnitInTx(ctx, tx, tenant, organization, id, current, target, eventID); err != nil {
+		return err
+	}
+	return tx.Commit(ctx)
+}
+
+// AUTHORED extraction: existing SQL/order retained for a shared transaction.
+func transitionProductionUnitInTx(ctx context.Context, tx pgx.Tx, tenant, organization, id, current, target, eventID string) error {
 	result, err := tx.Exec(ctx, `update factory.production_unit u set state=$5,updated_at=clock_timestamp() from procurement.purchase_order p where u.tenant_id=$1 and u.production_unit_id=$3 and u.state=$4 and p.tenant_id=u.tenant_id and p.purchase_order_id=u.purchase_order_id and p.destination_organization_id=$2`, tenant, organization, id, current, target)
 	if err != nil {
 		return err
@@ -432,7 +469,7 @@ func (r *Operations) TransitionProductionUnit(ctx context.Context, tenant, organ
 	if err != nil {
 		return err
 	}
-	return tx.Commit(ctx)
+	return nil
 }
 func (r *Operations) CreateStockUnit(ctx context.Context, tenant, eventID string, value operations.StockUnit) error {
 	tx, err := r.pool.Begin(ctx)
@@ -440,6 +477,15 @@ func (r *Operations) CreateStockUnit(ctx context.Context, tenant, eventID string
 		return err
 	}
 	defer tx.Rollback(ctx)
+	if err := createStockUnitInTx(ctx, tx, tenant, eventID, value); err != nil {
+		return err
+	}
+	return tx.Commit(ctx)
+}
+
+// AUTHORED extraction: existing SQL/order retained for a shared transaction.
+func createStockUnitInTx(ctx context.Context, tx pgx.Tx, tenant, eventID string, value operations.StockUnit) error {
+	var err error
 	_, err = tx.Exec(ctx, `insert into inventory.stock_unit(tenant_id,stock_unit_id,organization_id,variant_id,production_unit_id,serial_number,vin,battery_serial_number,state,version)values($1,$2,$3,$4,nullif($5,''),$6,nullif($7,''),nullif($8,''),$9,$10)`, tenant, value.ID, value.OrganizationID, value.VariantID, value.ProductionUnitID, value.SerialNumber, value.VIN, value.BatterySerialNumber, value.State, value.Version)
 	if err != nil {
 		return err
@@ -448,7 +494,7 @@ func (r *Operations) CreateStockUnit(ctx context.Context, tenant, eventID string
 	if err != nil {
 		return err
 	}
-	return tx.Commit(ctx)
+	return nil
 }
 func (r *Operations) TransitionStockUnit(ctx context.Context, tenant, organization, id, current string, version int64, target, eventID string) error {
 	tx, err := r.pool.Begin(ctx)
@@ -456,6 +502,14 @@ func (r *Operations) TransitionStockUnit(ctx context.Context, tenant, organizati
 		return err
 	}
 	defer tx.Rollback(ctx)
+	if err := transitionStockUnitInTx(ctx, tx, tenant, organization, id, current, version, target, eventID); err != nil {
+		return err
+	}
+	return tx.Commit(ctx)
+}
+
+// AUTHORED extraction: existing SQL/order retained for a shared transaction.
+func transitionStockUnitInTx(ctx context.Context, tx pgx.Tx, tenant, organization, id, current string, version int64, target, eventID string) error {
 	result, err := tx.Exec(ctx, `update inventory.stock_unit set state=$6,version=version+1,received_at=case when $6 in ('available','quarantine') then coalesce(received_at,clock_timestamp()) else received_at end,updated_at=clock_timestamp() where tenant_id=$1 and organization_id=$2 and stock_unit_id=$3 and state=$4 and version=$5`, tenant, organization, id, current, version, target)
 	if err != nil {
 		return err
@@ -467,7 +521,7 @@ func (r *Operations) TransitionStockUnit(ctx context.Context, tenant, organizati
 	if err != nil {
 		return err
 	}
-	return tx.Commit(ctx)
+	return nil
 }
 ````
 
@@ -2555,7 +2609,7 @@ operation: CREATE
 provenance: ADAPTED
 source: "Microsoft BCApps 2eae56d warehouse availability and item application invariants; local PostgreSQL transaction port"
 license: "MIT AND LicenseRef-Workspace-Owner"
-sha256: "d4147e29c8f2c141de02624a07493d3fea8ddd50f932c85171f49cbe7eb4e754"
+sha256: "725600dcdde3431274c56ca34df8523df15d019b352beb0becd8becb85bb7b5d"
 variables: []
 secrets_allowed: false
 ```
@@ -2733,6 +2787,16 @@ func (r *InventoryControl) ReserveBulk(ctx context.Context, tenant, eventID stri
 		return value, err
 	}
 	defer tx.Rollback(ctx)
+	value, err = reserveBulkInTx(ctx, tx, tenant, eventID, value)
+	if err != nil {
+		return value, err
+	}
+	return value, tx.Commit(ctx)
+}
+
+// AUTHORED transaction composition only: original writer SQL/calculation preserved.
+func reserveBulkInTx(ctx context.Context, tx pgx.Tx, tenant, eventID string, value inventorycontrol.BulkReservation) (inventorycontrol.BulkReservation, error) {
+	var err error
 	var balanceVersion int64
 	err = tx.QueryRow(ctx, `update inventory.bulk_balance b set reserved_quantity=reserved_quantity+$6::numeric,version=version+1,updated_at=clock_timestamp() where tenant_id=$1 and organization_id=$2 and bin_id=$3 and item_id=$4 and lot_id is not distinct from nullif($5,'') and quantity-reserved_quantity >= $6::numeric and exists(select 1 from inventory.item_bin_policy p join inventory.warehouse_bin w using(tenant_id,organization_id,bin_id) left join inventory.inventory_lot l on l.tenant_id=b.tenant_id and l.lot_id=b.lot_id where p.tenant_id=b.tenant_id and p.organization_id=b.organization_id and p.item_id=b.item_id and p.bin_id=b.bin_id and not p.dedicated and not w.movement_blocked and coalesce(l.blocked,false)=false and (l.expiration_date is null or l.expiration_date>=current_date)) returning version`, tenant, value.OrganizationID, value.BinID, value.ItemID, value.LotID, value.Quantity).Scan(&balanceVersion)
 	if errors.Is(err, pgx.ErrNoRows) {
@@ -2748,7 +2812,7 @@ func (r *InventoryControl) ReserveBulk(ctx context.Context, tenant, eventID stri
 	if err = recordBulkEvent(ctx, tx, tenant, eventID, "bulk-reservation", value.ID, "bulk-reservation.created", 1, map[string]string{"organization_id": value.OrganizationID, "bin_id": value.BinID, "item_id": value.ItemID, "lot_id": value.LotID, "quantity": value.Quantity}); err != nil {
 		return value, err
 	}
-	return value, tx.Commit(ctx)
+	return value, nil
 }
 
 func (r *InventoryControl) ReleaseBulk(ctx context.Context, tenant, organization, reservationID string, version int64, eventID string) error {
@@ -2757,6 +2821,15 @@ func (r *InventoryControl) ReleaseBulk(ctx context.Context, tenant, organization
 		return err
 	}
 	defer tx.Rollback(ctx)
+	if err = releaseBulkInTx(ctx, tx, tenant, organization, reservationID, version, eventID); err != nil {
+		return err
+	}
+	return tx.Commit(ctx)
+}
+
+// AUTHORED transaction composition: original release writer and SQL retained.
+func releaseBulkInTx(ctx context.Context, tx pgx.Tx, tenant, organization, reservationID string, version int64, eventID string) error {
+	var err error
 	var binID, itemID, lotID, quantity string
 	err = tx.QueryRow(ctx, `update inventory.bulk_reservation set status='released',version=version+1,updated_at=clock_timestamp() where tenant_id=$1 and organization_id=$2 and reservation_id=$3 and status='reservation' and version=$4 and not cancellation_disallowed returning bin_id,item_id,coalesce(lot_id,''),quantity::text`, tenant, organization, reservationID, version).Scan(&binID, &itemID, &lotID, &quantity)
 	if errors.Is(err, pgx.ErrNoRows) {
@@ -2775,7 +2848,7 @@ func (r *InventoryControl) ReleaseBulk(ctx context.Context, tenant, organization
 	if err = recordBulkEvent(ctx, tx, tenant, eventID, "bulk-reservation", reservationID, "bulk-reservation.released", version+1, map[string]string{"quantity": quantity}); err != nil {
 		return err
 	}
-	return tx.Commit(ctx)
+	return nil
 }
 
 func (r *InventoryControl) MoveBulk(ctx context.Context, tenant, eventOutID, eventInID string, value inventorycontrol.BulkMovement) error {
@@ -2851,6 +2924,17 @@ func (r *InventoryControl) IssueBulk(ctx context.Context, tenant, eventID, outbo
 		return result, err
 	}
 	defer tx.Rollback(ctx)
+	result, err = issueBulkInTx(ctx, tx, tenant, eventID, outboundEntryID, value)
+	if err != nil {
+		return result, err
+	}
+	return result, tx.Commit(ctx)
+}
+
+// AUTHORED transaction composition only: original FIFO/specific-cost writer preserved.
+func issueBulkInTx(ctx context.Context, tx pgx.Tx, tenant, eventID, outboundEntryID string, value inventorycontrol.BulkIssue) (inventorycontrol.BulkIssueResult, error) {
+	var err error
+	result := inventorycontrol.BulkIssueResult{EntryID: outboundEntryID}
 	var binID, itemID, lotID, quantity, costing string
 	err = tx.QueryRow(ctx, `select r.bin_id,r.item_id,coalesce(r.lot_id,''),r.quantity::text,i.costing_method from inventory.bulk_reservation r join inventory.stock_item i using(tenant_id,item_id) left join inventory.inventory_lot l on l.tenant_id=r.tenant_id and l.lot_id=r.lot_id where r.tenant_id=$1 and r.organization_id=$2 and r.reservation_id=$3 and r.status='reservation' and r.version=$4 and (r.expires_at is null or r.expires_at>clock_timestamp()) and coalesce(l.blocked,false)=false and (l.expiration_date is null or l.expiration_date>=current_date) for update of r`, tenant, value.OrganizationID, value.ReservationID, value.ReservationVersion).Scan(&binID, &itemID, &lotID, &quantity, &costing)
 	if errors.Is(err, pgx.ErrNoRows) {
@@ -2943,7 +3027,7 @@ func (r *InventoryControl) IssueBulk(ctx context.Context, tenant, eventID, outbo
 	if err = recordBulkEvent(ctx, tx, tenant, eventID, "bulk-inventory-entry", outboundEntryID, "bulk-inventory.issued", 1, map[string]string{"organization_id": value.OrganizationID, "item_id": itemID, "lot_id": lotID, "quantity": quantity, "cost_amount": result.CostAmount, "reservation_id": value.ReservationID}); err != nil {
 		return result, err
 	}
-	return result, tx.Commit(ctx)
+	return result, nil
 }
 ````
 
@@ -11968,3 +12052,195 @@ V173 reconstruye el pack 0.16.0 en 88/88 y, desde PostgreSQL 18.6 limpio, pasa 3
 ## 10. Reconstruction evidence
 
 La evidencia histórica es `reconstruction_evidence/GO_SUPPLY_FACTORY_INVENTORY_API_2026-08-24_V1.md`; V159–V167 registran la evolución hasta UOM 0.11.0. `reconstruction_evidence/MICROSOFT_BC_HANDLING_UNIT_COMPOSITION_2026-09-01_V168.md` gobierna 0.12.0, V169 gobierna 0.13.0 y `reconstruction_evidence/MICROSOFT_BC_PICK_REPLENISHMENT_PACKAGING_2026-09-01_V171.md` gobierna 0.14.0. `reconstruction_evidence/MICROSOFT_BC_SALES_ORDER_WAREHOUSE_DEMAND_2026-09-01_V172.md` gobierna 0.15.0. `reconstruction_evidence/MICROSOFT_BC_CUSTOMER_SALES_SHIPMENT_2026-09-01_V173.md` gobierna 0.16.0 sólo después de reconstrucción Markdown, PostgreSQL limpio, 0038 down/up, Go/vet/build, composición y gates raíz.
+
+V402 composed delta: Connected warranty reuses existing transaction/approval/stock/service owners; SQL ordering and public wrapper behavior retained. Optional host factory fails closed. Exact source tested in WARRANTY_INTERFACE_AND_PORTABILITY_V402.md; no new dependency or corporate attribution.
+
+V402 FAIL840 corrective delta: optional VIN/battery use unique NULLS DISTINCT; mandatory serial and present-value uniqueness unchanged. Migration71 is additive; populated downgrade refuses incompatibility without deleting data, empty down/up PASS. PostgreSQL18 section5.5.3 supplies documented semantics, no external code copied. See SERIAL_OPTIONAL_IDENTIFIERS_V402.md. This does not close J2 quantity/ASN linkage.
+
+### FILE: `db/migrations/0071_serial_optional_identifiers.up.sql`
+
+```yaml
+block_id: "GO-SUPPLY-FACTORY-INVENTORY-API:optional-identifiers:file1:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "b87a970dc3d9b595901c224bc5d52d111bea7af42fc33099ed275443f7e8bbf3"
+variables: []
+secrets_allowed: false
+```
+
+````sql
+begin;
+-- AUTHORED corrective migration: the public Go contract makes VIN/battery optional.
+-- PostgreSQL18 section5.5.3: NULLS DISTINCT preserves uniqueness of known values.
+-- No existing row, mandatory serial, key or historical migration is rewritten.
+alter table factory.production_unit
+ drop constraint production_unit_tenant_id_vin_key,
+ drop constraint production_unit_tenant_id_battery_serial_number_key,
+ add constraint production_unit_tenant_id_vin_key unique nulls distinct (tenant_id,vin),
+ add constraint production_unit_tenant_id_battery_serial_number_key unique nulls distinct (tenant_id,battery_serial_number);
+alter table inventory.stock_unit
+ drop constraint stock_unit_tenant_id_vin_key,
+ drop constraint stock_unit_tenant_id_battery_serial_number_key,
+ add constraint stock_unit_tenant_id_vin_key unique nulls distinct (tenant_id,vin),
+ add constraint stock_unit_tenant_id_battery_serial_number_key unique nulls distinct (tenant_id,battery_serial_number);
+commit;
+````
+
+### FILE: `db/migrations/0071_serial_optional_identifiers.down.sql`
+
+```yaml
+block_id: "GO-SUPPLY-FACTORY-INVENTORY-API:optional-identifiers:file2:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "1c18df70e9fea9b1951c5de929efb3bcf5e9d16b710d1a5f17ad2db187edeb9c"
+variables: []
+secrets_allowed: false
+```
+
+````sql
+begin;
+-- Restoring the historical restriction is refused when valid new data needs NULLS DISTINCT.
+-- The entire downgrade is atomic; never delete, rewrite or synthesize identifiers.
+do $$
+begin
+ if exists(select 1 from factory.production_unit where vin is null group by tenant_id having count(*)>1)
+ or exists(select 1 from factory.production_unit where battery_serial_number is null group by tenant_id having count(*)>1)
+ or exists(select 1 from inventory.stock_unit where vin is null group by tenant_id having count(*)>1)
+ or exists(select 1 from inventory.stock_unit where battery_serial_number is null group by tenant_id having count(*)>1)
+ then raise exception 'optional serial identifiers require NULLS DISTINCT; downgrade refused';end if;
+end $$;
+alter table factory.production_unit
+ drop constraint production_unit_tenant_id_vin_key,
+ drop constraint production_unit_tenant_id_battery_serial_number_key,
+ add constraint production_unit_tenant_id_vin_key unique nulls not distinct (tenant_id,vin),
+ add constraint production_unit_tenant_id_battery_serial_number_key unique nulls not distinct (tenant_id,battery_serial_number);
+alter table inventory.stock_unit
+ drop constraint stock_unit_tenant_id_vin_key,
+ drop constraint stock_unit_tenant_id_battery_serial_number_key,
+ add constraint stock_unit_tenant_id_vin_key unique nulls not distinct (tenant_id,vin),
+ add constraint stock_unit_tenant_id_battery_serial_number_key unique nulls not distinct (tenant_id,battery_serial_number);
+commit;
+````
+
+### FILE: `internal/platform/postgres/serial_optional_identifiers_integration_test.go`
+
+```yaml
+block_id: "GO-SUPPLY-FACTORY-INVENTORY-API:optional-identifiers:file3:v1"
+operation: CREATE
+provenance: AUTHORED
+source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
+license: "LicenseRef-Workspace-Owner"
+sha256: "baa709f6ea0879b660ebcb0fc4acff047ac59a4eec0f28834b2f2a19ca5435a2"
+variables: []
+secrets_allowed: false
+```
+
+````go
+// AUTHORED regression for optional identifiers in the existing serial owner.
+// Synthetic fixtures; no connected J2 journey is claimed by this focused test.
+package postgres
+
+import (
+	"context"
+	"elite.local/enterprise/internal/operations"
+	"elite.local/enterprise/internal/platform/randomid"
+	"github.com/jackc/pgx/v5/pgxpool"
+	"os"
+	"testing"
+)
+
+func TestSerialSupplyOptionalIdentifiers(t *testing.T) {
+	url := os.Getenv("PAYMENT_CONNECTED_DB_URL")
+	if url == "" {
+		t.Skip("owned fixture DB not configured")
+	}
+	ctx := context.Background()
+	pool, err := pgxpool.New(ctx, url)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer pool.Close()
+	tenant := "ca6c9cb7-e548-4f19-a2e6-27d2aa2d4890"
+	fixtures := []string{
+		`insert into platform.tenant(tenant_id,tenant_code,legal_name,display_name) values($1,'supply-optionals','Fixture','Fixture')`,
+		`insert into org.organization(tenant_id,organization_id,organization_code,display_name,organization_type) values($1,'supply-org','supply-org','Fixture','warehouse')`,
+		`insert into partner.supplier(tenant_id,supplier_id,supplier_code,legal_name,status) values($1,'supplier','supplier','Fixture','active')`,
+		`insert into catalog.vehicle_model(tenant_id,model_id,model_code,display_name,vehicle_class,lifecycle_state) values($1,'model','model','Fixture','bicycle','active')`,
+		`insert into catalog.vehicle_variant(tenant_id,variant_id,model_id,variant_code,display_name,battery_specification,lifecycle_state) values($1,'variant','model','variant','Fixture','{}','active')`,
+	}
+	for _, q := range fixtures {
+		if _, err = pool.Exec(ctx, q, tenant); err != nil {
+			t.Fatal(err)
+		}
+	}
+	svc := operations.NewService(NewOperations(pool), randomid.Generator{})
+	po, err := svc.CreatePurchaseOrder(ctx, tenant, operations.PurchaseOrder{SupplierID: "supplier", DestinationOrganizationID: "supply-org", Currency: "ARS", TotalMinorUnits: 100})
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, serial := range []string{"FRAME-1", "FRAME-2"} {
+		unit, err := svc.RegisterProductionUnit(ctx, tenant, operations.ProductionUnit{OrganizationID: "supply-org", PurchaseOrderID: po.ID, VariantID: "variant", SerialNumber: serial})
+		if err != nil {
+			t.Fatalf("optional VIN/battery cannot exclude second valid unit %s: %v", serial, err)
+		}
+		if _, err = svc.ReceiveStockUnit(ctx, tenant, operations.StockUnit{OrganizationID: "supply-org", VariantID: "variant", ProductionUnitID: unit.ID, SerialNumber: serial}); err != nil {
+			t.Fatal(err)
+		}
+	}
+	input := operations.ProductionUnit{OrganizationID: "supply-org", PurchaseOrderID: po.ID, VariantID: "variant", SerialNumber: "FRAME-3", VIN: "VIN-REAL", BatterySerialNumber: "BATTERY-REAL"}
+	specific, err := svc.RegisterProductionUnit(ctx, tenant, input)
+	if err != nil {
+		t.Fatal(err)
+	}
+	specificStock := operations.StockUnit{OrganizationID: "supply-org", VariantID: "variant", ProductionUnitID: specific.ID, SerialNumber: input.SerialNumber, VIN: input.VIN, BatterySerialNumber: input.BatterySerialNumber}
+	if _, err = svc.ReceiveStockUnit(ctx, tenant, specificStock); err != nil {
+		t.Fatal(err)
+	}
+	specificStock.ProductionUnitID = ""
+	specificStock.SerialNumber = "FRAME-STOCK-4"
+	specificStock.BatterySerialNumber = "BATTERY-STOCK-OTHER"
+	if _, err = svc.ReceiveStockUnit(ctx, tenant, specificStock); err == nil {
+		t.Fatal("duplicate stock VIN admitted")
+	}
+	specificStock.VIN = "VIN-STOCK-OTHER"
+	specificStock.BatterySerialNumber = "BATTERY-REAL"
+	if _, err = svc.ReceiveStockUnit(ctx, tenant, specificStock); err == nil {
+		t.Fatal("duplicate stock battery admitted")
+	}
+	specificStock.SerialNumber = "FRAME-1"
+	specificStock.VIN = ""
+	specificStock.BatterySerialNumber = ""
+	if _, err = svc.ReceiveStockUnit(ctx, tenant, specificStock); err == nil {
+		t.Fatal("duplicate stock mandatory serial admitted")
+	}
+	input.SerialNumber = "FRAME-4"
+	input.BatterySerialNumber = "BATTERY-OTHER"
+	if _, err = svc.RegisterProductionUnit(ctx, tenant, input); err == nil {
+		t.Fatal("duplicate nonnull VIN admitted")
+	}
+	input.VIN = "VIN-OTHER"
+	input.BatterySerialNumber = "BATTERY-REAL"
+	if _, err = svc.RegisterProductionUnit(ctx, tenant, input); err == nil {
+		t.Fatal("duplicate nonnull battery admitted")
+	}
+	input.SerialNumber = "FRAME-1"
+	input.VIN = ""
+	input.BatterySerialNumber = ""
+	if _, err = svc.RegisterProductionUnit(ctx, tenant, input); err == nil {
+		t.Fatal("duplicate mandatory serial admitted")
+	}
+	var units, stock, events int
+	err = pool.QueryRow(ctx, `select (select count(*) from factory.production_unit where tenant_id=$1),(select count(*) from inventory.stock_unit where tenant_id=$1),(select count(*) from platform.outbox_event where tenant_id=$1)`, tenant).Scan(&units, &stock, &events)
+	if err != nil || units != 3 || stock != 3 || events != 7 {
+		t.Fatalf("unit/stock/events=%d/%d/%d err=%v", units, stock, events, err)
+	}
+	t.Log("SERIAL_OPTIONAL_IDENTIFIERS_PASS missing optional identifiers allowed; present identifiers and mandatory serial unique; rejected writes leak no event")
+}
+````
+
+
+V402 composed delta: Connected J2 uses existing transaction owners and preserves public operations transitions; serial quality remains in the shared distinct-human approval owner. Optional host hook keeps narrower profiles compatible. No dependency added or corporate attribution. SERIAL_SUPPLY_CONNECTED_RELEASE_V402.md.

@@ -1,0 +1,364 @@
+{
+  "state": "PASS_ACTUAL_OSV_CLEAN_PACKAGE_SEMANTICS",
+  "revision": 329,
+  "pack": {
+    "before_pack_sha256": "0c4699ba495b10f91119bc16c72c0857fde64a50782d27f757cfb48528e4fee5",
+    "after_pack_sha256": "521a510919a5759a5e80a1f0cf42745952e2b8196b05289b1ae764bf03eaac69",
+    "version": "0.2.2",
+    "changes": [
+      {
+        "path": "portable_release_evidence_gate/build_release.ps1",
+        "before_sha256": "9cbbc8b9313a2382b920f3bd3233409e4f7d0267ee27cadc7b08347dab6f89b0",
+        "after_sha256": "abddbac8ceda12fa36ac27c04d4a4fdabd00bd2e4bb5d9fe9caf8efacaaee7eb"
+      },
+      {
+        "path": "portable_release_evidence_gate/verify_release.ps1",
+        "before_sha256": "78a80d7abb4428d457bd29e05641cbbfc0d299551ecabc419bb07a208c1c846c",
+        "after_sha256": "c3a9ac113d88a3e6fdf83879e31ba5ad1473271b4d54009a47a13c2c4c5b5e99"
+      },
+      {
+        "path": "portable_release_evidence_gate/test_release_contract.py",
+        "before_sha256": "053bb02a6dc3c85fda38db83f51bce37502315581424a1ab4eb9365073efaa73",
+        "after_sha256": "3bb3f7ab5c6288a60f0a52f8fbf3aa9d24b3cf00cd3414f6600757f6d4b59821"
+      }
+    ]
+  },
+  "full_files": 1653,
+  "unchanged_files": 1650,
+  "real_scan_sha256": "0c70fa6a5cd50848b465f8734ab5ae4637b91f497fde17ebd57132eb0ccd6164",
+  "real_scan_packages": 454,
+  "real_scan_vulnerability_records": 0,
+  "real_report_test_log_sha256": "5104a9469fa5143bc2f6e3bc428080c5aafe6b38e3e4eeb106da02be285cccbf",
+  "regression": {
+    "builder_helper_cases": 8,
+    "fixture_private_keys_outside_product": true,
+    "gate_files": {
+      "build_release.ps1": "abddbac8ceda12fa36ac27c04d4a4fdabd00bd2e4bb5d9fe9caf8efacaaee7eb",
+      "verify_pack.ps1": "9cb879f54092fc6d88673fc88d4dbe2d69d2d2201c428c7709729f03cde1d225",
+      "verify_release.ps1": "c3a9ac113d88a3e6fdf83879e31ba5ad1473271b4d54009a47a13c2c4c5b5e99"
+    },
+    "logs": {
+      "builder-helpers.log": "e1916833368b9e879e7a1e3ab8f8ba29576948fdab5e11e32c515c96ab35f790",
+      "keygen-1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "keygen-2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reject-artifact-change.log": "1ef10aa792b49c71b2ac7194281a49a8cd6a00ce6d2c495c189c9ded9b512725",
+      "reject-backslash.log": "e8104727abc7f9e5d77de06834ca0de2dc729f858ad83ad210df3b213fe27105",
+      "reject-dot-part.log": "e8104727abc7f9e5d77de06834ca0de2dc729f858ad83ad210df3b213fe27105",
+      "reject-drive.log": "e8104727abc7f9e5d77de06834ca0de2dc729f858ad83ad210df3b213fe27105",
+      "reject-internal-policy.log": "90661188ab2fb580ba9022f26ba82535b6edcf5f322627bae308f1747b14a180",
+      "reject-namespace.log": "070e9394ef84a5e26e37668241308220715e2febc730a9e77b030ee60dd2fa3b",
+      "reject-swapped-signer.log": "85a61975014663de9de27ec2a60c90bc3adb764571508cefc6c2b76668e6acb0",
+      "sign-1.log": "32a0018c9c0b3ec039a2ec0d3e55f715ec6eb650b0dabe1e3cf4f3f8e5861779",
+      "sign-2.log": "c213fae5d9203cbaed826dc9dc57d6e68036e6f892ee43295ded3287a53e8e81",
+      "sign-3.log": "6300b710ce22c806beb30d74a163e22551f6031324017f456a0dcb9fa85ceb1b",
+      "sign-4.log": "8db489c75f54458b48803768921da527da9a3889f9c0d781af6997a6b8cce696",
+      "sign-5.log": "4907c548ee3daf9c1ccc19a44c0ffef5c5ed9863aaee2a36b77205358e5412cc",
+      "valid-external-policy.log": "d4b141f386b080d5c2b7400107d8adbaf11a62327098aaf3f0e0bda9efba7d88"
+    },
+    "real_release_built": false,
+    "real_sca_performed": false,
+    "signed_verifier_cases": 8,
+    "state": "PASS_VERIFIER_FIXTURES_ONLY",
+    "user_signing_key_used": false,
+    "zip_separator_case": 1
+  },
+  "dependencies_changed": false,
+  "source328_actual_builds_and_zip_equal": true,
+  "current_source329_product_built": false,
+  "lint": {
+    "files": {
+      "portable_release_evidence_gate/build_release.ps1": "abddbac8ceda12fa36ac27c04d4a4fdabd00bd2e4bb5d9fe9caf8efacaaee7eb",
+      "portable_release_evidence_gate/verify_release.ps1": "c3a9ac113d88a3e6fdf83879e31ba5ad1473271b4d54009a47a13c2c4c5b5e99",
+      "portable_release_evidence_gate/test_release_contract.py": "3bb3f7ab5c6288a60f0a52f8fbf3aa9d24b3cf00cd3414f6600757f6d4b59821"
+    },
+    "findings": [
+      {
+        "ruleId": "DS197836",
+        "level": "error",
+        "message": {
+          "text": "Do not take the hash of low-entropy content."
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "portable_release_evidence_gate\\build_release.ps1"
+              },
+              "region": {
+                "startLine": 129,
+                "startColumn": 179,
+                "endLine": 129,
+                "endColumn": 216,
+                "charOffset": 13933,
+                "charLength": 37,
+                "snippet": {
+                  "text": "",
+                  "rendered": {
+                    "markdown": "``"
+                  }
+                },
+                "sourceLanguage": "powershell"
+              }
+            }
+          }
+        ],
+        "properties": {
+          "tags": [
+            "Cryptography.HashAlgorithm.InsufficientEntropy"
+          ],
+          "DevSkimSeverity": "Important",
+          "DevSkimConfidence": "High"
+        }
+      },
+      {
+        "ruleId": "DS197836",
+        "level": "error",
+        "message": {
+          "text": "Do not take the hash of low-entropy content."
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "portable_release_evidence_gate\\build_release.ps1"
+              },
+              "region": {
+                "startLine": 123,
+                "startColumn": 159,
+                "endLine": 123,
+                "endColumn": 786,
+                "charOffset": 12227,
+                "charLength": 627,
+                "snippet": {
+                  "text": "",
+                  "rendered": {
+                    "markdown": "``"
+                  }
+                },
+                "sourceLanguage": "powershell"
+              }
+            }
+          }
+        ],
+        "properties": {
+          "tags": [
+            "Cryptography.HashAlgorithm.InsufficientEntropy"
+          ],
+          "DevSkimSeverity": "Important",
+          "DevSkimConfidence": "High"
+        }
+      },
+      {
+        "ruleId": "DS197836",
+        "level": "error",
+        "message": {
+          "text": "Do not take the hash of low-entropy content."
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "portable_release_evidence_gate\\test_release_contract.py"
+              },
+              "region": {
+                "startLine": 68,
+                "startColumn": 271,
+                "endLine": 68,
+                "endColumn": 311,
+                "charOffset": 8063,
+                "charLength": 40,
+                "snippet": {
+                  "text": "",
+                  "rendered": {
+                    "markdown": "``"
+                  }
+                },
+                "sourceLanguage": "python"
+              }
+            }
+          }
+        ],
+        "properties": {
+          "tags": [
+            "Cryptography.HashAlgorithm.InsufficientEntropy"
+          ],
+          "DevSkimSeverity": "Important",
+          "DevSkimConfidence": "High"
+        }
+      },
+      {
+        "ruleId": "DS173237",
+        "level": "error",
+        "message": {
+          "text": "Do not store tokens or keys in source code."
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "portable_release_evidence_gate\\build_release.ps1"
+              },
+              "region": {
+                "startLine": 12,
+                "startColumn": 8,
+                "endLine": 12,
+                "endColumn": 74,
+                "charOffset": 399,
+                "charLength": 66,
+                "snippet": {
+                  "text": "",
+                  "rendered": {
+                    "markdown": "``"
+                  }
+                },
+                "sourceLanguage": "powershell"
+              }
+            }
+          }
+        ],
+        "properties": {
+          "tags": [
+            "Implementation.Privacy.Token"
+          ],
+          "DevSkimSeverity": "Important",
+          "DevSkimConfidence": "Medium"
+        }
+      },
+      {
+        "ruleId": "DS197836",
+        "level": "error",
+        "message": {
+          "text": "Do not take the hash of low-entropy content."
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "portable_release_evidence_gate\\verify_release.ps1"
+              },
+              "region": {
+                "startLine": 38,
+                "startColumn": 81,
+                "endLine": 38,
+                "endColumn": 565,
+                "charOffset": 4431,
+                "charLength": 484,
+                "snippet": {
+                  "text": "",
+                  "rendered": {
+                    "markdown": "``"
+                  }
+                },
+                "sourceLanguage": "powershell"
+              }
+            }
+          }
+        ],
+        "properties": {
+          "tags": [
+            "Cryptography.HashAlgorithm.InsufficientEntropy"
+          ],
+          "DevSkimSeverity": "Important",
+          "DevSkimConfidence": "High"
+        }
+      },
+      {
+        "ruleId": "DS197836",
+        "level": "error",
+        "message": {
+          "text": "Do not take the hash of low-entropy content."
+        },
+        "locations": [
+          {
+            "physicalLocation": {
+              "artifactLocation": {
+                "uri": "portable_release_evidence_gate\\test_release_contract.py"
+              },
+              "region": {
+                "startLine": 65,
+                "startColumn": 36,
+                "endLine": 65,
+                "endColumn": 470,
+                "charOffset": 6677,
+                "charLength": 434,
+                "snippet": {
+                  "text": "",
+                  "rendered": {
+                    "markdown": "``"
+                  }
+                },
+                "sourceLanguage": "python"
+              }
+            }
+          }
+        ],
+        "properties": {
+          "tags": [
+            "Cryptography.HashAlgorithm.InsufficientEntropy"
+          ],
+          "DevSkimSeverity": "Important",
+          "DevSkimConfidence": "High"
+        }
+      }
+    ],
+    "no_whole_scanner_or_native_suite_rerun": true,
+    "triage": [
+      {
+        "file": "build_release.ps1",
+        "rule": "DS197836",
+        "line": 129,
+        "disposition": "REVIEWED_INTEGRITY_OR_FIXTURE",
+        "reason": "SHA256 binds integrity of files, manifests and signature inputs; no secret derivation or randomness claim."
+      },
+      {
+        "file": "build_release.ps1",
+        "rule": "DS197836",
+        "line": 123,
+        "disposition": "REVIEWED_INTEGRITY_OR_FIXTURE",
+        "reason": "SHA256 binds integrity of files, manifests and signature inputs; no secret derivation or randomness claim."
+      },
+      {
+        "file": "test_release_contract.py",
+        "rule": "DS197836",
+        "line": 68,
+        "disposition": "REVIEWED_INTEGRITY_OR_FIXTURE",
+        "reason": "Explicit synthetic verifier fixture integrity hashes; not credentials or real dependency safety evidence."
+      },
+      {
+        "file": "build_release.ps1",
+        "rule": "DS173237",
+        "line": 12,
+        "disposition": "REVIEWED_INTEGRITY_OR_FIXTURE",
+        "reason": "Exact public OSV binary SHA256 pin, not secret material."
+      },
+      {
+        "file": "verify_release.ps1",
+        "rule": "DS197836",
+        "line": 38,
+        "disposition": "REVIEWED_INTEGRITY_OR_FIXTURE",
+        "reason": "SHA256 binds integrity of files, manifests and signature inputs; no secret derivation or randomness claim."
+      },
+      {
+        "file": "test_release_contract.py",
+        "rule": "DS197836",
+        "line": 65,
+        "disposition": "REVIEWED_INTEGRITY_OR_FIXTURE",
+        "reason": "Explicit synthetic verifier fixture integrity hashes; not credentials or real dependency safety evidence."
+      }
+    ],
+    "unresolved": 0,
+    "new_blockers": 0,
+    "new_parser_findings": 0
+  },
+  "G0_G8": {
+    "G0": "Correct official OSV clean-package parsing; no business behavior added",
+    "G1": "Three existing AUTHORED gate/verifier/test blocks, unchanged dependencies/licenses",
+    "G2": "Before/after hashes and actual OSV report digest bound",
+    "G3": "Independent1653source rebuild,1650unchanged",
+    "G4": "17contract assertions plus actual454package zero-vulnerability report in both helpers PASS",
+    "G5": "Malformed IDs rejected, positive vulnerability retained;3lint files6integrity/fixture findings reviewed,0unresolved",
+    "G6": "No runtime performance claim change",
+    "G7": "Both previous real builds/ZIPs retained; no source history or private key replacement",
+    "G8": "Gate0.2.2 narrowly qualified; current329 full signed release remains pending"
+  }
+}

@@ -7,7 +7,7 @@
     "platform_mode": "BLOCK",
     "risk_tier": "HIGH",
     "data_classification": "INTERNAL",
-    "updated_at": "2026-09-08T08:27:05.879027Z"
+    "updated_at": "2026-09-13T15:18:25.600976+00:00"
   },
   "rounds": {
     "A": {
@@ -69,37 +69,29 @@
       "advisory_prompt_ref": "PROJECT_ADVISORY_F.md"
     },
     "G": {
-      "status": "BLOCKED",
+      "status": "ANSWERED",
       "evidence": [
-        "PROJECT_DEPENDENCY_UPDATE_RECORD.md",
-        "PROJECT_FAILURE_LESSONS.md",
-        "reconstruction_evidence/NATIVE_QUALIFICATION_ACCESS_BLOCK_V386.md"
+        "reconstruction_evidence/LIBRARY_ADVISORY_GH_V402.md",
+        "reconstruction_evidence/LIBRARY_ASSURANCE_REVIEW_V402.json"
       ],
       "advisory_prompt_ref": "PROJECT_ADVISORY_G.md"
     },
     "H": {
-      "status": "BLOCKED",
+      "status": "ANSWERED",
       "evidence": [
-        "PROJECT_READINESS_RECORD.md",
-        "reconstruction_evidence/PNPM_ZIP_CONTAINMENT_V401.md"
+        "reconstruction_evidence/LIBRARY_ADVISORY_GH_V402.md",
+        "reconstruction_evidence/LIBRARY_ASSURANCE_REVIEW_V402.json"
       ],
       "advisory_prompt_ref": "PROJECT_ADVISORY_H.md"
     }
   },
   "blockers": {
-    "critical_unknowns": [
-      "MAINTENANCE_READINESS_AND_ASSURANCE_NOT_PROVEN",
-      "CAPABILITY_EVIDENCE_RECONCILIATION_PENDING"
-    ],
+    "critical_unknowns": [],
     "required_access_not_proven": [],
     "open_high_or_critical_failures": [
-      "FAIL-20260907-384",
-      "FAIL-20260907-385"
+      "FAIL-20260907-384"
     ],
-    "open_dependency_blockers": [
-      "FAIL-20260908-532",
-      "FAIL-20260911-804"
-    ],
+    "open_dependency_blockers": [],
     "stale_or_conflicted_authorities": []
   },
   "first_vertical_slice": {
@@ -786,10 +778,15 @@
   "sources": {
     "lock_path": "PROJECT_EXTERNAL_SOURCE_LOCK.md",
     "status": "BLOCKED",
-    "exact_revisions": false,
+    "exact_revisions": true,
     "licenses_notices_resolved": false,
     "moving_references": [],
-    "product_provenance_modes": []
+    "product_provenance_modes": [
+      "AUTHORED",
+      "ADAPTED",
+      "VERBATIM",
+      "DEPENDENCY_PIN"
+    ]
   },
   "dependencies": {
     "status": "BLOCKED",
@@ -801,9 +798,11 @@
     "rollback": false
   },
   "authorities": {
-    "status": "BLOCKED",
+    "status": "PROVEN",
     "evidence": [
-      "PROJECT_AUTHORITY_FRESHNESS_RECORD.md"
+      "PROJECT_AUTHORITY_MAP.md",
+      "PROJECT_AUTHORITY_FRESHNESS_RECORD.md",
+      "reconstruction_evidence/LIBRARY_ASSURANCE_REVIEW_V402.json"
     ],
     "conflicts": []
   },

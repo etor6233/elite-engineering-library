@@ -1,148 +1,249 @@
 {
   "assurance": {
-    "path": "reconstruction_evidence/LIBRARY_ASSURANCE_PREPARATION_V402.json",
-    "sha256": "43b7a3b9de934a17677098989aa743beba4a10ac85cf0e86a2bb1a87086d80e3"
+    "path": "reconstruction_evidence/LIBRARY_ASSURANCE_REVIEW_V402.json",
+    "sha256": "dd304d3d91ba2f14cb9d02e1f48f07aeb119c35830ac78e4aa029b256a10554c"
   },
   "authority_decisions": {
     "path": "PROJECT_AUTHORITY_MAP.md",
-    "sha256": "5347450c1c8d87e58c92fff2707005fffee73ca7fe92c9dccbb419f3b7d5d23a"
+    "sha256": "fe76e9d53e2f87fee7f381698ad4c04e900c1e7500738e9ea2a0309780df49ef"
   },
-  "blockers": [
-    {
-      "affected_controls": [
-        "T2801",
-        "T2802"
-      ],
-      "id": "authored-business-owners",
-      "kind": "SOURCE_PROVENANCE",
-      "resolution_plan": {
-        "path": "reconstruction_evidence/LIBRARY_READINESS_PREPARATION_V402.md",
-        "sha256": "f64a63fe3f5e370cc79973191e74fbbb5418c7749d4718212ce2d048521a0170"
-      },
-      "status": "OPEN"
-    },
-    {
-      "affected_controls": [
-        "T2803",
-        "T2810"
-      ],
-      "id": "current-dependency-admission",
-      "kind": "DEPENDENCY_ADMISSION",
-      "resolution_plan": {
-        "path": "reconstruction_evidence/LIBRARY_READINESS_PREPARATION_V402.md",
-        "sha256": "f64a63fe3f5e370cc79973191e74fbbb5418c7749d4718212ce2d048521a0170"
-      },
-      "status": "OPEN"
-    },
-    {
-      "affected_controls": [
-        "T2802",
-        "T2803",
-        "T2804",
-        "T2805",
-        "T2806",
-        "T2807",
-        "T2808",
-        "T2809",
-        "T2810",
-        "ARCA_INFRA"
-      ],
-      "id": "remaining-connected-system",
-      "kind": "MISSING_EVIDENCE",
-      "resolution_plan": {
-        "path": "reconstruction_evidence/LIBRARY_READINESS_PREPARATION_V402.md",
-        "sha256": "f64a63fe3f5e370cc79973191e74fbbb5418c7749d4718212ce2d048521a0170"
-      },
-      "status": "OPEN"
-    }
-  ],
+  "blockers": [],
   "controls": {
-    "ARCA_INFRA": {
-      "receipt": null,
-      "status": "PENDING"
-    },
     "T2801": {
+      "status": "PROVEN_LOCAL",
       "receipt": {
-        "path": "reconstruction_evidence/LIBRARY_READINESS_PREPARATION_RECEIPT_V402.json",
-        "sha256": "87c8a8b2e2a2537ae6d4a49434885d3285136bd8d5f194db0ef9907ef2fe6522"
-      },
-      "status": "PREPARATION_PROVEN"
+        "path": "reconstruction_evidence/LIBRARY_T2801_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "a29302980bd12fc43a2a8bb9658becc069d3171473e26ea09bd22b55d218f264"
+      }
     },
     "T2802": {
-      "receipt": null,
-      "status": "PENDING"
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2802_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "0533bc1fc2d628fd12110f2e4e73e3eb51145966596c10d548e6557373a2131c"
+      }
     },
     "T2803": {
-      "receipt": null,
-      "status": "PENDING"
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2803_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "7257f6bd7bdfd255b2c6f5364b728f86048bdcad20277d4eb20800d0321dc0f2"
+      }
     },
     "T2804": {
-      "receipt": null,
-      "status": "PENDING"
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2804_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "ab52c43aabda2f00cacc0e00fd38197a7f40aec7d726efe382fd829f3bc32c9b"
+      }
     },
     "T2805": {
-      "receipt": null,
-      "status": "PENDING"
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2805_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "d4c00bbd775704d0c14b40173a1caaed61e30f9da100644cc4ecc957047be674"
+      }
     },
     "T2806": {
-      "receipt": null,
-      "status": "PENDING"
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2806_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "03dc6c16a46d28390434561091ef66af81944f31bd5a9ec2ead5beeea3d05512"
+      }
     },
     "T2807": {
-      "receipt": null,
-      "status": "PENDING"
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2807_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "87a5b6b82ec9d5e57fba113292b27dfdf80987eba6bd342c84eb33089a32d780"
+      }
     },
     "T2808": {
-      "receipt": null,
-      "status": "PENDING"
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2808_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "22f97f5363cba2c0ed1f670ac925240c1774cba9f57e6cabfca0948c5c0c0809"
+      }
     },
     "T2809": {
-      "receipt": null,
-      "status": "PENDING"
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2809_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "afd62366a5a13f43aaa63ab96d40078fcbe68b37c556c9eed2b8fa5ed6c6c39e"
+      }
     },
     "T2810": {
-      "receipt": null,
-      "status": "PENDING"
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2810_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "4a6e4cc192bfd61389de646b846715f8a895b73df58a554137b5b4be87aeb069"
+      }
+    },
+    "ARCA_INFRA": {
+      "status": "PROVEN_LOCAL",
+      "receipt": {
+        "path": "reconstruction_evidence/LIBRARY_ARCA_INFRA_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "31c1e210f07b58d3b4c9dc44a128141e91dec689f296b5966814f181508e2eba"
+      }
     }
   },
   "deferred": [
     {
-      "code_complete": false,
-      "control": "T2803",
-      "evidence": {
-        "path": "reconstruction_evidence/LIBRARY_READINESS_PREPARATION_V402.md",
-        "sha256": "f64a63fe3f5e370cc79973191e74fbbb5418c7749d4718212ce2d048521a0170"
-      },
       "id": "daybreak-libxml2",
       "kind": "DAYBREAK_LIBXML2",
-      "local_receipt": null,
-      "reason": "Explicit user ACCESS_BLOCKED exclusion, last and deferred",
-      "trigger": "New explicit user task for this branch and permitted access"
+      "control": "T2803",
+      "reason": "Exact user-deferred native branch; excluded from local infrastructure acceptance",
+      "trigger": "Explicit user request for this branch and permitted access",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_DAYBREAK_DEFERRED_V402.json",
+        "sha256": "cac268212f9badeb8527727363622c1bf35e7c00eed60e0a3e95a3a238f71f51"
+      },
+      "code_complete": false,
+      "local_receipt": null
+    },
+    {
+      "id": "payment-user-credentials",
+      "kind": "USER_CREDENTIALS",
+      "control": "T2802",
+      "reason": "Falta credencial del usuario para conectar el proveedor elegido; infraestructura local completa",
+      "trigger": "El usuario configura su cuenta/secret references en el destino y ejecuta sus contract/acceptance gates",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_CREDENTIALS_CHECKLIST_V402.md",
+        "sha256": "31504b95d41d31789352afef6bf65dbfc4ef02b6d76b3a988ea2aa293d1835ba"
+      },
+      "code_complete": true,
+      "local_receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2802_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "0533bc1fc2d628fd12110f2e4e73e3eb51145966596c10d548e6557373a2131c"
+      }
+    },
+    {
+      "id": "communications-user-credentials",
+      "kind": "USER_CREDENTIALS",
+      "control": "T2805",
+      "reason": "Falta credencial del usuario para conectar el proveedor elegido; infraestructura local completa",
+      "trigger": "El usuario configura su cuenta/secret references en el destino y ejecuta sus contract/acceptance gates",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_CREDENTIALS_CHECKLIST_V402.md",
+        "sha256": "31504b95d41d31789352afef6bf65dbfc4ef02b6d76b3a988ea2aa293d1835ba"
+      },
+      "code_complete": true,
+      "local_receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2805_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "d4c00bbd775704d0c14b40173a1caaed61e30f9da100644cc4ecc957047be674"
+      }
+    },
+    {
+      "id": "identity-user-credentials",
+      "kind": "USER_CREDENTIALS",
+      "control": "T2803",
+      "reason": "Falta credencial del usuario para conectar el proveedor elegido; infraestructura local completa",
+      "trigger": "El usuario configura su cuenta/secret references en el destino y ejecuta sus contract/acceptance gates",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_CREDENTIALS_CHECKLIST_V402.md",
+        "sha256": "31504b95d41d31789352afef6bf65dbfc4ef02b6d76b3a988ea2aa293d1835ba"
+      },
+      "code_complete": true,
+      "local_receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2803_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "7257f6bd7bdfd255b2c6f5364b728f86048bdcad20277d4eb20800d0321dc0f2"
+      }
+    },
+    {
+      "id": "documents-user-credentials",
+      "kind": "USER_CREDENTIALS",
+      "control": "T2806",
+      "reason": "Falta credencial del usuario para conectar el proveedor elegido; infraestructura local completa",
+      "trigger": "El usuario configura su cuenta/secret references en el destino y ejecuta sus contract/acceptance gates",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_CREDENTIALS_CHECKLIST_V402.md",
+        "sha256": "31504b95d41d31789352afef6bf65dbfc4ef02b6d76b3a988ea2aa293d1835ba"
+      },
+      "code_complete": true,
+      "local_receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2806_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "03dc6c16a46d28390434561091ef66af81944f31bd5a9ec2ead5beeea3d05512"
+      }
+    },
+    {
+      "id": "ai-provider-user-credentials",
+      "kind": "USER_CREDENTIALS",
+      "control": "T2807",
+      "reason": "Falta credencial del usuario para conectar el proveedor elegido; infraestructura local completa",
+      "trigger": "El usuario configura su cuenta/secret references en el destino y ejecuta sus contract/acceptance gates",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_CREDENTIALS_CHECKLIST_V402.md",
+        "sha256": "31504b95d41d31789352afef6bf65dbfc4ef02b6d76b3a988ea2aa293d1835ba"
+      },
+      "code_complete": true,
+      "local_receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2807_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "87a5b6b82ec9d5e57fba113292b27dfdf80987eba6bd342c84eb33089a32d780"
+      }
+    },
+    {
+      "id": "cloud-user-credentials",
+      "kind": "USER_CREDENTIALS",
+      "control": "T2808",
+      "reason": "Falta credencial del usuario para conectar el proveedor elegido; infraestructura local completa",
+      "trigger": "El usuario configura su cuenta/secret references en el destino y ejecuta sus contract/acceptance gates",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_CREDENTIALS_CHECKLIST_V402.md",
+        "sha256": "31504b95d41d31789352afef6bf65dbfc4ef02b6d76b3a988ea2aa293d1835ba"
+      },
+      "code_complete": true,
+      "local_receipt": {
+        "path": "reconstruction_evidence/LIBRARY_T2808_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "22f97f5363cba2c0ed1f670ac925240c1774cba9f57e6cabfca0948c5c0c0809"
+      }
+    },
+    {
+      "id": "arca-user-credentials",
+      "kind": "USER_CREDENTIALS",
+      "control": "ARCA_INFRA",
+      "reason": "Falta credencial del usuario para conectar el proveedor elegido; infraestructura local completa",
+      "trigger": "El usuario configura su cuenta/secret references en el destino y ejecuta sus contract/acceptance gates",
+      "evidence": {
+        "path": "reconstruction_evidence/LIBRARY_CREDENTIALS_CHECKLIST_V402.md",
+        "sha256": "31504b95d41d31789352afef6bf65dbfc4ef02b6d76b3a988ea2aa293d1835ba"
+      },
+      "code_complete": true,
+      "local_receipt": {
+        "path": "reconstruction_evidence/LIBRARY_ARCA_INFRA_CONTROL_RECEIPT_V402_FINAL.json",
+        "sha256": "31c1e210f07b58d3b4c9dc44a128141e91dec689f296b5966814f181508e2eba"
+      }
     }
   ],
   "notices": {
     "path": "THIRD_PARTY_NOTICES.md",
-    "sha256": "2043d6c6c35ce85726451a2dfaaa41d06b33c41e6bbd75a8cd7d9c6d8459763d"
+    "sha256": "bb7bdddce7740e50744af8548dabf65ea67bc9a49a560fbfe806a9d583a530b9"
   },
   "plan": {
-    "path": "reconstruction_evidence/LIBRARY_READINESS_PREPARATION_V402.md",
-    "sha256": "f64a63fe3f5e370cc79973191e74fbbb5418c7749d4718212ce2d048521a0170"
+    "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+    "sha256": "4aaa1fb70a613dace854645c2d053097c6d8b3173cb8c2f6db80aedb9e04e672"
   },
   "production_authorized": false,
-  "reference": null,
+  "reference": {
+    "first_root": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\source-reference330-a",
+    "second_root": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\source-reference330-b",
+    "inventory": {
+      "path": "reconstruction_evidence/LIBRARY_REFERENCE_INVENTORY_V402.json",
+      "sha256": "a68cc43097e13bb742a8f10f259a6389e1f015a912b9df44c5f008f2c7eec088"
+    }
+  },
   "request": {
     "path": "reconstruction_evidence/LIBRARY_INFRA_SCOPE_V402.md",
     "sha256": "0ddbc9820caa12cadde12eb7f53cd3b237e046925f4e437e5e12598ebd7bfb1d"
   },
-  "revision": "V402-library-preparation-1",
+  "revision": "V402-source330-metadata331-local",
   "schema": "elite-library-infrastructure-readiness/v1",
   "scope": "LIBRARY_INFRASTRUCTURE",
   "source_lock": {
-    "path": "PROJECT_EXTERNAL_SOURCE_LOCK.md",
-    "sha256": "2ecb2d026e7fa3c0399bb3c98460e5f5ceb3e4ea15bf0d4b99621f57bc02b34a"
+    "path": "reconstruction_evidence/LIBRARY_REFERENCE_PROVENANCE_V402.json",
+    "sha256": "72419fd412bceeb21e8a73201d7f9fa98de0113582661f5577009db91d3c5156"
   },
   "tooling": {
-    "path": "reconstruction_evidence/PNPM_ZIP_CONTAINMENT_V401.md",
-    "sha256": "dacf2feacc1fd543524c3120b2c4809a6ef6f171ffd464b21f4e2cdd53028418"
+    "path": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.json",
+    "sha256": "88c2361c1b10ead7af3933fce2564eacd097515d4a5f45c278480ee2a2757a42"
   }
 }

@@ -1,0 +1,16 @@
+{
+  "authority_count": 1,
+  "candidate_count": 1,
+  "capability_id": "CUSTOMER-SURVEY-NPS",
+  "decision_state": "USE_REUSABLE_PACK",
+  "gate": "CAPABILITY-GAP-RESOLUTION-GATE",
+  "implementation_ready": true,
+  "observed_at": "2026-09-13T14:59:40.942698Z",
+  "official_domain_count": 2,
+  "outcome": "READY",
+  "record_sha256": "6c47829fb1451b3e61b9475bccab829952f6ce7dc33a7dfe973ceb6d9b62c617",
+  "requirement_ref": "nps-candidate/docs/posthog-nps.md",
+  "schema_version": 1,
+  "search_count": 1,
+  "selected_candidate_id": "posthog-nps-go-bounded"
+}

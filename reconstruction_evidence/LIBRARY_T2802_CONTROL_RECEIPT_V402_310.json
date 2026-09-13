@@ -1,0 +1,47 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2802",
+  "outcome": "PASS",
+  "command": "C:/Python314/python.exe -X utf8 -B C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\record-identity-checkpoint310.py; exact1481 source correspondence, no unchanged journey reruns",
+  "exit_code": 0,
+  "assertions": [
+    "quote/order/provider SDK fixture/callback/reconciliation/initial handover/checklist/acceptance/commercial receipt",
+    "FX durable journal posting/balance/reversal",
+    "source-derived gift/loyalty tender connected to provider or local funding and delivery",
+    "sold warranty terms and J4 claim/stock/FIFO/approval/quality/recovery",
+    "J2 demand/PO quantities/factory/serial QA/ASN/receiving/quarantine/release",
+    "J3 draft/reviews/immutable publish/effective price/search/actual storefront/reference feed/rollback",
+    "six named non-selected subcores NONE_WITH_REASON; no universal equivalence claimed",
+    "1451 current outputs exact;1428 previous unchanged,7 reviewed optional schedule/source/host/doc changes,16 new AUTHORED campaign binding files. Two profiles exact; campaigns/partial decisions/source suppression/quote-order/host/rollback/appointment compatibility/fuzz PASS. Selected T2805 closed local; T2803 next.",
+    "1477current outputs exact;1445previous unchanged,6revised optional BFF/auth/main hooks,26new AUTHORED session/profile/host/test/docs. Business handlers and role UI unchanged. Real SDK/Go/PG lifecycle/host/standalone compatibility/profile/rollback/fuzz and5exactprofiles PASS. Source/SCA/J5 administration remain T2803.",
+    "1481current outputs exact;1474previous unchanged,3revised network permission/fixture files,4new AUTHORED access-review fixtures/contract. Network domain SQL/command wire unchanged. Signed original HTTP/PG bootstrap without wildcard and3official SDK access-review cases PASS;4profiles exact. Whole source/SCA remains T2803."
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "0471d8cbd63693b4916e682143a9de0e88c1e0fae8211f70698ff261f8e4a3c0"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_T2802_CONTROL_RECEIPT_V402_309.json",
+      "sha256": "8a3fa89d72b13de14e9a2330c927fd0683b062096b103e8b83073feb87c710fc"
+    },
+    {
+      "path": "reconstruction_evidence/IDENTITY_J5_RELEASE_V402.json",
+      "sha256": "7f8c288e77941ea05e97801b35d7cfa62cdc8939292c82c7a16630d70f6d5719"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/IDENTITY_J5_RELEASE_V402.md",
+      "sha256": "7d9d684f180667f48492e20adcfbfecccb83b5f8a8942bb0872abe590125e47a"
+    },
+    {
+      "path": "reconstruction_evidence/IDENTITY_J5_RELEASE_V402.json",
+      "sha256": "7f8c288e77941ea05e97801b35d7cfa62cdc8939292c82c7a16630d70f6d5719"
+    }
+  ],
+  "inventory_sha256": "e52c6ae2be992453b5fdaa7452bf178318ce7565b1e571b53be473cb24b8b68d",
+  "live_effects_performed": false
+}

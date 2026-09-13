@@ -15,7 +15,9 @@ En la instalación local, abrir `Desktop/Elite Franchise Reference V402/START_RE
 Conservá la biblioteca en una ubicación estable y elegí un destino de producto separado. No hace falta Git. Ejemplo PowerShell 7 para una carpeta nueva:
 
 ```powershell
-$libraryPath = (Get-Location).ProviderPath # Ejecutar desde la raíz de la copia elegida.
+# Ejecutar desde la raiz de la copia de biblioteca que elegiste.
+$libraryPath = (Get-Location).ProviderPath
+if (-not (Test-Path -LiteralPath (Join-Path $libraryPath 'START_FRANCHISE.md') -PathType Leaf)) { throw 'Abrir PowerShell en la raiz de la biblioteca' }
 $projectPath = Join-Path (Split-Path -Parent $libraryPath) 'Mi Franquicia'
 New-Item -ItemType Directory -Path $projectPath -ErrorAction Stop
 ```
@@ -46,7 +48,7 @@ decile:
    existe exige inventario/delta y en cada retorno carga sólo el contexto necesario.
 4. **Referencia local** → materializa y verifica con fixtures, sin cuentas del usuario. El modo `LIBRARY_INFRASTRUCTURE` se usa para la biblioteca; el readiness `PROJECT` sigue aplicando al target y no hereda autorización productiva.
 5. **Composición** (`markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md`) → su bloque JSON fija el inventario y las versiones; el recibo del compositor debe coincidir con la revisión aceptada. No usar cifras históricas como inventario ni llamar productivo al resultado local.
-6. **Migraciones y gates de esa revisión** → `go test ./...`, `go vet`, `go build`, PostgreSQL real y frontend con runtime admitido por digest. El pnpm publicado 11.25.0 está rechazado según V401; en la referencia V402, la receta local restringida ya fue probada en sus builds aceptados. Este commit documental no actualiza el runtime del snapshot público. No sustituirlo por una versión de PATH ni usar una instalación con red para ignorar el gate.
+6. **Migraciones y gates de esa revisión** → `go test ./...`, `go vet`, `go build`, PostgreSQL real y frontend con runtime admitido por digest. El pnpm publicado 11.25.0 sigue rechazado. La receta local0.9.0 de `pnpm_artifact_selection/local_runtime.py` está calificada para instalación offline restringida, sin addons/WASM/hooks/scripts y con ZIP retirado; ver `PNPM_LOCAL_RUNTIME_V402.md`. El bundle adaptado no se redistribuye. No sustituirlo por una versión de PATH ni usar una instalación con red para ignorar el gate.
 7. **Vertical slice** end-to-end (captación → lead/contacto → catálogo → pedido/pago o agenda → respuesta/handoff → auditoría/recovery), checkpoint con hashes/evidencia y después expansión por vertical.
 
 Antes de implementar, leer `markdown_system/POST_DEEPSEEK_FRANCHISE_REAUDIT_2026-09-04.md` y su sucesor de alcance V402. Para materializar desde el plan exacto, ambos destinos del ejemplo siguiente deben estar ausentes:

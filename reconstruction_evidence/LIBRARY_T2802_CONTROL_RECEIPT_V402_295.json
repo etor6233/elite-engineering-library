@@ -1,0 +1,45 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2802",
+  "outcome": "PASS",
+  "command": "C:/Python314/python.exe -X utf8 -B C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\repair-training-checkpoint295-receipt.py; exact current composition and declared training-delta correspondence, no rerun of source-identical domain journeys",
+  "exit_code": 0,
+  "assertions": [
+    "quote/order/provider SDK fixture/callback/reconciliation/initial handover/checklist/acceptance/commercial receipt",
+    "FX durable journal posting/balance/reversal",
+    "source-derived gift/loyalty tender connected to provider or local funding and delivery",
+    "sold warranty terms and J4 claim/stock/FIFO/approval/quality/recovery",
+    "J2 demand/PO quantities/factory/serial QA/ASN/receiving/quarantine/release",
+    "J3 draft/reviews/immutable publish/effective price/search/actual storefront/reference feed/rollback",
+    "six named non-selected subcores NONE_WITH_REASON; no universal equivalence claimed",
+    "1228current outputs exact;1193prior files unchanged,9declared training glue owner deltas with focused PG/browser/host/type proof. T2802 domain source owners retained; no unchanged journey rerun or production promotion."
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "afcbeacc6744661b1e58fb9541fea840be29908741a509e58332053b5da287ea"
+    },
+    {
+      "path": "reconstruction_evidence/CATALOG_CONNECTED_RELEASE_V402.json",
+      "sha256": "20a5251d71ab57c69546c6b16daee0bf4f4123f7c84f463ffd58ea23a52f70df"
+    },
+    {
+      "path": "reconstruction_evidence/TRAINING_CONNECTED_RELEASE_V402.json",
+      "sha256": "f8e2ba65b7438a78415ef30d26e1df5c171771419ead493f1f7209fc20604e17"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/T2802_CONNECTED_CLOSURE_V402.md",
+      "sha256": "61f0aad2be78c44fb2a129534d2038cbf858abf83227d1981150738d2f6cbb56"
+    },
+    {
+      "path": "reconstruction_evidence/T2802_CONNECTED_CLOSURE_V402.json",
+      "sha256": "6134e74a77734a6ef1624f6f08fcdf5e39e6e3cc13f4b4009b505320f33f138f"
+    }
+  ],
+  "inventory_sha256": "e7759bff5bf78ba4057a8a54a77721084ff51e44677492f729b5f25860b2a626",
+  "live_effects_performed": false
+}

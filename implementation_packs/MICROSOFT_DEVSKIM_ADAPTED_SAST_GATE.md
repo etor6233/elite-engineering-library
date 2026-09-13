@@ -4,7 +4,7 @@
 
 ```yaml
 pack_id: "MICROSOFT-DEVSKIM-ADAPTED-SAST-GATE"
-pack_version: "0.1.0"
+pack_version: "0.1.1"
 status:
   authority: ELITE_REFERENCE
   implementation: REBUILD_VERIFIED
@@ -116,7 +116,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "Elite fail-closed reconstruction, adaptation, test, SCA and publication runner"
 license: "LicenseRef-Workspace-Owner"
-sha256: "1bea4f07ec53cb07e4e41f8c19df9ed96352e3365b42f1c19c1ff20cb0a88e35"
+sha256: "46b531bcd4abb791092bdea7605d96dc4e13f2005cfff10630666cf7d16b74d7"
 variables: []
 secrets_allowed: false
 ```
@@ -159,7 +159,7 @@ $candidate = Join-Path $destinationParent ('.elite-devskim-candidate-' + [Guid]:
 function Get-Sha([string] $Path) { (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash.ToLowerInvariant() }
 function Invoke-DotNet([string[]] $Arguments) {
   $lines = @(& $dotnet @Arguments 2>&1 | ForEach-Object { [string]$_ })
-  if ($LASTEXITCODE -ne 0) { throw "dotnet failed ($LASTEXITCODE): $($Arguments -join ' ')`n$($lines[-20..-1] -join "`n")" }
+  if ($LASTEXITCODE -ne 0) { throw "dotnet failed ($LASTEXITCODE): $($Arguments -join ' ')`n$(($lines | Select-Object -Last 20) -join "`n")" }
   $lines
 }
 function Assert-NoNuGetWarning([string[]] $Lines, [string] $StageName) {
@@ -466,3 +466,5 @@ Evidencia canónica: `reconstruction_evidence/MICROSOFT_DEVSKIM_ADAPTED_SAST_202
 - No reemplaza CodeQL autorizado, fuzzing, DAST, threat model, revisión ni ofensiva.
 - No contiene GitHub entitlement, proyecto, baseline/suppressions ni aceptación de findings.
 - El agente debe reabrir el gate ante drift de fuente, toolchain, advisory, regla o alcance.
+
+V402 composed delta: COMPOSITION_SECURITY_RELEASE_V402.md/json: preserve admitted Go x/mod0.40 graph floor and original DevSkim short-error diagnostics; no new corporate authorship.

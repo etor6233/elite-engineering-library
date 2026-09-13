@@ -1190,7 +1190,7 @@ Go standard library only for the loader; host glue uses already selected Commerc
 Journey and pgx owners. go.mod/go.sum, runtimes, migrations and upstream locks do
 not change. No new upstream is acquired or admitted by this pack.
 
-## 8. Apply order and rollback
+## 8. Apply order
 
 Compose this pack with Commerce0.6.4 and Journey0.10.21, then apply the provided
 main/environment changes in their existing owners. Avoid duplicate file ownership

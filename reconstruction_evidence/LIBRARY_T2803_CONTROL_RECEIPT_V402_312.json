@@ -1,0 +1,58 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2803",
+  "outcome": "PASS",
+  "command": "Source-bound identity309/310 receipts + exact composition312 SCA/lint/go-floor/5rebuild evidence",
+  "exit_code": 0,
+  "assertions": [
+    "Original OIDC lifecycle and J5 role/bootstrap fixtures remain exactly source-bound",
+    "1481canonical selected outputs with declared provenance and exact owner hashes",
+    "Current4Go/3pnpm/7Python lock inputs:OSV2.5.1zero findings after admitted x/mod0.40 floor restored",
+    "Both Go API binaries,320compiled packages and2065sourcefiles byte-identical before/after floor change",
+    "Adapted DevSkim reconstructed with300officialtests/NuGetSCA0 and short-error regression",
+    "1307files linted:1842rawfindings/1841reviewed nonblocking/1ARCApenultimate occurrence; zero untriaged/nonARCA blockers; no blanket suppressions",
+    "pnpm restricted private local installer admission311 preserved; no altered-tool redistribution claim",
+    "Five affected profiles rebuild exactly; no source/corporate attribution invention",
+    "Scope excludes penultimate fiscal completion and user-deferred Daybreak/libxml2; no production/offensive/interprocedural security claim"
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "1d10f1e6a9a838c16a9fa63df6149586165e329409845b59f3a4637feeb4e71f"
+    },
+    {
+      "path": "reconstruction_evidence/IDENTITY_PORTAL_RELEASE_V402.json",
+      "sha256": "b6cde44f897802f5990cab1744ab24b52ad8f033b840a8dad9a774d185c6136f"
+    },
+    {
+      "path": "reconstruction_evidence/IDENTITY_J5_RELEASE_V402.json",
+      "sha256": "7f8c288e77941ea05e97801b35d7cfa62cdc8939292c82c7a16630d70f6d5719"
+    },
+    {
+      "path": "reconstruction_evidence/PNPM_LOCAL_RUNTIME_V402.json",
+      "sha256": "61eb425032a287c0c42386a851d927a6fe9f581653e1a0cfc37af413db24a560"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/COMPOSITION_SECURITY_RELEASE_V402.md",
+      "sha256": "bfd4492ffea2816ecede3d260000f1ab6a907c5e97ae42820642f251be6aee0b"
+    },
+    {
+      "path": "reconstruction_evidence/COMPOSITION_SECURITY_RELEASE_V402.json",
+      "sha256": "60eb8bd2d73a4fdc0e46fb1ac154c66ba52e96d4252feea9e5546b8a7a94a9a1"
+    },
+    {
+      "path": "reconstruction_evidence/COMPOSITION_SECURITY_LINT_V402.json",
+      "sha256": "1d2a0d589ee30695309af97610e702317e6c5b0f6de819bb16b925d5e93da91e"
+    },
+    {
+      "path": "reconstruction_evidence/COMPOSITION_SECURITY_SCA_V402.json",
+      "sha256": "68eda39814743849592a85e1d15b39df0826b02d1de5ebbd520b5cd919a8ee61"
+    }
+  ],
+  "inventory_sha256": "069e79f2cbe3a522788534619e5cc291d81cb8ea0a8bb2c1a73dc33bc691e187",
+  "live_effects_performed": false
+}

@@ -93,4 +93,6 @@ The two new driver files are AUTHORED composition/contract-test glue. No new dep
 
 The connected PostgreSQL/official SDK E2E observed the default Stripe logger writing a malformed response body sample. The per-backend official LevelNull option now suppresses raw SDK logging without changing the global logger; application errors remain bounded. A subprocess regression captures stdout/stderr and rejects raw-body disclosure. Twelve materialized files rebuilt exactly,18 SDK tests and vet/build PASS. Fixed Stripe `stripe.go` Git blob/cache bytes match the same admitted commit. No dependency changed; the earlier3-module/0-finding SCA result remains the applicable unchanged graph.
 
-Receipt: `C:\Users\NL\AppData\Local\Temp\elite-v402-library-infra\payment-logger-result.json`, SHA-256 `a948997537d479a60368d270eaee7c95e91c8ccea9ecd019fca3600fb6715360`. Earlier0.3.0 results remain historical;0.3.1 is the current pack version.
+Receipt: `Temp/elite-v402-library-infra/payment-logger-result.json`, SHA-256 `a948997537d479a60368d270eaee7c95e91c8ccea9ecd019fca3600fb6715360`. Earlier0.3.0 results remain historical;0.3.1 is the current pack version.
+
+V402321 portability correction: Temp/ denotes the originating system temporary directory; only rendered machine-local locators changed. Original rendering SHA-256 0f2c9be1cbb5d34840ec8d779cdbfde210278131454e02297b801d6205127e7c is retained outside the distributed source. Receipt/source hashes and historical outcomes above are unchanged.

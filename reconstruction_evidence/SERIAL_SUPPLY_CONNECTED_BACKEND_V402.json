@@ -1,0 +1,138 @@
+{
+  "schema": "elite-serial-supply-backend/v1",
+  "scope": "LIBRARY_INFRASTRUCTURE",
+  "status": "PROVEN_LOCAL_BACKEND_STAGING",
+  "canonical_product_unchanged": true,
+  "candidate": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\serial-supply-connected-candidate",
+  "frozen_delta": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\serial-supply-backend-proven-source",
+  "baseline_outputs": 1148,
+  "files": [
+    {
+      "path": "db/migrations/0072_connected_serial_supply.down.sql",
+      "sha256": "3b41494faff932f51879a7a38dee54336d947932b35f45e06dd0aff01ac6ef4b",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "db/migrations/0072_connected_serial_supply.up.sql",
+      "sha256": "809aafb6ae1ec9968cb7a200a4dd667a1157132605f436c5728c97353f6fe999",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/approval/approval.go",
+      "sha256": "49de0f6db01c558e580aa8a7a38abdbfb1bfda061db3252189dc5dee7d838367",
+      "baseline_sha256": "921cb06d310cea6855c2dc54372a09cfac14dc225c79481e59942a76ffd836fc",
+      "kind": "changed"
+    },
+    {
+      "path": "internal/approval/registry.go",
+      "sha256": "8a12fc5e5cf0133bdcfd1d866ccbddab73ce5fa01897c025a5e95fb2a8ffe88a",
+      "baseline_sha256": "19c1c2e1d54995a48cf36e2b99b0573f466c226e5e0333e1488d2d3af94d224d",
+      "kind": "changed"
+    },
+    {
+      "path": "internal/approval/serial_quality_test.go",
+      "sha256": "81a49a0423c6494fe96190f93888e92eaa084770aa9490d6ac652ddc8c1da42d",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/platform/postgres/human_approval.go",
+      "sha256": "9c9895e7a40e385f2b1dde10d7f613a71257005af43de0334d4d61dc5c4e96b6",
+      "baseline_sha256": "4dfc7b2a13967e62d53f1d8ad32b7496cccc976a544bf55b097b5550954fefb9",
+      "kind": "changed"
+    },
+    {
+      "path": "internal/platform/postgres/operations.go",
+      "sha256": "ee1d2a71e2dc1cc625b9ba82a63ffb193b4b100e0b18baa8478c850207a9654d",
+      "baseline_sha256": "44245e35f8244a99f269aa64ef2d5bd988d29dd50ed96a8a7a0bba793ac2b17b",
+      "kind": "changed"
+    },
+    {
+      "path": "internal/platform/postgres/serial_supply.go",
+      "sha256": "a654f1916763fbb41aef0134d4f42701afc65c50685352bcae2e68220a69fc90",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/platform/postgres/serial_supply_commands.go",
+      "sha256": "1755c91f9fec3f4a61f5c03eae9e2f0af3722c175a538cc0bc289708caa07bf4",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/platform/postgres/serial_supply_connected_integration_test.go",
+      "sha256": "27f93633398dc6e2277ff6e0547403bb1573e2e75e29e82e1071495cf751c08e",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/platform/postgres/serial_supply_owner_tx.go",
+      "sha256": "463cc14be88f99ceee80d1366da10e4b7e1300d581a9947d29c58753bc345960",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/platform/postgres/serial_supply_quality.go",
+      "sha256": "dd2dab39216499780c69c9442ff7f80cbe48d4161f097c422ba2c5ac3afdb62c",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/platform/postgres/serial_supply_shipping.go",
+      "sha256": "ed82d857d6a7a0807de6c20f630db2a94e8838b980f03e795cb85e33bf50611d",
+      "baseline_sha256": null,
+      "kind": "new"
+    },
+    {
+      "path": "internal/serialsupply/contract.go",
+      "sha256": "c217732cd2eb87d007031224d6fd24bcd115210f37aafbd4b76dfc3dad82f803",
+      "baseline_sha256": null,
+      "kind": "new"
+    }
+  ],
+  "receipts": [
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\serial-supply-connected-first\\result.json",
+      "sha256": "0cc13c0f06c58ceb05ff2c087799d49cea7f3365013c954e16aa0b944a88ebe7"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\serial-supply-connected-first\\connected.log",
+      "sha256": "99929731e5132143b1a5d39f438612e6ef90c340fa831652db4fa51c39c5ac25"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\serial-supply-admission.json",
+      "sha256": "27770ae277678eeb0c6786b073eb38825d0c7ee9243e76493892bf7cc71f5894"
+    }
+  ],
+  "observations": {
+    "migrations": 69,
+    "planned_quantity": 3,
+    "registered_serials": 4,
+    "factory_rejected": 1,
+    "manifested": 3,
+    "received": 3,
+    "available_after_human_quality": 3,
+    "ASNs": 2,
+    "case_version": 30,
+    "concurrency": {
+      "requests": 8,
+      "new_effects": 1,
+      "replay_receipts": 7,
+      "conflicts": 0
+    },
+    "new_pool_recovery": true,
+    "rollback_all_scoped_tables": true,
+    "source_owners_reused": true
+  },
+  "pending": [
+    "HTTP protected transport and lost-response bridge",
+    "Host opt-in activation/schema gates",
+    "Remaining meaningful bypass/transport negatives and safe migration down/up",
+    "Finite contract fuzz where applicable",
+    "Canonical packs/notices/locks and exact rebuild",
+    "J3 publication after J2; role UI T2804"
+  ],
+  "overall_ready": false
+}

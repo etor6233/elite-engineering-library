@@ -1,0 +1,50 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "T2808",
+  "outcome": "PASS",
+  "command": "Current1591source correspondence, selected PostHog NPS caller regression with fresh PG84migration/OIDC/HTTP/concurrency/restart; other owners unchanged",
+  "exit_code": 0,
+  "assertions": [
+    "Full115packs/1560outputs reconstructed exactly;5selected profiles exact",
+    "Two fresh source/install/compiler caches at an explicit stable workspace;4066artifact files byte identical",
+    "Pinned public fixture preview/action values and generated metadata normalization declared; no arbitrary-root/cross-platform binary claim",
+    "No pnpm payload redistribution; original restricted local_runtime.py performs each offline installation",
+    "Source workspace absent during current artifact deployment; generated junction map recreated only inside activation copy",
+    "Actual84migration fresh database, session lock and per-step ledger transaction; replay unchanged, mismatched ledger digest rejected",
+    "Native API+Next serve actual requests and accept fixture OIDC identity; same order remains one durable row through rollback/recovery/replay",
+    "Manual previous-binary rollback and failed candidate restore executed; pointer remains last confirmed release",
+    "Existing inherited event reused by Go host; requested NextSIGTERM143, wrapper0, every native process tree empty",
+    "14delta lint files25reviewed; no new dependency graph; six direct npm notice texts require source/parent correspondence at T2810 before executable redistribution",
+    "Containers/cloud/SCM/production are outside selected local target; no credential-only fiction for unexecuted targets",
+    "V402317: domain/role/adapter/identity/document/AI source preserved; common x/sync0.22/x/text0.40 already admitted in telemetry now selected at root. Full/backend/serverless compilation and current API real OIDC/PG/concurrent replay with that graph; rebuilt host byte-identical. Existing Next cohort exact, final full artifact/signature/notices T2810 remains open.11delta lint files34reviewed;78public modules SCA0. Native/ARCA untouched.",
+    "V402319: NPS source-only delta; three prior caller/docs files changed and eight new qualified files.1580previous files exact; root Go/Node dependencies unchanged, four source profiles exact. Five Go delta lint0. Prior source/runtime proofs retain their explicit scope; final full artifact remains T2810."
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "94917c1303b175c08defec317a58d2deb63e5dc0c62d26354eb174e4aed593b7"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_T2808_CONTROL_RECEIPT_V402_317.json",
+      "sha256": "1772b18e64ff6bbe689bd7143fb2d682e2c8afddbf09bccc281728089d00ee18"
+    },
+    {
+      "path": "reconstruction_evidence/NPS_SOURCE_ADMISSION_V402.json",
+      "sha256": "373d9fee84b262401922aaaa1cd0436ea1d727b05cc1a2428994b369f9fdb431"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/NPS_SOURCE_ADAPTATION_V402.md",
+      "sha256": "b24893a0cf0f46bed5977d0ea6deb6a732d5aadd4449cd674c6b0d3b47524250"
+    },
+    {
+      "path": "reconstruction_evidence/NPS_SOURCE_ADAPTATION_V402.json",
+      "sha256": "c524f03efbefe21d661bf476c7a1b11f65c4d10d908cdd84ca993de395c9d3aa"
+    }
+  ],
+  "inventory_sha256": "e809be8a011a5ea94ce77df6eba6fe9c160d1f85ab72efce2e244a4736c699ad",
+  "live_effects_performed": false
+}

@@ -1,0 +1,97 @@
+{
+  "schema": "elite-reference-domain-scope/v1",
+  "scope": "LIBRARY_INFRASTRUCTURE_REFERENCE",
+  "status": "T2802_IN_PROGRESS",
+  "authority": [
+    {
+      "path": "ENTERPRISE_FULL_STACK_BLUEPRINT.md",
+      "sha256": "98bff61b18421aad8ef676d917a2630bdf1107a3b3e483d4e0b918d5c6d54ba3"
+    },
+    {
+      "path": "markdown_system/TOTAL_SYSTEM_CAPABILITY_CONTRACT.md",
+      "sha256": "20e74dfdbe499cb532616f9b7d9044a99b4c5564fc55fbf5e6a85c862c0aaaab"
+    },
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "6a9450c43d1f1454827c70279843fb4ccc1fddcd0676e0536e971fa8897f976a"
+    },
+    {
+      "path": "reconstruction_evidence/WARRANTY_CONNECTED_RELEASE_V402.md",
+      "sha256": "6cc0afd9f21bf2711191ec7919b355a7e046b8379689097555b105d8bcfa15f7"
+    },
+    {
+      "path": "reconstruction_evidence/CORE_OWNER_RECONCILIATION_V293.md",
+      "sha256": "b892a4f63b1decdba3d47727e6c7c55cea59c5e400e4b8ecb1236e58baeb1f05"
+    }
+  ],
+  "reference": {
+    "packs": 86,
+    "files": 1145
+  },
+  "required_48_surface_classifications_unchanged": true,
+  "required_journeys": [
+    "J1",
+    "J2",
+    "J3",
+    "J4",
+    "J5"
+  ],
+  "subcapability_decisions": [
+    {
+      "core": "GO-PAYROLL-CORE",
+      "classification": "NONE_WITH_REASON",
+      "reason": "No wage contract, payroll run, employment deduction or payslip journey in J1–J5. Resource employee/contractor identifies appointment staffing, not employment/payroll accounting. No payroll claim or existing isolated-core promotion.",
+      "reopen_trigger": "Target blueprint explicitly selects this subcapability; run capability/source admission before implementation."
+    },
+    {
+      "core": "GO-POS-CORE",
+      "classification": "NONE_WITH_REASON",
+      "reason": "Reference J1 uses server-price quotation/order and hosted provider checkout or approved stored value. No cash drawer, change, terminal peripherals or offline retail journey selected. Those capabilities need explicit target scope.",
+      "reopen_trigger": "Target blueprint explicitly selects this subcapability; run capability/source admission before implementation."
+    },
+    {
+      "core": "GO-PROMOTIONS-CORE",
+      "classification": "NONE_WITH_REASON",
+      "reason": "The reference uses versioned price books and the already admitted named loyalty discount program. General coupon stacking/campaign coupon codes are not required by J1–J5; no equivalence to the isolated promotions core claimed.",
+      "reopen_trigger": "Target blueprint explicitly selects this subcapability; run capability/source admission before implementation."
+    },
+    {
+      "core": "GO-REFERRALS-CORE",
+      "classification": "NONE_WITH_REASON",
+      "reason": "Lead source attribution exists; a rewarded referral program, invite code and reward policy are not required by J1–J5. No inferred reward/financial rule.",
+      "reopen_trigger": "Target blueprint explicitly selects this subcapability; run capability/source admission before implementation."
+    },
+    {
+      "core": "GO-REVIEWS-CORE",
+      "classification": "NONE_WITH_REASON",
+      "reason": "Reference feedback is the connected private survey owner. Public review publication/moderation/ranking is not selected in J1–J5; survey is not claimed equivalent to public reviews.",
+      "reopen_trigger": "Target blueprint explicitly selects this subcapability; run capability/source admission before implementation."
+    },
+    {
+      "core": "GO-WAITLIST-CORE",
+      "classification": "NONE_WITH_REASON",
+      "reason": "J1/J4 select explicit capacity-controlled appointments. Full capacity rejects admission. No FIFO waiting offer/promotion policy is selected; no waitlist equivalence claim.",
+      "reopen_trigger": "Target blueprint explicitly selects this subcapability; run capability/source admission before implementation."
+    }
+  ],
+  "required_open": [
+    {
+      "journey": "J2",
+      "gap": "No connected purchase quantity/serial plan, supplier confirmation binding or immutable ASN/partial receipt reconciliation; existing factory/stock transitions alone insufficient.",
+      "next": "Compose admitted Operations/Inventory writers through one transaction; explicit zero-overreceipt serialized fixture. Preserve stock source of truth and record identity, quantity, actor, evidence, replay and recovery."
+    },
+    {
+      "journey": "J3",
+      "gap": "CreateModel produces draft; no connected maker-checker release/version rollback and feed projection acknowledgement in the reference.",
+      "next": "After J2 compose existing catalog/price/search/outbox/provider owners; preserve source versions and reject pending/unreviewed publication."
+    }
+  ],
+  "not_none": [
+    "Warranty sold terms and J4",
+    "J2 factory supply/receiving",
+    "J3 governed catalog publication",
+    "J5 training/access review",
+    "Existing REQUIRED 48-surface categories"
+  ],
+  "production_authorized": false
+}

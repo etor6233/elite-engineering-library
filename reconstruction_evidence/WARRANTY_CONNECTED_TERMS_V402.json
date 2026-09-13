@@ -1,0 +1,93 @@
+{
+  "schema": "elite-warranty-connected-terms-evidence/v1",
+  "scope": "LIBRARY_INFRASTRUCTURE",
+  "status": "PROVEN_LOCAL_NARROW_STAGING",
+  "canonical_product_unchanged": true,
+  "candidate": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-connected-candidate",
+  "tests": {
+    "contract": 2,
+    "connected_postgresql": 1,
+    "skipped": 0,
+    "postgres_exited": true,
+    "vet": "PASS",
+    "compile_only_not_runtime_credit": true
+  },
+  "files": [
+    {
+      "path": "internal/warrantyclaim/contract.go",
+      "sha256": "ecfbee04a4e43667296bd5e3f61efa48d9801c582f20cf351f33ac178325ca56"
+    },
+    {
+      "path": "internal/warrantyclaim/terms.go",
+      "sha256": "df054beb8e04032f68871ecaeda88f6e3710d793fe9090e32f0b8a897afecdee"
+    },
+    {
+      "path": "internal/warrantyclaim/contract_test.go",
+      "sha256": "c96d581bb382cb5909f5d21634f83a7475e59ec46102f7b32e0a070be65399c1"
+    },
+    {
+      "path": "internal/platform/postgres/warranty_terms.go",
+      "sha256": "e8666cc6bc8e6a97821e6323df06d8b9bbfa22240c17a8369a3e1a216f987c3a"
+    },
+    {
+      "path": "internal/platform/postgres/warranty_connected_integration_test.go",
+      "sha256": "45a2991c776b88416b8ba67413dcb3790ff897bc4de9c3c18efdfd1f6b36e2ac"
+    },
+    {
+      "path": "internal/platform/postgres/payment_connected_integration_test.go",
+      "sha256": "67c14056e98c97b99092a35065f654cf239b7c2cd6c231db322d7775a93483bd"
+    },
+    {
+      "path": "internal/platform/postgres/commercial_release_connected_integration_test.go",
+      "sha256": "62b6fb12c55d5d99b856f5bad78d89e27b94986ed3a89e8cbe66b49cfda63b79"
+    },
+    {
+      "path": "internal/platform/postgres/bulk_inventory.go",
+      "sha256": "0ebbd3304ae2d53981c08baa3d9526ee93dae157b9c1a717b24cb88ff64d7427"
+    },
+    {
+      "path": "internal/platform/postgres/fulfillment.go",
+      "sha256": "0d3e3a6d15d29e61a32386028def1e648b4bc223cbf56f1d7ff61a656d5d834d"
+    },
+    {
+      "path": "db/migrations/0069_warranty_terms_activation.up.sql",
+      "sha256": "d4ab0dd7dfa5ffe1e5b77e6f8a8b14079086809f00f6de21cf2b94e004065628"
+    },
+    {
+      "path": "db/migrations/0069_warranty_terms_activation.down.sql",
+      "sha256": "2ad82e8dea6acfefb30f82572020b8dd406623a61403f739d4353f8b5562b5f3"
+    }
+  ],
+  "receipts": [
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-terms-contract-unit.log",
+      "sha256": "35321e5cff898661b29aad07f351c55ad1992e4cf374128121bae4d6439e541c"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-terms-pg-compile.log",
+      "sha256": "1fa351596c941570d7a5daf9175a6674b7aa7f69d637f234962fb6d2328746ac"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-terms-terms-vet.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-connected-terms-first\\result.json",
+      "sha256": "39ba4a2034869e9a4927314552aa65b63078ddec2b66e07643fdad1937a27c91"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-connected-terms-first\\connected.log",
+      "sha256": "a162be859195c425a0ba67927d8509451873cc68732f0d30df0762af18c900a3"
+    },
+    {
+      "path": "C:\\Users\\NL\\AppData\\Local\\Temp\\elite-v402-library-infra\\warranty-owner-extraction.json",
+      "sha256": "8f699ddbc0cc676b3a8f847644882c5d82a2e33e6d590598e8b2ecafb460461d"
+    }
+  ],
+  "pending": [
+    "J4 claim/parts/quality/customer/factory acknowledgement",
+    "HTTP/host/UI composition",
+    "canonical pack publication"
+  ],
+  "source_boundary": "BC date predicate ADAPTED; consent/calendar/SQL/receipts/test composition AUTHORED; no complete BC warranty workflow attribution"
+}

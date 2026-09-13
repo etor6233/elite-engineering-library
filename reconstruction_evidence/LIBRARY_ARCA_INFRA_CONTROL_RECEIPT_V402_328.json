@@ -1,0 +1,36 @@
+{
+  "schema": "elite-library-control-receipt/v1",
+  "scope": "LOCAL_FIXTURES",
+  "revision": "V402-library-preparation-1",
+  "control": "ARCA_INFRA",
+  "outcome": "PASS",
+  "command": "V402328 exact1653source,1651unchanged; only packaging/test correction, existing local domain/runtime proofs inherited",
+  "exit_code": 0,
+  "assertions": [
+    "Local control scope retained in prior hash-bound receipt.",
+    "No business, role, identity, provider, document, AI or fiscal implementation change.",
+    "Corresponding-source packaging now exact with one separately declared Next type derivation;16tests and1653actual projection PASS."
+  ],
+  "inputs": [
+    {
+      "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "f2bd140a29816740642b837410000e4cc712cb4a9e642c41422e448e4c5494de"
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_ARCA_INFRA_CONTROL_RECEIPT_V402_326.json",
+      "sha256": "6cc835f169479515a0a169503b2dfbe63325a929781ca3481373d40ef58fc3a8"
+    },
+    {
+      "path": "reconstruction_evidence/SIGNED_CORRESPONDING_SOURCE_V402.json",
+      "sha256": "0936b98fa3efc18a54659b0524554629117691daf89e9075bdc885a87eb3c6d2"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "reconstruction_evidence/SIGNED_CORRESPONDING_SOURCE_V402.md",
+      "sha256": "8327fdc85b1ae92d0434d21c01c1cbebb1ca836b997ecd55c5601749a123799e"
+    }
+  ],
+  "inventory_sha256": "650ee3fe4aa45a2b055b6c79e973d7ca0cde5829a2125d47875cada76ddb9c27",
+  "live_effects_performed": false
+}
