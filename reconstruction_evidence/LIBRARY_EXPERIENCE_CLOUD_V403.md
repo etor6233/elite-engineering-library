@@ -36,7 +36,7 @@ Las11funciones/22tareas son contratos, con permisos propuestos o procedentes del
 | FinOps | Consulta acotada, diario con CAS, intención durable, Job/Scheduler y dispatch simulados | Publicar no acredita entrega; alerta no es restricción; no hay techo absoluto de gasto |
 | Continuidad | Agente nuevo sin conversación, entry→protocolo→estado/eventos→9/9evidencia | PASS tras reparación documentada de ruta; adapters nativos NOT_TESTED |
 | Visual | 6 comparaciones automáticas sin diferencias | **PENDING_USER_APPROVAL**; UI0.1/UI0.2 siguen rechazadas |
-| V402/337 | Comprobación final pendiente al preparar esta revisión | ZIPs y fuentes protegidas inmutables |
+| V402/337 | 317 comprobaciones PASS | ZIPs y fuentes protegidas inmutables |
 
 La repetibilidad visual no sustituye aprobación del usuario. [evidence/VISUAL_CANDIDATES_V403.md](<C:/Users/NL/Desktop/Elite Library Extension V403/evidence/VISUAL_CANDIDATES_V403.md>). Zoom real del navegador, otros motores, lector de pantalla, teléfono/lector físico y tareas con personas conservan NOT_RUN/NOT_TESTED; no se infiere su PASS de cambiar el viewport.
 
@@ -65,9 +65,9 @@ FinOps distingue presupuesto interno, facturación observada, alerta y restricci
 
 ## Git, artefactos y preservación
 
-Conexión original preparada en commit local `d2729ab31adcb82906413e0f5b9f9b228c851d0d` (5archivos), sin push. La extensión agrega fuentes versionadas; no se reescribe historia pública. Commit de la extensión y prueba Git independiente aún en preparación en este snapshot del informe.
+Conexión original preparada en commit local `d2729ab31adcb82906413e0f5b9f9b228c851d0d` (5archivos), sin push. La extensión agrega fuentes versionadas; no se reescribe historia pública. Commit fuente probado: `b58b30d7fa3269ad1bc43552270c3c832db8fde9`.
 
-Recibos Git120 independientes incorporados: 0. Los hashes y métodos exactos están en el índice de evidencia; una reconstrucción Git local no equivale a disponibilidad del commit en GitHub ni a ejecución hospedada.
+Recibos Git120 independientes incorporados: 2. Los hashes y métodos exactos están en el índice de evidencia; una reconstrucción Git local no equivale a disponibilidad del commit en GitHub ni a ejecución hospedada.
 
 El árbol post-pulido/ampliación no equivale a los bytes del ZIP de cierre; **el ZIP sigue siendo la instantánea canónica del READY original**. El checkpoint337 conserva COMPLETE y library release READY_FOR_LIBRARY_USE/errors=0. Los48controles originales no se reabrieron.
 
@@ -104,5 +104,10 @@ Los paths Desktop son la ubicación del ensayo de este equipo; no son defaults d
 | [cloud/evidence/qualification-linux-final-03.json](<C:/Users/NL/Desktop/Elite Library Extension V403/cloud/evidence/qualification-linux-final-03.json>) | `4388545f73fc605a258189a305b4a6b8f623fb991daf48febbc5cba1ef3fe058` |
 | [evidence/fresh-file-only-resume-v403.json](<C:/Users/NL/Desktop/Elite Library Extension V403/evidence/fresh-file-only-resume-v403.json>) | `cde02f4f35f691f684ff16055ecfa99b87370d776e802725e0daefaf22fb2820` |
 | [evidence/visual-candidates-v403.json](<C:/Users/NL/Desktop/Elite Library Extension V403/evidence/visual-candidates-v403.json>) | `580e1c7c0ae0063af041b1a62a4e384ed2d49a5805e887aed1fd3d98adeb9897` |
+| [evidence/preservation-final.json](<C:/Users/NL/Desktop/Elite Library Extension V403/evidence/preservation-final.json>) | `5c5e7b0435e09512f6e42779e5b64b7cdfbacd9be96a09e54989ca161aa920f1` |
+| [evidence/connection-impact-v403.json](<C:/Users/NL/Desktop/Elite Library Extension V403/evidence/connection-impact-v403.json>) | `2c6eaef9d5a25ced9cad051b88c3773bd11b89ed4beaffeda34191a7c7f4477a` |
+| [evidence/extension-source-commit.json](<C:/Users/NL/Desktop/Elite Library Extension V403/evidence/extension-source-commit.json>) | `5811e91803cd4b99c8488ce96f9dc0ed6115295cddb7c0253d0e707c5c1fbdec` |
 | [cloud/evidence/cloud-extension-iam-delta.json](<C:/Users/NL/Desktop/Elite Library Extension V403/cloud/evidence/cloud-extension-iam-delta.json>) | `a1ddfa7b23cb68c783b57c1ca44ad1407e6c948392bc9e9f631baddfc60923f3` |
 | [cloud/evidence/overlay-compat-01/receipt.json](<C:/Users/NL/Desktop/Elite Library Extension V403/cloud/evidence/overlay-compat-01/receipt.json>) | `f5685a1e7b5f0d8d214d02b7272a8e178236502027b898680dfb3a7958ff6f6d` |
+| [cloud/evidence/consumer120-windows-01/qualification-receipt.json](<C:/Users/NL/Desktop/Elite Library Extension V403/cloud/evidence/consumer120-windows-01/qualification-receipt.json>) | `d3ba6fed04e7f7ad3e1b16c284e44e5caffe9fada5e2a95d3b0d7832cb0e4d14` |
+| [cloud/evidence/consumer120-linux-01.json](<C:/Users/NL/Desktop/Elite Library Extension V403/cloud/evidence/consumer120-linux-01.json>) | `9b3984f73b28fabda72b1d51740cc422438ad39766bda875ac5916be204d2eb1` |
