@@ -10,6 +10,13 @@ El Preflight genérico permanece BLOCKED por pnpm general rechazado y Docker aus
 
 En la instalación local, abrir `Desktop/Elite Franchise Reference V402/START_REFERENCE_V402.md` y `qualification/FINAL_LIBRARY_READY_V402.json` dentro de esa carpeta. La [separación de gates](reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md) explica FAIL384 y las fuentes. Ningún paso siguiente obliga a reabrir el mantenimiento337 ya completo; aplica al proyecto consumidor y a la revisión que elija.
 
+La ampliación de experiencia, funciones de negocio y preparación cloud se encuentra en
+[LIBRARY_EXPERIENCE_CLOUD_EXTENSION_V403](markdown_system/LIBRARY_EXPERIENCE_CLOUD_EXTENSION_V403.md).
+Ese expediente gobierna su estado y evidencia. El [perfil integrado V403](markdown_system/FRANCHISE_COMPLETE_EXTENSION_PACK_PLAN_V403.md)
+conserva los 116 packs base y selecciona cuatro extensiones; no cambia los bytes ni
+las aprobaciones del ZIP V402. Consultar sus condiciones y aprobación visual antes
+de fijar la experiencia de un proyecto.
+
 ## Paso 0 — Separar biblioteca y producto
 
 Conservá la biblioteca en una ubicación estable y elegí un destino de producto separado. No hace falta Git. Ejemplo PowerShell 7 para una carpeta nueva:
@@ -52,11 +59,23 @@ El protocolo coordina los owners existentes: blueprint, readiness/rondas A–H, 
 
 Planificar la franquicia completa y ejecutar incrementos sobre el mismo sistema. Elegir temprano el target de build, CI y staging; ampliar verificaciones según impacto y riesgo. El [perfil de referencia](markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md) sigue seleccionando116packs/1653archivos; el complemento de conexión es tooling separado. La referencia Windows/local y sus fixtures no autorizan otros runtimes, reglas de negocio o producción. Seguir los gates del protocolo antes de materializar producto.
 
+Para incorporar las extensiones V403, registrar el
+[perfil completo de 120 packs](markdown_system/FRANCHISE_COMPLETE_EXTENSION_PACK_PLAN_V403.md)
+en el `PROJECT_PACK_PLAN.md` del consumidor, junto con el commit y los hashes elegidos.
+Seguir su recorrido de composición y aplicación de overlays; los scripts rechazan
+una base distinta. El agente que retome debe leer ese owner y su estado, no depender
+de instrucciones de chat ni copiar tareas o aprobaciones del mantenimiento.
+
 ## Paso 4 — Cuando quieras conectar tus cuentas
 
 Usá los campos vacíos de `markdown_system/PROJECT_SECRETS_TEMPLATE.md` y guardá los valores en el gestor de secretos del destino; al chat y a los recibos sólo van referencias lógicas. Los adapters deben estar completos y probados localmente antes: código ausente no es una credencial pendiente. La infraestructura ARCA se prepara sin CUIT/certificados; su activación corresponde a este paso. Daybreak/libxml2 mantiene expediente y trigger de reapertura separados.
 
-Para Cloud Run, el owner es `markdown_system/FRANCHISE_SERVERLESS_PACK_PLAN.md` con `GO-FINOPS-CORE`. El proyecto conserva sus verificaciones de reglas/país/corpus, permisos, callbacks, reconciliación, migraciones, rollout/rollback y aceptación del target antes de habilitar producción.
+Para Cloud Run con el alcance completo V403, seguir la composición y los owners
+cloud de la [ampliación V403](markdown_system/LIBRARY_EXPERIENCE_CLOUD_EXTENSION_V403.md),
+que reutiliza `GO-FINOPS-CORE`. `FRANCHISE_SERVERLESS_PACK_PLAN.md` conserva su alcance
+histórico parcial; no sustituye la selección completa ni la ejecución del target.
+El proyecto conserva sus verificaciones de reglas/país/corpus, permisos, callbacks,
+reconciliación, migraciones, rollout/rollback y aceptación antes de habilitar producción.
 
 ## Lo que NO es instantáneo (honesto)
 
