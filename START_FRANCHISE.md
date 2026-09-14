@@ -22,44 +22,35 @@ $projectPath = Join-Path (Split-Path -Parent $libraryPath) 'Mi Franquicia'
 New-Item -ItemType Directory -Path $projectPath -ErrorAction Stop
 ```
 
-## Paso 1 — Instalar el bridge (Codex + Claude Code)
+## Paso 1 — Conectar el protocolo operativo
+
+La fuente única del paso a paso es [FRANCHISE_PROJECT_OPERATING_PROTOCOL](markdown_system/FRANCHISE_PROJECT_OPERATING_PROTOCOL.md): inicio/reanudación → alcance completo → autoridades/packs → incremento conectado → verificación → registros → próxima acción. Define carga mínima, reutilización de evidencia válida, trabajo independiente ante bloqueos y un solo escritor del estado.
+
+El complemento vive en un pack Markdown para conservar intactos el instalador y los verificadores V402. Requiere PowerShell 7+ y Python 3.14+. Desde la copia elegida de la biblioteca, materializá sólo el tooling de conexión en un destino ausente:
 
 ```powershell
-& "$libraryPath\INSTALL_AGENT_BRIDGE.ps1" -LibraryRoot $libraryPath -ProjectRoot $projectPath -Agent Both
+$connectionTools = Join-Path $projectPath '.elite/connection-tools'
+& "$libraryPath/materialize_markdown_pack.ps1" -PackFile "$libraryPath/implementation_packs/PROJECT_OPERATING_CONNECTION.md" -Destination $connectionTools
+if (-not $?) { throw 'No continuar: falló la materialización del complemento' }
+& "$connectionTools/operating_connection/INSTALL_PROJECT_OPERATING_BRIDGE.ps1" -LibraryRoot $libraryPath -ProjectRoot $projectPath -Python 'python'
+if (-not $?) { throw 'No continuar: falló la conexión operativa' }
 ```
 
-Esto crea la Skill progresiva y el import; no instala deps, no pide secretos. Si el proyecto ya existe, omití `New-Item` y usá el flujo EXISTING; el bridge conserva contenido ajeno y rechaza archivos administrados incompatibles.
+El complemento **invoca INSTALL_AGENT_BRIDGE.ps1 original**, conserva sus bloques y agrega una entrada independiente a `PROJECT_AGENT_ENTRY.md`. También genera un receipt de rutas/SHA y una plantilla neutral de plataforma. No crea blueprint, estado ficticio, producto, cuentas ni aprobaciones. Para repetir una instalación ya materializada, ejecutar sólo el instalador complementario: verifica integridad y devuelve UNCHANGED. No rematerializar encima de archivos existentes.
 
-## Paso 2 — Abrir el agente en la raíz exacta del proyecto
+El ZIP distribution336 permanece inmutable y no contiene esta extensión posterior. Para usar la conexión nueva, elegir el árbol vivo que incluye el protocolo y su pack. La [separación de gates y artefactos](reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md) sigue vigente. El informe de este delta es [PROJECT_OPERATING_CONNECTION_REVIEW](reconstruction_evidence/PROJECT_OPERATING_CONNECTION_REVIEW.md).
 
-Abrí Codex o Claude Code **en la raíz del proyecto** (obligatorio sin Git) y
-decile:
+## Paso 2 — Abrir el proyecto y seguir sus archivos
 
-> "Usá START_FRANCHISE.md y FRANCHISE_ACCELERATOR.md. Validá el resultado de biblioteca, reutilizá el perfil y sus recibos exactos y materializá el producto en staging nuevo. Conservá los fixtures para verificarlo antes de configurar mis cuentas."
+Abrí el agente en la raíz exacta del proyecto. La entrada instalada es `PROJECT_AGENT_ENTRY.md`; AGENTS.md y CLAUDE.md conducen a ella. Para otro agente, usar `.elite/platform-adapter.template.md` y completar las rutas y capacidades realmente disponibles. Una instrucción inicial suficiente es «Leé PROJECT_AGENT_ENTRY.md y seguí el protocolo y el estado del proyecto». El método, los pendientes y las autorizaciones deben estar en archivos; no dependen de este mensaje.
 
-## Paso 3 — El agente ejecuta en orden
+Grok u otro host remoto necesita acceso real a esa biblioteca y proyecto en su entorno. La plantilla no instala conectores ni demuestra descubrimiento o ejecución de una plataforma. Todo adapter no ejecutado conserva NOT_TESTED.
 
-1. **Preflight** (`VERIFY_EXECUTABLE_LIBRARY.ps1 -Mode Preflight`) → declara
-   toolchains ausentes (no las finge).
-2. **Rondas A–H** (`PROJECT-START-READINESS-VALIDATOR`) → te pregunta negocio,
-   journeys, supuestos; registra `PROJECT_READINESS_RECORD.md`.
-3. **Estado reanudable y aseguramiento** (`EXECUTION-VALIDATOR 1.3.1`) → completa `implementation_assurance`, crea y valida
-   `PROJECT_EXECUTION_STATE.json` y `PROJECT_EXECUTION_EVENTS.jsonl`; si el sistema ya
-   existe exige inventario/delta y en cada retorno carga sólo el contexto necesario.
-4. **Referencia local** → materializa y verifica con fixtures, sin cuentas del usuario. El modo `LIBRARY_INFRASTRUCTURE` se usa para la biblioteca; el readiness `PROJECT` sigue aplicando al target y no hereda autorización productiva.
-5. **Composición** (`markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md`) → su bloque JSON fija el inventario y las versiones; el recibo del compositor debe coincidir con la revisión aceptada. No usar cifras históricas como inventario ni llamar productivo al resultado local.
-6. **Migraciones y gates de esa revisión** → `go test ./...`, `go vet`, `go build`, PostgreSQL real y frontend con runtime admitido por digest. El pnpm publicado 11.25.0 sigue rechazado. La receta local0.9.0 de `pnpm_artifact_selection/local_runtime.py` está calificada para instalación offline restringida, sin addons/WASM/hooks/scripts y con ZIP retirado; ver `PNPM_LOCAL_RUNTIME_V402.md`. El bundle adaptado no se redistribuye. No sustituirlo por una versión de PATH ni usar una instalación con red para ignorar el gate.
-7. **Vertical slice** end-to-end (captación → lead/contacto → catálogo → pedido/pago o agenda → respuesta/handoff → auditoría/recovery), checkpoint con hashes/evidencia y después expansión por vertical.
+## Paso 3 — Aplicar los gates del proyecto consumidor
 
-Antes de implementar, leer `markdown_system/POST_DEEPSEEK_FRANCHISE_REAUDIT_2026-09-04.md` y su sucesor de alcance V402. Para materializar desde el plan exacto, ambos destinos del ejemplo siguiente deben estar ausentes:
+El protocolo coordina los owners existentes: blueprint, readiness/rondas A–H, authority map, source lock, pack plan, spec/plan/tasks, execution state/events y failure lessons. NEW crea su baseline observado; EXISTING valida el cursor y registra sólo el delta. Nunca copiar el estado337 del mantenimiento ni heredar su READY como READY_TO_BUILD del negocio.
 
-```powershell
-& "$libraryPath\VERIFY_EXECUTABLE_LIBRARY.ps1" -Mode Preflight
-& "$libraryPath\materialize_markdown_pack.ps1" -PackFile "$libraryPath\implementation_packs\MARKDOWN_COMPOSITOR_CORE.md" -Destination "$projectPath\tooling-compositor"
-& "$projectPath\tooling-compositor\tools\compose-markdown-project.ps1" -PlanFile "$libraryPath\markdown_system\FRANCHISE_COMPLETE_PACK_PLAN.md" -LibraryRoot $libraryPath -Destination "$projectPath\reference-staging"
-```
-
-Preflight comprueba la biblioteca y declara toolchains ausentes. El agente debe contrastar además `MATERIALIZATION_RECORD.md` y todos los archivos con el inventario aceptado, ejecutar el verify local y conservar los recibos de esa misma revisión. No mover el staging ni sobrescribir un producto existente antes de ese contraste.
+Planificar la franquicia completa y ejecutar incrementos sobre el mismo sistema. Elegir temprano el target de build, CI y staging; ampliar verificaciones según impacto y riesgo. El [perfil de referencia](markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md) sigue seleccionando116packs/1653archivos; el complemento de conexión es tooling separado. La referencia Windows/local y sus fixtures no autorizan otros runtimes, reglas de negocio o producción. Seguir los gates del protocolo antes de materializar producto.
 
 ## Paso 4 — Cuando quieras conectar tus cuentas
 
