@@ -2,9 +2,9 @@
 
 ## Qué está listo / Qué NO está listo
 
-La **referencia local V402** está `READY_FOR_LIBRARY_USE`, ejecución337 COMPLETE, en `LIBRARY_INFRASTRUCTURE / LOCAL_FIXTURES`. El gate de producto `PROJECT_READINESS_GATE.json` conserva `DISCOVERY` y `platform_mode=BLOCK`; no se lo promueve ni se transfieren las aprobaciones del mantenimiento al target.
+La **referencia local V402** está `READY_FOR_LIBRARY_USE`, ejecución 337 COMPLETE, en `LIBRARY_INFRASTRUCTURE / LOCAL_FIXTURES`. El gate de producto `PROJECT_READINESS_GATE.json` conserva `DISCOVERY` y `platform_mode=BLOCK`; no se lo promueve ni se transfieren las aprobaciones del mantenimiento al target.
 
-Para reutilizar exactamente el perfil aceptado, extraer el ZIP de biblioteca distribution336 de la [tabla única de artefactos](README.md#dos-zips-cuál-usar-para-qué). El ZIP firmado de producto sirve para verificar y usar la referencia local. Los comandos siguientes se ejecutan desde la raíz de la copia elegida; un checkout público anterior con este pulido documental no equivale a la instantánea V402.
+Para reutilizar exactamente el perfil aceptado, extraer el ZIP de biblioteca distribution336 de la [tabla única de artefactos](reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md#dos-zips-cuál-usar-para-qué). El ZIP firmado de producto sirve para verificar y usar la referencia local. Los comandos siguientes se ejecutan desde la raíz de la copia elegida; el árbol Git ya publica los packs V402 y conserva aclaraciones posteriores; no equivale byte por byte al ZIP inmutable. El perfil vigente tiene 116 packs / 1653 archivos.
 
 El Preflight genérico permanece BLOCKED por pnpm general rechazado y Docker ausente. La referencia V402 se probó con el instalador restringido y PostgreSQL nativo admitidos. Live y aceptación del target siguen pendientes; ARCA está completa en infraestructura/fixtures y espera credenciales para conectarse. Daybreak/libxml2 sigue diferido. El checklist de cuentas queda vacío: no se pide ningún secreto en este pulido.
 

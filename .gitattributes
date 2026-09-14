@@ -1,9 +1,8 @@
-# Stable source text for hash-locked Markdown materialization; no history rewrite.
-* text=auto eol=lf
-*.md text eol=lf
-*.ps1 text eol=lf
-*.json text eol=lf
-*.jsonl text eol=lf
+# Hash-locked library: preserve the exact accepted bytes, including mixed newlines.
+# Unsetting text disables index/checkout newline conversion even with core.autocrlf.
+# It does not disable textual diffs or any admission/security gate.
+# Authority: https://git-scm.com/docs/gitattributes (text: Unset).
+* -text
 *.png binary
 *.jpg binary
 *.zip binary

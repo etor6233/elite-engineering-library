@@ -1,6 +1,4 @@
-# Franchise gap map — lectura por alcance
-
-## Referencia local V402 aceptada
+# Franchise gap map — estado vigente V402
 
 READY_FOR_LIBRARY_USE para LIBRARY_INFRASTRUCTURE / LOCAL_FIXTURES. Fuente330/metadatos331,116packs/1653archivos. TEST02/03/07 PASS local,48/48 controles de este alcance. Daybreak/libxml2 ACCESS_BLOCKED diferido; producción no autorizada. Véase `reconstruction_evidence/LIBRARY_INFRA_READY_V402.md` y el validator release del registro local.
 
@@ -892,4 +890,38 @@ V402 factory operational tracking now has actual scoped UI→BFF→Go→PG effec
 
 V402 connected increment: WhatsApp raw inbox→scoped runtime→human proposal/review→fenced send→status/recovery and real browser closed locally, including renewable service identity and explicit host. Facebook Page text publishing has a dedicated scheduled/reviewed SDK host with GET-only recovery; broader networks are not inferred. FX snapshot conversion receipt is wired and proven, but does not yet post a journal. T2807 durable model budget, user-portal identity lifecycle, broader domain/T2804 and current global security/operations remain open. Six affected plans reconstruct exactly; franchise82/1032. See COMMUNICATIONS_RUNTIME_V402.md.
 
-</details>
+V402 / checkpoint279: vista vigente reconciliada con pagos/handover, browser de fábrica, WhatsApp/Page y FX posting. Las entradas históricas V298/V300/V401 conservan sus límites originales; no se usan para describir como ausente código ya conectado. Siguiente T2802: gift/loyalty hasta tender/checkout/recibo de entrega, y clasificación fundamentada del resto según blueprint. No cierre global de T2802/TEST02.
+
+V402 / checkpoint280: candidato gift/loyalty conecta tender parcial por SDK y cobertura total con recibo local, sin pago ficticio. El perfil anterior rechaza la ampliación; FAIL823 corregido en staging. Pendientes de código y gates explícitos en STORED_VALUE_TENDER_V402.md; no promoción de T2802/TEST02 ni cambio del perfil canónico82/1039.
+
+V402 / checkpoint281: candidato de gift/loyalty ya opera desde portal con revisión separada y recuperación hasta entrega/recibo comercial sin proveedor cuando la cobertura es total. FAIL824 corregido con lease al COMMIT; HTTP exacto,49tests BFF,build/browser,host activation y downgrade seguro PASS. Source/notices/G0–G8/pack/rebuild pendientes antes de promoción;82/1039 canónicos intactos. Ver STORED_VALUE_OPERATOR_FLOW_V402.md.
+
+V402 / checkpoint282: loader de fuente rechaza initializer/cache no fijados; algoritmo sin cambios y fuzz local PASS. Compositor0.3.0 conserva licencias oficiales sin LF con42casos y regresiones previas PASS. Fuente/lock/notices preparados; empaquetado del candidato continúa, sin promover T2802 ni cambiar82/1039. Ver STORED_VALUE_SOURCE_CLOSURE_V402.md.
+
+V402 / checkpoint283: gift/loyalty asistido ya incorporado al perfil84/1112 con fuente LGPL exacta, cálculo derivado, aprobación/PG, pago SDK parcial o funding local total y entrega desde navegador. Cinco reconstrucciones exactas; narrow Go profiles compile, sin repetir tests. Resto T2802 requiere reconciliación por blueprint; no cierre global ni cambio45/48.
+
+V402 / checkpoint284: garantía J1/J4 sigue requerida; se identificaron11fuentes/tests oficiales BCApps fijados (1261348bytes) y CheckWarranty inclusivo, sin runtime AL ni implementación admitida aún. Clasificación de payroll/POS/cupones/referrals/reviews/waitlist sigue candidata; no se retiraron requisitos. FAIL831 de distribución/perfil general se conserva para T2810; no repetir verify global antes del fix. Ver WARRANTY_SOURCE_SCOPE_V402.md.
+
+V402 / checkpoint285: CheckWarranty-date derivado con1280vectores, fuzz2s y8archivos exactos; G0–G8 estrechos USE_REUSABLE_PACK. J1/J4 completos siguen abiertos hasta integración con términos vendidos/entrega/caso/repuestos/quality/aceptación/claim. Ver WARRANTY_DATE_ADMISSION_V402.md;84/1112 canónicos sin cambio.
+
+Checkpoint287: el delta de warranty J4 ya tiene cuatro casos PostgreSQL probados en staging. No volver a clasificar términos/activación/caso completo de backend como inexistentes; faltantes de integración/publicación explícitos en su fila.
+
+V402 checkpoint290: seis subcores históricos NONE_WITH_REASON por blueprint de referencia, sin reducir superficies REQUIRED. J2 y J3 permanecen explícitos y se implementan; warranty J1/J4 canónica. Corrección serial71 incluida86/1148; no cierre global.
+
+V402 checkpoint292: J2 conectado incorporado,87/1166exactos. T2802 conserva J3 catálogo gobernado REQUIRED; los parciales asignados a T2804/T2805/T2807/T2809 no desaparecen. No cierre global.
+
+V402 checkpoint294: J2/J3 ya incorporados; T2802 dominio PROVEN_LOCAL en89/1202. T2804 y restantes tareas conservan sus brechas, no se declara READY global ni48/48. Historial anterior inmutable.
+
+V402 checkpoint295: capacitación incorporada91/1228; T2804 sigue activo para los efectos restantes. G0–G8/hash/rebuild en TRAINING_CONNECTED_RELEASE_V402.md/json. No repetición de pruebas previas ni cierre global.
+
+V402 checkpoint296: autoría catálogo desde formulario incorporada93/1248; siguiente supply/warranty/J5 y restantes T2804, sin repetir capacitación/J3 probados.
+
+V402 checkpoint297: supply por rol incorporado95/1264; siguiente J5 y restoT2804. No repetir23escrituras probadas sin delta.
+
+V402 checkpoint298: warranty role incorporado97/1278; siguiente J5/CMS/guías/KPIs/i18n T2804. Los18POST probados no se repiten sin delta.
+
+V402 checkpoint299: red por rol99/1299 incorporada. Continuar CMS/guías/KPIs/i18n T2804, luego T2805 y resto del orden; no repetir13POST ya probados sin delta.
+
+V402 checkpoint300: continuarKPIs/i18nprivadoT2804; CMS6POST/trainingnuevo ya probados, no repetir sin delta.
+
+V402 checkpoint301: continuar i18n privadoT2804; KPIs y bodybound cerrados localmente. No repetir anteriores sin delta.
