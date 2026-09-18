@@ -1,46 +1,24 @@
 {
-  "schema": "elite-library-control-receipt/v1",
-  "scope": "PORTABILITY",
-  "revision": "V403-machine-local-home-path",
-  "control": "VERIFY_LIBRARY",
-  "outcome": "PASS",
-  "command": "public-path scan for machine-local home; inspect FRANCHISE_CLOUD_EXECUTION_V403 pack",
-  "exit_code": 0,
-  "assertions": [
-    "GitHub publication tree contains zero machine-local home paths under /home or C:\\Users.",
-    "implementation_packs/FRANCHISE_CLOUD_EXECUTION_V403.md is absent from the V402 GitHub publication; no path substitution was required in-tree.",
-    "Local Windows library canonical fix when the pack is published: portable HOME under /app/.home, CLOUDSDK_CONFIG under /app/.home/.config/gcloud; GCLOUD_RUNTIME user/chown 1000:1000 unchanged.",
-    "Receipt admitted on PUBLIC_RELEASE_INPUT_POLICY allowlist; no verifier weakening."
-  ],
-  "inputs": [
-    {
-      "path": "implementation_packs/FRANCHISE_CLOUD_EXECUTION_V403.md",
-      "status": "absent_on_github",
-      "sha256": null
-    },
-    {
-      "path": "markdown_system/PUBLIC_RELEASE_INPUT_POLICY.md",
-      "sha256": null
-    }
-  ],
-  "outputs": [
-    {
-      "path": "reconstruction_evidence/RECEIPT_MACHINE_LOCAL_HOME_PATH_V403.json",
-      "sha256": "462d811cff48ea8e966c1551cea19ac1aca08a0301092194663b8d4007fa6f59"
-    }
-  ],
-  "verification": {
-    "forbidden_path_class": "machine-local-cloudsdk-home",
-    "literal_match_count": 0,
-    "pack_path": "implementation_packs/FRANCHISE_CLOUD_EXECUTION_V403.md",
-    "pack_present_on_github": false,
-    "local_fix": {
-      "portable_home": "/app/.home",
-      "cloudsdk_config": "/app/.home/.config/gcloud",
-      "gcloud_runtime_user_chown": "1000:1000"
-    },
-    "local_receipt_alias": "RECEIPT_machine-local-home-path_V403.json"
+  "schema": "elite-pack-finisher-receipt/v1",
+  "id": "FIX-machine-local-home-path-V403-controller",
+  "status": "LOCAL_APPLIED_ALLOWLISTED_PENDING_VERIFY",
+  "production_authorized": false,
+  "blocker": "machine-local-home-path",
+  "file": "implementation_packs/FRANCHISE_CLOUD_EXECUTION_V403.md",
+  "change": {
+    "from": "/home/cloudsdk (+ CLOUDSDK_CONFIG under it)",
+    "to": "/app/.home (+ CLOUDSDK_CONFIG=/app/.home/.config/gcloud)",
+    "chown": "1000:1000 matching existing USER of GCLOUD_RUNTIME controller image (not inventing new UID)",
+    "block_sha256": "3e4697df48cfd84c7431569102bf0b578e3f7eeb36b85bceeefa0faf09c70982",
+    "basis": "elite-scout OK /app/.home; CONTAINER_PACKAGING_CORE portable app paths; no /home/<user>"
   },
-  "inventory_sha256": null,
-  "live_effects_performed": false
+  "local_path": "C:\\Users\\NL\\Desktop\\Public Elite Codes\\implementation_packs\\FRANCHISE_CLOUD_EXECUTION_V403.md",
+  "pack_sha256": "022c8027b984141185f14186fda221d60d8de9fe5d9190b6b8eafdfd1893b272",
+  "github_sync": "pending \u2014 await user confirm CloudAgent / SCM push",
+  "next": "verifier re-smoke VERIFY_LIBRARY + VERIFY_EXECUTABLE_LIBRARY on Public Elite Codes",
+  "snippet_L180_L192": "180:RUN test -x /usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3 && \\\n181:    ln -s /usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3 /usr/local/bin/python3 && \\\n182:    mkdir -p /app /app/.home/.config/gcloud && chown -R 1000:1000 /app/.home\n183:COPY cloud/ /app/cloud/\n184:COPY production_admission_gate/ /app/production_admission_gate/\n185:ENV HOME=/app/.home \\\n186:    CLOUDSDK_CONFIG=/app/.home/.config/gcloud \\\n187:    CLOUDSDK_PYTHON=/usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3 \\\n188:    CLOUDSDK_CORE_DISABLE_USAGE_REPORTING=true \\\n189:    CLOUDSDK_COMPONENT_MANAGER_DISABLE_UPDATE_CHECK=true \\\n190:    PYTHONDONTWRITEBYTECODE=1\n191:WORKDIR /app\n192:USER 1000:1000",
+  "updated_at": "2026-09-18T19:27:56.440961+00:00",
+  "receipt_id": "RECEIPT_MACHINE_LOCAL_HOME_PATH_V403",
+  "admitted_as": "reconstruction_evidence/RECEIPT_MACHINE_LOCAL_HOME_PATH_V403.json",
+  "supersedes_local_name": "RECEIPT_machine-local-home-path_V403.json"
 }
