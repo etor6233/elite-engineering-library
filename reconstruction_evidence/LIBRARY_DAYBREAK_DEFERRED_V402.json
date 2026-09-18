@@ -2,15 +2,31 @@
   "schema": "elite-user-deferred-branch/v1",
   "scope": "V402-source330-metadata331-local",
   "id": "daybreak-libxml2",
-  "status": "ACCESS_BLOCKED",
+  "status": "DEFERRED_DOC",
   "code_complete": false,
   "production_authorized": false,
-  "basis": "Explicit user instruction; reported ChatGPT notice: This content can’t be shown. We take extra care with some cybersecurity requests.",
+  "project_ok_for_daybreak_libxml2": false,
+  "basis": "Owner GO 2026-09-18 via lead: Daybreak option B — defer documentado (no research/incorporate pack). Substance incomplete: no DAYBREAK/LIBXML REUSABLE_PACK; G0 official source/advisory/binary+hashes in repo not closed; native project claim/tests and Windows provenance (if claimed) still open. Historical ACCESS_BLOCKED dossier and NATIVE_QUALIFICATION_ACCESS_BLOCK_V386.md preserved. Portable V386 receipt staging exists under agent workspace only and does not admit a pack.",
+  "user_go": {
+    "date": "2026-09-18",
+    "choice": "B_DEFER_DOC",
+    "via": "dr-eggbot-lead"
+  },
+  "substance_incomplete": true,
   "actions_this_closure": [
-    "Preserve historical dossier and user-reported access boundary",
-    "Record reopening trigger only"
+    "Update defer documentation to owner GO B",
+    "Preserve historical dossier and V386 access-block evidence",
+    "Record reopen trigger: official sources + portable receipts in repo + permitted access then G0-G8",
+    "Do not invent DAYBREAK/LIBXML pack",
+    "Do not claim project OK for daybreak/libxml2"
   ],
   "investigation_or_unblocking_performed": false,
   "blocks_library_infrastructure": false,
-  "reopen_trigger": "New explicit user request for this exact branch plus permitted access; then revalidate official source/advisory/binary provenance and native tests. No current native security claim."
+  "portable_receipts_note": "V386 digests staged outside Temp for future reopen; not library REUSABLE_PACK admission",
+  "evidence_refs": [
+    "reconstruction_evidence/LIBRARY_DAYBREAK_DEFERRED_V402.json",
+    "reconstruction_evidence/NATIVE_QUALIFICATION_ACCESS_BLOCK_V386.md"
+  ],
+  "reopen_trigger": "Official sources + portable receipts landed in repo + permitted access; then G0-G8 (claim, SPDX/hashes, tests of claim, threat/ops without exploit PoC, ELITE_REFERENCE/REUSABLE_PACK, verifier clean). No project OK inferred from this defer.",
+  "updated_at": "2026-09-18T19:34:58.430001+00:00"
 }

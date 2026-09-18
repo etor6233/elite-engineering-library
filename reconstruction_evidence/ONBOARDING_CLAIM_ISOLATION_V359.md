@@ -1,7 +1,7 @@
 # V359 — aislamiento del checklist y los reclamos
 
 2026-09-09. Mantenimiento correctivo y revisión de TEST02/03. Checkpoint 162
-validado antes de editar; integración 163 y cierre 164. Stage `C:/Users/NL/AppData/Local/Temp/elite-v359-cb0d32db936c4a41bce814e26edcadf5`.
+validado antes de editar; integración 163 y cierre 164. Stage `<LOCALAPPDATA>/Temp/elite-v359-cb0d32db936c4a41bce814e26edcadf5`.
 
 ## Resultado observado
 

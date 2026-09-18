@@ -1,0 +1,19 @@
+{
+  "schema": "elite-pack-finisher-receipt/v1",
+  "id": "RECEIPT_SHA256_TEST_TEST_BUSINESS_FUNCTIONS_V403",
+  "status": "LOCAL_APPLIED_ALLOWLISTED_PENDING_VERIFY",
+  "production_authorized": false,
+  "blocker": "sha256-mismatch-test_business_functions",
+  "decision": "UPDATE_DECLARED_HASH_TO_CURRENT_ADMITTED_BYTES",
+  "rationale": "Path sweep replaced machine-local home paths inside embedded roles/tests/test_business_functions.py body with portable placeholders. Declared sha256 was stale; body bytes are intentional admitted portable content, not corruption.",
+  "file": "implementation_packs/BUSINESS_FUNCTION_OPERATING_V403.md",
+  "embedded_path": "roles/tests/test_business_functions.py",
+  "sha256_previous": "b64fa55715f6a046707abbea16ff2cc34a5c2118c2bfa7eb6f156827776ef099",
+  "sha256_current": "f935a1f47fcbdbb0b2c2933a0d7298b7ef12fd616c88a5c09257e1b0e6a601bd",
+  "evidence": [
+    "declared hash matched pre-sweep admitted bytes",
+    "current body hash equals materialize got hash f935\u2026",
+    "body contains placeholders not Users\\\\NL"
+  ],
+  "updated_at": "2026-09-18T19:38:44.930611+00:00"
+}

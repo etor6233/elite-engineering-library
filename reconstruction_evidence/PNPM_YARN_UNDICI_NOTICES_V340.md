@@ -84,7 +84,7 @@ signing, publication or ARCA activity.
 
 ## Evidence
 
-Stage: C:/Users/NL/AppData/Local/Temp/elite-v340-9cc3d8c83aa4416cbdcd5f3f3b158fe7.
+Stage: <LOCALAPPDATA>/Temp/elite-v340-9cc3d8c83aa4416cbdcd5f3f3b158fe7.
 
 | Stage file | SHA256 |
 |---|---|

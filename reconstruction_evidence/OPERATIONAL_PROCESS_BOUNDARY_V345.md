@@ -109,7 +109,7 @@ dependency. Compatibility: existing schema/semantic validators plus743identical
 consumer files. Verification: fresh reconstruction and full affected Python
 suites. Delivery: three exact profile pins1.1.3; no release/deploy promotion.
 
-Stage: C:/Users/NL/AppData/Local/Temp/elite-v345-bb97f0a21710475989c6e37712e10a28
+Stage: <LOCALAPPDATA>/Temp/elite-v345-bb97f0a21710475989c6e37712e10a28
 
 | Evidence | SHA-256 |
 |---|---|

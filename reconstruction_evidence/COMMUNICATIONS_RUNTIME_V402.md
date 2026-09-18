@@ -20,7 +20,7 @@ Condiciones restantes de este incremento: publicación incorporada; source/secur
 
 ## Recibos exactos
 
-Stage: C:/Users/NL/AppData/Local/Temp/elite-v402-library-infra.
+Stage: <LOCALAPPDATA>/Temp/elite-v402-library-infra.
 
 | Archivo | SHA-256 |
 |---|---|

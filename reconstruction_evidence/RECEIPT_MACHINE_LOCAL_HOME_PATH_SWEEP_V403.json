@@ -1,0 +1,261 @@
+{
+  "schema": "elite-pack-finisher-receipt/v1",
+  "id": "RECEIPT_MACHINE_LOCAL_HOME_PATH_SWEEP_V403",
+  "status": "LOCAL_APPLIED_ALLOWLISTED_PENDING_VERIFY",
+  "production_authorized": false,
+  "blocker": "machine-local-home-path",
+  "scope": "release-tree sweep Users/NL and home/Users paths",
+  "placeholders": [
+    "<LIBRARY_ROOT>",
+    "<WORKSHOP>",
+    "<LOCALAPPDATA>",
+    "<APPDATA>",
+    "<USERPROFILE>"
+  ],
+  "files_changed": 60,
+  "still_matching_verify_regex": 0,
+  "changed": [
+    {
+      "path": "implementation_packs/BUSINESS_FUNCTION_OPERATING_V403.md",
+      "replacements": 1
+    },
+    {
+      "path": "implementation_packs/FRANCHISE_CLOUD_EXECUTION_V403.md",
+      "replacements": 1
+    },
+    {
+      "path": "implementation_packs/PADDLEPADDLE_PADDLEOCR_LOCAL_RUNTIME.md",
+      "replacements": 4
+    },
+    {
+      "path": "implementation_packs/WINDOWS_REFERENCE_TELEMETRY_RUNTIME.md",
+      "replacements": 2
+    },
+    {
+      "path": "markdown_system/FRANCHISE_EXPERIENCE_PACK_PLAN_V403.md",
+      "replacements": 5
+    },
+    {
+      "path": "markdown_system/LIBRARY_FAILURE_LEARNING_LEDGER.md",
+      "replacements": 3
+    },
+    {
+      "path": "reconstruction_evidence/ACCEPTANCE_REAUDIT_FX_BOUNDARY_V353.md",
+      "replacements": 2
+    },
+    {
+      "path": "reconstruction_evidence/ADMIN_OPS_EXPERIENCE_V403_R3.md",
+      "replacements": 8
+    },
+    {
+      "path": "reconstruction_evidence/AGENT_ENTRY_LIFECYCLE_V287.md",
+      "replacements": 3
+    },
+    {
+      "path": "reconstruction_evidence/BACKEND_DEPENDENCY_CLOSURE_V402.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/BASIS_POINT_ARITHMETIC_V356.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/COMMUNICATIONS_RUNTIME_V402.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/COMPOSITION_SECURITY_SCA_BEFORE_V402.json",
+      "replacements": 4
+    },
+    {
+      "path": "reconstruction_evidence/COMPOSITION_SECURITY_SCA_V402.json",
+      "replacements": 4
+    },
+    {
+      "path": "reconstruction_evidence/CONNECTED_PAYMENT_HANDOVER_V402.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/CORE_CLAIM_ADMISSION_V374.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/CREDIT_CORE_ISOLATION_V354.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/DASHBOARD_HELP_BOUNDARIES_V362.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/FACTORY_BROWSER_V402.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/FIREFOX_LIFECYCLE_AND_CONTINUITY_V325.md",
+      "replacements": 2
+    },
+    {
+      "path": "reconstruction_evidence/FX_JOURNAL_CONNECTION_V402.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/GOVERNED_NATIVE_LAUNCH_V347.md",
+      "replacements": 2
+    },
+    {
+      "path": "reconstruction_evidence/HANDOVER_BROWSER_V402.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/ISOLATED_TOOLCHAIN_RESOLUTION_V286.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_EXPERIENCE_CLOUD_V403.md",
+      "replacements": 23
+    },
+    {
+      "path": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.json",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/MERCADOLIBRE_OUTBOUND_HARDENING_V259.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/MODERATION_WAITLIST_ISOLATION_V358.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/NATIVE_GRACEFUL_SHUTDOWN_V348.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/NATIVE_POSTGRES_LIFECYCLE_V351.md",
+      "replacements": 2
+    },
+    {
+      "path": "reconstruction_evidence/NATIVE_RESULT_PUBLICATION_V349.md",
+      "replacements": 2
+    },
+    {
+      "path": "reconstruction_evidence/NATIVE_SUPERVISOR_IO_QUALIFICATION_V346.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/NATIVE_WORKER_LIFECYCLE_V350.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/ONBOARDING_CLAIM_ISOLATION_V359.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/OPERATIONAL_PROCESS_BOUNDARY_V345.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/PAYMENT_PERSISTENCE_PROGRESS_V402.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/PAYMENT_SDK_RECONCILIATION_V402.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/PNPM_CACHE_FRESHNESS_V336.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/PNPM_CONSUMER_ROUTING_V335.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/PNPM_LIFECYCLE_LICENSE_V337.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/PNPM_NATIVE_SELECTION_V333.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/PNPM_NESTED_LICENSE_SOURCES_V339.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/PNPM_NOTICE_COVERAGE_V338.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/PNPM_SELECTION_GATE_V334.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/PNPM_YARN_UNDICI_NOTICES_V340.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/PNPM_ZIP_CONTAINMENT_V401.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/PORTABLE_CANDIDATE_ACCEPTANCE_V352.md",
+      "replacements": 2
+    },
+    {
+      "path": "reconstruction_evidence/POS_SLO_BOUNDARIES_AND_DOCKER_SCOPE_V361.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/PUBLIC_CORE_SCOPE_V363.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/PUBLIC_WEB_EXPERIENCE_V403_R3.md",
+      "replacements": 8
+    },
+    {
+      "path": "reconstruction_evidence/REFERRAL_IDENTITY_ISOLATION_V357.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/REFUND_PROVIDER_ALIAS_COMPATIBILITY_V402.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/REMINDER_TENANT_API_V355.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/STORED_VALUE_CONNECTED_RELEASE_V402.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/SURVEY_CAMPAIGN_SCOPE_V360.md",
+      "replacements": 1
+    },
+    {
+      "path": "reconstruction_evidence/WARRANTY_CONNECTED_RELEASE_V402.md",
+      "replacements": 1
+    },
+    {
+      "path": "PROJECT_DEPENDENCY_UPDATE_RECORD.md",
+      "replacements": 1
+    },
+    {
+      "path": "PROJECT_EXTERNAL_SOURCE_LOCK.md",
+      "replacements": 1
+    },
+    {
+      "path": "PROJECT_FAILURE_LESSONS.md",
+      "replacements": 7
+    },
+    {
+      "path": "PROJECT_OFFICIAL_SOURCE_PROFILE_RECORD.md",
+      "replacements": 14
+    }
+  ],
+  "still": [],
+  "updated_at": "2026-09-18T19:32:56.905654+00:00"
+}

@@ -1,6 +1,6 @@
 # V352 — aceptación del candidato portable antes de publicar
 
-Mantenimiento de biblioteca, 2026-09-09T15:06:45.442685Z. Entrada147 validada; stage C:/Users/NL/AppData/Local/Temp/elite-v352-32e0c00909af4e31a62ae41f95568773.
+Mantenimiento de biblioteca, 2026-09-09T15:06:45.442685Z. Entrada147 validada; stage <LOCALAPPDATA>/Temp/elite-v352-32e0c00909af4e31a62ae41f95568773.
 Usuario solicita destrabar el progreso y mantener controles correctos.
 
 ## Corrección del orden, sin reducción de criterios
@@ -27,7 +27,7 @@ Preparación148; ensayos de candidato completo pendientes. Contrato41/48passed,
 ````python
 from pathlib import Path,PurePosixPath
 import hashlib,json,os,re,shutil,subprocess,sys,time,zipfile
-S=Path(__file__).resolve().parent;py=Path(sys.executable);pwsh=Path('C:/Users/NL/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe');sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+S=Path(__file__).resolve().parent;py=Path(sys.executable);pwsh=Path('<USERPROFILE>/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe');sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 A=Path(os.environ.get('ELITE_ACCEPTANCE_ARTIFACT_ROOT',str(S)));archive=A/'library-candidate148-not-for-release.zip';expected=archive.with_suffix('.zip.sha256').read_text().split()[0];assert sha(archive)==expected
 extract=S/'accepted-extraction';extract.mkdir();prefix='Elite Engineering Library/'
 with zipfile.ZipFile(archive) as z:

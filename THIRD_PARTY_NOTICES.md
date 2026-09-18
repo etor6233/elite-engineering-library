@@ -26,7 +26,7 @@ V252 adds four `AUTHORED` acquisition, source-lock, verification and operator fi
 
 V253 adds five `AUTHORED` lock, installer, scanner, verifier and operator files for `GITLAB-OPENGREP-SIGNED-SAST-GATE`. They embed no OpenGrep binary or GitLab rule bytes. Installation acquires the exact signed OpenGrep 1.29.0 Windows asset, verifies it with exact Cosign 3.1.3 and acquires three exact GitLab SAST Rules 2.9.3 files. Their LGPL-2.1-only, Apache-2.0 build-tool, MIT and LGPL-3.0-only licenses/notices remain external and are copied into the generated runtime. GitLab Enterprise and Commons-Clause families are verified and excluded. Running GitLab rules with OpenGrep is an explicitly authored composition, not GitLab's Semgrep analyzer and not attributed to GitLab/OpenGrep as a product runtime.
 
-`Current-Provenance-Counts: AUTHORED=2028; ADAPTED=164; VERBATIM=168; TOTAL=2360`
+`Current-Provenance-Counts: AUTHORED=2231; ADAPTED=179; VERBATIM=168; TOTAL=2578`
 
 OpenSSH portable `V_10_2_P1` at signed commit `d01efaa1c9ed84fd9011201dbc3c7cb0a82bcee3` supplies four public `sshsig` regression blobs transported losslessly as Base64 by `PORTABLE-SIGNED-RELEASE-EVIDENCE-GATE`. Their decoded SHA-256 identities and the upstream `LICENCE` blob/hash are retained in the pack notice; no OpenSSH executable, source implementation or private key is redistributed. Windows supplies the executing `ssh-keygen`, whose Microsoft Authenticode status and exact host hash are recorded per release. Google OSV-Scanner 2.5.1 is used by exact locked executable hash to produce SCA and SPDX evidence.
 

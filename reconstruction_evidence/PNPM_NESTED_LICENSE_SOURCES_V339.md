@@ -109,7 +109,7 @@ global installation, signing, publication or ARCA activity.
 
 ## Evidence
 
-Stage: C:/Users/NL/AppData/Local/Temp/elite-v339-9266379aff0044498a1d7004267002c8.
+Stage: <LOCALAPPDATA>/Temp/elite-v339-9266379aff0044498a1d7004267002c8.
 
 | Stage file | SHA256 |
 |---|---|

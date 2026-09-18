@@ -399,7 +399,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "e6ed8261a6ee8deead51ede85556df3f11ccb99161b9e38dc7ab6c1b2f232e1b"
+sha256: "6b48bcaa97ba8e6270defbbe413efc44e920d6030fc51c26e20c6d62a2ba6e0c"
 variables: []
 secrets_allowed: false
 ```
@@ -413,7 +413,8 @@ secrets_allowed: false
       "command_id": "golden-command",
       "evidence_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
       "factory_organization_id": "factory",
-      "demand_reference": "Demanda á <&>   interior",
+      "demand_reference": "Demanda á <&> 
+ interior",
       "policy_code": "strict-serial-reference/v1",
       "lines": [
         {
@@ -455,7 +456,8 @@ secrets_allowed: false
       "expected_version": "6",
       "unit_id": "unit",
       "target_state": "released",
-      "reason": "Revisé <archivo> & contenido   interior"
+      "reason": "Revisé <archivo> & contenido 
+ interior"
     },
     "canonical": "{\"command_id\":\"golden-command\",\"evidence_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"expected_version\":\"6\",\"kind\":\"milestone\",\"purchase_order_id\":\"golden-po\",\"reason\":\"Revisé \\u003carchivo\\u003e \\u0026 contenido \\u2029 interior\",\"target_state\":\"released\",\"unit_id\":\"unit\"}",
     "sha256": "822e177bcec096d0661b659a7decf3a39dcb50229bf06093b80126f170784195"

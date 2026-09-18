@@ -1,7 +1,7 @@
 # V360 — encuestas y alcance de campañas por tenant
 
 2026-09-09. Mantenimiento correctivo/revisión TEST02/03. Checkpoint164 validado
-antes de editar; integración165 y cierre166. Stage `C:/Users/NL/AppData/Local/Temp/elite-v360-f944579a754644c3961c5c12b1f568bb`.
+antes de editar; integración165 y cierre166. Stage `<LOCALAPPDATA>/Temp/elite-v360-f944579a754644c3961c5c12b1f568bb`.
 
 ## Defectos demostrados y correcciones
 

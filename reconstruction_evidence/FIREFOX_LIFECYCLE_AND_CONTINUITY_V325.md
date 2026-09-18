@@ -244,7 +244,7 @@ These are local synthetic diagnostic programs, not reusable product implementati
 const {createRequire}=require('node:module');
 const {resolve,join}=require('node:path');
 const fs=require('node:fs'); const crypto=require('node:crypto');
-const req=createRequire('C:/Users/NL/AppData/Local/Temp/elite-v321-184b4d5926e44dc5a3cd1ecbb05ff077/rebuilt/microsoft_playwright_browser_gate/package.json');
+const req=createRequire('<LOCALAPPDATA>/Temp/elite-v321-184b4d5926e44dc5a3cd1ecbb05ff077/rebuilt/microsoft_playwright_browser_gate/package.json');
 const {firefox}=req('@playwright/test');
 const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 const output=join(__dirname,'probe-results.jsonl'); const fd=fs.openSync(output,'wx');
@@ -283,7 +283,7 @@ const deadline=setTimeout(()=>{record({status:'DEADLINE_EXCEEDED'});process.exit
 
 ```javascript
 const {createRequire}=require('node:module');const {join}=require('node:path');const fs=require('node:fs');
-const req=createRequire('C:/Users/NL/AppData/Local/Temp/elite-v321-184b4d5926e44dc5a3cd1ecbb05ff077/rebuilt/microsoft_playwright_browser_gate/package.json');
+const req=createRequire('<LOCALAPPDATA>/Temp/elite-v321-184b4d5926e44dc5a3cd1ecbb05ff077/rebuilt/microsoft_playwright_browser_gate/package.json');
 const {firefox}=req('@playwright/test');
 const fd=fs.openSync(join(__dirname,'cold-probe-results.jsonl'),'wx');const record=x=>fs.writeSync(fd,JSON.stringify(x)+'\n');
 const deadline=setTimeout(()=>{record({status:'DEADLINE_EXCEEDED'});process.exit(2)},120000);

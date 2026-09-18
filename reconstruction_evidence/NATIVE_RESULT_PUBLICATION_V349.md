@@ -78,7 +78,7 @@ describes file flushing and its Windows implementation. No rename API test is
 promoted into a complete storage durability guarantee. Python docs display3.14.7;
 execution stays pinned to CPython3.14.4. No dependency/runtime/source acquisition.
 
-Stage: C:/Users/NL/AppData/Local/Temp/elite-v349-18671f2c25d04ab1b6dd04cb6a282262. Rebuild the two current source blocks below and reuse
+Stage: <LOCALAPPDATA>/Temp/elite-v349-18671f2c25d04ab1b6dd04cb6a282262. Rebuild the two current source blocks below and reuse
 the six native qualification files from their V345/V347/V348 canonical sources.
 Run test_result_store.py <new-report.json> <refund-fixture.json>, followed by the
 retained shutdown/launch/capture suites with their explicit binary/hash inputs.
@@ -399,7 +399,7 @@ s.execute(Path(sys.argv[2]),sys.argv[3],Path(sys.argv[2]).parent.joinpath('profi
             return original(*a,**kw)
         with patch.object(s.g,'launch',side_effect=guarded):self.assertEqual(self.run_once().state,'RECORDED')
         target=self.base/'elsewhere';target.mkdir();self.run=uuid.uuid4().hex
-        pwsh='C:/Users/NL/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe'
+        pwsh='<USERPROFILE>/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe'
         command="New-Item -ItemType Junction -Path '"+str(self.store/self.run).replace("'","''")+"' -Target '"+str(target).replace("'","''")+"' | Out-Null"
         p=subprocess.run([pwsh,'-NoProfile','-Command',command],capture_output=True,timeout=15,creationflags=subprocess.CREATE_NO_WINDOW);self.assertEqual(p.returncode,0,p.stderr)
         self.assertEqual(self.read().state,'INVALID')

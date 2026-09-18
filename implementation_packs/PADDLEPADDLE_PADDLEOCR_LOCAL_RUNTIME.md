@@ -9,7 +9,7 @@ status:
   authority: SUPPORTED_REFERENCE
   implementation: REBUILD_VERIFIED
   admission: CONDITIONED
-claim: "Materializa un runtime local Windows/CPython 3.12 sobre paquetes oficiales PaddleOCR 3.7.0, PaddleX 3.7.2 y PaddlePaddle 3.1.0, con 104 paquetes hash-locked, ocho archivos PP-OCRv6 fijados, receipt seguro obligatorio, salida atómica y storage siempre denegado."
+claim: "Materializa un runtime local Windows/CPython 3.12 sobre paquetes oficiales PaddleOCR 3.7.0, PaddleX 3.7.2 y PaddlePaddle 3.1.0, con 104 paquetes hash-locked, ocho archivos PP-OCRv6 fijados, receipt seguro obligatorio, salida atÃ³mica y storage siempre denegado."
 stacks: ["CPython 3.12 Windows x86-64", "PaddleOCR 3.7.0", "PaddleX 3.7.2", "PaddlePaddle 3.1.0", "PP-OCRv6 medium"]
 compatible_with: ["OFFICIAL-UPSTREAM-ACQUISITION-CORE 0.4.x", "SECURE-LOCAL-FILE-INGESTION-GATE 0.1.x", "STRICT-DOCUMENT-FIELD-EVALUATION-GATE 0.1.x"]
 incompatible_with: ["automatic business storage", "moving model aliases", "remote model downloads", "unreviewed document classes", "non-Windows or non-CPython-3.12 lock reuse"]
@@ -53,7 +53,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "uv 0.12.7 resolution from official PyPI artifacts for CPython 3.12 Windows x86-64"
 license: "LicenseRef-Workspace-Owner"
-sha256: "50f83b052423bea9daf0b331480c0e642440251afdf99bfc04931af7fd5a5a9b"
+sha256: "eaeb67c60264d8b3185c2c82919a83f566e2bb7ddd84fc9cc604b92337451f6f"
 variables: []
 secrets_allowed: false
 ```
@@ -1608,7 +1608,7 @@ packaging==26.3 \
 paddleocr==3.7.0 \
     --hash=sha256:9b81eb62cf37e590d4873e60262ff56f968ff9de6ce1f565749760ceb1c422e2 \
     --hash=sha256:c0f0a81ad4112727f30c6fcf986ac0ef6a120d31ee0991a01fae0357ee32d338
-    # via -r C:/Users/NL/AppData/Local/Temp/elite-paddle-runtime-build/requirements.in
+    # via -r <LOCALAPPDATA>/Temp/elite-paddle-runtime-build/requirements.in
 paddlepaddle==3.1.0 \
     --hash=sha256:02d613e7a28232d80c3257cdf6c81a5132080c092142ed6f9c25aa287c804d62 \
     --hash=sha256:11e0d167c381f13db3adc7fe1108ef9ac1140230ca3b9cd61a54c9c5b8831e9a \
@@ -1630,7 +1630,7 @@ paddlepaddle==3.1.0 \
     --hash=sha256:ea7b0cb8b6928d214615dcd5b191eb17a6db9fd48d6e1898b91fe991647e09dd \
     --hash=sha256:f10b8b0a7178264cab149d358f113a8db8e3b2c97932ce6fc9ee171a0fb81502 \
     --hash=sha256:f8172bfc422410e096f67e2c27a101fde20ce75b14c7165c512009504c6cb2fa
-    # via -r C:/Users/NL/AppData/Local/Temp/elite-paddle-runtime-build/requirements.in
+    # via -r <LOCALAPPDATA>/Temp/elite-paddle-runtime-build/requirements.in
 paddlex==3.7.2 \
     --hash=sha256:6a60b4595e2d51460f7f51326672adca86b89ff9ecfd02ac348fb69739e0093c \
     --hash=sha256:f1678bf650bbaccfd8f0d4e49d0ae631b4685c829fdae6e802ccd90d4fcb9a7f
@@ -2189,12 +2189,12 @@ pytest==9.1.1 \
     --hash=sha256:1088fbde8f2b49d95a549a195707afa7a76a3ce9bcadc26b6d71f0ffda5fe313 \
     --hash=sha256:37a86b45efb9a47a61a36449063e8e18d0cab3161329fc099eb21783169c4f0c
     # via
-    #   -r C:/Users/NL/AppData/Local/Temp/elite-paddle-runtime-build/requirements.in
+    #   -r <LOCALAPPDATA>/Temp/elite-paddle-runtime-build/requirements.in
     #   pytest-cov
 pytest-cov==7.1.0 \
     --hash=sha256:30674f2b5f6351aa09702a9c8c364f6a01c27aae0c1366ae8016160d1efc56b2 \
     --hash=sha256:a0461110b7865f9a271aa1b51e516c9a95de9d696734a2f71e3e78f46e1d4678
-    # via -r C:/Users/NL/AppData/Local/Temp/elite-paddle-runtime-build/requirements.in
+    # via -r <LOCALAPPDATA>/Temp/elite-paddle-runtime-build/requirements.in
 python-bidi==0.6.11 \
     --hash=sha256:034090c597af250d699299d7e7f1e83eb016f9e47b3b707bd89ab2bdec77bce0 \
     --hash=sha256:0608bddcc1c53dfa5293499de13ca9935b31aa46d1c722c404a88c703d1a4e47 \
@@ -3614,11 +3614,11 @@ Secrets are prohibited in profile, lock, CLI arguments and receipts. Invalid com
 
 | Package/image/tool | Pin exacto | Uso | Licencia | Runtime/build | Fuente oficial |
 |---|---|---|---|---|---|
-| PaddleOCR | 3.7.0 wheel `c0f0a81a…d338` | OCR API | Apache-2.0 | runtime | PyPI/PaddlePaddle |
-| PaddleX | 3.7.2 wheel `f1678bf6…a7f` | pipeline runtime | Apache-2.0 | runtime | PyPI/PaddlePaddle |
-| PaddlePaddle CPU | 3.1.0 cp312 win_amd64 wheel `3cb6d98e…4639` | inference engine | Apache-2.0 | runtime | PyPI/PaddlePaddle |
-| PP-OCRv6 medium det/rec | revisions `8e0f56f…` / `e5a92bc…` | local weights | Apache-2.0 | runtime data | PaddlePaddle Hugging Face |
-| uv | 0.12.7 archive/checksum `bf1518af…5218` | reproducible environment | Apache-2.0 OR MIT | build only | Astral GitHub release |
+| PaddleOCR | 3.7.0 wheel `c0f0a81aâ€¦d338` | OCR API | Apache-2.0 | runtime | PyPI/PaddlePaddle |
+| PaddleX | 3.7.2 wheel `f1678bf6â€¦a7f` | pipeline runtime | Apache-2.0 | runtime | PyPI/PaddlePaddle |
+| PaddlePaddle CPU | 3.1.0 cp312 win_amd64 wheel `3cb6d98eâ€¦4639` | inference engine | Apache-2.0 | runtime | PyPI/PaddlePaddle |
+| PP-OCRv6 medium det/rec | revisions `8e0f56fâ€¦` / `e5a92bcâ€¦` | local weights | Apache-2.0 | runtime data | PaddlePaddle Hugging Face |
+| uv | 0.12.7 archive/checksum `bf1518afâ€¦5218` | reproducible environment | Apache-2.0 OR MIT | build only | Astral GitHub release |
 | transitive graph | 104 exact packages | runtime/tests | per artifact | runtime/test | `requirements-win-py312.lock` |
 
 Notices and licenses of all selected artifacts remain a project admission gate; this pack does not preapprove legal use.
@@ -3636,11 +3636,11 @@ For an existing workspace, abort on every target collision. Rollback removes onl
 
 ## 9. Verification
 
-- `python -m py_compile run_local_ocr.py verify_environment.py test_run_local_ocr.py` → exit 0.
-- `python -m pip install --require-hashes -r requirements-win-py312.lock` in clean CPython 3.12 Windows x86-64 → 104 packages.
-- `python verify_environment.py` → `PADDLEOCR_ENVIRONMENT_PASS`, exact package versions and CPU mode.
-- `python -m unittest -v test_run_local_ocr.py` → 8/8 PASS including disabled profile, storage, class, receipt hash, no-result, existing-output and platform negatives.
-- `pip-audit==2.10.1 -r requirements-win-py312.lock --disable-pip` → 104 dependencies, zero known findings at `2026-08-28`.
+- `python -m py_compile run_local_ocr.py verify_environment.py test_run_local_ocr.py` â†’ exit 0.
+- `python -m pip install --require-hashes -r requirements-win-py312.lock` in clean CPython 3.12 Windows x86-64 â†’ 104 packages.
+- `python verify_environment.py` â†’ `PADDLEOCR_ENVIRONMENT_PASS`, exact package versions and CPU mode.
+- `python -m unittest -v test_run_local_ocr.py` â†’ 8/8 PASS including disabled profile, storage, class, receipt hash, no-result, existing-output and platform negatives.
+- `pip-audit==2.10.1 -r requirements-win-py312.lock --disable-pip` â†’ 104 dependencies, zero known findings at `2026-08-28`.
 - Materialize into a fresh directory and compare all seven file hashes before any profile composition.
 - Project promotion additionally requires real model downloads/hash verification, authorized corpus/ground truth, per-field metrics, corrupted/ambiguous cases, review/rejection, resource/load, security, recovery and retention/deletion evidence.
 

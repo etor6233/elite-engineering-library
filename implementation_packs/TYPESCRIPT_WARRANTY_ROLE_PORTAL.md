@@ -400,7 +400,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "a9b29e716842d90e67e0345047ba73e372242c5b8c92fa0d432252b8d8cfead1"
+sha256: "d35f359991f885d24f5ea9ebd50e805bae5f519107374909432acea14a3c048b"
 variables: []
 secrets_allowed: false
 ```
@@ -443,7 +443,8 @@ secrets_allowed: false
       "handover_id": "delivery",
       "appointment_id": "appointment",
       "severity": "medium",
-      "description": "Falla á <&>   interior",
+      "description": "Falla á <&> 
+ interior",
       "evidence_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
     },
     "canonical": "{\"appointment_id\":\"appointment\",\"case_id\":\"case\",\"description\":\"Falla á \\u003c\\u0026\\u003e \\u2028 interior\",\"evidence_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"handover_id\":\"delivery\",\"severity\":\"medium\"}",
@@ -456,7 +457,8 @@ secrets_allowed: false
       "command_id": "command",
       "expected_version": "9007199254740993",
       "fault_code": "brake",
-      "description": "Diagnóstico <&>   interior",
+      "description": "Diagnóstico <&> 
+ interior",
       "evidence_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
     },
     "canonical": "{\"case_id\":\"case\",\"command_id\":\"command\",\"description\":\"Diagnóstico \\u003c\\u0026\\u003e \\u2029 interior\",\"evidence_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"expected_version\":\"9007199254740993\",\"fault_code\":\"brake\"}",

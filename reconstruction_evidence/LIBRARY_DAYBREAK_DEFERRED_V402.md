@@ -1,5 +1,9 @@
-# V402 — último: Daybreak/libxml2 diferido
+# V402 — Daybreak/libxml2 diferido (GO B)
 
-ACCESS_BLOCKED por la instrucción expresa del usuario y el aviso de acceso que aportó. No se investigó ni intentó desbloquear esta rama. Se preserva el expediente anterior; no se declara reparado ni admitido el runtime nativo excluido.
+Estado: `DEFERRED_DOC`. Owner GO 2026-09-18 (vía lead): opción **B defer documentado** — no research/incorporate pack.
 
-Trigger: nueva solicitud expresa para esta rama y acceso permitido; luego revalidación de autoridades/advisories, fuentes, binarios y pruebas nativas. No bloquea READY_FOR_LIBRARY_USE del alcance local seleccionado.
+`code_complete: false`. `project_ok_for_daybreak_libxml2: false`. `production_authorized: false`.
+
+Sustancia incompleta: no hay pack DAYBREAK/LIBXML / REUSABLE_PACK; G0 (fuente/advisory/binario + hashes en repo), claim nativo + tests, y proveniencia Windows (si se reclama) siguen abiertos. Se preserva el expediente histórico y `NATIVE_QUALIFICATION_ACCESS_BLOCK_V386.md`. No se inventa pack.
+
+Trigger de reapertura: official sources + portable receipts en repo + acceso permitido → G0–G8. Este defer no otorga OK de proyecto por daybreak/libxml2. No bloquea READY_FOR_LIBRARY_USE del alcance local seleccionado.

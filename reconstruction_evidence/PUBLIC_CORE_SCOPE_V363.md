@@ -2,7 +2,7 @@
 
 2026-09-09. Mantenimiento correctivo/revisión; entrada170 validada mediante
 execution kit1.3.1 recién reconstruido y todos los hashes del cursor comprobados.
-Integración171/cierre172. Stage `C:/Users/NL/AppData/Local/Temp/elite-v363-d569bfbd627d436085851aa034ab1c90`.
+Integración171/cierre172. Stage `<LOCALAPPDATA>/Temp/elite-v363-d569bfbd627d436085851aa034ab1c90`.
 Sin nueva plataforma, producto READY_TO_BUILD, gasto, mensajes o publicación.
 
 ## Defectos demostrados y cambios

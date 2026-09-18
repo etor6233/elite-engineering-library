@@ -2687,7 +2687,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local contract, provenance metadata, validator or owner-binding glue; no upstream method code"
 license: "LicenseRef-Workspace-Owner"
-sha256: "b64fa55715f6a046707abbea16ff2cc34a5c2118c2bfa7eb6f156827776ef099"
+sha256: "f935a1f47fcbdbb0b2c2933a0d7298b7ef12fd616c88a5c09257e1b0e6a601bd"
 variables: []
 secrets_allowed: false
 ```
@@ -2706,7 +2706,7 @@ sys.path.insert(0, str(ROLES))
 from validate_business_functions import validate, load_json, confined, sha256
 from bind_consumer_owners import bind_existing_owners
 
-LIBRARY = Path(sys.argv.pop(sys.argv.index("--library-root") + 1)) if "--library-root" in sys.argv else Path(r"C:/Users/NL/Desktop/Public Elite Codes")
+LIBRARY = Path(sys.argv.pop(sys.argv.index("--library-root") + 1)) if "--library-root" in sys.argv else Path(r"<LIBRARY_ROOT>")
 if "--library-root" in sys.argv:
     sys.argv.remove("--library-root")
 

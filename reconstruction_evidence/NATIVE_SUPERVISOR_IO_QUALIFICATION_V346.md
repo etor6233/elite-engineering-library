@@ -151,7 +151,7 @@ CPython3.14.4 only. Delivery: canonical reconstruction plus test receipts, no
 release/product profile promotion. These are narrow implementation-assurance
 observations, not completion of the project assurance contract.
 
-Stage: C:/Users/NL/AppData/Local/Temp/elite-v346-6b17f3aa330f426aadc7f8fe46a1bab9
+Stage: <LOCALAPPDATA>/Temp/elite-v346-6b17f3aa330f426aadc7f8fe46a1bab9
 
 | Evidence | SHA-256 |
 |---|---|

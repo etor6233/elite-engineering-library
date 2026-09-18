@@ -50,12 +50,12 @@ No agrega un framework, subsistema paralelo ni otro gate de aprobación.
 
 ## Evidencia local preservada
 
-- Primera ejecución final: `C:/Users/NL/AppData/Local/Temp/elite-entry-lifecycle-df8f87f815ac44e7905c659d05a437a3/evidence.json`, SHA-256 `e862c12f6fcfbca2059ef99d8d1319fa7c7d8a2f01cfe567ef4576f5b2f85ff0`.
-- Copia limpia: `C:/Users/NL/AppData/Local/Temp/elite-entry-lifecycle-430749bda6af4b4ca977db533f89f579/evidence.json`, SHA-256 `77691f9ce4fae8e0f8695932c76e5324d66e624aa16768c42c540ef4ab3ec9cb`.
+- Primera ejecución final: `<LOCALAPPDATA>/Temp/elite-entry-lifecycle-df8f87f815ac44e7905c659d05a437a3/evidence.json`, SHA-256 `e862c12f6fcfbca2059ef99d8d1319fa7c7d8a2f01cfe567ef4576f5b2f85ff0`.
+- Copia limpia: `<LOCALAPPDATA>/Temp/elite-entry-lifecycle-430749bda6af4b4ca977db533f89f579/evidence.json`, SHA-256 `77691f9ce4fae8e0f8695932c76e5324d66e624aa16768c42c540ef4ab3ec9cb`.
 - Suma de tiempos de procesos: 9.507 ms y 8.997 ms respectivamente. No incluye toda
   la instrumentación ni significa que el agente construya un producto en 9 s;
   no mide tokens, modelo, descarga, compilación del negocio, p95 o p99.
-- Copia fuente y log: `C:/Users/NL/AppData/Local/Temp/elite-v287-e6942108180440fa83d0f6acb29cd9f1/`.
+- Copia fuente y log: `<LOCALAPPDATA>/Temp/elite-v287-e6942108180440fa83d0f6acb29cd9f1/`.
 
 La distribución lleva el test reproducible y este reporte, no los fixtures ni
 sus checkpoints/aprobaciones. Ambos fixtures conservan `status=BLOCKED`,

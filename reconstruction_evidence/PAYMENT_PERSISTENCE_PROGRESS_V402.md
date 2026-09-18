@@ -12,7 +12,7 @@ Tras esos runs se añadieron unique de provider payment reference y compatibilid
 
 ## Evidencia local inmutable
 
-Stage: C:/Users/NL/AppData/Local/Temp/elite-v402-library-infra. Los hashes de abajo ligan la revisión concreta y preservan la historia; no son una promesa de portabilidad fuera de esta máquina.
+Stage: <LOCALAPPDATA>/Temp/elite-v402-library-infra. Los hashes de abajo ligan la revisión concreta y preservan la historia; no son una promesa de portabilidad fuera de esta máquina.
 
 | Archivo | SHA-256 |
 |---|---|

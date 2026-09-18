@@ -30,7 +30,7 @@ The [Stripe SDK fixed service](https://github.com/stripe/stripe-go/blob/a2df585a
 
 ## Reproducible local evidence
 
-Stage: C:/Users/NL/AppData/Local/Temp/elite-v402-library-infra.
+Stage: <LOCALAPPDATA>/Temp/elite-v402-library-infra.
 Final source: payment-sdk-release-rebuilt/official_payment_webhooks.
 Environment: Go1.26.8 exact previously admitted binary, GOPROXY=off/GOSUMDB=off/GOTOOLCHAIN=local. SDKs and runtime deps were unchanged. Tests invoke only fixture transports/loopback; no live accounts, user credentials or provider writes.
 

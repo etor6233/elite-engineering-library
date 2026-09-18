@@ -75,7 +75,7 @@ This is evidence toward resolving a blocker, not100% completion.
 
 ## Retained reproduction records
 
-Stage: C:/Users/NL/AppData/Local/Temp/elite-v333-9927c7aac0a34d3f9145949c75a04a43.
+Stage: <LOCALAPPDATA>/Temp/elite-v333-9927c7aac0a34d3f9145949c75a04a43.
 Do not rerun mutation helpers into existing targets. Before-state/events retained.
 
 | File | SHA256 |

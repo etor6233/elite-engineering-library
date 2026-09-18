@@ -70,7 +70,7 @@ workspace-owner license, no external source acquisition or product license claim
 
 ## Reproduction and progress accounting
 
-Stage: C:/Users/NL/AppData/Local/Temp/elite-v347-254a34244df64eb6986ac22f885f1604. Use CPython 3.14.4. Reconstruct the three source blocks
+Stage: <LOCALAPPDATA>/Temp/elite-v347-254a34244df64eb6986ac22f885f1604. Use CPython 3.14.4. Reconstruct the three source blocks
 below exactly. Reuse unchanged job_probe.py from the current V345 qualification
 block and test_capture.py from the V346 qualification block. Supply the already
 verified refund fixture JSON explicitly; it binds the real local binary/hash.
@@ -521,7 +521,7 @@ class Tests(unittest.TestCase):
         with patch.object(g.native_capture,'capture') as c:self.assertEqual(g.launch(*self.raw()).status,'REJECTED');c.assert_not_called()
     def test_directory_reparse_junction_refused(self):
         junction=self.work/'junction'
-        pwsh='C:/Users/NL/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe'
+        pwsh='<USERPROFILE>/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe'
         command="New-Item -ItemType Junction -Path '"+str(junction).replace("'","''")+"' -Target '"+str(self.work).replace("'","''")+"' | Out-Null"
         result=subprocess.run([pwsh,'-NoProfile','-Command',command],capture_output=True,timeout=15,creationflags=subprocess.CREATE_NO_WINDOW)
         self.assertEqual(result.returncode,0,result.stderr)

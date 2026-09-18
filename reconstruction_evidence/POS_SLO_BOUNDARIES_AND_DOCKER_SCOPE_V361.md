@@ -1,7 +1,7 @@
 # V361 — POS, objetivos SLO y alcance real de Docker
 
 2026-09-09. Mantenimiento correctivo/revisión TEST02/03. Entrada166 validada;
-integración167 y cierre168. Stage `C:/Users/NL/AppData/Local/Temp/elite-v361-3b233cd29c2b47eb9e0cd793b1b5ed81`.
+integración167 y cierre168. Stage `<LOCALAPPDATA>/Temp/elite-v361-3b233cd29c2b47eb9e0cd793b1b5ed81`.
 
 ## Docker: disponibilidad de herramienta y avance son cosas distintas
 

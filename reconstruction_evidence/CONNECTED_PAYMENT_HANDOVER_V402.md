@@ -14,7 +14,7 @@ Procedencia: glue AUTHORED declarado y fuentes oficiales DEPENDENCY_PIN, sin atr
 
 ## Receipts exactos
 
-Stage: `C:/Users/NL/AppData/Local/Temp/elite-v402-library-infra`. Los siguientes receipts conservan sus bytes y la revisión original.
+Stage: `<LOCALAPPDATA>/Temp/elite-v402-library-infra`. Los siguientes receipts conservan sus bytes y la revisión original.
 
 | Archivo | SHA-256 |
 |---|---|

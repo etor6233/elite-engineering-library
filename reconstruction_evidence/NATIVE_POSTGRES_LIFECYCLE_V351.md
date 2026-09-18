@@ -101,7 +101,7 @@ configuration observations do not substitute for hardware/target durability proo
 No upstream code is copied or relabeled. Runtime stays Go1.26.7, PostgreSQL18.6,
 CPython3.14.4 and PowerShell7.6.5, same owned Windows x64 host.
 
-Stage: C:/Users/NL/AppData/Local/Temp/elite-v351-bea959e7a04a42d79829a9c8ffe8135b.
+Stage: <LOCALAPPDATA>/Temp/elite-v351-bea959e7a04a42d79829a9c8ffe8135b.
 Recompose FRANCHISE_COMPLETE_PACK_PLAN to a new consumer, copy its refund module
 to a separate qualification worker, overlay main.go and the Go test below, and
 reuse V350 native_stop_windows.go/native_stop_windows_test.go byte-identically.
@@ -545,7 +545,7 @@ import hashlib,json,os,re,socket,subprocess,sys,threading,time,traceback,uuid
 S=Path(__file__).resolve().parent
 sys.path.insert(0,str(S/'candidate'))
 import result_store as rs
-PG=Path('C:/Users/NL/AppData/Local/Temp/elite-franchise-build-f3200751e6f644c9ae8c08a62d6b14e5/postgresql-18.6/pgsql/bin')
+PG=Path('<LOCALAPPDATA>/Temp/elite-franchise-build-f3200751e6f644c9ae8c08a62d6b14e5/postgresql-18.6/pgsql/bin')
 BUILD=json.loads((S/'build-receipt.json').read_text());sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 WORK=S/('pg-run-'+uuid.uuid4().hex);WORK.mkdir();DATA=WORK/'pgdata'
 ENV={k:v for k,v in os.environ.items() if not k.startswith('PG')};ENV['PGCONNECT_TIMEOUT']='3'

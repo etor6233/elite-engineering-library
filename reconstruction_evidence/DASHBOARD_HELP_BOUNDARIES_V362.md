@@ -3,7 +3,7 @@
 2026-09-09. Mantenimiento correctivo/revisión TEST02/03. Entrada168 validada
 con kit ENGINEERING_EXECUTION_VALIDATOR1.3.1 recién reconstruido y todos los
 owner hashes del cursor verificados. Integración169/cierre170.
-Stage `C:/Users/NL/AppData/Local/Temp/elite-v362-afda5e60566943998f33a6559f376d05`. No producto nuevo ni aprobación READY_TO_BUILD.
+Stage `<LOCALAPPDATA>/Temp/elite-v362-afda5e60566943998f33a6559f376d05`. No producto nuevo ni aprobación READY_TO_BUILD.
 
 ## Observación, corrección y compatibilidad
 

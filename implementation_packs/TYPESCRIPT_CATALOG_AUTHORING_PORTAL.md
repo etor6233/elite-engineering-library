@@ -399,7 +399,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "17f42b25225652def7e0b2fa728e71130ce369ecf6661383f2e810d491c4c9b4"
+sha256: "781cb0dc2bbc339d4d3e14d83f75436fc378c38d0dd29b306fb1eccb5d4cc106"
 variables: []
 secrets_allowed: false
 ```
@@ -416,7 +416,8 @@ secrets_allowed: false
         "displayName": "Modelo á <&>",
         "vehicleClass": "bicycle",
         "specification": {
-          "description": "Guía   fija"
+          "description": "Guía 
+ fija"
         }
       },
       "variants": [
@@ -424,7 +425,8 @@ secrets_allowed: false
           "code": "variant-one",
           "display_name": "Variante",
           "battery_specification": {
-            "description": "Referencia   fija"
+            "description": "Referencia 
+ fija"
           },
           "amount_minor_units": "9007199254740993",
           "tax_mode": "not-applicable"

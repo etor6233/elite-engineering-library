@@ -1548,7 +1548,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local V345-V351 native qualification and V372 integrated reference; official contracts govern behavior, no vendor implementation authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "7000903fd4e56fc07dbdc3ebad6436f432902b32f28009be0b55c7c6e49ab3de"
+sha256: "9aa326b779065c254e64691935800fb665b53c92dacc7f6e624cd242f82015c5"
 variables: []
 secrets_allowed: false
 ```
@@ -1643,7 +1643,7 @@ class Tests(unittest.TestCase):
         with patch.object(g.native_capture,'capture') as c:self.assertEqual(g.launch(*self.raw()).status,'REJECTED');c.assert_not_called()
     def test_directory_reparse_junction_refused(self):
         junction=self.work/'junction'
-        pwsh='C:/Users/NL/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe'
+        pwsh='<USERPROFILE>/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe'
         command="New-Item -ItemType Junction -Path '"+str(junction).replace("'","''")+"' -Target '"+str(self.work).replace("'","''")+"' | Out-Null"
         result=subprocess.run([pwsh,'-NoProfile','-Command',command],capture_output=True,timeout=15,creationflags=subprocess.CREATE_NO_WINDOW)
         self.assertEqual(result.returncode,0,result.stderr)
@@ -1761,7 +1761,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local V345-V351 native qualification and V372 integrated reference; official contracts govern behavior, no vendor implementation authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "2b3cd608d606413228778e400ca017f4bb671662e795e0e9d95c093376afd314"
+sha256: "654a463ab0a0d39c8573b4e37379487ad5834e744b70239281c921f1266e3f63"
 variables: []
 secrets_allowed: false
 ```
@@ -1922,7 +1922,7 @@ s.execute(Path(sys.argv[2]),sys.argv[3],Path(sys.argv[2]).parent.joinpath('profi
             return original(*a,**kw)
         with patch.object(s.g,'launch',side_effect=guarded):self.assertEqual(self.run_once().state,'RECORDED')
         target=self.base/'elsewhere';target.mkdir();self.run=uuid.uuid4().hex
-        pwsh='C:/Users/NL/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe'
+        pwsh='<USERPROFILE>/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe'
         command="New-Item -ItemType Junction -Path '"+str(self.store/self.run).replace("'","''")+"' -Target '"+str(target).replace("'","''")+"' | Out-Null"
         p=subprocess.run([pwsh,'-NoProfile','-Command',command],capture_output=True,timeout=15,creationflags=subprocess.CREATE_NO_WINDOW);self.assertEqual(p.returncode,0,p.stderr)
         self.assertEqual(self.read().state,'INVALID')

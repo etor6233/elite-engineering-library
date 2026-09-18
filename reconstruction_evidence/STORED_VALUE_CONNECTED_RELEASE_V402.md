@@ -73,5 +73,5 @@ El módulo no promociona los antiguos cores aislados GO-GIFT-CARDS-CORE/GO-LOYAL
 Evidencia detallada previa: STORED_VALUE_TENDER_V402.md,
 STORED_VALUE_OPERATOR_FLOW_V402.md y STORED_VALUE_SOURCE_CLOSURE_V402.md.
 Manifest fuente/delta/recibos y hashes: STORED_VALUE_CONNECTED_RELEASE_V402.json.
-Referencia externa: C:/Users/NL/AppData/Local/Temp/elite-v402-library-infra/gift-tender-admitted-reference.
+Referencia externa: <LOCALAPPDATA>/Temp/elite-v402-library-infra/gift-tender-admitted-reference.
 El destino durable y release firmado continúan en T2810; no se presentan como hechos.

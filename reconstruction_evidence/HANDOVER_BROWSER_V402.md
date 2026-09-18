@@ -12,7 +12,7 @@ Procedencia:18archivos nuevos AUTHORED de transporte, proyección, interfaz y fi
 
 ## Receipts exactos
 
-Todos los caminos siguientes parten de `C:/Users/NL/AppData/Local/Temp/elite-v402-library-infra`.
+Todos los caminos siguientes parten de `<LOCALAPPDATA>/Temp/elite-v402-library-infra`.
 
 | Receipt | SHA-256 |
 |---|---|

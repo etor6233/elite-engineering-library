@@ -7771,15 +7771,15 @@ V361 FAIL638/639:11original tests PASS;5red groups reproduce numeric/identity/ow
 
 ## FAIL-20260909-641 — V362 domain boundary
 
-CODE/CORRECTNESS; REGRESSION_PROVEN. Dashboard YYYY-MM accepts months00/13/99, violating valid-period invariant. Command: pinned Go1.26.7 test -json -count=1 ./... in C:/Users/NL/AppData/Local/Temp/elite-v362-afda5e60566943998f33a6559f376d05/red. Baseline8 tests PASS;5red groups. Owner: codex maintenance. Preserve before169/original/red sources/logs. Canonical correction and clean rebuild required. No external data, auth grant or publication.
+CODE/CORRECTNESS; REGRESSION_PROVEN. Dashboard YYYY-MM accepts months00/13/99, violating valid-period invariant. Command: pinned Go1.26.7 test -json -count=1 ./... in <LOCALAPPDATA>/Temp/elite-v362-afda5e60566943998f33a6559f376d05/red. Baseline8 tests PASS;5red groups. Owner: codex maintenance. Preserve before169/original/red sources/logs. Canonical correction and clean rebuild required. No external data, auth grant or publication.
 
 ## FAIL-20260909-642 — V362 domain boundary
 
-CODE/CORRECTNESS; REGRESSION_PROVEN. Help-center concatenated tenant/id aliases distinct tuples: duplicate rejection and foreign Update/Publish/Archive succeed. String also reads map length without writer mutex; race detector not run. Command: pinned Go1.26.7 test -json -count=1 ./... in C:/Users/NL/AppData/Local/Temp/elite-v362-afda5e60566943998f33a6559f376d05/red. Baseline8 tests PASS;5red groups. Owner: codex maintenance. Preserve before169/original/red sources/logs. Canonical correction and clean rebuild required. No external data, auth grant or publication.
+CODE/CORRECTNESS; REGRESSION_PROVEN. Help-center concatenated tenant/id aliases distinct tuples: duplicate rejection and foreign Update/Publish/Archive succeed. String also reads map length without writer mutex; race detector not run. Command: pinned Go1.26.7 test -json -count=1 ./... in <LOCALAPPDATA>/Temp/elite-v362-afda5e60566943998f33a6559f376d05/red. Baseline8 tests PASS;5red groups. Owner: codex maintenance. Preserve before169/original/red sources/logs. Canonical correction and clean rebuild required. No external data, auth grant or publication.
 
 ## FAIL-20260909-643 — V362 domain boundary
 
-CODE/CORRECTNESS; REGRESSION_PROVEN. Help-center version increment wraps MaxInt64 to MinInt64 in Update and transitions. Boundary is injected through private map in synthetic test, not reached by billions of public API calls. Command: pinned Go1.26.7 test -json -count=1 ./... in C:/Users/NL/AppData/Local/Temp/elite-v362-afda5e60566943998f33a6559f376d05/red. Baseline8 tests PASS;5red groups. Owner: codex maintenance. Preserve before169/original/red sources/logs. Canonical correction and clean rebuild required. No external data, auth grant or publication.
+CODE/CORRECTNESS; REGRESSION_PROVEN. Help-center version increment wraps MaxInt64 to MinInt64 in Update and transitions. Boundary is injected through private map in synthetic test, not reached by billions of public API calls. Command: pinned Go1.26.7 test -json -count=1 ./... in <LOCALAPPDATA>/Temp/elite-v362-afda5e60566943998f33a6559f376d05/red. Baseline8 tests PASS;5red groups. Owner: codex maintenance. Preserve before169/original/red sources/logs. Canonical correction and clean rebuild required. No external data, auth grant or publication.
 
 V362 FAIL641/642/643: canonical dashboards/helpcenter0.1.1 rebuilt4sources;8historical assertions retained,5red groups,19tests x3,vet/build,34seeds/4266789fuzz PASS. Months01-12 checked after shape; tenant/id tuple; String mutex; MaxInt64 version rejects unchanged with ErrVersionExhausted. Failure precedence and archived Update retained. Exact numerical and nested-map history oracles; maximum version fixture is internal synthetic state. No external auth/search/source integration or -race claim.
 
@@ -7793,15 +7793,15 @@ TOOLING/EVIDENCE; RECOVERED. red363.py assumed14 baseline tests, actual Go JSON 
 
 ## FAIL-20260909-646 — V363 local boundary
 
-CODE/CORRECTNESS; REGRESSION_PROVEN. i18n SetPlural accepts blank one/other strings and replaces previously valid forms; String lacks reader lock. Pinned Go test -json -count=1 ./... in C:/Users/NL/AppData/Local/Temp/elite-v363-d569bfbd627d436085851aa034ab1c90/red:15baseline tests PASS,8red groups. Preserve before171 and red logs; fix canonical owner then reconstruct and test. No real account, message, URL fetch or user data.
+CODE/CORRECTNESS; REGRESSION_PROVEN. i18n SetPlural accepts blank one/other strings and replaces previously valid forms; String lacks reader lock. Pinned Go test -json -count=1 ./... in <LOCALAPPDATA>/Temp/elite-v363-d569bfbd627d436085851aa034ab1c90/red:15baseline tests PASS,8red groups. Preserve before171 and red logs; fix canonical owner then reconstruct and test. No real account, message, URL fetch or user data.
 
 ## FAIL-20260909-647 — V363 local boundary
 
-CODE/CORRECTNESS; REGRESSION_PROVEN. SEO prefix-based tenant lookup leaks another tenant URL; hostless URL accepted; LocalBusiness validates only nonblank URL; robots CR/LF/NUL can introduce extra directives. Pinned Go test -json -count=1 ./... in C:/Users/NL/AppData/Local/Temp/elite-v363-d569bfbd627d436085851aa034ab1c90/red:15baseline tests PASS,8red groups. Preserve before171 and red logs; fix canonical owner then reconstruct and test. No real account, message, URL fetch or user data.
+CODE/CORRECTNESS; REGRESSION_PROVEN. SEO prefix-based tenant lookup leaks another tenant URL; hostless URL accepted; LocalBusiness validates only nonblank URL; robots CR/LF/NUL can introduce extra directives. Pinned Go test -json -count=1 ./... in <LOCALAPPDATA>/Temp/elite-v363-d569bfbd627d436085851aa034ab1c90/red:15baseline tests PASS,8red groups. Preserve before171 and red logs; fix canonical owner then reconstruct and test. No real account, message, URL fetch or user data.
 
 ## FAIL-20260909-648 — V363 local boundary
 
-CODE/CORRECTNESS; REGRESSION_PROVEN. Social global post ID rejects another tenant same ID. Due/MarkPosted/MarkFailed cannot express caller tenant; Due exposes all tenants. String unsynchronized. No provider dispatch exists. Pinned Go test -json -count=1 ./... in C:/Users/NL/AppData/Local/Temp/elite-v363-d569bfbd627d436085851aa034ab1c90/red:15baseline tests PASS,8red groups. Preserve before171 and red logs; fix canonical owner then reconstruct and test. No real account, message, URL fetch or user data.
+CODE/CORRECTNESS; REGRESSION_PROVEN. Social global post ID rejects another tenant same ID. Due/MarkPosted/MarkFailed cannot express caller tenant; Due exposes all tenants. String unsynchronized. No provider dispatch exists. Pinned Go test -json -count=1 ./... in <LOCALAPPDATA>/Temp/elite-v363-d569bfbd627d436085851aa034ab1c90/red:15baseline tests PASS,8red groups. Preserve before171 and red logs; fix canonical owner then reconstruct and test. No real account, message, URL fetch or user data.
 
 ## FAIL-20260909-649 — guessed historical evidence filename
 
@@ -8990,7 +8990,7 @@ V402312: FAIL921–926 RESOLVED_LOCAL:2metadata.info fijados; floor0.40; diagnó
 
 V402 / FAIL927 / DOCUMENT_MIGRATION_COUNT: initial document harness assumed the highest migration number85 equals the selected count. The current composition intentionally omits historical63/64; there are83 selected up migrations. Failure occurred before PostgreSQL start or migration execution. Derive the exact baseline set from the1481file inventory and add only0085; never infer count from filenames. RESOLVED_LOCAL.
 
-V402 / FAIL928 / DOCUMENT_HARNESS_CACHE: inherited historical probe environment selected an older isolated GOMODCACHE, missing the already verified AWS modules. Setup passed83migrations and empty down/up; Go test stopped before any document test. Pin the known verified C:/Users/NL/go/pkg/mod cache explicitly, keep GOPROXY=off, retain migration receipts and resume the existing owned database without rebuilding it. RESOLVED_LOCAL.
+V402 / FAIL928 / DOCUMENT_HARNESS_CACHE: inherited historical probe environment selected an older isolated GOMODCACHE, missing the already verified AWS modules. Setup passed83migrations and empty down/up; Go test stopped before any document test. Pin the known verified <USERPROFILE>/go/pkg/mod cache explicitly, keep GOPROXY=off, retain migration receipts and resume the existing owned database without rebuilding it. RESOLVED_LOCAL.
 
 V402 / FAIL929 / DOCUMENT_TIDY_FLOOR_SUM: go mod tidy removed unused security-floor checksum entries; restoring the x/mod0.40 require line alone allowed compilation but full readonly module-graph resolution correctly refused. Merge the exact prior verified go.sum entries with new AWS entries, reject any conflicting hash, retain the floor comment and resolve the complete graph before publication. No module version or compiled source change. RESOLVED_LOCAL.
 

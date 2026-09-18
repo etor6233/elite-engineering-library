@@ -14,7 +14,7 @@ Revisión de código: UI0.3.0 + funciones0.1.0 + cloud0.1.0; cada snapshot se di
 
 [START_FRANCHISE](../START_FRANCHISE.md) → complemento del bridge original → [protocolo único](../markdown_system/FRANCHISE_PROJECT_OPERATING_PROTOCOL.md) → owners del consumidor → [perfil completo120](../markdown_system/FRANCHISE_COMPLETE_EXTENSION_PACK_PLAN_V403.md) → compositor original → overlay UI → overlay IAM → verificación y próximo checkpoint. Biblioteca y proyecto se fijan por separado; sus registros no se duplican.
 
-El perfil conserva exactamente los116packs del V402 y agrega4extensiones. El destino siguiente es un **ensayo de mantenimiento**, no una franquicia real: `C:\Users\NL\Desktop\Elite Library Extension V403\integrated-reference-final`. La verificación de bytes cubrió 1825 archivos después de 58 destinos de overlay disjuntos. [evidence/integrated-composition.json](<C:/Users/NL/Desktop/Elite Library Extension V403/evidence/integrated-composition.json>).
+El perfil conserva exactamente los116packs del V402 y agrega4extensiones. El destino siguiente es un **ensayo de mantenimiento**, no una franquicia real: `<WORKSHOP>\Elite Library Extension V403\integrated-reference-final`. La verificación de bytes cubrió 1825 archivos después de 58 destinos de overlay disjuntos. [evidence/integrated-composition.json](<WORKSHOP>/Elite Library Extension V403/evidence/integrated-composition.json).
 
 La UI pública y operativa comparte tokens, componentes, navegación oscura configurable por marca y menú móvil. Los contactos comienzan por un resumen; las acciones y controles se abren según la tarea. Los selectores mantienen sus validaciones, autorización y recuperación. IDs/versiones quedan internos donde existe una resolución autorizada; no se inventa información comercial ausente.
 
@@ -38,7 +38,7 @@ Las11funciones/22tareas son contratos, con permisos propuestos o procedentes del
 | Visual | 6 comparaciones automáticas sin diferencias | **PENDING_USER_APPROVAL**; UI0.1/UI0.2 siguen rechazadas |
 | V402/337 | 317 comprobaciones PASS | ZIPs y fuentes protegidas inmutables |
 
-La repetibilidad visual no sustituye aprobación del usuario. [evidence/VISUAL_CANDIDATES_V403.md](<C:/Users/NL/Desktop/Elite Library Extension V403/evidence/VISUAL_CANDIDATES_V403.md>). Zoom real del navegador, otros motores, lector de pantalla, teléfono/lector físico y tareas con personas conservan NOT_RUN/NOT_TESTED; no se infiere su PASS de cambiar el viewport.
+La repetibilidad visual no sustituye aprobación del usuario. [evidence/VISUAL_CANDIDATES_V403.md](<WORKSHOP>/Elite Library Extension V403/evidence/VISUAL_CANDIDATES_V403.md>). Zoom real del navegador, otros motores, lector de pantalla, teléfono/lector físico y tareas con personas conservan NOT_RUN/NOT_TESTED; no se infiere su PASS de cambiar el viewport.
 
 La integración detectó un pin obsoleto del engine compartido UI/IAM. Se preservó el rechazo antes de escritura y se readmitió el engine actual con10/10casos de compatibilidad; sólo cambió el manifiesto IAM y los otros62payloads cloud conservaron sus bytes. No se inventó un diff contra el engine histórico cuyos bytes no estaban disponibles. La reconstrucción integrada usa el SHA nuevo indicado abajo.
 
@@ -91,23 +91,23 @@ Los paths Desktop son la ubicación del ensayo de este equipo; no son defaults d
 
 | Archivo del ensayo | SHA256 |
 |---|---|
-| [evidence/integrated-composition.json](<C:/Users/NL/Desktop/Elite Library Extension V403/evidence/integrated-composition.json>) | `aa5a5889d66f266d79b77afd9a832bfabcf81a2efe95aed7d8d2881f41f37e3a` |
-| [ui/evidence/UI_FINAL_V403_0.3.0.json](<C:/Users/NL/Desktop/Elite Library Extension V403/ui/evidence/UI_FINAL_V403_0.3.0.json>) | `a036a4a40dd3cb5ea1ff35a2b535d4cf2c1d899558c3d23d10bebffb6176d6d1` |
-| [ui/evidence/browser-aggregate-final-0.3.0.json](<C:/Users/NL/Desktop/Elite Library Extension V403/ui/evidence/browser-aggregate-final-0.3.0.json>) | `52d3eb0fe56285ab7d0ca70e2598320f9908a0a00a1bee9f0a1ee61af1f286fa` |
-| [evidence/documents-browser-final.json](<C:/Users/NL/Desktop/Elite Library Extension V403/evidence/documents-browser-final.json>) | `01eea4f9f63408a3b726978c844c5ee3775ddd8006bbd451f4f534bda95a2150` |
-| [evidence/audit-ui-quality/axe-v03-final.json](<C:/Users/NL/Desktop/Elite Library Extension V403/evidence/audit-ui-quality/axe-v03-final.json>) | `33161cc7c17c8a734522587b23ffa21ceaa8df1736b97c432e55cfc17a20e13a` |
-| [evidence/audit-ui-quality/lighthouse-ui03-summary.json](<C:/Users/NL/Desktop/Elite Library Extension V403/evidence/audit-ui-quality/lighthouse-ui03-summary.json>) | `38f8f06aecb89cf14606213479f871e7ef3e1f2f9f43ad1eed41483eeaafbfea` |
-| [roles/evidence/validation-final.json](<C:/Users/NL/Desktop/Elite Library Extension V403/roles/evidence/validation-final.json>) | `e969d3959bf5557a0cbaba618a9ec0b917306932a44f6fc2b43263e53c4c22b0` |
-| [roles/evidence/standard-reconstruction-result.json](<C:/Users/NL/Desktop/Elite Library Extension V403/roles/evidence/standard-reconstruction-result.json>) | `b052640482329e12667ee61d49dc9e421db28f643cdb4dd8ecec10cd38d13692` |
-| [cloud/evidence/cloud-extension-final.json](<C:/Users/NL/Desktop/Elite Library Extension V403/cloud/evidence/cloud-extension-final.json>) | `bc5e5cdce1625278fe72ab38b1f8fb9b1e34626e243e182c404c851fb30afdaa` |
-| [cloud/evidence/qualification-windows-final-03.json](<C:/Users/NL/Desktop/Elite Library Extension V403/cloud/evidence/qualification-windows-final-03.json>) | `72ac467c83793fc337f5e7e3d85cf7ad5a2d52bbe8b50aee6628c99ffdd1fd1a` |
-| [cloud/evidence/qualification-linux-final-03.json](<C:/Users/NL/Desktop/Elite Library Extension V403/cloud/evidence/qualification-linux-final-03.json>) | `4388545f73fc605a258189a305b4a6b8f623fb991daf48febbc5cba1ef3fe058` |
-| [evidence/fresh-file-only-resume-v403.json](<C:/Users/NL/Desktop/Elite Library Extension V403/evidence/fresh-file-only-resume-v403.json>) | `cde02f4f35f691f684ff16055ecfa99b87370d776e802725e0daefaf22fb2820` |
-| [evidence/visual-candidates-v403.json](<C:/Users/NL/Desktop/Elite Library Extension V403/evidence/visual-candidates-v403.json>) | `580e1c7c0ae0063af041b1a62a4e384ed2d49a5805e887aed1fd3d98adeb9897` |
-| [evidence/preservation-final.json](<C:/Users/NL/Desktop/Elite Library Extension V403/evidence/preservation-final.json>) | `5c5e7b0435e09512f6e42779e5b64b7cdfbacd9be96a09e54989ca161aa920f1` |
-| [evidence/connection-impact-v403.json](<C:/Users/NL/Desktop/Elite Library Extension V403/evidence/connection-impact-v403.json>) | `2c6eaef9d5a25ced9cad051b88c3773bd11b89ed4beaffeda34191a7c7f4477a` |
-| [evidence/extension-source-commit.json](<C:/Users/NL/Desktop/Elite Library Extension V403/evidence/extension-source-commit.json>) | `5811e91803cd4b99c8488ce96f9dc0ed6115295cddb7c0253d0e707c5c1fbdec` |
-| [cloud/evidence/cloud-extension-iam-delta.json](<C:/Users/NL/Desktop/Elite Library Extension V403/cloud/evidence/cloud-extension-iam-delta.json>) | `a1ddfa7b23cb68c783b57c1ca44ad1407e6c948392bc9e9f631baddfc60923f3` |
-| [cloud/evidence/overlay-compat-01/receipt.json](<C:/Users/NL/Desktop/Elite Library Extension V403/cloud/evidence/overlay-compat-01/receipt.json>) | `f5685a1e7b5f0d8d214d02b7272a8e178236502027b898680dfb3a7958ff6f6d` |
-| [cloud/evidence/consumer120-windows-01/qualification-receipt.json](<C:/Users/NL/Desktop/Elite Library Extension V403/cloud/evidence/consumer120-windows-01/qualification-receipt.json>) | `d3ba6fed04e7f7ad3e1b16c284e44e5caffe9fada5e2a95d3b0d7832cb0e4d14` |
-| [cloud/evidence/consumer120-linux-01.json](<C:/Users/NL/Desktop/Elite Library Extension V403/cloud/evidence/consumer120-linux-01.json>) | `9b3984f73b28fabda72b1d51740cc422438ad39766bda875ac5916be204d2eb1` |
+| [evidence/integrated-composition.json](<WORKSHOP>/Elite Library Extension V403/evidence/integrated-composition.json) | `aa5a5889d66f266d79b77afd9a832bfabcf81a2efe95aed7d8d2881f41f37e3a` |
+| [ui/evidence/UI_FINAL_V403_0.3.0.json](<WORKSHOP>/Elite Library Extension V403/ui/evidence/UI_FINAL_V403_0.3.0.json>) | `a036a4a40dd3cb5ea1ff35a2b535d4cf2c1d899558c3d23d10bebffb6176d6d1` |
+| [ui/evidence/browser-aggregate-final-0.3.0.json](<WORKSHOP>/Elite Library Extension V403/ui/evidence/browser-aggregate-final-0.3.0.json>) | `52d3eb0fe56285ab7d0ca70e2598320f9908a0a00a1bee9f0a1ee61af1f286fa` |
+| [evidence/documents-browser-final.json](<WORKSHOP>/Elite Library Extension V403/evidence/documents-browser-final.json>) | `01eea4f9f63408a3b726978c844c5ee3775ddd8006bbd451f4f534bda95a2150` |
+| [evidence/audit-ui-quality/axe-v03-final.json](<WORKSHOP>/Elite Library Extension V403/evidence/audit-ui-quality/axe-v03-final.json>) | `33161cc7c17c8a734522587b23ffa21ceaa8df1736b97c432e55cfc17a20e13a` |
+| [evidence/audit-ui-quality/lighthouse-ui03-summary.json](<WORKSHOP>/Elite Library Extension V403/evidence/audit-ui-quality/lighthouse-ui03-summary.json>) | `38f8f06aecb89cf14606213479f871e7ef3e1f2f9f43ad1eed41483eeaafbfea` |
+| [roles/evidence/validation-final.json](<WORKSHOP>/Elite Library Extension V403/roles/evidence/validation-final.json>) | `e969d3959bf5557a0cbaba618a9ec0b917306932a44f6fc2b43263e53c4c22b0` |
+| [roles/evidence/standard-reconstruction-result.json](<WORKSHOP>/Elite Library Extension V403/roles/evidence/standard-reconstruction-result.json>) | `b052640482329e12667ee61d49dc9e421db28f643cdb4dd8ecec10cd38d13692` |
+| [cloud/evidence/cloud-extension-final.json](<WORKSHOP>/Elite Library Extension V403/cloud/evidence/cloud-extension-final.json>) | `bc5e5cdce1625278fe72ab38b1f8fb9b1e34626e243e182c404c851fb30afdaa` |
+| [cloud/evidence/qualification-windows-final-03.json](<WORKSHOP>/Elite Library Extension V403/cloud/evidence/qualification-windows-final-03.json>) | `72ac467c83793fc337f5e7e3d85cf7ad5a2d52bbe8b50aee6628c99ffdd1fd1a` |
+| [cloud/evidence/qualification-linux-final-03.json](<WORKSHOP>/Elite Library Extension V403/cloud/evidence/qualification-linux-final-03.json>) | `4388545f73fc605a258189a305b4a6b8f623fb991daf48febbc5cba1ef3fe058` |
+| [evidence/fresh-file-only-resume-v403.json](<WORKSHOP>/Elite Library Extension V403/evidence/fresh-file-only-resume-v403.json>) | `cde02f4f35f691f684ff16055ecfa99b87370d776e802725e0daefaf22fb2820` |
+| [evidence/visual-candidates-v403.json](<WORKSHOP>/Elite Library Extension V403/evidence/visual-candidates-v403.json>) | `580e1c7c0ae0063af041b1a62a4e384ed2d49a5805e887aed1fd3d98adeb9897` |
+| [evidence/preservation-final.json](<WORKSHOP>/Elite Library Extension V403/evidence/preservation-final.json>) | `5c5e7b0435e09512f6e42779e5b64b7cdfbacd9be96a09e54989ca161aa920f1` |
+| [evidence/connection-impact-v403.json](<WORKSHOP>/Elite Library Extension V403/evidence/connection-impact-v403.json>) | `2c6eaef9d5a25ced9cad051b88c3773bd11b89ed4beaffeda34191a7c7f4477a` |
+| [evidence/extension-source-commit.json](<WORKSHOP>/Elite Library Extension V403/evidence/extension-source-commit.json>) | `5811e91803cd4b99c8488ce96f9dc0ed6115295cddb7c0253d0e707c5c1fbdec` |
+| [cloud/evidence/cloud-extension-iam-delta.json](<WORKSHOP>/Elite Library Extension V403/cloud/evidence/cloud-extension-iam-delta.json>) | `a1ddfa7b23cb68c783b57c1ca44ad1407e6c948392bc9e9f631baddfc60923f3` |
+| [cloud/evidence/overlay-compat-01/receipt.json](<WORKSHOP>/Elite Library Extension V403/cloud/evidence/overlay-compat-01/receipt.json>) | `f5685a1e7b5f0d8d214d02b7272a8e178236502027b898680dfb3a7958ff6f6d` |
+| [cloud/evidence/consumer120-windows-01/qualification-receipt.json](<WORKSHOP>/Elite Library Extension V403/cloud/evidence/consumer120-windows-01/qualification-receipt.json>) | `d3ba6fed04e7f7ad3e1b16c284e44e5caffe9fada5e2a95d3b0d7832cb0e4d14` |
+| [cloud/evidence/consumer120-linux-01.json](<WORKSHOP>/Elite Library Extension V403/cloud/evidence/consumer120-linux-01.json>) | `9b3984f73b28fabda72b1d51740cc422438ad39766bda875ac5916be204d2eb1` |

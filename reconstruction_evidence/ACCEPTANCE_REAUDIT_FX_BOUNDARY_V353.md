@@ -2,7 +2,7 @@
 
 Fecha:2026-09-09. Clasificación: mantenimiento/revisión correctiva de biblioteca.
 Checkpoint de entrada150 validado; estado posterior151 y cierre152 separados.
-Stage observado: `C:/Users/NL/AppData/Local/Temp/elite-v353-403d584c08784164bea1cbf2ea2d6566`. Evidencia previa: `C:/Users/NL/AppData/Local/Temp/elite-v352-32e0c00909af4e31a62ae41f95568773`.
+Stage observado: `<LOCALAPPDATA>/Temp/elite-v353-403d584c08784164bea1cbf2ea2d6566`. Evidencia previa: `<LOCALAPPDATA>/Temp/elite-v352-32e0c00909af4e31a62ae41f95568773`.
 
 ## Resultado y alcance
 

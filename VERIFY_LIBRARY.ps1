@@ -59,7 +59,7 @@ $releaseRootMarkdown = @(
   'TOOLCHAINS_BUILDS_PACKAGING_FFI.md'
 )
 $releaseRootScripts = @('materialize_markdown_pack.ps1', 'VERIFY_LIBRARY.ps1', 'VERIFY_EXECUTABLE_LIBRARY.ps1', 'CREATE_PORTABLE_ARCHIVE.ps1', 'INSTALL_AGENT_BRIDGE.ps1')
-$releaseRootMetadata = @('.gitignore','.gitattributes')
+$releaseRootMetadata = @('.gitignore','.gitattributes','.mcp.json')
 $releaseMarkdownSystemScripts = @('update_pack_from_tree.ps1', 'test_update_pack_from_tree.ps1', 'test_pack_exact_eof.ps1', 'test_public_release_policy.ps1', 'test_install_agent_bridge.ps1', 'test_library_maintenance_state.ps1', 'test_agent_bridge_safety.ps1', 'test_toolchain_resolution.ps1', 'test_agent_entry_lifecycle.ps1', 'project_local_secrets.ps1', 'test_project_local_secrets.ps1')
 
 function Assert-True([bool] $Condition, [string] $Message) {

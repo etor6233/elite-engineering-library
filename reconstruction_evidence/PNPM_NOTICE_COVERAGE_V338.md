@@ -97,7 +97,7 @@ distribution, new runtime execution, provider effect, global install or ARCA.
 
 ## Evidence
 
-Stage: C:/Users/NL/AppData/Local/Temp/elite-v338-606f40d5d434468ba8ceb8d424340173.
+Stage: <LOCALAPPDATA>/Temp/elite-v338-606f40d5d434468ba8ceb8d424340173.
 The two research scripts are local probes, not admitted reusable product code.
 Their independent checks verify these observations without shipping a new pack.
 

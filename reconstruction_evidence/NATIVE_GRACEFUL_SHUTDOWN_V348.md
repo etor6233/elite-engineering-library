@@ -90,7 +90,7 @@ artifact is acquired. Workspace-owner license and AUTHORED provenance apply.
 Internal authorities: SECURITY_SRE_CLOUD_INFRASTRUCTURE.md lifecycle/supply-chain
 boundaries, ENGINEERING_EXECUTION_PLAYBOOK.md and public architecture admission.
 
-Stage: C:/Users/NL/AppData/Local/Temp/elite-v348-93f1c51f1d86411fb3b5c5e94aaa54e8. Pinned runtime:CPython3.14.4, local Windows x64. Rebuild
+Stage: <LOCALAPPDATA>/Temp/elite-v348-93f1c51f1d86411fb3b5c5e94aaa54e8. Pinned runtime:CPython3.14.4, local Windows x64. Rebuild
 the four current source blocks below, reuse job_probe.py from V345 and unchanged
 test_governed_launch.py from V347. Execute test_shutdown.py <new-report.json>,
 test_governed_launch.py <new-report.json> <refund-fixture.json>, and test_capture.py

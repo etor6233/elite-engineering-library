@@ -65,7 +65,7 @@ FAIL532 remains blocked for the455-file distribution. No global100% claim,
 
 ## Reproduction records
 
-Stage C:/Users/NL/AppData/Local/Temp/elite-v334-a443d28e2128479b87937c040aa8b6a8.
+Stage <LOCALAPPDATA>/Temp/elite-v334-a443d28e2128479b87937c040aa8b6a8.
 Do not rerun mutation helpers into occupied destinations. Gap record and receipt
 are local evidence of this context; they do not ship as approval in the projection.
 

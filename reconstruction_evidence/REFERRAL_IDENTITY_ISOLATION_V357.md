@@ -1,7 +1,7 @@
 # V357 — identidad y estados del registro de referidos
 
 2026-09-09. Mantenimiento correctivo/revisión, TEST02/T2802. Checkpoint158
-validado antes de editar; integración159 y cierre160. Stage `C:/Users/NL/AppData/Local/Temp/elite-v357-32715539145f4f2f8293c1004dafa388`.
+validado antes de editar; integración159 y cierre160. Stage `<LOCALAPPDATA>/Temp/elite-v357-32715539145f4f2f8293c1004dafa388`.
 
 ## Defecto y corrección
 

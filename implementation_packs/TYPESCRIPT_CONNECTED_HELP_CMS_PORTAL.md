@@ -403,7 +403,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "a8bf04fd5d1f41b1539bb78c2da7057d5ea512c015d5476d72ffb27e8cece4cd"
+sha256: "7b88d5ef478eb8ff4efe1561e92e73944521c0e59964a0af258798869092031f"
 variables: []
 secrets_allowed: false
 ```
@@ -419,7 +419,9 @@ secrets_allowed: false
       "locale": "es",
       "category": "operations",
       "title": "Guía <&> segura",
-      "body": "Texto   entre   líneas: ñ 😀."
+      "body": "Texto 
+ entre 
+ líneas: ñ 😀."
     },
     "canonical": "{\"action\":\"create\",\"article_id\":\"guide\",\"body\":\"Texto \\u2028 entre \\u2029 líneas: ñ 😀.\",\"category\":\"operations\",\"command_id\":\"create\",\"locale\":\"es\",\"organization_id\":\"org\",\"title\":\"Guía \\u003c\\u0026\\u003e segura\"}",
     "sha256": "bc69ad670e36838d0dafc18aeaba1242c30f7ee5100aa12cb8a040e96f9631f4"

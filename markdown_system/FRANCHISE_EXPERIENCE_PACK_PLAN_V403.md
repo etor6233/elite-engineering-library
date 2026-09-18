@@ -42,7 +42,7 @@ No se copió código, marca, imágenes ni assets de xAI, Tesla, SpaceX, DogeOS o
 
 ## Verificación y aceptación
 
-El recibo UI enumera SHA exactos del manifiesto, herramientas, pruebas, capturas y límites. Evidencia durable de esta ejecución: `C:/Users/NL/Desktop/Elite Library Extension V403/ui/evidence/`. Los recibos y fuentes portables se incluyen selectivamente; las claves efímeras y trazas con cookies de fixture se excluyen.
+El recibo UI enumera SHA exactos del manifiesto, herramientas, pruebas, capturas y límites. Evidencia durable de esta ejecución: `<WORKSHOP>/Elite Library Extension V403/ui/evidence/`. Los recibos y fuentes portables se incluyen selectivamente; las claves efímeras y trazas con cookies de fixture se excluyen.
 
 La candidata0.1 fue **REJECTED_BY_USER** y sus imágenes están conservadas con hashes en `rejected-visual-20260914`. La candidata0.2 también fue REJECTED_BY_USER, conservada en rejected-visual-0.2.0. La candidata0.3 oscura requiere aprobación explícita del usuario. El contraste automatizado mide los elementos/renderings realmente ensayados; no certifica todos los futuros temas y contenidos.
 
@@ -83,6 +83,6 @@ Manifiesto final: `e3bd6c00bc1c2b909370519b44065f301022eda471eaef68a12de5ffa8199
 
 El fallo de Tab no se borró: Chromium conservaba rectángulos de controles dentro de `details` cerrados; se excluyeron del orden tabulable y se verificó el ciclo completo. Sólo `application-chrome.tsx` cambió entre aquella ejecución y la corrección; el recibo conserva los hashes antes/después y el FAIL inicial. No se presenta como una única ejecución final de 27/27.
 
-Evidencia: [recibo UI final](<C:/Users/NL/Desktop/Elite Library Extension V403/ui/evidence/UI_FINAL_V403_0.3.0.json>), [criterios de navegador](<C:/Users/NL/Desktop/Elite Library Extension V403/ui/evidence/browser-aggregate-final-0.3.0.json>), [materialización estándar](<C:/Users/NL/Desktop/Elite Library Extension V403/ui/evidence/standard-materialization-final-0.3.0.json>) y [snapshot compilado](<C:/Users/NL/Desktop/Elite Library Extension V403/ui/evidence/compiled-snapshot-final-0.3.0.json>). Las candidatas están en `ui/qualification/tests/visual-candidates/v03-*.png` del destino de extensión.
+Evidencia: [recibo UI final](<<WORKSHOP>/Elite Library Extension V403/ui/evidence/UI_FINAL_V403_0.3.0.json>), [criterios de navegador](<<WORKSHOP>/Elite Library Extension V403/ui/evidence/browser-aggregate-final-0.3.0.json>), [materialización estándar](<<WORKSHOP>/Elite Library Extension V403/ui/evidence/standard-materialization-final-0.3.0.json>) y [snapshot compilado](<<WORKSHOP>/Elite Library Extension V403/ui/evidence/compiled-snapshot-final-0.3.0.json>). Las candidatas están en `ui/qualification/tests/visual-candidates/v03-*.png` del destino de extensión.
 
 «Sin fallos abiertos» se limita al código, revisión, métodos y criterios enumerados en ese recibo. No equivale a aceptación humana, ejecución cloud, lector físico, cámara, lector de pantalla, nuevos idiomas, nuevos temas ni producción.

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 337,
+  "revision": 338,
   "project": {
     "id": "elite-library-maintenance",
     "mode": "EXISTING",
@@ -243,7 +243,7 @@
       "id": "failures",
       "kind": "failure_ledger",
       "path": "PROJECT_FAILURE_LESSONS.md",
-      "sha256": "ac4cecaec7b0e71aa546e77aebbf06d3053cb8186065a94f8af092957e107b9e",
+      "sha256": "d0d94d0045804148c8f6db392574f758a40800fd1539639f85a56029c5ef48e8",
       "produced_at": "2026-09-13T20:50:02.820807Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
@@ -379,7 +379,7 @@
       "id": "library-verifier",
       "path": "VERIFY_LIBRARY.ps1",
       "kind": "maintenance_control",
-      "sha256": "2c309a14b1307f9399c610db1721d9b0ce1e7847a46efece92666f9556e0a7dc",
+      "sha256": "318fa09bcb5d4604f20fe6aff8b4ca151ebbbcc6c3d7b1cfaef03fba7f19b1d5",
       "produced_at": "2026-09-13T18:41:13.635206Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
@@ -451,7 +451,7 @@
       "id": "source-lock",
       "path": "PROJECT_EXTERNAL_SOURCE_LOCK.md",
       "kind": "source_lock",
-      "sha256": "c4ce0a6f2f120b409842228fbff32e2bcbc27f655a7d8876f9a1beaeca5c5922",
+      "sha256": "96a08d0dba2f9dd2e05695009b125a8715b34e199f5743831d01740ab27b7ec1",
       "produced_at": "2026-09-13T16:19:01.341615Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
@@ -523,7 +523,7 @@
       "id": "dependencies",
       "path": "PROJECT_DEPENDENCY_UPDATE_RECORD.md",
       "kind": "dependency_record",
-      "sha256": "8cbb9bf3da33c42c7cee99a5bb1d9c883430949f7324a2fe9ab862b8ccff559e",
+      "sha256": "0a6b9bd912f2f8b07976cc6621019dbe4699adb8b3d90bb669b26d8f1751eb5b",
       "produced_at": "2026-09-13T20:14:39.319925Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
@@ -547,7 +547,7 @@
       "id": "official-profiles",
       "path": "PROJECT_OFFICIAL_SOURCE_PROFILE_RECORD.md",
       "kind": "source_profile_record",
-      "sha256": "0bea06bf54700179447fb394892799cc0e5e0c023be3fd025b55f5a1da632722",
+      "sha256": "ae7e470aefef11c935d3d391b19d646c5afa509329ef07c688d325fc76d1f5c2",
       "produced_at": "2026-09-13T18:20:17.236283Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
@@ -568,7 +568,7 @@
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
-      "sha256": "52e48369d5c144c017ab8a5995042204e5aa24fda2f76727d339725302063633",
+      "sha256": "f84a92d1ca695e3f09894be8c5c492c48d8c172e3cead72be83543857d640fbe",
       "id": "v286",
       "path": "reconstruction_evidence/ISOLATED_TOOLCHAIN_RESOLUTION_V286.md",
       "kind": "maintenance_audit",
@@ -585,7 +585,7 @@
     },
     {
       "id": "v287",
-      "sha256": "6f1c285db0f801009c1dff139f92234070477719903368d3c04cc8fa19cbea65",
+      "sha256": "b0327d083e0cbbbffa2eec81707d3e53e98bc53f9e5d07462d87ec7853e848a8",
       "path": "reconstruction_evidence/AGENT_ENTRY_LIFECYCLE_V287.md",
       "kind": "maintenance_audit",
       "produced_at": "2026-09-07T16:00:18Z",
@@ -1051,7 +1051,7 @@
       "id": "v325",
       "path": "reconstruction_evidence/FIREFOX_LIFECYCLE_AND_CONTINUITY_V325.md",
       "kind": "maintenance_audit",
-      "sha256": "e5c170ab294e669e8e2e2e34e808257b72c10dca00f90aea25baefdbb70dd1aa",
+      "sha256": "4446571e50e1ebae154fb4e8598fb486a6a4467d6374cce71b0ff82d790ed6e9",
       "produced_at": "2026-09-08T14:08:38.321807Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
@@ -1131,7 +1131,7 @@
       "id": "v333",
       "path": "reconstruction_evidence/PNPM_NATIVE_SELECTION_V333.md",
       "kind": "candidate_native_selection_evidence",
-      "sha256": "8da687ad236736d92e8f7842ec1074941d55bd8dc634468fd8578ef26a4fedaf",
+      "sha256": "c4e2629e5e84987fafc765037a3d503a6667e5f6d3b1e6ce2319251b7f11b2fe",
       "produced_at": "2026-09-08T17:10:42.296875Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
@@ -1139,7 +1139,7 @@
       "id": "v334",
       "path": "reconstruction_evidence/PNPM_SELECTION_GATE_V334.md",
       "kind": "canonical_tooling_evidence",
-      "sha256": "28c3a26c6f3a45d9f20d2f3d30992fa290d59fcc0a0b4f8cfd381eb4ac7e812e",
+      "sha256": "0a179bd6f7304b9c2200af9f6cf3e2695f36a8c4047bfffc940093a2833cafd2",
       "produced_at": "2026-09-08T17:36:50.252866Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
@@ -1163,7 +1163,7 @@
       "id": "v335",
       "path": "reconstruction_evidence/PNPM_CONSUMER_ROUTING_V335.md",
       "kind": "canonical_routing_tooling_evidence",
-      "sha256": "6d29bd699a2572ef808d8606b20e7563a92f14684373827c9a6d747f7a4eca3e",
+      "sha256": "fa8cc55d67f973258c66286a0bfc5d8ef8113619d3457cb28e7b37513484a82e",
       "produced_at": "2026-09-08T17:57:45.267411Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
@@ -1171,7 +1171,7 @@
       "id": "v336",
       "path": "reconstruction_evidence/PNPM_CACHE_FRESHNESS_V336.md",
       "kind": "isolated_cache_policy_qualification",
-      "sha256": "2d8d5dbeb712f36e21b99c19e234b09c862f59e8bad21f4968fb00831c163a9c",
+      "sha256": "b46f8ba0c0f4cb5173b19be7c2c7caafe505c48f68c5b03644520be1d206b6a8",
       "produced_at": "2026-09-08T18:14:49.886118Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
@@ -1179,7 +1179,7 @@
       "id": "v337",
       "path": "reconstruction_evidence/PNPM_LIFECYCLE_LICENSE_V337.md",
       "kind": "exact_package_license_and_tooling_evidence",
-      "sha256": "e0193d22915e598f2e3b3269bb8cc22df947ed70b501d48fac4324c45f3385cc",
+      "sha256": "b2a2952f277355bb4bc6a7016cf670e1f93998ae5e515349ade90d20ba6d2af7",
       "produced_at": "2026-09-08T18:44:44.226922Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
@@ -1187,7 +1187,7 @@
       "id": "v338",
       "path": "reconstruction_evidence/PNPM_NOTICE_COVERAGE_V338.md",
       "kind": "selected_notice_coverage_evidence",
-      "sha256": "7ba52aa673260f09804de20627f6b4e69a81b8eb4e3ea2bf05efda8a0fd1a946",
+      "sha256": "22dd9cb7a8968145006ed23ffc7ea2c6ca523d80da0c1fc36eadbde9a94a104b",
       "produced_at": "2026-09-08T18:54:28.601520Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
@@ -1195,7 +1195,7 @@
       "id": "v339",
       "path": "reconstruction_evidence/PNPM_NESTED_LICENSE_SOURCES_V339.md",
       "kind": "nested_source_notice_evidence",
-      "sha256": "5f895c21bea60181b9391b20073ca3fdcb75e372fe39427f7af8c9f750c93a6a",
+      "sha256": "20c42af997a2870738d89b93312f675a0c6f059ff08aa875c1dc88a819dd0c85",
       "produced_at": "2026-09-08T19:12:25.930610Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
@@ -1203,7 +1203,7 @@
       "id": "v340",
       "path": "reconstruction_evidence/PNPM_YARN_UNDICI_NOTICES_V340.md",
       "kind": "versioned_source_notice_evidence",
-      "sha256": "965db1e4f7b29f525587ac450b4fc5000d9797c35c6ae8bfa10bf005f2157b15",
+      "sha256": "5f7d9c4b9099ac23471e9de7c6a8499decf06d2fd9c42c51a2078755ea4f66d8",
       "produced_at": "2026-09-08T19:22:51.946072Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
@@ -1259,7 +1259,7 @@
       "id": "v345",
       "path": "reconstruction_evidence/OPERATIONAL_PROCESS_BOUNDARY_V345.md",
       "kind": "finite_operational_process_boundary",
-      "sha256": "195ea4f7fe9ab7f9bd7a786e027ff5be9dfe43ca4bea42867f3c5a0d6a51a5af",
+      "sha256": "d6efed6c1922dbb7778455c79fe14c74d9c6aa7679db223d42cd1c5fde7764d1",
       "produced_at": "2026-09-08T23:52:20.263195Z",
       "producer": "agent-observed-real-child-tests-and-canonical-reconstruction"
     },
@@ -1267,7 +1267,7 @@
       "id": "v346",
       "path": "reconstruction_evidence/NATIVE_SUPERVISOR_IO_QUALIFICATION_V346.md",
       "kind": "native_supervisor_io_qualification",
-      "sha256": "5911529715d7335121393da0e126f4ea6738c076d7006b6e00664c3806d8cfa2",
+      "sha256": "2f06f7f73f8a24a0cbfa7cf33c55ad068c5402be6a2e7c03db1e30d4e156142d",
       "produced_at": "2026-09-09T01:19:04.290607Z",
       "producer": "agent-observed-real-native-process-tests-and-canonical-rebuild"
     },
@@ -1275,7 +1275,7 @@
       "id": "v347",
       "path": "reconstruction_evidence/GOVERNED_NATIVE_LAUNCH_V347.md",
       "kind": "governed_native_launch_qualification",
-      "sha256": "9b6bf8defb6692cc8c91c8aee212f3df51ef9e6da714514c98b12fb83088ef78",
+      "sha256": "f2f43e700be592e1baa687d65a713320eaa81d363316a0016a3b364a69e4e408",
       "produced_at": "2026-09-09T01:36:29.006256Z",
       "producer": "agent-observed-real-file-process-tests-and-canonical-rebuild"
     },
@@ -1283,7 +1283,7 @@
       "id": "v348",
       "path": "reconstruction_evidence/NATIVE_GRACEFUL_SHUTDOWN_V348.md",
       "kind": "native_graceful_shutdown_qualification",
-      "sha256": "6a75b5eea6d0ba85d1e77331d77c5b58f8eb72447c817f58139e6edab402f2c3",
+      "sha256": "ff721f62ebd4b3ccfb77293527cd64e54096dc2df9eb8fce6d861b81268aece9",
       "produced_at": "2026-09-09T01:57:49.393715Z",
       "producer": "agent-observed-real-event-process-tests-and-canonical-rebuild"
     },
@@ -1291,7 +1291,7 @@
       "id": "v349",
       "path": "reconstruction_evidence/NATIVE_RESULT_PUBLICATION_V349.md",
       "kind": "native_result_publication_qualification",
-      "sha256": "8eb6ee6a1b5211684625fc505e89e67e8a295869cacd4cc3f4922be14bfdb038",
+      "sha256": "8b2f30c02093ffb344a744e9bdf3d96b82828a9d12864c654efd3be4ac36e336",
       "produced_at": "2026-09-09T02:20:54.384419Z",
       "producer": "agent-observed-real-process-crash-publication-and-canonical-rebuild"
     },
@@ -1299,7 +1299,7 @@
       "id": "v350",
       "path": "reconstruction_evidence/NATIVE_WORKER_LIFECYCLE_V350.md",
       "kind": "native_worker_lifecycle_qualification",
-      "sha256": "2422a0bf38f2be8bccdb2ece2276e31926057e0841c40eabdc97d269a378bc15",
+      "sha256": "c4fe89efcc54f22d9e1f48debdc17ef492b9867f176212eaf3d6c6da4ff46624",
       "produced_at": "2026-09-09T14:18:54.250061Z",
       "producer": "agent-observed-real-host-processor-native-lifecycle-with-synthetic-domain"
     },
@@ -1307,7 +1307,7 @@
       "id": "v351",
       "path": "reconstruction_evidence/NATIVE_POSTGRES_LIFECYCLE_V351.md",
       "kind": "native_postgres_lifecycle_qualification",
-      "sha256": "1acda7b02c86c1f1b913b19f393fd52d45945d1a36cf851eb3a2f317fe8654e1",
+      "sha256": "5b5ae2d90c75d17be975843bc0d6f237aed9aa2beb7d69c39d1c0c0f60dbbb5b",
       "produced_at": "2026-09-09T15:01:11.058136Z",
       "producer": "agent-observed-canonical-native-startup-postgres-controlled-restart"
     },
@@ -1315,7 +1315,7 @@
       "id": "v352",
       "path": "reconstruction_evidence/PORTABLE_CANDIDATE_ACCEPTANCE_V352.md",
       "kind": "portable_candidate_acceptance",
-      "sha256": "dcc0ba32799de1fcdd661097e6d4b0716c5ce2dace3de959719a628d8f59faa9",
+      "sha256": "8829ef23e9c3d7e0d1406bbd973bd9575bfa29d0a3c2da6b80c33aaba1b73179",
       "produced_at": "2026-09-09T15:24:57.725782Z",
       "producer": "agent-observed-acceptance-order-correction"
     },
@@ -1323,7 +1323,7 @@
       "id": "v353",
       "path": "reconstruction_evidence/ACCEPTANCE_REAUDIT_FX_BOUNDARY_V353.md",
       "kind": "acceptance_reaudit_fx_boundary",
-      "sha256": "d29effc5acfe64d179606eca60e7e8d79dc4ff95956903b50f066ef926020ff8",
+      "sha256": "fc808929221723dead263040d9ce4d99bdddef6172e1bc2f3c940ebf0317158b",
       "produced_at": "2026-09-09T15:44:32.351857Z",
       "producer": "agent-observed-red-green-canonical-rebuild-and-independent-rational-fuzz"
     },
@@ -1331,7 +1331,7 @@
       "id": "v354",
       "path": "reconstruction_evidence/CREDIT_CORE_ISOLATION_V354.md",
       "kind": "credit_core_isolation_qualification",
-      "sha256": "4f6ac4ec724b8cffb51f46d66179bd690968f8b466c85a7c42ecb289e753d1b4",
+      "sha256": "f607392e66b4c88a37737508a67f6cbe5c3b6107d4c4060b99e4d4e34d2eb5a6",
       "produced_at": "2026-09-09T16:02:40.248665Z",
       "producer": "agent-observed-red-green-canonical-rebuild-model-fuzz"
     },
@@ -1355,7 +1355,7 @@
       "id": "v355",
       "path": "reconstruction_evidence/REMINDER_TENANT_API_V355.md",
       "kind": "reminder_tenant_api_qualification",
-      "sha256": "5c556f6e624d16a84f952565705c4994fd626f739ab6a1dde10e17484f7b0b9e",
+      "sha256": "168ead13cb7d1cea1d9d4e5f77862c4c3629714c263c7409d6e2a66e73109b1c",
       "produced_at": "2026-09-09T16:38:49.850705Z",
       "producer": "agent-observed-source-and-tests-not-production-certification"
     },
@@ -1379,7 +1379,7 @@
       "id": "v356",
       "path": "reconstruction_evidence/BASIS_POINT_ARITHMETIC_V356.md",
       "kind": "basis_point_arithmetic_qualification",
-      "sha256": "6afcd07ac0f6b11e571763b6a73524ec7343d646569ede644998e4eaef901521",
+      "sha256": "10562bec643f8001e9a10f73085b24680d50051885d9929d6b52ab1782967926",
       "produced_at": "2026-09-09T17:20:52.088589Z",
       "producer": "agent-observed-source-and-tests-not-financial-admission"
     },
@@ -1403,7 +1403,7 @@
       "id": "v357",
       "path": "reconstruction_evidence/REFERRAL_IDENTITY_ISOLATION_V357.md",
       "kind": "referral_identity_qualification",
-      "sha256": "ab42e77fa629c03cd7dd1ed9c2cdab0900dc21cba45577336bd019e7ad3fa842",
+      "sha256": "8f7e00b454611d519a657dca806ce9af7033f6a15ee7bc8698a304b327f7e478",
       "produced_at": "2026-09-09T17:34:19.355458Z",
       "producer": "agent-observed-source-and-tests-not-production-admission"
     },
@@ -1419,7 +1419,7 @@
       "id": "v358",
       "path": "reconstruction_evidence/MODERATION_WAITLIST_ISOLATION_V358.md",
       "kind": "moderation_waitlist_isolation_qualification",
-      "sha256": "49496730c1af59e9ce8e6f8e9e8a017e7ef1cdfb29e9510cbd94ab1ee2be303e",
+      "sha256": "55eb7bc5a7d2bc36af13d2371b00c18ac6365ca3e77264ed48a7353a432c5d87",
       "produced_at": "2026-09-09T17:45:51.918336Z",
       "producer": "agent-observed-source-and-tests-not-production-admission"
     },
@@ -1435,7 +1435,7 @@
       "id": "v359",
       "path": "reconstruction_evidence/ONBOARDING_CLAIM_ISOLATION_V359.md",
       "kind": "onboarding_claim_isolation_qualification",
-      "sha256": "793c46f667860f8b67fd75b4d84356d9a6507a63653de09a0b026410a6a06fce",
+      "sha256": "9a2d602f33b0f82c1e0a8bb376b840d0525ce1245e238dba9670e44a3d2fee73",
       "produced_at": "2026-09-09T17:57:54.513081Z",
       "producer": "agent-observed-source-and-tests-not-production-admission"
     },
@@ -1459,7 +1459,7 @@
       "id": "v360",
       "path": "reconstruction_evidence/SURVEY_CAMPAIGN_SCOPE_V360.md",
       "kind": "survey_campaign_scope_qualification",
-      "sha256": "d2f897037eb337984d68e0b3e5532a11a60e19a33b177340366c9e335bf33313",
+      "sha256": "904e021d0d2a18fd397a13cc86316cfdcf4f126629abbf0f709cb22b524c8b7c",
       "produced_at": "2026-09-09T18:11:36.679507Z",
       "producer": "agent-observed-source-and-tests-not-production-admission"
     },
@@ -1483,7 +1483,7 @@
       "id": "v361",
       "path": "reconstruction_evidence/POS_SLO_BOUNDARIES_AND_DOCKER_SCOPE_V361.md",
       "kind": "pos_slo_numeric_qualification",
-      "sha256": "653d349a82d70e5621c539720a3e06b02599aaaae4d06d756b7bf3e3dbbd694b",
+      "sha256": "4c8efaeda43a99bf3099a8c0ac3dc4377159b244f9f7bbdc499c489cb6328021",
       "produced_at": "2026-09-09T18:30:44.496452Z",
       "producer": "agent-observed-source-and-tests-not-production-admission"
     },
@@ -1507,7 +1507,7 @@
       "id": "v362",
       "path": "reconstruction_evidence/DASHBOARD_HELP_BOUNDARIES_V362.md",
       "kind": "dashboard_help_boundary_qualification",
-      "sha256": "e9b63edb491cfbd5bf5995f5d9a1fdcbb62ff01f3cd948877f8445036129c51d",
+      "sha256": "a82cf78363d9abfa8f4d751bff205d0aab962ca079b403e23e956be96cd41a69",
       "produced_at": "2026-09-09T18:44:41.120001Z",
       "producer": "agent-observed-source-and-tests-not-production-admission"
     },
@@ -1531,7 +1531,7 @@
       "id": "v363",
       "path": "reconstruction_evidence/PUBLIC_CORE_SCOPE_V363.md",
       "kind": "public_core_scope_qualification",
-      "sha256": "fffdba254c56ca5a4eedfec5faddbd7f1fd4e6d624ad4a8694cc129a9ff6c25c",
+      "sha256": "edf2ffd50bf1748020e1839544dd25fd8c13421acacaf557a02919bb1e899b7b",
       "produced_at": "2026-09-09T19:03:30.119392Z",
       "producer": "agent-observed-source-and-tests-not-production-admission"
     },
@@ -1683,7 +1683,7 @@
       "id": "v374",
       "path": "reconstruction_evidence/CORE_CLAIM_ADMISSION_V374.md",
       "kind": "core_claim_admission_audit",
-      "sha256": "26eca8f36241bd3bc2197b93128315fdb03ca495764201ca5a7638cca04be271",
+      "sha256": "6ba4bdb58f2f2f4341b2ad717b81dc3903181f64bdac288a97d80121c61d7164",
       "produced_at": "2026-09-10T16:14:52.911593Z",
       "producer": "actual-canonical-reconstruction-primary-source-comparison"
     },
@@ -1947,7 +1947,7 @@
       "id": "v401",
       "path": "reconstruction_evidence/PNPM_ZIP_CONTAINMENT_V401.md",
       "kind": "pnpm_zip_containment",
-      "sha256": "dacf2feacc1fd543524c3120b2c4809a6ef6f171ffd464b21f4e2cdd53028418",
+      "sha256": "6cbaa21752f2623c4125f3b7645d021d3951257981b7b8d87e0caea680c4dc58",
       "produced_at": "2026-09-11T23:17:18.875957Z",
       "producer": "canonical-transform-boundary-sca-three-frozen-consumers"
     },
@@ -1963,7 +1963,7 @@
       "id": "library-readiness",
       "path": "PROJECT_LIBRARY_READINESS_GATE.json",
       "kind": "readiness_record",
-      "sha256": "7cec77a8a53cce4e9ed2711b060d175bbcbe2ad750796c62f4a8f9086e528da4",
+      "sha256": "c8be465d724c1d8b19c0b1a2ecd9b184b5941c1b245ca2b281d6b3cdfd5f3996",
       "produced_at": "2026-09-13T20:14:39.319925Z",
       "producer": "V402 explicit user scope and canonical validator plus source inspection"
     },
@@ -2011,7 +2011,7 @@
       "id": "evid-110",
       "path": "reconstruction_evidence/REFUND_PROVIDER_ALIAS_COMPATIBILITY_V402.md",
       "kind": "implementation_delta",
-      "sha256": "61df8bf53421634180bd0d126a15e1dd9e9bfbd50ac8effb8e94616d867b27aa",
+      "sha256": "964b7c1a77818e9a27c7654d5d909ae1e71195ba1daf64f2b85da4f07f280579",
       "produced_at": "2026-09-12T00:07:22.575817Z",
       "producer": "Refund provider alias mapping with real PG/SDK fixtures and25exact rebuilt files"
     },
@@ -2019,7 +2019,7 @@
       "id": "evid-111",
       "path": "reconstruction_evidence/PAYMENT_SDK_RECONCILIATION_V402.md",
       "kind": "implementation_delta",
-      "sha256": "97c151f6eb1034ae4370659a77d826eec715048d92b58d375e64288c75530430",
+      "sha256": "acbac0ad9cc010183db154156ca6528b639a7f8d860498ed22d4715875f9b32a",
       "produced_at": "2026-09-13T15:55:45.266312Z",
       "producer": "Official dependency-pinned hosted checkout and payment GET adapter0.3.0; SDK transport tests and source/SCA/12file reconstruction"
     },
@@ -2027,7 +2027,7 @@
       "id": "evid-112",
       "path": "reconstruction_evidence/PAYMENT_PERSISTENCE_PROGRESS_V402.md",
       "kind": "implementation_delta",
-      "sha256": "9a773fa769549d930734fdb689028cdf84d6ff020a1851cc59e2b6694c8542a4",
+      "sha256": "182daf28b30de5b1d02cb6d29b16929dd98416eecce32d8fdfe77fefef9078de",
       "produced_at": "2026-09-12T00:07:22.575817Z",
       "producer": "Payment persistence candidate regression corrections and atomic scope/dispatch admission; staging, not whole connected release"
     },
@@ -2051,7 +2051,7 @@
       "id": "evid-115",
       "path": "reconstruction_evidence/CONNECTED_PAYMENT_HANDOVER_V402.md",
       "kind": "implementation_delta",
-      "sha256": "288994c86be3f797ff3b27ac2831c4368452ac3583c774a7eaeb8e5affa5fae2",
+      "sha256": "77f0b83d29d54632f86ee7326b9e96fa7e15a71ca192039829e2e0221ac7c4a8",
       "produced_at": "2026-09-12T00:41:45.435454Z",
       "producer": "V402 exact source, reconstruction and focused runtime receipts; claim and remaining gates in the linked artifact"
     },
@@ -2067,7 +2067,7 @@
       "id": "evid-117",
       "path": "reconstruction_evidence/HANDOVER_BROWSER_V402.md",
       "kind": "implementation_delta",
-      "sha256": "4f81def7578814f24c539f2870c0f5edb9448e7413acde3ac88c94033fcce637",
+      "sha256": "ec773fbfe9df6bf36281cd234796dbe6689596f4b2716fd339fe38c904817b28",
       "produced_at": "2026-09-12T00:55:53.835585Z",
       "producer": "Delivery browser/BFF/Go/PostgreSQL,65 focused tests and933 exact files; other roles and broader gates remain open"
     },
@@ -2075,7 +2075,7 @@
       "id": "evid-118",
       "path": "reconstruction_evidence/FACTORY_BROWSER_V402.md",
       "kind": "implementation_delta",
-      "sha256": "82eba2d9521b04a31778f846b759689cca26af2374c84aad76174a163323ca3e",
+      "sha256": "f853d6d4ac0b28d5d52727e27794062841ca89924147d1507b11b06f87531df4",
       "produced_at": "2026-09-12T01:07:29.503405Z",
       "producer": "Factory browser/BFF/Go/PostgreSQL,18 focused tests and943 exact files; concurrent-state observation without false receipt"
     },
@@ -2083,7 +2083,7 @@
       "id": "evid-119",
       "path": "reconstruction_evidence/BACKEND_DEPENDENCY_CLOSURE_V402.md",
       "kind": "implementation_delta",
-      "sha256": "63a932de03105a1b2324e670713953ad12f104daccd3261b90980d80e919ab70",
+      "sha256": "32ff8831abe6a1f4a865be16c9364f6cda96653202ea31f99267d6f13e07179b",
       "produced_at": "2026-09-12T01:37:30.540465Z",
       "producer": "Independent backend checkout dependency correction; historical39/531build and current composition follow-up"
     },
@@ -2099,7 +2099,7 @@
       "id": "evid-121",
       "path": "reconstruction_evidence/COMMUNICATIONS_RUNTIME_V402.md",
       "kind": "implementation_delta",
-      "sha256": "988e11bb9a60b6a1ffe1f14264d49aaf941c1ddc396c16ce1c2874c3c4386dda",
+      "sha256": "da7fe8a25fc11a52fee705210a7d3ddfc126f1d8bc96ab84196a500d6371294e",
       "produced_at": "2026-09-12T01:37:30.540465Z",
       "producer": "Connected WhatsApp human browser/PG, renewable OIDC service identity and Meta Page host;1032 exact franchise outputs"
     },
@@ -2107,7 +2107,7 @@
       "id": "evid-122",
       "path": "reconstruction_evidence/FX_JOURNAL_CONNECTION_V402.md",
       "kind": "implementation_delta",
-      "sha256": "b964a1390092a838b96a715de9f98888ec6bc3dc0ca88a1a48ed2facdf18fbf6",
+      "sha256": "fd4557bd72a51df103efe2d4fff97e098b61c1f2852152dde6a3c802ec9f66b4",
       "produced_at": "2026-09-12T15:06:28.096281Z",
       "producer": "FX receipt to durable existing journal posting and reversal; concurrency/recovery and safe downgrade;1039 exact franchise outputs"
     },
@@ -2139,7 +2139,7 @@
       "id": "evid-126",
       "path": "reconstruction_evidence/STORED_VALUE_CONNECTED_RELEASE_V402.md",
       "kind": "implementation_delta",
-      "sha256": "ed54d73a61758737ec39bf34b6dc70bb28c334dbe05c29ac9b9adc370640fe3c",
+      "sha256": "60fad577addc084241ead5d8f343a8e2f52e2c429decb61e27d8095b12afdd37",
       "produced_at": "2026-09-12T17:02:58.217585Z",
       "producer": "Canonical gift/loyalty assisted tender to delivery, exact source/notices and five profiles; remaining T2802 blueprint claims open"
     },
@@ -2187,7 +2187,7 @@
       "id": "evid-132",
       "path": "reconstruction_evidence/WARRANTY_CONNECTED_RELEASE_V402.md",
       "kind": "implementation_delta",
-      "sha256": "6cc0afd9f21bf2711191ec7919b355a7e046b8379689097555b105d8bcfa15f7",
+      "sha256": "13c3ae5165f049dc7f9afaea6517a5efa0946dd69c1ed302d930fcc491828231",
       "produced_at": "2026-09-12T19:22:07.762906Z",
       "producer": "Warranty sold terms and J4 claim canonically composed; two packs, six owners, four exact profiles and distinct source notices"
     },
@@ -2554,7 +2554,7 @@
     {
       "id": "evid-178",
       "path": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.json",
-      "sha256": "88c2361c1b10ead7af3933fce2564eacd097515d4a5f45c278480ee2a2757a42",
+      "sha256": "5190599922ccaae399e1063e3883d1312ee5b234921651347a8cf1f95cc6d85f",
       "kind": "rollback_or_recovery",
       "produced_at": "2026-09-13T20:14:39.257938Z",
       "producer": "Local source330/meta331 READY;48local controls,1653exact files,current signed ZIP/SCA0/SPDX/runtime proof;production excluded"

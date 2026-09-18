@@ -28,7 +28,7 @@ Los adaptadores de representación/SQL/HTTP son AUTHORED glue. ExchangeExact/Fin
 
 ## Recibos
 
-Staging: C:/Users/NL/AppData/Local/Temp/elite-v402-library-infra.
+Staging: <LOCALAPPDATA>/Temp/elite-v402-library-infra.
 
 | Archivo | SHA-256 |
 |---|---|

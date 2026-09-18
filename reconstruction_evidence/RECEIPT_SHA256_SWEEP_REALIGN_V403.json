@@ -1,0 +1,61 @@
+{
+  "schema": "elite-pack-finisher-receipt/v1",
+  "id": "RECEIPT_SHA256_SWEEP_REALIGN_V403",
+  "status": "LOCAL_APPLIED_ALLOWLISTED_PENDING_VERIFY",
+  "production_authorized": false,
+  "blocker": "sha256-mismatch after machine-local path sweep",
+  "decision": "UPDATE_DECLARED_HASHES_TO_CURRENT_ADMITTED_BYTES",
+  "rationale": "Path sweep replaced machine-local home paths inside embedded pack FILE bodies. Declared sha256 values were stale relative to intentional portable placeholder content; not byte corruption. Includes test_business_functions prior fix plus remaining mismatches found by pack scan.",
+  "updates": [
+    {
+      "pack": "implementation_packs/FRANCHISE_CLOUD_EXECUTION_V403.md",
+      "file": "cloud/Dockerfile.controller",
+      "sha256_previous": "3e4697df48cfd84c7431569102bf0b578e3f7eeb36b85bceeefa0faf09c70982",
+      "sha256_current": "62b754d3c84de4cde8254d55f62cb460333f350a32bb99667697006125f64fb9"
+    },
+    {
+      "pack": "implementation_packs/FRANCHISE_CLOUD_EXECUTION_V403.md",
+      "file": "cloud/FINOPS_CYCLE.md",
+      "sha256_previous": "af09584369d8d0a685a472beac00a696c40528c34468b51533528e6ff3cece24",
+      "sha256_current": "e5a97f2585ec08831e93d6bcd908749398b38d84c219a3ce883d8fcc79645076"
+    },
+    {
+      "pack": "implementation_packs/TYPESCRIPT_CATALOG_AUTHORING_PORTAL.md",
+      "file": "deploy/catalog/authoring-goldens.json",
+      "sha256_previous": "17f42b25225652def7e0b2fa728e71130ce369ecf6661383f2e810d491c4c9b4",
+      "sha256_current": "781cb0dc2bbc339d4d3e14d83f75436fc378c38d0dd29b306fb1eccb5d4cc106"
+    },
+    {
+      "pack": "implementation_packs/TYPESCRIPT_CONNECTED_HELP_CMS_PORTAL.md",
+      "file": "deploy/help/cms-goldens.json",
+      "sha256_previous": "a8bf04fd5d1f41b1539bb78c2da7057d5ea512c015d5476d72ffb27e8cece4cd",
+      "sha256_current": "7b88d5ef478eb8ff4efe1561e92e73944521c0e59964a0af258798869092031f"
+    },
+    {
+      "pack": "implementation_packs/TYPESCRIPT_NETWORK_ROLE_PORTAL.md",
+      "file": "deploy/network/role-goldens.json",
+      "sha256_previous": "2b34cd5a2133839e3027f5529cb0dc014c680c1ed8084fe606b0f1df348a1eaa",
+      "sha256_current": "1d0edc10239ab49c148da6274cc7fdc5d8170b5030b8971a36e89a962b83bdc4"
+    },
+    {
+      "pack": "implementation_packs/TYPESCRIPT_SERIAL_SUPPLY_PORTAL.md",
+      "file": "deploy/supply/role-goldens.json",
+      "sha256_previous": "e6ed8261a6ee8deead51ede85556df3f11ccb99161b9e38dc7ab6c1b2f232e1b",
+      "sha256_current": "6b48bcaa97ba8e6270defbbe413efc44e920d6030fc51c26e20c6d62a2ba6e0c"
+    },
+    {
+      "pack": "implementation_packs/TYPESCRIPT_WARRANTY_ROLE_PORTAL.md",
+      "file": "deploy/warranty/role-goldens.json",
+      "sha256_previous": "a9b29e716842d90e67e0345047ba73e372242c5b8c92fa0d432252b8d8cfead1",
+      "sha256_current": "d35f359991f885d24f5ea9ebd50e805bae5f519107374909432acea14a3c048b"
+    },
+    {
+      "pack": "implementation_packs/BUSINESS_FUNCTION_OPERATING_V403.md",
+      "file": "roles/tests/test_business_functions.py",
+      "sha256_previous": "b64fa55715f6a046707abbea16ff2cc34a5c2118c2bfa7eb6f156827776ef099",
+      "sha256_current": "f935a1f47fcbdbb0b2c2933a0d7298b7ef12fd616c88a5c09257e1b0e6a601bd",
+      "note": "fixed earlier in same decision chain"
+    }
+  ],
+  "updated_at": "2026-09-18T19:39:43.524532+00:00"
+}

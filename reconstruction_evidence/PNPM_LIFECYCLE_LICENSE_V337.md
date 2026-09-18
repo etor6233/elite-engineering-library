@@ -88,7 +88,7 @@ Primary endpoints retained in receipts: [release commit](https://github.com/pnpm
 The fixed package artefact and release-tree comparisons govern these observations;
 current branch popularity and registry license labels alone do not.
 
-Stage: C:/Users/NL/AppData/Local/Temp/elite-v337-41c13ce2aa624c54b1d83784db789544.
+Stage: <LOCALAPPDATA>/Temp/elite-v337-41c13ce2aa624c54b1d83784db789544.
 Keep failed attempts; helpers use absent destinations and are not safe to rerun
 over existing output. Rollback pack and29composition refs together from before
 snapshots, preserving source acquisition receipts and checkpoint history.

@@ -99,7 +99,7 @@ gitHead with a current branch. This cache qualification closes the observed
 renewal/replay experiment, not T2803/T2808 globally. Readiness42,48contract tests
 with7pending and10macrofronts are unchanged; no global exact percentage asserted.
 
-Stage: C:/Users/NL/AppData/Local/Temp/elite-v336-32e87d99be6448e98b47fb0febcdf2be.
+Stage: <LOCALAPPDATA>/Temp/elite-v336-32e87d99be6448e98b47fb0febcdf2be.
 Scripts are scoped evidence harnesses, not admitted reusable pack implementations.
 Run helpers only into absent destinations; preserve each previous attempt.
 No deployment, public release/signing, global install, provider writes or ARCA.

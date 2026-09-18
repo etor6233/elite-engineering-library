@@ -1799,7 +1799,7 @@ Los tests están ligados a cada paquete y a los hashes de sus dos fuentes. La ma
 
 ## Reproducción y continuidad
 
-Stage: `C:/Users/NL/AppData/Local/Temp/elite-v374-8966287c156543bdb575918394dfd339`. Materializar cada pack a destinos ausentes. Reunir sus42rutas en un módulo aislado Go1.26.8 sólo para investigación del candidato. Para uso/composición, respetar los estados canónicos:20condicionados y1rechazado. El perfil sintético20no cambia los55planes admitidos ni el integral67/754.
+Stage: `<LOCALAPPDATA>/Temp/elite-v374-8966287c156543bdb575918394dfd339`. Materializar cada pack a destinos ausentes. Reunir sus42rutas en un módulo aislado Go1.26.8 sólo para investigación del candidato. Para uso/composición, respetar los estados canónicos:20condicionados y1rechazado. El perfil sintético20no cambia los55planes admitidos ni el integral67/754.
 
 | Recibo | SHA-256 |
 |---|---|

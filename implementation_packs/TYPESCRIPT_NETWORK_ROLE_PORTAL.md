@@ -401,7 +401,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local typed configuration, persistence, authorization, UI and orchestration glue around explicitly selected owners and fixed official SDKs; no upstream company authorship"
 license: "LicenseRef-Workspace-Owner"
-sha256: "2b34cd5a2133839e3027f5529cb0dc014c680c1ed8084fe606b0f1df348a1eaa"
+sha256: "1d0edc10239ab49c148da6274cc7fdc5d8170b5030b8971a36e89a962b83bdc4"
 variables: []
 secrets_allowed: false
 ```
@@ -415,7 +415,9 @@ secrets_allowed: false
       "scope_organization_id": "",
       "entity_id": "root-id",
       "code": "fixture-root",
-      "display_name": "Raíz <&>   interior   final",
+      "display_name": "Raíz <&> 
+ interior 
+ final",
       "type": "franchisor"
     },
     "canonical": "{\"action\":\"create-organization\",\"code\":\"fixture-root\",\"command_id\":\"root\",\"display_name\":\"Raíz \\u003c\\u0026\\u003e \\u2028 interior \\u2029 final\",\"entity_id\":\"root-id\",\"scope_organization_id\":\"\",\"type\":\"franchisor\"}",

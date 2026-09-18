@@ -18,21 +18,17 @@ license_expression: "LicenseRef-Workspace-Owner"
 verified_at: "2026-09-14"
 ```
 
-## 2. Scope and provenance
+## 2. Applicability
 
 AUTHORED integration glue reuses existing admitted React/Next and owner contracts. No Adobe, Google icon, xAI, Tesla, SpaceX or DogeOS code/assets incorporated. Candidate identity/license observations do not admit their runtime. T2804 owner extension; V402/337 source and ZIPs remain immutable.
 
-## 3. Integration contract
+## 3. Architecture contract
 
 Compose this bundle outside the canonical library with its companion pack. Run `python experience_overlay/apply_overlay.py --target . --report qualification/ui-overlay.json`. All source and before hashes must match before writes. Run again with `--verify`; rollback is automatic for ordinary write failures, not a crash-atomic multi-file transaction. The single selected CSS/token authority replaces the previous style entry only in the consumer. No parallel design runtime.
 
 Reference catalogue is opt-in `ELITE_EXPERIENCE_CATALOGUE=1`; never enable the synthetic operations route in production. Config files default empty. Bind reviewed tenant/organization/subject references in the consumer; absence is BUSINESS_CONFIGURATION_REQUIRED, not a credential claim. The quote, lead assignment, availability and checklist evidence POST boundaries repeat the reviewed selection check. Other added selectors guide UX while unchanged domain owners remain the authority for actual object/organization/business validation; the configuration is never a permission grant. Functions at /experience/reference are read-only maintenance specifications and never auth roles. Consumers bind their own owner records using the C contract binder; no maintenance state or permissions are copied into the product. /experience is a concise task entry; /franchise uses authorized sidebar areas and focus panes that retain visited operation state. Mobile navigation is a native modal dialog; exact code entry is keyboard/manual only, bound to a complete authorized supply order. Camera decoding is NOT_ADMITTED and physical reader execution is NOT_RUN. The invoice reference connects the existing document owner receive/process/review/decision flow; its binary transport is the same cloud-run-transport from owner D, not duplicated here. This UI-only bundle must be composed with D before building. See docs/DOCUMENT_EXPERIENCE_V403.md for the exact four-field, JPEG/PDF, reviewer and fixture limits. No new OCR or fiscal model is introduced.
 
-## 4. Verification and limits
-
-`pnpm install --offline --frozen-lockfile --ignore-scripts`; `pnpm exec tsc --noEmit`; focused tests in `src/design/experience.v403.test.ts`, `src/platform/experience/selection.v403.test.ts`, original command route tests; `pnpm exec next build --webpack`. Portable browser harness: `python experience_overlay/qualification/run_qualification.py --target . --evidence <local-directory> --candidate` after the standalone build. It creates ephemeral loopback keys outside source, exercises actual Next BFF against AUTHORED HTTP fixtures, and retains a hash-bound receipt. Run without --candidate to compare the captured candidates; comparison is never human approval. Browser fixture receipts and candidate screenshots are linked by FRANCHISE_EXPERIENCE_PACK_PLAN_V403. Automated contrast/reflow/keyboard do not prove screen-reader, physical phone or human acceptance. Cloud execution is NOT_RUN here.
-
-## 5. Exact file manifest
+## 4. Exact file manifest
 
 ```text
 CREATE experience_overlay/files/docs/DOCUMENT_EXPERIENCE_V403.md
@@ -97,7 +93,7 @@ CREATE experience_overlay/qualification/tests/documents.spec.mjs
 CREATE experience_overlay/qualification/tests/experience.spec.mjs
 ```
 
-## 6. Materialization blocks
+## 5. Materialization blocks
 
 ### FILE: `experience_overlay/files/docs/DOCUMENT_EXPERIENCE_V403.md`
 ```yaml
@@ -7874,4 +7870,24 @@ test('serial reader Enter never confirms a ready delivery and preserves the lite
  await context.request.post('http://127.0.0.1:4314/fixture/reset');await login(context);await page.goto('/experience/operations');const region=page.getByRole('region',{name:'Presentación de entrega',exact:true});const serial=region.getByLabel('Número de serie observado');await serial.fill('001aB');await region.getByRole('checkbox',{name:'Revisé el estado del activo'}).check();await region.getByLabel('Expediente de inspección').selectOption({label:'Inspección técnica verificada'});await expect(region.getByRole('button',{name:'Confirmar revisión',exact:true})).toBeEnabled();await serial.press('Enter');await expect(serial).toHaveValue('001aB');expect((await(await context.request.get('http://127.0.0.1:4314/fixture/stats')).json()).writes).toHaveLength(0);await serial.fill(' 001aB');expect(await serial.evaluate(node=>node.checkValidity())).toBe(false);await serial.fill('001aB');await region.getByRole('button',{name:'Confirmar revisión',exact:true}).click();const stats=await(await context.request.get('http://127.0.0.1:4314/fixture/stats')).json();expect(stats.writes).toHaveLength(1);expect(stats.completion.responses[0].response_text).toBe('001aB');
 });
 ````
+
+## 6. Configuration surface
+
+No additional configuration surface beyond overlay apply flags. BUSINESS_CONFIGURATION_REQUIRED when tenant bindings absent.
+
+## 7. Dependency bill
+
+Stacks declared in Metadata. Companion transport required before document UI build.
+
+## 8. Apply order
+
+1) materialize 2) apply_overlay.py --target . --report qualification/ui-overlay.json 3) --verify 4) install/tsc/tests/build
+
+## 9. Verification
+
+`pnpm install --offline --frozen-lockfile --ignore-scripts`; `pnpm exec tsc --noEmit`; focused tests in `src/design/experience.v403.test.ts`, `src/platform/experience/selection.v403.test.ts`, original command route tests; `pnpm exec next build --webpack`. Portable browser harness: `python experience_overlay/qualification/run_qualification.py --target . --evidence <local-directory> --candidate` after the standalone build. It creates ephemeral loopback keys outside source, exercises actual Next BFF against AUTHORED HTTP fixtures, and retains a hash-bound receipt. Run without --candidate to compare the captured candidates; comparison is never human approval. Browser fixture receipts and candidate screenshots are linked by FRANCHISE_EXPERIENCE_PACK_PLAN_V403. Automated contrast/reflow/keyboard do not prove screen-reader, physical phone or human acceptance. Cloud execution is NOT_RUN here.
+
+## 10. Reconstruction evidence
+
+Reconstruction evidence is materialization sha256 locks plus qualification receipts; this pack does not claim production admission.
 

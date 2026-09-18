@@ -1,0 +1,15 @@
+{
+  "schema": "elite-pack-finisher-receipt/v1",
+  "id": "RECEIPT_XERJ_MCP_TOPLEVEL_V403",
+  "status": "LOCAL_APPLIED_ALLOWLISTED_PENDING_VERIFY",
+  "production_authorized": false,
+  "blocker": "unknown-toplevel-.mcp.json",
+  "decision": "ADMIT_TOPLEVEL_MCP_JSON",
+  "change": {
+    "VERIFY_LIBRARY.ps1": "releaseRootMetadata += .mcp.json",
+    ".mcp.json": "portable command xerj on PATH (no Users home path)",
+    "note": "reconstruction_evidence/XERJ_MCP_WIRING_V403.md"
+  },
+  "mcp_sha256": "d0337c86d9c9f9a88fa01f915284418420639400c92309a18fbf9aa1fedc22d9",
+  "updated_at": "2026-09-18T20:18:13.723689+00:00"
+}

@@ -92,7 +92,7 @@ delta. Conservar el hallazgo original y la condición del candidato local.
 
 ## Artefactos locales verificables
 
-Stage: C:/Users/NL/AppData/Local/Temp/elite-v401-20260911-closure.
+Stage: <LOCALAPPDATA>/Temp/elite-v401-20260911-closure.
 La implementación queda en el pack canónico; los recibos locales no equivalen
 a una release portable firmada. Ningún provider, dato real o despliegue afectado.
 

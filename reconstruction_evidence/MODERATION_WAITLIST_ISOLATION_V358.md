@@ -1,7 +1,7 @@
 # V358 — aislamiento de moderación y lista de espera
 
 2026-09-09. Mantenimiento correctivo/revisión, TEST02/03. Entrada160 validada;
-integración161 y cierre162. Stage `C:/Users/NL/AppData/Local/Temp/elite-v358-3ddd304098ba458bb81f3a1218088722`. Continúa V357 en el mismo
+integración161 y cierre162. Stage `<LOCALAPPDATA>/Temp/elite-v358-3ddd304098ba458bb81f3a1218088722`. Continúa V357 en el mismo
 turno: tres cores corregidos en total, sin nuevo dominio o política de negocio.
 
 ## Antes y después observados

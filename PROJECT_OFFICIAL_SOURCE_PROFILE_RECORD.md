@@ -14,7 +14,7 @@ Derived from PROJECT_OFFICIAL_SOURCE_PROFILE_RECORD_TEMPLATE.md. V322 original r
   "selected_profiles": [
     "maintenance-package-license-evidence"
   ],
-  "profile_receipts": ["C:/Users/NL/AppData/Local/Temp/elite-v337-41c13ce2aa624c54b1d83784db789544/governed-acquisition/profile-receipts/maintenance-package-license-evidence.json"],
+  "profile_receipts": ["<LOCALAPPDATA>/Temp/elite-v337-41c13ce2aa624c54b1d83784db789544/governed-acquisition/profile-receipts/maintenance-package-license-evidence.json"],
   "external_source_lock": "PROJECT_EXTERNAL_SOURCE_LOCK.md",
   "critical_unknowns": [
         "full_runtime_and_redistribution_qualification"
@@ -323,7 +323,7 @@ ProfileSHA b09e62bfc767aaf4f10a909ca9529c3a2ef21d56d820e6d317bb51613e7f4375; loc
 
 ## V396 — adquisición separada para licencia semver-utils
 
-Histórico V337 conservado arriba y snapshot completo en C:\Users\NL\AppData\Local\Temp\elite-v396-e5a797060309431d8e37863e7f5eeea3\before\PROJECT_OFFICIAL_SOURCE_PROFILE_RECORD.md. Nueva selección desde template; no reescritura de su recibo.
+Histórico V337 conservado arriba y snapshot completo en <LOCALAPPDATA>\Temp\elite-v396-e5a797060309431d8e37863e7f5eeea3\before\PROJECT_OFFICIAL_SOURCE_PROFILE_RECORD.md. Nueva selección desde template; no reescritura de su recibo.
 
 ```json
 {
@@ -367,29 +367,29 @@ Input exacto: **Confirm public HTTPS without credentials or incremental cost; pr
 
 Estado ANSWERED; fuente user instruction/contract/probe; owner agent. Use only registry.npmjs.org public HTTPS, no credentials, purchases or provider writes. Retain exact artifact, metadata, keys, range observation and receipt. No global package or runtime replacement.
 
-Perfil C:\Users\NL\AppData\Local\Temp\elite-v396-e5a797060309431d8e37863e7f5eeea3\rebuilt2\elite_sources\source-profiles\maintenance-semver-license-quarantine.json SHA256 2b0d7ca3d3cc2d8746aade42759fb8412f9a01ef1565967a7ef78c645563c602; lock C:\Users\NL\AppData\Local\Temp\elite-v396-e5a797060309431d8e37863e7f5eeea3\rebuilt2\elite_sources\upstream-source-lock.json SHA256 943c7e1557ca5beba0215275f1c0de7bd993f4bb986fe5a65e3bdb3e74ac111e; approval C:\Users\NL\AppData\Local\Temp\elite-v396-e5a797060309431d8e37863e7f5eeea3\profile-approval.json SHA256 c45d05378960de4be7424266e4a3b539ac60fb273f851d811e0f5dd2e4368ab8. 51 archivos reconstruidos; 140 checks del transporte, perfiles y gates anteriores pasan. Producción conserva todos los blockers. Validar con apply_source_profile.ps1 antes de adquirir.
+Perfil <LOCALAPPDATA>\Temp\elite-v396-e5a797060309431d8e37863e7f5eeea3\rebuilt2\elite_sources\source-profiles\maintenance-semver-license-quarantine.json SHA256 2b0d7ca3d3cc2d8746aade42759fb8412f9a01ef1565967a7ef78c645563c602; lock <LOCALAPPDATA>\Temp\elite-v396-e5a797060309431d8e37863e7f5eeea3\rebuilt2\elite_sources\upstream-source-lock.json SHA256 943c7e1557ca5beba0215275f1c0de7bd993f4bb986fe5a65e3bdb3e74ac111e; approval <LOCALAPPDATA>\Temp\elite-v396-e5a797060309431d8e37863e7f5eeea3\profile-approval.json SHA256 c45d05378960de4be7424266e4a3b539ac60fb273f851d811e0f5dd2e4368ab8. 51 archivos reconstruidos; 140 checks del transporte, perfiles y gates anteriores pasan. Producción conserva todos los blockers. Validar con apply_source_profile.ps1 antes de adquirir.
 
-V396 acquisition observed: VALIDATE PASS, ACQUIRED, PRESENT rehash PASS. Receipt C:\Users\NL\AppData\Local\Temp\elite-v396-e5a797060309431d8e37863e7f5eeea3\governed-acquisition\profile-receipts\maintenance-semver-license-quarantine.json. Status ACQUIRED / QUARANTINED_NOT_ADMITTED. All blockers preserved; no install or execution.
+V396 acquisition observed: VALIDATE PASS, ACQUIRED, PRESENT rehash PASS. Receipt <LOCALAPPDATA>\Temp\elite-v396-e5a797060309431d8e37863e7f5eeea3\governed-acquisition\profile-receipts\maintenance-semver-license-quarantine.json. Status ACQUIRED / QUARANTINED_NOT_ADMITTED. All blockers preserved; no install or execution.
 
 V402306: Existing Google Merchant source profile reused for user-authorized local fixtures; purpose/data/zero live writes explicit in merchant-connected-admission.json. No account/key/billing action asked or inferred. MERCHANT_CONNECTED_RELEASE_V402.md/json.
 
 ## V402 / T2803 — fixed pnpm license inspection, before acquisition
 
-Status DISCOVERY_METADATA_ONLY. Profile C:\Users\NL\AppData\Local\Temp\elite-v402-library-infra\pnpm-current-closure\license-profile.json; exact467component inspection-setSHA256 e1414ae5320a07257335ce0e905655db247ba1dded7440c8b28d7608631b54de. Required inputs answered by the agent under existing user authorization in C:\Users\NL\AppData\Local\Temp\elite-v402-library-infra\pnpm-current-closure\license-profile-answers.json. This is an independent bounded inspection profile using the existing registry/SRI primitives, not authorization from the semver-only npm quarantine transport. No package installation/execution, credential, spending or runtime/redistribution promotion. First obtain only exact public URL header sizes; subsequent frozen quarantine requires validation and retained receipts. Native/source/SCA/license obligations remain open.
+Status DISCOVERY_METADATA_ONLY. Profile <LOCALAPPDATA>\Temp\elite-v402-library-infra\pnpm-current-closure\license-profile.json; exact467component inspection-setSHA256 e1414ae5320a07257335ce0e905655db247ba1dded7440c8b28d7608631b54de. Required inputs answered by the agent under existing user authorization in <LOCALAPPDATA>\Temp\elite-v402-library-infra\pnpm-current-closure\license-profile-answers.json. This is an independent bounded inspection profile using the existing registry/SRI primitives, not authorization from the semver-only npm quarantine transport. No package installation/execution, credential, spending or runtime/redistribution promotion. First obtain only exact public URL header sizes; subsequent frozen quarantine requires validation and retained receipts. Native/source/SCA/license obligations remain open.
 
 V402 T2803 metadata refinement: registry HEAD has no size. Range0-0 probe proved HTTP206, exactly1byte and a total length. Existing public read-only authorization covers this finite discovery; preserve original HEAD receipts and range-contract-probe.json. No complete artifact acquired or source admitted. Next use one-byte ranges on the same467fixed URLs; sizes freeze the quarantine lock.
 
-V402 T2803 license supplements: bounded fixed metadata-commit LICENSE/build metadata and pnpm/components commit/tree discovery. Profile C:\Users\NL\AppData\Local\Temp\elite-v402-library-infra\pnpm-current-closure\license-supplement-profile.json SHA256 5cdf53dc20df34ec2252ea4573ef5a5807fcef91def54c596146d4b2fc388f92. Existing authorization; no execution or adoption.
+V402 T2803 license supplements: bounded fixed metadata-commit LICENSE/build metadata and pnpm/components commit/tree discovery. Profile <LOCALAPPDATA>\Temp\elite-v402-library-infra\pnpm-current-closure\license-supplement-profile.json SHA256 5cdf53dc20df34ec2252ea4573ef5a5807fcef91def54c596146d4b2fc388f92. Existing authorization; no execution or adoption.
 
-V402 T2803 nested OpenPGP eight archives: C:\Users\NL\AppData\Local\Temp\elite-v402-library-infra\pnpm-current-closure\nested-source-profile.json SHA256 ebc15fbffbad6b28e4b47f3e78ff1e9f66a89f807b577f0d56ebf1057c454bf9. Exact official lock/SHA512; bounded quarantine, no source execution or runtime promotion.
+V402 T2803 nested OpenPGP eight archives: <LOCALAPPDATA>\Temp\elite-v402-library-infra\pnpm-current-closure\nested-source-profile.json SHA256 ebc15fbffbad6b28e4b47f3e78ff1e9f66a89f807b577f0d56ebf1057c454bf9. Exact official lock/SHA512; bounded quarantine, no source execution or runtime promotion.
 
-V402 T2803 fixed llhttp metadata/source and component license inspection: C:\Users\NL\AppData\Local\Temp\elite-v402-library-infra\pnpm-current-closure\nested-authority-profile.json SHA256 431e7d038557931410de89e25e3bbaebb026e64197b35b6d03e8ab4a006d342b. Existing user scope, no execution/admission.
+V402 T2803 fixed llhttp metadata/source and component license inspection: <LOCALAPPDATA>\Temp\elite-v402-library-infra\pnpm-current-closure\nested-authority-profile.json SHA256 431e7d038557931410de89e25e3bbaebb026e64197b35b6d03e8ab4a006d342b. Existing user scope, no execution/admission.
 
-V402 T2803 payment metadata only: C:\Users\NL\AppData\Local\Temp\elite-v402-library-infra\composition-security-311\payment-metadata-profile.json SHA256 6ad1c119a5edf92d2aa0f636bed8899516b0c848ccc1b48a6a5f40be07ffac4e. Two fixed Go metadata responses checked against existing go.sum h1; no new package version or code execution.
+V402 T2803 payment metadata only: <LOCALAPPDATA>\Temp\elite-v402-library-infra\composition-security-311\payment-metadata-profile.json SHA256 6ad1c119a5edf92d2aa0f636bed8899516b0c848ccc1b48a6a5f40be07ffac4e. Two fixed Go metadata responses checked against existing go.sum h1; no new package version or code execution.
 
-V402 exact .info metadata correction: C:\Users\NL\AppData\Local\Temp\elite-v402-library-infra\composition-security-311\payment-info-profile.json SHA256 73d680445e99e026984c673526359f22c5a044f9cbe1de90bf75260dfea2233b. Version/date discovery only; existing h1 metadata validated; no source acquisition or execution.
+V402 exact .info metadata correction: <LOCALAPPDATA>\Temp\elite-v402-library-infra\composition-security-311\payment-info-profile.json SHA256 73d680445e99e026984c673526359f22c5a044f9cbe1de90bf75260dfea2233b. Version/date discovery only; existing h1 metadata validated; no source acquisition or execution.
 
-V402 T2803 current-composition DevSkim runtime profile: C:\Users\NL\AppData\Local\Temp\elite-v402-library-infra\composition-security-311\devskim-runtime-profile.json SHA256 40c0b761cf88074ad0c5969320bf976c11059ca4d0184ed181fed649970fafbf. Reuse exact admitted owner; retain runtime/manifest this time. User maintenance authorization, no live secrets.
+V402 T2803 current-composition DevSkim runtime profile: <LOCALAPPDATA>\Temp\elite-v402-library-infra\composition-security-311\devskim-runtime-profile.json SHA256 40c0b761cf88074ad0c5969320bf976c11059ca4d0184ed181fed649970fafbf. Reuse exact admitted owner; retain runtime/manifest this time. User maintenance authorization, no live secrets.
 
 V402 / FAIL925 exact .NET10.0.400 SDK recovery. Profile composition-security-311/dotnet-recovery-profile.json binds Microsoft official release metadata SHA and exact ZIP SHA512 before acquisition. Same-version isolated restoration, not a version upgrade; old SDK retained.
 

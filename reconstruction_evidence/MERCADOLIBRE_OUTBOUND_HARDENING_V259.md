@@ -74,7 +74,7 @@ Registro estructurado; los resultados detallados corresponden a los comandos eje
       "stopped": true
     },
     "roundtrip": "3/3 identical",
-    "target_directory": "C:/Users/NL/AppData/Local/Temp/elite-v259-ecad69896f04440fb45b03ac3f87d17a/after"
+    "target_directory": "<LOCALAPPDATA>/Temp/elite-v259-ecad69896f04440fb45b03ac3f87d17a/after"
   },
   "production_ready": false,
   "library_verifier": {"result": "VERIFY_LIBRARY_PASS", "exit_code": 0, "packs": 160, "materialized_files": 1395, "markdown_files": 692},

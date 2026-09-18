@@ -2,7 +2,7 @@
   "results": [
     {
       "source": {
-        "path": "C:/Users/NL/AppData/Local/Temp/elite-v402-library-infra/composition-security-311/scan/exact-go-python.cdx.json",
+        "path": "<LOCALAPPDATA>/Temp/elite-v402-library-infra/composition-security-311/scan/exact-go-python.cdx.json",
         "type": "sbom"
       },
       "packages": [
@@ -799,7 +799,7 @@
     },
     {
       "source": {
-        "path": "C:/Users/NL/AppData/Local/Temp/elite-v402-library-infra/composition-security-311/scan/pnpm-0/pnpm-lock.yaml",
+        "path": "<LOCALAPPDATA>/Temp/elite-v402-library-infra/composition-security-311/scan/pnpm-0/pnpm-lock.yaml",
         "type": "lockfile"
       },
       "packages": [
@@ -1661,7 +1661,7 @@
     },
     {
       "source": {
-        "path": "C:/Users/NL/AppData/Local/Temp/elite-v402-library-infra/composition-security-311/scan/pnpm-1/pnpm-lock.yaml",
+        "path": "<LOCALAPPDATA>/Temp/elite-v402-library-infra/composition-security-311/scan/pnpm-1/pnpm-lock.yaml",
         "type": "lockfile"
       },
       "packages": [
@@ -1697,7 +1697,7 @@
     },
     {
       "source": {
-        "path": "C:/Users/NL/AppData/Local/Temp/elite-v402-library-infra/composition-security-311/scan/pnpm-2/pnpm-lock.yaml",
+        "path": "<LOCALAPPDATA>/Temp/elite-v402-library-infra/composition-security-311/scan/pnpm-2/pnpm-lock.yaml",
         "type": "lockfile"
       },
       "packages": [

@@ -1,7 +1,7 @@
 # V356 — aritmética de puntos básicos y neto sin overflow
 
 2026-09-09. Mantenimiento correctivo/revisión TEST02, T2802. Entrada156
-validada; integración157 y cierre158 posteriores. Stage `C:/Users/NL/AppData/Local/Temp/elite-v356-558d2ce3a1ec4275aa11a16eafd3715c`.
+validada; integración157 y cierre158 posteriores. Stage `<LOCALAPPDATA>/Temp/elite-v356-558d2ce3a1ec4275aa11a16eafd3715c`.
 No reglas comerciales/laborales/fiscales nuevas ni cuentas, documentos o efectos.
 
 ## Defectos reproducidos

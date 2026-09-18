@@ -1,7 +1,7 @@
 # V355 — API de recordatorios con tenant explícito
 
 2026-09-09. Mantenimiento correctivo/revisión, TEST02/03 y T2802/T2805/T2809.
-Entrada154 validada; integración155 y cierre156. Stage `C:/Users/NL/AppData/Local/Temp/elite-v355-9b316eaf126843548066c004205b8276`.
+Entrada154 validada; integración155 y cierre156. Stage `<LOCALAPPDATA>/Temp/elite-v355-9b316eaf126843548066c004205b8276`.
 No nuevo producto, cuenta, provider, datos reales, política comercial o envío.
 
 ## Defecto reproducido y reparación

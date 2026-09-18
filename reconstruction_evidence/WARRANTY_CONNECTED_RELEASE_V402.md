@@ -73,5 +73,5 @@ compatible. Las condiciones globales siguen visibles; no se disfraza código
 faltante como falta de credenciales. La UI pertenece al siguiente owner T2804.
 
 Manifest de archivos/fuentes/delta/receipts: WARRANTY_CONNECTED_RELEASE_V402.json.
-Referencia externa: C:/Users/NL/AppData/Local/Temp/elite-v402-library-infra/warranty-admitted-reference.
+Referencia externa: <LOCALAPPDATA>/Temp/elite-v402-library-infra/warranty-admitted-reference.
 Destino durable y release firmado siguen T2810; producción no autorizada.

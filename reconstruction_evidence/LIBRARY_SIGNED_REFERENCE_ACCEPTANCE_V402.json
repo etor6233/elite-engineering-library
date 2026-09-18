@@ -358,7 +358,7 @@
     ],
     "private_installer_redistributed": false,
     "existing_signed_source_config_modified": false,
-    "stable_existing_go_mod_cache": "C:/Users/NL/go/pkg/mod",
+    "stable_existing_go_mod_cache": "<USERPROFILE>/go/pkg/mod",
     "stable_existing_node_store": "C:\\Users\\NL\\AppData\\Local\\pnpm\\store",
     "note": "Local machine build inputs preserved outside Temp. Exact original admission/locks still apply; installer bundle remains private and excluded from release ZIP. Copy template only to a new independent materialization and set an absent run_root."
   },

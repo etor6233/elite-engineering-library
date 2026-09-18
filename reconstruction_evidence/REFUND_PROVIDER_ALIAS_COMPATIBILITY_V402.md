@@ -69,7 +69,7 @@ Pack anterior0.1.5 SHA `8d81308a434615f9d8e6de9225e0b2b0aaaae8e3186dff4c00f46b92
 | `return_refund_worker/internal/refundworker/postgres_integration_test.go` | `1156f3214404c84d646d87033886869b814b339a0588ee327067e170726d0b36` | `f20113caa74aadd0a3fb28b94ecaf45c6cc49656dd2e7376bafd054b694e5d13` |
 | `return_refund_worker/internal/refundworker/provider_alias_integration_test.go` | `NEW` | `4a3a9d2b9ef20ac08006926b3ed48a5d7009171f14dcc700f8e46cf906626fc9` |
 
-Receipts fuera de distribución, bajo `C:/Users/NL/AppData/Local/Temp/elite-v402-library-infra`:
+Receipts fuera de distribución, bajo `<LOCALAPPDATA>/Temp/elite-v402-library-infra`:
 
 | Receipt | SHA-256 |
 |---|---|

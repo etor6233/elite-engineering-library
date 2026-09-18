@@ -3,7 +3,7 @@
 Fecha:2026-09-09. Mantenimiento correctivo/revisión; continuación de TEST02,
 T2802 y auditoría V293. Entrada152 validada. No nuevo producto, owner financiero,
 capability, dependencia ni autoridad comercial asumida.
-Stage: `C:/Users/NL/AppData/Local/Temp/elite-v354-fab8f124d0124c95b4906f8350cac023`. Checkpoint153 registra integración; cierre154 posterior.
+Stage: `<LOCALAPPDATA>/Temp/elite-v354-fab8f124d0124c95b4906f8350cac023`. Checkpoint153 registra integración; cierre154 posterior.
 
 ## Resultado observado
 

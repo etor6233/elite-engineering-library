@@ -42,7 +42,7 @@ Integrated154-step Preflight follows checkpoint107. Inventory expected162packs,
 1459files/773Markdown/53profiles; standalone selection profile1/6, franchise67/746.
 No new product code, global install, release/signature, provider effects or ARCA.
 
-Stage: C:/Users/NL/AppData/Local/Temp/elite-v335-52739a31121c471a94ef0e420809407c.
+Stage: <LOCALAPPDATA>/Temp/elite-v335-52739a31121c471a94ef0e420809407c.
 Failed retries are preserved; do not rerun mutation helpers into existing targets.
 
 | Evidence | SHA256 |

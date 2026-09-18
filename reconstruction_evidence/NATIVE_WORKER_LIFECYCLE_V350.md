@@ -67,7 +67,7 @@ runtime, dependency admission or product/profile promotion. No race-detector or
 production durability/security claim. Finite fuzz targets canonical handle text,
 not arbitrary live OS handles or business data; SAST/DAST/target gates remain open.
 
-Stage: C:/Users/NL/AppData/Local/Temp/elite-v350-a3669c125ee548bfb3e8d8717ef46234.
+Stage: <LOCALAPPDATA>/Temp/elite-v350-a3669c125ee548bfb3e8d8717ef46234.
 Materialize refund0.1.4 anew, add the three qualification Go files below to its
 cmd/return-refund-worker directory and build a test binary. Reuse seven unchanged
 V345/V347/V348/V349 native qualification files and the strengthened capture test below, add the Python suite below, and

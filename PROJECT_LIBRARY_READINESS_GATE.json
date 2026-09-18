@@ -92,11 +92,11 @@
       "id": "daybreak-libxml2",
       "kind": "DAYBREAK_LIBXML2",
       "control": "T2803",
-      "reason": "Exact user-deferred native branch; excluded from local infrastructure acceptance",
-      "trigger": "Explicit user request for this branch and permitted access",
+      "reason": "Owner GO B defer-doc; substance incomplete; excluded from local infrastructure acceptance; no project OK for daybreak/libxml2",
+      "trigger": "Official sources + portable receipts in repo + permitted access → G0-G8",
       "evidence": {
         "path": "reconstruction_evidence/LIBRARY_DAYBREAK_DEFERRED_V402.json",
-        "sha256": "cac268212f9badeb8527727363622c1bf35e7c00eed60e0a3e95a3a238f71f51"
+        "sha256": "b89e3574cde5d7b358e6b296f4617c2398da3579011f92652696ac4c240d6696"
       },
       "code_complete": false,
       "local_receipt": null

@@ -62,7 +62,7 @@ Hashes SHA-256 observados de ejecutables, no de sus árboles completos:
 - psql: `1e23b7f9ac7649b4717ada9b1f4e1b5b66c343937b6a91583f63528b96a61503`.
 
 Artefactos diagnósticos locales en
-`C:/Users/NL/AppData/Local/Temp/elite-v286-cebbc9e894bc412faad1bfb95413262f/`:
+`<LOCALAPPDATA>/Temp/elite-v286-cebbc9e894bc412faad1bfb95413262f/`:
 
 - `real-tools.json`: `9c0b3e96e3d5a8c8eaa38f8c461a64c585f31bc99391d03d8f96a1a944d2663b`;
 - `clean-tests-final.log`: `1ce317d57e585594d93584a0f21cc3bcde024762679e441fc04a319c2cdc679c`;

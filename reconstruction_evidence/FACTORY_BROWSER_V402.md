@@ -12,7 +12,7 @@ Corrección del inventario: sí hay alta acotada de recurso employee/contractor 
 
 ## Receipts exactos
 
-Stage `C:/Users/NL/AppData/Local/Temp/elite-v402-library-infra`.
+Stage `<LOCALAPPDATA>/Temp/elite-v402-library-infra`.
 
 | Receipt | SHA-256 |
 |---|---|
