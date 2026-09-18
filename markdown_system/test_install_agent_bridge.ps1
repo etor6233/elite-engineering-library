@@ -87,9 +87,25 @@ try {
   Assert-True (-not (Test-Path -LiteralPath (Join-Path $claudeOnly 'AGENTS.md'))) 'Claude-only created AGENTS'
   Assert-True (-not (Test-Path -LiteralPath (Join-Path $claudeOnly '.agents'))) 'Claude-only created Codex skill'
 
+  $grokOnly = New-TestProject 'grok-only'
+  [void](Invoke-Installer $grokOnly 'Grok')
+  Assert-True (Test-Path -LiteralPath (Join-Path $grokOnly 'AGENTS.md')) 'Grok-only did not create AGENTS'
+  Assert-True (Test-Path -LiteralPath (Join-Path $grokOnly '.grok/skills/elite-engineering-library/SKILL.md')) 'Grok-only did not create Grok skill'
+  $grokSkillOnly = [IO.File]::ReadAllText((Join-Path $grokOnly '.grok/skills/elite-engineering-library/SKILL.md'), $utf8)
+  Assert-True ($grokSkillOnly.Contains('PACK_PER_CLAIM_INDEX.md', [StringComparison]::Ordinal)) 'Grok skill does not route pack-per-claim index'
+  Assert-True ($grokSkillOnly.Contains('Do not load wholesale', [StringComparison]::Ordinal)) 'Grok skill omits wholesale guard'
+  Assert-True (-not (Test-Path -LiteralPath (Join-Path $grokOnly 'CLAUDE.md'))) 'Grok-only created CLAUDE'
+  Assert-True (-not (Test-Path -LiteralPath (Join-Path $grokOnly '.agents'))) 'Grok-only created Codex skill'
+
+  $allAgents = New-TestProject 'all-agents'
+  [void](Invoke-Installer $allAgents 'All')
+  foreach ($path in @('AGENTS.md','CLAUDE.md','.agents/skills/elite-engineering-library/SKILL.md','.claude/skills/elite-engineering-library/SKILL.md','.grok/skills/elite-engineering-library/SKILL.md')) {
+    Assert-True (Test-Path -LiteralPath (Join-Path $allAgents $path) -PathType Leaf) "All-agents missing: $path"
+  }
+
   $vendored = New-TestProject 'vendored-library'
   $vendoredLibrary = Join-Path $vendored 'tools/elite-engineering-library'
-  foreach ($required in @('AGENTS.md','AGENT_SYSTEM_START.md','START_ANY_PROJECT.md','VERIFY_EXECUTABLE_LIBRARY.ps1','markdown_system/PROJECT_START_READINESS_GATE.md','markdown_system/CAPABILITY_CATALOG.md')) {
+  foreach ($required in @('AGENTS.md','GROK_AGENT_ENTRY.md','AGENT_SYSTEM_START.md','START_ANY_PROJECT.md','VERIFY_EXECUTABLE_LIBRARY.ps1','markdown_system/PROJECT_START_READINESS_GATE.md','markdown_system/CAPABILITY_CATALOG.md','markdown_system/PACK_PER_CLAIM_INDEX.md')) {
     $target = Join-Path $vendoredLibrary $required
     [void](New-Item -ItemType Directory -Path (Split-Path -Parent $target) -Force)
     [IO.File]::WriteAllText($target, "fixture for $required`n", $utf8)
@@ -128,7 +144,7 @@ try {
   if ($IsWindows) {
     & (Join-Path $PSScriptRoot 'test_agent_bridge_safety.ps1') -LibraryRoot $libraryRoot
   } else { Write-Warning 'Windows file-sharing rollback safety suite not executed on this host' }
-  Write-Output 'PASS: install_agent_bridge preserves existing instructions, installs Codex/Claude progressive context without Git, is idempotent, enforces 32 KiB, rejects conflicts before writing and restores file bytes on tested write failures'
+  Write-Output 'PASS: install_agent_bridge preserves existing instructions, installs Codex/Claude/Grok progressive context without Git, is idempotent, enforces 32 KiB, rejects conflicts before writing and restores file bytes on tested write failures'
 } finally {
   if (Test-Path -LiteralPath $tempRoot) {
     $resolved = [IO.Path]::GetFullPath($tempRoot)

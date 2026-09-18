@@ -1,6 +1,6 @@
 # Elite Engineering Library
 
-Biblioteca Markdown portable para que Codex, Claude Code u otro agente diseñe, componga y materialice sistemas verificables sin imponer un backend TypeScript ni copiar código público sin admisión.
+Biblioteca Markdown portable para que Codex, Claude Code, Grok Build u otro agente diseñe, componga y materialice sistemas verificables sin imponer un backend TypeScript ni copiar código público sin admisión.
 
 ## Referencia de infraestructura V402
 
@@ -36,9 +36,9 @@ pwsh -NoProfile -File .\INSTALL_AGENT_BRIDGE.ps1 -ProjectRoot .\projects\mi-proy
 pwsh -NoProfile -File .\tools\elite-engineering-library\INSTALL_AGENT_BRIDGE.ps1 -ProjectRoot . -Agent Both
 ```
 
-3. Abrir el agente en la raíz del proyecto y formular el objetivo. Codex encontrará `AGENTS.md` y `.agents/skills/elite-engineering-library/SKILL.md`; Claude Code encontrará el import administrado en `CLAUDE.md` y `.claude/skills/elite-engineering-library/SKILL.md`.
+3. Abrir el agente en la raíz del proyecto y formular el objetivo. Codex encontrará `AGENTS.md` y `.agents/skills/elite-engineering-library/SKILL.md`; Claude Code encontrará el import administrado en `CLAUDE.md` y `.claude/skills/elite-engineering-library/SKILL.md`; Grok Build encontrará `GROK_AGENT_ENTRY.md` y `.grok/skills/elite-engineering-library/SKILL.md`.
 
-Repetir el comando actualiza sólo el bloque administrado y es byte-idempotente si la ubicación no cambió. Un bloque incompleto, una Skill homónima ajena o un `AGENTS.md` resultante mayor de 32 KiB se rechazan antes de escribir. Para previsualizar sin mutar usar `-WhatIf`; para instalar sólo uno de los dos agentes usar `-Agent Codex` o `-Agent Claude`.
+Repetir el comando actualiza sólo el bloque administrado y es byte-idempotente si la ubicación no cambió. Un bloque incompleto, una Skill homónima ajena o un `AGENTS.md` resultante mayor de 32 KiB se rechazan antes de escribir. Para previsualizar sin mutar usar `-WhatIf`; para instalar un agente usar `-Agent Codex`, `Claude`, `Grok`, `Both` (Codex+Claude) o `All`.
 
 Claude Code puede solicitar una aprobación la primera vez que un `CLAUDE.md` importa un archivo externo al proyecto; esa aprobación debe concederse en la interfaz para habilitar el import y no se sustituye con texto. El bridge y las Skills son orquestación local `AUTHORED`, basada en los mecanismos oficiales de descubrimiento/progressive disclosure de OpenAI y Anthropic; no se presentan como código de producto de esas empresas ni como sustituto de los packs admitidos.
 

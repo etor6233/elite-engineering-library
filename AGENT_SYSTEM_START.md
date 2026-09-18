@@ -33,7 +33,8 @@ que no se monta/ejecuta, no sólo un flag visual. No certificar adapter por toke
 
 - Codex: el `AGENTS.md` raíz descubre este archivo mediante su orden obligatorio.
 - Claude Code: `CLAUDE.md` importa `AGENTS.md`, conservando una autoridad compartida.
-- Otro agente: se le indica explícitamente que lea `AGENTS.md` y este archivo antes de actuar.
+- Grok Build: `GROK_AGENT_ENTRY.md` y `.grok/skills/elite-engineering-library/SKILL.md` con divulgación progresiva (`AGENTS.md` índice → un mapa → un pack).
+- Otro agente: se le indica explícitamente que lea `AGENTS.md` y las secciones pertinentes de este archivo antes de actuar.
 
 Cuando la biblioteca no es la raíz del proyecto, instalar el bridge con `INSTALL_AGENT_BRIDGE.ps1`. Crea las Skills `.agents/skills/elite-engineering-library/SKILL.md` para Codex y `.claude/skills/elite-engineering-library/SKILL.md` para Claude: los agentes descubren metadata breve y cargan el workflow al activarlo. Sin raíz Git, iniciar Codex desde la raíz exacta del proyecto; la detección oficial de instrucciones sólo consulta el directorio actual cuando no encuentra una raíz de proyecto. Claude puede exigir aprobación la primera vez que el import apunta fuera del proyecto; hasta concederla, el agente no debe afirmar que recibió la autoridad Elite.
 
