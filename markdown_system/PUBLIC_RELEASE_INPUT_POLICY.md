@@ -253,6 +253,7 @@ it is not another composition plan. Existing version/path/collision checks remai
     "PNPM_LOCAL_RUNTIME_V402.json",
     "PORTABLE_SELECTOR_REPAIR_V402.json",
     "PRIVATE_LOCALE_RELEASE_V402.json",
+    "RECEIPT_MACHINE_LOCAL_HOME_PATH_V403.json",
     "REFERENCE_NOTICES_ADMISSION_V402.json",
     "REFERENCE_NOTICES_LINT_V402.json",
     "REFERENCE_NOTICES_PROVENANCE_V402.json",
