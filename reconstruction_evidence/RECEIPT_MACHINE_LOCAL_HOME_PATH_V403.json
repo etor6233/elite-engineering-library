@@ -1,0 +1,24 @@
+{
+  "schema": "elite-pack-finisher-receipt/v1",
+  "id": "FIX-machine-local-home-path-V403-controller",
+  "status": "LOCAL_APPLIED_ALLOWLISTED_PENDING_VERIFY",
+  "production_authorized": false,
+  "blocker": "machine-local-home-path",
+  "file": "implementation_packs/FRANCHISE_CLOUD_EXECUTION_V403.md",
+  "change": {
+    "from": "image-default SDK profile home (+ CLOUDSDK_CONFIG under it)",
+    "to": "/app/.home (+ CLOUDSDK_CONFIG=/app/.home/.config/gcloud)",
+    "chown": "1000:1000 matching existing USER of GCLOUD_RUNTIME controller image (not inventing new UID)",
+    "block_sha256": "3e4697df48cfd84c7431569102bf0b578e3f7eeb36b85bceeefa0faf09c70982",
+    "basis": "elite-scout OK /app/.home; CONTAINER_PACKAGING_CORE portable app paths; no /home/<user>"
+  },
+  "workshop_path": "<WORKSHOP>/<LIBRARY_ROOT>/implementation_packs/FRANCHISE_CLOUD_EXECUTION_V403.md",
+  "pack_sha256": "pending-after-library-materialization",
+  "github_sync": "applied in elite-engineering-library",
+  "next": "verifier re-smoke VERIFY_LIBRARY + VERIFY_EXECUTABLE_LIBRARY on portable checkout",
+  "snippet_L180_L192": "RUN ... mkdir -p /app /app/.home/.config/gcloud && chown -R 1000:1000 /app/.home\nENV HOME=/app/.home CLOUDSDK_CONFIG=/app/.home/.config/gcloud ...\nUSER 1000:1000",
+  "updated_at": "2026-09-18T20:15:00+00:00",
+  "receipt_id": "RECEIPT_MACHINE_LOCAL_HOME_PATH_V403",
+  "admitted_as": "reconstruction_evidence/RECEIPT_MACHINE_LOCAL_HOME_PATH_V403.json",
+  "supersedes_local_name": "RECEIPT_machine-local-home-path_V403.json"
+}
