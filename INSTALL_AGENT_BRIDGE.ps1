@@ -5,7 +5,7 @@ param(
   [Parameter(Mandatory = $true)]
   [string] $ProjectRoot,
   [string] $LibraryRoot = $PSScriptRoot,
-  [ValidateSet('Codex','Claude','Both')]
+  [ValidateSet('Codex','Claude','Grok','Both','All')]
   [string] $Agent = 'Both'
 )
 
@@ -113,7 +113,7 @@ $library = Resolve-ExistingDirectory $LibraryRoot 'LibraryRoot'
 $comparison = if ($IsWindows) { [StringComparison]::OrdinalIgnoreCase } else { [StringComparison]::Ordinal }
 if ($project.Equals($library, $comparison)) { Fail 'ProjectRoot and LibraryRoot must be different directories' }
 
-foreach ($required in @('AGENTS.md','AGENT_SYSTEM_START.md','START_ANY_PROJECT.md','VERIFY_EXECUTABLE_LIBRARY.ps1','markdown_system/PROJECT_START_READINESS_GATE.md','markdown_system/CAPABILITY_CATALOG.md')) {
+foreach ($required in @('AGENTS.md','GROK_AGENT_ENTRY.md','AGENT_SYSTEM_START.md','START_ANY_PROJECT.md','VERIFY_EXECUTABLE_LIBRARY.ps1','markdown_system/PROJECT_START_READINESS_GATE.md','markdown_system/CAPABILITY_CATALOG.md','markdown_system/PACK_PER_CLAIM_INDEX.md')) {
   if (-not (Test-Path -LiteralPath (Join-Path $library $required) -PathType Leaf)) { Fail "LibraryRoot is incomplete; missing $required" }
 }
 
@@ -126,10 +126,11 @@ $begin
 ## Elite Engineering Library
 
 - Biblioteca de autoridad: ``$relativeLibrary``.
-- Para iniciar, continuar, diseñar, implementar, revisar o recuperar este sistema, usa la Skill ``elite-engineering-library`` y lee primero ``$relativeLibrary/AGENTS.md`` y ``$relativeLibrary/AGENT_SYSTEM_START.md``.
-- Ejecuta su readiness gate y preflight; antes de cada ronda usa el renderer de asesoramiento, explica el prompt y registra la respuesta real. No escribas producto hasta ``READY_TO_BUILD``. Después avanza autónomamente con los packs y fuentes admitidos.
+- **Codex / Claude:** Skill ``elite-engineering-library``. **Grok:** ``$relativeLibrary/GROK_AGENT_ENTRY.md`` y ``.grok/skills/elite-engineering-library/SKILL.md``.
+- Lee ``$relativeLibrary/AGENTS.md`` como índice; elige **un** mapa y **un** pack por claim en ``$relativeLibrary/markdown_system/PACK_PER_CLAIM_INDEX.md``. No cargues ``AGENT_SYSTEM_START.md``, ``PROJECT_PACK_PLAN.md`` ni ``reconstruction_evidence/`` por defecto.
+- Ejecuta readiness gate y preflight cuando corresponda; no escribas producto hasta ``READY_TO_BUILD``. Busca en la biblioteca primero; si falta, escala — no inventes fuentes ni admisión.
 - No cargues toda la biblioteca ni atribuyas al upstream código local ``AUTHORED``. No inventes reglas, accesos, licencias, resultados de tests ni garantías.
-- Si este proyecto no tiene raíz Git, inicia Codex desde esta raíz: la detección oficial sólo consulta el directorio actual cuando no encuentra una raíz de proyecto.
+- Sin raíz Git, inicia Codex o Grok desde esta raíz del proyecto.
 $end
 "@
 
@@ -167,20 +168,72 @@ The library root is ``$relativeLibrary`` relative to the project root. Treat it 
 This Skill and bridge are local ``AUTHORED`` orchestration based on OpenAI's official AGENTS.md discovery and progressive-disclosure Skill mechanisms. They are not upstream product code. Product code may come only from a compatible implementation pack or exact official source admitted by the library, with its own revision, hash, license, conditions and target verification.
 "@
 
-$plan = [Collections.Generic.List[object]]::new()
-$installCodex = $Agent -in @('Codex','Both')
-$installClaude = $Agent -in @('Claude','Both')
+$grokSkill = @"
+---
+name: elite-engineering-library
+description: Start or continue a project that explicitly uses the Elite Engineering Library. Use for admitted packs, gates, contracts, or official sources — not for unrelated work.
+metadata:
+  short-description: Elite library progressive entry
+---
 
-if ($installCodex) {
+$skillMarker
+
+# Elite Engineering Library (Grok)
+
+Library root: ``$relativeLibrary`` (read-only). Write project artifacts in the project root.
+
+## Progressive disclosure — this order only
+
+1. **This skill** (here).
+2. **``$relativeLibrary/AGENTS.md``** — index; do not read the whole corpus.
+3. **One map** — pick exactly one:
+   - AI / ML / agents → ``$relativeLibrary/AI_ENGINEERING_MASTER_MAP.md``
+   - systems / platform → ``$relativeLibrary/SYSTEMS_ENGINEERING_MASTER_MAP.md``
+4. **One pack** — ``$relativeLibrary/markdown_system/PACK_PER_CLAIM_INDEX.md`` for your narrow claim.
+
+## Do not load wholesale
+
+- ``$relativeLibrary/AGENT_SYSTEM_START.md`` (open targeted sections only when a gate requires it)
+- ``PROJECT_PACK_PLAN.md`` or ``$relativeLibrary/markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md``
+- ``$relativeLibrary/reconstruction_evidence/``
+- all of ``$relativeLibrary/implementation_packs/``
+
+## Search first; escalate if missing
+
+Search the library for the capability, pack, contract, or gate. If absent or blocked, escalate with evidence — do not invent sources, packs, tests, or admission status.
+
+## Pack-per-claim
+
+Materialize **one** admitted pack per claim. Check one row in ``$relativeLibrary/markdown_system/CAPABILITY_CATALOG.md``. ``DISCOVERED|LICENSE_VERIFIED|CANDIDATE|CONDITIONED`` do not authorize production. No compatible pack: ``$relativeLibrary/implementation_packs/CAPABILITY_GAP_RESOLUTION_GATE.md``.
+
+## Provenance
+
+Local ``AUTHORED`` orchestration for Grok Build progressive disclosure. Not upstream xAI product code.
+"@
+
+$plan = [Collections.Generic.List[object]]::new()
+$installCodex = $Agent -in @('Codex','Both','All')
+$installClaude = $Agent -in @('Claude','Both','All')
+$installGrok = $Agent -in @('Grok','All')
+$installAgentsMd = $installCodex -or $installGrok
+
+if ($installAgentsMd) {
   $agentsPath = Join-Path $project 'AGENTS.md'
   $agentsExisting = if (Test-Path -LiteralPath $agentsPath -PathType Leaf) { Read-Utf8 $agentsPath } else { '' }
   $agentsContent = Merge-ManagedBlock $agentsExisting $agentsBlock $agentsPath '# Project agent instructions'
   $agentsBytes = $utf8.GetByteCount($agentsContent)
   if ($agentsBytes -gt $maximumAgentsBytes) { Fail "resulting AGENTS.md exceeds the official 32 KiB default: $agentsBytes bytes" }
   Add-PlannedWrite $plan $agentsPath $agentsContent
+}
 
+if ($installCodex) {
   $skillPath = Join-Path $project '.agents/skills/elite-engineering-library/SKILL.md'
   Add-PlannedWrite $plan $skillPath ($skill.TrimEnd() + "`n") $true
+}
+
+if ($installGrok) {
+  $grokSkillPath = Join-Path $project '.grok/skills/elite-engineering-library/SKILL.md'
+  Add-PlannedWrite $plan $grokSkillPath ($grokSkill.TrimEnd() + "`n") $true
 }
 
 if ($installClaude) {
@@ -202,8 +255,9 @@ $receipt = [ordered]@{
   library_root_relative = $relativeLibrary
   agent = $Agent
   managed_files = @($plan | ForEach-Object { [IO.Path]::GetRelativePath($project, $_.Path).Replace('\','/') })
-  agents_md_bytes = if ($installCodex) { $agentsBytes } else { 0 }
+  agents_md_bytes = if ($installAgentsMd) { $agentsBytes } else { 0 }
   claude_md_lines = if ($installClaude) { @($claudeContent -split '\r?\n').Count } else { 0 }
   codex_start_directory = if ($installCodex) { $project } else { $null }
+  grok_start_directory = if ($installGrok) { $project } else { $null }
 }
 $receipt | ConvertTo-Json -Depth 5
