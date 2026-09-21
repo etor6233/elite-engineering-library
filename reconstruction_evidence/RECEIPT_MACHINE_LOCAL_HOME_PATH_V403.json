@@ -12,12 +12,12 @@
     "block_sha256": "3e4697df48cfd84c7431569102bf0b578e3f7eeb36b85bceeefa0faf09c70982",
     "basis": "elite-scout OK /app/.home; CONTAINER_PACKAGING_CORE portable app paths; no /home/<user>"
   },
-  "local_path": "C:\\Users\\NL\\Desktop\\Public Elite Codes\\implementation_packs\\FRANCHISE_CLOUD_EXECUTION_V403.md",
-  "pack_sha256": "022c8027b984141185f14186fda221d60d8de9fe5d9190b6b8eafdfd1893b272",
-  "github_sync": "pending \u2014 await user confirm CloudAgent / SCM push",
-  "next": "verifier re-smoke VERIFY_LIBRARY + VERIFY_EXECUTABLE_LIBRARY on Public Elite Codes",
+  "local_path": "<WORKSHOP>/<LIBRARY_ROOT>/implementation_packs/FRANCHISE_CLOUD_EXECUTION_V403.md",
+  "pack_sha256": "ae998d28ee6fe19253fda4902269ac69356fd75baba3effa9539fced99a7bb5f",
+  "github_sync": "pending — public repo PR with portable paths only",
+  "next": "verifier re-smoke VERIFY_LIBRARY + VERIFY_EXECUTABLE_LIBRARY on <LIBRARY_ROOT>",
   "snippet_L180_L192": "180:RUN test -x /usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3 && \\\n181:    ln -s /usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3 /usr/local/bin/python3 && \\\n182:    mkdir -p /app /app/.home/.config/gcloud && chown -R 1000:1000 /app/.home\n183:COPY cloud/ /app/cloud/\n184:COPY production_admission_gate/ /app/production_admission_gate/\n185:ENV HOME=/app/.home \\\n186:    CLOUDSDK_CONFIG=/app/.home/.config/gcloud \\\n187:    CLOUDSDK_PYTHON=/usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3 \\\n188:    CLOUDSDK_CORE_DISABLE_USAGE_REPORTING=true \\\n189:    CLOUDSDK_COMPONENT_MANAGER_DISABLE_UPDATE_CHECK=true \\\n190:    PYTHONDONTWRITEBYTECODE=1\n191:WORKDIR /app\n192:USER 1000:1000",
-  "updated_at": "2026-09-18T19:27:56.440961+00:00",
+  "updated_at": "2026-09-21T22:10:00.000000+00:00",
   "receipt_id": "RECEIPT_MACHINE_LOCAL_HOME_PATH_V403",
   "admitted_as": "reconstruction_evidence/RECEIPT_MACHINE_LOCAL_HOME_PATH_V403.json",
   "supersedes_local_name": "RECEIPT_machine-local-home-path_V403.json"
