@@ -167,7 +167,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local orchestration/configuration/test glue over unchanged admitted owners; exact official method and candidate pins declared"
 license: "LicenseRef-Workspace-Owner"
-sha256: "bc8186e0ad2acd668cefeb4f4ba71580d9785f851a931d856cc86498dd34c02e"
+sha256: "3e4697df48cfd84c7431569102bf0b578e3f7eeb36b85bceeefa0faf09c70982"
 variables: []
 secrets_allowed: false
 ```
@@ -179,11 +179,11 @@ FROM ${GCLOUD_RUNTIME}
 USER root
 RUN test -x /usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3 && \
     ln -s /usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3 /usr/local/bin/python3 && \
-    mkdir -p /app /home/cloudsdk/.config/gcloud && chown -R 1000:1000 /home/cloudsdk
+    mkdir -p /app /app/.home/.config/gcloud && chown -R 1000:1000 /app/.home
 COPY cloud/ /app/cloud/
 COPY production_admission_gate/ /app/production_admission_gate/
-ENV HOME=/home/cloudsdk \
-    CLOUDSDK_CONFIG=/home/cloudsdk/.config/gcloud \
+ENV HOME=/app/.home \
+    CLOUDSDK_CONFIG=/app/.home/.config/gcloud \
     CLOUDSDK_PYTHON=/usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3 \
     CLOUDSDK_CORE_DISABLE_USAGE_REPORTING=true \
     CLOUDSDK_COMPONENT_MANAGER_DISABLE_UPDATE_CHECK=true \
@@ -376,7 +376,7 @@ Target gates remain: complete account/table mapping and currency, export latency
 
 ## Local evidence and preserved failures
 
-Command executed in `<USERPROFILE>/Desktop/Elite Library Extension V403/cloud`:
+Command executed in `<WORKSHOP>/Elite Library Extension V403/cloud`:
 
 ```text
 C:/Python314/python.exe -W error::ResourceWarning -m unittest test_finops_cycle -v
