@@ -7,6 +7,7 @@ Para usar, buscar o retomar esta revisión, leé sólo `markdown_system/USE_LIBR
 ## Orden de descubrimiento
 
 1. `.grok/skills/elite-engineering-library/SKILL.md` (tras `INSTALL_AGENT_BRIDGE.ps1 -Agent Grok`)
+1b. Persona: `markdown_system/LIBRARY_HUMAN_GRAPH.md`. Búsqueda: `rg -n -F "<término>" markdown_system/LIBRARY_SEARCH_INDEX.md`. No leas el índice entero.
 2. Este archivo
 3. `AGENTS.md` (índice; no es lectura obligatoria del corpus)
 4. `markdown_system/USE_LIBRARY_V403.md` si la tarea es usar o reconstruir la biblioteca

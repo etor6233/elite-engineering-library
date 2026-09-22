@@ -2,7 +2,7 @@
 
 El preflight histórico V402 permanece intacto. Esta declaración cubre la biblioteca más el carrier2147, el único skill Codex admitido, la entrada humana y el verificador sucesor. No es prueba por sí misma.
 
-Inventario raíz: 213 packs, 4.691 archivos materializables, 1010 Markdown y 57 perfiles.
+Inventario raíz: 213 packs, 4.691 archivos materializables, 1012 Markdown y 57 perfiles.
 El perfil histórico V402 selecciona 1653 archivos.
 El perfil sucesor UNIFIED_REFERENCE_PACK_PLAN_V403_R4 compone2113 entradas carrier y reconstruye2147fuentes exactas con manifiesto91db99c7b00d30b06c34669628b9050d6bc55983d52f1c6a8d06da11742940ef.
 

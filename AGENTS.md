@@ -4,11 +4,12 @@ Router compacto. No cargues el corpus entero ni leas `AGENT_SYSTEM_START.md` de 
 
 ## Empieza aquí
 
-1. Uso, búsqueda y retoma: `markdown_system/USE_LIBRARY_V403.md` (una página).
-2. Reconstruir la referencia local: `markdown_system/START_V403_LOCAL.md`.
-3. No abras `implementation_packs/UNIFIED_REFERENCE_V403_R4.md` en el contexto. Es el transporte de 2147 fuentes. Materializalo.
-4. Los diagramas antiguos de franquicia son mapas históricos. El paso a paso vigente es el de los dos archivos anteriores.
-5. 48 superficies inventariadas no son 48 aplicaciones ejecutadas. Un PASS local de fixtures no es cloud, CI alojada, dispositivo, proveedor live, aprobación visual ni producción. Los ZIP V402 quedan históricos.
+1. Persona: `markdown_system/LIBRARY_HUMAN_GRAPH.md` (tres gráficos; no certifican implementación ni producción).
+2. Búsqueda: `rg -n -F "<término>" markdown_system/LIBRARY_SEARCH_INDEX.md` y abrí solo esa ruta. No leas el índice entero.
+3. Uso, búsqueda y retoma: `markdown_system/USE_LIBRARY_V403.md` (una página).
+4. Reconstruir la referencia local: `markdown_system/START_V403_LOCAL.md`.
+5. No abras `implementation_packs/UNIFIED_REFERENCE_V403_R4.md` en el contexto. Es el transporte de 2147 fuentes. Materializalo.
+6. 48 superficies inventariadas no son 48 aplicaciones ejecutadas. Un PASS local de fixtures no es cloud, CI alojada, dispositivo, proveedor live, aprobación visual ni producción. Los ZIP V402 quedan históricos.
 
 ## Misión
 

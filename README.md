@@ -2,15 +2,24 @@
 
 Biblioteca Markdown portable para que Codex, Claude Code, Grok Build u otro agente diseñe, componga y materialice sistemas verificables sin imponer un backend TypeScript ni copiar código público sin admisión.
 
-## Empieza aquí
+## Cómo se usa, sin leerla entera
 
-Leé sólo esto y después un archivo:
+Una persona lee los tres gráficos: [mapa](markdown_system/LIBRARY_HUMAN_GRAPH.md). No certifican que cada recuadro esté implementado ni en producción.
 
-| Quién | Primer archivo | Después, si hay que construir |
+Para encontrar cualquier archivo:
+
+```bash
+rg -n -F "término" markdown_system/LIBRARY_SEARCH_INDEX.md
+```
+
+Ese índice nombra los manuales, los packs y la evidencia. Se abre solo la ruta que coincide.
+
+| Quién | Dónde entra | Si hay que construir |
 |---|---|---|
-| Persona o cualquier agente | [Cómo usar, buscar y retomar](markdown_system/USE_LIBRARY_V403.md) | [Reconstruir la referencia local](markdown_system/START_V403_LOCAL.md) |
+| Persona | [mapa](markdown_system/LIBRARY_HUMAN_GRAPH.md) | [referencia local](markdown_system/START_V403_LOCAL.md) |
+| Codex, Cursor, Claude o Grok | [cómo usar y retomar](markdown_system/USE_LIBRARY_V403.md) | [referencia local](markdown_system/START_V403_LOCAL.md) |
 
-No abras `implementation_packs/UNIFIED_REFERENCE_V403_R4.md` dentro del contexto del agente: transporta 2147 fuentes y se materializa con el comando del arranque. Los diagramas de franquicia de semanas anteriores son mapas históricos. 48 superficies inventariadas no son 48 aplicaciones ejecutadas. Un PASS de fixtures locales no cubre cloud, CI alojada, dispositivo físico, proveedor live, aprobación visual ni producción. Los ZIP V402 siguen siendo la instantánea histórica y no se regeneran.
+No abras `implementation_packs/UNIFIED_REFERENCE_V403_R4.md` dentro del contexto del agente: transporta 2147 fuentes y se materializa con el comando del arranque. 48 superficies inventariadas no son 48 aplicaciones ejecutadas. Un PASS de fixtures locales no cubre cloud, CI alojada, dispositivo físico, proveedor live, aprobación visual ni producción. Los ZIP V402 siguen siendo la instantánea histórica y no se regeneran.
 
 ## Referencia de infraestructura V402
 
