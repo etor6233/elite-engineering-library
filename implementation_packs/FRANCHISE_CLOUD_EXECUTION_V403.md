@@ -167,7 +167,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local orchestration/configuration/test glue over unchanged admitted owners; exact official method and candidate pins declared"
 license: "LicenseRef-Workspace-Owner"
-sha256: "bc8186e0ad2acd668cefeb4f4ba71580d9785f851a931d856cc86498dd34c02e"
+sha256: "62b754d3c84de4cde8254d55f62cb460333f350a32bb99667697006125f64fb9"
 variables: []
 secrets_allowed: false
 ```
@@ -179,11 +179,11 @@ FROM ${GCLOUD_RUNTIME}
 USER root
 RUN test -x /usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3 && \
     ln -s /usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3 /usr/local/bin/python3 && \
-    mkdir -p /app /home/cloudsdk/.config/gcloud && chown -R 1000:1000 /home/cloudsdk
+    mkdir -p /app /app/.home/.config/gcloud && chown -R 1000:1000 /app/.home
 COPY cloud/ /app/cloud/
 COPY production_admission_gate/ /app/production_admission_gate/
-ENV HOME=/home/cloudsdk \
-    CLOUDSDK_CONFIG=/home/cloudsdk/.config/gcloud \
+ENV HOME=/app/.home \
+    CLOUDSDK_CONFIG=/app/.home/.config/gcloud \
     CLOUDSDK_PYTHON=/usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3 \
     CLOUDSDK_CORE_DISABLE_USAGE_REPORTING=true \
     CLOUDSDK_COMPONENT_MANAGER_DISABLE_UPDATE_CHECK=true \
@@ -275,7 +275,7 @@ operation: CREATE
 provenance: AUTHORED
 source: "local orchestration/configuration/test glue over unchanged admitted owners; exact official method and candidate pins declared"
 license: "LicenseRef-Workspace-Owner"
-sha256: "af09584369d8d0a685a472beac00a696c40528c34468b51533528e6ff3cece24"
+sha256: "e4db658dc7c8fa268ed52c9f3000aa9e566a3a2bdbeba7d9492e836c56e1e8d7"
 variables: []
 secrets_allowed: false
 ```

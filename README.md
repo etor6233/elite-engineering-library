@@ -2,6 +2,16 @@
 
 Biblioteca Markdown portable para que Codex, Claude Code, Grok Build u otro agente diseñe, componga y materialice sistemas verificables sin imponer un backend TypeScript ni copiar código público sin admisión.
 
+## Empieza aquí
+
+Leé sólo esto y después un archivo:
+
+| Quién | Primer archivo | Después, si hay que construir |
+|---|---|---|
+| Persona o cualquier agente | [Cómo usar, buscar y retomar](markdown_system/USE_LIBRARY_V403.md) | [Reconstruir la referencia local](markdown_system/START_V403_LOCAL.md) |
+
+No abras `implementation_packs/UNIFIED_REFERENCE_V403_R4.md` dentro del contexto del agente: transporta 2147 fuentes y se materializa con el comando del arranque. Los diagramas de franquicia de semanas anteriores son mapas históricos. 48 superficies inventariadas no son 48 aplicaciones ejecutadas. Un PASS de fixtures locales no cubre cloud, CI alojada, dispositivo físico, proveedor live, aprobación visual ni producción. Los ZIP V402 siguen siendo la instantánea histórica y no se regeneran.
+
 ## Referencia de infraestructura V402
 
 **READY_FOR_LIBRARY_USE** en alcance local/fixtures: perfil116packs/1653archivos, composición de referencia durable, dos builds/ZIP idénticos y firma verificada. [Informe A–G](reconstruction_evidence/LIBRARY_INFRA_READY_V402.md) y [arranque](START_FRANCHISE.md).48/48 controles locales; cuentas live y aceptación productiva pertenecen al destino. Daybreak/libxml2 sigue diferido.

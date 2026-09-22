@@ -15,9 +15,11 @@ $releaseDirectories = @{
   'implementation_packs'    = @('.md')
   'markdown_system'         = @('.md', '.ps1')
   'reconstruction_evidence' = @('.md')
+  '.grok'                   = @('.md')
 }
 $releaseRootMarkdown = @(
   'AGENT_SYSTEM_START.md',
+  'GROK_AGENT_ENTRY.md',
   'AGENTIC_AI_SOFTWARE_ENGINEERING_CODEX.md',
   'AGENTS.md',
   'AI_ENGINEERING_MASTER_MAP.md',

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 338,
+  "revision": 340,
   "project": {
     "id": "elite-library-maintenance",
     "mode": "EXISTING",
@@ -227,8 +227,8 @@
       "id": "inventory",
       "kind": "inventory",
       "path": "README.md",
-      "sha256": "f17bc0cfc40216cd6c98c2d70450daa5edbde007bdfb67c9bc95bcad4b2220ab",
-      "produced_at": "2026-09-13T20:14:39.319925Z",
+      "sha256": "1fb156764de8d3ca6a9a766ff0850dea724e40f5eb0abf6e257ffc35cc1df55f",
+      "produced_at": "2026-09-22T17:58:46.303704Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
@@ -251,7 +251,7 @@
       "id": "protocol",
       "kind": "protocol",
       "path": "AGENT_SYSTEM_START.md",
-      "sha256": "fb2072c9eb53cac3868163dc54b3990dc048d5e237e8a22887bc5a8f97ecd38d",
+      "sha256": "d3cbff86de62a6577a691a330ad38c6ad46b37bf8ea69d5b3d40111a34c1abdb",
       "produced_at": "2026-09-10T17:05:52.216641Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
@@ -379,8 +379,8 @@
       "id": "library-verifier",
       "path": "VERIFY_LIBRARY.ps1",
       "kind": "maintenance_control",
-      "sha256": "318fa09bcb5d4604f20fe6aff8b4ca151ebbbcc6c3d7b1cfaef03fba7f19b1d5",
-      "produced_at": "2026-09-13T18:41:13.635206Z",
+      "sha256": "99c6a0874aa0324416f05d4318372c293109fb2538b31003fbde05170319680d",
+      "produced_at": "2026-09-20T22:21:24.887Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
@@ -491,7 +491,7 @@
       "id": "agent-bridge-installer",
       "path": "INSTALL_AGENT_BRIDGE.ps1",
       "kind": "maintenance_control",
-      "sha256": "fe32bf216ea48e9f218dbcf3075161bef445a82bd498bea3f14429d172a12a4b",
+      "sha256": "7d34366b12887cc54d6bc6caed53a4b3cf24b170268a10da36ff692b82a41d9f",
       "produced_at": "2026-09-07T15:02:11Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
@@ -499,7 +499,7 @@
       "id": "agent-bridge-tests",
       "path": "markdown_system/test_install_agent_bridge.ps1",
       "kind": "regression_tests",
-      "sha256": "265995c5efc49d98374fdb645b51ef49f859629e79d414f7cdf3ce42fd963d1f",
+      "sha256": "a96cb1b8e51d02e63e97f6a4ccd75fcdc9523e2e40e11902c144ead79cc43f4d",
       "produced_at": "2026-09-07T15:02:11Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },

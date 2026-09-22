@@ -156,7 +156,7 @@ The library root is ``$relativeLibrary`` relative to the project root. Treat it 
 
 ## Route the task
 
-1. Read ``$relativeLibrary/AGENTS.md`` and ``$relativeLibrary/AGENT_SYSTEM_START.md`` completely.
+1. Read ``$relativeLibrary/AGENTS.md`` as the index, then only ``$relativeLibrary/markdown_system/USE_LIBRARY_V403.md`` when using or rebuilding this revision. Do not load ``$relativeLibrary/implementation_packs/UNIFIED_REFERENCE_V403_R4.md`` or ``$relativeLibrary/AGENT_SYSTEM_START.md`` wholesale.
 2. Read ``$relativeLibrary/markdown_system/PROJECT_START_READINESS_GATE.md`` and execute it for a new project or as a delta audit. Materialize ``PROJECT_READINESS_GATE_PACK_PLAN.md``; before each pending round run ``render_project_advisory.py``, present its exact prompt conversationally, explain unfamiliar terms and record the real answer/evidence plus ``advisory_prompt_ref``. Ask only material follow-ups; never infer answers or request secrets in chat.
 3. Run ``pwsh -NoProfile -File \"$relativeLibrary/VERIFY_EXECUTABLE_LIBRARY.ps1\" -Mode Preflight`` and record missing toolchains or access honestly.
 4. Use ``$relativeLibrary/markdown_system/CAPABILITY_CATALOG.md`` and the two master maps to select only the relevant contracts, official source profiles and implementation packs. Do not load every Markdown file.
@@ -186,10 +186,11 @@ Library root: ``$relativeLibrary`` (read-only). Write project artifacts in the p
 
 1. **This skill** (here).
 2. **``$relativeLibrary/AGENTS.md``** — index; do not read the whole corpus.
-3. **One map** — pick exactly one:
+3. To use or rebuild this revision, read only ``$relativeLibrary/markdown_system/USE_LIBRARY_V403.md``, then ``$relativeLibrary/markdown_system/START_V403_LOCAL.md`` to materialize. Do not load ``$relativeLibrary/implementation_packs/UNIFIED_REFERENCE_V403_R4.md``.
+4. **One map** — pick exactly one:
    - AI / ML / agents → ``$relativeLibrary/AI_ENGINEERING_MASTER_MAP.md``
    - systems / platform → ``$relativeLibrary/SYSTEMS_ENGINEERING_MASTER_MAP.md``
-4. **One pack** — ``$relativeLibrary/markdown_system/PACK_PER_CLAIM_INDEX.md`` for your narrow claim.
+5. **One pack** — ``$relativeLibrary/markdown_system/PACK_PER_CLAIM_INDEX.md`` for your narrow claim.
 
 ## Do not load wholesale
 

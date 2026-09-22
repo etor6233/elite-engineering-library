@@ -1,5 +1,21 @@
 # Extensión V403 — experiencia y ejecución de biblioteca
 
+Entrada humana y de agentes: [cómo usar, buscar y retomar](USE_LIBRARY_V403.md).
+
+## Entrega sucesora de fuentes V403 R4
+
+Para reconstruir la composición sucesora desde este repositorio, comenzar por
+[START_V403_LOCAL](START_V403_LOCAL.md), su
+[plan exacto](UNIFIED_REFERENCE_PACK_PLAN_V403_R4.md) y
+[recibo de transporte](../reconstruction_evidence/UNIFIED_REFERENCE_V403_R4.md).
+El paquete incorpora las fuentes, locks/notices y herramientas de reconstrucción;
+no depende de conservar una carpeta Desktop del autor.
+El transporte exacto no declara READY global, runtime aprobado, aceptación visual,
+proveedores live ni producción. Esas dimensiones requieren sus recibos propios.
+La documentación y selección siguientes conservan su alcance histórico; el
+sucesor se selecciona explícitamente por el plan y revisión enlazados arriba.
+El protocolo/bridge sigue siendo único y el estado operativo vive en el proyecto.
+
 Estado y veredictos: [expediente de verificación V403](../reconstruction_evidence/LIBRARY_EXPERIENCE_CLOUD_V403.md).
 Este documento coordina únicamente el delta autorizado;
 no modifica el cierre histórico V402/337 ni sus packs protegidos o ZIPs.
