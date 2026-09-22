@@ -5,6 +5,7 @@ Router breve para Grok Build. El corpus completo permanece en disco; carga por c
 ## Orden de descubrimiento
 
 1. `.grok/skills/elite-engineering-library/SKILL.md` (tras `INSTALL_AGENT_BRIDGE.ps1 -Agent Grok`)
+1b. Persona: `markdown_system/LIBRARY_HUMAN_GRAPH.md`. Búsqueda: `rg -n -F "<término>" markdown_system/LIBRARY_SEARCH_INDEX.md`. No leas el índice entero.
 2. Este archivo
 3. `AGENTS.md` (índice; no es lectura obligatoria del corpus)
 4. **Un** mapa de autoridad + **un** pack (ver abajo)
