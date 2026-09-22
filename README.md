@@ -2,6 +2,25 @@
 
 Biblioteca Markdown portable para que Codex, Claude Code, Grok Build u otro agente diseñe, componga y materialice sistemas verificables sin imponer un backend TypeScript ni copiar código público sin admisión.
 
+## Cómo se usa, sin leerla entera
+
+Una persona lee los tres gráficos: [mapa](markdown_system/LIBRARY_HUMAN_GRAPH.md). No certifican que cada recuadro esté implementado ni en producción.
+
+Para encontrar cualquier archivo:
+
+```bash
+rg -n -F "término" markdown_system/LIBRARY_SEARCH_INDEX.md
+```
+
+Ese índice nombra los manuales, los packs y la evidencia. Se abre solo la ruta que coincide.
+
+| Quién | Dónde entra |
+|---|---|
+| Persona | [LIBRARY_HUMAN_GRAPH.md](markdown_system/LIBRARY_HUMAN_GRAPH.md) |
+| Codex y Cursor | [AGENTS.md](AGENTS.md) |
+| Claude Code | [CLAUDE.md](CLAUDE.md) |
+| Grok | [GROK_AGENT_ENTRY.md](GROK_AGENT_ENTRY.md) |
+
 ## Referencia de infraestructura V402
 
 **READY_FOR_LIBRARY_USE** en alcance local/fixtures: perfil116packs/1653archivos, composición de referencia durable, dos builds/ZIP idénticos y firma verificada. [Informe A–G](reconstruction_evidence/LIBRARY_INFRA_READY_V402.md) y [arranque](START_FRANCHISE.md).48/48 controles locales; cuentas live y aceptación productiva pertenecen al destino. Daybreak/libxml2 sigue diferido.
