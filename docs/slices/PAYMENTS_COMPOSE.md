@@ -1,6 +1,6 @@
 # PAYMENTS slice — HECHO-first compose (BC exact amount + checkout + webhooks)
 
-Tip pin: `477358d0d7090f2c39467abe5634d81f38afae7f`
+Tip pin: `42d9f83ee6fa1536bcb59d66e6c7850b01ddd9b0`
 
 Scope: `LIBRARY_INFRASTRUCTURE` / `LOCAL_FIXTURES` only. This slice documents how to compose admitted payment owners from the Elite Engineering Library. It does **not** authorize production charges, live provider credentials, or REVESTEX product code.
 
@@ -140,7 +140,7 @@ These external references inform design; the library implements its own admitted
 
 ## 6. Verify checklist (HECHO-first)
 
-- [ ] Tip SHA matches `477358d0d7090f2c39467abe5634d81f38afae7f`
+- [ ] Tip SHA matches `42d9f83ee6fa1536bcb59d66e6c7850b01ddd9b0`
 - [ ] Payment packIds present in consumer composition lock
 - [ ] `go test` unit fixtures green (§4)
 - [ ] Optional: connected PG tests green with disposable DB
