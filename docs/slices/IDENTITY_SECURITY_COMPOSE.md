@@ -25,9 +25,10 @@ Selected **116** JSON `packId` → filename map (from `markdown_system/FRANCHISE
 | `GO-HUMAN-APPROVAL-CORE` | `implementation_packs/GO_HUMAN_APPROVAL_CORE.md` |
 | `SECURE-OPS-DELIVERY-CORE` | `implementation_packs/SECURE_OPERATIONS_DELIVERY_CORE.md` |
 | `MICROSOFT-DEVSKIM-ADAPTED-SAST-GATE` | `implementation_packs/MICROSOFT_DEVSKIM_ADAPTED_SAST_GATE.md` |
-| `MARKDOWN-COMPOSITOR-CORE` | `implementation_packs/MARKDOWN_COMPOSITOR_CORE.md` |
 
 Disk-only (catalog ≠ selected; gap gate if REQUIRED): `implementation_packs/GO_PCI_DSS_SCOPE_CORE.md`, `implementation_packs/GO_GDPR_CONSENT_ERASURE_CORE.md`, `implementation_packs/GO_OTP_VERIFICATION_CORE.md`.
+
+**Adjacent (not ∈ selected 116 JSON):** compose bootstrap tooling only — `pack_id` `MARKDOWN-COMPOSITOR` in `implementation_packs/MARKDOWN_COMPOSITOR_CORE.md` (`markdown_system/PACK_PER_CLAIM_INDEX.md` row *composición Markdown*). Materialize before running `tools/compose-markdown-project.ps1`; not an identity/security selected member.
 
 ## 1. Door map (existing only)
 
@@ -79,12 +80,12 @@ Audit obligations are distributed across admitted owners:
 
 ## 3. Compose recipe (tangible, no new packs)
 
-Materialize **one claim at a time** via existing plans. Compositor entry (after `implementation_packs/MARKDOWN_COMPOSITOR_CORE.md` is materialized): `tools/compose-markdown-project.ps1`.
+Materialize **one claim at a time** via existing plans. Compositor entry (after adjacent `MARKDOWN-COMPOSITOR` / `implementation_packs/MARKDOWN_COMPOSITOR_CORE.md` is materialized — **not** a selected-116 member): `tools/compose-markdown-project.ps1`.
 
 ### Minimal identity/authz vertical (backend + web)
 
 ```powershell
-# 1) Materialize compositor (packId MARKDOWN-COMPOSITOR-CORE)
+# 1) Materialize compositor (adjacent pack_id MARKDOWN-COMPOSITOR; not ∈ selected 116)
 pwsh -File ./materialize_markdown_pack.ps1 `
   -PackFile ./implementation_packs/MARKDOWN_COMPOSITOR_CORE.md `
   -Destination <compositor-dest>
