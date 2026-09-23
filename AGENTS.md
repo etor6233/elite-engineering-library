@@ -4,6 +4,21 @@ Router compacto. No cargues el corpus entero ni leas `AGENT_SYSTEM_START.md` de 
 
 ## Empieza aquí
 
+Orden de puertas (alineado con README):
+
+| # | Puerta | Nota |
+|---|---|---|
+| 1 | `README.md` | Contexto biblioteca vs producto |
+| 2 | `AGENTS.md` (este índice) | Router compacto |
+| 3 | `markdown_system/USE_LIBRARY_V403.md` | Uso, búsqueda y retoma |
+| 4 | `markdown_system/LIBRARY_HEALTH_CHECK.md` | Salud / wiring / GAPs honestos |
+| 5 | `START_FRANCHISE.md` | Nueva franquicia / consumidor |
+| 6 | `reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md` | Gate canónico biblioteca vs producto |
+| 7 | `qualification/FINAL_LIBRARY_READY_V402.json` | Recibo V402 (evidencia; no abre implementación) |
+| — | `START_REFERENCE_V402.md` | Solo operadores ZIP V402 / referencia local (después de las puertas 1–7) |
+
+Dentro del ciclo del agente:
+
 1. Persona: `markdown_system/LIBRARY_HUMAN_GRAPH.md` (tres gráficos; no certifican implementación ni producción).
 2. Búsqueda: `rg -n -F "<término>" markdown_system/LIBRARY_SEARCH_INDEX.md` y abrí solo esa ruta. No leas el índice entero.
 3. Uso, búsqueda y retoma: `markdown_system/USE_LIBRARY_V403.md` (una página).
@@ -44,7 +59,7 @@ Si la biblioteca no es la raíz del proyecto: `INSTALL_AGENT_BRIDGE.ps1` (`-Agen
 |---|---|
 | Cómo usar esta revisión | `markdown_system/USE_LIBRARY_V403.md` |
 | Salud, wiring y GAPs | `markdown_system/LIBRARY_HEALTH_CHECK.md` |
-| Franquicia desde copia | `START_FRANCHISE.md` |
+| Franquicia desde copia | `START_FRANCHISE.md` (puerta 5; gate canónico en `reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md`) |
 | Router / primer ciclo (secciones) | `AGENT_SYSTEM_START.md` |
 | Nuevo proyecto / readiness | `markdown_system/PROJECT_START_READINESS_GATE.md` |
 | Un pack por claim | `markdown_system/PACK_PER_CLAIM_INDEX.md` |
