@@ -1,6 +1,6 @@
 # IDENTITY / SECURITY / AUTHZ compose slice
 
-**Scope:** `LIBRARY_INFRASTRUCTURE / LOCAL_FIXTURES` at tip `477358d0d7090f2c39467abe5634d81f38afae7f`.  
+**Scope:** `LIBRARY_INFRASTRUCTURE / LOCAL_FIXTURES` at tip `42d9f83ee6fa1536bcb59d66e6c7850b01ddd9b0`.  
 **Non-claim:** not production READY, not live IdP certification, not REVESTEX product admission.
 
 Nightly/domain health marks **identity/authz** as **PARCIAL** (fixture-only, `CONDITIONED` admission, live IdP gates open) while **security lint/supply-chain** paths are **HECHO** locally. This slice makes the compose path tangible without inventing packs.
