@@ -38,7 +38,8 @@ After 1–7, optional operators: `START_REFERENCE_V402.md` (ZIP / local referenc
 
 ### CAN
 
-- Compose **selected 116** from `markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md`, or **116+4 → 120** via `markdown_system/FRANCHISE_COMPLETE_EXTENSION_PACK_PLAN_V403.md`, using packs on disk under `implementation_packs/`.
+- Compose **selected 116** from `markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md`, or **116+4 → 120** via `markdown_system/FRANCHISE_COMPLETE_EXTENSION_PACK_PLAN_V403.md` (extension +4 only: `implementation_packs/BUSINESS_FUNCTION_OPERATING_V403.md`, `TS_DESIGN_SYSTEM_V403.md`, `TYPESCRIPT_FRANCHISE_EXPERIENCE_V403.md`, `FRANCHISE_CLOUD_EXECUTION_V403.md`), using packs on disk under `implementation_packs/`.
+- Apply **additive** overlays per separate expediente — e.g. `TS-PUBLIC-WEB-EXPERIENCE-V403` via `markdown_system/PUBLIC_WEB_EXPERIENCE_PACK_PLAN_V403.md` → `implementation_packs/TYPESCRIPT_PUBLIC_WEB_EXPERIENCE_V403.md` (**not** one of the extension +4).
 - Bridge → `START_FRANCHISE.md` → verify **local** receipts/fixtures (`VERIFY_LIBRARY.ps1`, `VERIFY_EXECUTABLE_LIBRARY.ps1 -Mode Preflight`).
 - Google Lead Form via `GO-OMNICHANNEL-LEAD-INGRESS` (`implementation_packs/GO_OMNICHANNEL_LEAD_INGRESS.md`) + Meta/TikTok + `GO-LEAD-CANDIDATE-PROMOTION`.
 - QR **identity** via `GO-QR-CORE` + `internal/qr/` (**CONDITIONED**; pack exists on disk but **GO-QR-CORE is not** in the selected 116 packId JSON).
@@ -62,7 +63,7 @@ After 1–7, optional operators: `START_REFERENCE_V402.md` (ZIP / local referenc
 
 1. Pin this tip SHA; install agent bridge if the consumer root ≠ library root (`INSTALL_AGENT_BRIDGE.ps1`).
 2. Walk door order §2; read HEALTH gaps before composing.
-3. Select composition: base 116 **or** V403 extension 120; cite exact `packId`/`version` from the plan JSON — do not add undeclared packs.
+3. Select composition: base 116 **or** V403 extension 120 (four packs only per `FRANCHISE_COMPLETE_EXTENSION_PACK_PLAN_V403.md`); cite exact `packId`/`version` from the plan JSON — do not add undeclared packs. Additive overlays (e.g. public web via `PUBLIC_WEB_EXPERIENCE_PACK_PLAN_V403.md`) require their own expediente.
 4. Materialize with the library compositor / franchise protocol named in `START_FRANCHISE.md` and the extension plan.
 5. Verify local receipts/fixtures only; record CONDITIONED live gates (creds, providers, IdP) as open — not PASS.
 6. Keep consumer blueprint / state / secrets in the **consumer**; reusable owners stay in the library.
