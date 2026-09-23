@@ -28,6 +28,15 @@ REQUIRED_SESSION = {
     "session_expiry",
     "replay_rejection",
 }
+REQUIRED_AUDIT_FIELDS = {
+    "tenant_id",
+    "event_id",
+    "actor_subject",
+    "action",
+    "resource_type",
+    "resource_id",
+    "decision",
+}
 ALLOWED_FIXTURE_FIELDS = {
     "schema",
     "scope",
@@ -37,6 +46,9 @@ ALLOWED_FIXTURE_FIELDS = {
     "tenant_actions",
     "session_cases",
     "invariants",
+    "audit_obligation_fields",
+    "audit_owners",
+    "audit_invariants",
     "doors",
 }
 
@@ -86,6 +98,21 @@ def validate_fixture(data: dict[str, Any]) -> list[str]:
         expected = len(list(permutations(tenants, 2))) * len(actions)
         if expected < 6:
             errors.append("tenant matrix: cross-tenant combinations too small")
+    audit_fields = data.get("audit_obligation_fields")
+    if not isinstance(audit_fields, list) or set(audit_fields) != REQUIRED_AUDIT_FIELDS:
+        errors.append("audit_obligation_fields: must match audit.event tenant-scoped contract")
+    audit_owners = data.get("audit_owners")
+    if not isinstance(audit_owners, list) or len(audit_owners) < 3:
+        errors.append("audit_owners: non-empty owner path list required")
+    audit_invariants = data.get("audit_invariants")
+    if not isinstance(audit_invariants, dict):
+        errors.append("audit_invariants: object required")
+    else:
+        for key in ("append_only", "tenant_scoped"):
+            if audit_invariants.get(key) is not True:
+                errors.append(f"audit_invariants.{key}: must be true")
+        if audit_invariants.get("live_effects") is not False:
+            errors.append("audit_invariants.live_effects: must be false for LOCAL_FIXTURES")
     return errors
 
 
@@ -94,6 +121,21 @@ def verify_doors(workspace: Path, doors: list[str]) -> list[str]:
     for rel in doors:
         if not (workspace / rel).is_file():
             errors.append(f"missing door: {rel}")
+    return errors
+
+
+def verify_audit_schema(workspace: Path) -> list[str]:
+    errors: list[str] = []
+    migration = workspace / "db/migrations/0001_platform_foundation.up.sql"
+    if not migration.is_file():
+        errors.append("missing audit schema migration: db/migrations/0001_platform_foundation.up.sql")
+        return errors
+    content = migration.read_text(encoding="utf-8")
+    for field in REQUIRED_AUDIT_FIELDS:
+        if field not in content:
+            errors.append(f"audit schema migration missing field: {field}")
+    if "audit.event is append-only" not in content:
+        errors.append("audit schema migration missing append-only trigger message")
     return errors
 
 
@@ -136,6 +178,8 @@ def main() -> int:
 
     errors.extend(validate_fixture(fixture))
     errors.extend(verify_doors(workspace, fixture.get("doors", [])))
+    errors.extend(verify_doors(workspace, fixture.get("audit_owners", [])))
+    errors.extend(verify_audit_schema(workspace))
 
     if errors:
         for item in errors:

@@ -1,0 +1,111 @@
+{
+  "schema": "elite-slice-fixture-evidence/v1",
+  "slice_id": "IDENTITY_SECURITY_AUDIT",
+  "tip_sha": "227c6e0033eaab96cb42fa809ac6c37b758f84f4",
+  "status": "LOCAL_FIXTURES_INDEXED",
+  "production_authorized": false,
+  "claim": "Tenant-scoped append-only audit.event contract composed from PG-TX-FOUNDATION + GO-HUMAN-APPROVAL-CORE + identity admission owners — plan only, no dedicated *AUDIT* HECHO pack.",
+  "architecture_contract_cites_read_only": [
+    {
+      "path": "docs/FRANCHISE_ARCHITECTURE.md",
+      "tip_sha": "227c6e0033eaab96cb42fa809ac6c37b758f84f4",
+      "section": "1. Identity / security / authorization / audit",
+      "status": "PARCIAL"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "tip_sha": "227c6e0033eaab96cb42fa809ac6c37b758f84f4",
+      "section": "Identity / security / authz / audit",
+      "status": "PARCIAL"
+    }
+  ],
+  "pack_plan": {
+    "path": "markdown_system/AUDIT_EVENT_PACK_PLAN.md",
+    "admission": "PLAN_ONLY",
+    "selected_116_pack_id": false
+  },
+  "compose_owners": [
+    {
+      "packId": "PG-TX-FOUNDATION",
+      "path": "implementation_packs/POSTGRES_TRANSACTIONAL_FOUNDATION.md",
+      "role": "audit_event_ddl_and_outbox"
+    },
+    {
+      "packId": "GO-HUMAN-APPROVAL-CORE",
+      "path": "implementation_packs/GO_HUMAN_APPROVAL_CORE.md",
+      "role": "immutable_approval_decisions"
+    },
+    {
+      "packId": "GO-OIDC-PORTAL-SESSION",
+      "path": "implementation_packs/GO_OIDC_PORTAL_SESSION.md",
+      "role": "session_revocation_obligations"
+    },
+    {
+      "packId": "GO-OIDC-SERVICE-TOKEN-BROKER",
+      "path": "implementation_packs/GO_OIDC_SERVICE_TOKEN_BROKER.md",
+      "role": "service_token_authority"
+    }
+  ],
+  "disk_only_gap_gate": [
+    {
+      "path": "implementation_packs/GO_PCI_DSS_SCOPE_CORE.md",
+      "when_required": "CDE scope before PAN/SAD paths"
+    },
+    {
+      "path": "implementation_packs/GO_GDPR_CONSENT_ERASURE_CORE.md",
+      "when_required": "consent ledger or erasure claim"
+    },
+    {
+      "path": "implementation_packs/GO_OTP_VERIFICATION_CORE.md",
+      "when_required": "email/phone proof before onboarding"
+    },
+    {
+      "path": "implementation_packs/DEBEZIUM_POSTGRES_OUTBOX_RUNTIME.md",
+      "when_required": "CDC fan-out of platform.outbox_event — not audit ledger"
+    }
+  ],
+  "audit_event_contract": {
+    "table": "audit.event",
+    "migration": "db/migrations/0001_platform_foundation.up.sql",
+    "required_fields": [
+      "tenant_id",
+      "event_id",
+      "actor_subject",
+      "action",
+      "resource_type",
+      "resource_id",
+      "decision"
+    ],
+    "invariants": {
+      "append_only": true,
+      "tenant_scoped": true
+    }
+  },
+  "local_fixtures": {
+    "fixture": "ci/fixtures/identity_authz_scenarios.json",
+    "verifier": "ci/verify_identity_security_fixture.py",
+    "unit_tests": "ci/test_verify_identity_security_fixture.py",
+    "sql_proof": "db/tests/0001_platform_foundation.test.sql"
+  },
+  "public_patterns_cite_only": [
+    {
+      "title": "NIST SP 800-63B",
+      "url": "https://pages.nist.gov/800-63-3/sp800-63b.html"
+    },
+    {
+      "title": "OIDC Core 1.0",
+      "url": "https://openid.net/specs/openid-connect-core-1_0.html"
+    },
+    {
+      "title": "AWS SaaS Lens — Multi-tenant microservices",
+      "url": "https://docs.aws.amazon.com/wellarchitected/latest/saas-lens/multi-tenant-microservices.html"
+    }
+  ],
+  "non_claims": [
+    "no implementation_packs/*AUDIT* HECHO pack",
+    "no selected-116 packId for audit plan",
+    "no live IdP/MFA/OP conformance closed",
+    "no production_authorized promotion",
+    "no REVESTEX product"
+  ]
+}

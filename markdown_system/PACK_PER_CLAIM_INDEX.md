@@ -20,6 +20,7 @@
 | PostgreSQL transaccional | `SYSTEMS_ENGINEERING_MASTER_MAP.md` | `implementation_packs/POSTGRES_TRANSACTIONAL_FOUNDATION.md` |
 | outbox / CDC / inbox | `SYSTEMS_ENGINEERING_MASTER_MAP.md` | `implementation_packs/DEBEZIUM_POSTGRES_OUTBOX_RUNTIME.md` |
 | identidad y autorización | `SYSTEMS_ENGINEERING_MASTER_MAP.md` | `implementation_packs/GO_OIDC_SERVICE_TOKEN_BROKER.md` |
+| enterprise audit stream / eventos tenant-scoped append-only | `SYSTEMS_ENGINEERING_MASTER_MAP.md` | `markdown_system/AUDIT_EVENT_PACK_PLAN.md` (**PARCIAL** — plan only; compone `GO_HUMAN_APPROVAL_CORE.md` + `POSTGRES_TRANSACTIONAL_FOUNDATION.md` + owners de identidad; **FALTA** pack HECHO `*AUDIT*` en selected 116) |
 | web BFF / portales | `SYSTEMS_ENGINEERING_MASTER_MAP.md` | `implementation_packs/TYPESCRIPT_GO_API_WEB_BRIDGE.md` |
 | SEO público (robots/sitemap/meta) | `SYSTEMS_ENGINEERING_MASTER_MAP.md` | `implementation_packs/GO_SEO_CORE.md` (+ `src/app/sitemap.ts`, `src/app/robots.ts`, `src/platform/seo/public-indexing.ts` en árbol V403) |
 | calidad web automatizada (Lighthouse) | `SYSTEMS_ENGINEERING_MASTER_MAP.md` | `implementation_packs/GOOGLE_LIGHTHOUSE_WEB_QUALITY_GATE.md` |
