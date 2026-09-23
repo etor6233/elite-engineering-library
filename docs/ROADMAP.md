@@ -3,13 +3,37 @@
 **Tip SHA:** `477358d0d7090f2c39467abe5634d81f38afae7f`  
 **Scope:** biblioteca / infrastructure / franchise architecture documentation. **No** production. **No** REVESTEX product code.
 
-**Course correction:** The sections below separate **library local-fixtures** readiness from **full franchise / company domain** coverage. The thin CAN list in [`docs/FRANCHISE_PLAYBOOK.md`](FRANCHISE_PLAYBOOK.md) is **not** the franchise product scope — see [`docs/FRANCHISE_ARCHITECTURE.md`](FRANCHISE_ARCHITECTURE.md).
+**Course correction:** The sections below separate **library `LOCAL_FIXTURES`** readiness from **full franchise / company domain** coverage. Selected **116→120** = **full franchise-domain library compose** — not a thin trio (compose / Lead / QR). The CAN list in [`docs/FRANCHISE_PLAYBOOK.md`](FRANCHISE_PLAYBOOK.md) is **not** the franchise product scope — see [`docs/FRANCHISE_ARCHITECTURE.md`](FRANCHISE_ARCHITECTURE.md).
+
+**Stop line:** Architecture PR = library compose claims only. **No REVESTEX** until N L says **ESTAMOS LISTOS**. `production_authorized: false` (`qualification/FINAL_LIBRARY_READY_V402.json`).
 
 ---
 
 ## FRANCHISE / COMPANY DOMAINS (primary)
 
 Full domain map, dependencies, gap research, and proposed elite additions: **[`docs/FRANCHISE_ARCHITECTURE.md`](FRANCHISE_ARCHITECTURE.md)**.
+
+### Nightly Audit Engineer inventory @ `477358d`
+
+| # | Status | Claim | Cite |
+|---|---|---|---|
+| 1 | **HECHO** | Composition 116→120; catalog ≠ selected | `markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md`, `FRANCHISE_COMPLETE_EXTENSION_PACK_PLAN_V403.md`, `implementation_packs/*.md` (214 on disk) |
+| 2 | **HECHO** | V402 READY + READY_WITH_CAVEATS + `production_authorized: false` | `qualification/FINAL_LIBRARY_READY_V402.json` |
+| 3 | **HECHO** | Multi-domain transactional model | `ELECTROMOBILITY_FRANCHISE_MODULES.md`, `db/migrations/0003_electromobility_franchise_modules.up.sql` |
+| 4 | **HECHO** | Payments | `GO_BC_EXACT_AMOUNT_ADAPTER.md`, `GO_PAYMENT_CHECKOUT_RUNTIME.md`, `GO_OFFICIAL_PAYMENT_WEBHOOK_ADAPTERS.md`, `GO_EXACT_FX_SNAPSHOT_ACCOUNTING.md` |
+| 5 | **HECHO** / **PARCIAL** live | Channels: Lead Form + Meta/TikTok + WA + ML | `GO_OMNICHANNEL_LEAD_INGRESS.md`, Meta/TikTok/WA/ML packs in selected 116; creds **CONDITIONED** |
+| 6 | **HECHO** | Signed release / verify | `PORTABLE_SIGNED_RELEASE_EVIDENCE_GATE.md`, `START_REFERENCE_V402.md` |
+| 7 | **HECHO** / **PARCIAL** keys | AI / conversation cluster | `GO_CONVERSATIONAL_AGENT.md`, `GO_CONNECTED_CONVERSATION_RUNTIME.md`, `GO_APP_WIRING.md` (+ tools/adapters) |
+| 8 | **PARCIAL** | QR identity door-wired; absent from selected JSON | `GO_QR_CORE.md`, `internal/qr/` |
+| 9 | **PARCIAL** / **FALTA** pack | QR capture ref-only | `qr_capture/` |
+| 10 | **PARCIAL** | Dashboards / CRM segmentation / brand DAM / admin UX | Cores: `GO_DATA_ANALYTICS_CORE.md`; disk: `GO_DASHBOARDS_CORE.md`, `TYPESCRIPT_ADMIN_OPS_EXPERIENCE_V403.md` — gap-gate or **FALTA** |
+| 11 | **PARCIAL** | ARCA PROVEN_LOCAL; live creds pending | ARCA stack + `FRANCHISE_GAP_MAP.md` (`ARCA_INFRA`) |
+| 12 | **PARCIAL** | Multi-site compose; site CMS/IaC thin; Galaxy = field guide | `GO_NETWORK_ROLE_COMPOSITION.md`, `GO_FRANCHISE_ROYALTY_SETTLEMENT_API.md`; Galaxy §5 playbook |
+| 13 | **NO** | GTM Tag Manager | Tree miss; Lead Form ≠ GTM |
+| 14 | **NO** | Named `*SDR*` pack | Function: `GO_OMNICHANNEL_LEAD_INGRESS.md` + `GO_LEAD_CANDIDATE_PROMOTION.md` + `BUSINESS_FUNCTION_OPERATING_CONTRACT_V403.md` |
+| 15 | **NO** | Production live / V403 successor READY / Desktop V3 / Galaxy e2e | `FINAL_LIBRARY_READY_V402.json`, `SUCCESSOR_AUTHORITY_ROUTER.md`, `docs/ROADMAP.md` |
+
+**PARCIAL public patterns (cite only):** [NIST 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html); [OIDC Core](https://openid.net/specs/openid-connect-core-1_0.html); [Google sGTM](https://developers.google.com/tag-platform/tag-manager/server-side/intro); [Google SRE Book](https://sre.google/sre-book/monitoring-distributed-systems/); [AFIP WSFE](https://www.afip.gob.ar/ws/documentacion/ws-factura-electronica.asp); [Amazon SP-API Fulfillment](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-api); [AWS Control Tower](https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html); Material / Fluent / Spectrum design systems.
 
 ### Domain status matrix @ `477358d`
 
@@ -18,23 +42,25 @@ Legend: **HECHO** = selected 116/120 packs + findable reference; **PARCIAL** = c
 | Domain | Status | Cite (paths @ tip) |
 |---|---|---|
 | Identity / security / authz / audit | **PARCIAL** | Selected: `implementation_packs/GO_OIDC_SERVICE_TOKEN_BROKER.md`, `GO_OIDC_PORTAL_SESSION.md`, `TYPESCRIPT_OIDC_PORTAL_ADAPTER.md`, `MICROSOFT_DEVSKIM_ADAPTED_SAST_GATE.md`, `SECURE_OPERATIONS_DELIVERY_CORE.md`, `GO_HUMAN_APPROVAL_CORE.md`; evidence `reconstruction_evidence/IDENTITY_J5_RELEASE_V402.md`; disk-only: `GO_PCI_DSS_SCOPE_CORE.md`, `GO_GDPR_CONSENT_ERASURE_CORE.md` |
-| Catalog / stock / PI-PL / costs / fiscal (ARCA) | **HECHO** / **PARCIAL** live | Selected: `GO_SUPPLY_FACTORY_INVENTORY_API.md`, `GO_CONNECTED_CATALOG_*`, `GO_EXACT_FX_SNAPSHOT_ACCOUNTING.md`, `GO_FINOPS_CORE.md`, ARCA stack (`MICROSOFT_ARCA_*`, `GO_ARCA_FISCAL_ISSUANCE_API.md`, `ARCA_WSFE_UDS_WORKER.md`); `markdown_system/FRANCHISE_GAP_MAP.md` (`ARCA_INFRA` PROVEN_LOCAL); live creds **CONDITIONED** |
+| Catalog / stock / PI-PL / costs / fiscal (ARCA) | **HECHO** compose / **PARCIAL** live | `ELECTROMOBILITY_FRANCHISE_MODULES.md`, `db/migrations/0003_electromobility_franchise_modules.up.sql`, `GO_SUPPLY_FACTORY_INVENTORY_API.md`, `GO_CONNECTED_CATALOG_*`, `GO_BC_EXACT_AMOUNT_ADAPTER.md`, `GO_EXACT_FX_SNAPSHOT_ACCOUNTING.md`; ARCA stack PROVEN_LOCAL (`FRANCHISE_GAP_MAP.md`); live creds **CONDITIONED** |
 | Customers + history / CRM | **HECHO** | `GO_ELECTROMOBILITY_PUBLIC_CRM_API.md`, `GO_FRANCHISE_CUSTOMER_JOURNEY_API.md`, `GO_PG_CONTACT_CHANNEL_IDENTITY.md`, `GO_CUSTOMER_SURVEY_API.md` |
 | Sales / quotes / orders / payments | **HECHO** / **PARCIAL** live | `GO_COMMERCE_PRICING_PAYMENT_API.md`, `GO_FRANCHISE_CUSTOMER_JOURNEY_API.md`, `GO_PAYMENT_CHECKOUT_RUNTIME.md`, `GO_OFFICIAL_PAYMENT_WEBHOOK_ADAPTERS.md`, `GO_INITIAL_HANDOVER_API.md`, `GO_RETURN_*` workers; `reconstruction_evidence/FRANCHISE_QUOTE_TO_ORDER_2026-08-29_V116.md` |
-| Analytics / reporting | **PARCIAL** | Selected: `GO_DATA_ANALYTICS_CORE.md`, `GO_HTTP_METRICS_REFERENCE.md`, `PYTHON_*_ADS_REPORTING_ADAPTER.md`, `GO_CONNECTED_ROLE_METRICS_PROOF.md`; disk-only: `GO_DASHBOARDS_CORE.md`, `GO_SLO_CORE.md` |
-| Multi-site / multi-sede | **HECHO** | `ELECTROMOBILITY_FRANCHISE_MODULES.md`, `GO_NETWORK_ROLE_COMPOSITION.md`, `GO_FRANCHISE_ROYALTY_SETTLEMENT_API.md`, `TYPESCRIPT_NETWORK_ROLE_PORTAL.md` |
-| Channels — WhatsApp | **HECHO** / **PARCIAL** live | `PYTHON_META_WHATSAPP_CLOUD_ADAPTER.md`, `GO_CONNECTED_WHATSAPP_*`, `GO_CONNECTED_SCHEDULED_WHATSAPP.md` |
+| Analytics / dashboards / CRM segmentation | **PARCIAL** | Cores: `GO_DATA_ANALYTICS_CORE.md`, `GO_CONNECTED_ROLE_METRICS_PROOF.md`; disk **FALTA** select: `GO_DASHBOARDS_CORE.md` |
+| Brand / DAM | **PARCIAL** / DAM **FALTA** | Storefront + V403 public overlay; no dedicated DAM pack |
+| Admin UX | **PARCIAL** | `TYPESCRIPT_ADMIN_OPS_EXPERIENCE_V403.md` + plan on disk; **not** in 116/120 JSON — gap-gate |
+| Multi-site / multi-sede | **PARCIAL** | Hierarchy/royalty compose: `GO_NETWORK_ROLE_COMPOSITION.md`, `GO_FRANCHISE_ROYALTY_SETTLEMENT_API.md`; site CMS/IaC thin; Galaxy = field guide only |
+| Channels — WhatsApp / leads / ML | **HECHO** fixtures / **PARCIAL** live | Nightly #5 cluster; `GO_OMNICHANNEL_LEAD_INGRESS.md`, WA/Meta/TikTok/ML packs; creds **CONDITIONED** |
 | Channels — Messenger / Instagram | **PARCIAL** | **Disk only (not selected 116):** `GO_MESSAGING_CHANNEL_ADAPTERS.md`; `internal/msgchannels/metagraph.go` (no outbound IG/Messenger claim) |
 | Channels — ads / email / web leads | **PARCIAL** | Leads: `GO_OMNICHANNEL_LEAD_INGRESS.md`, Meta/TikTok lead packs; ads reporting: `PYTHON_*_ADS_REPORTING_*`; email: `GO_CHANNELS_CORE.md`, `GO_PG_OUTBOUND_DELIVERY_FENCE.md`; disk: `AWS_SES_IMMUTABLE_EMAIL_RECEIVER.md` |
 | Channels — GTM Tag Manager | **NO** | GAP — no `*GTM*` pack (`markdown_system/LIBRARY_HEALTH_CHECK.md`, `PACK_PER_CLAIM_INDEX.md`) |
 | Logistics / fulfillment / receiving | **HECHO** | `GO_FULFILLMENT_SERVICE_FRANCHISE_API.md`, `GO_CONNECTED_SUPPLY_CREATION.md`, `GO_CONNECTED_SERIAL_SUPPLY.md`; `docs/inventory/MICROSOFT_BC_*_DERIVATION.md` |
-| Brand / public web / publish gates | **PARCIAL** | Selected storefront + gates; V403: `TYPESCRIPT_PUBLIC_WEB_EXPERIENCE_V403.md`, `PUBLIC_WEB_EXPERIENCE_PACK_PLAN_V403.md` (visual **PENDING**); disk SEO: `GO_SEO_CORE.md` |
-| Admin / ops / governance / agent doors | **HECHO** / **PARCIAL** V403 UI | `START_FRANCHISE.md`, `FRANCHISE_PROJECT_OPERATING_PROTOCOL.md`, `BUSINESS_FUNCTION_OPERATING_V403.md`, `ADMIN_OPS_EXPERIENCE_PACK_PLAN_V403.md`; 48 surfaces = inventory not execution (`TOTAL_SYSTEM_CAPABILITY_CONTRACT.md`) |
-| Lead ingress / promotion (no invented SDR pack) | **HECHO/PARCIAL** | `GO_OMNICHANNEL_LEAD_INGRESS.md`, `GO_LEAD_CANDIDATE_PROMOTION.md`; SDR **function** via `BUSINESS_FUNCTION_OPERATING_CONTRACT_V403.md`; named `*SDR*` pack **NO** |
+| Brand / public web / publish gates | **PARCIAL** | `TYPESCRIPT_PUBLISHED_CATALOG_STOREFRONT.md`, V403 `TS-PUBLIC-WEB-EXPERIENCE-V403` (visual **PENDING**); disk SEO: `GO_SEO_CORE.md` |
+| Admin / ops / governance / agent doors | **HECHO** doors / **PARCIAL** admin UX | `START_FRANCHISE.md`, `FRANCHISE_PROJECT_OPERATING_PROTOCOL.md`, `BUSINESS_FUNCTION_OPERATING_V403.md` (in 120); admin overlay separate expediente |
+| Lead ingress / promotion | **HECHO** ingress / **NO** named SDR pack | `GO_OMNICHANNEL_LEAD_INGRESS.md`, `GO_LEAD_CANDIDATE_PROMOTION.md`; SDR function via `BUSINESS_FUNCTION_OPERATING_CONTRACT_V403.md` only |
 | QR identity | **PARCIAL** | `implementation_packs/GO_QR_CORE.md`, `internal/qr/` — **not** in selected 116 JSON |
 | QR capture | **PARCIAL** / pack **NO** | `qr_capture/` reference only; **FALTA** admitted capture pack |
 | Galaxy fleet orchestration | **PARCIAL** how-tos / **NO** e2e | `docs/FRANCHISE_PLAYBOOK.md` §5 — `etor6233/grok-bot-galaxy@f8546c3`; 0 `franchise` hits |
-| Conversational agent runtime | **HECHO** | `GO_CONVERSATIONAL_AGENT.md`, `GO_CONNECTED_CONVERSATION_RUNTIME.md`, `GO_APP_WIRING.md` |
+| Conversational agent runtime | **HECHO** / **PARCIAL** keys | Nightly #7: `GO_CONVERSATIONAL_AGENT.md`, `GO_CONNECTED_CONVERSATION_RUNTIME.md`, `GO_APP_WIRING.md`; provider keys **CONDITIONED** |
 | Document intelligence | **PARCIAL** | `GO_CONNECTED_DOCUMENT_REFERENCE.md`, Textract/Azure samples, T2806 PROVEN_LOCAL |
 | Production / franchise live | **NO** | `qualification/FINAL_LIBRARY_READY_V402.json` (`production_authorized: false`) |
 
@@ -59,6 +85,7 @@ Detail per phase: [`docs/FRANCHISE_ARCHITECTURE.md`](FRANCHISE_ARCHITECTURE.md#r
 
 ### Honest bounds (franchise scope)
 
+- Selected **116→120** = full franchise-domain **LOCAL_FIXTURES** compose — not “three features”.
 - Catalog on disk (**214** packs) ≠ selected **116** ≠ V403 **120**.
 - Lead Form (`GO-OMNICHANNEL-LEAD-INGRESS`) ≠ GTM Tag Manager.
 - SDR **function** ≠ named `*SDR*` pack — do not invent.

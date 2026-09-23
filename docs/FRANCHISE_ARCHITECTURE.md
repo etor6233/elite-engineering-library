@@ -9,8 +9,10 @@ The thin **CAN / CANNOT** list in [`docs/FRANCHISE_PLAYBOOK.md`](FRANCHISE_PLAYB
 
 | Lens | What it answers | What it does **not** answer |
 |---|---|---|
-| `LIBRARY_INFRASTRUCTURE` | Can I compose selected packs, verify local receipts, bridge a consumer? | Is my company live, multi-country, fully staffed on every channel? |
+| `LIBRARY_INFRASTRUCTURE` / `LOCAL_FIXTURES` | Can I compose the **full franchise-domain** selected profile (116→120), verify local receipts, bridge a consumer? | Is my company live, multi-country, fully staffed on every channel? |
 | **Franchise / company domains** (this doc) | What business domains exist end-to-end, what is on disk, what is conditioned, what is missing? | Production authorization (`production_authorized: false` in `qualification/FINAL_LIBRARY_READY_V402.json`) |
+
+**Anti-"3 features" frame:** Selected **116→120** is the **full franchise-domain library compose** for `LOCAL_FIXTURES` — not a thin trio (compose / Lead / QR). Identity, catalog, CRM, sales, payments, logistics, fiscal, channels, network, analytics, agents, and ops surfaces are all in scope of that composition; gaps below are honest **FALTA** rows, not absence of domain intent.
 
 **Honest catalog rule:** `implementation_packs/*.md` on disk (**214** packs @ tip) ≠ selected **116** (`markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md`) ≠ V403 extension **120** (`markdown_system/FRANCHISE_COMPLETE_EXTENSION_PACK_PLAN_V403.md`). A path cited below may be **on disk only** — the matrix column **Selected 116** states inclusion in the franchise reference composition.
 
@@ -79,6 +81,54 @@ Live provider credentials, cloud CI, physical devices, and production admission 
 
 ---
 
+## Nightly Audit Engineer inventory @ `477358d`
+
+Verified against on-disk paths at tip. Architecture PR = **library compose claims only** — no REVESTEX product until N L says **ESTAMOS LISTOS**.
+
+### HECHO (library compose / local fixtures)
+
+| # | Claim | Cite @ `477358d` |
+|---|---|---|
+| 1 | Composition **116→120**; catalog ≠ selected | `markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md` (116 `packId` entries); `markdown_system/FRANCHISE_COMPLETE_EXTENSION_PACK_PLAN_V403.md` (+4 → 120); `implementation_packs/*.md` (**214** on disk) |
+| 2 | V402 READY receipt + **READY_WITH_CAVEATS** + `production_authorized: false` | `qualification/FINAL_LIBRARY_READY_V402.json` (`library_readiness`: `READY_FOR_LIBRARY_USE`, `scope`: `LIBRARY_INFRASTRUCTURE`, `production_authorized`: false); `docs/ROADMAP.md` (`READY_WITH_CAVEATS` = local-fixtures framing) |
+| 3 | Multi-domain transactional model (catalog / CRM / inventory / pricing / payment / logistics / franchise schemas) | `implementation_packs/ELECTROMOBILITY_FRANCHISE_MODULES.md` (`ELECTROMOBILITY-FRANCHISE-MODULES` in selected 116); `db/migrations/0003_electromobility_franchise_modules.up.sql` |
+| 4 | Payments cluster | Selected: `implementation_packs/GO_BC_EXACT_AMOUNT_ADAPTER.md`, `GO_PAYMENT_CHECKOUT_RUNTIME.md`, `GO_OFFICIAL_PAYMENT_WEBHOOK_ADAPTERS.md`, `GO_EXACT_FX_SNAPSHOT_ACCOUNTING.md`, `TYPESCRIPT_PAYMENT_CHECKOUT_PORTAL.md`, `GO_COMMERCE_PRICING_PAYMENT_API.md` |
+| 5 | Channels: Lead Form + Meta/TikTok + WA + ML (**CONDITIONED** live creds) | `GO_OMNICHANNEL_LEAD_INGRESS.md`, `GO_META_LEAD_*`, `PYTHON_TIKTOK_LEAD_ADAPTER.md`, `GO_TIKTOK_LEAD_DURABLE_IMPORT.md`, `PYTHON_META_WHATSAPP_CLOUD_ADAPTER.md`, `GO_CONNECTED_WHATSAPP_*`, `GO_MERCADOLIBRE_*`, `GO_CONNECTED_MARKETPLACE_MUTATION.md`; `markdown_system/FRANCHISE_GAP_MAP.md` (T2805 PROVEN_LOCAL, live creds pending) |
+| 6 | Signed release / verify | `implementation_packs/PORTABLE_SIGNED_RELEASE_EVIDENCE_GATE.md` (`PORTABLE-SIGNED-RELEASE-EVIDENCE-GATE` in selected 116); `START_REFERENCE_V402.md` |
+| 7 | AI / conversation selected cluster (**CONDITIONED** provider keys) | `GO_CONVERSATIONAL_AGENT.md`, `GO_CONVERSATION_TOOLS.md`, `GO_CONNECTED_CONVERSATION_RUNTIME.md`, `GO_APP_WIRING.md`, `GO_AGENT_DOMAIN_BINDING.md`, `GO_OPENAI_RESPONSES_TOOL_ADAPTER.md` (all in selected 116) |
+
+### PARCIAL
+
+| # | Claim | Cite @ `477358d` |
+|---|---|---|
+| 8 | QR **identity**: door-wired; **absent** from selected `packId` JSON | `implementation_packs/GO_QR_CORE.md`, `internal/qr/`; **no** `GO-QR-CORE` in `FRANCHISE_COMPLETE_PACK_PLAN.md` |
+| 9 | QR **capture**: `qr_capture/` ref-only → **FALTA** admitted pack | `qr_capture/`; `markdown_system/LIBRARY_HEALTH_CHECK.md` |
+| 10 | Analytics dashboards / CRM segmentation / brand DAM / admin UX — compose **cores** exist; gap-gate catalog packs or document **FALTA** | **Selected cores:** `GO_DATA_ANALYTICS_CORE.md`, `GO_CONNECTED_ROLE_METRICS_PROOF.md`; **disk / separate expediente (not selected 116/120 JSON):** `implementation_packs/GO_DASHBOARDS_CORE.md`, `implementation_packs/TYPESCRIPT_ADMIN_OPS_EXPERIENCE_V403.md` + `markdown_system/ADMIN_OPS_EXPERIENCE_PACK_PLAN_V403.md`; brand: `TYPESCRIPT_PUBLISHED_CATALOG_STOREFRONT.md`, V403 `TS-PUBLIC-WEB-EXPERIENCE-V403` (visual PENDING) — no dedicated DAM pack |
+| 11 | ARCA **PROVEN_LOCAL**; live creds pending | ARCA stack in selected 116; `markdown_system/FRANCHISE_GAP_MAP.md` (`ARCA_INFRA`); `docs/ARCA_LOCAL_REFERENCE.md` |
+| 12 | Multi-site: hierarchy / territory / royalty **compose**; site CMS / IaC thin; Galaxy = field guide only | **Compose:** `ELECTROMOBILITY_FRANCHISE_MODULES.md`, `GO_NETWORK_ROLE_COMPOSITION.md`, `GO_FRANCHISE_ROYALTY_SETTLEMENT_API.md`, `TYPESCRIPT_NETWORK_ROLE_PORTAL.md`; **thin:** per-site CMS/IaC not a dedicated admitted pack; Galaxy: `docs/FRANCHISE_PLAYBOOK.md` §5 (`etor6233/grok-bot-galaxy@f8546c3`, 0 `franchise` hits) |
+
+### FALTA / NO (do not invent)
+
+| # | Claim | Cite @ `477358d` |
+|---|---|---|
+| 13 | **GTM** Tag Manager (tree miss; Lead Form ≠ GTM) | No `*GTM*` under `implementation_packs/` or `markdown_system/`; `markdown_system/PACK_PER_CLAIM_INDEX.md`, `LIBRARY_HEALTH_CHECK.md` |
+| 14 | Named **`*SDR*`** pack (function only via lead ingress + promotion + business-function contract) | `GO_OMNICHANNEL_LEAD_INGRESS.md`, `GO_LEAD_CANDIDATE_PROMOTION.md`, `markdown_system/BUSINESS_FUNCTION_OPERATING_CONTRACT_V403.md`, `implementation_packs/BUSINESS_FUNCTION_OPERATING_V403.md` |
+| 15 | Production live / V403 successor READY / Desktop V3 from Git / Galaxy franchise e2e | `qualification/FINAL_LIBRARY_READY_V402.json`; `unified-experience-next/markdown_system/SUCCESSOR_AUTHORITY_ROUTER.md` (IN_PROGRESS); `docs/ROADMAP.md` (Desktop V3 UNKNOWN_NEVER_PUSHED); Galaxy §5 |
+
+### Public patterns for PARCIAL (cite only — no code copy)
+
+| PARCIAL area | Pattern (URL / title) |
+|---|---|
+| Identity / OIDC | [NIST SP 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html); [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) |
+| GTM gap | [Google server-side Tag Manager architecture](https://developers.google.com/tag-platform/tag-manager/server-side/intro) |
+| Observability / SLO | [Google SRE Book — monitoring distributed systems](https://sre.google/sre-book/monitoring-distributed-systems/) |
+| ARCA / fiscal live | [AFIP WSFE documentation](https://www.afip.gob.ar/ws/documentacion/ws-factura-electronica.asp) (official manuals; compose with `MICROSOFT_ARCA_*` + `GO_ARCA_FISCAL_ISSUANCE_API.md`) |
+| Fulfillment / logistics | [Amazon SP-API Fulfillment Outbound](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-api) |
+| Multi-site / org isolation | [AWS Control Tower — multi-account governance](https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html) |
+| Brand / admin UX | [Material Design](https://m3.material.io/); [Fluent 2](https://fluent2.microsoft.design/); [Adobe Spectrum](https://spectrum.adobe.com/) (method references for V403 overlays — not shipped as elite packs) |
+
+---
+
 ## Full domain matrix
 
 ### 1. Identity / security / authorization / audit
@@ -88,7 +138,7 @@ Live provider credentials, cloud CI, physical devices, and production admission 
 | **PARCIAL** | Yes (core); some assets disk-only | `implementation_packs/GO_OIDC_SERVICE_TOKEN_BROKER.md`, `GO_OIDC_PORTAL_SESSION.md`, `TYPESCRIPT_OIDC_PORTAL_ADAPTER.md` (`GO-OIDC-SERVICE-TOKEN-BROKER`, `GO-OIDC-PORTAL-SESSION`, `TS-OIDC-PORTAL-ADAPTER`); `implementation_packs/MICROSOFT_DEVSKIM_ADAPTED_SAST_GATE.md`; `implementation_packs/SECURE_OPERATIONS_DELIVERY_CORE.md`; `implementation_packs/GO_HUMAN_APPROVAL_CORE.md`; `reconstruction_evidence/IDENTITY_J5_RELEASE_V402.md`, `IDENTITY_PORTAL_RELEASE_V402.md`; `docs/J5_IDP_ACCESS_CONTRACT.md` | J5 access-review PROVEN_LOCAL; live IdP/MFA/federation = consumer gate. No dedicated enterprise audit-log pack in selected 116. |
 | | Disk only | `implementation_packs/GO_PCI_DSS_SCOPE_CORE.md`, `GO_GDPR_CONSENT_ERASURE_CORE.md`, `GO_OTP_VERIFICATION_CORE.md` | Catalog ≠ selected; gap gate if REQUIRED. |
 
-**Research (audit / tenant context):** [AWS SaaS Lens — multi-tenant microservices](https://docs.aws.amazon.com/wellarchitected/latest/saas-lens/multi-tenant-microservices.html) (inject `tenantId` at log/metric generation); [AWS SEC04-BP02 standardized log locations](https://docs.aws.amazon.com/wellarchitected/latest/framework/sec_detect_investigate_events_logs.html); [AWS multi-tenant API authorization](https://docs.aws.amazon.com/prescriptive-guidance/latest/saas-multitenant-api-access-authorization/introduction.html) (PDP/PEP pattern).
+**Research (audit / identity):** [NIST SP 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html); [OpenID Connect Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html); [AWS SaaS Lens — tenant context in logs](https://docs.aws.amazon.com/wellarchitected/latest/saas-lens/multi-tenant-microservices.html).
 
 **Proposed elite additions:** `markdown_system/AUDIT_EVENT_PACK_PLAN.md` (proposed) — central audit schema + tenant-scoped append-only events composed from `GO-HUMAN-APPROVAL-CORE` + existing PG outbox patterns; not a fake HECHO pack.
 
@@ -98,10 +148,10 @@ Live provider credentials, cloud CI, physical devices, and production admission 
 
 | Status | Selected 116 | Primary paths @ `477358d` | Notes |
 |---|---|---|---|
-| **HECHO** | Yes | `GO-SUPPLY-FACTORY-INVENTORY-API`, `GO-CONNECTED-CATALOG-AUTHORING`, `GO-CONNECTED-CATALOG-PUBLICATION`, `GO-CONNECTED-SERIAL-SUPPLY`, `GO-CONNECTED-SUPPLY-CREATION`; portals `TS-CATALOG-AUTHORING-PORTAL`, `TS-SERIAL-SUPPLY-PORTAL`, `TYPESCRIPT-PUBLISHED-CATALOG-STOREFRONT`; BC adapters `GO-BC-EXACT-AMOUNT-ADAPTER`, `GO-BC-SALES-CONTRACT-ADAPTER`; `GO-EXACT-FX-SNAPSHOT-ACCOUNTING`, `GO-FINOPS-CORE`, `GO-BUSINESS-POLICY-PROFILE`; ARCA stack `MICROSOFT-ARCA-WSAA-CREDENTIAL-CORE`, `MICROSOFT-ARCA-WSFE-GENERATED-CLIENT`, `MICROSOFT-ARCA-WSFE-SOAP-ADAPTER`, `GO-ARCA-FISCAL-ISSUANCE-API`, `ARCA-WSFE-UDS-WORKER`; `docs/ARCA_LOCAL_REFERENCE.md`; `markdown_system/FRANCHISE_GAP_MAP.md` (`ARCA_INFRA` = PROVEN_LOCAL) | Quote→order→catalog connected locally (T2802). |
-| **PARCIAL** | Yes / disk | `GO-ENTERPRISE-ACCOUNTING-LEDGER-API`; `PYTHON-ODOO-STORED-VALUE-CALCULATOR`, `GO-APPROVED-STORED-VALUE-TENDER`; disk: `GO_I18N_CORE.md`, `GO_FX_CORE.md` | ARCA live homologation = creds pending. PI-PL depth is BC-derived + fixtures, not full ERP. |
+| **HECHO** | Yes | Schema foundation: `ELECTROMOBILITY-FRANCHISE-MODULES` + `db/migrations/0003_electromobility_franchise_modules.up.sql`; APIs: `GO-SUPPLY-FACTORY-INVENTORY-API`, `GO-CONNECTED-CATALOG-*`, `GO-CONNECTED-SERIAL-SUPPLY`, `GO-CONNECTED-SUPPLY-CREATION`; portals `TS-CATALOG-AUTHORING-PORTAL`, `TS-SERIAL-SUPPLY-PORTAL`, `TYPESCRIPT-PUBLISHED-CATALOG-STOREFRONT`; BC adapters `GO-BC-EXACT-AMOUNT-ADAPTER`, `GO-BC-SALES-CONTRACT-ADAPTER`; `GO-EXACT-FX-SNAPSHOT-ACCOUNTING`, `GO-FINOPS-CORE`, `GO-BUSINESS-POLICY-PROFILE` | Multi-domain transactional model per pack claim (catalog, CRM, inventory, pricing, payment, logistics, franchise schemas). |
+| **PARCIAL** | Yes / disk | ARCA stack (`MICROSOFT-ARCA_*`, `GO-ARCA-FISCAL-ISSUANCE-API`, `ARCA-WSFE-UDS-WORKER`); `docs/ARCA_LOCAL_REFERENCE.md`; `markdown_system/FRANCHISE_GAP_MAP.md` (`ARCA_INFRA` PROVEN_LOCAL); `GO-ENTERPRISE-ACCOUNTING-LEDGER-API`; disk: `GO_I18N_CORE.md`, `GO_FX_CORE.md` | ARCA infra PROVEN_LOCAL; **live creds pending**. PI-PL = BC-derived + fixtures, not full ERP. |
 
-**Research (inventory / costing):** [Microsoft Inventory Visibility](https://learn.microsoft.com/en-us/dynamics365/supply-chain/inventory/inventory-visibility) (soft reservations, ATP); [Microsoft Inventory Visibility reservations](https://learn.microsoft.com/en-us/dynamics365/supply-chain/inventory/inventory-visibility-reservations).
+**Research (inventory / fiscal live):** [Microsoft Inventory Visibility](https://learn.microsoft.com/en-us/dynamics365/supply-chain/inventory/inventory-visibility); [AFIP WSFE documentation](https://www.afip.gob.ar/ws/documentacion/ws-factura-electronica.asp).
 
 **Proposed elite additions:** explicit `CATALOG_COST_ROLLUP_PACK_PLAN.md` bridging `GO-FINOPS-CORE` + ledger API for franchisee P&L views (doc plan only).
 
@@ -131,16 +181,16 @@ Live provider credentials, cloud CI, physical devices, and production admission 
 
 ---
 
-### 5. Analytics / reporting
+### 5. Analytics / reporting / dashboards / CRM segmentation
 
 | Status | Selected 116 | Primary paths @ `477358d` | Notes |
 |---|---|---|---|
-| **PARCIAL** | Partial | **Selected:** `GO-DATA-ANALYTICS-CORE`, `GO-HTTP-METRICS-REFERENCE`, `GO-CONNECTED-ROLE-METRICS-PROOF`; ads read adapters `PYTHON-GOOGLE-ADS-REPORTING-ADAPTER`, `PYTHON-META-ADS-REPORTING-ADAPTER`, `PYTHON-TIKTOK-ADS-REPORTING-ADAPTER`; `docs/analytics/immutability-and-retention.md` | Ads reporting = read-only ingest, not full BI warehouse. |
-| **PARCIAL** | Disk only | `implementation_packs/GO_DASHBOARDS_CORE.md`, `GO_SLO_CORE.md`, `GO_SEARCH_CORE.md` (search in 116) | Dashboards/SLO packs exist on disk but **not** in selected 116 JSON. PostHog NPS adapted locally per gap map notes. |
+| **PARCIAL** | Partial | **Selected cores:** `GO-DATA-ANALYTICS-CORE`, `GO-HTTP-METRICS-REFERENCE`, `GO-CONNECTED-ROLE-METRICS-PROOF`; ads read adapters `PYTHON-*-ADS-REPORTING-ADAPTER`; CRM journey `GO-FRANCHISE-CUSTOMER-JOURNEY-API`, `GO-ELECTROMOBILITY-PUBLIC-CRM-API`; `docs/analytics/immutability-and-retention.md` | Analytics + role metrics compose; **CRM segmentation** = journey/CRM APIs, not a standalone segmentation pack. |
+| **PARCIAL** | Disk / **FALTA** select | `implementation_packs/GO_DASHBOARDS_CORE.md`, `GO_SLO_CORE.md` — **not** in selected 116/120 JSON | Gap-gate or future composition select — **do not invent** dashboard pack body. |
 
-**Research:** [AWS Well-Architected — capture logs in standardized locations](https://docs.aws.amazon.com/wellarchitected/latest/framework/sec_detect_investigate_events_logs.html); semantic metrics + warehouse patterns per `markdown_system/TOTAL_SYSTEM_CAPABILITY_CONTRACT.md` (`ANALYTICS-BI`).
+**Research:** [Google SRE Book — monitoring distributed systems](https://sre.google/sre-book/monitoring-distributed-systems/); `markdown_system/TOTAL_SYSTEM_CAPABILITY_CONTRACT.md` (`ANALYTICS-BI`).
 
-**Proposed elite additions:** admit `GO-DASHBOARDS-CORE` into a future composition revision **or** document compose recipe in `PACK_PER_CLAIM_INDEX.md` when consumer requires executive dashboards.
+**Proposed elite additions:** select `GO-DASHBOARDS-CORE` via `implementation_packs/CAPABILITY_GAP_RESOLUTION_GATE.md` when consumer marks dashboards REQUIRED.
 
 ---
 
@@ -148,10 +198,10 @@ Live provider credentials, cloud CI, physical devices, and production admission 
 
 | Status | Selected 116 | Primary paths @ `477358d` | Notes |
 |---|---|---|---|
-| **HECHO** | Yes | `ELECTROMOBILITY-FRANCHISE-MODULES`, `GO-NETWORK-ROLE-COMPOSITION`, `TS-NETWORK-ROLE-PORTAL`, `GO-FRANCHISE-ROYALTY-SETTLEMENT-API`; `reconstruction_evidence/FRANCHISE_NETWORK_ADMINISTRATION_2026-08-30_V118.md`, `FRANCHISE_ROYALTY_SETTLEMENT_2026-08-30_V120.md` | HQ / branch / factory role model; royalty settlement connected locally. |
-| **PARCIAL** | — | Cross-legal-entity fulfillment at scale | See logistics row; not same as Microsoft DOM cross-LE (external pattern). |
+| **PARCIAL** | Yes (compose) | `ELECTROMOBILITY-FRANCHISE-MODULES`, `GO-NETWORK-ROLE-COMPOSITION`, `TS-NETWORK-ROLE-PORTAL`, `GO-FRANCHISE-ROYALTY-SETTLEMENT-API`; `reconstruction_evidence/FRANCHISE_NETWORK_ADMINISTRATION_2026-08-30_V118.md`, `FRANCHISE_ROYALTY_SETTLEMENT_2026-08-30_V120.md` | Hierarchy / territory / royalty **compose** PROVEN_LOCAL; **site CMS / per-site IaC thin** — no dedicated admitted pack. |
+| **PARCIAL** | External | Galaxy field guide only — `docs/FRANCHISE_PLAYBOOK.md` §5 | Orchestration KB; **not** franchise e2e or installable fleet IaC. |
 
-**Research:** [Google Identity Platform multi-tenancy](https://cloud.google.com/identity-platform/docs/multi-tenancy) (tenant silos for franchisees); [Google Cloud Run multi-tenant](https://cloud.google.com/run/docs/securing/multi-tenant) (isolation boundaries).
+**Research:** [AWS Control Tower — multi-account governance](https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html); [Google Identity Platform multi-tenancy](https://cloud.google.com/identity-platform/docs/multi-tenancy).
 
 **Proposed elite additions:** `NETWORK_OPERATING_MODEL_PACK_PLAN.md` — ADR template for silo vs pool tenancy aligned to `FRANCHISE_FULL_STACK_FOUNDATION.md`.
 
@@ -163,7 +213,7 @@ Live provider credentials, cloud CI, physical devices, and production admission 
 |---|---|---|---|---|
 | WhatsApp Cloud | **HECHO** | Yes | `PYTHON-META-WHATSAPP-CLOUD-ADAPTER`, `GO-CONNECTED-WHATSAPP-HOST`, `GO-CONNECTED-SCHEDULED-WHATSAPP`, `GO-CONNECTED-WHATSAPP-CAMPAIGNS`; `docs/whatsapp-connected-host.md` | T2805 PROVEN_LOCAL wiring; live token pending. |
 | Meta Page publish | **HECHO** | Yes | `PYTHON-OFFICIAL-META-PAGE-WRITE-ADAPTER`, `GO-META-PAGE-PUBLISHING-INFRASTRUCTURE` | No Instagram/TikTok/LinkedIn outbound in page-write pack scope. |
-| Meta / Google / TikTok leads | **HECHO/PARCIAL** | Yes | `GO-OMNICHANNEL-LEAD-INGRESS` (Google Lead Form + ML Questions), `GO-META-LEAD-WEBHOOK-SIGNAL`, `GO-META-LEAD-EVIDENCE-IMPORT`, `PYTHON-META-LEAD-RECONCILIATION-ADAPTER`, `PYTHON-TIKTOK-LEAD-ADAPTER`, `GO-TIKTOK-LEAD-DURABLE-IMPORT`, `GO-LEAD-CANDIDATE-PROMOTION` | TikTok/Meta live delivery conditioned per `FRANCHISE_COMPLETE_PACK_PLAN.md` ack text. |
+| Meta / Google / TikTok leads | **HECHO** (fixtures) / **PARCIAL** (live) | Yes | `GO-OMNICHANNEL-LEAD-INGRESS` (Google Lead Form + ML Questions), `GO-META-LEAD-*`, `PYTHON-TIKTOK-LEAD-ADAPTER`, `GO-TIKTOK-LEAD-DURABLE-IMPORT`, `GO-LEAD-CANDIDATE-PROMOTION` | Nightly #5: selected cluster HECHO for LOCAL_FIXTURES; live creds **CONDITIONED** (`FRANCHISE_GAP_MAP.md` T2805). |
 | Messenger / Instagram DM | **PARCIAL** | No | **Disk:** `implementation_packs/GO_MESSAGING_CHANNEL_ADAPTERS.md`; `internal/msgchannels/metagraph.go` (parse only; no outbound Instagram/Messenger claim) | Adapter on disk, **not** in selected 116. |
 | Email (B2B / transactional) | **PARCIAL** | Partial | `GO-CHANNELS-CORE`, `GO-PG-OUTBOUND-DELIVERY-FENCE`; disk: `GO_MESSAGING_CHANNEL_ADAPTERS.md`, `AWS_SES_IMMUTABLE_EMAIL_RECEIVER.md`, `GO_AWS_ENTERPRISE_STORAGE_EMAIL_ADAPTERS.md` | SES pack on disk, not in 116. |
 | Ads reporting | **PARCIAL** | Yes | `PYTHON-*-ADS-REPORTING-ADAPTER` (Google/Meta/TikTok) | Read-only reporting, not campaign mutation. |
@@ -185,30 +235,31 @@ Live provider credentials, cloud CI, physical devices, and production admission 
 | **HECHO** | Yes | `GO-FULFILLMENT-SERVICE-FRANCHISE-API`, `GO-CONNECTED-SUPPLY-CREATION`, `GO-CONNECTED-SERIAL-SUPPLY`, `GO-SUPPLY-FACTORY-INVENTORY-API`; `docs/inventory/MICROSOFT_BC_*_DERIVATION.md`, `docs/logistics/MICROSOFT_BC_AMAZON_CONNECTED_CARRIER_DERIVATION.md`; `reconstruction_evidence/FRANCHISE_HANDOVER_SERVER_EVIDENCE_2026-08-30_V136.md` | Receiving + handover connected in local fixtures. |
 | **PARCIAL** | — | Distributed order management across many legal entities | No DOM-equivalent pack; BC derivations are pattern docs. |
 
-**Research:** [Microsoft Distributed Order Management](https://learn.microsoft.com/en-us/dynamics365/commerce/dom); [Cross-legal-entity fulfillment (2026 wave)](https://learn.microsoft.com/en-us/dynamics365/release-plan/2026wave1/enterprise-resource-planning/dynamics365-commerce/support-cross-legal-entity-order-fulfillment-optimization-dom); [Commerce architecture hub-and-spoke](https://learn.microsoft.com/en-us/dynamics365/commerce/dev-itpro/commerce-architecture).
+**Research:** [Amazon SP-API Fulfillment Outbound](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-api); [Microsoft Distributed Order Management](https://learn.microsoft.com/en-us/dynamics365/commerce/dom).
 
 **Proposed elite additions:** `FULFILLMENT_SOURCE_SELECTION_PACK_PLAN.md` — rule engine spec referencing `GO-FULFILLMENT-SERVICE-FRANCHISE-API` + network roles.
 
 ---
 
-### 9. Brand / public web / publish gates
+### 9. Brand / public web / publish gates / DAM
 
 | Status | Selected 116 | Primary paths @ `477358d` | Notes |
 |---|---|---|---|
-| **PARCIAL** | Yes + extension | **Selected:** `TYPESCRIPT-PUBLISHED-CATALOG-STOREFRONT`, `GOOGLE-LIGHTHOUSE-WEB-QUALITY-GATE`, `MICROSOFT-PLAYWRIGHT-BROWSER-GATE`, `TS-GO-API-WEB-BRIDGE`, `TS-FRANCHISE-JOURNEY-PORTALS`; **V403 extension:** `TS-PUBLIC-WEB-EXPERIENCE-V403`, `TS-FRANCHISE-EXPERIENCE-V403`, `TS-DESIGN-SYSTEM-V403`; plans `markdown_system/PUBLIC_WEB_EXPERIENCE_PACK_PLAN_V403.md`, `markdown_system/FRANCHISE_EXPERIENCE_PACK_PLAN_V403.md`; `docs/public-indexing.md`, `docs/SOCIAL_PUBLISHING.md` | Public visual approval **PENDING** (`PUBLIC_WEB_EXPERIENCE_PACK_PLAN_V403.md`). |
-| **PARCIAL** | Disk only | `implementation_packs/GO_SEO_CORE.md` + `src/app/sitemap.ts`, `src/app/robots.ts`, `src/platform/seo/public-indexing.ts` | SEO core on disk; Lighthouse in 116; sitemap bridge in reference tree. |
+| **PARCIAL** | Yes + extension | **Selected:** `TYPESCRIPT-PUBLISHED-CATALOG-STOREFRONT`, `GOOGLE-LIGHTHOUSE-WEB-QUALITY-GATE`, `MICROSOFT-PLAYWRIGHT-BROWSER-GATE`, `TS-GO-API-WEB-BRIDGE`, `TS-FRANCHISE-JOURNEY-PORTALS`; **V403 extension:** `TS-PUBLIC-WEB-EXPERIENCE-V403`, `TS-FRANCHISE-EXPERIENCE-V403`, `TS-DESIGN-SYSTEM-V403`; plans `markdown_system/PUBLIC_WEB_EXPERIENCE_PACK_PLAN_V403.md`, `markdown_system/FRANCHISE_EXPERIENCE_PACK_PLAN_V403.md` | Storefront + publish gates compose; visual approval **PENDING**. |
+| **PARCIAL** | **FALTA** DAM | No dedicated brand DAM / asset-library pack in tree | Catalog images + `GO-CONNECTED-CATALOG-PUBLICATION` only; gap-gate if REQUIRED. |
+| **PARCIAL** | Disk only | `implementation_packs/GO_SEO_CORE.md` + `src/app/sitemap.ts`, `src/platform/seo/public-indexing.ts` | SEO core on disk; Lighthouse in 116. |
 
-**Research:** Public web gates align with `TOTAL_SYSTEM_CAPABILITY_CONTRACT.md` `WEB-PUBLIC` (SSR/SEO/consent/a11y).
+**Research:** [Material Design](https://m3.material.io/); [Fluent 2](https://fluent2.microsoft.design/); [Adobe Spectrum](https://spectrum.adobe.com/) (UX method refs for V403 overlays).
 
 ---
 
-### 10. Admin / ops / governance / agent doors
+### 10. Admin / ops / governance / agent doors / admin UX
 
 | Status | Selected 116 | Primary paths @ `477358d` | Notes |
 |---|---|---|---|
-| **HECHO** | Yes (protocol); V403 admin overlay separate | Doors: `START_FRANCHISE.md`, `AGENTS.md`, `markdown_system/FRANCHISE_PROJECT_OPERATING_PROTOCOL.md`, `implementation_packs/PROJECT_OPERATING_CONNECTION.md` (materialized bridge); `implementation_packs/ENGINEERING_EXECUTION_VALIDATOR.md`, `PROJECT_START_READINESS_VALIDATOR.md`; **V403:** `BUSINESS-FUNCTION-OPERATING-V403`, `markdown_system/BUSINESS_FUNCTION_OPERATING_CONTRACT_V403.md`; admin UI plan `markdown_system/ADMIN_OPS_EXPERIENCE_PACK_PLAN_V403.md` → `TS-ADMIN-OPS-EXPERIENCE-V403` | Agent doors wired; business-function console = contract scaffold, not live org chart. |
-| **PARCIAL** | — | `markdown_system/TOTAL_SYSTEM_CAPABILITY_CONTRACT.md` (48 surfaces inventory) | 48 surfaces ≠ 48 executed apps. |
-| **PARCIAL** | — | Training/help: `GO-CONNECTED-HUMAN-TRAINING`, `GO-CONNECTED-HELP-CMS`, `TS-CONNECTED-TRAINING-PORTAL`, `TS-CONNECTED-HELP-CMS-PORTAL` | T2804 PROVEN_LOCAL for guides/courses/locale. |
+| **HECHO** | Yes (protocol / doors) | `START_FRANCHISE.md`, `markdown_system/FRANCHISE_PROJECT_OPERATING_PROTOCOL.md`, `ENGINEERING_EXECUTION_VALIDATOR.md`, `PROJECT_START_READINESS_VALIDATOR.md`; **V403 extension (120):** `BUSINESS-FUNCTION-OPERATING-V403`, `markdown_system/BUSINESS_FUNCTION_OPERATING_CONTRACT_V403.md` | Agent doors + business-function contract in 120 profile. |
+| **PARCIAL** | Separate expediente | `markdown_system/ADMIN_OPS_EXPERIENCE_PACK_PLAN_V403.md` → `implementation_packs/TYPESCRIPT_ADMIN_OPS_EXPERIENCE_V403.md` (`TS-ADMIN-OPS-EXPERIENCE-V403`) — **not** in selected 116/120 JSON | Admin UX overlay exists on disk; gap-gate before treating as composed — **do not invent** pack admission. |
+| **PARCIAL** | — | `markdown_system/TOTAL_SYSTEM_CAPABILITY_CONTRACT.md` (48 surfaces); training/help: `GO-CONNECTED-HUMAN-TRAINING`, `GO-CONNECTED-HELP-CMS`, `TS-CONNECTED-*-PORTAL` | 48 surfaces ≠ 48 executed apps; T2804 PROVEN_LOCAL for guides/locale. |
 
 **Research:** [Microsoft RBAC overview](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview) (cited in `BUSINESS_FUNCTION_OPERATING_CONTRACT_V403.md`); DORA capabilities linked there.
 
@@ -218,8 +269,9 @@ Live provider credentials, cloud CI, physical devices, and production admission 
 
 | Status | Selected 116 | Primary paths @ `477358d` | Notes |
 |---|---|---|---|
-| **HECHO/PARCIAL** | Yes | `GO-OMNICHANNEL-LEAD-INGRESS`, `GO-LEAD-CANDIDATE-PROMOTION`, Meta/TikTok lead packs (see §7); `markdown_system/BUSINESS_FUNCTION_OPERATING_CONTRACT_V403.md` → SDR function maps to promotion + ingress | **FALTA** pack filename `*SDR*` — intentional (`LIBRARY_HEALTH_CHECK.md`). |
-| **NO** | — | Named `*SDR*` workflow pack | Use gap gate if a **named** SDR pack is REQUIRED; do not invent. |
+| **HECHO** | Yes (ingress + promotion) | `GO-OMNICHANNEL-LEAD-INGRESS`, `GO-LEAD-CANDIDATE-PROMOTION`, Meta/TikTok lead packs (§7) | Nightly #5 cluster; LOCAL_FIXTURES path. |
+| **PARCIAL** | Yes (function only) | `markdown_system/BUSINESS_FUNCTION_OPERATING_CONTRACT_V403.md` → `#/functions/sdrs` → `GO_LEAD_CANDIDATE_PROMOTION.md` | SDR **function** without named pack. |
+| **NO** | — | Named `*SDR*` workflow pack | Nightly #14 — **FALTA**; do not invent. |
 
 **Research:** HubSpot campaign operations (method reference in business-function contract); lead handoff patterns in prospect-to-quote docs above.
 
@@ -292,11 +344,11 @@ Phases may overlap only where `FRANCHISE_PROJECT_OPERATING_PROTOCOL.md` records 
 
 | Gap | Status | Public pattern (URL) | Proposed elite shape |
 |---|---|---|---|
-| GTM / tag manager | **NO** | [GTM server-side intro](https://developers.google.com/tag-platform/tag-manager/server-side/intro) | `GTM_SERVER_SIDE_PACK_PLAN.md` + gap gate |
+| GTM / tag manager | **NO** | [Google server-side GTM architecture](https://developers.google.com/tag-platform/tag-manager/server-side/intro) | Gap gate only — Nightly #13; Lead Form ≠ GTM |
 | Named SDR pack | **NO** (function **PARCIAL**) | [Prospect-to-quote](https://learn.microsoft.com/en-us/dynamics365/guidance/business-processes/prospect-to-quote-overview) | Extend `BUSINESS_FUNCTION_OPERATING_CONTRACT_V403.md` + `GO-LEAD-CANDIDATE-PROMOTION` |
 | QR capture pack | **NO** (identity **PARCIAL**) | Mobile capture hardening (OWASP) | `QR_CAPTURE_ADMISSION_PACK_PLAN.md` |
 | Enterprise audit stream | **PARCIAL** | [AWS SaaS Lens logging](https://docs.aws.amazon.com/wellarchitected/latest/saas-lens/multi-tenant-microservices.html) | `AUDIT_EVENT_PACK_PLAN.md` |
-| Dashboards in composition | **PARCIAL** (disk) | `ANALYTICS-BI` in `TOTAL_SYSTEM_CAPABILITY_CONTRACT.md` | Select `GO-DASHBOARDS-CORE` in future composition revision |
+| Dashboards / admin UX / brand DAM | **PARCIAL** | [Google SRE Book](https://sre.google/sre-book/monitoring-distributed-systems/); Material / Fluent / Spectrum (method) | Gap-gate `GO_DASHBOARDS_CORE.md`, `TYPESCRIPT_ADMIN_OPS_EXPERIENCE_V403.md`; DAM = **FALTA** |
 | Messenger/Instagram outbound | **PARCIAL** (disk adapters) | Meta Messenger Platform docs (cited in `GO_MESSAGING_CHANNEL_ADAPTERS.md`) | Compose disk pack + outbound fence tests before selecting |
 | DOM / multi-LE fulfillment | **PARCIAL** | [Microsoft DOM](https://learn.microsoft.com/en-us/dynamics365/commerce/dom) | `FULFILLMENT_SOURCE_SELECTION_PACK_PLAN.md` |
 | Galaxy franchise fleet | **NO** (orchestration **PARCIAL**) | External KB pin only | Do not conflate with elite packs |
