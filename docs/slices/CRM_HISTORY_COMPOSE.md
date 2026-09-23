@@ -4,6 +4,18 @@ Tip pin: `42d9f83ee6fa1536bcb59d66e6c7850b01ddd9b0`
 
 Status: **PARCIAL → tangible slice** (local fixtures + selected composition only). **Not** production, **not** REVESTEX, **not** a named SDR or GTM pack.
 
+## 0. Architecture contract (read-only cites @ tip `42d9f83`)
+
+This slice doc does **not** edit the architecture doors; it aligns with them:
+
+| Door | Path @ `42d9f83` | CRM / history row |
+| --- | --- | --- |
+| Domain architecture | [`docs/FRANCHISE_ARCHITECTURE.md`](FRANCHISE_ARCHITECTURE.md) § **3. Customers + history / CRM** | **PARCIAL** — compose + fixtures; no standalone segmentation / Customer-360 pack |
+| Build-order matrix | [`docs/ROADMAP.md`](ROADMAP.md) § **FRANCHISE / COMPANY DOMAINS** → Customers + history / CRM | **PARCIAL** — cite selected packs with full `implementation_packs/<NAME>.md` paths below; segmentation/360 **FALTA** |
+| Selected JSON | [`markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md`](../markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md) | Exact `packId` + `path` + `version` per row — no shorthand filenames |
+
+Lead ingress remains adjacent per [`docs/FRANCHISE_ARCHITECTURE.md`](FRANCHISE_ARCHITECTURE.md) layer **4 — CRM + leads**; no named SDR pack (`markdown_system/PACK_PER_CLAIM_INDEX.md`).
+
 ## 1. Claim (narrow)
 
 Prove a **single CRM owner** in PostgreSQL with:
@@ -17,9 +29,16 @@ Lead **ingress** (Google/Meta/TikTok → candidate → promotion) is adjacent wi
 
 ## 2. Pack map (selected composition + schema owner)
 
-Authoritative selector: `markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md` (116 packs). Rows below are the **minimum** subset for this slice; versions are exact selected JSON entries.
+Authoritative selector: [`markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md`](../markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md) (116 packs). Rows below are the **minimum** subset for this slice; `packId`, `path`, and `version` match the selected JSON exactly — use the **`path` column filename**, not shorthand aliases.
 
-| Role | packId | version | Pack path | What it owns here |
+### PackId → selected JSON filename (alias normalization)
+
+| Selected JSON `packId` | Exact selected JSON `path` | Do **not** substitute |
+| --- | --- | --- |
+| `PG-TX-FOUNDATION` | `implementation_packs/POSTGRES_TRANSACTIONAL_FOUNDATION.md` | `POSTGRES-TRANSACTIONAL-FOUNDATION.md`, `PG-TX-FOUNDATION.md`, bare `POSTGRES_TRANSACTIONAL_FOUNDATION.md` |
+| `GO-ENTERPRISE-BACKEND` | `implementation_packs/GO_ENTERPRISE_BACKEND_CORE.md` | `GO_ENTERPRISE_BACKEND.md`, `GO-ENTERPRISE-BACKEND-CORE.md`, bare `GO_ENTERPRISE_BACKEND_CORE.md` |
+
+| Role | packId | version | Selected JSON `path` | What it owns here |
 | --- | --- | --- | --- | --- |
 | PostgreSQL foundation | `PG-TX-FOUNDATION` | `0.1.0` | `implementation_packs/POSTGRES_TRANSACTIONAL_FOUNDATION.md` | tenant, org, platform idempotency/outbox |
 | Backend shell | `GO-ENTERPRISE-BACKEND` | `0.4.8` | `implementation_packs/GO_ENTERPRISE_BACKEND_CORE.md` | HTTP/OIDC/identity wiring |
@@ -51,7 +70,7 @@ Journey/history extensions arrive in later migrations owned by `GO-FRANCHISE-CUS
 
 ### Adjacent ingress (cite only — **not** SDR)
 
-| packId | version | Path | Boundary |
+| packId | version | Selected JSON `path` | Boundary |
 | --- | --- | --- | --- |
 | `GO-OMNICHANNEL-LEAD-INGRESS` | `0.2.0` | `implementation_packs/GO_OMNICHANNEL_LEAD_INGRESS.md` | durable provider candidate + outbox; **no** CRM promotion by receipt alone |
 | `GO-LEAD-CANDIDATE-PROMOTION` | `0.1.0` | `implementation_packs/GO_LEAD_CANDIDATE_PROMOTION.md` | explicit contact decision → `crm.lead` + `crm.consent_evidence`; **not** a named `*SDR*` pack |
@@ -61,15 +80,15 @@ See `markdown_system/PACK_PER_CLAIM_INDEX.md` (SDR row: **PARCIAL**, **FALTA** p
 
 ## 3. Compose recipe
 
-1. **Pin** tip `42d9f83ee6fa1536bcb59d66e6c7850b01ddd9b0`; walk doors 1–7 in `docs/FRANCHISE_PLAYBOOK.md` before composing.
-2. **Select** the pack rows in §2 from `markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md`; do not add undeclared packIds.
-3. **Materialize** with the library compositor / franchise protocol in `START_FRANCHISE.md` into an empty consumer tree (or use this repo’s already-materialized paths under `internal/`, `db/`, `cmd/electromobility-api/`).
+1. **Pin** tip `42d9f83ee6fa1536bcb59d66e6c7850b01ddd9b0`; walk doors 1–7 in [`docs/FRANCHISE_PLAYBOOK.md`](../FRANCHISE_PLAYBOOK.md) before composing.
+2. **Select** the pack rows in §2 from [`markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md`](../markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md); do not add undeclared packIds; resolve filenames via the alias table (§2), not shorthand.
+3. **Materialize** with the library compositor / franchise protocol in [`START_FRANCHISE.md`](../START_FRANCHISE.md) into an empty consumer tree (or use this repo’s already-materialized paths under `internal/`, `db/`, `cmd/electromobility-api/`).
 4. **Apply migrations** in order through journey/history owners at minimum:
-   - `0001` platform foundation
-   - `0002` enterprise order core
-   - `0003` electromobility franchise modules (**CRM schema**)
-   - `0005` franchise customer journey
-   - `0015` franchise availability and appointment audit (**`crm.appointment_transition`**)
+   - `0001` — `implementation_packs/POSTGRES_TRANSACTIONAL_FOUNDATION.md` (`PG-TX-FOUNDATION`)
+   - `0002` — `implementation_packs/GO_ENTERPRISE_BACKEND_CORE.md` (`GO-ENTERPRISE-BACKEND`) enterprise order core
+   - `0003` — `implementation_packs/ELECTROMOBILITY_FRANCHISE_MODULES.md` (**CRM schema**)
+   - `0005` — `implementation_packs/GO_FRANCHISE_CUSTOMER_JOURNEY_API.md`
+   - `0015` — `implementation_packs/GO_FRANCHISE_CUSTOMER_JOURNEY_API.md` (**`crm.appointment_transition`**)
    - further migrations only if the consumer activates quotes, handovers, ingress, or surveys
 5. **Configure** runtime per `docs/electromobility-api-runtime.md`: `DATABASE_URL`, `OIDC_ISSUER`, `OIDC_AUDIENCE`; synthetic RS256 fixtures for local gates only.
 6. **Expose** customer timeline: `GET /v1/customer/journey?organization_id=<org>` with token scope `customer:self` and subject bound to `customer_principal_id`.

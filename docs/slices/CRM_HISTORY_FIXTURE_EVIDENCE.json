@@ -5,8 +5,54 @@
   "status": "LOCAL_FIXTURES_INDEXED",
   "production_authorized": false,
   "claim": "Single PostgreSQL CRM owner with customer profile, consent/lead rows, append-only appointment transition history, and customer-scoped journey timeline projection.",
+  "architecture_contract_cites_read_only": [
+    {
+      "path": "docs/FRANCHISE_ARCHITECTURE.md",
+      "tip_sha": "42d9f83ee6fa1536bcb59d66e6c7850b01ddd9b0",
+      "section": "3. Customers + history / CRM",
+      "status": "PARCIAL"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "tip_sha": "42d9f83ee6fa1536bcb59d66e6c7850b01ddd9b0",
+      "section": "FRANCHISE / COMPANY DOMAINS → Customers + history / CRM",
+      "status": "PARCIAL"
+    }
+  ],
   "selected_composition_source": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+  "pack_id_filename_aliases": [
+    {
+      "packId": "PG-TX-FOUNDATION",
+      "path": "implementation_packs/POSTGRES_TRANSACTIONAL_FOUNDATION.md",
+      "reject": [
+        "POSTGRES-TRANSACTIONAL-FOUNDATION.md",
+        "PG-TX-FOUNDATION.md",
+        "POSTGRES_TRANSACTIONAL_FOUNDATION.md"
+      ]
+    },
+    {
+      "packId": "GO-ENTERPRISE-BACKEND",
+      "path": "implementation_packs/GO_ENTERPRISE_BACKEND_CORE.md",
+      "reject": [
+        "GO_ENTERPRISE_BACKEND.md",
+        "GO-ENTERPRISE-BACKEND-CORE.md",
+        "GO_ENTERPRISE_BACKEND_CORE.md"
+      ]
+    }
+  ],
   "packs": [
+    {
+      "packId": "PG-TX-FOUNDATION",
+      "version": "0.1.0",
+      "path": "implementation_packs/POSTGRES_TRANSACTIONAL_FOUNDATION.md",
+      "role": "postgresql_foundation"
+    },
+    {
+      "packId": "GO-ENTERPRISE-BACKEND",
+      "version": "0.4.8",
+      "path": "implementation_packs/GO_ENTERPRISE_BACKEND_CORE.md",
+      "role": "backend_shell"
+    },
     {
       "packId": "ELECTROMOBILITY-FRANCHISE-MODULES",
       "version": "0.1.2",
@@ -127,6 +173,7 @@
   "explicit_non_claims": [
     "No named SDR or GTM pack",
     "Not HISTORY-MODEL-TRAINING pipeline history",
-    "Not production or REVESTEX authorization"
+    "Not production or REVESTEX authorization",
+    "Did not edit docs/ROADMAP.md or docs/FRANCHISE_ARCHITECTURE.md"
   ]
 }
