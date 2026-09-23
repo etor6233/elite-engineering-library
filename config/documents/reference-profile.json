@@ -1,0 +1,17 @@
+{
+  "schema": "elite-aws-textract-document-profile/v2",
+  "provider": "Amazon Textract",
+  "sdk": "github.com/aws/aws-sdk-go-v2/service/textract@v1.45.0",
+  "region": "us-east-1",
+  "classes": [
+    {
+      "id": "supplier-invoice",
+      "decision": "REQUIRED",
+      "operation": "AnalyzeExpense",
+      "features": [],
+      "queries": [],
+      "response_schema_version": "supplier-invoice/v1",
+      "automatic_storage": false
+    }
+  ]
+}

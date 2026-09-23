@@ -1,0 +1,18 @@
+# AUTHORED packaging only; exact official SDK image remains a target candidate.
+ARG GCLOUD_RUNTIME
+FROM ${GCLOUD_RUNTIME}
+USER root
+RUN test -x /usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3 && \
+    ln -s /usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3 /usr/local/bin/python3 && \
+    mkdir -p /app /home/cloudsdk/.config/gcloud && chown -R 1000:1000 /home/cloudsdk
+COPY cloud/ /app/cloud/
+COPY production_admission_gate/ /app/production_admission_gate/
+ENV HOME=/home/cloudsdk \
+    CLOUDSDK_CONFIG=/home/cloudsdk/.config/gcloud \
+    CLOUDSDK_PYTHON=/usr/lib/google-cloud-sdk/platform/bundledpythonunix/bin/python3 \
+    CLOUDSDK_CORE_DISABLE_USAGE_REPORTING=true \
+    CLOUDSDK_COMPONENT_MANAGER_DISABLE_UPDATE_CHECK=true \
+    PYTHONDONTWRITEBYTECODE=1
+WORKDIR /app
+USER 1000:1000
+ENTRYPOINT ["python3", "-B", "/app/cloud/finops_cycle.py"]

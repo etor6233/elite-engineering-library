@@ -1,0 +1,13 @@
+{
+  "schema": "elite-official-tool-run/v1",
+  "project_id": "",
+  "environment": "production",
+  "release_digest": "",
+  "control_id": "",
+  "tool": {"path":"", "sha256":"", "name":"", "version":"", "source":""},
+  "arguments": [],
+  "working_directory": ".",
+  "environment_variable_names": [],
+  "timeout_seconds": 300,
+  "target": {}
+}

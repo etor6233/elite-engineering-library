@@ -1,0 +1,140 @@
+{
+  "profile_sha256": "2ce1e88eb44eef172bd4c1d8e09680e2c7c732aa479bee65d855e3251c53f937",
+  "profile_id": "reference-onboarding",
+  "profile_revision": 2,
+  "content_sha256": "eb919b9731d56832c38233572d6f1fd71cc62e7da64ca3d53a97638ab6a3ea20",
+  "courses": [
+    {
+      "source": {
+        "id": "resource-onboarding",
+        "title": "Registrar recursos y recuperar una respuesta",
+        "role": "employee",
+        "lessons": [
+          "resource-create-view"
+        ],
+        "prompts": [
+          {
+            "id": "recovery",
+            "text": "Describí qué harías si se pierde la respuesta después de registrar un recurso."
+          }
+        ]
+      },
+      "en": {
+        "title": "Register resources and recover a response",
+        "prompts": [
+          {
+            "id": "recovery",
+            "text": "Describe what you would do if the response is lost after registering a resource."
+          }
+        ]
+      }
+    },
+    {
+      "source": {
+        "id": "admin-onboarding",
+        "title": "Revisión de recursos",
+        "role": "admin",
+        "lessons": [
+          "resource-create-view",
+          "supply-role-view",
+          "warranty-role-view",
+          "network-role-view"
+        ],
+        "prompts": [
+          {
+            "id": "review",
+            "text": "Describí cómo recuperarías una operación incierta, revisarías contenido y separarías una evaluación de los permisos de acceso."
+          }
+        ]
+      },
+      "en": {
+        "title": "Resource review",
+        "prompts": [
+          {
+            "id": "review",
+            "text": "Describe how you would recover an uncertain operation, review content and distinguish assessment from access permissions."
+          }
+        ]
+      }
+    },
+    {
+      "source": {
+        "id": "owner-onboarding",
+        "title": "Supervisión de la operación",
+        "role": "owner",
+        "lessons": [
+          "operation-sections-view",
+          "network-role-view",
+          "training-role-view"
+        ],
+        "prompts": [
+          {
+            "id": "review",
+            "text": "Describí cómo distinguís una sección no disponible de una lista vacía."
+          }
+        ]
+      },
+      "en": {
+        "title": "Operations supervision",
+        "prompts": [
+          {
+            "id": "review",
+            "text": "Describe how you distinguish an unavailable section from an empty list."
+          }
+        ]
+      }
+    },
+    {
+      "source": {
+        "id": "customer-onboarding",
+        "title": "Revisar una cotización",
+        "role": "customer",
+        "lessons": [
+          "quote-acceptance-view"
+        ],
+        "prompts": [
+          {
+            "id": "review",
+            "text": "Describí qué confirma aceptar una cotización y qué se debe consultar ante una respuesta incierta."
+          }
+        ]
+      },
+      "en": {
+        "title": "Review a quote",
+        "prompts": [
+          {
+            "id": "review",
+            "text": "Describe what accepting a quote confirms and what must be checked after an uncertain response."
+          }
+        ]
+      }
+    },
+    {
+      "source": {
+        "id": "content-onboarding",
+        "title": "Contenido, publicación y revisión humana",
+        "role": "admin",
+        "lessons": [
+          "help-cms-view",
+          "catalog-role-view",
+          "training-role-view"
+        ],
+        "prompts": [
+          {
+            "id": "review",
+            "text": "Explicá cómo publicarías contenido revisado, recuperarías una respuesta incierta y preservarías cursos anteriores sin conceder accesos."
+          }
+        ]
+      },
+      "en": {
+        "title": "Content, publication and human review",
+        "prompts": [
+          {
+            "id": "review",
+            "text": "Explain how you would publish reviewed content, recover an uncertain response and preserve earlier courses without granting access."
+          }
+        ]
+      }
+    }
+  ]
+}

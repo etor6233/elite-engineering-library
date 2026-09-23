@@ -1,0 +1,22 @@
+{
+  "schema": "elite-business-policy/v1",
+  "extends": "PBC-CORE/1.0.0",
+  "profile_id": "library-reference",
+  "revision": 1,
+  "appointments": {
+    "lead_time_seconds": 1800,
+    "maximum_slot_seconds": 28800,
+    "minimum_slot_capacity": 1,
+    "maximum_slot_capacity": 100,
+    "occupying_states": [
+      "requested",
+      "confirmed"
+    ],
+    "working_window": "contains_slot",
+    "unavailable_window": "reject_overlap"
+  },
+  "pricebooks": {
+    "selection": "single_active_per_market_currency",
+    "validity": "half_open"
+  }
+}

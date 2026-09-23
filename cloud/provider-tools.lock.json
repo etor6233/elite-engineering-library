@@ -1,0 +1,61 @@
+{
+  "schema": "elite-cloud-toolchain/v403.1",
+  "tools": [
+    {
+      "tool": "gcloud",
+      "version": "584.0.0",
+      "platform": "linux/amd64",
+      "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-584.0.0-linux-x86_64.tar.gz",
+      "sha256": "02f0a54a1c5f9e582c568cd8da8258e22275b8ab033532fa03fd46bd9f7a3398",
+      "archive_bytes": 87165790,
+      "format": "tar.gz",
+      "local_archive": "sources/gcloud-linux.tar.gz",
+      "admission": "ACQUISITION_ONLY",
+      "security_admission": "TARGET_REQUIRED",
+      "license": "Google Cloud SDK terms and bundled notices; not redistribution authority",
+      "checksum_origin": "SHA256 computed from exact official versioned artifact; rolling documentation checksum differs; not an official detached signature"
+    },
+    {
+      "tool": "docker",
+      "version": "29.8.0",
+      "platform": "linux/amd64",
+      "url": "https://download.docker.com/linux/static/stable/x86_64/docker-29.8.0.tgz",
+      "sha256": "cc21815cf1e2efed867dc9c8b96b46ffed8ea176ffab32b0aacb54726ded8f25",
+      "archive_bytes": 86107773,
+      "format": "tar.gz",
+      "local_archive": "sources/docker-linux.tar.gz",
+      "admission": "ACQUISITION_ONLY",
+      "security_admission": "TARGET_REQUIRED",
+      "license": "Apache-2.0 and bundled dependencies/notices; exact artifact candidate",
+      "checksum_origin": "SHA256 observed from exact official Docker static archive; no signature claimed",
+      "constraints": [
+        "No host PATH edit",
+        "No daemon start",
+        "No system installation",
+        "Use only explicit candidate worker or separately admitted remote builder"
+      ]
+    },
+    {
+      "tool": "buildx",
+      "version": "0.37.1",
+      "platform": "linux/amd64",
+      "url": "https://github.com/docker/buildx/releases/download/v0.37.1/buildx-v0.37.1.linux-amd64",
+      "sha256": "9447199cdb435f25880548343c128a4b6650e8891ee598905d8d29d39a8e359b",
+      "archive_bytes": 65798306,
+      "format": "binary",
+      "local_archive": "sources/buildx-linux.bin",
+      "admission": "ACQUISITION_ONLY",
+      "security_admission": "TARGET_REQUIRED",
+      "license": "Apache-2.0 and bundled dependencies/notices; exact artifact candidate",
+      "checksum_origin": "GitHub release asset digest verified",
+      "constraints": [
+        "No host PATH edit",
+        "No daemon start",
+        "No system installation",
+        "Use only explicit candidate worker or separately admitted remote builder"
+      ]
+    }
+  ],
+  "meaning": "Optional provider/OCI tooling; no init/auth/service start",
+  "pending": []
+}

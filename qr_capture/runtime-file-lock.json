@@ -1,0 +1,40 @@
+{
+  "schema": "elite-exact-qr-wheel-files/v1",
+  "files": [
+    {
+      "path": "zxingcpp/__init__.py",
+      "sha256": "1c1078afee8f938dbbb81251748d49e2b4a6582e92eb22103b58a4dead0148de",
+      "wheel_sha256": "29f98a91148171460b47a942d137ecc90c4b8097636f23cca65263a56bb025d3"
+    },
+    {
+      "path": "zxingcpp/py.typed",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "wheel_sha256": "29f98a91148171460b47a942d137ecc90c4b8097636f23cca65263a56bb025d3"
+    },
+    {
+      "path": "zxingcpp/zxingcpp.pyd",
+      "sha256": "61538e8df1aefa2b04ce9307b9b4d27d3c7c68b7f2eb3ac55b46f94435c0ce30",
+      "wheel_sha256": "29f98a91148171460b47a942d137ecc90c4b8097636f23cca65263a56bb025d3"
+    },
+    {
+      "path": "zxingcpp/zxingcpp.pyi",
+      "sha256": "6dbe6a719f46d54c85738f6318067def31833d671ecf148d0286094e73b7fd81",
+      "wheel_sha256": "29f98a91148171460b47a942d137ecc90c4b8097636f23cca65263a56bb025d3"
+    },
+    {
+      "path": "zxing_cpp-3.1.1.dist-info/METADATA",
+      "sha256": "1f2642f835a20c70376e540b348591825363be469ae8458a5ab69dfab4c13d7a",
+      "wheel_sha256": "29f98a91148171460b47a942d137ecc90c4b8097636f23cca65263a56bb025d3"
+    },
+    {
+      "path": "zxing_cpp-3.1.1.dist-info/WHEEL",
+      "sha256": "63587a0c8f5f51d087d8443dcdbc57f2b0e9553bc4e5d2d5e7e369a9fdf21b45",
+      "wheel_sha256": "29f98a91148171460b47a942d137ecc90c4b8097636f23cca65263a56bb025d3"
+    },
+    {
+      "path": "zxing_cpp-3.1.1.dist-info/licenses/LICENSE",
+      "sha256": "2e54cd84a645bea25943c75dd8ae67cb291e66a47a11578333c9b4b3b6b86c85",
+      "wheel_sha256": "29f98a91148171460b47a942d137ecc90c4b8097636f23cca65263a56bb025d3"
+    }
+  ]
+}

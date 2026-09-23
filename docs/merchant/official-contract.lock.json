@@ -1,0 +1,29 @@
+{
+  "schema": "elite-official-contract-snapshot/v1",
+  "verified_at": "2026-09-13",
+  "sources": [
+    {
+      "id": "products",
+      "url": "https://developers.google.com/merchant/api/guides/products/add-manage",
+      "sha256": "87770da1baad98d13df098cf0e0a800dff1a1ecbd6334ff2586faca9a0f52443",
+      "bytes": 375991
+    },
+    {
+      "id": "insert",
+      "url": "https://developers.google.com/merchant/api/reference/rest/products_v1/accounts.productInputs/insert",
+      "sha256": "5900b8cb15b5fbb463dd6b882a9939863cbef11540d9caada7826c6ef37b7f4a",
+      "bytes": 485464
+    },
+    {
+      "id": "get",
+      "url": "https://developers.google.com/merchant/api/reference/rest/products_v1/accounts.products/get",
+      "sha256": "01f659734f4a952a011addd88383550702df706b3876718e2cb6a0265b9fa3ca",
+      "bytes": 486194
+    }
+  ],
+  "sdk_artifact_lock": "google_merchant_product_sync/sdk-artifact.lock.json",
+  "sdk_artifact_lock_sha256": "b070f37394487a1fd674c9e492543275b232255379e03095ea52008ca536f0ee",
+  "installed_source_lock": "google_merchant_product_sync/connected-runtime.lock.json",
+  "installed_source_lock_sha256": "4b8b7a660fb91db30f5bca4caf863f1fdd9ecd1f6676293cd9d12eed1fc11043",
+  "mapping_provenance": "AUTHORED; original Google SDK is DEPENDENCY_PIN, not rewritten or attributed to this bridge"
+}

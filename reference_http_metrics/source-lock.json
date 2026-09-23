@@ -1,0 +1,1655 @@
+{
+  "schema": "elite-http-metrics-reference-source/v1",
+  "toolchain": "go1.26.8",
+  "upstreams": [
+    {
+      "module": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+      "version": "v0.70.0",
+      "origin": {
+        "VCS": "git",
+        "URL": "https://github.com/open-telemetry/opentelemetry-go-contrib",
+        "Subdir": "instrumentation/net/http/otelhttp",
+        "Hash": "c8a87a60ba1b3374fd16df11fc3eeae6c41abbc9",
+        "Ref": "refs/tags/instrumentation/net/http/otelhttp/v0.70.0"
+      },
+      "zip_sha256": "5afae012c182ed95c9068c4b4de772677fbfecb9fbe41605046f907abba8bc92",
+      "go_sum": "h1:LMuyCAyfalSjDyjdC65nK6N0zoTT63+E/u95X0JovZI=",
+      "files_verified_against_zip": 36,
+      "license_sha256": "1ae07514be1d7bb33f0698f8d91fb51b8b9fe1463157ec1c72081a49b9bc6f40",
+      "license_expression": "Apache-2.0 AND BSD-3-Clause",
+      "runtime_source_changed": false,
+      "cached_source_reuse": true
+    },
+    {
+      "module": "go.opentelemetry.io/otel/exporters/prometheus",
+      "version": "v0.67.0",
+      "origin": {
+        "VCS": "git",
+        "URL": "https://github.com/open-telemetry/opentelemetry-go",
+        "Subdir": "exporters/prometheus",
+        "Hash": "93a693edeed0e07ce5ebd1dfe67af42d1e2055d8",
+        "Ref": "refs/tags/exporters/prometheus/v0.67.0"
+      },
+      "zip_sha256": "ce725796160333dcee033dc9e6a2a81ea8d6fb24846f9ddbdc714c5bc86d6d43",
+      "go_sum": "h1:7IefDa35e6V3NoiqIeLDMDxMFyZDk5qcoC0Ax4cC16E=",
+      "files_verified_against_zip": 63,
+      "license_sha256": "1ae07514be1d7bb33f0698f8d91fb51b8b9fe1463157ec1c72081a49b9bc6f40",
+      "license_expression": "Apache-2.0",
+      "runtime_source_changed": false
+    }
+  ],
+  "rules": {
+    "pack_id": "SECURE-OPS-DELIVERY-CORE",
+    "version": "1.1.4",
+    "sha256": "cc718b7bbe35de3f230eeb47c854c270580dbb488101ee5f30c0b758e1d967b0"
+  },
+  "historical_v375_through_v400": {
+    "schema": "elite-http-metrics-reference-source/v1",
+    "toolchain": "go1.26.8",
+    "upstreams": [
+      {
+        "module": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+        "version": "v0.70.0",
+        "origin": {
+          "VCS": "git",
+          "URL": "https://github.com/open-telemetry/opentelemetry-go-contrib",
+          "Subdir": "instrumentation/net/http/otelhttp",
+          "Hash": "c8a87a60ba1b3374fd16df11fc3eeae6c41abbc9",
+          "Ref": "refs/tags/instrumentation/net/http/otelhttp/v0.70.0"
+        },
+        "zip_sha256": "5afae012c182ed95c9068c4b4de772677fbfecb9fbe41605046f907abba8bc92",
+        "go_sum": "h1:LMuyCAyfalSjDyjdC65nK6N0zoTT63+E/u95X0JovZI=",
+        "files_verified_against_zip": 36,
+        "license_sha256": "1ae07514be1d7bb33f0698f8d91fb51b8b9fe1463157ec1c72081a49b9bc6f40",
+        "license_expression": "Apache-2.0 AND BSD-3-Clause",
+        "runtime_source_changed": false,
+        "cached_source_reuse": true
+      },
+      {
+        "module": "go.opentelemetry.io/otel/exporters/prometheus",
+        "version": "v0.67.0",
+        "origin": {
+          "VCS": "git",
+          "URL": "https://github.com/open-telemetry/opentelemetry-go",
+          "Subdir": "exporters/prometheus",
+          "Hash": "93a693edeed0e07ce5ebd1dfe67af42d1e2055d8",
+          "Ref": "refs/tags/exporters/prometheus/v0.67.0"
+        },
+        "zip_sha256": "ce725796160333dcee033dc9e6a2a81ea8d6fb24846f9ddbdc714c5bc86d6d43",
+        "go_sum": "h1:7IefDa35e6V3NoiqIeLDMDxMFyZDk5qcoC0Ax4cC16E=",
+        "files_verified_against_zip": 63,
+        "license_sha256": "1ae07514be1d7bb33f0698f8d91fb51b8b9fe1463157ec1c72081a49b9bc6f40",
+        "license_expression": "Apache-2.0",
+        "runtime_source_changed": false
+      }
+    ],
+    "public_graph": [
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "cloud.google.com/go/compute/metadata"
+        },
+        "version": "v0.3.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/alecthomas/kingpin/v2"
+        },
+        "version": "v2.4.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/alecthomas/units"
+        },
+        "version": "v0.0.0-20240927000941-0f3dac36c52b"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/beorn7/perks"
+        },
+        "version": "v1.0.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/cespare/xxhash/v2"
+        },
+        "version": "v2.3.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/coreos/go-oidc/v3"
+        },
+        "version": "v3.20.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/davecgh/go-spew"
+        },
+        "version": "v1.1.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/felixge/httpsnoop"
+        },
+        "version": "v1.1.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/go-jose/go-jose/v4"
+        },
+        "version": "v4.1.4"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/go-logr/logr"
+        },
+        "version": "v1.4.4"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/go-logr/stdr"
+        },
+        "version": "v1.2.2"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/golang-jwt/jwt/v5"
+        },
+        "version": "v5.3.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/golang/protobuf"
+        },
+        "version": "v1.5.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/google/go-cmp"
+        },
+        "version": "v0.7.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/google/uuid"
+        },
+        "version": "v1.6.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/jackc/pgpassfile"
+        },
+        "version": "v1.0.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/jackc/pgservicefile"
+        },
+        "version": "v0.0.0-20240606120523-5a60cdf6a761"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/jackc/pgx/v5"
+        },
+        "version": "v5.10.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/jackc/puddle/v2"
+        },
+        "version": "v2.2.2"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/jpillora/backoff"
+        },
+        "version": "v1.0.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/json-iterator/go"
+        },
+        "version": "v1.1.12"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/julienschmidt/httprouter"
+        },
+        "version": "v1.3.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/klauspost/compress"
+        },
+        "version": "v1.19.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/kr/pretty"
+        },
+        "version": "v0.3.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/kylelemons/godebug"
+        },
+        "version": "v1.1.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/modern-go/concurrent"
+        },
+        "version": "v0.0.0-20180306012644-bacd9c7ef1dd"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/modern-go/reflect2"
+        },
+        "version": "v1.0.2"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/munnerz/goautoneg"
+        },
+        "version": "v0.0.0-20191010083416-a7dc8b61c822"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/mwitkow/go-conntrack"
+        },
+        "version": "v0.0.0-20190716064945-2f068394615f"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/pmezard/go-difflib"
+        },
+        "version": "v1.0.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/prometheus/client_golang"
+        },
+        "version": "v1.24.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/prometheus/client_model"
+        },
+        "version": "v0.6.2"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/prometheus/common"
+        },
+        "version": "v0.70.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/prometheus/otlptranslator"
+        },
+        "version": "v1.0.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/prometheus/procfs"
+        },
+        "version": "v0.21.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/rogpeppe/go-internal"
+        },
+        "version": "v1.14.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/stretchr/objx"
+        },
+        "version": "v0.1.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/stretchr/testify"
+        },
+        "version": "v1.12.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/xhit/go-str2duration/v2"
+        },
+        "version": "v2.1.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.opentelemetry.io/auto/sdk"
+        },
+        "version": "v1.2.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+        },
+        "version": "v0.70.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.opentelemetry.io/otel"
+        },
+        "version": "v1.46.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.opentelemetry.io/otel/exporters/prometheus"
+        },
+        "version": "v0.67.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.opentelemetry.io/otel/metric"
+        },
+        "version": "v1.46.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.opentelemetry.io/otel/metric/x"
+        },
+        "version": "v0.68.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.opentelemetry.io/otel/sdk"
+        },
+        "version": "v1.46.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.opentelemetry.io/otel/sdk/metric"
+        },
+        "version": "v1.46.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.opentelemetry.io/otel/trace"
+        },
+        "version": "v1.46.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.uber.org/goleak"
+        },
+        "version": "v1.3.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.yaml.in/yaml/v2"
+        },
+        "version": "v2.4.4"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.yaml.in/yaml/v3"
+        },
+        "version": "v3.0.5"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/mod"
+        },
+        "version": "v0.40.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/net"
+        },
+        "version": "v0.57.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/oauth2"
+        },
+        "version": "v0.36.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/sync"
+        },
+        "version": "v0.22.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/sys"
+        },
+        "version": "v0.47.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/text"
+        },
+        "version": "v0.40.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/tools"
+        },
+        "version": "v0.47.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "google.golang.org/protobuf"
+        },
+        "version": "v1.36.11"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "gopkg.in/check.v1"
+        },
+        "version": "v1.0.0-20201130134442-10cb98267c6c"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "gopkg.in/yaml.v3"
+        },
+        "version": "v3.0.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "stdlib"
+        },
+        "version": "1.26.8"
+      }
+    ],
+    "compiled_license_inventory": [
+      {
+        "module": "elite.local/enterprise",
+        "provenance": "AUTHORED",
+        "license": "LicenseRef-Workspace-Owner"
+      },
+      {
+        "module": "elite.local/enterprise/reference_http_metrics",
+        "provenance": "AUTHORED",
+        "license": "LicenseRef-Workspace-Owner"
+      },
+      {
+        "module": "github.com/beorn7/perks",
+        "version": "v1.0.1",
+        "sum": "h1:VlbKKnNfV8bJzeqoa4cOKqO6bYr3WgKZxO8Z16+hsOM=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 1058,
+            "sha256": "0db7c9ebb3717e526f34f87dd1ee8bc77d36846e29cb0cec9246f7138fbe962b",
+            "observed_license_texts": [
+              "MIT"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "github.com/cespare/xxhash/v2",
+        "version": "v2.3.0",
+        "sum": "h1:UL815xU9SqsFlibzuggzjXhog7bL6oX9BbNZnL2UFvs=",
+        "license_texts": [
+          {
+            "name": "LICENSE.txt",
+            "bytes": 1068,
+            "sha256": "f566a9f97bacdaf00d9f21dd991e81dc11201c4e016c86b470799429a1c9a79c",
+            "observed_license_texts": [
+              "MIT"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "github.com/coreos/go-oidc/v3",
+        "version": "v3.20.0",
+        "sum": "h1:EtE0WIBHk03N+DqGkY4+UONzzZHk7amKt6IyNd7OsZE=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 11325,
+            "sha256": "cb5e8e7e5f4a3988e1063c142c60dc2df75605f4c46515e776e3aca6df976e14",
+            "observed_license_texts": [
+              "Apache-2.0"
+            ]
+          },
+          {
+            "name": "NOTICE",
+            "bytes": 126,
+            "sha256": "dccd26c6fd9c296daf44d0bc56bb4efc566edd4880381b3331c9a63e6e471338",
+            "observed_license_texts": []
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "github.com/felixge/httpsnoop",
+        "version": "v1.1.0",
+        "sum": "h1:3YtUj32ZZkqZtt3sZZsClsymw/QDuVfpNhoA31zeORc=",
+        "license_texts": [
+          {
+            "name": "LICENSE.txt",
+            "bytes": 1101,
+            "sha256": "8108e14b5cb2b6bcd51583d3849ef0c2b5c4de61758256c20308bc70d1775dbb",
+            "observed_license_texts": [
+              "MIT"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "github.com/go-jose/go-jose/v4",
+        "version": "v4.1.4",
+        "sum": "h1:moDMcTHmvE6Groj34emNPLs/qtYXRVcd6S7NHbHz3kA=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 11358,
+            "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+            "observed_license_texts": [
+              "Apache-2.0"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "github.com/go-logr/logr",
+        "version": "v1.4.4",
+        "sum": "h1:tG4xh9yMsRCAiodLVTxyrkzSZ9+o0L1Kg/+cPVcbP/8=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 11357,
+            "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+            "observed_license_texts": [
+              "Apache-2.0"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "github.com/go-logr/stdr",
+        "version": "v1.2.2",
+        "sum": "h1:hSWxHoqTgW2S2qGc0LTAI563KZ5YKYRhT3MFKZMbjag=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 11357,
+            "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "observed_license_texts": [
+              "Apache-2.0"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "github.com/google/uuid",
+        "version": "v1.6.0",
+        "sum": "h1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 1480,
+            "sha256": "0a8d61ed3cbfd5312326e8126c31ce9c627a283adc99131b56896d29ada04b2d",
+            "observed_license_texts": [
+              "BSD-family-text-retained"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "github.com/jackc/pgpassfile",
+        "version": "v1.0.0",
+        "sum": "h1:/6Hmqy13Ss2zCq62VdNG8tM1wchn8zjSGOBJ6icpsIM=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 1073,
+            "sha256": "adb1663fda031df8f4344aa68f299fd87d80353e31339406742ded21dae65702",
+            "observed_license_texts": [
+              "MIT"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "github.com/jackc/pgservicefile",
+        "version": "v0.0.0-20240606120523-5a60cdf6a761",
+        "sum": "h1:iCEnooe7UlwOQYpKFhBabPMi4aNAfoODPEFNiAnClxo=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 1073,
+            "sha256": "fc505773403fe869ed64cc2235cdd13988a427bb7e3a7e7004a3f4b27420f8fc",
+            "observed_license_texts": [
+              "MIT"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "github.com/jackc/pgx/v5",
+        "version": "v5.10.0",
+        "sum": "h1:VhSvgU2jSli8o3AqIEOTJr7rZwAEUVo4E4XhR94Zfr0=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 1078,
+            "sha256": "467f95e074fe23079a5623ed652619682692041b8551da27e3c2ddb9659a1507",
+            "observed_license_texts": [
+              "MIT"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "github.com/jackc/puddle/v2",
+        "version": "v2.2.2",
+        "sum": "h1:PR8nw+E/1w0GLuRFSmiioY6UooMp6KJv0/61nB7icHo=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 1073,
+            "sha256": "2d50e98a4900b4d6457a38d39c1432fdc156fc2f7b365f2e33ec9344acbb0057",
+            "observed_license_texts": [
+              "MIT"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "github.com/munnerz/goautoneg",
+        "version": "v0.0.0-20191010083416-a7dc8b61c822",
+        "sum": "h1:C3w9PqII01/Oq1c1nUAm88MOHcQC9l5mIlSMApZMrHA=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 1546,
+            "sha256": "aa1376b9bc5dea6f30cdefde40c176a254f247d2814d0a9929395138631b2ae0",
+            "observed_license_texts": [
+              "BSD-family-text-retained"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "github.com/prometheus/client_golang",
+        "version": "v1.24.1",
+        "sum": "h1:JnJkREXzWxUdCuPFpIWZiPispT9xVV59uiuyR2bPlnU=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 11357,
+            "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "observed_license_texts": [
+              "Apache-2.0"
+            ]
+          },
+          {
+            "name": "NOTICE",
+            "bytes": 631,
+            "sha256": "8548bfb2bc1913396df38c548a6ec60b8dbcac3b0800485a40569c8bdd184471",
+            "observed_license_texts": []
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "github.com/prometheus/client_model",
+        "version": "v0.6.2",
+        "sum": "h1:oBsgwpGs7iVziMvrGhE53c/GrLUsZdHnqNwqPLxwZyk=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 11357,
+            "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "observed_license_texts": [
+              "Apache-2.0"
+            ]
+          },
+          {
+            "name": "NOTICE",
+            "bytes": 167,
+            "sha256": "6c79faa15168885fb88a316ae0df18f486deafddefdc16826cdc56dfbd421e24",
+            "observed_license_texts": []
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "github.com/prometheus/common",
+        "version": "v0.70.1",
+        "sum": "h1:1HvjP4D5oL3t8RsPlwxA9onvvStjtIHYE5XuuwOi/PY=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 11357,
+            "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "observed_license_texts": [
+              "Apache-2.0"
+            ]
+          },
+          {
+            "name": "NOTICE",
+            "bytes": 178,
+            "sha256": "600244c8052c8c1d307043fafacbc83b429c171dd8e08f5a537c0a54014585ee",
+            "observed_license_texts": []
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "github.com/prometheus/otlptranslator",
+        "version": "v1.0.0",
+        "sum": "h1:s0LJW/iN9dkIH+EnhiD3BlkkP5QVIUVEoIwkU+A6qos=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 11357,
+            "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "observed_license_texts": [
+              "Apache-2.0"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "go.opentelemetry.io/auto/sdk",
+        "version": "v1.2.1",
+        "sum": "h1:jXsnJ4Lmnqd11kwkBV2LgLoFMZKizbCi5fNZ/ipaZ64=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 11357,
+            "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+            "observed_license_texts": [
+              "Apache-2.0"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+        "version": "v0.70.0",
+        "sum": "h1:LMuyCAyfalSjDyjdC65nK6N0zoTT63+E/u95X0JovZI=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 12892,
+            "sha256": "1ae07514be1d7bb33f0698f8d91fb51b8b9fe1463157ec1c72081a49b9bc6f40",
+            "observed_license_texts": [
+              "Apache-2.0",
+              "BSD-family-text-retained"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "go.opentelemetry.io/otel",
+        "version": "v1.46.0",
+        "sum": "h1:FHt5/CDyVxi/8IM1CH7VE/rRgq3kLHa2mSTVMO8AWyc=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 12892,
+            "sha256": "1ae07514be1d7bb33f0698f8d91fb51b8b9fe1463157ec1c72081a49b9bc6f40",
+            "observed_license_texts": [
+              "Apache-2.0",
+              "BSD-family-text-retained"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "go.opentelemetry.io/otel/exporters/prometheus",
+        "version": "v0.67.0",
+        "sum": "h1:7IefDa35e6V3NoiqIeLDMDxMFyZDk5qcoC0Ax4cC16E=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 12892,
+            "sha256": "1ae07514be1d7bb33f0698f8d91fb51b8b9fe1463157ec1c72081a49b9bc6f40",
+            "observed_license_texts": [
+              "Apache-2.0",
+              "BSD-family-text-retained"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "go.opentelemetry.io/otel/metric",
+        "version": "v1.46.0",
+        "sum": "h1:yBnkXvgV7AXFILZc5K6IZe/CBFF3OS7BJ8ov6/lj0K8=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 12892,
+            "sha256": "1ae07514be1d7bb33f0698f8d91fb51b8b9fe1463157ec1c72081a49b9bc6f40",
+            "observed_license_texts": [
+              "Apache-2.0",
+              "BSD-family-text-retained"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "go.opentelemetry.io/otel/sdk",
+        "version": "v1.46.0",
+        "sum": "h1:h5CNQQjEbuQXY/JfZtgt3i7HVFV3aHPO2OAwO2eTYPI=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 12892,
+            "sha256": "1ae07514be1d7bb33f0698f8d91fb51b8b9fe1463157ec1c72081a49b9bc6f40",
+            "observed_license_texts": [
+              "Apache-2.0",
+              "BSD-family-text-retained"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "go.opentelemetry.io/otel/sdk/metric",
+        "version": "v1.46.0",
+        "sum": "h1:0piZ26EG4RBfebb2jhDH6ERCYHoVWduc3kLgPCwSnSE=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 12892,
+            "sha256": "1ae07514be1d7bb33f0698f8d91fb51b8b9fe1463157ec1c72081a49b9bc6f40",
+            "observed_license_texts": [
+              "Apache-2.0",
+              "BSD-family-text-retained"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "go.opentelemetry.io/otel/trace",
+        "version": "v1.46.0",
+        "sum": "h1:OULy7ccdJnZtJ0UDYFOIGaCmiWzJ8Vi2G/Rsu60qs1c=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 12892,
+            "sha256": "1ae07514be1d7bb33f0698f8d91fb51b8b9fe1463157ec1c72081a49b9bc6f40",
+            "observed_license_texts": [
+              "Apache-2.0",
+              "BSD-family-text-retained"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "golang.org/x/oauth2",
+        "version": "v0.36.0",
+        "sum": "h1:peZ/1z27fi9hUOFCAZaHyrpWG5lwe0RJEEEeH0ThlIs=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 1453,
+            "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+            "observed_license_texts": [
+              "BSD-family-text-retained"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "golang.org/x/sync",
+        "version": "v0.22.0",
+        "sum": "h1:SZjpbeLmrCk4xhRSZFNZW5gFUeCeFgjekvI/+gfScek=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 1453,
+            "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+            "observed_license_texts": [
+              "BSD-family-text-retained"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "golang.org/x/sys",
+        "version": "v0.47.0",
+        "sum": "h1:o7XGOvZQCADBQQ4Y7VNq2dRWQR7JmOUW8Kxx4ZsNgWs=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 1453,
+            "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+            "observed_license_texts": [
+              "BSD-family-text-retained"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "golang.org/x/text",
+        "version": "v0.40.0",
+        "sum": "h1:Ub2Z6/xjgF1WrYQz2nuITOEegKFtiIy+rieRJ5lHZKs=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 1453,
+            "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+            "observed_license_texts": [
+              "BSD-family-text-retained"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      },
+      {
+        "module": "google.golang.org/protobuf",
+        "version": "v1.36.11",
+        "sum": "h1:fV6ZwhNocDyBLK0dj+fg8ektcVegBBuEolpbTQyBNVE=",
+        "license_texts": [
+          {
+            "name": "LICENSE",
+            "bytes": 1479,
+            "sha256": "4835612df0098ca95f8e7d9e3bffcb02358d435dbb38057c844c99d7f725eb20",
+            "observed_license_texts": [
+              "BSD-family-text-retained"
+            ]
+          }
+        ],
+        "local_source_verified_by_go_mod_verify": true
+      }
+    ],
+    "backend": {
+      "pack_id": "GO-ENTERPRISE-BACKEND",
+      "version": "0.4.4",
+      "pack_sha256": "69ae4b58a4edc0e5b4b2a7d037624a637b585c8a38cb5c53c4ba3c5785021c5e"
+    },
+    "rules": {
+      "pack_id": "SECURE-OPS-DELIVERY-CORE",
+      "version": "1.1.4",
+      "sha256": "cc718b7bbe35de3f230eeb47c854c270580dbb488101ee5f30c0b758e1d967b0"
+    },
+    "tested_binary_sha256": "4643654625c71aaf5b45367bd3a198381257588d073ae0349fc90c1bc1b5ab85",
+    "authority_claim": "Official middleware/exporter unchanged; SDK1.46.0 selection and reference glue AUTHORED. No production identity, complete security or all-service SLO admission.",
+    "parent_composition": {
+      "plan": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+      "sha256": "8bb5eaac51e36e0a6ce8811415f0c61f4e1a744d76db6f40ada7b3cb0f91ccb2",
+      "packs": 68,
+      "files": 797,
+      "compiler_input_parity_files": 441,
+      "require_complete_composed_packages": true,
+      "historical_v375_plan_sha256": "53ee063cc9660727f9a9d92c2d773c6a018b9492750e99f52d10e4a4ced01d66",
+      "v376_change": "Only BFF package.json and pnpm-lock.yaml changed in the parent; all Go/SQL inputs remain byte-identical. Rebuild must match the recorded V375 executable before carrying its runtime evidence.",
+      "historical_v376_plan_sha256": "96341c87a51729255d91b3480b9934753ff55015869d350e33b0fa556967b612",
+      "v377_change": "BFF public indexing adds5files and modifies3page files. No dependency, Go, SQL or alert-rule bytes change; preserve the exact V375 executable and prior narrow runtime evidence.",
+      "historical_v377_plan_sha256": "4bf15a615bf973f0dd54040f8eccaff728ea9253a72b704988c2560b14f52432",
+      "v378_change": "Public presentation locale/timeZone integration under existing BFF/portals/browser owners:4newfiles,8changedfiles; all Go/SQL/dependency/rule source bytes unchanged.",
+      "historical_v378_plan_sha256": "1534632f07eb43b706682573a1accf2fb602078196fe86baef473a363d0acdc3",
+      "v379_change": "Read-only role-filtered versioned operational help:10newfiles,6changedfiles under existing BFF/portals/browser owners; domain Go/SQL/dependencies/rules unchanged.",
+      "historical_v379_plan_sha256": "c216ecdf5863d591706790a993339650d13b20342451c5b3ee6d282f39a645c0",
+      "v380_change": "Complete15existing versioned guide index and15role matrix:3newfiles under existing portal owner; domain Go/SQL/dependencies unchanged.",
+      "historical_v380_plan_sha256": "982e031b3f44316c302eb4b1526da75240be9a4633ac74895b38a8f5cabd63c9",
+      "v381_change": "Existing seven-file role workspace selected; permission-filtered BFF navigation and one browser test. Domain Go/SQL/dependency artifacts unchanged.",
+      "historical_v381_plan_sha256": "f5531fbfbe9f4de27d95a8fa311872d8f56ad31e10bbbeb36ba0d7399604dc47",
+      "v382_change": "Private admin/customer read permission and display repair; existing quote formatter shared unchanged; five new test/helper/document files. Production Go, SQL and dependency artifacts unchanged.",
+      "historical_v382_plan_sha256": "40763eb2a2e3afaf861b774f6456b7d2dd372d9c96b3fe75bd0fb0313eda16fd",
+      "v383_change": "Private read error recovery; five authored component/boundary/test files; Go, SQL and dependency artifacts unchanged.",
+      "historical_v383_plan_sha256": "7343dbdeaabba64897e764c5af0beb8fce093c8850266f6c21209745f812218c",
+      "v387_change": "Three existing customer/factory lists gain cursor navigation;2newAUTHORED files. HTTP runtime, migrations, business and dependencies unchanged.",
+      "historical_v387_plan_sha256": "e705d88e6b03bd6e7b336b3b6df34cac27e28da8c11289b3d4bcfe718baec6c0",
+      "v388_change": "Admin cursor traversal of existing orders/cases/leads using V387 helper; runtime/domain/SQL/dependency bytes unchanged.",
+      "historical_v388_plan_sha256": "3461f321aec5c70da7573aa4eb095239e296812832ea9edf90abaa9eced0b437",
+      "v389_change": "Customer appointment display uses existing configured locale/zone; domain/SQL/runtime/dependency bytes unchanged.",
+      "historical_v389_plan_sha256": "96fba9178aee75a632d8753b9ef46bce1b5fcdc432676b3ffc14e13f7217f2ea",
+      "v390_change": "Customer cancellation UI recovery and bound receipts; domain/SQL/runtime/dependency bytes unchanged.",
+      "historical_v390_plan_sha256": "dae1449cea384482e0d439262207f9fe65b1455325364c52e15f6e7379a186bc",
+      "v393_change": "Unused optional Sharp closure omitted and runtime image optimizer disabled; Go/domain/SQL bytes unchanged.",
+      "historical_v393_plan_sha256": "c6c7b155c0f9e9f3a7e73b95478583e0488c1f0aa58feb7d952c0719d3ba9b5e",
+      "v400_change": "Opt-in customer surveys:23new authored source files and application activation; existing metrics code unchanged.",
+      "historical_v400_initial_plan_sha256": "e953f1fef5c064483d2ac666608d791fa82fedc7b8c7e52816d8a43dc7ee7c2e",
+      "v400_atomic_migration": "Survey migrations now transactional; only2SQLsources differ from the initial connected reference."
+    }
+  },
+  "current_local_host": {
+    "execution_revision": 317,
+    "binary_sha256": "38bef423d40cacdecd143c508a833103157c742258e3e2101760f60cb5680437",
+    "go_mod_sha256": "d2cf3b03eeaaee0113944651327731d6dae7d294d0bc1448f34609c4a6a2d810",
+    "go_sum_sha256": "10196842152d7c38ab4fdf0f3173dbe22a62e962639ac3c8cab73320731bb715",
+    "middleware_sha256": "1f0c37188994a824fcb1f2e9412dd5691e5258f55f010a16a551c78f7d66db12",
+    "public_graph": [
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "cloud.google.com/go/compute/metadata"
+        },
+        "version": "v0.3.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/alecthomas/kingpin/v2"
+        },
+        "version": "v2.4.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/alecthomas/units"
+        },
+        "version": "v0.0.0-20240927000941-0f3dac36c52b"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/aws/aws-sdk-go-v2"
+        },
+        "version": "v1.44.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/aws/aws-sdk-go-v2/config"
+        },
+        "version": "v1.32.38"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/aws/aws-sdk-go-v2/credentials"
+        },
+        "version": "v1.19.37"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/aws/aws-sdk-go-v2/feature/ec2/imds"
+        },
+        "version": "v1.18.38"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/aws/aws-sdk-go-v2/internal/configsources"
+        },
+        "version": "v1.4.40"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/aws/aws-sdk-go-v2/internal/endpoints/v2"
+        },
+        "version": "v2.7.40"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/aws/aws-sdk-go-v2/internal/v4a"
+        },
+        "version": "v1.4.39"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding"
+        },
+        "version": "v1.13.17"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/aws/aws-sdk-go-v2/service/internal/presigned-url"
+        },
+        "version": "v1.13.38"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/aws/aws-sdk-go-v2/service/signin"
+        },
+        "version": "v1.5.7"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/aws/aws-sdk-go-v2/service/sso"
+        },
+        "version": "v1.33.7"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/aws/aws-sdk-go-v2/service/ssooidc"
+        },
+        "version": "v1.38.7"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/aws/aws-sdk-go-v2/service/sts"
+        },
+        "version": "v1.45.7"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/aws/aws-sdk-go-v2/service/textract"
+        },
+        "version": "v1.45.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/aws/smithy-go"
+        },
+        "version": "v1.28.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/beorn7/perks"
+        },
+        "version": "v1.0.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/cespare/xxhash/v2"
+        },
+        "version": "v2.3.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/coreos/go-oidc/v3"
+        },
+        "version": "v3.20.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/davecgh/go-spew"
+        },
+        "version": "v1.1.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/felixge/httpsnoop"
+        },
+        "version": "v1.1.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/go-jose/go-jose/v4"
+        },
+        "version": "v4.1.4"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/go-logr/logr"
+        },
+        "version": "v1.4.4"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/go-logr/stdr"
+        },
+        "version": "v1.2.2"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/golang-jwt/jwt/v5"
+        },
+        "version": "v5.3.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/golang/protobuf"
+        },
+        "version": "v1.5.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/google/go-cmp"
+        },
+        "version": "v0.7.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/google/uuid"
+        },
+        "version": "v1.6.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/jackc/pgpassfile"
+        },
+        "version": "v1.0.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/jackc/pgservicefile"
+        },
+        "version": "v0.0.0-20240606120523-5a60cdf6a761"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/jackc/pgx/v5"
+        },
+        "version": "v5.10.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/jackc/puddle/v2"
+        },
+        "version": "v2.2.2"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/jpillora/backoff"
+        },
+        "version": "v1.0.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/json-iterator/go"
+        },
+        "version": "v1.1.12"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/julienschmidt/httprouter"
+        },
+        "version": "v1.3.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/klauspost/compress"
+        },
+        "version": "v1.19.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/kr/pretty"
+        },
+        "version": "v0.3.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/kylelemons/godebug"
+        },
+        "version": "v1.1.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/mercadopago/sdk-go"
+        },
+        "version": "v1.14.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/modern-go/concurrent"
+        },
+        "version": "v0.0.0-20180306012644-bacd9c7ef1dd"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/modern-go/reflect2"
+        },
+        "version": "v1.0.2"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/munnerz/goautoneg"
+        },
+        "version": "v0.0.0-20191010083416-a7dc8b61c822"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/mwitkow/go-conntrack"
+        },
+        "version": "v0.0.0-20190716064945-2f068394615f"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/pmezard/go-difflib"
+        },
+        "version": "v1.0.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/prometheus/client_golang"
+        },
+        "version": "v1.24.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/prometheus/client_model"
+        },
+        "version": "v0.6.2"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/prometheus/common"
+        },
+        "version": "v0.70.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/prometheus/otlptranslator"
+        },
+        "version": "v1.0.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/prometheus/procfs"
+        },
+        "version": "v0.21.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/rogpeppe/go-internal"
+        },
+        "version": "v1.14.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/stretchr/objx"
+        },
+        "version": "v0.1.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/stretchr/testify"
+        },
+        "version": "v1.12.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/stripe/stripe-go/v86"
+        },
+        "version": "v86.3.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "github.com/xhit/go-str2duration/v2"
+        },
+        "version": "v2.1.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.opentelemetry.io/auto/sdk"
+        },
+        "version": "v1.2.1"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
+        },
+        "version": "v0.70.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.opentelemetry.io/otel"
+        },
+        "version": "v1.46.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.opentelemetry.io/otel/exporters/prometheus"
+        },
+        "version": "v0.67.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.opentelemetry.io/otel/metric"
+        },
+        "version": "v1.46.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.opentelemetry.io/otel/metric/x"
+        },
+        "version": "v0.68.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.opentelemetry.io/otel/sdk"
+        },
+        "version": "v1.46.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.opentelemetry.io/otel/sdk/metric"
+        },
+        "version": "v1.46.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.opentelemetry.io/otel/trace"
+        },
+        "version": "v1.46.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.uber.org/goleak"
+        },
+        "version": "v1.3.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.yaml.in/yaml/v2"
+        },
+        "version": "v2.4.4"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "go.yaml.in/yaml/v3"
+        },
+        "version": "v3.0.5"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/mod"
+        },
+        "version": "v0.40.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/net"
+        },
+        "version": "v0.57.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/oauth2"
+        },
+        "version": "v0.36.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/sync"
+        },
+        "version": "v0.22.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/sys"
+        },
+        "version": "v0.47.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/text"
+        },
+        "version": "v0.40.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "golang.org/x/tools"
+        },
+        "version": "v0.49.0"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "google.golang.org/protobuf"
+        },
+        "version": "v1.36.11"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "gopkg.in/check.v1"
+        },
+        "version": "v1.0.0-20201130134442-10cb98267c6c"
+      },
+      {
+        "package": {
+          "ecosystem": "Go",
+          "name": "gopkg.in/yaml.v3"
+        },
+        "version": "v3.0.1"
+      }
+    ],
+    "security_receipt_sha256": "764245f8a3046cfb41023172794036df1248a44edd1cd42b71e8977265334cc7",
+    "evidence": "reconstruction_evidence/LOCAL_REFERENCE_OPERATIONS_V402.json",
+    "scope": "Actual OIDC API and Next local fixtures; the historical synthetic-principal main is not promoted."
+  },
+  "authority_claim": "Original official middleware/exporter pins retained. Local metrics relocation, optional host wiring, bounded controller and test orchestration are AUTHORED. Historical runtime proof remains historical; current host has its own connected receipt."
+}

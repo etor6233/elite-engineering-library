@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "enabled": false,
+  "product_name": "",
+  "product_version": "",
+  "source_uri": "",
+  "source_revision": "",
+  "invocation_id": "",
+  "builder_id": "",
+  "build_script_ref": "",
+  "build_script_sha256": "",
+  "source_inputs_ref": "",
+  "dependency_manifest_refs": [],
+  "notices_ref": "",
+  "release_identity": "",
+  "allowed_signers_ref": "",
+  "artifact_zip_timestamp": "1980-01-01T00:00:00",
+  "require_microsoft_authenticode": true
+}

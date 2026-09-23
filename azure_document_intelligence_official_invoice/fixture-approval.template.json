@@ -1,0 +1,8 @@
+{
+  "schema": "elite-azure-documentintelligence-official-fixture-approval/v1",
+  "lock_sha256": "REPLACE_WITH_FIXTURE_LOCK_SHA256",
+  "approved_fixture_ids": [],
+  "approved_by": "",
+  "approved_at": "YYYY-MM-DD",
+  "accept_microsoft_mit_license": false
+}

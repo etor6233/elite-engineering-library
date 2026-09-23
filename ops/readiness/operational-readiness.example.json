@@ -1,0 +1,55 @@
+{
+  "schema_version": "elite.operational-readiness.v1",
+  "service": {"name": "replace-me", "owner": "team:replace-me", "tier": 1},
+  "environments": ["staging", "production"],
+  "secrets": {
+    "provider": "replace-me",
+    "references": ["secret-manager://replace-me/database-credential"],
+    "rotation_days": 90,
+    "workload_identity": true,
+    "break_glass_runbook": "ops/runbooks/break-glass.md"
+  },
+  "telemetry": {
+    "signals": ["logs", "metrics", "traces"],
+    "protocol": "otlp",
+    "backend": "replace-me",
+    "correlation_fields": ["service.name", "deployment.environment.name", "trace_id", "tenant.id"],
+    "redaction_test": "evidence/redaction-test.json",
+    "retention_policy": "policy/telemetry-retention.md"
+  },
+  "slos": [{
+    "name": "api-availability",
+    "objective": 0.999,
+    "window_days": 30,
+    "sli": "1 - (sum(rate(http_server_request_duration_seconds_count{http_response_status_code=~\"5..\"}[5m])) / sum(rate(http_server_request_duration_seconds_count[5m])))",
+    "owner": "team:replace-me",
+    "runbook": "ops/runbooks/api-availability.md",
+    "page_burn_rates": [14.4, 6.0],
+    "ticket_burn_rates": [3.0, 1.0]
+  }],
+  "supply_chain": {
+    "lockfiles": ["replace-with-selected-runtime-lockfile"],
+    "sbom": {"format": "CycloneDX", "spec_version": "1.7", "artifact": "evidence/bom.cdx.json"},
+    "provenance": {"format": "SLSA", "spec_version": "1.2", "artifact": "evidence/provenance.json"},
+    "vulnerability_policy": {"max_critical": 0, "max_high": 0, "exception_register": "security/exceptions.json"},
+    "license_policy": "security/allowed-licenses.json",
+    "secret_scan_evidence": "evidence/secret-scan.json"
+  },
+  "release": {
+    "artifact_digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "deployment_strategy": "canary",
+    "migration_strategy": "expand-migrate-contract",
+    "health_gates": ["availability", "latency", "error-budget", "queue-lag"],
+    "rollback_command": ["replace-me-with-deployer", "rollback", "--digest", "replace-me"],
+    "rollback_test": "evidence/rollback-test.json",
+    "approval_record": "evidence/release-approval.json"
+  },
+  "recovery": {
+    "rpo_minutes": 15,
+    "rto_minutes": 60,
+    "backup_policy": "ops/runbooks/backup-policy.md",
+    "restore_evidence": "reconstruction_evidence/POSTGRES_BACKUP_RESTORE_CORE_2026-08-24_V1.md",
+    "dependency_order": ["identity", "database", "messaging", "backend", "web"],
+    "last_drill_utc": "2026-08-24T22:00:13Z"
+  }
+}

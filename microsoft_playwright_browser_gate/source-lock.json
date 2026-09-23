@@ -1,0 +1,48 @@
+{
+  "schema": "elite-microsoft-playwright-browser-gate-lock/v1",
+  "verifiedAt": "2026-08-29",
+  "source": {
+    "owner": "Microsoft",
+    "repository": "microsoft/playwright",
+    "release": "v1.62.1",
+    "commit": "26a9e470a7b3c7822084b09fb7f13902c5f37b51",
+    "commitSignatureVerified": true,
+    "archiveUrl": "https://github.com/microsoft/playwright/archive/26a9e470a7b3c7822084b09fb7f13902c5f37b51.zip",
+    "archiveBytes": 42927948,
+    "archiveSha256": "29377110a042e60e8c8192eae145e8e8554b58b31073bdcdf9e25b47d019b186",
+    "license": "Apache-2.0",
+    "licensePath": "LICENSE",
+    "licenseBytes": 11601,
+    "licenseSha256": "45873d00a0dd243596deb4aa23b2493b3d1f0671921bf2538ea431d7380220eb",
+    "packagedLicenseNormalization": "CRLF_TO_LF_ONLY",
+    "packagedLicenseBytes": 11399,
+    "packagedLicenseSha256": "7fab1461b41970ff376f1c9303a637076bfaaeb71cd12dd3a1c44aaf59a1a2b9"
+  },
+  "npm": {
+    "package": "@playwright/test",
+    "version": "1.62.1",
+    "tarball": "https://registry.npmjs.org/@playwright/test/-/test-1.62.1.tgz",
+    "tarballBytes": 8750,
+    "tarballSha256": "009534220efd98c0361d8c4ee7e3db1ed510ab88a23e98b5081ef1c8fed64965",
+    "integrity": "sha512-DTcUc8qii+cpHvtOwggMtBRMjKZHXYWdw8syRYu2vtzuq4Wxphqq4NfCs5Zt44L6mA8rfDfj+PHnxFc/FeK6mQ==",
+    "node": ">=20",
+    "pnpm": "11.25.0",
+    "graphPackages": 4,
+    "datedOsvFindings": 0
+  },
+  "browsers": [
+    { "name": "Chromium", "revision": "1234", "version": "151.0.7922.34", "projects": 2 },
+    { "name": "Firefox", "revision": "1538", "version": "153.0", "projects": 1 },
+    { "name": "WebKit", "revision": "2336", "version": "26.5", "projects": 1 }
+  ],
+  "admission": {
+    "runtimeSmoke": "4/4 PASS on Windows x86-64",
+    "targetClaim": "public home semantics, security headers and responsive overflow only",
+    "notProven": [
+      "authenticated role journeys",
+      "backend catalog or lead effects",
+      "assistive technology interoperability",
+      "performance, load, production edge, canary or rollback"
+    ]
+  }
+}

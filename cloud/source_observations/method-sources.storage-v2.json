@@ -1,0 +1,33 @@
+{
+  "observations": [
+    {
+      "bytes": 200709,
+      "content_type": "text/html; charset=utf-8",
+      "document_last_updated": "2026-09-09",
+      "effective_url": "https://docs.cloud.google.com/storage/docs/bucket-lock",
+      "http_status": 200,
+      "license": "Google documentation CC BY 4.0; samples Apache-2.0; no sample copied",
+      "local_path": "official-docs/bucket-retention.html",
+      "method": "OFFICIAL_PUBLIC_DOCUMENT_BYTES",
+      "observed_at": "2026-09-14T03:08:44.475061+00:00",
+      "sha256": "ed1f5d608382c9a4a35ec6c58328a99f01ed8efc095e18d46cb84955e3b36dd4",
+      "url": "https://docs.cloud.google.com/storage/docs/bucket-lock"
+    },
+    {
+      "bytes": 209976,
+      "content_type": "text/html; charset=utf-8",
+      "document_last_updated": "2026-05-27",
+      "effective_url": "https://docs.cloud.google.com/sdk/gcloud/reference/storage/buckets/update",
+      "http_status": 200,
+      "license": "Google documentation CC BY 4.0; samples Apache-2.0; no sample copied",
+      "local_path": "official-docs/bucket-versioning.html",
+      "method": "OFFICIAL_PUBLIC_DOCUMENT_BYTES",
+      "observed_at": "2026-09-14T03:08:45.271868+00:00",
+      "sha256": "351fbc860a57f425097ec878825c10277cd84fed8f2757bec15ae3697ed46568",
+      "url": "https://docs.cloud.google.com/sdk/gcloud/reference/storage/buckets/update"
+    }
+  ],
+  "provenance": "AUTHORED",
+  "provider_executed": false,
+  "schema": "elite-stack-method-sources/v403.1"
+}

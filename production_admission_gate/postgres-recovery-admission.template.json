@@ -1,0 +1,20 @@
+{
+  "schema":"elite-postgres-recovery-admission/v1",
+  "project_id":"",
+  "environment":"production",
+  "release_digest":"",
+  "evaluated_at":"",
+  "expires_at":"",
+  "executor_ref":"",
+  "target":{},
+  "policy":"",
+  "drill":"",
+  "runs":[
+    {"kind":"VERIFY_BACKUP","execution_receipt":"","expected_arguments":[],"input_files":[]},
+    {"kind":"RESTORE_START","execution_receipt":"","expected_arguments":[],"input_files":[]},
+    {"kind":"RESTORE_BOOT","execution_receipt":"","expected_arguments":[],"input_files":[]},
+    {"kind":"DATA_INTEGRITY","execution_receipt":"","expected_arguments":[],"input_files":[]},
+    {"kind":"PITR","execution_receipt":"","expected_arguments":[],"input_files":[]}
+  ],
+  "output":""
+}

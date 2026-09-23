@@ -1,0 +1,63 @@
+{
+  "actions": [
+    {
+      "commit": "08eba0b27e820071cde6df949e0beb9ba4906955",
+      "files": [
+        {
+          "bytes": 1097,
+          "path": "LICENSE",
+          "sha256": "3e855ffa704114a51628ef8f0bf3aeb41728adf9d9070e263bf58aa5640b0eb5",
+          "url": "https://raw.githubusercontent.com/actions/checkout/08eba0b27e820071cde6df949e0beb9ba4906955/LICENSE"
+        },
+        {
+          "bytes": 4593,
+          "path": "action.yml",
+          "sha256": "5349b6eea0a1797a9a993c48db9d95b33d27ee1b6227ceced0c9cbf8e655c939",
+          "url": "https://raw.githubusercontent.com/actions/checkout/08eba0b27e820071cde6df949e0beb9ba4906955/action.yml"
+        }
+      ],
+      "repository": "https://github.com/actions/checkout",
+      "status": "PINNED_CANDIDATE_HOSTED_NOT_RUN"
+    },
+    {
+      "commit": "e797f83bcb11b83ae66e0230d6156d7c80228e7c",
+      "files": [
+        {
+          "bytes": 1096,
+          "path": "LICENSE",
+          "sha256": "7d070f6b64d9bcc530fe99cc21eaaa4b3c364e0b2d367d7735671fa202a03b32",
+          "url": "https://raw.githubusercontent.com/actions/setup-python/e797f83bcb11b83ae66e0230d6156d7c80228e7c/LICENSE"
+        },
+        {
+          "bytes": 2502,
+          "path": "action.yml",
+          "sha256": "e6dc8046c02bd3c9f7bf2fea6ba2e59b4e83c7de2b26ec2149a1627f5d66f96c",
+          "url": "https://raw.githubusercontent.com/actions/setup-python/e797f83bcb11b83ae66e0230d6156d7c80228e7c/action.yml"
+        }
+      ],
+      "repository": "https://github.com/actions/setup-python",
+      "status": "PINNED_CANDIDATE_HOSTED_NOT_RUN"
+    },
+    {
+      "commit": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+      "files": [
+        {
+          "bytes": 1097,
+          "path": "LICENSE",
+          "sha256": "3e855ffa704114a51628ef8f0bf3aeb41728adf9d9070e263bf58aa5640b0eb5",
+          "url": "https://raw.githubusercontent.com/actions/upload-artifact/ea165f8d65b6e75b540449e92b4886f43607fa02/LICENSE"
+        },
+        {
+          "bytes": 3159,
+          "path": "action.yml",
+          "sha256": "29b21270ff44638a165ea12abb4481796770c629e513217af7b4df1aa3821177",
+          "url": "https://raw.githubusercontent.com/actions/upload-artifact/ea165f8d65b6e75b540449e92b4886f43607fa02/action.yml"
+        }
+      ],
+      "repository": "https://github.com/actions/upload-artifact",
+      "status": "PINNED_CANDIDATE_HOSTED_NOT_RUN"
+    }
+  ],
+  "admission_boundary": "checkout pattern reused from existing owner; setup-python/upload-artifact candidates require hosted execution/security admission before treated as proven",
+  "schema": "elite-actions-lock/v403.1"
+}

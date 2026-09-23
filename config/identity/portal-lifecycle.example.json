@@ -1,0 +1,37 @@
+{
+  "schema": "elite.oidc.portal-lifecycle.v1",
+  "profile_id": "reference-portal",
+  "revision": 1,
+  "transport": "TLS",
+  "issuer": "https://issuer.invalid",
+  "authorization_endpoint": "https://issuer.invalid/authorize",
+  "token_endpoint": "https://issuer.invalid/token",
+  "jwks_endpoint": "https://issuer.invalid/jwks",
+  "revocation_endpoint": "https://issuer.invalid/revoke",
+  "end_session_endpoint": "https://issuer.invalid/logout",
+  "client_id": "reference-portal",
+  "callback_url": "https://portal.invalid/api/auth/callback",
+  "post_logout_url": "https://portal.invalid/",
+  "bridge_url": "https://backend.invalid",
+  "backend_audience": "reference-api",
+  "service_client_id": "reference-portal-maintenance",
+  "service_subject": "reference-portal-maintenance",
+  "service_scopes": [
+    "portal-session:manage"
+  ],
+  "service_audience_parameter": "reference-api",
+  "tenant_id": "00000000-0000-4000-8000-000000000001",
+  "organization_ids": [
+    "00000000-0000-4000-8000-000000000002"
+  ],
+  "allowed_permissions": [
+    "customer:read"
+  ],
+  "scopes": [
+    "openid",
+    "offline_access"
+  ],
+  "maximum_session_seconds": 3600,
+  "refresh_before_seconds": 30,
+  "retention_seconds": 86400
+}

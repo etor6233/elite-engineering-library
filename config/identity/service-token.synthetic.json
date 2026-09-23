@@ -1,0 +1,27 @@
+{
+  "schema": "elite.oidc.service-token.v1",
+  "profile_id": "synthetic-whatsapp-service",
+  "revision": 1,
+  "transport": "LOOPBACK_FIXTURE",
+  "issuer": "http://127.0.0.1:9",
+  "token_endpoint": "http://127.0.0.1:9/token",
+  "jwks_endpoint": "http://127.0.0.1:9/jwks",
+  "client_id": "fixture-worker",
+  "client_authentication": "client_secret_basic",
+  "audience": "fixture-api",
+  "subject": "fixture-worker",
+  "tenant_id": "00000000-0000-4000-8000-000000000001",
+  "organization_ids": [
+    "00000000-0000-4000-8000-000000000002"
+  ],
+  "permissions": [
+    "message:send",
+    "conversation:read"
+  ],
+  "scopes": [
+    "message:send",
+    "conversation:read"
+  ],
+  "maximum_lifetime_seconds": 300,
+  "refresh_before_seconds": 30
+}

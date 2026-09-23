@@ -1,0 +1,11 @@
+# Versioned channel intake to the document owner
+
+AUTHORED transport glue. Existing document owner remains sole owner of authorization, quarantine, extraction, approval and durable commit. This bridge never processes or approves a document.
+
+Email: first use the admitted `secure_email_mime_quarantine_core/extract_email_attachments.py` with a provider receipt tying the retained raw MIME to tenant, object version and hash. Pass its manifest and quarantine directory to bridge.py. SFTP: pass a completed, retained object descriptor using `elite.sftp-retained-object/v1`; a mere create notification is insufficient. Descriptors are trusted operator/provider output, not anonymous HTTP input. Azure AVM SFTP owner defines the remote quarantine lane; no custom SFTP server is supplied.
+
+CLI: `python document_intake/bridge.py --profile profile.json --channel email --receipt quarantine/manifest.json --input quarantine --classes classes.json --output new-receipt.json`. `classes.json` maps part numbers (strings) to class IDs selected from the document class catalog. For SFTP use `--channel sftp`, the completed object receipt and retained file as `--input`. Set the least-privileged service bearer only through `DOCUMENT_INTAKE_BEARER`, never in arguments or checked-in files. Profile templates fail closed until configured. The same document-profile hash, tenant and organization must be configured at the backend.
+
+Versioned source + scope + channel + part derive a stable document ID. A duplicate performs GET and reconciles without mutation. Changed bytes or class for the same identity fail rather than create a second document. Lost receive responses are resolved through GET; no automatic mutation retry. Operator retries use the same retained source version. Reads and writes are authorized by the existing owner; originals stay QUARANTINED until the existing process/review path is explicitly used. Hash verification is integrity, not malware scanning or producer authentication.
+
+Local receipt-fixture execution proves the bridge and inbox connection. SMTP delivery, SES routing, Azure SFTP provisioning/host keys, real provider event authentication, retained storage policy and live OCR remain NOT_RUN and require deployment credentials/configuration and target execution.

@@ -1,0 +1,60 @@
+{
+  "meaning": "exact official portable tooling acquired; security/build/OCI admission remains separate and is never inferred from download",
+  "pending": [],
+  "schema": "elite-cloud-toolchain/v403.1",
+  "tools": [
+    {
+      "admission": "ACQUISITION_ONLY",
+      "archive_bytes": 66890901,
+      "format": "tar.gz",
+      "license": "BSD-3-Clause",
+      "local_archive": "sources/go-linux.tar.gz",
+      "platform": "linux/amd64",
+      "security_admission": "TARGET_REQUIRED",
+      "sha256": "ffb5f8de10c62550dfddab66b36b57030721e0a44a3218e9e1181d7b59f121ca",
+      "tool": "go",
+      "url": "https://go.dev/dl/go1.26.7.linux-amd64.tar.gz",
+      "version": "1.26.7"
+    },
+    {
+      "admission": "ACQUISITION_ONLY",
+      "archive_bytes": 58006679,
+      "format": "tar.gz",
+      "license": "MIT AND included third-party notices",
+      "local_archive": "sources/node-linux.tar.gz",
+      "platform": "linux/amd64",
+      "security_admission": "TARGET_REQUIRED",
+      "sha256": "855d581f8a4eb1a8117e3426de25fe02770592febcfb31369aee1ffbfee9e8ec",
+      "tool": "node",
+      "url": "https://nodejs.org/dist/v24.20.0/node-v24.20.0-linux-x64.tar.gz",
+      "version": "24.20.0"
+    },
+    {
+      "admission": "ACQUISITION_ONLY",
+      "archive_bytes": 75876271,
+      "format": "tar.gz",
+      "license": "MIT AND included third-party notices",
+      "local_archive": "sources/pwsh-linux.tar.gz",
+      "platform": "linux/amd64",
+      "security_admission": "TARGET_REQUIRED",
+      "sha256": "ddbc4a2d113bbd46d283cfedcbcd117a70caefd7673f41f2b4e0000badf103bc",
+      "tool": "pwsh",
+      "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.6.6/powershell-7.6.6-linux-x64.tar.gz",
+      "version": "7.6.6"
+    },
+    {
+      "admission": "ACQUISITION_ONLY",
+      "archive_bytes": 240059572,
+      "format": "tar.gz",
+      "license": "MIT AND included third-party notices",
+      "local_archive": "sources/dotnet-linux.tar.gz",
+      "platform": "linux/amd64",
+      "security_admission": "TARGET_REQUIRED",
+      "sha256": "137268c8ad939c064ff1ee2a6fdf0899d8725377114ea012fbd1ad5fa2550418",
+      "sha512": "51c8b999af9e8dd9998c9edc5944e19a90788862068acd38694e098889054ce8c23d4f0c5cccfa16bf187d044562359e5ee69a9f8ad0bbe913ba90311fbce25b",
+      "tool": "dotnet",
+      "url": "https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.401/dotnet-sdk-10.0.401-linux-x64.tar.gz",
+      "version": "10.0.401"
+    }
+  ]
+}

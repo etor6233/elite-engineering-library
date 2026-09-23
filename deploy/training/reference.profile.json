@@ -1,0 +1,89 @@
+{
+  "schema": "elite-training-profile/v1",
+  "id": "reference-onboarding",
+  "revision": 2,
+  "tenant_id": "50f38793-8a22-4f6b-983f-81dd0fca8208",
+  "organization_id": "store-1",
+  "method": "HUMAN_REVIEW_NO_GRANTS_V1",
+  "content_sha256": "eb919b9731d56832c38233572d6f1fd71cc62e7da64ca3d53a97638ab6a3ea20",
+  "source_sha256": "1c1ebc33ca2e578725f9d0ca4f51588f6f480e81ab9e8cbbdfc05b963395a581",
+  "courses": [
+    {
+      "id": "resource-onboarding",
+      "title": "Registrar recursos y recuperar una respuesta",
+      "role": "employee",
+      "lessons": [
+        "resource-create-view"
+      ],
+      "prompts": [
+        {
+          "id": "recovery",
+          "text": "Describí qué harías si se pierde la respuesta después de registrar un recurso."
+        }
+      ]
+    },
+    {
+      "id": "admin-onboarding",
+      "title": "Revisión de recursos",
+      "role": "admin",
+      "lessons": [
+        "resource-create-view",
+        "supply-role-view",
+        "warranty-role-view",
+        "network-role-view"
+      ],
+      "prompts": [
+        {
+          "id": "review",
+          "text": "Describí cómo recuperarías una operación incierta, revisarías contenido y separarías una evaluación de los permisos de acceso."
+        }
+      ]
+    },
+    {
+      "id": "owner-onboarding",
+      "title": "Supervisión de la operación",
+      "role": "owner",
+      "lessons": [
+        "operation-sections-view",
+        "network-role-view",
+        "training-role-view"
+      ],
+      "prompts": [
+        {
+          "id": "review",
+          "text": "Describí cómo distinguís una sección no disponible de una lista vacía."
+        }
+      ]
+    },
+    {
+      "id": "customer-onboarding",
+      "title": "Revisar una cotización",
+      "role": "customer",
+      "lessons": [
+        "quote-acceptance-view"
+      ],
+      "prompts": [
+        {
+          "id": "review",
+          "text": "Describí qué confirma aceptar una cotización y qué se debe consultar ante una respuesta incierta."
+        }
+      ]
+    },
+    {
+      "id": "content-onboarding",
+      "title": "Contenido, publicación y revisión humana",
+      "role": "admin",
+      "lessons": [
+        "help-cms-view",
+        "catalog-role-view",
+        "training-role-view"
+      ],
+      "prompts": [
+        {
+          "id": "review",
+          "text": "Explicá cómo publicarías contenido revisado, recuperarías una respuesta incierta y preservarías cursos anteriores sin conceder accesos."
+        }
+      ]
+    }
+  ]
+}

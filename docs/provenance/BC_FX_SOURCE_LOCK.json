@@ -1,0 +1,72 @@
+{
+  "algorithm_revision": "2eae56d704a1fd035d104f333602aea7091b7749",
+  "source_files": [
+    {
+      "path": "src/Layers/W1/BaseApp/Finance/Currency/Currency.Table.al",
+      "local": "Currency.Table.al",
+      "source_url": "https://raw.githubusercontent.com/microsoft/BCApps/2eae56d704a1fd035d104f333602aea7091b7749/src/Layers/W1/BaseApp/Finance/Currency/Currency.Table.al",
+      "revision": "2eae56d704a1fd035d104f333602aea7091b7749",
+      "git_blob": "d293d2b9924c32aa2b95400c375b09e250037124",
+      "sha256": "4aa140ceb4a08c7923640e50ccedaec4e15b26b4a5b920d160109b270cf4182a",
+      "bytes": 66950
+    },
+    {
+      "path": "src/Layers/W1/BaseApp/Finance/Currency/CurrencyExchangeRate.Table.al",
+      "local": "CurrencyExchangeRate.Table.al",
+      "source_url": "https://raw.githubusercontent.com/microsoft/BCApps/2eae56d704a1fd035d104f333602aea7091b7749/src/Layers/W1/BaseApp/Finance/Currency/CurrencyExchangeRate.Table.al",
+      "revision": "2eae56d704a1fd035d104f333602aea7091b7749",
+      "git_blob": "770743ebc00e447da68cde0b273bf1f1e6def848",
+      "sha256": "7f25d2996d4f2098cdfff16dfc8cb35be6101ed5052e12fbfebffab826759ac6",
+      "bytes": 32932
+    },
+    {
+      "path": "src/Layers/W1/BaseApp/Finance/Currency/FixExchRateAmountType.Enum.al",
+      "local": "FixExchRateAmountType.Enum.al",
+      "source_url": "https://raw.githubusercontent.com/microsoft/BCApps/2eae56d704a1fd035d104f333602aea7091b7749/src/Layers/W1/BaseApp/Finance/Currency/FixExchRateAmountType.Enum.al",
+      "revision": "2eae56d704a1fd035d104f333602aea7091b7749",
+      "git_blob": "44b306684924c6b05e05edb649f1b878f1ae3505",
+      "sha256": "9a0cb99bf3b4b94c07ce333b779e6158be7cd3b678c734772cdbff7694f06285",
+      "bytes": 1407
+    }
+  ],
+  "inspected_upstream_test_files": [
+    {
+      "name": "CurrencyUT.Codeunit.al",
+      "path": "src/Layers/W1/Tests/ERM-Finance/CurrencyUT.Codeunit.al",
+      "sha": "5d2e7f28e153230c0e5c2edfb37bf1cd23f3523c",
+      "size": 13903,
+      "download_url": "https://raw.githubusercontent.com/microsoft/BCApps/2eae56d704a1fd035d104f333602aea7091b7749/src/Layers/W1/Tests/ERM-Finance/CurrencyUT.Codeunit.al",
+      "retrieved_via": "https://api.github.com/repos/microsoft/BCApps/git/blobs/5d2e7f28e153230c0e5c2edfb37bf1cd23f3523c",
+      "sha256": "1509f34bbbcf6271a4bf48f2b29982f0966a1c36fcb8330a3b6c9890f11f844b"
+    },
+    {
+      "name": "ERMChangeExchangeRate.Codeunit.al",
+      "path": "src/Layers/W1/Tests/General Journal/ERMChangeExchangeRate.Codeunit.al",
+      "sha": "47e3865f764bc0bc3466afeacbc515288e2300b5",
+      "size": 7734,
+      "download_url": "https://raw.githubusercontent.com/microsoft/BCApps/2eae56d704a1fd035d104f333602aea7091b7749/src/Layers/W1/Tests/General%20Journal/ERMChangeExchangeRate.Codeunit.al",
+      "retrieved_via": "https://api.github.com/repos/microsoft/BCApps/git/blobs/47e3865f764bc0bc3466afeacbc515288e2300b5",
+      "sha256": "2783f0728a07df4c27d9d1d9f0f188dd1dbc522556c13327599b93b4503ea381"
+    },
+    {
+      "name": "ERMCurrencyFactor.Codeunit.al",
+      "path": "src/Layers/W1/Tests/General Journal/ERMCurrencyFactor.Codeunit.al",
+      "sha": "aaffa6228157318b351f4b47b63c5163a14832cc",
+      "size": 24205,
+      "download_url": "https://raw.githubusercontent.com/microsoft/BCApps/2eae56d704a1fd035d104f333602aea7091b7749/src/Layers/W1/Tests/General%20Journal/ERMCurrencyFactor.Codeunit.al",
+      "retrieved_via": "https://api.github.com/repos/microsoft/BCApps/git/blobs/aaffa6228157318b351f4b47b63c5163a14832cc",
+      "sha256": "010f2b7942ada7fa1ace1bfded260c090cfec23c5a30648074a609793548eef7"
+    }
+  ],
+  "license_sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+  "upstream_tests_executed": false,
+  "local_adaptation": "DIRECT_BASE_EXACT_V1",
+  "license_source": {
+    "url": "https://api.github.com/repos/microsoft/BCApps/license?ref=2eae56d704a1fd035d104f333602aea7091b7749",
+    "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+    "bytes": 1141,
+    "git_blob": "9e841e7a26e4eb057b24511e7b92d42b257a80e5",
+    "git_blob_matched": true,
+    "prior_raw_fetch": "HTTP503 Backend.max_conn reached; not used"
+  }
+}

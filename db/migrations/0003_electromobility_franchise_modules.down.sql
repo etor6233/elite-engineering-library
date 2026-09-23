@@ -1,0 +1,17 @@
+begin;
+drop table sales.customer_order_line;
+drop schema communication cascade;
+drop schema marketing cascade;
+drop schema integration cascade;
+drop schema franchise cascade;
+drop schema service_ops cascade;
+drop schema logistics cascade;
+drop schema payment cascade;
+drop schema pricing cascade;
+drop schema inventory cascade;
+drop schema factory cascade;
+drop schema procurement cascade;
+drop schema partner cascade;
+drop schema crm cascade;
+drop schema catalog cascade;
+commit;

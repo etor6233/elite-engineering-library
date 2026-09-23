@@ -1,0 +1,712 @@
+{
+  "schema": "elite-arca-svcutil-adaptation/v1",
+  "scope": "PINNED_LOCAL_WSDL_ONLY",
+  "original": {
+    "id": "dotnet-svcutil",
+    "version": "8.0.0",
+    "sha256": "b889780662e42d0e132e91c1821d1dcf810728a3775af226a1c8cca0ea6a2d8a",
+    "bytes": 17915141,
+    "repository": "https://github.com/dotnet/wcf",
+    "revision": "f0f500d91854533ec5a0223c0df693f1040f947b"
+  },
+  "original_files": [
+    {
+      "member": "tools/net9.0/any/DotnetToolSettings.xml",
+      "output": "DotnetToolSettings.xml",
+      "sha256": "a6483abb4dfa67586b1971e4db44ad114b4f3ac2925bba5ba49f646998743bb6"
+    },
+    {
+      "member": "tools/net9.0/any/dotnet-svcutil.dll",
+      "output": "dotnet-svcutil.dll",
+      "sha256": "b16227f4f418c04844afa4e147a65aef764d798a04c01918e9bae0a0ff882d9c"
+    },
+    {
+      "member": "tools/net9.0/any/dotnet-svcutil.runtimeconfig.json",
+      "output": "dotnet-svcutil.runtimeconfig.json",
+      "sha256": "3c0bf772b95c93363a0a14e5df78e4ec408c90f04cb7103205af97b2d276fab0"
+    },
+    {
+      "member": "tools/net9.0/any/dotnet-svcutil.pdb",
+      "output": "dotnet-svcutil.pdb",
+      "sha256": "e8a24cc7868a743a2a6cb386e6c390693816979c044aab98b27b3ca54e2dde34"
+    },
+    {
+      "member": "tools/net9.0/any/Microsoft.ApplicationInsights.dll",
+      "output": "Microsoft.ApplicationInsights.dll",
+      "sha256": "a7870fe913812fdd815f3566e7dd7e128cad18abca6cb8ad296e099c716091e6"
+    },
+    {
+      "member": "tools/net9.0/any/Microsoft.Extensions.DependencyModel.dll",
+      "output": "Microsoft.Extensions.DependencyModel.dll",
+      "sha256": "d8ec4261597a4a119b5bd97770c605f668794a0155707c6a785c41405a7494dc"
+    },
+    {
+      "member": "tools/net9.0/any/Newtonsoft.Json.dll",
+      "output": "Newtonsoft.Json.dll",
+      "sha256": "e78b11901d1f0e649af83520a8dfa1161d93330cc7c99c591353d2064fbb7ae8"
+    },
+    {
+      "member": "tools/net9.0/any/NuGet.Common.dll",
+      "output": "NuGet.Common.dll",
+      "sha256": "3e6adeb1710c426cc9c222260ac29fe21231a07d7b83c49ac506090f1016788d"
+    },
+    {
+      "member": "tools/net9.0/any/NuGet.Configuration.dll",
+      "output": "NuGet.Configuration.dll",
+      "sha256": "c3f3405fd5e099e717b4db30cc3cc60708a4efb93568e0d45ba17edd07067372"
+    },
+    {
+      "member": "tools/net9.0/any/NuGet.DependencyResolver.Core.dll",
+      "output": "NuGet.DependencyResolver.Core.dll",
+      "sha256": "4f811a8ada77dcd6a980e0e7013877e685268acd06487513525f191c796b76fe"
+    },
+    {
+      "member": "tools/net9.0/any/NuGet.Frameworks.dll",
+      "output": "NuGet.Frameworks.dll",
+      "sha256": "42972564d5632852fddf484c6badb1f91cd5167b4f540b23e30663aa84f795f0"
+    },
+    {
+      "member": "tools/net9.0/any/NuGet.LibraryModel.dll",
+      "output": "NuGet.LibraryModel.dll",
+      "sha256": "1de746a8759867fc252ed4c19b213d5a00bd5730c4ab00ec98f71d4792c97552"
+    },
+    {
+      "member": "tools/net9.0/any/NuGet.Packaging.dll",
+      "output": "NuGet.Packaging.dll",
+      "sha256": "9045cff7d6566d5b09fad83bb127808a3d1a60ca60926e0414c43829865e0e00"
+    },
+    {
+      "member": "tools/net9.0/any/NuGet.ProjectModel.dll",
+      "output": "NuGet.ProjectModel.dll",
+      "sha256": "8009a471e1c35ec0e108c25e49eed172a91afd9d29bb22b10ce227fc7f367b50"
+    },
+    {
+      "member": "tools/net9.0/any/NuGet.Protocol.dll",
+      "output": "NuGet.Protocol.dll",
+      "sha256": "90f96b27609cb0b707ec18f12732b36710c53d53d9f9cad84ad0003a9419b767"
+    },
+    {
+      "member": "tools/net9.0/any/NuGet.Versioning.dll",
+      "output": "NuGet.Versioning.dll",
+      "sha256": "98b5a9133faace1dfe6635c0222577bad7c185ae2c548dac3c79b473c5d0dff3"
+    },
+    {
+      "member": "tools/net9.0/any/System.Security.Cryptography.Pkcs.dll",
+      "output": "System.Security.Cryptography.Pkcs.dll",
+      "sha256": "27bb35f75077aa22a5fa96354859f065c7a6fc7de3e5c7e47966480f533c3896"
+    },
+    {
+      "member": "tools/net9.0/any/System.Security.Cryptography.ProtectedData.dll",
+      "output": "System.Security.Cryptography.ProtectedData.dll",
+      "sha256": "81a0385cf1fed22f3153789d4ae1fee75719f23e72cd543edba1af48926fbf24"
+    },
+    {
+      "member": "tools/net9.0/any/dotnet-svcutil-lib.dll",
+      "output": "dotnet-svcutil-lib.dll",
+      "sha256": "4289881dabaabff3f6e72ed92fae8cc107feb595a0072729194f9b5ba8112865"
+    },
+    {
+      "member": "tools/net9.0/any/dotnet-svcutil-lib.pdb",
+      "output": "dotnet-svcutil-lib.pdb",
+      "sha256": "4e64672e16731ae10c1d7cb0b5598584b30376e7897135bc8cd1dd077edc97b9"
+    },
+    {
+      "member": "tools/net9.0/any/dotnet-svcutil.deps.json",
+      "output": "dotnet-svcutil.deps.json",
+      "sha256": "d8aca6ea939cf2d7df12aa97203e57928e10ed6919ee41306e49d8b817ee87d9"
+    },
+    {
+      "member": "tools/net9.0/any/runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.dll",
+      "output": "runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.dll",
+      "sha256": "f8caa9538ffd60f9944d2679d75526a60452bdc48fa5772c9eb4b7d46a09c21c"
+    },
+    {
+      "member": "tools/net9.0/any/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll",
+      "output": "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll",
+      "sha256": "1c73a1b016cfc8d497106eec08af07616f2f4c07e4ddc807c9f120ceacd0a53a"
+    },
+    {
+      "member": "tools/net9.0/any/cs/dotnet-svcutil-lib.resources.dll",
+      "output": "cs/dotnet-svcutil-lib.resources.dll",
+      "sha256": "0d44640b2604b68edbab960217a18fb84b03f7d43fdcc76f29c6334acc544a93"
+    },
+    {
+      "member": "tools/net9.0/any/de/dotnet-svcutil-lib.resources.dll",
+      "output": "de/dotnet-svcutil-lib.resources.dll",
+      "sha256": "129e1dce8453916e9b32064f83d5235c027347a6b4df499c8bd6aa44d1cff87b"
+    },
+    {
+      "member": "tools/net9.0/any/es/dotnet-svcutil-lib.resources.dll",
+      "output": "es/dotnet-svcutil-lib.resources.dll",
+      "sha256": "ff96f0c3f8ba30ac8f89e1c3a9656b2e80489d019b8c733494b338f8a7fcf3c8"
+    },
+    {
+      "member": "tools/net9.0/any/fr/dotnet-svcutil-lib.resources.dll",
+      "output": "fr/dotnet-svcutil-lib.resources.dll",
+      "sha256": "345288e8a86035e4403cab0927ae113a69d5a0bdccaecc24ebe09bf0057628c0"
+    },
+    {
+      "member": "tools/net9.0/any/it/dotnet-svcutil-lib.resources.dll",
+      "output": "it/dotnet-svcutil-lib.resources.dll",
+      "sha256": "faf52ac36ee5d41ce5700a186207be92e60624c5a474ab62103457e42ea94dff"
+    },
+    {
+      "member": "tools/net9.0/any/ja/dotnet-svcutil-lib.resources.dll",
+      "output": "ja/dotnet-svcutil-lib.resources.dll",
+      "sha256": "bcb891b9605a9eca3c5cb80d93dcffb9f89ba4e0d0bf854ee61e724db35665b7"
+    },
+    {
+      "member": "tools/net9.0/any/ko/dotnet-svcutil-lib.resources.dll",
+      "output": "ko/dotnet-svcutil-lib.resources.dll",
+      "sha256": "03a1ea7c5893723ed4ff9d0e99634b1bf2a1b5a9f101f4715cfca81c85e2a1c5"
+    },
+    {
+      "member": "tools/net9.0/any/pl/dotnet-svcutil-lib.resources.dll",
+      "output": "pl/dotnet-svcutil-lib.resources.dll",
+      "sha256": "4dd0998d633a9e5969aff5185b9783cbaeb74a0ae4c72c0c7dbdd0dffd133a25"
+    },
+    {
+      "member": "tools/net9.0/any/pt-BR/dotnet-svcutil-lib.resources.dll",
+      "output": "pt-BR/dotnet-svcutil-lib.resources.dll",
+      "sha256": "6556d695ab0c00c9cc4320cc05adef1ab29a5b14d62f63496c1589b921c865fb"
+    },
+    {
+      "member": "tools/net9.0/any/ru/dotnet-svcutil-lib.resources.dll",
+      "output": "ru/dotnet-svcutil-lib.resources.dll",
+      "sha256": "c1acea636c6de326c72ddcdb5d5b8fe723c73cf76541204611f120fdcb58c2b7"
+    },
+    {
+      "member": "tools/net9.0/any/tr/dotnet-svcutil-lib.resources.dll",
+      "output": "tr/dotnet-svcutil-lib.resources.dll",
+      "sha256": "b120e26692699c8a6bc38f01a297d18eb818e4956beb61e4d21e70e1357a19ca"
+    },
+    {
+      "member": "tools/net9.0/any/zh-Hans/dotnet-svcutil-lib.resources.dll",
+      "output": "zh-Hans/dotnet-svcutil-lib.resources.dll",
+      "sha256": "99048f07c73e9dda6f251c94f68941471e60e223bb6d9f0342799d23e4be88e2"
+    },
+    {
+      "member": "tools/net9.0/any/zh-Hant/dotnet-svcutil-lib.resources.dll",
+      "output": "zh-Hant/dotnet-svcutil-lib.resources.dll",
+      "sha256": "fb0a8b1843ed94a8d4be36807118210b6664651e1ebf89e9db1a0f0234b2c41b"
+    },
+    {
+      "member": "THIRD-PARTY-NOTICES.TXT",
+      "output": "THIRD-PARTY-NOTICES.TXT",
+      "sha256": "208d31ba373d2017a0bad0a5593f3050952abd3a1f6a29df85c33494c48d2885"
+    },
+    {
+      "member": "LICENSE.TXT",
+      "output": "LICENSE.TXT",
+      "sha256": "d7a68596ab69b06f51ca278a6545148e4269a9381c26d597c13df5d88e08cf5b"
+    }
+  ],
+  "patches": [
+    {
+      "name": "NuGet.Common",
+      "version": "6.12.5",
+      "archive": "nuget.common.6.12.5.nupkg",
+      "url": "https://api.nuget.org/v3-flatcontainer/nuget.common/6.12.5/nuget.common.6.12.5.nupkg",
+      "sha256": "ce6388abd817f29be5fb5183544a03d209518b1b4bb9c88b62cfc195eb52a6a6",
+      "sha512": "AQl6orTBqvGZhf3Xv6q6MSOFITX8JGCV4LB65f/exH1c7gY8TzigeM5SEmp4KAScBC2dMS3SR52DjHlqU2Yd4g==",
+      "bytes": 198920,
+      "member": "lib/netstandard2.0/NuGet.Common.dll",
+      "dll_sha256": "b7c7a302253019ae45ed0984f621628c1dd8e4a4617c7897f2ab975b124e7022",
+      "assembly_identity": {
+        "assemblyVersion": "6.12.5.1",
+        "fileVersion": "6.12.5.1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/NuGet/NuGet.Client",
+        "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "NuGet.Configuration",
+      "version": "6.12.5",
+      "archive": "nuget.configuration.6.12.5.nupkg",
+      "url": "https://api.nuget.org/v3-flatcontainer/nuget.configuration/6.12.5/nuget.configuration.6.12.5.nupkg",
+      "sha256": "68805fc5aa8c1b70a87819f63c061108154d67d4c5ddebe7e8097429bd1aa2c3",
+      "sha512": "mvgbfg3TtD9EIHtwPFB/RUdnReweK5Evto2bnioOhZ/okUnNfezzm9nngs7zXxO1XhN6Mwyg/TtBZHqiaXAM1Q==",
+      "bytes": 237762,
+      "member": "lib/netstandard2.0/NuGet.Configuration.dll",
+      "dll_sha256": "1a4413da8adc9de2c7cf5ad4a61a6aaff5c064c17ff61682f29caceb13d8ef98",
+      "assembly_identity": {
+        "assemblyVersion": "6.12.5.1",
+        "fileVersion": "6.12.5.1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/NuGet/NuGet.Client",
+        "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "NuGet.DependencyResolver.Core",
+      "version": "6.12.5",
+      "archive": "nuget.dependencyresolver.core.6.12.5.nupkg",
+      "url": "https://api.nuget.org/v3-flatcontainer/nuget.dependencyresolver.core/6.12.5/nuget.dependencyresolver.core.6.12.5.nupkg",
+      "sha256": "a3caffbca8ce66d028a4be195929ee4dc381bf33a41557548e2739a9cd8d5fa4",
+      "sha512": "01wQEQ3gE2NIIefCKDYHSZyjv/Li1m1PibGqtPxiASy/8LZKzE5YP4kMPETDTadZE7wgYBR0SaBboK9TSL3Fcw==",
+      "bytes": 224338,
+      "member": "lib/net5.0/NuGet.DependencyResolver.Core.dll",
+      "dll_sha256": "8b48fa8984b9d20c79d22345aae8babc6538d772e1911854e1a2bd7e18f25080",
+      "assembly_identity": {
+        "assemblyVersion": "6.12.5.1",
+        "fileVersion": "6.12.5.1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/NuGet/NuGet.Client",
+        "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "NuGet.Frameworks",
+      "version": "6.12.5",
+      "archive": "nuget.frameworks.6.12.5.nupkg",
+      "url": "https://api.nuget.org/v3-flatcontainer/nuget.frameworks/6.12.5/nuget.frameworks.6.12.5.nupkg",
+      "sha256": "0ebc6d8a7a5ed87b11eb038a33f01abd3c987d5359c7ec56691d816160007fc4",
+      "sha512": "TUYyZjrgmpVsaHQhQTJVwcwJk3gQDj5EGlVEDF1stZeygaBGBqpMYjrBDnbXWJ5SREto0qB+89Tgf69iEJMlkQ==",
+      "bytes": 187590,
+      "member": "lib/netstandard2.0/NuGet.Frameworks.dll",
+      "dll_sha256": "2f15d8ffa9d89249408576fbbd33b3ba95d843f3e005d68b2df3b38883d6018a",
+      "assembly_identity": {
+        "assemblyVersion": "6.12.5.1",
+        "fileVersion": "6.12.5.1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/NuGet/NuGet.Client",
+        "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "NuGet.LibraryModel",
+      "version": "6.12.5",
+      "archive": "nuget.librarymodel.6.12.5.nupkg",
+      "url": "https://api.nuget.org/v3-flatcontainer/nuget.librarymodel/6.12.5/nuget.librarymodel.6.12.5.nupkg",
+      "sha256": "1e4e4fb53e20645230c7c5922f74e8cf6b3c03fdad4ef46252266644c8e136cc",
+      "sha512": "vvKxyXght56LMo490Azxo0rDN8Ol3VK/CZRMols3+e0teX4Mg+jNbYWRZsVMrn72ccHX5RyZLcpiFPf/Ze5/kw==",
+      "bytes": 122771,
+      "member": "lib/netstandard2.0/NuGet.LibraryModel.dll",
+      "dll_sha256": "57f53f6eab386e2c9750ebb8928cdd850bca0d19b95882119283f85f22f2f7c6",
+      "assembly_identity": {
+        "assemblyVersion": "6.12.5.1",
+        "fileVersion": "6.12.5.1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/NuGet/NuGet.Client",
+        "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "NuGet.Packaging",
+      "version": "6.12.5",
+      "archive": "nuget.packaging.6.12.5.nupkg",
+      "url": "https://api.nuget.org/v3-flatcontainer/nuget.packaging/6.12.5/nuget.packaging.6.12.5.nupkg",
+      "sha256": "055f46a4b6b188eabf9a1ea2593779ab7456c2202c1ab7442feedf4735fa8de0",
+      "sha512": "saME99gCPEcKmWfTYAMlhAAdqNIK3EC2H9zeTarmw+xM2QWfe3bFs8sKU+TK7zFXsTjb740QxJl0cFb+zpeGHg==",
+      "bytes": 978104,
+      "member": "lib/net5.0/NuGet.Packaging.dll",
+      "dll_sha256": "cb9fb410ecca1aa3a7866a9843e724888e0d4ca89c16939602d9ead9a583a7af",
+      "assembly_identity": {
+        "assemblyVersion": "6.12.5.1",
+        "fileVersion": "6.12.5.1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/NuGet/NuGet.Client",
+        "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "NuGet.ProjectModel",
+      "version": "6.12.5",
+      "archive": "nuget.projectmodel.6.12.5.nupkg",
+      "url": "https://api.nuget.org/v3-flatcontainer/nuget.projectmodel/6.12.5/nuget.projectmodel.6.12.5.nupkg",
+      "sha256": "fed1f2e465fe58bca189022a13f3a326460244503a0c8bab7975e0cc8482507b",
+      "sha512": "cHs/kM/kLwxFtD3nsJhPOfP46Jf8NnLyPSGuHjeKUSnv75Omc9fD43dat19QNVFakN9XiG0eIJJn51n//xf4Sw==",
+      "bytes": 431059,
+      "member": "lib/net5.0/NuGet.ProjectModel.dll",
+      "dll_sha256": "cf0fc7ff6460041f7b1a59c49f6cdf96458214693331253b31346a8ea28d07f6",
+      "assembly_identity": {
+        "assemblyVersion": "6.12.5.1",
+        "fileVersion": "6.12.5.1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/NuGet/NuGet.Client",
+        "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "NuGet.Protocol",
+      "version": "6.12.5",
+      "archive": "nuget.protocol.6.12.5.nupkg",
+      "url": "https://api.nuget.org/v3-flatcontainer/nuget.protocol/6.12.5/nuget.protocol.6.12.5.nupkg",
+      "sha256": "8ba5cece263e1c08c88da2b2a8ee9a6aab1bb9096fc500bd9a63ed1b83362c9f",
+      "sha512": "GjaXqS0khbWj2tE/+VtC8wSZb6gzI+3btIas/BqUb7n9cqGxW31FSdnoCZyIksJ9mkWCRVSiu87bY390raAzyw==",
+      "bytes": 1103641,
+      "member": "lib/net5.0/NuGet.Protocol.dll",
+      "dll_sha256": "ebd7fa89ff74dd9e319ff665fb2745c1b35257343646cf1b8ab0cb8d1d153fd2",
+      "assembly_identity": {
+        "assemblyVersion": "6.12.5.1",
+        "fileVersion": "6.12.5.1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/NuGet/NuGet.Client",
+        "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "NuGet.Versioning",
+      "version": "6.12.5",
+      "archive": "nuget.versioning.6.12.5.nupkg",
+      "url": "https://api.nuget.org/v3-flatcontainer/nuget.versioning/6.12.5/nuget.versioning.6.12.5.nupkg",
+      "sha256": "be84bf180f5b73f756f13c662500193129353bd1b152995a3903e75633055e6e",
+      "sha512": "G1Yn/eTPoySAcE3gaq+269TMhmT5u2E5v+dJCOBoXVORt9JOj1I0bJ+mrPwB0zDIfh1jR6oWYakzFz5KuwZJgA==",
+      "bytes": 141735,
+      "member": "lib/netstandard2.0/NuGet.Versioning.dll",
+      "dll_sha256": "d5a12b276b0a0d0ed96ef9e333d4903fe03657e523ee0735fc5b40dfdea2187f",
+      "assembly_identity": {
+        "assemblyVersion": "6.12.5.1",
+        "fileVersion": "6.12.5.1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/NuGet/NuGet.Client",
+        "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+      },
+      "license": "Apache-2.0"
+    }
+  ],
+  "legal_files": [
+    {
+      "input": "svcutil-legal/NuGet.Client-LICENSE.txt",
+      "output": "legal/NuGet.Client-LICENSE.txt",
+      "sha256": "f1e3c903178e459ebd0c25d2dc65ebf11163c0a0d3ae46690943dffd5813040e",
+      "source": "https://raw.githubusercontent.com/NuGet/NuGet.Client/c92125011405028c945371a89e1a1eb0e735456d/LICENSE.txt",
+      "provenance": "VERBATIM"
+    },
+    {
+      "input": "svcutil-legal/Apache-2.0.txt",
+      "output": "legal/Apache-2.0.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "source": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+      "provenance": "VERBATIM"
+    }
+  ],
+  "excluded_original_files": [
+    {
+      "member": "tools/net9.0/any/net6.0/Microsoft.Extensions.ObjectPool.dll",
+      "sha256": "54e3c074e04195bdc49541268185ec70c0f2bd334a92aac1fc8f796ebc61fe14",
+      "reason": "Named-pipe metadata importer unsupported and unshipped in pinned local WSDL mode"
+    },
+    {
+      "member": "tools/net9.0/any/net6.0/Microsoft.Svcutil.NamedPipeMetadataImporter.dll",
+      "sha256": "c72a2e04f04ef3621ed8b070c41c0f31c1a103da5a3dbb6bee8f4fe0f0523352",
+      "reason": "Named-pipe metadata importer unsupported and unshipped in pinned local WSDL mode"
+    },
+    {
+      "member": "tools/net9.0/any/net6.0/System.Security.Cryptography.Pkcs.dll",
+      "sha256": "70651be008919e534c247f33220cbba59c251a811ec00ce14d0fe1efe7542110",
+      "reason": "Named-pipe metadata importer unsupported and unshipped in pinned local WSDL mode"
+    },
+    {
+      "member": "tools/net9.0/any/net6.0/System.Security.Cryptography.Xml.dll",
+      "sha256": "5c0e75d0b4252e106abb7f308432c440727e7bbfed868fa14294ee645cea7a4d",
+      "reason": "Named-pipe metadata importer unsupported and unshipped in pinned local WSDL mode"
+    },
+    {
+      "member": "tools/net9.0/any/net6.0/System.ServiceModel.NetFramingBase.dll",
+      "sha256": "1275ea526817b95ff42bc99deb7e76da3800c08b5424641cf1a9718ccd10167b",
+      "reason": "Named-pipe metadata importer unsupported and unshipped in pinned local WSDL mode"
+    },
+    {
+      "member": "tools/net9.0/any/net6.0/System.ServiceModel.NetNamedPipe.dll",
+      "sha256": "ee379a1b3813a3a34bfbf9786466c7daf1d2400e59346bfdf80e1603ff8eb277",
+      "reason": "Named-pipe metadata importer unsupported and unshipped in pinned local WSDL mode"
+    },
+    {
+      "member": "tools/net9.0/any/net6.0/System.ServiceModel.Primitives.dll",
+      "sha256": "63c701108c72da1353e3b34407391e10ac5e6c5c89145768035ac2bf12f2fd9a",
+      "reason": "Named-pipe metadata importer unsupported and unshipped in pinned local WSDL mode"
+    },
+    {
+      "member": "tools/net9.0/any/net8.0/Microsoft.Extensions.ObjectPool.dll",
+      "sha256": "dba21041ab0064cf94f3e821df1435d880cec2ce5408144e3ec5199347349bc0",
+      "reason": "Named-pipe metadata importer unsupported and unshipped in pinned local WSDL mode"
+    },
+    {
+      "member": "tools/net9.0/any/net8.0/Microsoft.Svcutil.NamedPipeMetadataImporter.dll",
+      "sha256": "7c25d7b394cf9652bcac56c785aa0772f3ad36bb1b68008fd33af17e51a7cdbf",
+      "reason": "Named-pipe metadata importer unsupported and unshipped in pinned local WSDL mode"
+    },
+    {
+      "member": "tools/net9.0/any/net8.0/System.Security.Cryptography.Pkcs.dll",
+      "sha256": "e2352938ed4f664f770a5c98ef067cb145304456d014d2c311d725c95c8a21a9",
+      "reason": "Named-pipe metadata importer unsupported and unshipped in pinned local WSDL mode"
+    },
+    {
+      "member": "tools/net9.0/any/net8.0/System.Security.Cryptography.Xml.dll",
+      "sha256": "10dafe8e0c95165a5435cfabf552d905bbce9636061393b4cb2533f24d88ab45",
+      "reason": "Named-pipe metadata importer unsupported and unshipped in pinned local WSDL mode"
+    },
+    {
+      "member": "tools/net9.0/any/net8.0/System.ServiceModel.dll",
+      "sha256": "a756b79ae023caf082b9f317b31bf00a1da5249c992a33dd3642ac19cca3d681",
+      "reason": "Named-pipe metadata importer unsupported and unshipped in pinned local WSDL mode"
+    },
+    {
+      "member": "tools/net9.0/any/net8.0/System.ServiceModel.Duplex.dll",
+      "sha256": "0192d7fd7489ea77bafee41eb02dbd610e27671401bc6c293272476e41e88f82",
+      "reason": "Named-pipe metadata importer unsupported and unshipped in pinned local WSDL mode"
+    },
+    {
+      "member": "tools/net9.0/any/net8.0/System.ServiceModel.NetFramingBase.dll",
+      "sha256": "36d7b8e61de90923f09c701778890730ec0bbf68c9f6eea27e445ce721d1408b",
+      "reason": "Named-pipe metadata importer unsupported and unshipped in pinned local WSDL mode"
+    },
+    {
+      "member": "tools/net9.0/any/net8.0/System.ServiceModel.NetNamedPipe.dll",
+      "sha256": "7259271eea6d531bd5351ef60072af15a37021558b0e59f160b1dceedef74c46",
+      "reason": "Named-pipe metadata importer unsupported and unshipped in pinned local WSDL mode"
+    },
+    {
+      "member": "tools/net9.0/any/net8.0/System.ServiceModel.Primitives.dll",
+      "sha256": "e93799b569e2723d701ad36eeaf05df6cbe401fd9f24e6022ab494941ce13235",
+      "reason": "Named-pipe metadata importer unsupported and unshipped in pinned local WSDL mode"
+    },
+    {
+      "member": "tools/net9.0/any/net8.0/System.ServiceModel.Security.dll",
+      "sha256": "a123fb76aa7660ce8792a7607794264aa2c06bba489627292bc167e7f7a6fbe4",
+      "reason": "Named-pipe metadata importer unsupported and unshipped in pinned local WSDL mode"
+    },
+    {
+      "member": "tools/net9.0/any/net462/Microsoft.Svcutil.NamedPipeMetadataImporter.dll",
+      "sha256": "2a51878e956afd1d615631f0e1dbe752a1cfbeca3c9f35cc9dab724b56e34b57",
+      "reason": "Named-pipe metadata importer unsupported and unshipped in pinned local WSDL mode"
+    }
+  ],
+  "notice": "Local ADAPTED runtime composition, not an official Microsoft svcutil release. Original executable code retained verbatim; nine official NuGet6.12.5 dependency DLLs replace6.12.1 and deps metadata is updated. Named-pipe/importer target helpers excluded: only two hash-locked local ARCA WSDLs are qualified. No arbitrary remote import claim. Original vendor notices retained; NuGet fixed-source Apache notices added.",
+  "expected_inventory_sha256": "6cd7b6c492565f4ccf90f3a703fc59220c0b72614b5c09dbf649e278c79c5bc8",
+  "expected_files": [
+    {
+      "path": "ADAPTATION.json",
+      "sha256": "9b541aaf9202364aafba5260731dc67377fe4782c3a6cad00d8c8e41625b72a8",
+      "bytes": 14035
+    },
+    {
+      "path": "DotnetToolSettings.xml",
+      "sha256": "a6483abb4dfa67586b1971e4db44ad114b4f3ac2925bba5ba49f646998743bb6",
+      "bytes": 204
+    },
+    {
+      "path": "LICENSE.TXT",
+      "sha256": "d7a68596ab69b06f51ca278a6545148e4269a9381c26d597c13df5d88e08cf5b",
+      "bytes": 1139
+    },
+    {
+      "path": "Microsoft.ApplicationInsights.dll",
+      "sha256": "a7870fe913812fdd815f3566e7dd7e128cad18abca6cb8ad296e099c716091e6",
+      "bytes": 383352
+    },
+    {
+      "path": "Microsoft.Extensions.DependencyModel.dll",
+      "sha256": "d8ec4261597a4a119b5bd97770c605f668794a0155707c6a785c41405a7494dc",
+      "bytes": 79664
+    },
+    {
+      "path": "Newtonsoft.Json.dll",
+      "sha256": "e78b11901d1f0e649af83520a8dfa1161d93330cc7c99c591353d2064fbb7ae8",
+      "bytes": 722792
+    },
+    {
+      "path": "NuGet.Common.dll",
+      "sha256": "b7c7a302253019ae45ed0984f621628c1dd8e4a4617c7897f2ab975b124e7022",
+      "bytes": 109592
+    },
+    {
+      "path": "NuGet.Configuration.dll",
+      "sha256": "1a4413da8adc9de2c7cf5ad4a61a6aaff5c064c17ff61682f29caceb13d8ef98",
+      "bytes": 174624
+    },
+    {
+      "path": "NuGet.DependencyResolver.Core.dll",
+      "sha256": "8b48fa8984b9d20c79d22345aae8babc6538d772e1911854e1a2bd7e18f25080",
+      "bytes": 91680
+    },
+    {
+      "path": "NuGet.Frameworks.dll",
+      "sha256": "2f15d8ffa9d89249408576fbbd33b3ba95d843f3e005d68b2df3b38883d6018a",
+      "bytes": 123976
+    },
+    {
+      "path": "NuGet.LibraryModel.dll",
+      "sha256": "57f53f6eab386e2c9750ebb8928cdd850bca0d19b95882119283f85f22f2f7c6",
+      "bytes": 54304
+    },
+    {
+      "path": "NuGet.Packaging.dll",
+      "sha256": "cb9fb410ecca1aa3a7866a9843e724888e0d4ca89c16939602d9ead9a583a7af",
+      "bytes": 693280
+    },
+    {
+      "path": "NuGet.ProjectModel.dll",
+      "sha256": "cf0fc7ff6460041f7b1a59c49f6cdf96458214693331253b31346a8ea28d07f6",
+      "bytes": 251936
+    },
+    {
+      "path": "NuGet.Protocol.dll",
+      "sha256": "ebd7fa89ff74dd9e319ff665fb2745c1b35257343646cf1b8ab0cb8d1d153fd2",
+      "bytes": 790560
+    },
+    {
+      "path": "NuGet.Versioning.dll",
+      "sha256": "d5a12b276b0a0d0ed96ef9e333d4903fe03657e523ee0735fc5b40dfdea2187f",
+      "bytes": 64072
+    },
+    {
+      "path": "System.Security.Cryptography.Pkcs.dll",
+      "sha256": "27bb35f75077aa22a5fa96354859f065c7a6fc7de3e5c7e47966480f533c3896",
+      "bytes": 250488
+    },
+    {
+      "path": "System.Security.Cryptography.ProtectedData.dll",
+      "sha256": "81a0385cf1fed22f3153789d4ae1fee75719f23e72cd543edba1af48926fbf24",
+      "bytes": 24880
+    },
+    {
+      "path": "THIRD-PARTY-NOTICES.TXT",
+      "sha256": "208d31ba373d2017a0bad0a5593f3050952abd3a1f6a29df85c33494c48d2885",
+      "bytes": 3045
+    },
+    {
+      "path": "cs/dotnet-svcutil-lib.resources.dll",
+      "sha256": "0d44640b2604b68edbab960217a18fb84b03f7d43fdcc76f29c6334acc544a93",
+      "bytes": 482376
+    },
+    {
+      "path": "de/dotnet-svcutil-lib.resources.dll",
+      "sha256": "129e1dce8453916e9b32064f83d5235c027347a6b4df499c8bd6aa44d1cff87b",
+      "bytes": 512072
+    },
+    {
+      "path": "dotnet-svcutil-lib.dll",
+      "sha256": "4289881dabaabff3f6e72ed92fae8cc107feb595a0072729194f9b5ba8112865",
+      "bytes": 5920288
+    },
+    {
+      "path": "dotnet-svcutil-lib.pdb",
+      "sha256": "4e64672e16731ae10c1d7cb0b5598584b30376e7897135bc8cd1dd077edc97b9",
+      "bytes": 2394972
+    },
+    {
+      "path": "dotnet-svcutil.deps.json",
+      "sha256": "837cba64da0e62510afd9ba2865d88fe269ed0276db326e8d379f56e99a4f708",
+      "bytes": 19451
+    },
+    {
+      "path": "dotnet-svcutil.dll",
+      "sha256": "b16227f4f418c04844afa4e147a65aef764d798a04c01918e9bae0a0ff882d9c",
+      "bytes": 16416
+    },
+    {
+      "path": "dotnet-svcutil.pdb",
+      "sha256": "e8a24cc7868a743a2a6cb386e6c390693816979c044aab98b27b3ca54e2dde34",
+      "bytes": 12104
+    },
+    {
+      "path": "dotnet-svcutil.runtimeconfig.json",
+      "sha256": "3c0bf772b95c93363a0a14e5df78e4ec408c90f04cb7103205af97b2d276fab0",
+      "bytes": 340
+    },
+    {
+      "path": "es/dotnet-svcutil-lib.resources.dll",
+      "sha256": "ff96f0c3f8ba30ac8f89e1c3a9656b2e80489d019b8c733494b338f8a7fcf3c8",
+      "bytes": 498216
+    },
+    {
+      "path": "fr/dotnet-svcutil-lib.resources.dll",
+      "sha256": "345288e8a86035e4403cab0927ae113a69d5a0bdccaecc24ebe09bf0057628c0",
+      "bytes": 512040
+    },
+    {
+      "path": "it/dotnet-svcutil-lib.resources.dll",
+      "sha256": "faf52ac36ee5d41ce5700a186207be92e60624c5a474ab62103457e42ea94dff",
+      "bytes": 506400
+    },
+    {
+      "path": "ja/dotnet-svcutil-lib.resources.dll",
+      "sha256": "bcb891b9605a9eca3c5cb80d93dcffb9f89ba4e0d0bf854ee61e724db35665b7",
+      "bytes": 573472
+    },
+    {
+      "path": "ko/dotnet-svcutil-lib.resources.dll",
+      "sha256": "03a1ea7c5893723ed4ff9d0e99634b1bf2a1b5a9f101f4715cfca81c85e2a1c5",
+      "bytes": 518688
+    },
+    {
+      "path": "legal/Apache-2.0.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "bytes": 11358
+    },
+    {
+      "path": "legal/NuGet.Client-LICENSE.txt",
+      "sha256": "f1e3c903178e459ebd0c25d2dc65ebf11163c0a0d3ae46690943dffd5813040e",
+      "bytes": 594
+    },
+    {
+      "path": "pl/dotnet-svcutil-lib.resources.dll",
+      "sha256": "4dd0998d633a9e5969aff5185b9783cbaeb74a0ae4c72c0c7dbdd0dffd133a25",
+      "bytes": 519720
+    },
+    {
+      "path": "pt-BR/dotnet-svcutil-lib.resources.dll",
+      "sha256": "6556d695ab0c00c9cc4320cc05adef1ab29a5b14d62f63496c1589b921c865fb",
+      "bytes": 487968
+    },
+    {
+      "path": "ru/dotnet-svcutil-lib.resources.dll",
+      "sha256": "c1acea636c6de326c72ddcdb5d5b8fe723c73cf76541204611f120fdcb58c2b7",
+      "bytes": 670792
+    },
+    {
+      "path": "runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.dll",
+      "sha256": "f8caa9538ffd60f9944d2679d75526a60452bdc48fa5772c9eb4b7d46a09c21c",
+      "bytes": 292480
+    },
+    {
+      "path": "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll",
+      "sha256": "1c73a1b016cfc8d497106eec08af07616f2f4c07e4ddc807c9f120ceacd0a53a",
+      "bytes": 31688
+    },
+    {
+      "path": "tr/dotnet-svcutil-lib.resources.dll",
+      "sha256": "b120e26692699c8a6bc38f01a297d18eb818e4956beb61e4d21e70e1357a19ca",
+      "bytes": 482336
+    },
+    {
+      "path": "zh-Hans/dotnet-svcutil-lib.resources.dll",
+      "sha256": "99048f07c73e9dda6f251c94f68941471e60e223bb6d9f0342799d23e4be88e2",
+      "bytes": 435744
+    },
+    {
+      "path": "zh-Hant/dotnet-svcutil-lib.resources.dll",
+      "sha256": "fb0a8b1843ed94a8d4be36807118210b6664651e1ebf89e9db1a0f0234b2c41b",
+      "bytes": 436256
+    }
+  ]
+}

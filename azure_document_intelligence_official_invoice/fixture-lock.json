@@ -1,0 +1,23 @@
+{
+  "schema": "elite-azure-documentintelligence-official-fixture-lock/v1",
+  "verified_at": "2026-08-28",
+  "source": {
+    "owner": "Microsoft",
+    "repository": "Azure/azure-sdk-for-python",
+    "release": "azure-ai-documentintelligence_1.0.2",
+    "commit": "8555d14532a9688b751d8408d822d1dd5feb47f6",
+    "commit_verified": true,
+    "license_expression": "MIT",
+    "license_sha256": "7c77a44a8acd9b41fdc209864a8016b3d430b5d0e09309818d5b7444336df744"
+  },
+  "fixtures": [
+    {
+      "id": "azure-documentintelligence-1.0.2-sample-invoice-jpg",
+      "url": "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/8555d14532a9688b751d8408d822d1dd5feb47f6/sdk/documentintelligence/azure-ai-documentintelligence/samples/sample_forms/forms/sample_invoice.jpg",
+      "filename": "sample_invoice.jpg",
+      "destination_path": "sample_forms/forms/sample_invoice.jpg",
+      "bytes": 184686,
+      "sha256": "489f0c63b6a05e0ae0fcfbf29121299fc2ccacab35d5cd40a5d63d42764078cb"
+    }
+  ]
+}

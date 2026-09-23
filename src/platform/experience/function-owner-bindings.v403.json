@@ -1,0 +1,750 @@
+{
+  "schema": "elite-function-owner-ui-bindings/v1",
+  "provenance": "AUTHORED",
+  "function_count": 11,
+  "task_count": 22,
+  "grants": [],
+  "tasks": [
+    {
+      "id": "grok-bot-101.delimit-learning-exercise",
+      "function_id": "grok-bot-101",
+      "title": "Delimitar un ejercicio de aprendizaje",
+      "entry": {
+        "kind": "EXISTING_PROJECT_FILES",
+        "records": [
+          "spec.md",
+          "tasks.md",
+          "PROJECT_FAILURE_LESSONS.md"
+        ]
+      },
+      "required_product_permissions": [],
+      "owner_refs": [
+        {
+          "root": "library",
+          "path": "markdown_system/FRANCHISE_PROJECT_OPERATING_PROTOCOL.md"
+        },
+        {
+          "root": "extension",
+          "path": "spec.md"
+        },
+        {
+          "root": "extension",
+          "path": "plan.md"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "PROJECT_RECORD_WORKFLOW",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "grok-bot-101.review-agent-output",
+      "function_id": "grok-bot-101",
+      "title": "Revisar la salida propuesta por un agente",
+      "entry": {
+        "kind": "EXISTING_PROJECT_FILES",
+        "records": [
+          "spec.md",
+          "tasks.md",
+          "PROJECT_FAILURE_LESSONS.md"
+        ]
+      },
+      "required_product_permissions": [],
+      "owner_refs": [
+        {
+          "root": "library",
+          "path": "markdown_system/FRANCHISE_PROJECT_OPERATING_PROTOCOL.md"
+        },
+        {
+          "root": "extension",
+          "path": "spec.md"
+        },
+        {
+          "root": "extension",
+          "path": "plan.md"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "PROJECT_RECORD_WORKFLOW",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "engineering.define-change",
+      "function_id": "engineering",
+      "title": "Delimitar cambio y aceptación",
+      "entry": {
+        "kind": "EXISTING_PROJECT_FILES",
+        "records": [
+          "spec.md",
+          "plan.md",
+          "tasks.md",
+          "PROJECT_EXECUTION_STATE.json"
+        ]
+      },
+      "required_product_permissions": [],
+      "owner_refs": [
+        {
+          "root": "library",
+          "path": "markdown_system/FRANCHISE_PROJECT_OPERATING_PROTOCOL.md"
+        },
+        {
+          "root": "extension",
+          "path": "spec.md"
+        },
+        {
+          "root": "extension",
+          "path": "plan.md"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "PROJECT_RECORD_WORKFLOW",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "engineering.verify-change",
+      "function_id": "engineering",
+      "title": "Verificar el cambio",
+      "entry": {
+        "kind": "EXISTING_PROJECT_FILES",
+        "records": [
+          "spec.md",
+          "plan.md",
+          "tasks.md",
+          "PROJECT_EXECUTION_STATE.json"
+        ]
+      },
+      "required_product_permissions": [],
+      "owner_refs": [
+        {
+          "root": "library",
+          "path": "markdown_system/FRANCHISE_PROJECT_OPERATING_PROTOCOL.md"
+        },
+        {
+          "root": "extension",
+          "path": "spec.md"
+        },
+        {
+          "root": "extension",
+          "path": "plan.md"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "PROJECT_RECORD_WORKFLOW",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "product-managers.frame-user-problem",
+      "function_id": "product-managers",
+      "title": "Enmarcar problema y resultado",
+      "entry": {
+        "kind": "EXISTING_PROJECT_FILES",
+        "records": [
+          "spec.md",
+          "tasks.md"
+        ]
+      },
+      "required_product_permissions": [],
+      "owner_refs": [
+        {
+          "root": "library",
+          "path": "markdown_system/FRANCHISE_PROJECT_OPERATING_PROTOCOL.md"
+        },
+        {
+          "root": "extension",
+          "path": "spec.md"
+        },
+        {
+          "root": "extension",
+          "path": "plan.md"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "PROJECT_RECORD_WORKFLOW",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "product-managers.review-feedback",
+      "function_id": "product-managers",
+      "title": "Revisar feedback y decisión",
+      "entry": {
+        "kind": "EXISTING_PROJECT_FILES",
+        "records": [
+          "spec.md",
+          "tasks.md"
+        ]
+      },
+      "required_product_permissions": [],
+      "owner_refs": [
+        {
+          "root": "library",
+          "path": "markdown_system/FRANCHISE_PROJECT_OPERATING_PROTOCOL.md"
+        },
+        {
+          "root": "extension",
+          "path": "spec.md"
+        },
+        {
+          "root": "extension",
+          "path": "plan.md"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "PROJECT_RECORD_WORKFLOW",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "founders.record-business-hypothesis",
+      "function_id": "founders",
+      "title": "Registrar hipótesis empresarial",
+      "entry": {
+        "kind": "EXISTING_PROJECT_FILES",
+        "records": [
+          "spec.md",
+          "plan.md",
+          "tasks.md"
+        ]
+      },
+      "required_product_permissions": [],
+      "owner_refs": [
+        {
+          "root": "library",
+          "path": "markdown_system/FRANCHISE_PROJECT_OPERATING_PROTOCOL.md"
+        },
+        {
+          "root": "extension",
+          "path": "spec.md"
+        },
+        {
+          "root": "extension",
+          "path": "plan.md"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "PROJECT_RECORD_WORKFLOW",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "founders.review-scope-decision",
+      "function_id": "founders",
+      "title": "Revisar decisión de alcance",
+      "entry": {
+        "kind": "EXISTING_PROJECT_FILES",
+        "records": [
+          "spec.md",
+          "plan.md",
+          "tasks.md"
+        ]
+      },
+      "required_product_permissions": [],
+      "owner_refs": [
+        {
+          "root": "library",
+          "path": "markdown_system/FRANCHISE_PROJECT_OPERATING_PROTOCOL.md"
+        },
+        {
+          "root": "extension",
+          "path": "spec.md"
+        },
+        {
+          "root": "extension",
+          "path": "plan.md"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "PROJECT_RECORD_WORKFLOW",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "sales-engineering.map-technical-fit",
+      "function_id": "sales-engineering",
+      "title": "Evaluar encaje técnico",
+      "entry": {
+        "kind": "PRODUCT_UI_AND_REPRODUCIBLE_FIXTURE",
+        "route": "/franchise?task=orders",
+        "qualification": "tooling/run_selected_owners.py"
+      },
+      "required_product_permissions": [
+        "lead:read"
+      ],
+      "owner_refs": [
+        {
+          "root": "composition",
+          "path": "internal/platform/httpapi/franchisejourney.go"
+        },
+        {
+          "root": "composition",
+          "path": "internal/platform/postgres/franchisejourney.go"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/franchise/page.tsx"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/api/enterprise/franchise/commands/route.ts"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "EXISTING_OWNER_LOCAL_FIXTURE_SCOPE",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "sales-engineering.prepare-scoped-demo",
+      "function_id": "sales-engineering",
+      "title": "Preparar una demostración acotada",
+      "entry": {
+        "kind": "PRODUCT_UI_AND_REPRODUCIBLE_FIXTURE",
+        "route": "/franchise?task=orders",
+        "qualification": "tooling/run_selected_owners.py"
+      },
+      "required_product_permissions": [
+        "lead:read"
+      ],
+      "owner_refs": [
+        {
+          "root": "composition",
+          "path": "internal/platform/httpapi/franchisejourney.go"
+        },
+        {
+          "root": "composition",
+          "path": "internal/platform/postgres/franchisejourney.go"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/franchise/page.tsx"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/api/enterprise/franchise/commands/route.ts"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "EXISTING_OWNER_LOCAL_FIXTURE_SCOPE",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "sales.review-opportunity",
+      "function_id": "sales",
+      "title": "Revisar oportunidad",
+      "entry": {
+        "kind": "PRODUCT_UI",
+        "route": "/franchise?task=daily",
+        "bff": "/api/enterprise/franchise/commands"
+      },
+      "required_product_permissions": [
+        "lead:read"
+      ],
+      "owner_refs": [
+        {
+          "root": "composition",
+          "path": "internal/platform/httpapi/franchisejourney.go"
+        },
+        {
+          "root": "composition",
+          "path": "internal/platform/postgres/franchisejourney.go"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/franchise/page.tsx"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/api/enterprise/franchise/commands/route.ts"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "EXISTING_OWNER_LOCAL_FIXTURE_SCOPE",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "sales.prepare-proposal",
+      "function_id": "sales",
+      "title": "Preparar propuesta",
+      "entry": {
+        "kind": "PRODUCT_UI",
+        "route": "/franchise?task=daily",
+        "bff": "/api/enterprise/franchise/commands"
+      },
+      "required_product_permissions": [
+        "lead:read",
+        "quote:write"
+      ],
+      "owner_refs": [
+        {
+          "root": "composition",
+          "path": "internal/platform/httpapi/franchisejourney.go"
+        },
+        {
+          "root": "composition",
+          "path": "internal/platform/postgres/franchisejourney.go"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/franchise/page.tsx"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/api/enterprise/franchise/commands/route.ts"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "EXISTING_OWNER_LOCAL_FIXTURE_SCOPE",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "sdrs.review-lead-evidence",
+      "function_id": "sdrs",
+      "title": "Revisar procedencia del lead",
+      "entry": {
+        "kind": "PRODUCT_UI",
+        "route": "/franchise?task=daily",
+        "bff": "/api/enterprise/franchise/commands"
+      },
+      "required_product_permissions": [
+        "lead:read"
+      ],
+      "owner_refs": [
+        {
+          "root": "composition",
+          "path": "internal/platform/postgres/lead_ingress.go"
+        },
+        {
+          "root": "composition",
+          "path": "internal/platform/postgres/lead_promotion.go"
+        },
+        {
+          "root": "composition",
+          "path": "internal/platform/httpapi/franchisejourney.go"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/franchise/page.tsx"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "EXISTING_OWNER_LOCAL_FIXTURE_SCOPE",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "sdrs.prepare-qualified-handoff",
+      "function_id": "sdrs",
+      "title": "Preparar handoff comercial",
+      "entry": {
+        "kind": "PRODUCT_UI",
+        "route": "/franchise?task=daily",
+        "bff": "/api/enterprise/franchise/commands"
+      },
+      "required_product_permissions": [
+        "lead:read",
+        "lead:assign"
+      ],
+      "owner_refs": [
+        {
+          "root": "composition",
+          "path": "internal/platform/postgres/lead_ingress.go"
+        },
+        {
+          "root": "composition",
+          "path": "internal/platform/postgres/lead_promotion.go"
+        },
+        {
+          "root": "composition",
+          "path": "internal/platform/httpapi/franchisejourney.go"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/franchise/page.tsx"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "EXISTING_OWNER_LOCAL_FIXTURE_SCOPE",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "customer-support.triage-case",
+      "function_id": "customer-support",
+      "title": "Clasificar consulta",
+      "entry": {
+        "kind": "PRODUCT_UI",
+        "route": "/franchise/whatsapp",
+        "bff": "/api/enterprise/franchise/whatsapp/replies"
+      },
+      "required_product_permissions": [
+        "whatsapp:approve"
+      ],
+      "owner_refs": [
+        {
+          "root": "composition",
+          "path": "internal/conversationruntime/runtime.go"
+        },
+        {
+          "root": "composition",
+          "path": "internal/whatsappbridge/reply_module.go"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/franchise/whatsapp/page.tsx"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/api/enterprise/franchise/whatsapp/replies/route.ts"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "EXISTING_OWNER_LOCAL_FIXTURE_SCOPE",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "customer-support.prepare-resolution",
+      "function_id": "customer-support",
+      "title": "Preparar respuesta o escalación",
+      "entry": {
+        "kind": "PRODUCT_UI",
+        "route": "/franchise/whatsapp",
+        "bff": "/api/enterprise/franchise/whatsapp/replies"
+      },
+      "required_product_permissions": [
+        "whatsapp:approve",
+        "whatsapp:send"
+      ],
+      "owner_refs": [
+        {
+          "root": "composition",
+          "path": "internal/conversationruntime/runtime.go"
+        },
+        {
+          "root": "composition",
+          "path": "internal/whatsappbridge/reply_module.go"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/franchise/whatsapp/page.tsx"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/api/enterprise/franchise/whatsapp/replies/route.ts"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "EXISTING_OWNER_LOCAL_FIXTURE_SCOPE",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "marketing-operations.prepare-campaign-operations",
+      "function_id": "marketing-operations",
+      "title": "Preparar operación de campaña",
+      "entry": {
+        "kind": "PRODUCT_UI",
+        "route": "/franchise/campaigns",
+        "bff": "/api/enterprise/franchise/campaigns"
+      },
+      "required_product_permissions": [
+        "marketing:read",
+        "notification:read",
+        "marketing:request",
+        "notification:request",
+        "lead:read"
+      ],
+      "owner_refs": [
+        {
+          "root": "extension",
+          "path": "commercial-workspace/MANIFEST.json"
+        },
+        {
+          "root": "composition",
+          "path": "internal/whatsappbridge/campaign_module.go"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/franchise/campaigns/page.tsx"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "EXISTING_OWNER_LOCAL_FIXTURE_SCOPE",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "marketing-operations.review-campaign-state",
+      "function_id": "marketing-operations",
+      "title": "Revisar estado y recuperación",
+      "entry": {
+        "kind": "PRODUCT_UI",
+        "route": "/franchise/campaigns",
+        "bff": "/api/enterprise/franchise/campaigns"
+      },
+      "required_product_permissions": [
+        "marketing:read",
+        "notification:read"
+      ],
+      "owner_refs": [
+        {
+          "root": "extension",
+          "path": "commercial-workspace/MANIFEST.json"
+        },
+        {
+          "root": "composition",
+          "path": "internal/whatsappbridge/campaign_module.go"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/franchise/campaigns/page.tsx"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "EXISTING_OWNER_LOCAL_FIXTURE_SCOPE",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "post-sales.review-delivery-onboarding",
+      "function_id": "post-sales",
+      "title": "Revisar entrega y onboarding",
+      "entry": {
+        "kind": "PRODUCT_UI",
+        "route": "/franchise?task=deliveries",
+        "bff": "/api/enterprise/franchise/commands"
+      },
+      "required_product_permissions": [
+        "handover:manage"
+      ],
+      "owner_refs": [
+        {
+          "root": "composition",
+          "path": "internal/platform/postgres/franchisejourney.go"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/franchise/page.tsx"
+        },
+        {
+          "root": "extension",
+          "path": "commercial-care/MANIFEST.json"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "EXISTING_OWNER_LOCAL_FIXTURE_SCOPE",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "post-sales.prepare-follow-up",
+      "function_id": "post-sales",
+      "title": "Preparar seguimiento o escalación",
+      "entry": {
+        "kind": "PRODUCT_UI",
+        "route": "/franchise?task=deliveries",
+        "bff": "/api/enterprise/franchise/commands"
+      },
+      "required_product_permissions": [
+        "handover:manage"
+      ],
+      "owner_refs": [
+        {
+          "root": "composition",
+          "path": "internal/platform/postgres/franchisejourney.go"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/franchise/page.tsx"
+        },
+        {
+          "root": "extension",
+          "path": "commercial-care/MANIFEST.json"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "EXISTING_OWNER_LOCAL_FIXTURE_SCOPE",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "marketing.prepare-campaign-brief",
+      "function_id": "marketing",
+      "title": "Preparar brief de campaña",
+      "entry": {
+        "kind": "PRODUCT_UI_AND_EXISTING_RECORDS",
+        "route": "/franchise/campaigns",
+        "records": [
+          "spec.md",
+          "tasks.md"
+        ]
+      },
+      "required_product_permissions": [
+        "marketing:read",
+        "notification:read",
+        "marketing:request",
+        "notification:request",
+        "lead:read"
+      ],
+      "owner_refs": [
+        {
+          "root": "extension",
+          "path": "commercial-workspace/MANIFEST.json"
+        },
+        {
+          "root": "composition",
+          "path": "internal/whatsappbridge/campaign_module.go"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/franchise/campaigns/page.tsx"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "EXISTING_OWNER_LOCAL_FIXTURE_SCOPE",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    },
+    {
+      "id": "marketing.review-campaign-learning",
+      "function_id": "marketing",
+      "title": "Revisar aprendizaje de campaña",
+      "entry": {
+        "kind": "PRODUCT_UI_AND_EXISTING_RECORDS",
+        "route": "/franchise/campaigns",
+        "records": [
+          "spec.md",
+          "tasks.md"
+        ]
+      },
+      "required_product_permissions": [
+        "marketing:read",
+        "notification:read"
+      ],
+      "owner_refs": [
+        {
+          "root": "extension",
+          "path": "commercial-workspace/MANIFEST.json"
+        },
+        {
+          "root": "composition",
+          "path": "internal/whatsappbridge/campaign_module.go"
+        },
+        {
+          "root": "composition",
+          "path": "src/app/franchise/campaigns/page.tsx"
+        }
+      ],
+      "grants": [],
+      "galaxy_method": "WAITING_GALAXY_ADMISSION",
+      "runtime_claim": "EXISTING_OWNER_LOCAL_FIXTURE_SCOPE",
+      "evidence_binding": "docs/FUNCTION_EXECUTION_EVIDENCE.json"
+    }
+  ]
+}

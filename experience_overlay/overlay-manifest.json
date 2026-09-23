@@ -1,0 +1,335 @@
+{
+  "schema_version": "1.0.0",
+  "revision": "V403-UI-0.3.0",
+  "base": "V402 source330 / closure337 preserved",
+  "base_package_sha256": "acc4e4bd62c13cf48e071e933266d82d067cab849f92474d71a533ebf6508951",
+  "files": [
+    {
+      "target": "src/app/globals.css",
+      "bundle_path": "files/src/app/globals.css",
+      "before_sha256": "b7964d15c39cd463b57f522409e07b4592a19fdcd900da05909eae2bb2c796aa",
+      "after_sha256": "aca4eca8260b778880a10e8135d63a16efe484114fa76d348e280fae18a18db3"
+    },
+    {
+      "target": "src/design/tokens.v403.json",
+      "bundle_path": "files/src/design/tokens.v403.json",
+      "before_sha256": null,
+      "after_sha256": "756567004c1dc2d3afbd7d7d9f166621ffe4be195f8486a61210e3a27d9a02e7"
+    },
+    {
+      "target": "src/design/contrast.v403.ts",
+      "bundle_path": "files/src/design/contrast.v403.ts",
+      "before_sha256": null,
+      "after_sha256": "750dd1bb000dec0035e6b0763b6c7b9c120040d5fc0a19ca0a3a68d6acc02f85"
+    },
+    {
+      "target": "src/design/experience.v403.test.ts",
+      "bundle_path": "files/src/design/experience.v403.test.ts",
+      "before_sha256": null,
+      "after_sha256": "36a5d3a46f9e56376e650d3dd9a47e4b3c8d458c523e999bd169a9daabde1420"
+    },
+    {
+      "target": "src/components/experience-ui.tsx",
+      "bundle_path": "files/src/components/experience-ui.tsx",
+      "before_sha256": null,
+      "after_sha256": "09389bb2f5048b758f9bb34e9ae638d75d76aefbe590be2eb52377d9f35a4f07"
+    },
+    {
+      "target": "docs/DOCUMENT_EXPERIENCE_V403.md",
+      "bundle_path": "files/docs/DOCUMENT_EXPERIENCE_V403.md",
+      "before_sha256": null,
+      "after_sha256": "b7489ba345744275f74ced41e7220ef92469358a531a29b38480f6099982ed59"
+    },
+    {
+      "target": "src/platform/documents-v403/contract.ts",
+      "bundle_path": "files/src/platform/documents-v403/contract.ts",
+      "before_sha256": null,
+      "after_sha256": "6c44c6b5789d3259c021026a6dc1b494483e1f33d5a63b6ef10c33129f58e2f0"
+    },
+    {
+      "target": "src/platform/documents-v403/gateway.ts",
+      "bundle_path": "files/src/platform/documents-v403/gateway.ts",
+      "before_sha256": null,
+      "after_sha256": "a33a36aa349cd7906864b687a26eb716782b482563d65db69c029aa74a0d3935"
+    },
+    {
+      "target": "src/platform/documents-v403/server.ts",
+      "bundle_path": "files/src/platform/documents-v403/server.ts",
+      "before_sha256": null,
+      "after_sha256": "62c3d2ad0c7c9bc8d18e9d60ff48e04a71725ff4be35ced48608ee2942eaaee7"
+    },
+    {
+      "target": "src/platform/documents-v403/gateway.test.ts",
+      "bundle_path": "files/src/platform/documents-v403/gateway.test.ts",
+      "before_sha256": null,
+      "after_sha256": "70d88ed43246c55e9938f9f01d98b637c697b1f701c254763fa6a785564aac2a"
+    },
+    {
+      "target": "src/app/api/enterprise/documents-v403/route.ts",
+      "bundle_path": "files/src/app/api/enterprise/documents-v403/route.ts",
+      "before_sha256": null,
+      "after_sha256": "3f867615a1dda0c81d8d3224b2405100c9316a213ca0aaa8148039f88786cbda"
+    },
+    {
+      "target": "src/components/document-workspace-v403.tsx",
+      "bundle_path": "files/src/components/document-workspace-v403.tsx",
+      "before_sha256": null,
+      "after_sha256": "9ea6e4f1d27d761571907c7e4587c53f45703e7323f2f00c4ec10bf11f5878ba"
+    },
+    {
+      "target": "src/app/experience/documents/page.tsx",
+      "bundle_path": "files/src/app/experience/documents/page.tsx",
+      "before_sha256": null,
+      "after_sha256": "47eae91f415941593f0588d876db90ec83e534a616f24f675d89edf5fc387180"
+    },
+    {
+      "target": "src/components/authorized-unit-code-picker.tsx",
+      "bundle_path": "files/src/components/authorized-unit-code-picker.tsx",
+      "before_sha256": null,
+      "after_sha256": "c5894e58d7c9d4508c78e50ba6a65dd72de0cce9aed5e943ad37a9c0ea8e8388"
+    },
+    {
+      "target": "src/platform/experience/unit-code.ts",
+      "bundle_path": "files/src/platform/experience/unit-code.ts",
+      "before_sha256": null,
+      "after_sha256": "5c015771d34086490ae13a378c688fba3efe8236addb432a5ecbb70fa0febc8a"
+    },
+    {
+      "target": "src/platform/experience/unit-code.test.ts",
+      "bundle_path": "files/src/platform/experience/unit-code.test.ts",
+      "before_sha256": null,
+      "after_sha256": "5bdb64304e2832e4663991562137af8b525f653314eee897665a8979d8e85b93"
+    },
+    {
+      "target": "src/app/models/page.tsx",
+      "bundle_path": "files/src/app/models/page.tsx",
+      "before_sha256": "d715b58d7c1be02aae1051dc5d91d619499be5fd35972658cc67d01895c9d573",
+      "after_sha256": "31798bef2b05709ae35d1083a14aefff2099dc251423447b0a94e91faf750f4f"
+    },
+    {
+      "target": "src/platform/help/coverage.test.ts",
+      "bundle_path": "files/src/platform/help/coverage.test.ts",
+      "before_sha256": "3d5bd9aa236545599cca8b050017ebb0cd7125fa0107233cbdc40660d5f5a02d",
+      "after_sha256": "c896d703e974f6896070cb3dc8e8829c1b8c3f08ee694a6b06362006869b7555"
+    },
+    {
+      "target": "src/platform/help/fixtures/operational-guide.v402.tsx",
+      "bundle_path": "files/src/platform/help/fixtures/operational-guide.v402.tsx",
+      "before_sha256": null,
+      "after_sha256": "37ffa11dbb90c30691d84c4862b79fc95e15d2d469475f6201d461b459f6b206"
+    },
+    {
+      "target": "src/platform/experience/messages.ts",
+      "bundle_path": "files/src/platform/experience/messages.ts",
+      "before_sha256": null,
+      "after_sha256": "9888a255966e0147669e73d284eefbd8f8ca2df503307cfabf2d7a217c1fc3b0"
+    },
+    {
+      "target": "src/app/franchise/page.tsx",
+      "bundle_path": "files/src/app/franchise/page.tsx",
+      "before_sha256": "215190e2750f48da05dceab9bc116146b1f5700d461cdce0e7d32905d9f7ecfd",
+      "after_sha256": "d51babfbbc82544bf064f5141e64ebb47a3005642a16a06106ef9b619f092deb"
+    },
+    {
+      "target": "src/app/layout.tsx",
+      "bundle_path": "files/src/app/layout.tsx",
+      "before_sha256": "e585bdfd5439d8f97af94afb7018cb2853f1322b93753e36f0b137a39bef974a",
+      "after_sha256": "5f19f382d0e758c0eea865ae8f2bb56138527853a102abed6d18c24738039bcf"
+    },
+    {
+      "target": "src/components/application-chrome.tsx",
+      "bundle_path": "files/src/components/application-chrome.tsx",
+      "before_sha256": null,
+      "after_sha256": "3068982fee0e54d5239631fd725fc38b40b12a44c3e769493540399b5508a1d9"
+    },
+    {
+      "target": "src/components/private-language-switcher.tsx",
+      "bundle_path": "files/src/components/private-language-switcher.tsx",
+      "before_sha256": "ed07036719291f88bc03dcc89cc468853fd71c2c84075c6b51f63a7138a788ab",
+      "after_sha256": "f24dd32be9c3edde67677e27c0e2f62e417abe1c69ddd1b490c628e6086c4cca"
+    },
+    {
+      "target": "src/components/operational-guide.tsx",
+      "bundle_path": "files/src/components/operational-guide.tsx",
+      "before_sha256": "37ffa11dbb90c30691d84c4862b79fc95e15d2d469475f6201d461b459f6b206",
+      "after_sha256": "8bfc734d6bc42af468b71bd70fd6c6a4296629513661315473d9b98b05f51056"
+    },
+    {
+      "target": "src/components/task-workspace.tsx",
+      "bundle_path": "files/src/components/task-workspace.tsx",
+      "before_sha256": null,
+      "after_sha256": "354ae0a3aa1b2616249d486d938e63910566974b75dc58f6974c5f1c05b45a75"
+    },
+    {
+      "target": "src/components/experience-home.tsx",
+      "bundle_path": "files/src/components/experience-home.tsx",
+      "before_sha256": null,
+      "after_sha256": "dbfde85e3eea6f14c9e3af27294f396ee0ebecd1aaa7e5bca67efe2459956104"
+    },
+    {
+      "target": "src/app/experience/reference/page.tsx",
+      "bundle_path": "files/src/app/experience/reference/page.tsx",
+      "before_sha256": null,
+      "after_sha256": "ffeccbd017aae33989167fba670bd79d279f38bea2ef51d34d6052798685b383"
+    },
+    {
+      "target": "src/components/catalog-authoring.tsx",
+      "bundle_path": "files/src/components/catalog-authoring.tsx",
+      "before_sha256": "bef83d3f597c19d9a17ac6e8ca2ac980d1c5ff3ac5d095cf1dd318f12cfbd022",
+      "after_sha256": "2640e658c51eb42af0793dd6edf83e83120177daee1b18ab85794b2cddcd166b"
+    },
+    {
+      "target": "src/components/customer-handover-actions.tsx",
+      "bundle_path": "files/src/components/customer-handover-actions.tsx",
+      "before_sha256": "10402e5757d5dc7e63ffd34e57360791210902375576088cc9aff50f4e52baa3",
+      "after_sha256": "1654b22870615d34cc8c2f5421955d090ab8af32a9a5879aa807f9e99eed4aed"
+    },
+    {
+      "target": "src/components/help-cms-workspace.tsx",
+      "bundle_path": "files/src/components/help-cms-workspace.tsx",
+      "before_sha256": "d4167d06b7e305adf8481e570de8cecebcef8d7bd994bc8d99a81ef022643a63",
+      "after_sha256": "4a3c408f7a8859c1b60131691a064b7072c4207829c7d7fdfbde5bfeac649e3e"
+    },
+    {
+      "target": "src/components/network-workspace.tsx",
+      "bundle_path": "files/src/components/network-workspace.tsx",
+      "before_sha256": "7a2da943d49fe4df44ea931022f71a0fe74c806af0128e790fef48a71d9a1d98",
+      "after_sha256": "09318ef5338ab19e32d4c67a48ef8f7f3d1ecdc5f860f32e48d8f543742d52a8"
+    },
+    {
+      "target": "src/components/role-metrics.tsx",
+      "bundle_path": "files/src/components/role-metrics.tsx",
+      "before_sha256": "617fb23a826961de282f7ba6df5798ee80d978efe0fdda790589626608cc8e80",
+      "after_sha256": "1667baf45fbc9b84b872d216274200941add4e76a21a1666b0bc50bdada2cdc4"
+    },
+    {
+      "target": "src/components/stored-value-operations.tsx",
+      "bundle_path": "files/src/components/stored-value-operations.tsx",
+      "before_sha256": "f58c81fb59930aafb071b8b936cbc5b291db6d0af15679618ab57d9475d2d4ca",
+      "after_sha256": "7eee4bbaffba542ac6aeb56af9b69866b64160e8108fd02879945d15f1b0b3b3"
+    },
+    {
+      "target": "src/components/supply-workspace.tsx",
+      "bundle_path": "files/src/components/supply-workspace.tsx",
+      "before_sha256": "8e2e99a9be945faeee09e639344935ce7f2b3830c09ffc9c515ce94d414439d8",
+      "after_sha256": "c13cc073f748f330f9fc984ba91177b9ad8ca4507bbb2ac419bfe91b1e925f16"
+    },
+    {
+      "target": "src/components/warranty-workspace.tsx",
+      "bundle_path": "files/src/components/warranty-workspace.tsx",
+      "before_sha256": "bfbda5f77dd9c515ecd0e691c338ac1901976037d06c13ca9f6b22baacb0da15",
+      "after_sha256": "c541bced4aebe26f143eea9a1e23111c9e08c572d73dc1dd285049b5427ddb6c"
+    },
+    {
+      "target": "src/platform/handovers/render.test.ts",
+      "bundle_path": "files/src/platform/handovers/render.test.ts",
+      "before_sha256": "e59c00349ee820506510e6e4e739a6e15d0b3b8c7f901b1872e470390701d001",
+      "after_sha256": "cbfcfc7f291f155035b262112ef7e311b6d3410d66c6960fa1f00b807ba02de2"
+    },
+    {
+      "target": "src/components/franchise-command-panel.tsx",
+      "bundle_path": "files/src/components/franchise-command-panel.tsx",
+      "before_sha256": "408e4ef0d8f40fd51b81d6b837cf6f3cf3e7f80cb5aeb819ca47330fd28bae48",
+      "after_sha256": "207a0145f086ef2a17cba77de82944d6e8ee31d4085a6dafce9be526207a267c"
+    },
+    {
+      "target": "src/app/api/enterprise/franchise/commands/route.ts",
+      "bundle_path": "files/src/app/api/enterprise/franchise/commands/route.ts",
+      "before_sha256": "2a9e1ffb99754e25a86aecf13e855cf9078e29366c5a7886e630688720e55259",
+      "after_sha256": "e5cf82dcf4e293f0c4119d1ebb15e264d078146c31808a80c1a3fb3a0404501d"
+    },
+    {
+      "target": "src/app/api/enterprise/franchise/commands/route.test.ts",
+      "bundle_path": "files/src/app/api/enterprise/franchise/commands/route.test.ts",
+      "before_sha256": "5e190d894b1e396b6d99e86e321b2216cc2cf64b24c21ea7b1f160b5fe0f086e",
+      "after_sha256": "8c644980b4db6027ee000fb3e75b9583b6bc6dc8acbc63b0d10efb51f8aa3cf5"
+    },
+    {
+      "target": "src/components/experience-catalogue.tsx",
+      "bundle_path": "files/src/components/experience-catalogue.tsx",
+      "before_sha256": null,
+      "after_sha256": "9b42ab44ef9622691db6155f237ac24f652203c675281b46e8d11ecbf1abce45"
+    },
+    {
+      "target": "src/components/guided-checklist-fields.tsx",
+      "bundle_path": "files/src/components/guided-checklist-fields.tsx",
+      "before_sha256": null,
+      "after_sha256": "6aa58d74444a5246da86600c5c489051892ec9dbe26d10d81aa82b8448bd0bdf"
+    },
+    {
+      "target": "src/components/guided-record-select.tsx",
+      "bundle_path": "files/src/components/guided-record-select.tsx",
+      "before_sha256": null,
+      "after_sha256": "41564f5eddcff97a129aa6643031814d039c7aa26271f9a4bd66ee4e781e6c10"
+    },
+    {
+      "target": "src/app/experience/page.tsx",
+      "bundle_path": "files/src/app/experience/page.tsx",
+      "before_sha256": null,
+      "after_sha256": "883b7c98a34477e10bf408723741cbc9b7e2671a7d61450068b8950a9387ae4a"
+    },
+    {
+      "target": "src/app/experience/operations/page.tsx",
+      "bundle_path": "files/src/app/experience/operations/page.tsx",
+      "before_sha256": null,
+      "after_sha256": "d2ff1e28987fae65da311e0b186812a07f084a3c349f7caec6018a1f433692c6"
+    },
+    {
+      "target": "src/app/api/enterprise/experience-checklists/route.ts",
+      "bundle_path": "files/src/app/api/enterprise/experience-checklists/route.ts",
+      "before_sha256": null,
+      "after_sha256": "5293700233eee707e0b108f85e9503470153d1bd0305d527fe5d76f4e9f530fc"
+    },
+    {
+      "target": "src/app/api/enterprise/experience-options/route.ts",
+      "bundle_path": "files/src/app/api/enterprise/experience-options/route.ts",
+      "before_sha256": null,
+      "after_sha256": "d91acd3b9b04671f71f8c96590712c4af71352cc9928ed93d4ab9d3858688e68"
+    },
+    {
+      "target": "src/platform/experience/checklists.ts",
+      "bundle_path": "files/src/platform/experience/checklists.ts",
+      "before_sha256": null,
+      "after_sha256": "22969c2335d641302e50c7cd040c7a4916af15abe2365b184a28b7724de8bb7f"
+    },
+    {
+      "target": "src/platform/experience/options.ts",
+      "bundle_path": "files/src/platform/experience/options.ts",
+      "before_sha256": null,
+      "after_sha256": "b8bc0cc9a96a8f32900ac11c56d6fedc979004e27b5b60bc390075fd2939ee10"
+    },
+    {
+      "target": "src/platform/experience/rejection.ts",
+      "bundle_path": "files/src/platform/experience/rejection.ts",
+      "before_sha256": null,
+      "after_sha256": "da8302d827cb2ddd56cc866cc398ca5ed9f2a3491b7b75feb2dd191557d409ab"
+    },
+    {
+      "target": "src/platform/experience/selection.v403.test.ts",
+      "bundle_path": "files/src/platform/experience/selection.v403.test.ts",
+      "before_sha256": null,
+      "after_sha256": "a16118b0839a50b69e0e56e11bb2b15a608853ce9eec7a4eb2d8c1fba7368497"
+    },
+    {
+      "target": "src/platform/experience/business-functions.v403.json",
+      "bundle_path": "files/src/platform/experience/business-functions.v403.json",
+      "before_sha256": null,
+      "after_sha256": "2598b2b8ac1259c7ad640c02330bfe92be212495438235394b6766adba80585e"
+    },
+    {
+      "target": "config/experience-checklists.json",
+      "bundle_path": "files/config/experience-checklists.json",
+      "before_sha256": null,
+      "after_sha256": "49d8af1df2417889da9f5fd5f0c7ac30fcda5e5ae1a814c2ce9fb1ef02c527d1"
+    },
+    {
+      "target": "config/experience-options.json",
+      "bundle_path": "files/config/experience-options.json",
+      "before_sha256": null,
+      "after_sha256": "49d8af1df2417889da9f5fd5f0c7ac30fcda5e5ae1a814c2ce9fb1ef02c527d1"
+    }
+  ],
+  "active_design_system": "TS-DESIGN-SYSTEM-V403",
+  "visual_baseline_approval": "PENDING_USER_APPROVAL",
+  "production_authorized": false
+}

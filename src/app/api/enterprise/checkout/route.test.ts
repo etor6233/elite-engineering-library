@@ -1,0 +1,16 @@
+import {beforeEach,expect,it,vi} from "vitest";
+const mock=vi.hoisted(()=>({session:vi.fn(),get:vi.fn()}));
+vi.mock("@/platform/auth/session",()=>({readSession:mock.session,allowed:(s:{permissions:string[]},p:string)=>s.permissions.includes(p)||s.permissions.includes("*")}));
+vi.mock("@/platform/backend/protected-client",()=>({protectedGet:mock.get}));
+import {GET} from "./route";
+const url="https://portal.example.test/api/enterprise/checkout?organizationId=store&orderId=order";
+const checkout=()=>({order_id:"order",provider_code:"stripe",url:"https://checkout.stripe.com/c/pay/cs_test_fixture",expires_at:new Date(Date.now()+3600000).toISOString()});
+beforeEach(()=>{vi.clearAllMocks();mock.session.mockResolvedValue({subject:"alice",tenantId:"tenant",organizations:["store"],permissions:["customer:self"],accessToken:"server-only-token"});mock.get.mockResolvedValue(checkout());});
+it("uses the session's backend token and returns a validated provider URL",async()=>{const value=checkout();mock.get.mockResolvedValue(value);const r=await GET(new Request(url));expect(r.status).toBe(200);expect(await r.json()).toEqual(value);expect(mock.get).toHaveBeenCalledWith(expect.objectContaining({subject:"alice"}),"/v1/customer/orders/order/checkout",{organization_id:"store"});expect(r.headers.get("cache-control")).toBe("no-store");});
+it.each(["organizationId=store&orderId=order&customerId=bob","organizationId=store&organizationId=store&orderId=order","organizationId=store&orderId=../other","organizationId=other&orderId=order"])("rejects injected/foreign scope %s",async query=>{const response=await GET(new Request(url.split("?")[0]+"?"+query));expect([400,403]).toContain(response.status);expect(mock.get).not.toHaveBeenCalled();});
+it("requires authentication",async()=>{mock.session.mockResolvedValue(null);expect((await GET(new Request(url))).status).toBe(401);expect(mock.get).not.toHaveBeenCalled();});
+it("requires customer permission",async()=>{mock.session.mockResolvedValue({permissions:["admin:read"]});expect((await GET(new Request(url))).status).toBe(403);expect(mock.get).not.toHaveBeenCalled();});
+it("rejects cross-site reads",async()=>{expect((await GET(new Request(url,{headers:{"sec-fetch-site":"cross-site"}}))).status).toBe(403);expect(mock.get).not.toHaveBeenCalled();});
+it.each(["https://checkout.stripe.com.evil.test/session","javascript:alert(1)","https://user:secret@checkout.stripe.com/session"])("rejects a backend open redirect %s",async target=>{mock.get.mockResolvedValue({...checkout(),url:target});expect((await GET(new Request(url))).status).toBe(502);});
+it("rejects another order and expired response",async()=>{mock.get.mockResolvedValue({...checkout(),order_id:"other"});expect((await GET(new Request(url))).status).toBe(502);mock.get.mockResolvedValue({...checkout(),expires_at:"2000-01-01T00:00:00Z"});expect((await GET(new Request(url))).status).toBe(502);});
+it("never retries or exposes backend failure details",async()=>{mock.get.mockRejectedValue(new Error("PRIVATE_PROVIDER_DETAIL"));const r=await GET(new Request(url));expect(r.status).toBe(503);expect(await r.text()).not.toContain("PRIVATE_PROVIDER_DETAIL");expect(mock.get).toHaveBeenCalledTimes(1);});

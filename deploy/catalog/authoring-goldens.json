@@ -1,0 +1,67 @@
+[
+  {
+    "name": "source",
+    "payload": {
+      "command_id": "golden-source",
+      "model": {
+        "id": "",
+        "code": "bicycle-one",
+        "displayName": "Modelo á <&>",
+        "vehicleClass": "bicycle",
+        "specification": {
+          "description": "Guía   fija"
+        }
+      },
+      "variants": [
+        {
+          "code": "variant-one",
+          "display_name": "Variante",
+          "battery_specification": {
+            "description": "Referencia   fija"
+          },
+          "amount_minor_units": "9007199254740993",
+          "tax_mode": "not-applicable"
+        }
+      ],
+      "valid_from": "2026-09-12T00:00:00Z",
+      "valid_until": "2026-10-12T00:00:00.12Z"
+    },
+    "canonical": "{\"command_id\":\"golden-source\",\"model\":{\"code\":\"bicycle-one\",\"displayName\":\"Modelo á \\u003c\\u0026\\u003e\",\"id\":\"\",\"specification\":{\"description\":\"Guía \\u2028 fija\"},\"vehicleClass\":\"bicycle\"},\"valid_from\":\"2026-09-12T00:00:00Z\",\"valid_until\":\"2026-10-12T00:00:00.12Z\",\"variants\":[{\"amount_minor_units\":\"9007199254740993\",\"battery_specification\":{\"description\":\"Referencia \\u2029 fija\"},\"code\":\"variant-one\",\"display_name\":\"Variante\",\"tax_mode\":\"not-applicable\"}]}",
+    "sha256": "7072b34182c9fca16217271eb597ec0df98cad5730ac5e3bccc05c0ba2d5cb88"
+  },
+  {
+    "name": "review",
+    "payload": {
+      "command_id": "golden-review",
+      "draft_id": "draft-one",
+      "stage": "legal",
+      "snapshot_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "approved": true,
+      "reason": "Revisión <documento> & alcance",
+      "evidence_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "canonical": "{\"approved\":true,\"command_id\":\"golden-review\",\"draft_id\":\"draft-one\",\"evidence_sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"reason\":\"Revisión \\u003cdocumento\\u003e \\u0026 alcance\",\"snapshot_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"stage\":\"legal\"}",
+    "sha256": "79a960fc55b25b6d2a01f68f7521736f18ff50d0f2a4615fbc722a8304211326"
+  },
+  {
+    "name": "publish",
+    "payload": {
+      "command_id": "golden-publish",
+      "draft_id": "draft-one",
+      "snapshot_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "expected_generation": "9007199254740993",
+      "reason": "Publicación aprobada"
+    },
+    "canonical": "{\"command_id\":\"golden-publish\",\"draft_id\":\"draft-one\",\"expected_generation\":\"9007199254740993\",\"reason\":\"Publicación aprobada\",\"snapshot_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}",
+    "sha256": "c3aaafed180ffd0c5d032542c403873f22ab6b5b9cffa36306df15766348e67b"
+  },
+  {
+    "name": "media",
+    "payload": {
+      "command_id": "golden-media",
+      "original_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    },
+    "canonical": "{\"command_id\":\"golden-media\",\"original_sha256\":\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc\"}",
+    "sha256": "cf668e67145a569401a2246a52d01d1d42a28381b63a53a376b675265d31fe56"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "origin": "https://api.invalid",
+  "tenant": "REPLACE_TENANT",
+  "organization": "REPLACE_ORGANIZATION",
+  "profile_sha256": "REPLACE_WITH_LOCKED_DOCUMENT_PROFILE_SHA256",
+  "mode": "PROVIDER",
+  "fixture_loopback": false
+}

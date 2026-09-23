@@ -1,0 +1,51 @@
+[
+  {
+    "command": {
+      "command_id": "create",
+      "action": "create",
+      "article_id": "guide",
+      "organization_id": "org",
+      "locale": "es",
+      "category": "operations",
+      "title": "Guía <&> segura",
+      "body": "Texto   entre   líneas: ñ 😀."
+    },
+    "canonical": "{\"action\":\"create\",\"article_id\":\"guide\",\"body\":\"Texto \\u2028 entre \\u2029 líneas: ñ 😀.\",\"category\":\"operations\",\"command_id\":\"create\",\"locale\":\"es\",\"organization_id\":\"org\",\"title\":\"Guía \\u003c\\u0026\\u003e segura\"}",
+    "sha256": "bc69ad670e36838d0dafc18aeaba1242c30f7ee5100aa12cb8a040e96f9631f4"
+  },
+  {
+    "command": {
+      "command_id": "update",
+      "action": "update",
+      "article_id": "guide",
+      "organization_id": "org",
+      "version": "9007199254740993",
+      "title": "Revisión <&> segura",
+      "body": "Texto\ncon\tcampos."
+    },
+    "canonical": "{\"action\":\"update\",\"article_id\":\"guide\",\"body\":\"Texto\\ncon\\tcampos.\",\"command_id\":\"update\",\"organization_id\":\"org\",\"title\":\"Revisión \\u003c\\u0026\\u003e segura\",\"version\":\"9007199254740993\"}",
+    "sha256": "30e06351c5e8062ebf895d98abd679f3427f4b77749d4c187d2db512c173a2d8"
+  },
+  {
+    "command": {
+      "command_id": "publish",
+      "action": "publish",
+      "article_id": "guide",
+      "organization_id": "org",
+      "version": "9007199254740993"
+    },
+    "canonical": "{\"action\":\"publish\",\"article_id\":\"guide\",\"command_id\":\"publish\",\"organization_id\":\"org\",\"version\":\"9007199254740993\"}",
+    "sha256": "d084b2753ec7d52263db9904895a62fdaec0891f7588bdb081d378bb799a5526"
+  },
+  {
+    "command": {
+      "command_id": "archive",
+      "action": "archive",
+      "article_id": "guide",
+      "organization_id": "org",
+      "version": "9007199254740993"
+    },
+    "canonical": "{\"action\":\"archive\",\"article_id\":\"guide\",\"command_id\":\"archive\",\"organization_id\":\"org\",\"version\":\"9007199254740993\"}",
+    "sha256": "ead85c81c69706774bb1356ef9b7060932dcc9b0d7a8d5129fd1a2764a217882"
+  }
+]

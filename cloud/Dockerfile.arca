@@ -1,0 +1,10 @@
+# AUTHORED packaging glue, no SOAP/native or fiscal implementation copied.
+# .NET Linux output comes from the selected worker/client owners.
+ARG DOTNET_RUNTIME
+FROM ${DOTNET_RUNTIME}
+WORKDIR /app
+COPY --chown=65532:65532 build/arca/ ./
+RUN mkdir /app/private-home && chown 65532:65532 /app/private-home && chmod 700 /app/private-home
+ENV HOME=/app/private-home
+USER 65532:65532
+ENTRYPOINT ["dotnet", "Elite.Cloud.ArcaLauncher.dll"]

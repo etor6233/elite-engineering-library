@@ -1,0 +1,233 @@
+{
+  "schema": "elite-reference-notice-sources/v1",
+  "state": "SOURCE_VERIFIED_RUNTIME_GATE_PENDING",
+  "claim": "Notice correspondence; no new dependency code or runtime version. Three adapted notice renderings are explicitly not upstream verbatim files.",
+  "sources": {
+    "licenses/reference/next-MIT.txt": {
+      "repo": "vercel/next.js",
+      "commit": "299180d3315c7ebd7b199d2b1a265b5986c5fc7d",
+      "path": "license.md",
+      "url": "https://api.github.com/repos/vercel/next.js/contents/license.md?ref=299180d3315c7ebd7b199d2b1a265b5986c5fc7d",
+      "status": 200,
+      "response_path": "fixed-source/300cdf6a66c6b88d2fa4.response.json",
+      "response_sha256": "afc0acd6bcb231cf43b2dceec2a33d7b58aa66e255fafb874110f84bde7eff58",
+      "local_path": "fixed-source/300cdf6a66c6b88d2fa4.txt",
+      "sha256": "ee765244e2d59f5234d474f62e0766fa0c8b99af967fdd4c0cb8dcb0c76ea224",
+      "bytes": 1079,
+      "git_blob_sha1": "5948ee9bd0de5064423688a2967ab3111c2658ed"
+    },
+    "licenses/reference/constants-browserify-README.md.txt": {
+      "package": "constants-browserify",
+      "version": "1.0.0",
+      "artifact_sha256": "ea9307fd609ddce9497e3ca6b49e6102d7326bd337f66c10143b7b326f931f59",
+      "integrity": "sha512-xFxOwqIzR/e1k1gLiWEophSCMqXcwVHIH7akf7b/vxcUeGunlj3hvZaaqxwHsTgn+IndtkQJgSztIDWeumWJDQ==",
+      "member": "README.md",
+      "path": "nested-sources/constants-browserify-README.md.txt",
+      "sha256": "b06569bf170a015c56cbad9b45756519d0b8a682770fe30d66bc1e235e26196a",
+      "bytes": 1668
+    },
+    "licenses/reference/data-uri-to-buffer-README.md.txt": {
+      "package": "data-uri-to-buffer",
+      "version": "3.0.1",
+      "artifact_sha256": "3787e95764b16659c50f96ab4889f9a354ba3c273620b1f0aea3fdad9fbd4dcc",
+      "integrity": "sha512-WboRycPNsVw3B3TL559F7kuBUM4d8CgMEvk6xEJlOp7OBPjt6G7z8WMWlD2rOFZLk6OYfFIUGsCOWzcQH9K2og==",
+      "member": "README.md",
+      "path": "nested-sources/data-uri-to-buffer-README.md.txt",
+      "sha256": "6a14de4d552c0c88bdbbaf57f72f625835685eea97de5047f87a463089b8e9f6",
+      "bytes": 2929
+    },
+    "licenses/reference/http-proxy-agent-README.md.txt": {
+      "package": "http-proxy-agent",
+      "version": "5.0.0",
+      "artifact_sha256": "492fe73645f2dfdb62ecd3360c8215a2253b6f87dc7f5e44149893b009c624db",
+      "integrity": "sha512-n2hY8YdoRE1i7r6M0w9DIw5GgZN0G25P8zLCRQ8rjXtTU3vsNFBI/vWK/UIeE6g5MUUz6avwAPXmL6Fy9D/90w==",
+      "member": "README.md",
+      "path": "nested-sources/http-proxy-agent-README.md.txt",
+      "sha256": "ca0b65367e78e9c255a1c9883eb7ec30aae491d76e1c6815b865563106d21dff",
+      "bytes": 2527
+    },
+    "licenses/reference/https-proxy-agent-README.md.txt": {
+      "package": "https-proxy-agent",
+      "version": "5.0.1",
+      "artifact_sha256": "6da16fb44331f2e5d30bd21bf880aa934c1ad4fe7da7187910ef2b2509712019",
+      "integrity": "sha512-dFcAjpTQFgoLMzC2VwU+C/CbS7uRL0lWmxDITmqm7C+7F0Odmj6s9l6alZc6AELXhrnggM2CeWSXHGOdX2YtwA==",
+      "member": "README.md",
+      "path": "nested-sources/https-proxy-agent-README.md.txt",
+      "sha256": "32f0856d2c43df7d05cca960fdee84e1e38ab545bd7b2186433dfa41aa90a712",
+      "bytes": 4761
+    },
+    "licenses/reference/punycode-LICENSE-MIT.txt.txt": {
+      "package": "punycode",
+      "version": "2.1.1",
+      "artifact_sha256": "e5ccd079bf02390e34cbb51b75f73a8be42795146a2e2e23cbb204dddb04ff3c",
+      "integrity": "sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==",
+      "member": "LICENSE-MIT.txt",
+      "path": "nested-sources/punycode-LICENSE-MIT.txt.txt",
+      "sha256": "483acb265f182907d1caf6cff9c16c96f31325ed23792832cc5d8b12d5f88c8a",
+      "bytes": 1077
+    },
+    "licenses/reference/setimmediate-LICENSE.txt.txt": {
+      "package": "setimmediate",
+      "version": "1.0.5",
+      "artifact_sha256": "5cb9fc22698364ed42c02d6aa3dc50ffeafa68452ae84699672e3dfd74922c9e",
+      "integrity": "sha512-MATJdZp8sLqDl/68LfQmbP8zKPLQNV6BIZoIgrscFDQ+RsvK/BxeDQOgyxKKoh0y/8h3BqVFnCqQ/gd+reiIXA==",
+      "member": "LICENSE.txt",
+      "path": "nested-sources/setimmediate-LICENSE.txt.txt",
+      "sha256": "c4b4ad3a5746f1f5249a6dd90396ec519264e1bb02e01e48a6522c48a3a97cb4",
+      "bytes": 1103
+    },
+    "licenses/reference/string-hash-README.md.txt": {
+      "package": "string-hash",
+      "version": "1.1.3",
+      "artifact_sha256": "264f97224f48229c23c8cac1f045868a4bdc8dd95996e595e448d0be622ba1f4",
+      "integrity": "sha512-kJUvRUFK49aub+a7T1nNE66EJbZBMnBgoC1UbCZ5n6bsZKBRga4KgBRTMn/pFkeCZSYtNeSyMxPDM0AXWELk2A==",
+      "member": "README.md",
+      "path": "nested-sources/string-hash-README.md.txt",
+      "sha256": "62a7a3b8dba4cc818974ab2c00cb7fb7cb20afd7d3c73ed049d7f2eb5621a46e",
+      "bytes": 841
+    },
+    "licenses/reference/unistore-README.md.txt": {
+      "package": "unistore",
+      "version": "3.4.1",
+      "artifact_sha256": "894e04593ba98d04f8225eb3f3a9505e232853b27a03ad7d84318a2cf2fbee83",
+      "integrity": "sha512-p2Ej8qqrqcD10Ah0ZUKUU/mhRB8pM4q6gzjxq9kZpgxa8dks7oHT8jDP4CqLhoRof3RXOZLKB9EBV1DTzHiJRw==",
+      "member": "README.md",
+      "path": "nested-sources/unistore-README.md.txt",
+      "sha256": "9e24224113e53a805fe76ed8084e13697a070061191f627c2053c0ea67f5c364",
+      "bytes": 8474
+    },
+    "licenses/reference/edge-runtime-cookies-LICENSE.md.txt": {
+      "package": "@edge-runtime/cookies",
+      "version": "6.0.0",
+      "artifact_sha256": "6ed10bffb7f722669cad0ef21ae28c7ced140785a587ddf2aa4cb8b98eadda4a",
+      "integrity": "sha512-VVO/8AwC2qVbygLb2IOkX1zWFx2yWIHzFv4D602CTnoRffd/+cdcXqpSydKaedFrk7a1dRYXbWwjzfV/gwZ2Gw==",
+      "member": "LICENSE.md",
+      "path": "nested-sources/edge-runtime-cookies-LICENSE.md.txt",
+      "sha256": "e4f76a7a19ef2989dd79339bd3abf8afcf1d6f065e5a10c76c19415ffd727eb3",
+      "bytes": 1079
+    },
+    "licenses/reference/edge-runtime-ponyfill-LICENSE.md.txt": {
+      "package": "@edge-runtime/ponyfill",
+      "version": "4.0.0",
+      "artifact_sha256": "8c5af3358af8889d2fa65b9bf9432b0f36a88486cce5702b14f18f8986fb55c1",
+      "integrity": "sha512-JZdDyYUqweSbhMgSxxL8QuquNuanVw+gMK8RfFq1LHMQHxzXPVvAf9aw6M7MSuyhnCBtFhqtSTr682rf8U5eyA==",
+      "member": "LICENSE.md",
+      "path": "nested-sources/edge-runtime-ponyfill-LICENSE.md.txt",
+      "sha256": "e4f76a7a19ef2989dd79339bd3abf8afcf1d6f065e5a10c76c19415ffd727eb3",
+      "bytes": 1079
+    },
+    "licenses/reference/edge-runtime-primitives-LICENSE.md.txt": {
+      "package": "@edge-runtime/primitives",
+      "version": "6.0.0",
+      "artifact_sha256": "92878e3cfa4d42010c760449210ab4ca6d71435d71db8ee97b7ecbf4fd75c6e2",
+      "integrity": "sha512-FqoxaBT+prPBHBwE1WXS1ocnu/VLTQyZ6NMUBAdbP7N2hsFTTxMC/jMu2D/8GAlMQfxeuppcPuCUk/HO3fpIvA==",
+      "member": "LICENSE.md",
+      "path": "nested-sources/edge-runtime-primitives-LICENSE.md.txt",
+      "sha256": "e4f76a7a19ef2989dd79339bd3abf8afcf1d6f065e5a10c76c19415ffd727eb3",
+      "bytes": 1079
+    },
+    "licenses/reference/babel-core-LICENSE.txt": {
+      "package": "@babel/core",
+      "version": "7.26.10",
+      "artifact_sha256": "03de5fbdd939f02afd159797f488d56995250f596a42cea0468b784c8d7fb351",
+      "integrity": "sha512-vMqyb7XCDMPvJFFOaT9kxtiRh42GwlZEg1/uIgtZshS5a/8OaduUfCi7kynKgc3Tw/6Uo2D+db9qBttghhmxwQ==",
+      "member": "LICENSE",
+      "path": "nested-sources/babel-core-LICENSE.txt",
+      "sha256": "117da2af0d4ce0fe1c8e19b5cff9dcd806adf973d328d27b11d4448c4ff24f76",
+      "bytes": 1106
+    },
+    "licenses/reference/dotenv-LICENSE.txt": {
+      "package": "dotenv",
+      "version": "16.3.1",
+      "integrity": "sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==",
+      "path": "env-notices/dotenv-LICENSE.txt",
+      "sha256": "74b629b24865e1e83c5277ee84590b7937644d6fd959d0c7bdce758676cd2ced",
+      "bytes": 1294
+    },
+    "licenses/reference/dotenv-expand-LICENSE.txt": {
+      "package": "dotenv-expand",
+      "version": "10.0.0",
+      "integrity": "sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==",
+      "path": "env-notices/dotenv-expand-LICENSE.txt",
+      "sha256": "3726b9470c3a6b54e1ebcc1d802d37089b5a5fc97273b52b2cee578a4421ec45",
+      "bytes": 1295
+    },
+    "licenses/reference/unistore-MIT-terms.txt": {
+      "basis": "Exact unistore3.4.1 README grants MIT and names Jason Miller; retain original README alongside this declared rendering. Standard permission terms from fixed Next MIT license; no Vercel attribution.",
+      "standard_terms_source": {
+        "repo": "vercel/next.js",
+        "commit": "299180d3315c7ebd7b199d2b1a265b5986c5fc7d",
+        "path": "license.md",
+        "url": "https://api.github.com/repos/vercel/next.js/contents/license.md?ref=299180d3315c7ebd7b199d2b1a265b5986c5fc7d",
+        "status": 200,
+        "response_path": "fixed-source/300cdf6a66c6b88d2fa4.response.json",
+        "response_sha256": "afc0acd6bcb231cf43b2dceec2a33d7b58aa66e255fafb874110f84bde7eff58",
+        "local_path": "fixed-source/300cdf6a66c6b88d2fa4.txt",
+        "sha256": "ee765244e2d59f5234d474f62e0766fa0c8b99af967fdd4c0cb8dcb0c76ea224",
+        "bytes": 1079,
+        "git_blob_sha1": "5948ee9bd0de5064423688a2967ab3111c2658ed"
+      },
+      "adaptation": "Replace/remove only copyright heading; standard permission paragraphs byte-identical."
+    },
+    "licenses/reference/client-only-MIT-terms.txt": {
+      "basis": "Exact client-only0.0.1 package.json grants MIT without a copyright notice. Standard terms reproduced without inventing an owner/year; actual three files match official Next fixed source. No Vercel/Meta authorship is inferred.",
+      "standard_terms_source": {
+        "repo": "vercel/next.js",
+        "commit": "299180d3315c7ebd7b199d2b1a265b5986c5fc7d",
+        "path": "license.md",
+        "url": "https://api.github.com/repos/vercel/next.js/contents/license.md?ref=299180d3315c7ebd7b199d2b1a265b5986c5fc7d",
+        "status": 200,
+        "response_path": "fixed-source/300cdf6a66c6b88d2fa4.response.json",
+        "response_sha256": "afc0acd6bcb231cf43b2dceec2a33d7b58aa66e255fafb874110f84bde7eff58",
+        "local_path": "fixed-source/300cdf6a66c6b88d2fa4.txt",
+        "sha256": "ee765244e2d59f5234d474f62e0766fa0c8b99af967fdd4c0cb8dcb0c76ea224",
+        "bytes": 1079,
+        "git_blob_sha1": "5948ee9bd0de5064423688a2967ab3111c2658ed"
+      },
+      "adaptation": "Replace/remove only copyright heading; standard permission paragraphs byte-identical."
+    },
+    "licenses/reference/client-only-package.json.txt": {
+      "repo": "vercel/next.js",
+      "commit": "299180d3315c7ebd7b199d2b1a265b5986c5fc7d",
+      "path": "packages/next/src/compiled/client-only/package.json",
+      "url": "https://api.github.com/repos/vercel/next.js/contents/packages/next/src/compiled/client-only/package.json?ref=299180d3315c7ebd7b199d2b1a265b5986c5fc7d",
+      "status": 200,
+      "response_path": "fixed-source/98ba32f000673c1ae5b2.response.json",
+      "response_sha256": "25eab18db37b2e9dfaee9f6fb1d55faad9ad6fe0a7615a4550cd3d9bd75a564b",
+      "local_path": "fixed-source/98ba32f000673c1ae5b2.txt",
+      "sha256": "4d6342705767832f299b9a59c28e4275bcf02db19472732f93f67d979441df8f",
+      "bytes": 467,
+      "git_blob_sha1": "9af6d8dfe9949064ba23a8f0a46134e14bb616d1"
+    },
+    "licenses/reference/babel-packages-inline-notices.txt": {
+      "basis": "Exact copyright/license comments extracted in source order from unchanged official Next bundled code, retaining each original fragment. Standard MIT terms and Babel copyright also supplied.",
+      "bundle_sha256": "1a20ee41e0ac0a702c4fa96a1b85530a14f8bc35a58c38df5cd0e3e738cc3c8e",
+      "comments": 3,
+      "derivation": "Extract matching complete block comments, concatenate with two LF; no replacement of original copyright/terms."
+    }
+  },
+  "modes": {
+    "licenses/reference/next-MIT.txt": "VERBATIM",
+    "licenses/reference/constants-browserify-README.md.txt": "VERBATIM",
+    "licenses/reference/data-uri-to-buffer-README.md.txt": "VERBATIM",
+    "licenses/reference/http-proxy-agent-README.md.txt": "VERBATIM",
+    "licenses/reference/https-proxy-agent-README.md.txt": "VERBATIM",
+    "licenses/reference/punycode-LICENSE-MIT.txt.txt": "VERBATIM",
+    "licenses/reference/setimmediate-LICENSE.txt.txt": "VERBATIM",
+    "licenses/reference/string-hash-README.md.txt": "VERBATIM",
+    "licenses/reference/unistore-README.md.txt": "VERBATIM",
+    "licenses/reference/edge-runtime-cookies-LICENSE.md.txt": "VERBATIM",
+    "licenses/reference/edge-runtime-ponyfill-LICENSE.md.txt": "VERBATIM",
+    "licenses/reference/edge-runtime-primitives-LICENSE.md.txt": "VERBATIM",
+    "licenses/reference/babel-core-LICENSE.txt": "VERBATIM",
+    "licenses/reference/dotenv-LICENSE.txt": "VERBATIM",
+    "licenses/reference/dotenv-expand-LICENSE.txt": "VERBATIM",
+    "licenses/reference/unistore-MIT-terms.txt": "ADAPTED",
+    "licenses/reference/client-only-MIT-terms.txt": "ADAPTED",
+    "licenses/reference/client-only-package.json.txt": "VERBATIM",
+    "licenses/reference/babel-packages-inline-notices.txt": "ADAPTED",
+    "licenses/reference/runtime-notice-lock.json": "AUTHORED"
+  },
+  "upstream_build_metadata_sha256": "d764d69e2940b30afd879baf0df67bd480d6df78ce55f8a7ad284398eddcafe1",
+  "no_original_copyright_invented": true
+}

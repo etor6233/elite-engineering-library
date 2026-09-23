@@ -1,0 +1,59 @@
+# AUTHORED workflow glue. Install under .github/workflows only in a consumer repo.
+# Candidate workflow: hosted execution and newly referenced Actions are NOT_RUN.
+# The library repository stays read-only and pinned; no provider permissions here.
+name: cloud-reference-verify
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cloud-reference-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      CI: 'true'
+      NEXT_TELEMETRY_DISABLED: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0; existing library owner
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6.0.0; pinned candidate, hosted run not yet admitted
+        with:
+          python-version: '3.14.4'
+          cache: ''
+      - name: Install exact portable official tooling under worker
+        run: python cloud/toolchain.py --lock cloud/toolchain.lock.json --output "$RUNNER_TEMP/elite-cloud-tools"
+      - name: Rebuild full selected library composition in separate checkout
+        run: python cloud/bootstrap.py --project "$GITHUB_WORKSPACE" --lock .elite/library-pin/library-checkout.lock.json --profile .elite/library-pin/composition.json --worker "$RUNNER_TEMP/elite-library-worker" --pwsh "$RUNNER_TEMP/elite-cloud-tools/pwsh/pwsh" --receipt cloud/evidence/hosted-bootstrap.json
+      - name: Verify cloud adapter behavior using existing bounded runner
+        env:
+          ELITE_CLOUD_OWNER_ROOT: ${{ runner.temp }}/elite-library-worker/composition/production_admission_gate
+          ELITE_CLOUD_SOURCE_ROOT: ${{ runner.temp }}/elite-library-worker/composition
+        run: python cloud/qualify.py --node "$RUNNER_TEMP/elite-cloud-tools/node/node-v24.20.0-linux-x64/bin/node" --receipt cloud/evidence/cloud-qualification.json
+      - name: Verify affected product using its existing gate plan
+        run: python "$RUNNER_TEMP/elite-library-worker/composition/ci/run_quality_gates.py" PROJECT_CI_GATE_PLAN.json --workspace . --evidence cloud/evidence/project-ci.json
+      - name: Acquire exact dependencies through the existing selected acquisition owners
+        run: python ci/run_quality_gates.py PROJECT_LOCKED_DEPENDENCY_ACQUISITION_PLAN.json --workspace . --evidence cloud/evidence/dependency-acquisition.json
+      - name: Bind worker tools, adapted pnpm and source inputs
+        run: python cloud/prepare_build_inputs.py --source . --tool-root "$RUNNER_TEMP/elite-cloud-tools" --pnpm-projection "$RUNNER_TEMP/pnpm-adapted" --offline-store "$RUNNER_TEMP/pnpm-offline-store" --generation-record PROJECT_ARCA_GENERATION_INPUTS.json --output "$RUNNER_TEMP/linux-build-inputs"
+      - name: Build all selected Linux commands, standalone web and ARCA launcher
+        run: python cloud/build_target.py --source . --output "$RUNNER_TEMP/franchise-build" --tools "$RUNNER_TEMP/linux-build-inputs/tools.json" --inputs "$RUNNER_TEMP/linux-build-inputs/inputs.json" --execute --authorize-locked-acquisition
+      - name: Package the exact verified outputs without push or promotion
+        run: python cloud/oci_target.py --source . --build "$RUNNER_TEMP/franchise-build" --output "$RUNNER_TEMP/franchise-oci" --tool PROJECT_OCI_TOOL.json --runner PROJECT_OFFICIAL_RUNNER.json --authorize-candidate-build
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2; pinned candidate, hosted run not yet admitted
+        if: always()
+        with:
+          name: cloud-reference-evidence-${{ github.sha }}
+          path: cloud/evidence/*.json
+          retention-days: 3
+          if-no-files-found: error
+# Deliberately no provider credentials, id-token write, pull_request_target,
+# workflow_run, self-hosted runner, scheduled OSV job or automatic production job.
+# Deploy uses execute_step.py + exact operator approval in a separate environment.

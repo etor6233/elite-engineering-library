@@ -1,0 +1,22 @@
+{
+  "schema": "elite-connected-merchant/v1",
+  "tenant_id": "d84c64f9-1252-4db5-bf5a-3af8026190f1",
+  "organization_id": "marketplace-store",
+  "account_id": "123456",
+  "data_source_id": "789012",
+  "content_language": "es",
+  "feed_label": "AR",
+  "currency": "ARS",
+  "currency_digits": 2,
+  "origin": "https://catalog.example.invalid",
+  "refresh_cadence_days": 28,
+  "bindings": [
+    {
+      "variant_id": "replace-with-approved-catalog-variant",
+      "offer_id": "reference-bicycle",
+      "condition": "NEW",
+      "brand": "",
+      "gtins": []
+    }
+  ]
+}

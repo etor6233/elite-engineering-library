@@ -1,0 +1,55 @@
+[
+  {
+    "command": {
+      "command_id": "root",
+      "action": "create-organization",
+      "scope_organization_id": "",
+      "entity_id": "root-id",
+      "code": "fixture-root",
+      "display_name": "Raíz <&>   interior   final",
+      "type": "franchisor"
+    },
+    "canonical": "{\"action\":\"create-organization\",\"code\":\"fixture-root\",\"command_id\":\"root\",\"display_name\":\"Raíz \\u003c\\u0026\\u003e \\u2028 interior \\u2029 final\",\"entity_id\":\"root-id\",\"scope_organization_id\":\"\",\"type\":\"franchisor\"}",
+    "sha256": "25b991dcaa776a384186dabdf6e27f96f5e4d56ab4670835c6cece97965ec726"
+  },
+  {
+    "command": {
+      "command_id": "agreement",
+      "action": "create-agreement",
+      "scope_organization_id": "franchise",
+      "entity_id": "agreement-id",
+      "territory_code": "fixture",
+      "terms_version": "fixture-v1",
+      "starts_on": "2026-01-01",
+      "ends_on": "2027-01-01"
+    },
+    "canonical": "{\"action\":\"create-agreement\",\"command_id\":\"agreement\",\"ends_on\":\"2027-01-01\",\"entity_id\":\"agreement-id\",\"scope_organization_id\":\"franchise\",\"starts_on\":\"2026-01-01\",\"terms_version\":\"fixture-v1\",\"territory_code\":\"fixture\"}",
+    "sha256": "d26ec61385c14a20d32d938108bbe4bcc154bd0ada813d0d29562952cff0d97c"
+  },
+  {
+    "command": {
+      "command_id": "transition-org",
+      "action": "transition-organization",
+      "scope_organization_id": "org",
+      "entity_id": "org",
+      "current": "active",
+      "target": "suspended",
+      "version": "9007199254740993"
+    },
+    "canonical": "{\"action\":\"transition-organization\",\"command_id\":\"transition-org\",\"current\":\"active\",\"entity_id\":\"org\",\"scope_organization_id\":\"org\",\"target\":\"suspended\",\"version\":\"9007199254740993\"}",
+    "sha256": "7ae8a3c26ffa7398636e1f41ae5e28d2038b3f195d754b1f9c5854c68c9b5f9c"
+  },
+  {
+    "command": {
+      "command_id": "transition-agreement",
+      "action": "transition-agreement",
+      "scope_organization_id": "org",
+      "entity_id": "agreement-id",
+      "current": "draft",
+      "target": "active",
+      "version": "1"
+    },
+    "canonical": "{\"action\":\"transition-agreement\",\"command_id\":\"transition-agreement\",\"current\":\"draft\",\"entity_id\":\"agreement-id\",\"scope_organization_id\":\"org\",\"target\":\"active\",\"version\":\"1\"}",
+    "sha256": "2ef6724a3d34161098b5e6d4d2c3badc279137161e05a35116dd219f654bda3a"
+  }
+]

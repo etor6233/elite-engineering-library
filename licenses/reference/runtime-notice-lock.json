@@ -1,0 +1,1540 @@
+{
+  "build_only_exclusions": [
+    "@next/swc-win32-x64-msvc@16.3.4",
+    "@rolldown/binding-win32-x64-msvc@1.2.5",
+    "server-only@0.0.1",
+    "stackback@0.0.2"
+  ],
+  "manifests": {
+    "node_modules/.pnpm/@next+env@16.3.4/node_modules/@next/env/package.json": {
+      "license": "MIT",
+      "name": "@next/env",
+      "notice_refs": [
+        "licenses/reference/next-MIT.txt",
+        "licenses/reference/dotenv-LICENSE.txt",
+        "licenses/reference/dotenv-expand-LICENSE.txt"
+      ],
+      "sha256": "229045587b8f7898b12126f99fadd1021c8c928f207f92f22146908d46899b5b",
+      "source_basis": "Next fixed source package16.3.4 MIT and declared embedded dotenv16.3.1/dotenv-expand10.0.0 BSD notices.",
+      "version": "16.3.4"
+    },
+    "node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/_/_interop_require_default/package.json": {
+      "license": null,
+      "name": null,
+      "notice_refs": [
+        "node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/LICENSE"
+      ],
+      "sha256": "9cf5cdb2fda7dff60167b91a89a618c78d63f6e044e7681075efdb03a3834ed5",
+      "source_basis": "Unnamed package export metadata within existing package; nearest explicit parent license, no independent package identity invented.",
+      "version": null
+    },
+    "node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/_/_interop_require_wildcard/package.json": {
+      "license": null,
+      "name": null,
+      "notice_refs": [
+        "node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/LICENSE"
+      ],
+      "sha256": "0771ab9c96c3d022cfabd5f7aebfeb43192893b24b025b5b0c941c0b5b450c1f",
+      "source_basis": "Unnamed package export metadata within existing package; nearest explicit parent license, no independent package identity invented.",
+      "version": null
+    },
+    "node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/package.json": {
+      "license": "Apache-2.0",
+      "name": "@swc/helpers",
+      "notice_refs": [
+        "node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/LICENSE"
+      ],
+      "sha256": "10ee79b75759afbf8cfa2b8e5a2eff946c487143e935fc31b2433aa68be84596",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": "0.5.23"
+    },
+    "node_modules/.pnpm/baseline-browser-mapping@2.11.18/node_modules/baseline-browser-mapping/package.json": {
+      "license": "Apache-2.0",
+      "name": "baseline-browser-mapping",
+      "notice_refs": [
+        "node_modules/.pnpm/baseline-browser-mapping@2.11.18/node_modules/baseline-browser-mapping/LICENSE.txt"
+      ],
+      "sha256": "d1e5409452277a501b376a99b6da53a5084042bea082e51dc476aea3ff2f6715",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": "2.11.18"
+    },
+    "node_modules/.pnpm/caniuse-lite@1.0.30001809/node_modules/caniuse-lite/package.json": {
+      "license": "CC-BY-4.0",
+      "name": "caniuse-lite",
+      "notice_refs": [
+        "node_modules/.pnpm/caniuse-lite@1.0.30001809/node_modules/caniuse-lite/LICENSE"
+      ],
+      "sha256": "fd9f8880647d958c2711e30850d1638d262fa3a477c1cf94ef9e4ea46047d9b8",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": "1.0.30001809"
+    },
+    "node_modules/.pnpm/client-only@0.0.1/node_modules/client-only/package.json": {
+      "license": "MIT",
+      "name": "client-only",
+      "notice_refs": [
+        "licenses/reference/client-only-MIT-terms.txt",
+        "licenses/reference/client-only-package.json.txt"
+      ],
+      "sha256": "4d6342705767832f299b9a59c28e4275bcf02db19472732f93f67d979441df8f",
+      "source_basis": "Fixed official source/tarball supplement declared in licenses/reference/SOURCE_NOTICES.json; expression/notice scope preserved.",
+      "version": "0.0.1"
+    },
+    "node_modules/.pnpm/nanoid@3.3.18/node_modules/nanoid/non-secure/package.json": {
+      "license": null,
+      "name": null,
+      "notice_refs": [
+        "node_modules/.pnpm/nanoid@3.3.18/node_modules/nanoid/LICENSE"
+      ],
+      "sha256": "2f9b8c4bee9312538f388b49c13987f4565ac25d6756fabdbbb771d339945e3e",
+      "source_basis": "Unnamed package export metadata within existing package; nearest explicit parent license, no independent package identity invented.",
+      "version": null
+    },
+    "node_modules/.pnpm/nanoid@3.3.18/node_modules/nanoid/package.json": {
+      "license": "MIT",
+      "name": "nanoid",
+      "notice_refs": [
+        "node_modules/.pnpm/nanoid@3.3.18/node_modules/nanoid/LICENSE"
+      ],
+      "sha256": "18673eb0d7ed43dd871d59dc22a5670303f5d4eb9b17783b1f698f5840ce1fff",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": "3.3.18"
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@edge-runtime/cookies/package.json": {
+      "license": "MIT",
+      "name": "@edge-runtime/cookies",
+      "notice_refs": [
+        "licenses/reference/edge-runtime-cookies-LICENSE.md.txt"
+      ],
+      "sha256": "84dec8086a6d6a1176ff52a54dbc4542aeca7241214a0cf7d5af2870ee422db2",
+      "source_basis": "Fixed official source/tarball supplement declared in licenses/reference/SOURCE_NOTICES.json; expression/notice scope preserved.",
+      "version": "6.0.0"
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@edge-runtime/ponyfill/package.json": {
+      "license": "MIT",
+      "name": "@edge-runtime/ponyfill",
+      "notice_refs": [
+        "licenses/reference/edge-runtime-ponyfill-LICENSE.md.txt"
+      ],
+      "sha256": "04d31884423b345e3abddc712adc85e10347ccf057630b23a930f1ba9af56708",
+      "source_basis": "Fixed official source/tarball supplement declared in licenses/reference/SOURCE_NOTICES.json; expression/notice scope preserved.",
+      "version": "4.0.0"
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@edge-runtime/primitives/package.json": {
+      "license": "MIT",
+      "name": "@edge-runtime/primitives",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@edge-runtime/primitives/fetch.js.LEGAL.txt",
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@edge-runtime/primitives/load.js.LEGAL.txt",
+        "licenses/reference/edge-runtime-primitives-LICENSE.md.txt"
+      ],
+      "sha256": "ee5dfbcb78d0c753908a0643fc23d7486cf4478872789bca8722a88f71d5c213",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": "6.0.0"
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@hapi/accept/package.json": {
+      "license": "BSD-3-Clause",
+      "name": "@hapi/accept",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@hapi/accept/LICENSE"
+      ],
+      "sha256": "0e264b353f98a5047f47a4af7cd718888f33345d78a8bbea30eaaac585059abc",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@mswjs/interceptors/ClientRequest/package.json": {
+      "license": "MIT",
+      "name": "@mswjs/interceptors",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@mswjs/interceptors/ClientRequest/LICENSE"
+      ],
+      "sha256": "d01c0050c9f635ad97c5e49368f456db68dc474bb7f8ada9b78121c90ed9f287",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@napi-rs/triples/package.json": {
+      "license": "MIT",
+      "name": "@napi-rs/triples",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@napi-rs/triples/LICENSE"
+      ],
+      "sha256": "828a978674962e997f0f5d2920124bc17a4e9f1ba7a55d7f8ea72e25675bcef8",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@next/font/package.json": {
+      "license": "MIT",
+      "name": "@next/font",
+      "notice_refs": [
+        "licenses/reference/next-MIT.txt"
+      ],
+      "sha256": "c99740a4da3ab17fdbfed0b601e2e8084a7a9463f62a13e5a7ed106648976586",
+      "source_basis": "Next-owned font workspace manifest and copy recipe at fixed official Next commit.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@opentelemetry/api/package.json": {
+      "license": "Apache-2.0",
+      "name": "@opentelemetry/api",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@opentelemetry/api/LICENSE"
+      ],
+      "sha256": "a7352d5f47b67b86f38d634360f761fa2356a4256f42a5239a12892b6b08074a",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@vercel/detect-agent/package.json": {
+      "license": "Apache-2.0",
+      "name": "@vercel/detect-agent",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@vercel/detect-agent/LICENSE"
+      ],
+      "sha256": "c8ed9a25f3b85a9c400e05f23e998bdfa820e83665c71fd9164eb584f7684afd",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@vercel/nft/package.json": {
+      "license": "MIT",
+      "name": "@vercel/nft",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@vercel/nft/LICENSE"
+      ],
+      "sha256": "3d26054595f0ea7f5f26e0b5a269521f77fa4fd030dd7c964c492c7a018e4d22",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/acorn/package.json": {
+      "license": "MIT",
+      "name": "acorn",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/acorn/LICENSE"
+      ],
+      "sha256": "aa6eff9593179bc7379017992eda314ce97bd7c6576869d82d514139ce612cca",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/assert/package.json": {
+      "license": "MIT",
+      "name": "assert",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/assert/LICENSE"
+      ],
+      "sha256": "cee48f1c2973cbe0cc9075fa1ad46540571e39f82368b90680e3f08385acc67d",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/async-retry/package.json": {
+      "license": "MIT",
+      "name": "async-retry",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/async-retry/LICENSE"
+      ],
+      "sha256": "b17113b29f3ee160e536bacf5332fb1cc91f81f5dba02db749491a469108b9e5",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/async-sema/package.json": {
+      "license": "MIT",
+      "name": "async-sema",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/async-sema/LICENSE"
+      ],
+      "sha256": "327a56df6511702ea28014e18425bd50300890fb433d1e8e8cf200ab33ac70c5",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/babel-packages/package.json": {
+      "license": null,
+      "name": "babel-packages",
+      "notice_refs": [
+        "licenses/reference/next-MIT.txt",
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/babel/LICENSE",
+        "licenses/reference/babel-packages-inline-notices.txt",
+        "licenses/reference/babel-core-LICENSE.txt"
+      ],
+      "sha256": "828b12b4e497121b9a04735e1defeeb93dfde3c7531ce7b89b568ed520c86b4e",
+      "source_basis": "Next fixed Babel packages-bundle import/build recipe; original Babel MIT text plus exact preserved inline copyright/license comments. No original package versions invented for compiled bundle.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/babel/package.json": {
+      "license": "MIT",
+      "name": "@babel/core",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/babel/LICENSE",
+        "licenses/reference/babel-core-LICENSE.txt"
+      ],
+      "sha256": "74a866ce237c245a6657979b9255e4e702711ba2f83a72a9d1d9d5647037f322",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/browserify-zlib/package.json": {
+      "license": "MIT",
+      "name": "browserify-zlib",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/browserify-zlib/LICENSE"
+      ],
+      "sha256": "fbfda5f3dd28400e7e43080c996f39ceb97ff45dc94237b218bdb9785afa163d",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/browserslist/package.json": {
+      "license": "MIT",
+      "name": "browserslist",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/browserslist/LICENSE"
+      ],
+      "sha256": "5c9be14e5f45d01c0f11ce740c55b61008e3878d9003121989a2d5700b1e7ff1",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/buffer/package.json": {
+      "license": "MIT",
+      "name": "buffer",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/buffer/LICENSE"
+      ],
+      "sha256": "beec4c77cd84bb8bbcbd9ad3ddc435bf9b4369884a56cb2c4cfb9e8805eb87cb",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/busboy/package.json": {
+      "license": null,
+      "name": "busboy",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/busboy/LICENSE"
+      ],
+      "sha256": "7ec808358d01f7e153eec8ace30496d69f066e589abd3b1deaaadaa24a2c9e78",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/bytes/package.json": {
+      "license": "MIT",
+      "name": "bytes",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/bytes/LICENSE"
+      ],
+      "sha256": "f67cda9a406b0173dd8bce3165b246a7461f0b6aa8b1db5d773a8d858e618e0d",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/ci-info/package.json": {
+      "license": "MIT",
+      "name": "ci-info",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/ci-info/LICENSE"
+      ],
+      "sha256": "5f266b005be5715f7971df5255242ce2684ecb7d073ee597ad7a01c5049d9889",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/commander/package.json": {
+      "license": "MIT",
+      "name": "commander",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/commander/LICENSE"
+      ],
+      "sha256": "23bca2c540bfa9a86bfc07d3d3322a5821c11d9d1c8d592bc5bfbc8b0641745d",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/comment-json/package.json": {
+      "license": "MIT",
+      "name": "comment-json",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/comment-json/LICENSE"
+      ],
+      "sha256": "a3f86bf44c9a56dd6c9724a32938c8aa3876412ebb17400b613563f79017bf5d",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/compression/package.json": {
+      "license": "MIT",
+      "name": "compression",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/compression/LICENSE"
+      ],
+      "sha256": "bb26d52201279816e928ccd1a58ecdd0fab49d7feb3136b8c74e82b09a0f2bb9",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/conf/package.json": {
+      "license": "MIT",
+      "name": "conf",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/conf/LICENSE"
+      ],
+      "sha256": "0a761c63beca5354c035de3f8a0844a1a64f62e94d08ef8c57e2571701cb0d90",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/constants-browserify/package.json": {
+      "license": null,
+      "name": "constants-browserify",
+      "notice_refs": [
+        "licenses/reference/constants-browserify-README.md.txt"
+      ],
+      "sha256": "57ff101ce1ee4f9ff1cd717424bfc9ba13db28c0ed99e7ce06ff8e4f080a56f2",
+      "source_basis": "Fixed official source/tarball supplement declared in licenses/reference/SOURCE_NOTICES.json; expression/notice scope preserved.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/content-disposition/package.json": {
+      "license": "MIT",
+      "name": "content-disposition",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/content-disposition/LICENSE"
+      ],
+      "sha256": "deee6f8ca16ef491cfcc902176392f0c06fb7bea87338f521c384a174553c7bb",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/content-type/package.json": {
+      "license": "MIT",
+      "name": "content-type",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/content-type/LICENSE"
+      ],
+      "sha256": "0c481f9c3a287b38fe0ccaa61173cd46ae210e1f9a61bca6bc6abacef66c4e3c",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/cookie/package.json": {
+      "license": "MIT",
+      "name": "cookie",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/cookie/LICENSE"
+      ],
+      "sha256": "202616a73f282bc2c6243db8781e044d0fa1090d15b0a35eea88431ebcb8ac84",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/cross-spawn/package.json": {
+      "license": "MIT",
+      "name": "cross-spawn",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/cross-spawn/LICENSE"
+      ],
+      "sha256": "427908598a096747431c250f457a5440b2b4828d6243db1c98d89ac8467b84a3",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/crypto-browserify/package.json": {
+      "license": "MIT",
+      "name": "crypto-browserify",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/crypto-browserify/LICENSE"
+      ],
+      "sha256": "231080cafc3e64b7bcc175551a70ed4b3b15396d721417c56f227fa4aeda45d4",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/data-uri-to-buffer/package.json": {
+      "license": "MIT",
+      "name": "data-uri-to-buffer",
+      "notice_refs": [
+        "licenses/reference/data-uri-to-buffer-README.md.txt"
+      ],
+      "sha256": "7884ade4aa4ccd6fa4c15a37591172fccc6b543e3cc6c1a0fef7888f39d1b39e",
+      "source_basis": "Fixed official source/tarball supplement declared in licenses/reference/SOURCE_NOTICES.json; expression/notice scope preserved.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/debug/package.json": {
+      "license": "MIT",
+      "name": "debug",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/debug/LICENSE"
+      ],
+      "sha256": "ead56d5fb4a68fe23ce148b366356f9a56c8f12e14891db6bd8425b339cb360a",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/devalue/package.json": {
+      "license": "MIT",
+      "name": "devalue",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/devalue/LICENSE"
+      ],
+      "sha256": "02cc0546b6f93a1d07c2f10db73edc761a7b6353130982b90113bb9b051c8b4f",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/domain-browser/package.json": {
+      "license": "MIT",
+      "name": "domain-browser",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/domain-browser/LICENSE"
+      ],
+      "sha256": "102f56b1f979828dc82944853a4df4d728d44f61c34e729ecd07b82dca0ba56a",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/edge-runtime/package.json": {
+      "license": "MIT",
+      "name": "edge-runtime",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/edge-runtime/LICENSE"
+      ],
+      "sha256": "9887ce733e2d0abdb8a5c2307e1ddd952f144bd8df2fd67d53595732a7590b1e",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/events/package.json": {
+      "license": "MIT",
+      "name": "events",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/events/LICENSE"
+      ],
+      "sha256": "d1b2b2fc773bb2dc793372c848c00f60c721137ba0762370a4516f603670f143",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/find-up/package.json": {
+      "license": "MIT",
+      "name": "find-up",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/find-up/LICENSE"
+      ],
+      "sha256": "7658d63408818236df3c4fd7107c5712d73106f7939649043b81d2fd1c18f705",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/fresh/package.json": {
+      "license": "MIT",
+      "name": "fresh",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/fresh/LICENSE"
+      ],
+      "sha256": "0f8f39469d55646a4a359833c464529df8720059c1db552f9e94036c06ac4f47",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/gzip-size/package.json": {
+      "license": "MIT",
+      "name": "gzip-size",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/gzip-size/LICENSE"
+      ],
+      "sha256": "88fa90031b294d01b1ccd41443ac213710cd3aeb3abae96f2d9dd25b31c697ee",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/http-proxy-agent/package.json": {
+      "license": "MIT",
+      "name": "http-proxy-agent",
+      "notice_refs": [
+        "licenses/reference/http-proxy-agent-README.md.txt"
+      ],
+      "sha256": "00884de8effb02adaab8ea8fce8d0ac9240dee19df517eb87dc35cdf5ba8ed79",
+      "source_basis": "Fixed official source/tarball supplement declared in licenses/reference/SOURCE_NOTICES.json; expression/notice scope preserved.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/https-browserify/package.json": {
+      "license": "MIT",
+      "name": "https-browserify",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/https-browserify/LICENSE"
+      ],
+      "sha256": "f0e319d9ff18e39dae7cd7a7cba7e22e8faae1e7b149dd86279fa5ae7730fa7b",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/https-proxy-agent/package.json": {
+      "license": "MIT",
+      "name": "https-proxy-agent",
+      "notice_refs": [
+        "licenses/reference/https-proxy-agent-README.md.txt"
+      ],
+      "sha256": "144ceffc497b5f331153c9d291f682f5264595c7b8711baa1d93de5f53897c4e",
+      "source_basis": "Fixed official source/tarball supplement declared in licenses/reference/SOURCE_NOTICES.json; expression/notice scope preserved.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/httpxy/package.json": {
+      "license": "MIT",
+      "name": "httpxy",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/httpxy/LICENSE"
+      ],
+      "sha256": "1a24e02af08692a30d9a29580d267d14c70e307df1d1ba765fee94787fb95afa",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/icss-utils/package.json": {
+      "license": "ISC",
+      "name": "icss-utils",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/icss-utils/LICENSE"
+      ],
+      "sha256": "a28db1d8a722f0f40b351bbca8c8e8559bbe09a4021448f954c8b9d4860f92d5",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/ignore-loader/package.json": {
+      "license": null,
+      "name": "ignore-loader",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/ignore-loader/LICENSE"
+      ],
+      "sha256": "570b3e062c5757cb39e8f81060b4884ac32fdc8cdcd5a7e7d99385607239bf73",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/image-size/package.json": {
+      "license": "MIT",
+      "name": "image-size",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/image-size/LICENSE"
+      ],
+      "sha256": "0f08e3455955e889e24ae141610e910ff606c4ff779f1cb67407ad5036a15bb9",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/ipaddr.js/package.json": {
+      "license": "MIT",
+      "name": "ipaddr.js",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/ipaddr.js/LICENSE"
+      ],
+      "sha256": "28f0b70ca1c217b65158ff0d05247025b2e8810351902946d3c5ff3dad209507",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/is-animated/package.json": {
+      "license": "MIT",
+      "name": "is-animated",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/is-animated/LICENSE"
+      ],
+      "sha256": "61fa46c5a1bb37239f12272b650527742595eb63a5104f7e625469370562585a",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/is-docker/package.json": {
+      "license": "MIT",
+      "name": "is-docker",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/is-docker/LICENSE"
+      ],
+      "sha256": "aac5594fc4ae98f4b297f52c91fede06bc9eca25915a216d192a6bd3952609bb",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/is-wsl/package.json": {
+      "license": "MIT",
+      "name": "is-wsl",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/is-wsl/LICENSE"
+      ],
+      "sha256": "189b610be03f7aab4bf124bf31fcf75a03f6504b115648991c2c10dc8a11263e",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/jest-worker/package.json": {
+      "license": "MIT",
+      "name": "jest-worker",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/jest-worker/LICENSE"
+      ],
+      "sha256": "9b89fefb8dad25d6f083de6c34d156be2ced3cab898354e6b1360260d6f843d9",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/json5/package.json": {
+      "license": "MIT",
+      "name": "json5",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/json5/LICENSE"
+      ],
+      "sha256": "5662b636583985d168a45c9c61b1a874ad5dd0cfc2e95984b1a218e73f93c18f",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/jsonwebtoken/package.json": {
+      "license": "MIT",
+      "name": "jsonwebtoken",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/jsonwebtoken/LICENSE"
+      ],
+      "sha256": "f35673a4e7c1dcaa11adc4ea0a6d0272692877bbf7e82a7831a5bbbcd3bb4400",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/loader-utils2/package.json": {
+      "license": "MIT",
+      "name": "loader-utils",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/loader-utils2/LICENSE"
+      ],
+      "sha256": "997729fb489c230d7ee272c392237d90b6d2aea6006e66c664374caa0af55db0",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/loader-utils3/package.json": {
+      "license": "MIT",
+      "name": "loader-utils",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/loader-utils3/LICENSE"
+      ],
+      "sha256": "997729fb489c230d7ee272c392237d90b6d2aea6006e66c664374caa0af55db0",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/lodash.curry/package.json": {
+      "license": "MIT",
+      "name": "lodash.curry",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/lodash.curry/LICENSE"
+      ],
+      "sha256": "423851cd0529ddf3b16f399efa82ef71aa54e03faa275c680e46468c07ab0ed5",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/lru-cache/package.json": {
+      "license": "ISC",
+      "name": "lru-cache",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/lru-cache/LICENSE"
+      ],
+      "sha256": "12b2e366f83a8cf697dec2cc400f135bfd07fb62d02df0df5fcab4d7cb98f631",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/mini-css-extract-plugin/package.json": {
+      "license": "MIT",
+      "name": "mini-css-extract-plugin",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/mini-css-extract-plugin/LICENSE"
+      ],
+      "sha256": "a940820e002afcfc41db9eb8856fd709af8fe6002ac378e02206ff4dec9bfc62",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/nanoid/package.json": {
+      "license": "MIT",
+      "name": "nanoid",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/nanoid/LICENSE"
+      ],
+      "sha256": "9383f87d5189f73399e60c5b9666fe4930f35ba304355e3555c74f5d9d2ff006",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/native-url/package.json": {
+      "license": "Apache-2.0",
+      "name": "native-url",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/native-url/LICENSE"
+      ],
+      "sha256": "8056830cb93b8f4904d1e63c7e40abdcac725623e19aa6cb0a07964757570402",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/neo-async/package.json": {
+      "license": "MIT",
+      "name": "neo-async",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/neo-async/LICENSE"
+      ],
+      "sha256": "ab030dfc79c2b9b39e329d2fb518891cef7479cc62c95cf1a691e19e2364e0e1",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/os-browserify/package.json": {
+      "license": "MIT",
+      "name": "os-browserify",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/os-browserify/LICENSE"
+      ],
+      "sha256": "b27bdc906022bfe4361aeeed67b6874df02c7b324db6eac870f8f89a5113af5a",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/p-limit/package.json": {
+      "license": "MIT",
+      "name": "p-limit",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/p-limit/LICENSE"
+      ],
+      "sha256": "40495ef05f0ea39ba8d64eb98e492f2d461985e18a937b87b523b3322dbae5ea",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/p-queue/package.json": {
+      "license": "MIT",
+      "name": "p-queue",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/p-queue/LICENSE"
+      ],
+      "sha256": "50f88936a3223c57edfde9e3844e932e20501f49403a761ec210b39d565bc2a6",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/path-browserify/package.json": {
+      "license": "MIT",
+      "name": "path-browserify",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/path-browserify/LICENSE"
+      ],
+      "sha256": "6be7adc0449e83f7f2295aad331b7cde780dda2c97c54ba51f51de74114b02a1",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/path-to-regexp/package.json": {
+      "license": "MIT",
+      "name": "path-to-regexp",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/path-to-regexp/LICENSE"
+      ],
+      "sha256": "5bf6a22265a08b61b2ab9e05a77cea0dd0f078dd086d17769a2c5b4f93a7426a",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/picomatch/package.json": {
+      "license": "MIT",
+      "name": "picomatch",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/picomatch/LICENSE"
+      ],
+      "sha256": "bcb6e75087cfe22755400218f098b6b36805627e5f54171abf58454f6484ac47",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-flexbugs-fixes/package.json": {
+      "license": "MIT",
+      "name": "postcss-flexbugs-fixes",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-flexbugs-fixes/LICENSE"
+      ],
+      "sha256": "233739e87858b972ff4100d4f7f7a9fa5adab75b7f3202ecab808892ad0d7439",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-modules-extract-imports/package.json": {
+      "license": "ISC",
+      "name": "postcss-modules-extract-imports",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-modules-extract-imports/LICENSE"
+      ],
+      "sha256": "37b6b10887f8d084500ab94e349f3db0f0ef02dcb6439a4e6aa849b13a81ff8f",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-modules-local-by-default/package.json": {
+      "license": "MIT",
+      "name": "postcss-modules-local-by-default",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-modules-local-by-default/LICENSE"
+      ],
+      "sha256": "2b99f876f88e1ff8bbd2bcabec5120d9fb12015c1050a8b2e0cd6aed902c2a09",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-modules-scope/package.json": {
+      "license": "ISC",
+      "name": "postcss-modules-scope",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-modules-scope/LICENSE"
+      ],
+      "sha256": "0594c88976370138023c222480d65eaec2591b859366c7dcd33cf5f2576a1d99",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-modules-values/package.json": {
+      "license": "ISC",
+      "name": "postcss-modules-values",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-modules-values/LICENSE"
+      ],
+      "sha256": "75686122910108295fd244fcb2e7ed2cd8f2785e571152c15838febaeb5f9e99",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-preset-env/package.json": {
+      "license": "CC0-1.0",
+      "name": "postcss-preset-env",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-preset-env/LICENSE"
+      ],
+      "sha256": "22056897f5fa4de9e64c5ca87d14008b3ddc01be85fe33c1f3eeae513dadea22",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-scss/package.json": {
+      "license": "MIT",
+      "name": "postcss-scss",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-scss/LICENSE"
+      ],
+      "sha256": "d054cb1fce9ea5852729c829bab799126eae2c07ca3f33d761760cae829cb10f",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-value-parser/package.json": {
+      "license": "MIT",
+      "name": "postcss-value-parser",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-value-parser/LICENSE"
+      ],
+      "sha256": "096375657ecf115fc78281f8c43c0cec36cd6396e2801d463f700fd987d9a8e8",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/process/package.json": {
+      "license": "MIT",
+      "name": "process",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/process/LICENSE"
+      ],
+      "sha256": "f1c6ff9dc88ded25db7f9e314b18124c8e5648c8fa4de324968d6c83914a5cfd",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/punycode/package.json": {
+      "license": "MIT",
+      "name": "punycode",
+      "notice_refs": [
+        "licenses/reference/punycode-LICENSE-MIT.txt.txt"
+      ],
+      "sha256": "4d69f3d2928226148fd39c2b9724d60c560ca13f01729937964ea3bfb4e2e19b",
+      "source_basis": "Fixed official source/tarball supplement declared in licenses/reference/SOURCE_NOTICES.json; expression/notice scope preserved.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/querystring-es3/package.json": {
+      "license": null,
+      "name": "querystring-es3",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/querystring-es3/LICENSE"
+      ],
+      "sha256": "deef9957fd78ab6495db1c8ac121d9bd7b0e65af73f50a554efac5b5a7144f08",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/raw-body/package.json": {
+      "license": "MIT",
+      "name": "raw-body",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/raw-body/LICENSE"
+      ],
+      "sha256": "ebc1e2456bc3c948d587d9cbbfc845a4cd4a839732d2072afdbf23b918792ef0",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/react-is/package.json": {
+      "license": "MIT",
+      "name": "react-is",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/react-is/LICENSE"
+      ],
+      "sha256": "e58e18130d2a543b485afacc83456e161c54c8e3e63ee3174d7160167d9ddc61",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": "19.3.0-canary-cbb046ab-20260731"
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/react-refresh/package.json": {
+      "license": "MIT",
+      "name": "react-refresh",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/react-refresh/LICENSE"
+      ],
+      "sha256": "7634851c499058e71f98f6333982d2ed2bcd109bfe0e86a71d4134281a7c497c",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": "0.12.0"
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/regenerator-runtime/package.json": {
+      "license": "MIT",
+      "name": "regenerator-runtime",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/regenerator-runtime/LICENSE"
+      ],
+      "sha256": "19a1b69415c9661789cb9c87e822a6fbd976d78ac8d31d7d6ce30acc86a491cf",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": "0.13.4"
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/safe-stable-stringify/package.json": {
+      "license": "MIT",
+      "name": "safe-stable-stringify",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/safe-stable-stringify/LICENSE"
+      ],
+      "sha256": "5fd2e6d5ad1018bfb55b5af6bb2bdd61b1314b7993586953e5c6841eb4b936d6",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/sass-loader/package.json": {
+      "license": "MIT",
+      "name": "sass-loader",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/sass-loader/LICENSE"
+      ],
+      "sha256": "021cd8eefc24b305b58e1379f83368f54083baa3a8d06f529bbe79d3380ddec8",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/schema-utils3/package.json": {
+      "license": "MIT",
+      "name": "schema-utils",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/schema-utils3/LICENSE"
+      ],
+      "sha256": "1213b565bcb89186df47543861eab7c2b262a71c9a3805cfb82d539f1d73d6bc",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/semver/package.json": {
+      "license": "ISC",
+      "name": "semver",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/semver/LICENSE"
+      ],
+      "sha256": "3b7c2da335e6f7d178a13d32917fc6ad85d62e6ca2cda2513e52815aa7ca95e9",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/send/package.json": {
+      "license": "MIT",
+      "name": "send",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/send/LICENSE"
+      ],
+      "sha256": "9ee32160a660db32561814157aec6fa4054e79ff838c80981808d839bfec6938",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/setimmediate/package.json": {
+      "license": "MIT",
+      "name": "setimmediate",
+      "notice_refs": [
+        "licenses/reference/setimmediate-LICENSE.txt.txt"
+      ],
+      "sha256": "07c28ab21f75001cd3c5f0e49a2171bc5c55536b55296b4fc9425810a01bea8a",
+      "source_basis": "Fixed official source/tarball supplement declared in licenses/reference/SOURCE_NOTICES.json; expression/notice scope preserved.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/shell-quote/package.json": {
+      "license": "MIT",
+      "name": "shell-quote",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/shell-quote/LICENSE"
+      ],
+      "sha256": "907fda3052f7e1ece852b1cf025642aa3d90cb96ccccf4d568017d974002e9af",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/source-map/package.json": {
+      "license": "BSD-3-Clause",
+      "name": "source-map",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/source-map/LICENSE"
+      ],
+      "sha256": "64b17ef1036027151303e0d09a47a0507901878accd7f6d8276a71c06a2e4312",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/source-map08/package.json": {
+      "license": "BSD-3-Clause",
+      "name": "source-map08",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/source-map08/LICENSE"
+      ],
+      "sha256": "3c7de96c15e46a376f876ea51b70daac14988f5a8bd261565e21a0e17b14a8c1",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/stacktrace-parser/package.json": {
+      "license": "MIT",
+      "name": "stacktrace-parser",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/stacktrace-parser/LICENSE"
+      ],
+      "sha256": "72e32b3357e6fab245dc57c202a274cdd75020cd23ce6a1a9916bfa6127d80cf",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/stream-browserify/package.json": {
+      "license": "MIT",
+      "name": "stream-browserify",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/stream-browserify/LICENSE"
+      ],
+      "sha256": "fe7da53b4104f1ef65c7f28d8ba2e0e46f1ab61e71dd11f0bf374dd1742ddcf9",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/stream-http/package.json": {
+      "license": "MIT",
+      "name": "stream-http",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/stream-http/LICENSE"
+      ],
+      "sha256": "e5ec05a5ff5a2bf75d194542d26dc7e5fe46a22a60f020e08729ab70bffba947",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/string-hash/package.json": {
+      "license": "CC0-1.0",
+      "name": "string-hash",
+      "notice_refs": [
+        "licenses/reference/string-hash-README.md.txt"
+      ],
+      "sha256": "afb2563fe191f4e7eecc9e6bf1131f07da3f855e6e51b2d517206ae737b343b0",
+      "source_basis": "Fixed official source/tarball supplement declared in licenses/reference/SOURCE_NOTICES.json; expression/notice scope preserved.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/string_decoder/package.json": {
+      "license": "MIT",
+      "name": "string_decoder",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/string_decoder/LICENSE"
+      ],
+      "sha256": "0ff89407b42b08cb0cfe9aaa590b593693e3b07ebb16902f42297c00453f25ab",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/strip-ansi/package.json": {
+      "license": "MIT",
+      "name": "strip-ansi",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/strip-ansi/LICENSE"
+      ],
+      "sha256": "a3005e66c096be0df65ecba459ee8cd1aabb39970615eed0e73f5b7cb8ae5672",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/superstruct/package.json": {
+      "license": "MIT",
+      "name": "superstruct",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/superstruct/LICENSE"
+      ],
+      "sha256": "30e83d602cf8471740fa94fe38c3bedbdf400aabe94160154557f558c5ee7fd8",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/tar/package.json": {
+      "license": "BlueOak-1.0.0",
+      "name": "tar",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/tar/LICENSE"
+      ],
+      "sha256": "d118552ac665732fb7a1bb0e08dba0ab1d21a0edbc0eb3601a094ef821198f21",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/text-table/package.json": {
+      "license": "MIT",
+      "name": "text-table",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/text-table/LICENSE"
+      ],
+      "sha256": "b4175217ffbbbc394e1914b32227416464e8d04ee3fff315c7dea0fc1c478961",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/timers-browserify/package.json": {
+      "license": "MIT",
+      "name": "timers-browserify",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/timers-browserify/LICENSE"
+      ],
+      "sha256": "8ca98b86666056d8a2096f7cbf391e67f7db6564a0869736bee34c9503558abd",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/tty-browserify/package.json": {
+      "license": "MIT",
+      "name": "tty-browserify",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/tty-browserify/LICENSE"
+      ],
+      "sha256": "14c14e5fb2bb63d8d59ac7a356cd0744e47f7901571835d931e2c92be79b60cb",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/unistore/package.json": {
+      "license": "MIT",
+      "name": "unistore",
+      "notice_refs": [
+        "licenses/reference/unistore-README.md.txt",
+        "licenses/reference/unistore-MIT-terms.txt"
+      ],
+      "sha256": "e87b50fb2eb256e59fa61d95ff0fb4e93529edcbc261eafca05d8b78abd8d612",
+      "source_basis": "Fixed official source/tarball supplement declared in licenses/reference/SOURCE_NOTICES.json; expression/notice scope preserved.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/util/package.json": {
+      "license": "MIT",
+      "name": "util",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/util/LICENSE"
+      ],
+      "sha256": "7572a0bd8de81dec020332fdb8ef9648775e778d45c8a4412f23af72fcbe1112",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/vm-browserify/package.json": {
+      "license": "MIT",
+      "name": "vm-browserify",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/vm-browserify/LICENSE"
+      ],
+      "sha256": "962e75a1f1639a60d74753649cc10f087ece7154f97a087e7930011debed6cb1",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/watchpack/package.json": {
+      "license": "MIT",
+      "name": "watchpack",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/watchpack/LICENSE"
+      ],
+      "sha256": "e906fea196fd89a89690c506e75ea3daea427ca00f64daeda491f95bd829335c",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/webpack-sources3/package.json": {
+      "license": "MIT",
+      "name": "webpack-sources",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/webpack-sources3/LICENSE"
+      ],
+      "sha256": "85853d186a1b3d943c185b0e45c51ea65116505cd62818f975f0494bc607104f",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/write-file-atomic/package.json": {
+      "license": "ISC",
+      "name": "write-file-atomic",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/write-file-atomic/LICENSE"
+      ],
+      "sha256": "4f98c17cb9cdd527588d48a536808594d323e4afc459c53e3eeb7961bd1eff70",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/ws/package.json": {
+      "license": "MIT",
+      "name": "ws",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/ws/LICENSE"
+      ],
+      "sha256": "40f71b1fd703434f93cf2d4f34a68ccdd884de8b70b5ab05b2ee197726e19b26",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/zod-validation-error/package.json": {
+      "license": "MIT",
+      "name": "zod-validation-error",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/zod-validation-error/LICENSE"
+      ],
+      "sha256": "0e378c7dede8f0e0077e25bf6895728c3fb855350c7315fa5175f783fe0a8d14",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/zod/package.json": {
+      "license": "MIT",
+      "name": "zod",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/zod/LICENSE"
+      ],
+      "sha256": "53c461e9ad93deaa50e7d07a81b6b772dfb0a99f8a5b30414deb895fa95de30c",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": null
+    },
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/package.json": {
+      "license": "MIT",
+      "name": "next",
+      "notice_refs": [
+        "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/license.md"
+      ],
+      "sha256": "c4ef8a1c8da320a162485f96d35df7745da90e6becc36882d6e81be9df66eec1",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": "16.3.4"
+    },
+    "node_modules/.pnpm/picocolors@1.1.1/node_modules/picocolors/package.json": {
+      "license": "ISC",
+      "name": "picocolors",
+      "notice_refs": [
+        "node_modules/.pnpm/picocolors@1.1.1/node_modules/picocolors/LICENSE"
+      ],
+      "sha256": "ef2ac226c4811d312e12c64214c453878653e834482125ae475f27cea60de737",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": "1.1.1"
+    },
+    "node_modules/.pnpm/postcss@8.5.23/node_modules/postcss/package.json": {
+      "license": "MIT",
+      "name": "postcss",
+      "notice_refs": [
+        "node_modules/.pnpm/postcss@8.5.23/node_modules/postcss/LICENSE"
+      ],
+      "sha256": "df43e035f054943454c49556c89cea8a288d91f5d4b1a6f4e56d48b85c7ebd75",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": "8.5.23"
+    },
+    "node_modules/.pnpm/react-dom@19.2.8_react@19.2.8/node_modules/react-dom/package.json": {
+      "license": "MIT",
+      "name": "react-dom",
+      "notice_refs": [
+        "node_modules/.pnpm/react-dom@19.2.8_react@19.2.8/node_modules/react-dom/LICENSE"
+      ],
+      "sha256": "7c82f0967114d4b5d38b1f07e543af87c9919e8d3243f9604004819319cb2200",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": "19.2.8"
+    },
+    "node_modules/.pnpm/react@19.2.8/node_modules/react/package.json": {
+      "license": "MIT",
+      "name": "react",
+      "notice_refs": [
+        "node_modules/.pnpm/react@19.2.8/node_modules/react/LICENSE"
+      ],
+      "sha256": "e40c3ed9b633c9ecf188e09a4be309780a1ea0a9c068278a30ff6a27e7b2dbb6",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": "19.2.8"
+    },
+    "node_modules/.pnpm/source-map-js@1.2.1/node_modules/source-map-js/package.json": {
+      "license": "BSD-3-Clause",
+      "name": "source-map-js",
+      "notice_refs": [
+        "node_modules/.pnpm/source-map-js@1.2.1/node_modules/source-map-js/LICENSE"
+      ],
+      "sha256": "58f8e94a461a5e461e0cb2bb2be681cbd89b9181989fd26fceb858e67711469a",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": "1.2.1"
+    },
+    "node_modules/.pnpm/styled-jsx@5.1.6_react@19.2.8/node_modules/styled-jsx/package.json": {
+      "license": "MIT",
+      "name": "styled-jsx",
+      "notice_refs": [
+        "node_modules/.pnpm/styled-jsx@5.1.6_react@19.2.8/node_modules/styled-jsx/license.md"
+      ],
+      "sha256": "0a11b14d7bbeab650019db18883a14cb67daa3615f498a5a625d45828be7eef9",
+      "source_basis": "Exact original installed-package legal text; frozen package/lock/manifest identity. No version inferred for framework bundles.",
+      "version": "5.1.6"
+    }
+  },
+  "schema": "elite-reference-runtime-notices/v1",
+  "source_scope": "Windows local reference; exact installed Next16.3.4 and traced runtime. License evidence/notice reproduction only; no production acceptance.",
+  "texts": {
+    "licenses/reference/babel-core-LICENSE.txt": "117da2af0d4ce0fe1c8e19b5cff9dcd806adf973d328d27b11d4448c4ff24f76",
+    "licenses/reference/babel-packages-inline-notices.txt": "d08e6b38f8be371bbd045b3defa253d451207a5936aed6dee5d62afdd62e9582",
+    "licenses/reference/client-only-MIT-terms.txt": "508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1",
+    "licenses/reference/client-only-package.json.txt": "4d6342705767832f299b9a59c28e4275bcf02db19472732f93f67d979441df8f",
+    "licenses/reference/constants-browserify-README.md.txt": "b06569bf170a015c56cbad9b45756519d0b8a682770fe30d66bc1e235e26196a",
+    "licenses/reference/data-uri-to-buffer-README.md.txt": "6a14de4d552c0c88bdbbaf57f72f625835685eea97de5047f87a463089b8e9f6",
+    "licenses/reference/dotenv-LICENSE.txt": "74b629b24865e1e83c5277ee84590b7937644d6fd959d0c7bdce758676cd2ced",
+    "licenses/reference/dotenv-expand-LICENSE.txt": "3726b9470c3a6b54e1ebcc1d802d37089b5a5fc97273b52b2cee578a4421ec45",
+    "licenses/reference/edge-runtime-cookies-LICENSE.md.txt": "e4f76a7a19ef2989dd79339bd3abf8afcf1d6f065e5a10c76c19415ffd727eb3",
+    "licenses/reference/edge-runtime-ponyfill-LICENSE.md.txt": "e4f76a7a19ef2989dd79339bd3abf8afcf1d6f065e5a10c76c19415ffd727eb3",
+    "licenses/reference/edge-runtime-primitives-LICENSE.md.txt": "e4f76a7a19ef2989dd79339bd3abf8afcf1d6f065e5a10c76c19415ffd727eb3",
+    "licenses/reference/http-proxy-agent-README.md.txt": "ca0b65367e78e9c255a1c9883eb7ec30aae491d76e1c6815b865563106d21dff",
+    "licenses/reference/https-proxy-agent-README.md.txt": "32f0856d2c43df7d05cca960fdee84e1e38ab545bd7b2186433dfa41aa90a712",
+    "licenses/reference/next-MIT.txt": "ee765244e2d59f5234d474f62e0766fa0c8b99af967fdd4c0cb8dcb0c76ea224",
+    "licenses/reference/punycode-LICENSE-MIT.txt.txt": "483acb265f182907d1caf6cff9c16c96f31325ed23792832cc5d8b12d5f88c8a",
+    "licenses/reference/setimmediate-LICENSE.txt.txt": "c4b4ad3a5746f1f5249a6dd90396ec519264e1bb02e01e48a6522c48a3a97cb4",
+    "licenses/reference/string-hash-README.md.txt": "62a7a3b8dba4cc818974ab2c00cb7fb7cb20afd7d3c73ed049d7f2eb5621a46e",
+    "licenses/reference/unistore-MIT-terms.txt": "15c8d6c00935406bf494329437b74317b2926adcaa479b47bf73f6a060d7244d",
+    "licenses/reference/unistore-README.md.txt": "9e24224113e53a805fe76ed8084e13697a070061191f627c2053c0ea67f5c364",
+    "node_modules/.pnpm/@jridgewell+sourcemap-codec@1.5.5/node_modules/@jridgewell/sourcemap-codec/LICENSE": "769d154fbde32a915af110b1123650bc79f4cbe675acc66e005265bf069c6c6c",
+    "node_modules/.pnpm/@oxc-project+types@0.146.0/node_modules/@oxc-project/types/LICENSE": "95ced5ecf1133fbf41d409b5555c86c344f83f3b019926057ddbc07cfdcc27b3",
+    "node_modules/.pnpm/@rolldown+pluginutils@1.0.1/node_modules/@rolldown/pluginutils/LICENSE": "e1919b3b98b8bf6c1b99fcc60a0ed46027c97ac947432e1278446c9606f50161",
+    "node_modules/.pnpm/@standard-schema+spec@1.1.0/node_modules/@standard-schema/spec/LICENSE": "653b779005a3a4d64a7288c940f7b9a0e8f0b1e0375f6aa6af9473caf131e564",
+    "node_modules/.pnpm/@swc+helpers@0.5.23/node_modules/@swc/helpers/LICENSE": "d96eba1f1881334d50ffc144276dfa98e147a415e7c591ecdfcb81680361dc91",
+    "node_modules/.pnpm/@types+chai@5.2.3/node_modules/@types/chai/LICENSE": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+    "node_modules/.pnpm/@types+deep-eql@4.0.2/node_modules/@types/deep-eql/LICENSE": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+    "node_modules/.pnpm/@types+estree@1.0.9/node_modules/@types/estree/LICENSE": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+    "node_modules/.pnpm/@types+node@26.2.0/node_modules/@types/node/LICENSE": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+    "node_modules/.pnpm/@types+react-dom@19.2.5_@types+react@19.2.18/node_modules/@types/react-dom/LICENSE": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+    "node_modules/.pnpm/@types+react@19.2.18/node_modules/@types/react/LICENSE": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+    "node_modules/.pnpm/@typescript+typescript-win32-x64@7.0.2/node_modules/@typescript/typescript-win32-x64/LICENSE": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47",
+    "node_modules/.pnpm/@typescript+typescript-win32-x64@7.0.2/node_modules/@typescript/typescript-win32-x64/NOTICE.txt": "f5c708b59114507b8b27b48181b6883d106bbca0c1634bbee45b5e344237b66b",
+    "node_modules/.pnpm/@vitest+expect@4.1.11/node_modules/@vitest/expect/LICENSE": "04575fc5bfae19a9b63100f8691f901a2e15a399011ac02db435a9ef27295551",
+    "node_modules/.pnpm/@vitest+mocker@4.1.11_vite@8.2.2_@types+node@26.2.0_/node_modules/@vitest/mocker/LICENSE": "04575fc5bfae19a9b63100f8691f901a2e15a399011ac02db435a9ef27295551",
+    "node_modules/.pnpm/@vitest+pretty-format@4.1.11/node_modules/@vitest/pretty-format/LICENSE": "04575fc5bfae19a9b63100f8691f901a2e15a399011ac02db435a9ef27295551",
+    "node_modules/.pnpm/@vitest+runner@4.1.11/node_modules/@vitest/runner/LICENSE": "04575fc5bfae19a9b63100f8691f901a2e15a399011ac02db435a9ef27295551",
+    "node_modules/.pnpm/@vitest+snapshot@4.1.11/node_modules/@vitest/snapshot/LICENSE": "04575fc5bfae19a9b63100f8691f901a2e15a399011ac02db435a9ef27295551",
+    "node_modules/.pnpm/@vitest+spy@4.1.11/node_modules/@vitest/spy/LICENSE": "04575fc5bfae19a9b63100f8691f901a2e15a399011ac02db435a9ef27295551",
+    "node_modules/.pnpm/@vitest+utils@4.1.11/node_modules/@vitest/utils/LICENSE": "04575fc5bfae19a9b63100f8691f901a2e15a399011ac02db435a9ef27295551",
+    "node_modules/.pnpm/assertion-error@2.0.1/node_modules/assertion-error/LICENSE": "2130216d5ab4c02134f8247f32999feda0abe1eaf028218baeac445c19ce4cea",
+    "node_modules/.pnpm/baseline-browser-mapping@2.11.18/node_modules/baseline-browser-mapping/LICENSE.txt": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "node_modules/.pnpm/caniuse-lite@1.0.30001809/node_modules/caniuse-lite/LICENSE": "fd3a263fe19ed8faa9068b43abaebafc02c77897b0c6fc09abc04bb592e5f16e",
+    "node_modules/.pnpm/chai@6.2.2/node_modules/chai/LICENSE": "b181da80336ff9dd1043fc8be1a764d7382363433319aa872e4d2cb5ce2a3066",
+    "node_modules/.pnpm/convert-source-map@2.0.0/node_modules/convert-source-map/LICENSE": "1fa6ee8bb95a81ae3d73a5bd074a3ac380ffec13697051063ca1a601921b91db",
+    "node_modules/.pnpm/csp_evaluator@1.1.8/node_modules/csp_evaluator/LICENSE": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+    "node_modules/.pnpm/csstype@3.2.3/node_modules/csstype/LICENSE": "11d55bd4541c75ee7879547ac49089c489163dae49551389713c3d026cab383e",
+    "node_modules/.pnpm/detect-libc@2.1.2/node_modules/detect-libc/LICENSE": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+    "node_modules/.pnpm/es-module-lexer@2.3.2/node_modules/es-module-lexer/LICENSE": "8a4b6c44eebfb026d23719a348145a661a555568dbfdc11618ff2d0dd9306b00",
+    "node_modules/.pnpm/estree-walker@3.0.3/node_modules/estree-walker/LICENSE": "8a6dcbabe7179f9c8489c08a7d874d0f1e093ae7449e03756ccf87cb9d0e296e",
+    "node_modules/.pnpm/expect-type@1.4.0/node_modules/expect-type/LICENSE": "7c6cc83c84eaa249a85bf12fe3eedd831bb50c696e8890b5248223ae68c7b408",
+    "node_modules/.pnpm/fdir@6.5.0_picomatch@4.0.5/node_modules/fdir/LICENSE": "9a39f2aadab11a3697edd668ff2d8ad885b649737b7ab4d3bf12b34e5ada0c86",
+    "node_modules/.pnpm/jose@6.2.10/node_modules/jose/LICENSE.md": "8078b0829d6c3e9ecde2f003e1966e4cad3efc6e7a640efbab0313cc166b1af1",
+    "node_modules/.pnpm/lightningcss-win32-x64-msvc@1.33.0/node_modules/lightningcss-win32-x64-msvc/LICENSE": "5eba353fe5076ac3432177f8ab1cf75e3afcd0584251e37c3bfead5f447d040e",
+    "node_modules/.pnpm/lightningcss@1.33.0/node_modules/lightningcss/LICENSE": "5eba353fe5076ac3432177f8ab1cf75e3afcd0584251e37c3bfead5f447d040e",
+    "node_modules/.pnpm/magic-string@0.30.21/node_modules/magic-string/LICENSE": "1cbe51b907662f6cb1492b16c359384a595180bf0e4d101603ed525e75c4e484",
+    "node_modules/.pnpm/nanoid@3.3.18/node_modules/nanoid/LICENSE": "da4db1480d9beea3483a2eda5c53b22238d0827d57da162b48f122e04d2d9987",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@babel/runtime/LICENSE": "117da2af0d4ce0fe1c8e19b5cff9dcd806adf973d328d27b11d4448c4ff24f76",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@edge-runtime/primitives/abort-controller.js.LEGAL.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@edge-runtime/primitives/console.js.LEGAL.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@edge-runtime/primitives/crypto.js.LEGAL.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@edge-runtime/primitives/events.js.LEGAL.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@edge-runtime/primitives/fetch.js.LEGAL.txt": "da2a4ed932064e8eace052f31df1c34d8222a9241a38f8cbb97536a04a9936d9",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@edge-runtime/primitives/index.js.LEGAL.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@edge-runtime/primitives/load.js.LEGAL.txt": "da2a4ed932064e8eace052f31df1c34d8222a9241a38f8cbb97536a04a9936d9",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@edge-runtime/primitives/stream.js.LEGAL.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@edge-runtime/primitives/timers.js.LEGAL.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@edge-runtime/primitives/url.js.LEGAL.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@hapi/accept/LICENSE": "ff96bbd6a7408c166f16dbed7f2c87a8061e5a21289ec8f2d3069f8d3b15fc0a",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@mswjs/interceptors/ClientRequest/LICENSE": "bb3a5cb8fb224f632970e31425348f556f7a83b165d5384ea5e142575f5c412e",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@napi-rs/triples/LICENSE": "7b34e99bc43641767fded49f7f03563ffd50c689b1f3b0d50700b4727bc4ae24",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@opentelemetry/api/LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@vercel/blob/LICENSE": "2b6fc3f4a995e6ad29f4e2ed8881a32979058b8d6557efaa6d86b7e985849f40",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@vercel/detect-agent/LICENSE": "b070d77bfb2c52a1dd6996de0ce5f64c49a0ca55c889b163a963ddf5cb001ee2",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@vercel/nft/LICENSE": "0b31f3a6ab66b272b7de451df39835f310a309a06b1a8aafb3a2fdab20adc166",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@vercel/og/LICENSE": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@vercel/og/satori/LICENSE": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/@vercel/routing-utils/LICENSE": "b070d77bfb2c52a1dd6996de0ce5f64c49a0ca55c889b163a963ddf5cb001ee2",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/acorn/LICENSE": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/anser/LICENSE": "6d2abc90a426cf65bbf84f7cedf9487f7ff86a3daf0e130b335a45c112f040d0",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/assert/LICENSE": "6239c6144c31e58cf925c34483606969c555574d64ffa96518ab5d7f45c75d43",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/async-retry/LICENSE": "8cec82f7beeab8459fa6165c973f5cd6f89aceea7a07de0aa8fc30a9dd339a05",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/async-sema/LICENSE": "291ff3e2bd22891edef553930da53ba64adf79d83f0bd1c5b7f6fe9727526b37",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/babel/LICENSE": "117da2af0d4ce0fe1c8e19b5cff9dcd806adf973d328d27b11d4448c4ff24f76",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/browserify-zlib/LICENSE": "ddd770379e07bf0574dfaa4485be80a23b3248b36d09f33ec79276c09b829daf",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/browserslist/LICENSE": "f25bf9bf3ae8984bcd43bf7fb8f78e7eec8d577081fb8d0989cfa7c67ecebb8e",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/buffer/LICENSE": "06bafa45fdad2579ba0e43b0c9b2c6290287c99c4203c300254a462b38a307f6",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/busboy/LICENSE": "d06b5d27bbbbe22c36b1fd88406b1208876e2d37d795f5b8eaed951a459a3111",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/bytes/LICENSE": "e3b44af066615de2ea48d18d852d0762f18c0b2efcea714fa48a6f729d405b85",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/ci-info/LICENSE": "25bd22427e27b0d3f1c3da2670bb44b622bcced22ebdf4777d5488ac129370a1",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/cli-select/LICENSE": "a8e260b5b60eb27746ff2c5967489e6878c5a6ba99400cbec84c89a9b49a46ca",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/commander/LICENSE": "04512a63dce4d2d506ad612dc0bd7681ccf6e3655f7b6eaef7dfac8323d1ec0b",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/comment-json/LICENSE": "9dbd86998d3cdafc1d8c298aea636146568d05d429b81386e60cfce11e6cedb6",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/compression/LICENSE": "23d466b1b134b415b66fa50c6526b4cf3e7b9258554da88d3abb371721e7ce68",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/conf/LICENSE": "48da2f39e100d4085767e94966b43f4fa95ff6a0698fba57ed460914e35f94a0",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/content-disposition/LICENSE": "bd47ce7b88c7759630d1e2b9fcfa170a0f1fde522be09e13fb1581a79d090400",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/content-type/LICENSE": "257aed98914108e91a337912727b6a802eef218248507f74b76faffaff517a38",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/cookie/LICENSE": "c02110eedc16c7114f1a9bdc026c65626ce1d9c7e27fd51a8e0feee8a48a6858",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/cross-spawn/LICENSE": "aaa78451b6fecd1b9c4594c796c133c0e90cad100372ff8bc6de615e9ef9adf1",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/crypto-browserify/LICENSE": "6134c69bc22c8289252e70de3af20bd67071233459055be74d83acfcc4865e7e",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/debug/LICENSE": "98c970de440dcfc77471610aec2377c9d9b0db2b3be6d1add524a586e1d7f422",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/devalue/LICENSE": "e399db7e952e45cae84f1b53d72ba8dbad2daaa7ab8cd1f0ab72fea5ab73b225",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/domain-browser/LICENSE": "fc06db8dd5e7840db84ab328d9f58bdb91a56fbbf045bb977c11fcd07e2d8e3e",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/edge-runtime/LICENSE": "e4f76a7a19ef2989dd79339bd3abf8afcf1d6f065e5a10c76c19415ffd727eb3",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/events/LICENSE": "631987b7616a325a5b97566c232418481ddf7dbb5ecadefb991e791876cc2599",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/find-up/LICENSE": "48da2f39e100d4085767e94966b43f4fa95ff6a0698fba57ed460914e35f94a0",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/fresh/LICENSE": "a0ec0dab16b3666f24950f86d257930ac2ad475557b4bfe245620e0817d8a45d",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/glob/LICENSE": "6236fa0b88a4a0cce3dda0367979491b2052b3c8d6b1c10b3668de083e86a7f0",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/gzip-size/LICENSE": "48da2f39e100d4085767e94966b43f4fa95ff6a0698fba57ed460914e35f94a0",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/https-browserify/LICENSE": "ff151c00207c908581639851dd8504ce4255be0650b2b236edec2aa90342b0cd",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/httpxy/LICENSE": "4249bd020d1b5c503d20a196c1b686b3bdebcd1c7ac06909c546d9624c64f79b",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/icss-utils/LICENSE": "b2b54c738525e98cc42d4a1c239c9d8421507816acce98950e81d0943daae68e",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/ignore-loader/LICENSE": "62ba766e9b50f9b175b0229f4ea03e93730c9180408acec50dd617e9ae1fa059",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/image-size/LICENSE": "3109783dad7527b490aabc49c3cb148573c19b41b843e70cf9388a93f3d7fccd",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/ipaddr.js/LICENSE": "62568a2d1337b77171ecca9db10579163446de1ba6151678e81f06cdc199971b",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/is-animated/LICENSE": "e08c030e1274fadc495c71e0489612f0c74673b69ae8e41460526c233a94a728",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/is-docker/LICENSE": "48da2f39e100d4085767e94966b43f4fa95ff6a0698fba57ed460914e35f94a0",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/is-wsl/LICENSE": "48da2f39e100d4085767e94966b43f4fa95ff6a0698fba57ed460914e35f94a0",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/jest-worker/LICENSE": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/json5/LICENSE": "53e59feb13058722d977c699eb0407c7bce2f93c949b681bbd2ff31698535927",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/jsonwebtoken/LICENSE": "2144eb6894cb440fde6b2b3aaae3b617c8f1dc9bb19813079dcf62ec6c517042",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/loader-runner/LICENSE": "498d39c83164cf8de195090f5564fc0308ab271344ca2f95484a7f1020952d00",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/loader-utils2/LICENSE": "9068a8782d2fb4c6e432cfa25334efa56f722822180570802bf86e71b6003b1e",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/loader-utils3/LICENSE": "9068a8782d2fb4c6e432cfa25334efa56f722822180570802bf86e71b6003b1e",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/lodash.curry/LICENSE": "ffd8b33b354585f4ce119f19c53728281e48a97b074491eb6bf6d5c5ff305272",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/lru-cache/LICENSE": "451ec07eeb9c4e1b86de9abdaa426462a8be48f887ec7421cf0bbb9c769555ab",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/mini-css-extract-plugin/LICENSE": "9068a8782d2fb4c6e432cfa25334efa56f722822180570802bf86e71b6003b1e",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/nanoid/LICENSE": "da4db1480d9beea3483a2eda5c53b22238d0827d57da162b48f122e04d2d9987",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/native-url/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/neo-async/LICENSE": "811238ba7d85f6fe6b820703a32f92705bcf77bc352ddc3476783491c64a129a",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/node-html-parser/LICENSE": "ea75e9321945b7f0bc4644da1e404ad76ce55e9bc05cae3b2f5f2d973aede83b",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/ora/LICENSE": "5c932d88256b4ab958f64a856fa48e8bd1f55bc1d96b8149c65689e0c61789d3",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/os-browserify/LICENSE": "d25d1d6d28c35cb6f358e2833e405c4e53fec2fa24d156323ddea5cd438d3407",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/p-limit/LICENSE": "5c932d88256b4ab958f64a856fa48e8bd1f55bc1d96b8149c65689e0c61789d3",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/p-queue/LICENSE": "5c932d88256b4ab958f64a856fa48e8bd1f55bc1d96b8149c65689e0c61789d3",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/path-browserify/LICENSE": "a22b9d5763f574e5db347c30acc0b33eaf4846767c03d2e27d012e864e79a824",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/path-to-regexp/LICENSE": "4eeb3271453a891df609e5a9f4ee79a68307f730c13417a3bfeffa604ac8cf25",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/picomatch/LICENSE": "d0cd141b0c322fded5dfad1d4645bb2fedfc05b7321fe1009469638190d59ef9",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-flexbugs-fixes/LICENSE": "f26c92c1c16e78c6b1f7474792f7195b7abc851caccb4a73dcc5b3c31efc7321",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-modules-extract-imports/LICENSE": "9e534cfb7f7ae1300e16fe1ee7d203fdfe707dc932429c37246f747c3699ee14",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-modules-local-by-default/LICENSE": "dd40f37957ddcb6a6157f40b677d6f43697583f956144fbce25443e35630453e",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-modules-scope/LICENSE": "7774c8c4a3f750b294b416818062201a404fc2d6c8756d8b89a1688e24b5d5a7",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-modules-values/LICENSE": "655287aefbf8e292057318c385d77767b1dd9819c87709fd26730b7090efe4d9",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-preset-env/LICENSE": "597756adcb51f243ef4fb386920377f61d012ace0904364e1a8ee9aaec6afc84",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-safe-parser/LICENSE": "c4630ac8b89cb317ac5bdd60ac5e4e185eab9bd5151a0c7b3afa41aa83d7ec9b",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-scss/LICENSE": "c4630ac8b89cb317ac5bdd60ac5e4e185eab9bd5151a0c7b3afa41aa83d7ec9b",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/postcss-value-parser/LICENSE": "3687447039151857a6ba378db062172c7f33d4aa70a615c87a43a9c50e990485",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/process/LICENSE": "59a400d04c5078579acc27ddd6452c1bdf763f9506e01364700935fbb1a7c91b",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/querystring-es3/LICENSE": "cb72d9714ddc21e758d63f423be0caddf909d23ccbb10a2f5201a870818e4f57",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/raw-body/LICENSE": "c8e6bca7230689d536a3bd7158f66e9c4f89f95d0748743a0370ac229e9023ad",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/react-dom-experimental/LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/react-dom/LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/react-experimental/LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/react-is/LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/react-refresh/LICENSE": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/react-server-dom-turbopack-experimental/LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/react-server-dom-turbopack/LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/react-server-dom-webpack-experimental/LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/react-server-dom-webpack/LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/react/LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/regenerator-runtime/LICENSE": "51887a3d47051ac2fce1210562e5b9fe0830a8a8fabeb272c2d586eeb18a05fd",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/safe-stable-stringify/LICENSE": "3a6d6de49d284a36c5d271ef0e62eca1838cc460dd7630e3f2c347c8f5b2232a",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/sass-loader/LICENSE": "2af12ca8b612a22e6659ae68e0e59ee7ac792718c45524a989b512c49c5f5879",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/scheduler-experimental/LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/scheduler/LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/schema-utils2/LICENSE": "9068a8782d2fb4c6e432cfa25334efa56f722822180570802bf86e71b6003b1e",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/schema-utils3/LICENSE": "9068a8782d2fb4c6e432cfa25334efa56f722822180570802bf86e71b6003b1e",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/semver/LICENSE": "4ec3d4c66cd87f5c8d8ad911b10f99bf27cb00cdfcff82621956e379186b016b",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/send/LICENSE": "25a328069fe771f8ed5b6f983ed4b0e6c84b3312ac0f69b28c3d52dc277962c9",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/serve-handler/LICENSE": "be8ba42db3b7c3dbb064bcdc1bbbb191c0a39c8851c2a53564e97c7eea301bca",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/shell-quote/LICENSE": "8bb16db1b047019e4395965f2cf3611b06c34bf86dc2d0210b3c3f91b53c21fe",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/source-map/LICENSE": "6cb0631f71c7749763fd3dd1d5bee52dd1070ec17f2edc1710079ad070bd2fbd",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/source-map08/LICENSE": "6cb0631f71c7749763fd3dd1d5bee52dd1070ec17f2edc1710079ad070bd2fbd",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/stacktrace-parser/LICENSE": "e1898814043cb5500483d9c8517edda824b352f696d35e5043fcfb537c221531",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/stream-browserify/LICENSE": "96e5193183476a03da6667d217ce14110191d26ee105338086e94339edf40d5a",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/stream-http/LICENSE": "a0e6357a5e8ea65827addeb383e0948a1874d2f46bc7feaf6349b7a376ed6e98",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/string_decoder/LICENSE": "11f2aafb37d06b3ee5bdaf06e9811141d0da05263c316f3d627f45c20d43261b",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/strip-ansi/LICENSE": "48da2f39e100d4085767e94966b43f4fa95ff6a0698fba57ed460914e35f94a0",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/superstruct/LICENSE": "0f644bc01d85e4b1958bdfe5a851704bd886404c78188d4d6fba43dc8293bc91",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/tar/LICENSE": "8a1af140fdfbf5afd3df27f7e662f989c5b963a300020dfafce42033cae9e004",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/terser/LICENSE": "901d0a7fcaccaae9917d165039c0473c354e5da2e0e94140dde67aad9ffb19da",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/text-table/LICENSE": "435a6722c786b0a56fbe7387028f1d9d3f3a2d0fb615bb8fee118727c3f59b7b",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/timers-browserify/LICENSE": "d5f14c3258420dfe5a3b641a143d6e6dd90eabb5962244d937e25699c3a45ec9",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/tty-browserify/LICENSE": "435a6722c786b0a56fbe7387028f1d9d3f3a2d0fb615bb8fee118727c3f59b7b",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/ua-parser-js/LICENSE": "fb9548e36708f09ae0cc1047ebd8153928bfe5bed67e4051f0ace552bdcbf0b3",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/util/LICENSE": "6239c6144c31e58cf925c34483606969c555574d64ffa96518ab5d7f45c75d43",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/vm-browserify/LICENSE": "3a62887f73cd035ac1068bc0127ce94291f7a03843391f56df3520e2ca2037f8",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/watchpack/LICENSE": "9068a8782d2fb4c6e432cfa25334efa56f722822180570802bf86e71b6003b1e",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/web-vitals-attribution/LICENSE": "bfdeded4040e05da31ca9b6239dc83bd23fa26ac8db87342a7ca4363f68916ff",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/web-vitals/LICENSE": "bfdeded4040e05da31ca9b6239dc83bd23fa26ac8db87342a7ca4363f68916ff",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/webpack-sources1/LICENSE": "214d0ac13edb475ec426df1979d96fd46b443debc466c0fb592e32152ae5a940",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/webpack-sources3/LICENSE": "214d0ac13edb475ec426df1979d96fd46b443debc466c0fb592e32152ae5a940",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/webpack/LICENSE": "9068a8782d2fb4c6e432cfa25334efa56f722822180570802bf86e71b6003b1e",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/write-file-atomic/LICENSE": "ea7f376fe7a1fc28572b83ac8f806d92effb31852b9981bc9ba9d5266caa6b28",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/ws/LICENSE": "dcd0a622a3a2c94fe3aa6238b76363f87df442afe788cbad966afe943ed62281",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/zod-validation-error/LICENSE": "03cc9a630489a2544b799548a0e8b134f382fe09fa06dc22b339091b28b8f4a8",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/dist/compiled/zod/LICENSE": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8",
+    "node_modules/.pnpm/next@16.3.4_@types+node@26._8e51c0b8893f067905547ccb40d36b56/node_modules/next/license.md": "ee765244e2d59f5234d474f62e0766fa0c8b99af967fdd4c0cb8dcb0c76ea224",
+    "node_modules/.pnpm/oauth4webapi@3.8.7/node_modules/oauth4webapi/LICENSE.md": "81e7b4b0196e8caa43cf243131512e5e4ab04fc312623335e783abae6ff46d79",
+    "node_modules/.pnpm/obug@2.1.4/node_modules/obug/LICENSE": "ee48679d379ca6b4493d5e231094d85f818dd9be40b1a4f234fb7ff657ee35d9",
+    "node_modules/.pnpm/openid-client@6.8.5/node_modules/openid-client/LICENSE.md": "14c5cc0dc21f44add6d88a5621c65813d40bf382550c978430096db3df0cf68c",
+    "node_modules/.pnpm/pathe@2.0.3/node_modules/pathe/LICENSE": "52e92576851154bad7737e90cc72818936f43665cb0e3f7428ed8edc8cc5709b",
+    "node_modules/.pnpm/picocolors@1.1.1/node_modules/picocolors/LICENSE": "6582629e2979466878f6014313dcc2f3756c9616148682227ce3063dde310750",
+    "node_modules/.pnpm/picomatch@4.0.5/node_modules/picomatch/LICENSE": "d0cd141b0c322fded5dfad1d4645bb2fedfc05b7321fe1009469638190d59ef9",
+    "node_modules/.pnpm/postcss@8.5.23/node_modules/postcss/LICENSE": "5be1f3465bba68a626777f984878814aaf35e7ef8e9fd314d469bcf887050fb8",
+    "node_modules/.pnpm/postcss@8.5.26/node_modules/postcss/LICENSE": "5be1f3465bba68a626777f984878814aaf35e7ef8e9fd314d469bcf887050fb8",
+    "node_modules/.pnpm/react-dom@19.2.8_react@19.2.8/node_modules/react-dom/LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "node_modules/.pnpm/react@19.2.8/node_modules/react/LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "node_modules/.pnpm/rolldown@1.2.5/node_modules/rolldown/LICENSE": "23ecfff35a5a2e80d92142f75228912c3b1abc4b5a8337a821ff4397e2f9f734",
+    "node_modules/.pnpm/safevalues@1.2.0/node_modules/safevalues/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "node_modules/.pnpm/scheduler@0.27.0/node_modules/scheduler/LICENSE": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "node_modules/.pnpm/siginfo@2.0.0/node_modules/siginfo/LICENSE": "3bdddf0b9b08aaa2fe4365b803fc958ed32c0597ca0bd727be8d9fcb8b248d18",
+    "node_modules/.pnpm/source-map-js@1.2.1/node_modules/source-map-js/LICENSE": "6cb0631f71c7749763fd3dd1d5bee52dd1070ec17f2edc1710079ad070bd2fbd",
+    "node_modules/.pnpm/std-env@4.2.0/node_modules/std-env/LICENCE": "a6f36438e46fb911859f3b9c4cad045ba64e1af3d8f4512c60258fa2d7552d28",
+    "node_modules/.pnpm/styled-jsx@5.1.6_react@19.2.8/node_modules/styled-jsx/license.md": "24d4a4580df855c345705b3016404f0c9da7e7674dc3b21a3ce7d0e5d0c37e2d",
+    "node_modules/.pnpm/tinybench@2.9.0/node_modules/tinybench/LICENSE": "cebc084d54e6dd99e53292ddb4bc1cdb63d9bfcd9ce438fe3aa6eb106d79e2ea",
+    "node_modules/.pnpm/tinyexec@1.3.0/node_modules/tinyexec/LICENSE": "f95f668fe64081ddb4153b322e34fdd719b991285ed08177d5ad7133b7988d92",
+    "node_modules/.pnpm/tinyglobby@0.2.17/node_modules/tinyglobby/LICENSE": "22c68811e174cbbfb3813d4135918df4f540959c14d872e601d9abe83d3cde8f",
+    "node_modules/.pnpm/tinyrainbow@3.1.1/node_modules/tinyrainbow/LICENCE": "cebc084d54e6dd99e53292ddb4bc1cdb63d9bfcd9ce438fe3aa6eb106d79e2ea",
+    "node_modules/.pnpm/tslib@2.8.1/node_modules/tslib/LICENSE.txt": "210b19e543130388c68654b7497e967119ce17145f66ab7d85688fbd70f08751",
+    "node_modules/.pnpm/typescript@7.0.2/node_modules/typescript/LICENSE": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47",
+    "node_modules/.pnpm/typescript@7.0.2/node_modules/typescript/NOTICE.txt": "f5c708b59114507b8b27b48181b6883d106bbca0c1634bbee45b5e344237b66b",
+    "node_modules/.pnpm/undici-types@8.3.0/node_modules/undici-types/LICENSE": "a6db8096b2707bc0102d256917d4d33f298ba36d8c3f25de067a2b5bb379db27",
+    "node_modules/.pnpm/vite@8.2.2_@types+node@26.2.0/node_modules/vite/LICENSE.md": "387dd7baa307083401a27c58c362c30832f5ba1dba84f10cc22c33401523f45c",
+    "node_modules/.pnpm/vitest@4.1.11_@types+node@2_295149386df9925e43b8f6e72d9400b5/node_modules/vitest/LICENSE.md": "881d660c26831481b697e39724d4a35c9f86e07b67156d4aeb693a0b39910435",
+    "node_modules/.pnpm/why-is-node-running@2.3.0/node_modules/why-is-node-running/LICENSE": "6a134e51aa31496c15a741592fc5d782b2dbf8d8b6b8524e15c8520ae0cd6374",
+    "node_modules/.pnpm/zod@4.4.3/node_modules/zod/LICENSE": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "scope": "LOCAL_FIXTURES",
+  "dotnet_root": "",
+  "pwsh": {"path": "", "sha256": ""},
+  "svcutil_archive": "",
+  "svcutil_packages": "",
+  "wsdl_cache": "",
+  "runtime_packages": ""
+}

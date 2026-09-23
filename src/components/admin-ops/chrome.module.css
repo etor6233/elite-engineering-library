@@ -1,0 +1,71 @@
+/* AUTHORED admin presentation. Color values come only from the V403 token authority. */
+.sidebar.sidebar { padding: 0 14px; border-right-color: var(--muted-bg); }
+.brand { min-height: 100px; display: flex; align-items: center; gap: 11px; padding: 24px 14px; }
+.brandLink { display: flex; align-items: center; gap: 11px; color: var(--ink); text-decoration: none; font-size: .92rem; font-weight: 600; letter-spacing: -.035em; min-width: 0; }
+.brandLink > span:last-child { overflow-wrap: anywhere; }
+.brandMark { display: grid; place-items: center; height: 29px; width: 29px; flex: 0 0 29px; color: var(--ink); border: 1px solid var(--line); border-radius: 9px; }
+.brandMark svg { height: 16px; width: 16px; }
+.close.close { display: grid; place-items: center; border: 0; background: transparent; color: var(--muted); min-width: 44px; min-height: 44px; padding: 10px; margin-left: auto; }
+.close svg { height: 22px; width: 22px; }
+.navigation { display: grid; gap: 24px; margin: 12px 0 24px; }
+.navGroup { display: grid; gap: 4px; }
+.groupTitle { margin: 0 14px 7px; font-size: .68rem; letter-spacing: .07em; font-weight: 600; color: var(--muted); text-transform: uppercase; }
+.navItem.navItem { display: flex; align-items: center; gap: 12px; border: 0; border-radius: 9px; min-height: 44px; width: 100%; padding: 10px 14px; text-decoration: none; color: var(--muted); font-size: .9rem; font-weight: 450; background: transparent; text-align: left; }
+.navItem > svg { height: 19px; width: 19px; flex: 0 0 19px; }
+.navItem > span { overflow-wrap: anywhere; }
+.navItem.navItem:hover { text-decoration: none; color: var(--ink); background: var(--panel); }
+.navItem.navItem[aria-current="page"] { color: var(--ink); background: var(--muted-bg); font-weight: 550; }
+.navItem[aria-current="page"]::after { content: ""; height: 4px; width: 4px; border-radius: 50%; margin-left: auto; background: var(--ink); flex: 0 0 4px; }
+.bottom { display: grid; gap: 5px; margin-top: auto; padding: 20px 0 22px; border-top: 1px solid var(--muted-bg); }
+.bottom > details { margin: 0 14px; border: 0; padding: 10px 0; font-size: .85rem; color: var(--muted); }
+.bottom > details > summary { font-weight: 450; min-height: 24px; }
+.bottom > details > form { margin-top: 14px; font-size: .85rem; }
+.bottom > details > form p { font-size: .8rem; }
+.mobileHeader.mobileHeader { justify-content: space-between; gap: 12px; min-height: 68px; padding: 0 20px; border-bottom-color: var(--muted-bg); }
+.mobileHeader .brandLink { font-size: .85rem; }
+.mobileHeader .brandMark { height: 27px; width: 27px; flex-basis: 27px; }
+.mobileHeader .menuButton { margin-left: auto; }
+.drawer.drawer { padding: 0 20px; overscroll-behavior: contain; }
+.drawer .brand { padding: 12px 4px; min-height: 80px; }
+.drawer .navigation { margin-top: 12px; gap: 28px; }
+.drawer .navItem { min-height: 49px; font-size: .98rem; }
+.drawer .bottom { padding-bottom: max(22px, env(safe-area-inset-bottom)); }
+.workspace.workspace { gap: 24px; min-width: 0; }
+.taskTitle.taskTitle { font-size: clamp(1.55rem, 2.1vw, 1.9rem); font-weight: 570; line-height: 1.2; letter-spacing: -.04em; margin: 0 !important; }
+.taskNavigation.taskNavigation { padding: 5px; border: 1px solid var(--muted-bg); border-radius: 11px; gap: 3px; width: fit-content; max-width: 100%; }
+.taskNavigation button { min-height: 40px; font-weight: 500; }
+.taskPicker.taskPicker { padding: 6px; }
+.taskBody { min-width: 0; }
+.home { max-width: 980px; margin: 0; }
+.homeTitle { font-size: clamp(1.65rem, 2.2vw, 2rem) !important; line-height: 1.2; font-weight: 570 !important; letter-spacing: -.035em; margin: 0 0 10px !important; }
+.homeLead { margin: 0 0 34px; color: var(--muted); font-size: .95rem; }
+.nextTask { padding: 28px 30px; background: var(--panel); border: 1px solid var(--muted-bg); border-radius: 16px; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 28px; }
+.nextContent { display: flex; gap: 20px; align-items: center; min-width: 0; }
+.taskMark { width: 50px; height: 50px; display: grid; place-items: center; background: var(--muted-bg); border-radius: 14px; flex: 0 0 50px; }
+.taskMark svg { height: 24px; width: 24px; }
+.nextTask h2 { font-size: 1.15rem; line-height: 1.3; font-weight: 550; letter-spacing: -.025em; margin: 0 0 7px; }
+.nextTask p { color: var(--muted); font-size: .88rem; margin: 0; }
+.primary.primary { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; gap: 22px; padding: 11px 16px; border-radius: 9px; background: var(--accent); color: var(--on-accent); font-size: .85rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.primary:hover { background: var(--accent-strong); }
+.primary svg { width: 17px; height: 17px; }
+.quickTitle { font-size: .78rem; font-weight: 500; color: var(--muted); margin: 32px 0 12px; }
+.quickTasks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.quickTask { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; padding: 21px; border: 1px solid var(--muted-bg); border-radius: 13px; text-decoration: none; min-width: 0; }
+.quickTask:hover { border-color: var(--line); text-decoration: none; background: var(--panel); }
+.quickTask > svg { width: 21px; height: 21px; color: var(--muted); }
+.quickTask strong { font-size: .9rem; font-weight: 550; color: var(--ink); }
+.quickTask small { display: block; margin-top: 6px; color: var(--muted); font-size: .8rem; font-weight: 400; }
+@media(max-width: 900px) {
+    .navigation { gap: 20px; }
+    .workspace.workspace { gap: 20px; }
+    .taskNavigation.taskNavigation { width: 100%; }
+    .taskNavigation button { min-height: 44px; }
+    .homeLead { margin-bottom: 25px; }
+    .nextTask { grid-template-columns: 1fr; padding: 22px; gap: 23px; }
+    .nextContent { gap: 16px; align-items: flex-start; }
+    .nextTask .primary { width: 100%; justify-content: space-between; }
+    .quickTasks { grid-template-columns: 1fr; gap: 9px; }
+    .quickTask { flex-direction: row; align-items: center; gap: 17px; padding: 18px 20px; }
+    .quickTask > svg { flex: 0 0 21px; }
+    .quickTitle { margin-top: 27px; }
+}

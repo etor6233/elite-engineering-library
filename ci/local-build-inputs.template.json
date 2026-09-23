@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "scope": "LOCAL_FIXTURES",
+  "python": {"path": "", "sha256": ""},
+  "source_inventory_ref": ".elite-source-inventory.json",
+  "source_inventory_sha256": "",
+  "go": "",
+  "node": "",
+  "go_mod_cache": "",
+  "install_inputs": "",
+  "install_inputs_sha256": "",
+  "arca_inputs": "",
+  "arca_inputs_sha256": "",
+  "run_root": ""
+}

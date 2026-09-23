@@ -1,0 +1,28 @@
+groups:
+  - name: platform-symptoms
+    interval: 30s
+    rules:
+      - alert: PlatformHighErrorRate
+        expr: sum(rate(http_server_request_duration_seconds_count{http_response_status_code=~"5.."}[5m])) / sum(rate(http_server_request_duration_seconds_count[5m])) > 0.01
+        for: 10m
+        labels:
+          severity: page
+        annotations:
+          summary: User-visible server error rate exceeds one percent
+          runbook_url: https://replace.invalid/runbooks/api-availability
+      - alert: PlatformOutboxBacklog
+        expr: max(platform_outbox_oldest_unpublished_age_seconds) > 300
+        for: 10m
+        labels:
+          severity: ticket
+        annotations:
+          summary: Transactional outbox has unpublished events older than five minutes
+          runbook_url: https://replace.invalid/runbooks/outbox-backlog
+      - alert: PlatformBackupStale
+        expr: time() - max(platform_backup_last_success_unixtime) > 90000
+        for: 15m
+        labels:
+          severity: page
+        annotations:
+          summary: No successful platform backup has been observed within twenty-five hours
+          runbook_url: https://replace.invalid/runbooks/backup-stale

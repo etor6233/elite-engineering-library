@@ -1,0 +1,37 @@
+{
+  "automatic_business_write": false,
+  "automatic_contact_eligibility": false,
+  "organization_id": "store-1",
+  "outcomes": [
+    {
+      "candidate": {
+        "ad_group_id": "adset-1",
+        "campaign_id": "campaign-1",
+        "contact_eligibility": "pending_policy",
+        "creative_id": "ad-1",
+        "fields": [
+          {
+            "id": "email",
+            "value": "person@example.test"
+          }
+        ],
+        "form_id": "123456789",
+        "is_test": false,
+        "organization_id": "store-1",
+        "provider": "meta_lead_ads",
+        "provider_lead_id": "meta-cross-language-1",
+        "source_kind": "facebook",
+        "submitted_at": "2026-09-04T12:00:00+0000",
+        "tenant_id": "44444444-4444-4444-8444-444444444444"
+      },
+      "normalization_codes": [],
+      "provider_lead_id_sha256": "a5f7a209773b0eba1bc806daa8f72d48573ebd6ed803200c5401dcfcd347e5f6",
+      "status": "CANDIDATE"
+    }
+  ],
+  "provider": "meta_lead_ads",
+  "provider_response_sha256": "fec8986d87cb71e9dfdffb40494ac8aa579c7a56a613605ec6978fe920a2d798",
+  "schema": "elite-meta-lead-candidate-batch/v1",
+  "source_commit": "788f363d15b1269ab5efb7cd00fb5e3b133cd99b",
+  "tenant_id": "44444444-4444-4444-8444-444444444444"
+}

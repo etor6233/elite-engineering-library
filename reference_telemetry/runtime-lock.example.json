@@ -1,0 +1,52 @@
+{
+  "schema": "elite-reference-telemetry-runtime/v1",
+  "binaries": {
+    "elite-otelcol": {
+      "path": "REPLACE_WITH_VERIFIED_ABSOLUTE_EXE_PATH",
+      "bytes": 0,
+      "sha256": "REPLACE_WITH_VERIFIED_SHA256"
+    },
+    "prometheus": {
+      "path": "REPLACE_WITH_VERIFIED_ABSOLUTE_EXE_PATH",
+      "bytes": 0,
+      "sha256": "REPLACE_WITH_VERIFIED_SHA256"
+    },
+    "promtool": {
+      "path": "REPLACE_WITH_VERIFIED_ABSOLUTE_EXE_PATH",
+      "bytes": 0,
+      "sha256": "REPLACE_WITH_VERIFIED_SHA256"
+    },
+    "refund-host": {
+      "path": "REPLACE_WITH_VERIFIED_ABSOLUTE_EXE_PATH",
+      "bytes": 0,
+      "sha256": "REPLACE_WITH_VERIFIED_SHA256"
+    },
+    "telemetry-reference": {
+      "path": "REPLACE_WITH_VERIFIED_ABSOLUTE_EXE_PATH",
+      "bytes": 0,
+      "sha256": "REPLACE_WITH_VERIFIED_SHA256"
+    },
+    "postgres": {
+      "path": "REPLACE_WITH_VERIFIED_ABSOLUTE_EXE_PATH",
+      "bytes": 0,
+      "sha256": "REPLACE_WITH_VERIFIED_SHA256"
+    },
+    "initdb": {
+      "path": "REPLACE_WITH_VERIFIED_ABSOLUTE_EXE_PATH",
+      "bytes": 0,
+      "sha256": "REPLACE_WITH_VERIFIED_SHA256"
+    },
+    "pg_ctl": {
+      "path": "REPLACE_WITH_VERIFIED_ABSOLUTE_EXE_PATH",
+      "bytes": 0,
+      "sha256": "REPLACE_WITH_VERIFIED_SHA256"
+    },
+    "psql": {
+      "path": "REPLACE_WITH_VERIFIED_ABSOLUTE_EXE_PATH",
+      "bytes": 0,
+      "sha256": "REPLACE_WITH_VERIFIED_SHA256"
+    }
+  },
+  "migrations": {},
+  "seed_sha256": "6fa405b703985ccbde52f1d3f37f130826d10d0056afbcccd667b0a557792b9a"
+}

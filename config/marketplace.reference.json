@@ -1,0 +1,25 @@
+{
+  "schema": "elite-marketplace-publication/v1",
+  "tenant_id": "d84c64f9-1252-4db5-bf5a-3af8026190f1",
+  "organization_id": "marketplace-store",
+  "seller_id": "123456789",
+  "site_id": "MLA",
+  "currency": "ARS",
+  "currency_digits": 2,
+  "media_origin": "https://catalog.example.invalid",
+  "bindings": [
+    {
+      "variant_id": "fixture-variant",
+      "sku": "fixture-bicycle",
+      "category_id": "MLA3530",
+      "listing_type_id": "gold_special",
+      "attributes": [
+        {
+          "id": "ITEM_CONDITION",
+          "value_id": "2230284"
+        }
+      ],
+      "stock_mode": "item"
+    }
+  ]
+}

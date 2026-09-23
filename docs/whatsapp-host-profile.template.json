@@ -1,0 +1,53 @@
+{
+  "schema": "elite-whatsapp-host/v1",
+  "tenant_id": "",
+  "tenant_code": "",
+  "organization_id": "",
+  "connection_id": "",
+  "consent_purpose": "",
+  "policy_version": "",
+  "retention_approval_sha256": "",
+  "provider_profile_file": "",
+  "provider_profile_sha256": "",
+  "process": {
+    "PythonExecutable": "",
+    "PythonSHA256": "",
+    "AdapterDirectory": "",
+    "AdapterSHA256": "",
+    "EvidenceDirectory": ""
+  },
+  "reconciler_sha256": "",
+  "worker_id": "",
+  "poll_seconds": 1,
+  "conversation_retention_seconds": 0,
+  "conversation_max_attempts": 2,
+  "llm_model": "",
+  "llm_base_url": "",
+  "llm_token_budget": 0,
+  "domain_base_url": "",
+  "service_kinds": {},
+  "product_variants": {},
+  "price_book_id": "",
+  "conversation": {
+    "Instructions": "",
+    "PromptCacheKey": "",
+    "MaxOutputTokens": 0,
+    "MaxHistory": 0,
+    "MaxInputBytes": 0,
+    "MaxToolBytes": 0,
+    "StoreApproved": false,
+    "HandoffText": ""
+  },
+  "approval_policy": {
+    "AutoApproveMinorUnits": 0,
+    "DualControlMinorUnits": 0,
+    "MaxOpenPerSubject": 0
+  },
+  "status_collector": {
+    "address": "",
+    "server_name": "",
+    "ca_file": "",
+    "ca_sha256": ""
+  },
+  "reference_fixture": false
+}

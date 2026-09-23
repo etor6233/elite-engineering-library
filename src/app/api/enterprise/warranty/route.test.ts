@@ -1,0 +1,14 @@
+import {NextRequest} from "next/server";
+import {it,expect,vi,afterEach} from "vitest";
+const m=vi.hoisted(()=>({session:vi.fn(),get:vi.fn(),post:vi.fn()}));
+vi.mock("@/platform/auth/session",()=>({readSession:m.session,allowed:(s:{permissions:string[]},p:string)=>s.permissions.includes(p)}));
+vi.mock("@/platform/auth/oidc-client",()=>({applicationBaseUrl:()=>new URL("https://portal.example.test")}));
+vi.mock("@/platform/backend/protected-client",()=>({protectedGet:m.get,protectedPost:m.post}));
+vi.mock("@/platform/config/load",()=>({loadBusinessConfig:async()=>({features:{warranty_portal:true}})}));
+import{GET,POST}from"./route";
+afterEach(()=>vi.clearAllMocks());
+const req=(body:BodyInit)=>new NextRequest("https://portal.example.test/api/enterprise/warranty",{method:"POST",headers:{origin:"https://portal.example.test","content-type":"application/json"},body,duplex:"half" as const});
+it("authenticates before consuming bodies",async()=>{m.session.mockResolvedValue(null);const r=req("{}");expect((await POST(r)).status).toBe(401);expect(r.bodyUsed).toBe(false);expect(m.post).not.toHaveBeenCalled()});
+it("bounds and cancels chunked commands",async()=>{m.session.mockResolvedValue({subject:"customer",permissions:["warranty:self"],organizations:["store"]});let cancelled=false;const body=new ReadableStream<Uint8Array>({pull(c){c.enqueue(new Uint8Array(32769))},cancel(){cancelled=true}});expect((await POST(req(body))).status).toBe(413);expect(cancelled).toBe(true);expect(m.post).not.toHaveBeenCalled()});
+it("rejects customer work, ambiguous scope and foreign organization before backend",async()=>{m.session.mockResolvedValue({subject:"customer",permissions:["warranty:self"],organizations:["store"]});const c={surface:"customer",organization_id:"store",action:"work",case_id:"case",command_id:"cmd",expected_version:"4",evidence_sha256:"a".repeat(64)};expect((await POST(req(JSON.stringify(c)))).status).toBe(403);for(const tail of["&organization_id=store","&surprise=x"]){expect((await GET(new NextRequest("https://portal.example.test/api/enterprise/warranty?kind=claim&id=case&surface=customer&organization_id=store"+tail))).status).toBe(403)};expect(m.post).not.toHaveBeenCalled();expect(m.get).not.toHaveBeenCalled()});
+it("does not return another actor's recovery receipt",async()=>{m.session.mockResolvedValue({subject:"customer",permissions:["warranty:self"],organizations:["store"]});m.get.mockResolvedValue({case_id:"case",command_id:"open",version:"1",kind:"opened",state:"opened",actor:"other",request_sha256:"a".repeat(64),payload_sha256:"b".repeat(64),payload:{},recorded_at:"2026-09-12T00:00:00Z",replay:false});expect((await GET(new NextRequest("https://portal.example.test/api/enterprise/warranty?kind=command&id=case&command_id=open&surface=customer&organization_id=store"))).status).toBe(409);expect(m.post).not.toHaveBeenCalled()});

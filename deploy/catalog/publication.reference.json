@@ -1,0 +1,9 @@
+{
+  "schema": "elite-catalog-publication/v1",
+  "tenant_id": "ca6c9cb7-e548-4f19-a2e6-27d2aa2d4893",
+  "organization_id": "j3-store",
+  "market": "AR",
+  "currency": "ARS",
+  "origin": "https://catalog.example.invalid",
+  "policy_code": "catalog-reference-v1"
+}

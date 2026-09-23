@@ -1,0 +1,15 @@
+begin;
+drop view if exists inventory.bulk_available;
+drop trigger if exists bulk_cost_application_immutable on inventory.bulk_cost_application;
+drop trigger if exists bulk_inventory_entry_immutable on inventory.bulk_inventory_entry;
+drop function if exists inventory.reject_bulk_ledger_mutation();
+drop table if exists inventory.bulk_cost_application;
+drop table if exists inventory.bulk_cost_layer;
+drop table if exists inventory.bulk_inventory_entry;
+drop table if exists inventory.bulk_reservation;
+drop table if exists inventory.bulk_balance;
+drop table if exists inventory.inventory_lot;
+drop table if exists inventory.item_bin_policy;
+drop table if exists inventory.warehouse_bin;
+drop table if exists inventory.stock_item;
+commit;

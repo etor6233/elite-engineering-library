@@ -1,0 +1,114 @@
+{
+  "schema": "document-typed-fixture-profile/v1",
+  "mode": "TYPED_FIXTURE",
+  "classes": [
+    {
+      "class_id": "supplier-invoice",
+      "schema_version": "1",
+      "fixture_sha256": "76d8288f4ed116c4108d2889e51cc11d8d8db4fa91cc85c320706c42343d2603"
+    },
+    {
+      "class_id": "receipt",
+      "schema_version": "1",
+      "fixture_sha256": "4fd26b911aaba505b2782afd019b655ab6e89a933e185ae3bd940bca6c29b372"
+    },
+    {
+      "class_id": "proforma-invoice",
+      "schema_version": "1",
+      "fixture_sha256": "901163f693e74a5a990e271dfca6ad11be866740584ceeb1605d382c6612680c"
+    },
+    {
+      "class_id": "commercial-invoice",
+      "schema_version": "1",
+      "fixture_sha256": "bcd08dc2b2472cc0fefeca07a01ab94f5ec9df53338a140bc1e2333e58def2ee"
+    },
+    {
+      "class_id": "packing-list",
+      "schema_version": "1",
+      "fixture_sha256": "cf92cc6455eba75388a5ecd3d7a28ecdd98457c6aacb952ce1ea6914d4e0b0b0"
+    },
+    {
+      "class_id": "purchase-order",
+      "schema_version": "1",
+      "fixture_sha256": "23a342f9a7dfec4e78d8709d08ac8d7656b51b60af67c29d4fdcf44a54d92cf6"
+    },
+    {
+      "class_id": "purchase-order-confirmation",
+      "schema_version": "1",
+      "fixture_sha256": "317281facd4e421704f699218ee05177609778e1c1f8a7bade4a0b9def12fff7"
+    },
+    {
+      "class_id": "bill-of-lading-airway-bill",
+      "schema_version": "1",
+      "fixture_sha256": "03d395f329bf8c82fc622a46132505d69ac4bb91f491aae361c588ff37985d81"
+    },
+    {
+      "class_id": "delivery-note",
+      "schema_version": "1",
+      "fixture_sha256": "821df723a265cd31b0bb1c8346cd77aaf31210f475b09b88b32eaa37f10b93c1"
+    },
+    {
+      "class_id": "certificate-of-origin",
+      "schema_version": "1",
+      "fixture_sha256": "44185b40dc8fc805880424ad1626e7cceddc607f44f7dc26a49f40fc876addbe"
+    },
+    {
+      "class_id": "quality-inspection-certificate",
+      "schema_version": "1",
+      "fixture_sha256": "e4d33298addca805d49ae3fbd0e7b1ae72d4474c33a7f4c5b0c7b81d295e65f0"
+    },
+    {
+      "class_id": "customs-declaration-clearance",
+      "schema_version": "1",
+      "fixture_sha256": "729e21be73f9a4e27916b52c8ff0241080e73fe4a2552a6b19377cb681b00510"
+    },
+    {
+      "class_id": "insurance-freight-document",
+      "schema_version": "1",
+      "fixture_sha256": "578283ad68b0cab023a5d534e912d1a790151eda4d08369c83c4aa7badb8b222"
+    },
+    {
+      "class_id": "price-list-quotation",
+      "schema_version": "1",
+      "fixture_sha256": "00c3ea42c3e3fafdbaa066bd3c00f91e38d7e32398918ddd56e378368f7a03b9"
+    },
+    {
+      "class_id": "product-specification-catalog",
+      "schema_version": "1",
+      "fixture_sha256": "751660f204efbca63ea8e6982dc7754d8405bafd57e24742e9ab5cc411604bd0"
+    },
+    {
+      "class_id": "contract-addendum",
+      "schema_version": "1",
+      "fixture_sha256": "de18aa1b5a1c3cc06e0015815a784a77efa93c0d9ca461076b52916a2bea8320"
+    },
+    {
+      "class_id": "bank-payment-statement",
+      "schema_version": "1",
+      "fixture_sha256": "0bed215e106c04bc5089a8fe2061de9aa2378bd6b8f9d1bd57019d15a4e16cdf"
+    },
+    {
+      "class_id": "warranty-service-claim",
+      "schema_version": "1",
+      "fixture_sha256": "098e81adb0958165e7faafe11fbcf81ea668232ed7d5897ea8292cc4168e8672"
+    },
+    {
+      "class_id": "identity-regulatory-document",
+      "schema_version": "1",
+      "fixture_sha256": "7266a935cd91e1a29589cca01edd4ec2c3525aaf23af5005681fa48a9d49ccfd"
+    },
+    {
+      "class_id": "multi-document-package",
+      "schema_version": "1",
+      "fixture_sha256": "b304e83c99d18e8a2887d0b964355e81802fbb2451892b4b0e4ab8a009716af7"
+    },
+    {
+      "class_id": "other-named-class",
+      "schema_version": "1",
+      "fixture_sha256": "da27f99297e69c6b9f3232d6924d6972f81ed6a2e24a94bc48a236b3841ae6f9"
+    }
+  ],
+  "automatic_storage_authorized": false,
+  "ocr_evaluated": false,
+  "domain_financial_effect": false
+}

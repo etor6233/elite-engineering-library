@@ -1,0 +1,32 @@
+import{test,expect}from'@playwright/test';
+import{createHash}from'node:crypto';import{createRequire}from'node:module';import{resolve}from'node:path';import{pathToFileURL}from'node:url';
+test.use({locale:'es-AR'});
+test('Private locale keeps durable commands and original content through English recovery',async({page:originalPage,context:originalContext,browser},info)=>{
+ let page=originalPage,context=originalContext;
+ if(process.env.ELITE_PRIVATE_LOCALE_BROWSER!=='1')throw new Error('explicit fixture required');const base=process.env.ELITE_BASE_URL;expect(new URL(base).hostname).toBe('127.0.0.1');expect(new URL(base).protocol).toBe('https:');page.setDefaultTimeout(12000);
+ const require=createRequire(resolve(process.env.ELITE_WEB_ROOT,'package.json')),{EncryptJWT}=await import(pathToFileURL(require.resolve('jose')).href),identities=JSON.parse(process.env.ELITE_LOCALE_IDENTITIES);
+ async function identity(name){const jwt=await new EncryptJWT(identities[name]).setProtectedHeader({alg:'dir',enc:'A256GCM',typ:'JWT'}).setIssuedAt().setExpirationTime('300s').encrypt(createHash('sha256').update(process.env.AUTH_SESSION_SECRET).digest());await context.addCookies([{name:'__Host-elite_session',value:jwt,url:base+'/',secure:true,httpOnly:true,sameSite:'Lax'}])}
+ const errors=[],posts=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(r.method()==='POST'&&r.url().includes('/api/enterprise/help/cms'))posts.push(r.postDataJSON())});
+ const box=name=>page.getByRole('textbox',{name,exact:true}),button=name=>page.getByRole('button',{name,exact:true}),select=name=>page.getByRole('combobox',{name,exact:true});
+ 
+ await identity('editor');await page.goto('/help/library');await expect(page.locator('html')).toHaveAttribute('lang','es-AR');
+ await box('Título del artículo').fill('Inventario');await box('Texto del artículo').fill('Artículo original <script>window.LOCALE_UNSAFE=1</script>.');
+ let dropped=false;await page.route('**/api/enterprise/help/cms**',async route=>{if(dropped||route.request().method()!=='POST'||route.request().postDataJSON().action!=='create'){await route.continue();return}dropped=true;const response=await route.fetch();expect(response.status()).toBe(200);await route.abort('failed')});
+ await button('Guardar borrador').click();await expect(page.getByRole('status')).toContainText('Resultado sin confirmar');expect(posts).toHaveLength(1);const original=posts[0];expect(original.locale).toBe('es');expect(original.title).toBe('Inventario');
+ await page.unrouteAll();await page.getByText('Idioma de la interfaz',{exact:true}).click();await select('Idioma').selectOption('en');await expect(page.getByText('Guardar recarga esta página.',{exact:false})).toBeVisible();await button('Guardar idioma y recargar').click();
+ await expect(page.locator('html')).toHaveAttribute('lang','en-US');await expect(box('Article title')).toBeVisible();expect(posts).toHaveLength(1);
+ await button('Check pending result').click();await expect(page.getByRole('status')).toContainText('Result retrieved without repeating the write.');expect(posts).toHaveLength(1);
+ const id=await box('Article reference').inputValue();expect(id).toBe(original.article_id);
+ await button('Check current article').click();await expect(page.getByRole('status')).toContainText('Current article retrieved.');await expect(page.getByRole('heading',{name:'Inventario',exact:true})).toHaveAttribute('lang','es');
+ await expect(page.getByRole('article').getByText('Artículo original <script>window.LOCALE_UNSAFE=1</script>.',{exact:true})).toHaveAttribute('lang','es');expect(await page.evaluate(()=>window.LOCALE_UNSAFE)).toBeUndefined();
+ await box('Article title').fill('Inventario revisado');await box('Article text').fill('Texto conservado en español.');await button('Save revision').click();await expect(page.getByRole('status')).toContainText('Operation recorded.');await button('Check current article').click();await expect(page.getByRole('status')).toContainText('Current article retrieved.');await button('Publish article').click();await expect(page.getByRole('status')).toContainText('Operation recorded.');
+ expect(posts).toHaveLength(3);expect(posts.map(x=>x.action)).toEqual(['create','update','publish']);expect(posts[1]).not.toHaveProperty('locale');expect(posts[1].body).toBe('Texto conservado en español.');
+ await page.goto('/help');await expect(page.getByRole('heading',{name:'Content guide',exact:true})).toBeVisible();await page.getByRole('searchbox',{name:'Search guides',exact:true}).fill('published versions');await button('Search').click();await expect(page.getByRole('heading',{name:'Content guide',exact:true})).toBeVisible();await expect(page.getByText('Published versions are not edited.',{exact:false})).toBeVisible();
+ await page.goto('/guide/owner');await expect(page.getByRole('heading',{name:/Owner/})).toBeVisible();await page.screenshot({path:info.outputPath('private-locale-guide-en.png'),fullPage:true});
+ await identity('reader');await page.goto('/help/library');await expect(page.locator('html')).toHaveAttribute('lang','es-AR');await expect(button('Guardar borrador')).toHaveCount(0);
+ context=await browser.newContext({locale:'en-US',ignoreHTTPSErrors:true});page=await context.newPage();page.setDefaultTimeout(12000);page.on('pageerror',e=>errors.push(e.message));await identity('reader');await page.goto(base+'/help/library');await expect(page.locator('html')).toHaveAttribute('lang','en-US');await box('Article reference').fill(id);await button('Check current article').click();await expect(page.getByRole('heading',{name:'Inventario revisado',exact:true})).toHaveAttribute('lang','es');
+ await page.setViewportSize({width:390,height:844});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);await page.screenshot({path:info.outputPath('private-locale-reader-mobile.png'),fullPage:true});
+ await context.close();context=originalContext;page=originalPage;await identity('editor');await page.goto('/help/library');await expect(page.locator('html')).toHaveAttribute('lang','en-US'); // saved preference wins, belongs to editor only
+ await identity('unprivileged');await page.goto('/help/library');await expect(page.locator('html')).toHaveAttribute('lang','es-AR');await expect(page.getByText('No tenés permiso para consultar este espacio.',{exact:true})).toBeVisible();
+ expect(posts).toHaveLength(3);expect(errors).toEqual([]);
+});

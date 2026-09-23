@@ -1,0 +1,7 @@
+# AUTHORED packaging over the selected unchanged SQL and official PostgreSQL CLI.
+ARG POSTGRES_CLIENT
+FROM ${POSTGRES_CLIENT}
+COPY --chown=65532:65532 db/migrations/ /migrations/
+COPY --chown=65532:65532 deploy/postgres-migrate.sh /app/postgres-migrate.sh
+USER 65532:65532
+ENTRYPOINT ["psql", "-X", "--set=ON_ERROR_STOP=1"]

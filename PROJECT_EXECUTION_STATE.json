@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "revision": 341,
+  "revision": 339,
   "project": {
     "id": "elite-library-maintenance",
     "mode": "EXISTING",
@@ -227,8 +227,8 @@
       "id": "inventory",
       "kind": "inventory",
       "path": "README.md",
-      "sha256": "aa7cb8e1c6450fe0cf5121d9bd5be9f2388150f81dc4698d10ff420446ca2a3b",
-      "produced_at": "2026-09-22T17:58:46.303704Z",
+      "sha256": "de5f95644aa23db7d23a068d0b393428359d896acc034d4685e731b041cdd9fb",
+      "produced_at": "2026-09-13T20:14:39.319925Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },
     {
@@ -491,7 +491,7 @@
       "id": "agent-bridge-installer",
       "path": "INSTALL_AGENT_BRIDGE.ps1",
       "kind": "maintenance_control",
-      "sha256": "7d34366b12887cc54d6bc6caed53a4b3cf24b170268a10da36ff692b82a41d9f",
+      "sha256": "d79fad810a15c0c5a85ca5ed693e066a5d73fdb720c9582be992eb37e7394c33",
       "produced_at": "2026-09-07T15:02:11Z",
       "producer": "agent-observed-file-hash-not-production-certification"
     },

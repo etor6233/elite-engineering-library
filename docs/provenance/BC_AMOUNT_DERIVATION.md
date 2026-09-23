@@ -1,0 +1,17 @@
+# BCApps exact amount adaptation — verified local contract
+
+This is local Go/SQL translated from Microsoft BCApps MIT source, not Microsoft-authored Go or a Business Central platform certification. Commit: `2eae56d704a1fd035d104f333602aea7091b7749`.
+
+| Source | SHA-256 | Source function | Destination and supported contract |
+|---|---|---|---|
+| `src/Layers/W1/BaseApp/Sales/Document/SalesLine.Table.al` | `ca65615dc05bc555a878ba2635c955897930332ef171e313a00103074fbc7278` | `UpdateAmounts`, line5883 | `internal/bcamounts/amounts.go:LineAmount`: integral quantities/minor unit precision1, exact multiplication then fixed discount subtraction. Commerce uses discount0. No fiscal/FX/percentage-discount behavior is selected. |
+| `src/Layers/W1/BaseApp/Finance/GeneralLedger/Posting/GenJnlPostBatch.Codeunit.al` | `be8be19c361c4610f0c3894eb97cfe0554ab54c1de0aaa491a8a3903fee4b150` | `ProcessBalanceOfLines` line431 and `CheckBalance` line546 | `JournalTotals` and `CheckBalance`: sum exact signed balance within an already scoped single journal/currency; no nonzero imbalance. Nonnegative one-sided columns, positive turnover and int64 storage bounds are explicit local representation constraints. |
+| `src/Layers/W1/BaseApp/Finance/GeneralLedger/Reversal/GenJnlPostReverse.Codeunit.al` | `97d9268c6be04de015c50595e94b935710cd62610f987a08d66c9aab6790cba5` | `ReverseGLEntry` line209, signed negation line225 | `internal/platform/postgres/bc_accounting_sql.go`: negate signed debit-minus-credit, normalize into existing positive columns; source correction turnover is not claimed equivalent. Origin links and single reversal remain caller transaction rules. |
+
+Source receipt files are in the staging sibling `official-source-inspection`; raw bytes were matched to Git blobs of the fixed commit and SHA-256. The root MIT license is preserved verbatim in `licenses/Microsoft-BCApps-MIT.txt`, SHA `c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383`.
+
+The amount/balance arithmetic and reverse SQL expression are ADAPTED. Scope, IDs, payload validation, authorization, retries, transaction/outbox wiring, local error mapping and storage representation guards remain local. Existing owner files remain AUTHORED glue plus calls to these translations; this does not automatically admit all remaining domain behavior within those files. No legacy entire pack is relabeled.
+
+Counterexamples discovered before the change are retained in `business-red.log`: negative opposite columns yielded5/5 and int64 wrap yielded1/1 at the domain repository boundary. Local regression tests are clearly labeled local; the historical Microsoft AL suite has not been executed on this machine. `GenJnlPostBatch.CheckBalance` and `ERMReverseGLEntries.ReverseForceDocBalanceNo` supply the no-unbalanced-posting oracle; deterministic local vectors and storage boundary cases verify this translation.
+
+The local reference passed amount/balance unit regressions, exact Go1.26.8 native fuzzing (7 seeds,573594 executions/3s),54 current PostgreSQL migrations, connected commerce/order/stock/payment-request and accounting concurrent posting/reversal/close, vet and complete module build. Reconstruction and the G0–G8 decision are recorded in reconstruction_evidence/BC_EXACT_AMOUNT_ADAPTATION_V402.md. This admits the narrow adapter only; wider business owners, payment providers, fiscality, production release and target acceptance retain their own gates.

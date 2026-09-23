@@ -1,0 +1,76 @@
+{
+  "schema": "elite-posthog-nps-source-lock/v1",
+  "commit": "6fafbb9081bd15e79448af5650e02a4f9ea435cc",
+  "release": "desktop-v0.61.382",
+  "license_expression": "MIT",
+  "upstream_sources": [
+    {
+      "path": "frontend/src/scenes/surveys/utils.ts",
+      "url": "https://raw.githubusercontent.com/PostHog/posthog/6fafbb9081bd15e79448af5650e02a4f9ea435cc/frontend/src/scenes/surveys/utils.ts",
+      "git_blob_sha1": "98066cd409963769cc829dfbe79a6f3afb7f6138",
+      "bytes": 62358,
+      "sha256": "a43ed06c7eaffbe5bde3fe515177e512ebc4e6bce24dbef253ed100cbb1a08c1",
+      "git_blob_verified": true,
+      "observed_at": "2026-09-13T14:46:44.868169+00:00"
+    },
+    {
+      "path": "frontend/src/scenes/surveys/utils.test.ts",
+      "url": "https://raw.githubusercontent.com/PostHog/posthog/6fafbb9081bd15e79448af5650e02a4f9ea435cc/frontend/src/scenes/surveys/utils.test.ts",
+      "git_blob_sha1": "339afd4b6b6c8b8fa34eff405cc212f9090552d2",
+      "bytes": 74584,
+      "sha256": "7b3b24fe2d6d4525113657629991e0d0056b2c8fcf91e6bd2a906b1c280bd565",
+      "git_blob_verified": true,
+      "observed_at": "2026-09-13T14:46:45.204514+00:00"
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/PostHog/posthog/6fafbb9081bd15e79448af5650e02a4f9ea435cc/LICENSE",
+      "git_blob_sha1": "847d9d3def03458035447bdae131e1981e2a63da",
+      "bytes": 1563,
+      "sha256": "6d82d67dba42eb94ba10f1e986d2eec338c22fb7c5216c2c0ebdecd83d53a029",
+      "git_blob_verified": true,
+      "observed_at": "2026-09-13T14:46:45.501129+00:00"
+    }
+  ],
+  "selected_implementation_lines": [
+    [
+      300,
+      316
+    ],
+    [
+      340,
+      350
+    ],
+    [
+      354,
+      372
+    ],
+    [
+      379,
+      382
+    ]
+  ],
+  "selected_original_test_lines": [
+    843,
+    990
+  ],
+  "original_selected_cases": 9,
+  "original_test_harness_sha256": "0d118812a072a6e7dcfb30f50080e3e6b24c08801fa36ca9bb4ea53717c20d34",
+  "original_test_log_sha256": "fa8153d15625aabc91e3e7e82343767d81eac4bab9dc629ea94811cedc25068d",
+  "adaptation": "Grouped int64 SQL counts; derive passives; numeric unrounded output, no legacy histogram parser. Strict invalid-count validation and reporting minimum remain local caller glue.",
+  "runtime_dependencies_added": 0,
+  "files": {
+    "docs/posthog-nps.md": "2a48b97048c3a11d9ae8a5501c0e980cbff6f619f1cabc89e8bd526f780e0964",
+    "third_party/posthog-nps/LICENSE": "6d82d67dba42eb94ba10f1e986d2eec338c22fb7c5216c2c0ebdecd83d53a029",
+    "third_party/posthog-nps/utils.test.ts.txt": "7b3b24fe2d6d4525113657629991e0d0056b2c8fcf91e6bd2a906b1c280bd565",
+    "third_party/posthog-nps/utils.ts.txt": "a43ed06c7eaffbe5bde3fe515177e512ebc4e6bce24dbef253ed100cbb1a08c1",
+    "internal/posthognps/nps.go": "0132848b6af8b978e739726fc2f57e04df8d65e7b62814e472e0a95d134c032f",
+    "internal/posthognps/nps_fuzz_test.go": "4b75d99b116377ac26896c399f720b9a3ad2cd7d0bf3b2706cb356b60e9f429d",
+    "internal/posthognps/nps_test.go": "3e606d755bab78d6d8efab67c868258c200e81edb42da72b3c19c346f31afb8b"
+  },
+  "conditions": [
+    "Only validated nonnegative grouped counts; no inference about representative population/consent",
+    "No whole upstream runtime, analytics, enterprise code or production certification",
+    "Rebuild complete reference and run connected customer feedback regression before promotion"
+  ]
+}

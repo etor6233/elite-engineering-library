@@ -1,0 +1,45 @@
+{
+  "schema": "elite-http-authority-lock/v1",
+  "provider": "Mercado Libre",
+  "api_base_url": "https://api.mercadolibre.com",
+  "official_sdk_status": "REJECTED_ARCHIVED_NOT_FUNCTIONAL",
+  "archived_go_sdk": {
+    "repository": "mercadolibre/golang-sdk",
+    "commit": "cd44c2846d1f7e0ff69315fbfaface6cb5a866b2",
+    "archived": true,
+    "provider_notice": "not functional and no longer maintained"
+  },
+  "official_contracts": [
+    {
+      "claim": "OAuth bearer token in Authorization header",
+      "url": "https://developers.mercadolibre.com.ar/es_ar/autenticacion-y-autorizacion/autenticacion-y-autorizacion",
+      "last_updated": "2026-07-15"
+    },
+    {
+      "claim": "POST /items/validate; 204 means valid; validation does not publish",
+      "url": "https://developers.mercadolibre.com.ar/validador-de-publicaciones",
+      "last_updated": "2025-12-30"
+    },
+    {
+      "claim": "GET /orders/{id}",
+      "url": "https://developers.mercadolibre.com.ar/es_ar/saldo-de-la-cuenta/gestion-packs",
+      "last_updated": "2025-12-29"
+    },
+    {
+      "claim": "notifications must be acknowledged quickly, queued, and fetched by resource; duplicates/retries exist",
+      "url": "https://developers.mercadolibre.com.ar/es_ar/productos-recibe-notificaciones",
+      "last_updated": "2026-07-30"
+    },
+    {
+      "claim": "application scopes separate GET read from POST/PUT/DELETE write; Mercado Libre and Mercado Pago applications separate from 2026-08-30",
+      "url": "https://developers.mercadolibre.com.ar/es_ar/metricas/crea-una-aplicacion-en-mercado-libre-es",
+      "last_updated": "2026-08-06"
+    },
+    {
+      "claim": "questions topic; GET /questions/{id} and /questions/search use api_version=4; BANNED text may be empty; answers are separate writes limited to 2000 characters",
+      "url": "https://developers.mercadolibre.com.ar/en_us/categories-and-attributes/manage-questions-and-answers",
+      "last_updated": "2026-01-15"
+    }
+  ],
+  "verified_at": "2026-09-05"
+}

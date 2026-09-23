@@ -1,0 +1,19 @@
+{
+  "schema": "elite-deploy-rollback-admission/v1",
+  "project_id": "",
+  "environment": "production",
+  "release_digest": "",
+  "evaluated_at": "",
+  "expires_at": "",
+  "executor_ref": "",
+  "tool": {
+    "name": "Kubernetes kubectl",
+    "version": "1.37.0",
+    "source": "https://github.com/kubernetes/kubernetes/releases/tag/v1.37.0",
+    "sha256": "4721b614a67bb4932a0369e61f4a323d8c6ca00943d3a2ff14837c124da06f0e"
+  },
+  "target": {},
+  "policy": "",
+  "runs": [],
+  "output": ""
+}

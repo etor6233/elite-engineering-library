@@ -1,0 +1,35 @@
+{
+  "schema": "elite-fx-direct-base-profile/v1",
+  "profile_id": "fx-reference",
+  "revision": 1,
+  "algorithm": "BC_DIRECT_BASE_V1",
+  "rounding": "NEAREST_TIES_AWAY_FROM_ZERO",
+  "tenant_id": "018f4d4a-7b36-7a21-8d10-2f4c54c28101",
+  "organization_id": "store",
+  "local_currency": "USD",
+  "valid_from": "2026-01-01T00:00:00Z",
+  "valid_until": "2027-01-01T00:00:00Z",
+  "conversion_date_from": "2026-01-01",
+  "conversion_date_through": "2026-12-31",
+  "maximum_rate_age_days": 366,
+  "source_id": "synthetic-reference",
+  "source_revision": "fixture-1",
+  "source_sha256": "e8e8f92a1841e979b090ed5c2e1657dd3575b9e7d418969f72c4781a6cd22b18",
+  "currencies": [
+    {
+      "code": "USD",
+      "minor_unit_decimals": 2,
+      "rounding_precision_minor": "1"
+    },
+    {
+      "code": "EUR",
+      "minor_unit_decimals": 2,
+      "rounding_precision_minor": "5"
+    },
+    {
+      "code": "GBP",
+      "minor_unit_decimals": 3,
+      "rounding_precision_minor": "1"
+    }
+  ]
+}

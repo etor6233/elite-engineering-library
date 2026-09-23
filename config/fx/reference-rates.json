@@ -1,0 +1,32 @@
+{
+  "schema": "elite-fx-direct-base-rates/v1",
+  "source_id": "synthetic-reference",
+  "source_revision": "fixture-1",
+  "kind": "SUPPLIED_SNAPSHOT",
+  "rates": [
+    {
+      "rate_id": "eur-2026-01-01",
+      "currency": "EUR",
+      "starting_date": "2026-01-01",
+      "exchange_rate_amount": "100",
+      "relational_exchange_rate_amount": "125",
+      "relational_currency": ""
+    },
+    {
+      "rate_id": "eur-2026-01-02",
+      "currency": "EUR",
+      "starting_date": "2026-01-02",
+      "exchange_rate_amount": "100",
+      "relational_exchange_rate_amount": "130",
+      "relational_currency": ""
+    },
+    {
+      "rate_id": "gbp-2026-01-01",
+      "currency": "GBP",
+      "starting_date": "2026-01-01",
+      "exchange_rate_amount": "200",
+      "relational_exchange_rate_amount": "300",
+      "relational_currency": ""
+    }
+  ]
+}

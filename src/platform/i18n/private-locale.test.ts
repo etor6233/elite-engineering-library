@@ -1,0 +1,5 @@
+import{it,expect}from"vitest";
+import{browserLanguage,resolvePrivateLocale}from"./private-locale";
+it("prefers validated explicit choice and preserves configured timezone",()=>{expect(resolvePrivateLocale("es-AR","America/Argentina/Buenos_Aires","en","es")).toEqual({language:"en",locale:"en-US",timeZone:"America/Argentina/Buenos_Aires",source:"preference"});expect(resolvePrivateLocale("es-AR","UTC","es","en")).toMatchObject({locale:"es-AR",source:"preference"})});
+it("orders supported browser choices by quality and honors zero",()=>{expect(browserLanguage("es;q=0.4,en-GB;q=0.9")).toBe("en");expect(browserLanguage("en;q=0, en-US;q=1,es;q=0.5")).toBe("es");expect(browserLanguage("en;q=0.5,es;q=0.5")).toBe("en")});
+it("malformed excessive and unsupported hints never select a policy",()=>{for(const raw of["fr,zh","en;q=5","en;q=-1","en;q=0.1234","*","x".repeat(513),Array(17).fill("en").join(",")])expect(browserLanguage(raw)).toBe(null);expect(resolvePrivateLocale("es-AR","UTC",{language:"en",tenant:"other"},"fr")).toMatchObject({language:"es",source:"configuration"});expect(()=>resolvePrivateLocale("en-US","Wrong/Zone","en",null)).toThrow()});

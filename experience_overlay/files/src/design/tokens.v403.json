@@ -1,0 +1,30 @@
+{
+  "revision": "V403-UI-0.3.0",
+  "default": {
+    "ink": "#f2f3f5",
+    "muted": "#b0b4bc",
+    "surface": "#101113",
+    "panel": "#191b1f",
+    "line": "#6b717c",
+    "accent": "#e8eaee",
+    "accent-strong": "#c9cdd5",
+    "on-accent": "#101113",
+    "warning": "#ffd38b",
+    "warning-bg": "#35270f",
+    "danger": "#ffb6b6",
+    "danger-bg": "#3d1c20",
+    "success": "#a3e8c0",
+    "success-bg": "#173324",
+    "muted-bg": "#25282e",
+    "focus": "#a9c6ff",
+    "ink-soft": "#2b2e35"
+  },
+  "brands": {
+    "forest": {},
+    "indigo": {
+      "accent": "#c4c9ff",
+      "accent-strong": "#aab2ff",
+      "focus": "#bcc4ff"
+    }
+  }
+}

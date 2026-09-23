@@ -1,0 +1,10 @@
+{
+  "schema": "elite-tiktok-lead-retrieval-request/v1",
+  "tenant_id": "00000000-0000-4000-8000-000000000000",
+  "organization_id": "replace-with-approved-organization",
+  "mode": "TEST",
+  "lead_source": "INSTANT_FORM",
+  "advertiser_id": "",
+  "library_id": "",
+  "page_id": ""
+}

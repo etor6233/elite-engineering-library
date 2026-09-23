@@ -1,0 +1,23 @@
+{
+  "schema": "elite-k6-load-admission/v1",
+  "project_id": "",
+  "environment": "production",
+  "release_digest": "",
+  "evaluated_at": "",
+  "expires_at": "",
+  "executor_ref": "",
+  "tool": {
+    "name": "Grafana k6",
+    "version": "2.2.0",
+    "source": "https://github.com/grafana/k6/releases/tag/v2.2.0",
+    "sha256": "87dfa91bc3e47bc4bd77911d59d7ff79f25cd76fb8322c97072f08f08a0da5ed"
+  },
+  "target": {},
+  "error_budget": "",
+  "runs": [
+    {"kind":"BASELINE", "execution_receipt":"", "summary":"", "script":"", "expected_arguments":[]},
+    {"kind":"SOAK", "execution_receipt":"", "summary":"", "script":"", "expected_arguments":[]},
+    {"kind":"SATURATION_RECOVERY", "execution_receipt":"", "summary":"", "script":"", "expected_arguments":[]}
+  ],
+  "output": ""
+}

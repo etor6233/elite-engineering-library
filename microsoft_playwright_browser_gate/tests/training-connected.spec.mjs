@@ -1,0 +1,38 @@
+import {test,expect} from '@playwright/test';
+test.use({ locale: 'es-AR' });
+import {createHash} from 'node:crypto';
+import {createRequire} from 'node:module';
+import {resolve} from 'node:path';
+import {pathToFileURL} from 'node:url';
+test('role training records exact answers and human assessment with read-only recovery after response loss',async({page,context},info)=>{
+ if(process.env.ELITE_TRAINING_BROWSER!=='1')throw new Error('explicit local training fixture required');
+ page.setDefaultTimeout(12000);
+ const base=process.env.ELITE_BASE_URL;expect(new URL(base).protocol).toBe('https:');expect(new URL(base).hostname).toBe('127.0.0.1');
+ const identities=JSON.parse(process.env.ELITE_TRAINING_IDENTITIES),require=createRequire(resolve(process.env.ELITE_WEB_ROOT,'package.json'));
+ const {EncryptJWT}=await import(pathToFileURL(require.resolve('jose')).href);
+ async function identity(name){const jwt=await new EncryptJWT(identities[name]).setProtectedHeader({alg:'dir',enc:'A256GCM',typ:'JWT'}).setIssuedAt().setExpirationTime('300s').encrypt(createHash('sha256').update(process.env.AUTH_SESSION_SECRET).digest());await context.clearCookies();await context.addCookies([{name:'__Host-elite_session',value:jwt,url:base+'/',secure:true,httpOnly:true,sameSite:'Lax'}])}
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));let startPosts=0,decisionPosts=0,reference;
+ page.on('request',r=>{if(r.method()==='POST'&&r.url().includes('/api/enterprise/training')){const body=r.postDataJSON();if(body.action==='start'){startPosts++;reference=body};if(body.action==='assess')decisionPosts++}});
+ await identity('reader');await page.goto('/guide/employee');await expect(page.getByRole('link',{name:'Capacitación',exact:true})).toHaveCount(0);await page.goto('/guide/training');await expect(page.getByText('Tu sesión no permite acceder a capacitación.')).toBeVisible();
+ await identity('foreign-org');await page.goto('/guide/training');await expect(page.getByRole('alert').filter({hasText:'No pudimos consultar el contenido'})).toBeVisible();
+ await identity('learner');await page.goto('/guide/employee');await page.getByRole('link',{name:'Capacitación',exact:true}).first().click();await expect(page.getByRole('heading',{name:'Capacitación y evaluación'})).toBeVisible();
+ await page.route('**/api/enterprise/training',async route=>{if(route.request().method()!=='POST'||route.request().postDataJSON().action!=='start'){await route.continue();return};const response=await route.fetch();expect(response.status()).toBe(200);await route.abort('failed')});
+ await page.getByRole('button',{name:'Iniciar práctica',exact:true}).click();await expect(page.getByRole('status')).toContainText('La respuesta no quedó confirmada');expect(startPosts).toBe(1);await page.unrouteAll();
+ await page.getByRole('button',{name:'Consultar intento guardado'}).click();await expect(page.getByRole('status')).toContainText('Estado consultado');expect(startPosts).toBe(1);
+ const learning=page.getByRole('region',{name:'Mi capacitación'});await expect(learning).toContainText('Registrar un recurso · versión 1.0.0');await learning.getByRole('button',{name:'Registrar lectura',exact:true}).click();await expect(learning.getByText('Lectura registrada',{exact:true})).toBeVisible();
+ await learning.getByLabel('Describí qué harías si se pierde la respuesta después de registrar un recurso.').fill('Consulto la referencia guardada y no creo otro recurso para forzar un reintento.');await learning.getByRole('button',{name:'Presentar respuestas'}).click();await expect(learning).toContainText('Pendiente de revisión humana');
+ const recorded=await context.request.get(base+'/api/enterprise/training?attempt_id='+reference.attempt_id);expect(recorded.status()).toBe(200);const assessment=(await recorded.json()).assessment;
+ const decision={action:'assess',request_id:assessment.request_id,payload_sha256:assessment.payload_sha256,approved:true,reason:'Intento de autorrevisión'};
+ expect((await context.request.post(base+'/api/enterprise/training',{headers:{origin:base,'content-type':'application/json'},data:decision})).status()).toBe(403);
+ expect((await context.request.post(base+'/api/enterprise/training',{headers:{origin:'https://example.invalid','content-type':'application/json'},data:decision})).status()).toBe(403);
+ await identity('other-learner');expect((await context.request.get(base+'/api/enterprise/training?attempt_id='+reference.attempt_id)).status()).toBe(409);
+ await identity('reviewer');await page.goto('/guide/training');const review=page.getByRole('region',{name:'Evaluaciones registradas'}).locator('article');await expect(review).toHaveCount(1);await expect(review).toContainText('Consulto la referencia guardada');await review.getByRole('button',{name:'Registrar evaluación humana'}).waitFor();
+ expect((await context.request.post(base+'/api/enterprise/training',{headers:{origin:base,'content-type':'application/json'},data:{...decision,grant_permissions:['resource:manage']}})).status()).toBe(400);
+ await review.getByLabel('Fundamento de la evaluación').fill('La respuesta describe la consulta de la referencia y evita duplicar el recurso.');await review.getByRole('combobox',{name:'Resultado',exact:true}).selectOption('approve');
+ await page.route('**/api/enterprise/training',async route=>{if(route.request().method()!=='POST'||route.request().postDataJSON().action!=='assess'){await route.continue();return};const response=await route.fetch();expect(response.status()).toBe(200);await route.abort('failed')});
+ await review.getByRole('button',{name:'Registrar evaluación humana'}).click();await expect(page.getByRole('status')).toContainText('La respuesta no quedó confirmada');expect(decisionPosts).toBe(1);await page.unrouteAll();await page.getByRole('link',{name:'Consultar evaluaciones',exact:true}).click();await expect(review).toContainText('Evaluación favorable');await expect(review.getByRole('button',{name:'Registrar evaluación humana'})).toHaveCount(0);expect(decisionPosts).toBe(1);
+ await page.screenshot({path:info.outputPath('training-review-desktop.png'),fullPage:true});
+ await identity('learner');await page.goto('/guide/training');await page.getByRole('button',{name:'Consultar intento guardado'}).click();await expect(learning).toContainText('Evaluación favorable');await expect(learning).toContainText('Revisó: reviewer');
+ expect((await context.request.post(base+'/api/enterprise/training',{headers:{origin:base,'content-type':'application/json'},data:decision})).status()).toBe(403);
+ await page.setViewportSize({width:390,height:844});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);await page.screenshot({path:info.outputPath('training-result-mobile.png'),fullPage:true});expect(errors).toEqual([]);
+});

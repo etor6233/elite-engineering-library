@@ -1,0 +1,174 @@
+{
+  "components": [
+    {
+      "dependencies": [
+        "PostgreSQL",
+        "OIDC discovery",
+        "Secret Manager references"
+      ],
+      "execution": "Cloud Run service, CPU always, min_instances 1 while embedded payment/WhatsApp/portal loops enabled",
+      "id": "api",
+      "owner": "GO-ELECTROMOBILITY-APPLICATION",
+      "port": 8080,
+      "source": "cmd/electromobility-api",
+      "config_ref": "stack-plan.json#/configs/api",
+      "target_execution": "NOT_RUN"
+    },
+    {
+      "dependencies": [
+        "same release API/BFF contracts",
+        "session secret reference",
+        "trusted forwarded-origin policy"
+      ],
+      "execution": "standalone Node Linux image; private dev URL via authenticated edge",
+      "id": "web",
+      "owner": "TS-GO-API-WEB-BRIDGE plus V403 UX owner overlay",
+      "port": 8080,
+      "config_ref": "stack-plan.json#/configs/web",
+      "target_execution": "NOT_RUN"
+    },
+    {
+      "dependencies": [
+        "PostgreSQL",
+        "provider references"
+      ],
+      "execution": "separate persistent worker services; preserve existing claim/lease/outbox semantics",
+      "id": "go-workers",
+      "owner": "all selected cmd/* entrypoints in source manifest",
+      "config_ref": "stack-plan.json#/configs/go-workers",
+      "target_execution": "NOT_RUN"
+    },
+    {
+      "activation": "CONDITIONED user credentials and target fiscal acceptance; all related processes absent when deferred",
+      "dependencies": [
+        "signed official WSDL/generated source",
+        "certificate Secret Manager references",
+        "PostgreSQL"
+      ],
+      "execution": "Original .NET worker through cloud/cert_bridge Launcher, readonly PFX mounts -> private CurrentUser/My; shared UDS sameUID; Go workers exactcommands",
+      "id": "arca",
+      "owner": "ARCA-WSFE-UDS-WORKER and Microsoft generated .NET worker",
+      "config_ref": "stack-plan.json#/configs/arca",
+      "target_execution": "NOT_RUN"
+    },
+    {
+      "dependencies": [
+        "versioned quarantine/retained storage",
+        "corpus and review admission"
+      ],
+      "execution": "provider-specific target chosen by blueprint; no automatic storage/extraction authority",
+      "id": "documents",
+      "owner": "selected document pipeline owner from full profile",
+      "config_ref": "stack-plan.json#/configs/documents",
+      "target_execution": "NOT_RUN"
+    },
+    {
+      "dependencies": [
+        "TLS private dev URL",
+        "issuer/audience",
+        "subject/org/role fixtures separate from accounts"
+      ],
+      "execution": "IAP_DIRECT protected browser dev URL + appOIDC; APIworkloadIAM X-Serverless-Authorization preserves enduserAuthorization",
+      "id": "identity",
+      "owner": "GO-ELECTROMOBILITY-APPLICATION and TS-OIDC-PORTAL-ADAPTER",
+      "config_ref": "stack-plan.json#/configs/identity",
+      "target_execution": "NOT_RUN"
+    },
+    {
+      "dependencies": [
+        "private network",
+        "secret reference or IAM database auth compatibility"
+      ],
+      "execution": "managed PostgreSQL18 compatible target; complete ordered selected migrations, pool budgets, PITR/retained backups",
+      "id": "database",
+      "owner": "PG-TX-FOUNDATION and backup restore owner",
+      "config_ref": "stack-plan.json#/configs/database",
+      "target_execution": "NOT_RUN"
+    },
+    {
+      "dependencies": [
+        "pause/resume ordering",
+        "DLQ/replay/reconciliation",
+        "maximum retries/age"
+      ],
+      "execution": "Cloud Scheduler/PubSub invokes only admitted idempotent tasks; background worker loops retain min1 until deliberately converted and tested",
+      "id": "scheduler",
+      "owner": "existing durable job/outbox owners",
+      "config_ref": "stack-plan.json#/configs/scheduler",
+      "target_execution": "NOT_RUN"
+    },
+    {
+      "dependencies": [
+        "billing export visibility",
+        "currency policy",
+        "retention and shared budget scope"
+      ],
+      "execution": "single-task FinOps Job + UTC Scheduler retry0; approved bounded BQ account/month export -> GCS SQLite generation CAS -> persisted alert/outbox -> optional PubSub acknowledgement; no automatic restriction",
+      "id": "cost-controller",
+      "owner": "GO-FINOPS internal owner + cloud observation glue",
+      "config_ref": "stack-plan.json#/configs/cost-controller",
+      "target_execution": "NOT_RUN",
+      "local_owner": "cloud/finops_cycle.py",
+      "image_recipe": "cloud/Dockerfile.controller"
+    },
+    {
+      "dependencies": [
+        "exact portable tools",
+        "source/dependency caches and locks",
+        "artifact digest",
+        "read-only PR lane vs environment-gated deploy lane"
+      ],
+      "execution": "two repositories, library exact commit/hash read-only; bounded job; no scheduled OSV Actions",
+      "id": "ci",
+      "owner": "PORTABLE-CI-GATE-RUNNER and selected frontend workflow pattern",
+      "config_ref": "stack-plan.json#/configs/ci",
+      "target_execution": "NOT_RUN"
+    }
+  ],
+  "execution_environment": "development/staging reference; no account created",
+  "owners": [
+    "T2801",
+    "T2808",
+    "T2809",
+    "T2810"
+  ],
+  "platform": "linux/amd64",
+  "production_authorized": false,
+  "schema": "elite-cloud-target-contract/v403.1",
+  "scope": "LIBRARY_INFRASTRUCTURE",
+  "source_selection": "consumer .elite/library-pin/composition.json for120; bundledcomposition.json retains116qualification",
+  "unexecuted_target_acceptance": [
+    {
+      "id": "OCI_LINUX",
+      "requires": "OCI engine, exact pinned image layers/SCA and complete build/runtime; not a user credential issue",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "SIGTERM_BOUNDARY",
+      "requires": "prove Cloud Run10s stop/forced kill recovery for existing API15s shutdown and durable workers",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "PRIVATE_URL_IDENTITY",
+      "requires": "account/project, trusted edge, IdP/workload bindings, authenticated transport and origin policy tested",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "DATA_RECOVERY",
+      "requires": "target PostgreSQL18/migrations/restore/PITR/concurrency/retention",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "BILLING_RESTRICTION",
+      "requires": "authorized billing export and provider-specific restriction execution; global budget remains observed alert, not absolute cap",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "PRODUCTION",
+      "requires": "separate product readiness plus existing eight production-admission controls",
+      "status": "NOT_AUTHORIZED"
+    }
+  ],
+  "executable_configuration": "stack_manifest.py + stack.fixture.json + execute_stack.py; schema config explicit, targets not executed",
+  "runtime_entrypoints": "stack_manifest.ENTRYPOINTS: all14 classified; operator/file CLI never silently deployed"
+}

@@ -1,0 +1,11 @@
+drop trigger if exists accounting_entry_immutable on accounting.entry;
+drop trigger if exists accounting_register_immutable on accounting.register;
+drop trigger if exists accounting_line_immutable on accounting.journal_line;
+drop function if exists accounting.prevent_posted_history_mutation();
+drop table if exists accounting.entry;
+drop table if exists accounting.register;
+drop table if exists accounting.journal_line;
+drop table if exists accounting.journal;
+drop table if exists accounting.period;
+drop table if exists accounting.account;
+drop schema if exists accounting;

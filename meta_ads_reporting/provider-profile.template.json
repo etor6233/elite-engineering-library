@@ -1,0 +1,20 @@
+{
+  "schema": "elite-meta-ads-reporting-profile/v1",
+  "provider": "Meta Marketing API",
+  "sdk": "facebook-business==26.0.1",
+  "graph_api_version": "v26.0",
+  "decision": "BLOCKED_ACCESS_AND_QUERY_APPROVAL_REQUIRED",
+  "app_registration_proven": false,
+  "business_verification_proven": false,
+  "ads_read_permission_proven": false,
+  "test_ad_account_contract_proven": false,
+  "app_id_environment_variable": "META_APP_ID",
+  "app_secret_environment_variable": "META_APP_SECRET",
+  "access_token_environment_variable": "META_ACCESS_TOKEN",
+  "ad_account_id": "",
+  "approved_fields": [],
+  "data_retention": "",
+  "quota_and_cost_approved": false,
+  "reconciliation_approved": false,
+  "automatic_business_write": false
+}

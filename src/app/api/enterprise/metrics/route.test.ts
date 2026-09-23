@@ -1,0 +1,8 @@
+import{it,expect,vi,afterEach}from"vitest";import{NextRequest}from"next/server";
+const m=vi.hoisted(()=>({session:vi.fn(),get:vi.fn()}));
+vi.mock("@/platform/auth/session",()=>({readSession:m.session,allowed:(s:{permissions:string[]},p:string)=>s.permissions.includes("*")||s.permissions.includes(p)}));
+vi.mock("@/platform/config/load",()=>({loadBusinessConfig:async()=>({features:{role_workspace:true}})}));
+vi.mock("@/platform/backend/protected-client",()=>({protectedGet:m.get}));
+import{GET}from"./route";afterEach(()=>vi.clearAllMocks());const r=(q:string)=>new NextRequest("https://portal.example.test/api/enterprise/metrics?"+q);
+it("denies customer aggregate, extra and duplicate selectors before backend",async()=>{m.session.mockResolvedValue({permissions:["customer:self"],organizations:["org"]});expect((await GET(r("kind=orders&organization_id=org"))).status).toBe(403);expect((await GET(r("kind=own-orders&organization_id=other"))).status).toBe(403);expect((await GET(r("kind=own-orders&organization_id=org&organization_id=other"))).status).toBe(400);expect((await GET(r("kind=own-orders&organization_id=org&actor=other"))).status).toBe(400);expect(m.get).not.toHaveBeenCalled()});
+it("failure and mismatched backend scope produce unavailable, never an empty metric",async()=>{m.session.mockResolvedValue({permissions:["admin:read"],organizations:["org"]});m.get.mockRejectedValueOnce(new Error("down"));expect((await GET(r("kind=orders&organization_id=org"))).status).toBe(503);m.get.mockResolvedValue({kind:"orders",organization_id:"other",scope:"organization",source:"sales.customer_order",basis:"current_registered_records_by_state",observed_at:"2026-09-12T01:00:00Z",rows:[]});expect((await GET(r("kind=orders&organization_id=org"))).status).toBe(503)});

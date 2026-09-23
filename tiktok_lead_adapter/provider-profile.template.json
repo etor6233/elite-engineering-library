@@ -1,0 +1,19 @@
+{
+  "schema": "elite-tiktok-lead-profile/v1",
+  "decision": "BLOCKED_ACCESS_AND_LIVE_PROOF_REQUIRED",
+  "business_account_proven": false,
+  "developer_app_proven": false,
+  "lead_access_proven": false,
+  "terms_and_consent_approved": false,
+  "test_account_proven": false,
+  "callback_control_and_tls_proven": false,
+  "provider_delivery_test_proven": false,
+  "durable_idempotency_proven": false,
+  "retrieval_reconciliation_proven": false,
+  "retention_and_deletion_approved": false,
+  "quota_and_cost_approved": false,
+  "access_token_environment_variable": "TIKTOK_ACCESS_TOKEN",
+  "app_id_environment_variable": "TIKTOK_APP_ID",
+  "app_secret_environment_variable": "TIKTOK_APP_SECRET",
+  "automatic_business_write": false
+}

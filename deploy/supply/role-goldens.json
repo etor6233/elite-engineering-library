@@ -1,0 +1,73 @@
+[
+  {
+    "name": "create",
+    "payload": {
+      "purchase_order_id": "golden-po",
+      "command_id": "golden-command",
+      "evidence_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "factory_organization_id": "factory",
+      "demand_reference": "Demanda á <&>   interior",
+      "policy_code": "strict-serial-reference/v1",
+      "lines": [
+        {
+          "id": "line",
+          "variant_id": "variant",
+          "quantity": 2
+        }
+      ],
+      "destination_organization_id": "store",
+      "supplier_id": "supplier",
+      "currency": "ARS",
+      "total_minor_units": "9007199254740993"
+    },
+    "canonical": "{\"command_id\":\"golden-command\",\"currency\":\"ARS\",\"demand_reference\":\"Demanda á \\u003c\\u0026\\u003e \\u2028 interior\",\"destination_organization_id\":\"store\",\"evidence_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"factory_organization_id\":\"factory\",\"lines\":[{\"id\":\"line\",\"quantity\":2,\"variant_id\":\"variant\"}],\"policy_code\":\"strict-serial-reference/v1\",\"purchase_order_id\":\"golden-po\",\"supplier_id\":\"supplier\",\"total_minor_units\":\"9007199254740993\"}",
+    "sha256": "0a730937327a7b0cd4c205aa3245880dc1445f05d90865d049518c83b5ed412d"
+  },
+  {
+    "name": "register",
+    "payload": {
+      "purchase_order_id": "golden-po",
+      "command_id": "golden-command",
+      "evidence_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "kind": "register",
+      "expected_version": "9007199254740993",
+      "line_id": "line",
+      "serial_number": "SERIE-Ñ",
+      "vin": "VIN-1"
+    },
+    "canonical": "{\"command_id\":\"golden-command\",\"evidence_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"expected_version\":\"9007199254740993\",\"kind\":\"register\",\"line_id\":\"line\",\"purchase_order_id\":\"golden-po\",\"serial_number\":\"SERIE-Ñ\",\"vin\":\"VIN-1\"}",
+    "sha256": "e268f1fdc3b9aa1cd6aaf155a698d0284d8d78f80763dda2aaf908e37bb6c820"
+  },
+  {
+    "name": "milestone",
+    "payload": {
+      "purchase_order_id": "golden-po",
+      "command_id": "golden-command",
+      "evidence_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "kind": "milestone",
+      "expected_version": "6",
+      "unit_id": "unit",
+      "target_state": "released",
+      "reason": "Revisé <archivo> & contenido   interior"
+    },
+    "canonical": "{\"command_id\":\"golden-command\",\"evidence_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"expected_version\":\"6\",\"kind\":\"milestone\",\"purchase_order_id\":\"golden-po\",\"reason\":\"Revisé \\u003carchivo\\u003e \\u0026 contenido \\u2029 interior\",\"target_state\":\"released\",\"unit_id\":\"unit\"}",
+    "sha256": "822e177bcec096d0661b659a7decf3a39dcb50229bf06093b80126f170784195"
+  },
+  {
+    "name": "ship",
+    "payload": {
+      "purchase_order_id": "golden-po",
+      "command_id": "golden-command",
+      "evidence_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "kind": "ship",
+      "expected_version": "7",
+      "shipment_id": "asn",
+      "units": [
+        "unit-2",
+        "unit-1"
+      ]
+    },
+    "canonical": "{\"command_id\":\"golden-command\",\"evidence_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"expected_version\":\"7\",\"kind\":\"ship\",\"purchase_order_id\":\"golden-po\",\"shipment_id\":\"asn\",\"units\":[\"unit-2\",\"unit-1\"]}",
+    "sha256": "19ab1a7397f108f6b16b43bd43127cb8626fe13cb2107ca385bdeb0a2ff55108"
+  }
+]

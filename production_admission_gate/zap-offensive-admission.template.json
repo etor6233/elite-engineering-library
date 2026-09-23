@@ -1,0 +1,17 @@
+{
+  "schema":"elite-zap-offensive-admission/v1",
+  "project_id":"",
+  "environment":"production",
+  "release_digest":"",
+  "evaluated_at":"",
+  "expires_at":"",
+  "executor_ref":"",
+  "target":{"base_url":"","api_base_url":"","authorization_ticket":""},
+  "policy":"",
+  "manual_review":"",
+  "runs":[
+    {"kind":"WEB_AUTHENTICATED","execution_receipt":"","plan":"","report":"","expected_arguments":[]},
+    {"kind":"API_AUTHENTICATED","execution_receipt":"","plan":"","report":"","expected_arguments":[]}
+  ],
+  "output":""
+}

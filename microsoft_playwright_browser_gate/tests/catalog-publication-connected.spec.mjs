@@ -1,0 +1,33 @@
+// AUTHORED fixture assertions over the existing admitted Playwright gate.
+import { test, expect } from '@playwright/test';
+import { createHash } from 'node:crypto';
+test('approved catalog publication is the actual public storefront', async ({ page, request }) => {
+  if(process.env.ELITE_CATALOG_STOREFRONT!=='1')throw new Error('explicit catalog fixture required');
+  const publication=JSON.parse(process.env.ELITE_CATALOG_EXPECTED);
+  const model=publication.models[0], variant=publication.variants.find(v=>v.model_id===model.id);
+  const browserErrors=[];page.on('pageerror',e=>browserErrors.push(e.message));
+  await page.goto('/models');
+  await expect(page.getByRole('link',{name:model.displayName,exact:true})).toHaveAttribute('href','/models/'+model.code);
+  await page.getByRole('link',{name:model.displayName,exact:true}).click();
+  await expect(page.getByRole('heading',{level:1,name:model.displayName,exact:true})).toBeVisible();
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href',model.canonical_url);
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content','index, follow');
+  const money=new Intl.NumberFormat('es-AR',{style:'currency',currency:publication.currency,currencyDisplay:'code'}).format(Number(variant.amount_minor_units)/100);
+  await expect(page.getByText(money,{exact:true})).toBeVisible();
+  const image=page.getByRole('img',{name:model.displayName,exact:true});
+  await expect(image).toHaveAttribute('src','/api/public/catalog/media/'+model.media.sha256);
+  await expect(image).toHaveJSProperty('naturalWidth',model.media.width);
+  const png=await request.get('/api/public/catalog/media/'+model.media.sha256);
+  expect(png.status()).toBe(200);expect(png.headers()['content-type']).toBe('image/png');
+  expect(createHash('sha256').update(await png.body()).digest('hex')).toBe(model.media.sha256);
+  const sitemap=await request.get('/sitemap.xml'),robots=await request.get('/robots.txt');
+  expect(sitemap.status()).toBe(200);expect(await sitemap.text()).toContain('<loc>'+model.canonical_url+'</loc>');
+  expect(await sitemap.text()).not.toContain('/admin');expect(await sitemap.text()).not.toContain('<lastmod>');
+  expect(await robots.text()).toContain('Allow: /models/'+model.code+'$');
+  expect(await robots.text()).toContain('Disallow: /');
+  const absent=await request.get('/models/never-published');
+  expect(absent.status()).toBe(404);
+  expect((await request.get('/api/public/catalog/media/'+'0'.repeat(64))).status()).toBe(404);
+  await expect(page.getByRole('button',{name:'Solicitar información',exact:true})).toBeVisible();
+  expect(browserErrors).toEqual([]);
+});

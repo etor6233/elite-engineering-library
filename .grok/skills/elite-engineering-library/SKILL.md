@@ -15,11 +15,10 @@ Biblioteca en la raíz de este repositorio (lectura). Escribe artefactos de proy
 
 1. **Esta skill** (aquí).
 2. **`AGENTS.md`** — índice; no leas todo el corpus.
-3. Si hay que usar o reconstruir esta revisión: sólo `markdown_system/USE_LIBRARY_V403.md` y, para materializar, `markdown_system/START_V403_LOCAL.md`. No abras `implementation_packs/UNIFIED_REFERENCE_V403_R4.md`.
-4. **Un mapa** — elige exactamente uno:
+3. **Un mapa** — elige exactamente uno:
    - IA / ML / agentes → `AI_ENGINEERING_MASTER_MAP.md`
    - sistemas / plataforma → `SYSTEMS_ENGINEERING_MASTER_MAP.md`
-5. **Un pack** — `markdown_system/PACK_PER_CLAIM_INDEX.md` para tu claim acotado.
+4. **Un pack** — `markdown_system/PACK_PER_CLAIM_INDEX.md` para tu claim acotado.
 
 ## No cargar por defecto
 

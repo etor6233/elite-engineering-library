@@ -1,0 +1,7 @@
+{
+  "schema": "elite-whatsapp-campaign-policy/v1",
+  "consent_purpose": "reference-marketing-consent",
+  "policy_version": "reference-policy-1",
+  "max_members": 20,
+  "max_steps": 3
+}

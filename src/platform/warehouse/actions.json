@@ -1,0 +1,1048 @@
+[
+  {
+    "id": "item-create",
+    "label": "Nuevo artículo",
+    "group": "config",
+    "path": "/v1/inventory/bulk/items",
+    "fields": [
+      {
+        "key": "code",
+        "label": "Código comercial",
+        "kind": "text"
+      },
+      {
+        "key": "description",
+        "label": "Nombre del artículo",
+        "kind": "text"
+      },
+      {
+        "key": "base_uom",
+        "label": "Unidad base",
+        "kind": "text"
+      },
+      {
+        "key": "base_rounding_precision",
+        "label": "Precisión de cantidad",
+        "kind": "decimal"
+      },
+      {
+        "key": "tracking_mode",
+        "label": "Seguimiento",
+        "kind": "choice",
+        "choices": [
+          "none",
+          "lot"
+        ]
+      },
+      {
+        "key": "costing_method",
+        "label": "Método de costo",
+        "kind": "choice",
+        "choices": [
+          "fifo",
+          "specific"
+        ]
+      }
+    ],
+    "recovery": "items"
+  },
+  {
+    "id": "bin-create",
+    "label": "Nueva ubicación",
+    "group": "config",
+    "path": "/v1/inventory/bulk/bins",
+    "fields": [
+      {
+        "key": "organization_id",
+        "label": "Almacén",
+        "kind": "organization",
+        "hidden": true
+      },
+      {
+        "key": "code",
+        "label": "Nombre de ubicación",
+        "kind": "text"
+      },
+      {
+        "key": "type",
+        "label": "Uso",
+        "kind": "choice",
+        "choices": [
+          "receive",
+          "ship",
+          "put-away",
+          "pick",
+          "putpick",
+          "qc"
+        ]
+      },
+      {
+        "key": "ranking",
+        "label": "Prioridad",
+        "kind": "integer"
+      },
+      {
+        "key": "movement_blocked",
+        "label": "Bloquear movimientos",
+        "kind": "boolean"
+      },
+      {
+        "key": "cross_dock",
+        "label": "Permitir cruce directo",
+        "kind": "boolean"
+      }
+    ],
+    "recovery": "bins"
+  },
+  {
+    "id": "uom-create",
+    "label": "Unidad alternativa",
+    "group": "config",
+    "path": "/v1/inventory/bulk/item-units",
+    "fields": [
+      {
+        "key": "item_id",
+        "label": "Artículo",
+        "kind": "select",
+        "source": "items",
+        "value": "id"
+      },
+      {
+        "key": "code",
+        "label": "Unidad alternativa",
+        "kind": "text"
+      },
+      {
+        "key": "quantity_per_unit",
+        "label": "Unidades base por bulto",
+        "kind": "decimal"
+      },
+      {
+        "key": "rounding_precision",
+        "label": "Precisión de cantidad",
+        "kind": "decimal"
+      }
+    ],
+    "recovery": "uoms"
+  },
+  {
+    "id": "bin-policy",
+    "label": "Asignar artículo a ubicación",
+    "group": "config",
+    "path": "/v1/inventory/bulk/bin-policies",
+    "fields": [
+      {
+        "key": "organization_id",
+        "label": "Almacén",
+        "kind": "organization",
+        "hidden": true
+      },
+      {
+        "key": "item_id",
+        "label": "Artículo",
+        "kind": "select",
+        "source": "items",
+        "value": "id"
+      },
+      {
+        "key": "bin_id",
+        "label": "Ubicación",
+        "kind": "select",
+        "source": "bins",
+        "value": "id"
+      },
+      {
+        "key": "fixed",
+        "label": "Ubicación fija",
+        "kind": "boolean"
+      },
+      {
+        "key": "dedicated",
+        "label": "Uso dedicado",
+        "kind": "boolean"
+      },
+      {
+        "key": "default",
+        "label": "Ubicación preferida",
+        "kind": "boolean"
+      },
+      {
+        "key": "min_quantity",
+        "label": "Cantidad mínima",
+        "kind": "decimal"
+      },
+      {
+        "key": "max_quantity",
+        "label": "Capacidad máxima",
+        "kind": "decimal",
+        "optional": true
+      }
+    ],
+    "recovery": "policies"
+  },
+  {
+    "id": "crossdock",
+    "label": "Configurar cruce directo",
+    "group": "config",
+    "path": "/v1/inventory/warehouse/cross-dock-policies",
+    "fields": [
+      {
+        "key": "organization_id",
+        "label": "Almacén",
+        "kind": "organization",
+        "hidden": true
+      },
+      {
+        "key": "item_id",
+        "label": "Artículo",
+        "kind": "select",
+        "source": "items",
+        "value": "id"
+      },
+      {
+        "key": "bin_id",
+        "label": "Ubicación de cruce",
+        "kind": "select",
+        "source": "bins",
+        "value": "id"
+      },
+      {
+        "key": "due_date_days",
+        "label": "Horizonte de demanda (días)",
+        "kind": "integer"
+      },
+      {
+        "key": "enabled",
+        "label": "Habilitar cruce directo",
+        "kind": "boolean"
+      },
+      {
+        "key": "version",
+        "label": "Versión",
+        "kind": "constant",
+        "value": 1,
+        "hidden": true
+      }
+    ],
+    "recovery": "crossdock"
+  },
+  {
+    "id": "receipt",
+    "label": "Recibir mercadería",
+    "group": "receive",
+    "path": "/v1/inventory/warehouse/receipts",
+    "fields": [
+      {
+        "key": "request_id",
+        "label": "Solicitud",
+        "kind": "request",
+        "hidden": true
+      },
+      {
+        "key": "organization_id",
+        "label": "Almacén",
+        "kind": "organization",
+        "hidden": true
+      },
+      {
+        "key": "item_id",
+        "label": "Artículo",
+        "kind": "select",
+        "source": "items",
+        "value": "id"
+      },
+      {
+        "key": "receive_bin_id",
+        "label": "Muelle de recepción",
+        "kind": "select",
+        "source": "bins",
+        "value": "id"
+      },
+      {
+        "key": "lot_no",
+        "label": "Número de lote",
+        "kind": "text",
+        "optional": true
+      },
+      {
+        "key": "expiration_date",
+        "label": "Vencimiento",
+        "kind": "date",
+        "optional": true
+      },
+      {
+        "key": "warranty_date",
+        "label": "Garantía hasta",
+        "kind": "date",
+        "optional": true
+      },
+      {
+        "key": "quantity",
+        "label": "Cantidad",
+        "kind": "decimal"
+      },
+      {
+        "key": "unit_cost",
+        "label": "Costo por unidad",
+        "kind": "cost"
+      },
+      {
+        "key": "posting_date",
+        "label": "Fecha de registro",
+        "kind": "date"
+      },
+      {
+        "key": "source_kind",
+        "label": "Tipo de origen",
+        "kind": "choice",
+        "choices": [
+          "purchase",
+          "manual"
+        ]
+      },
+      {
+        "key": "source_id",
+        "label": "Referencia del documento",
+        "kind": "text"
+      }
+    ],
+    "recovery": "activities",
+    "requestRecovery": true
+  },
+  {
+    "id": "pick-manual",
+    "label": "Preparar salida",
+    "group": "pick",
+    "path": "/v1/inventory/warehouse/picks",
+    "fields": [
+      {
+        "key": "request_id",
+        "label": "Solicitud",
+        "kind": "request",
+        "hidden": true
+      },
+      {
+        "key": "organization_id",
+        "label": "Almacén",
+        "kind": "organization",
+        "hidden": true
+      },
+      {
+        "key": "item_id",
+        "label": "Artículo",
+        "kind": "select",
+        "source": "items",
+        "value": "id"
+      },
+      {
+        "key": "ship_bin_id",
+        "label": "Muelle de salida",
+        "kind": "select",
+        "source": "bins",
+        "value": "id"
+      },
+      {
+        "key": "demand_kind",
+        "label": "Origen",
+        "kind": "constant",
+        "value": "manual",
+        "hidden": true
+      },
+      {
+        "key": "demand_id",
+        "label": "Referencia del trabajo",
+        "kind": "text"
+      },
+      {
+        "key": "demand_line_id",
+        "label": "Línea",
+        "kind": "request",
+        "hidden": true
+      },
+      {
+        "key": "quantity",
+        "label": "Cantidad",
+        "kind": "decimal"
+      },
+      {
+        "key": "handling_uom",
+        "label": "Unidad de manejo",
+        "kind": "select",
+        "source": "uoms",
+        "value": "code",
+        "optional": true
+      },
+      {
+        "key": "allow_breakbulk",
+        "label": "Permitir abrir bultos",
+        "kind": "boolean"
+      },
+      {
+        "key": "use_fefo",
+        "label": "Priorizar el vencimiento más cercano",
+        "kind": "boolean"
+      },
+      {
+        "key": "allow_dedicated",
+        "label": "Permitir ubicación dedicada",
+        "kind": "boolean"
+      }
+    ],
+    "recovery": "activities",
+    "requestRecovery": true
+  },
+  {
+    "id": "pick-order",
+    "label": "Preparar un pedido",
+    "group": "pick",
+    "path": "/v1/inventory/warehouse/picks",
+    "fields": [
+      {
+        "key": "request_id",
+        "label": "Solicitud",
+        "kind": "request",
+        "hidden": true
+      },
+      {
+        "key": "organization_id",
+        "label": "Almacén",
+        "kind": "organization",
+        "hidden": true
+      },
+      {
+        "key": "item_id",
+        "label": "Artículo",
+        "kind": "select",
+        "source": "items",
+        "value": "id"
+      },
+      {
+        "key": "ship_bin_id",
+        "label": "Muelle de salida",
+        "kind": "select",
+        "source": "bins",
+        "value": "id"
+      },
+      {
+        "key": "demand_kind",
+        "label": "Origen",
+        "kind": "constant",
+        "value": "customer-order",
+        "hidden": true
+      },
+      {
+        "key": "demand_id",
+        "label": "Pedido",
+        "kind": "select",
+        "source": "orders",
+        "value": "id"
+      },
+      {
+        "key": "demand_line_id",
+        "label": "Línea del pedido",
+        "kind": "select",
+        "source": "order-lines",
+        "value": "id",
+        "parentField": "demand_id"
+      },
+      {
+        "key": "quantity",
+        "label": "Cantidad",
+        "kind": "decimal"
+      },
+      {
+        "key": "handling_uom",
+        "label": "Unidad de manejo",
+        "kind": "select",
+        "source": "uoms",
+        "value": "code",
+        "optional": true
+      },
+      {
+        "key": "allow_breakbulk",
+        "label": "Permitir abrir bultos",
+        "kind": "boolean"
+      },
+      {
+        "key": "use_fefo",
+        "label": "Priorizar el vencimiento más cercano",
+        "kind": "boolean"
+      },
+      {
+        "key": "allow_dedicated",
+        "label": "Permitir ubicación dedicada",
+        "kind": "boolean"
+      }
+    ],
+    "recovery": "activities",
+    "requestRecovery": true
+  },
+  {
+    "id": "replenish",
+    "label": "Reponer ubicación de preparación",
+    "group": "replenish",
+    "path": "/v1/inventory/warehouse/replenishments",
+    "fields": [
+      {
+        "key": "request_id",
+        "label": "Solicitud",
+        "kind": "request",
+        "hidden": true
+      },
+      {
+        "key": "organization_id",
+        "label": "Almacén",
+        "kind": "organization",
+        "hidden": true
+      },
+      {
+        "key": "item_id",
+        "label": "Artículo",
+        "kind": "select",
+        "source": "items",
+        "value": "id"
+      },
+      {
+        "key": "to_bin_id",
+        "label": "Ubicación de preparación",
+        "kind": "select",
+        "source": "bins",
+        "value": "id"
+      },
+      {
+        "key": "target_uom",
+        "label": "Unidad de destino",
+        "kind": "select",
+        "source": "uoms",
+        "value": "code",
+        "optional": true
+      },
+      {
+        "key": "allow_breakbulk",
+        "label": "Permitir abrir bultos",
+        "kind": "boolean"
+      },
+      {
+        "key": "use_fefo",
+        "label": "Priorizar el vencimiento más cercano",
+        "kind": "boolean"
+      }
+    ],
+    "recovery": "activities",
+    "requestRecovery": true
+  },
+  {
+    "id": "reserve",
+    "label": "Reservar existencias",
+    "group": "reserve",
+    "path": "/v1/inventory/warehouse-workspace/reservations",
+    "fields": [
+      {
+        "key": "request_id",
+        "label": "Solicitud",
+        "kind": "request",
+        "hidden": true
+      },
+      {
+        "key": "organization_id",
+        "label": "Almacén",
+        "kind": "organization",
+        "hidden": true
+      },
+      {
+        "key": "item_id",
+        "label": "Artículo",
+        "kind": "select",
+        "source": "items",
+        "value": "id"
+      },
+      {
+        "key": "bin_id",
+        "label": "Ubicación",
+        "kind": "select",
+        "source": "bins",
+        "value": "id"
+      },
+      {
+        "key": "lot_id",
+        "label": "Lote",
+        "kind": "select",
+        "source": "balances",
+        "value": "lot_id",
+        "optional": true
+      },
+      {
+        "key": "demand_kind",
+        "label": "Origen",
+        "kind": "constant",
+        "value": "manual",
+        "hidden": true
+      },
+      {
+        "key": "demand_id",
+        "label": "Demanda",
+        "kind": "request",
+        "hidden": true
+      },
+      {
+        "key": "demand_line_id",
+        "label": "Línea",
+        "kind": "request",
+        "hidden": true
+      },
+      {
+        "key": "quantity",
+        "label": "Cantidad",
+        "kind": "decimal"
+      },
+      {
+        "key": "cancellation_disallowed",
+        "label": "Impedir liberación manual",
+        "kind": "boolean"
+      }
+    ],
+    "recovery": "reservation-request",
+    "requestRecovery": true
+  },
+  {
+    "id": "release",
+    "label": "Liberar reserva",
+    "group": "row",
+    "path": "/v1/inventory/bulk/reservations/{id}/release",
+    "fields": [
+      {
+        "key": "organization_id",
+        "label": "Almacén",
+        "kind": "organization",
+        "hidden": true
+      },
+      {
+        "key": "version",
+        "label": "Versión",
+        "kind": "version",
+        "hidden": true
+      }
+    ],
+    "selection": "reservations",
+    "recovery": "reservations",
+    "terminal": "released"
+  },
+  {
+    "id": "register",
+    "label": "Completar movimiento",
+    "group": "row",
+    "path": "/v1/inventory/warehouse/activities/{id}/register",
+    "fields": [
+      {
+        "key": "organization_id",
+        "label": "Almacén",
+        "kind": "organization",
+        "hidden": true
+      },
+      {
+        "key": "version",
+        "label": "Versión",
+        "kind": "version",
+        "hidden": true
+      },
+      {
+        "key": "posting_date",
+        "label": "Fecha de registro",
+        "kind": "date"
+      }
+    ],
+    "selection": "activities",
+    "recovery": "activities",
+    "terminal": "registered"
+  },
+  {
+    "id": "cancel-pick",
+    "label": "Cancelar preparación",
+    "group": "row",
+    "path": "/v1/inventory/warehouse/picks/{id}/cancel",
+    "fields": [
+      {
+        "key": "organization_id",
+        "label": "Almacén",
+        "kind": "organization",
+        "hidden": true
+      },
+      {
+        "key": "version",
+        "label": "Versión",
+        "kind": "version",
+        "hidden": true
+      }
+    ],
+    "selection": "activities",
+    "activityType": "pick",
+    "recovery": "activities",
+    "terminal": "cancelled"
+  },
+  {
+    "id": "cancel-put-away",
+    "label": "Cancelar ubicación",
+    "group": "row",
+    "path": "/v1/inventory/warehouse/put-aways/{id}/cancel",
+    "fields": [
+      {
+        "key": "organization_id",
+        "label": "Almacén",
+        "kind": "organization",
+        "hidden": true
+      },
+      {
+        "key": "version",
+        "label": "Versión",
+        "kind": "version",
+        "hidden": true
+      }
+    ],
+    "selection": "activities",
+    "activityType": "put-away",
+    "recovery": "activities",
+    "terminal": "cancelled"
+  },
+  {
+    "id": "cancel-replenishment",
+    "label": "Cancelar reposición",
+    "group": "row",
+    "path": "/v1/inventory/warehouse/replenishments/{id}/cancel",
+    "fields": [
+      {
+        "key": "organization_id",
+        "label": "Almacén",
+        "kind": "organization",
+        "hidden": true
+      },
+      {
+        "key": "version",
+        "label": "Versión",
+        "kind": "version",
+        "hidden": true
+      }
+    ],
+    "selection": "activities",
+    "activityType": "replenishment",
+    "recovery": "activities",
+    "terminal": "cancelled"
+  },
+  {
+    "id": "transfer-create",
+    "label": "Transferir entre almacenes",
+    "group": "transfer",
+    "path": "/v1/inventory/bulk-transfers",
+    "fields": [
+      {
+        "key": "request_id",
+        "label": "Solicitud",
+        "kind": "request",
+        "hidden": true
+      },
+      {
+        "key": "from_organization_id",
+        "label": "Almacén de origen",
+        "kind": "organization",
+        "hidden": true
+      },
+      {
+        "key": "to_organization_id",
+        "label": "Almacén de destino",
+        "kind": "select",
+        "source": "organizations",
+        "value": "id"
+      },
+      {
+        "key": "item_id",
+        "label": "Artículo",
+        "kind": "select",
+        "source": "items",
+        "value": "id"
+      },
+      {
+        "key": "receive_bin_id",
+        "label": "Muelle de destino",
+        "kind": "select",
+        "source": "bins",
+        "value": "id",
+        "organizationField": "to_organization_id"
+      },
+      {
+        "key": "in_transit_code",
+        "label": "Servicio o ubicación de tránsito",
+        "kind": "text"
+      },
+      {
+        "key": "quantity",
+        "label": "Cantidad",
+        "kind": "decimal"
+      },
+      {
+        "key": "specific_receipt_entry",
+        "label": "Entrada de costo específico",
+        "kind": "select",
+        "source": "entries",
+        "value": "id",
+        "optional": true
+      },
+      {
+        "key": "posting_date",
+        "label": "Fecha de registro",
+        "kind": "date"
+      },
+      {
+        "key": "source_kind",
+        "label": "Origen",
+        "kind": "constant",
+        "value": "transfer",
+        "hidden": true
+      },
+      {
+        "key": "source_id",
+        "label": "Referencia de traslado",
+        "kind": "text"
+      }
+    ],
+    "recovery": "transfers",
+    "requestRecovery": true
+  },
+  {
+    "id": "transfer-ship",
+    "label": "Despachar traslado",
+    "group": "row",
+    "path": "/v1/inventory/bulk-transfers/{id}/ship",
+    "fields": [
+      {
+        "key": "from_organization_id",
+        "label": "Origen",
+        "kind": "selected",
+        "hidden": true
+      },
+      {
+        "key": "to_organization_id",
+        "label": "Destino",
+        "kind": "selected",
+        "hidden": true
+      },
+      {
+        "key": "version",
+        "label": "Versión",
+        "kind": "version",
+        "hidden": true
+      },
+      {
+        "key": "request_id",
+        "label": "Solicitud",
+        "kind": "request",
+        "hidden": true
+      },
+      {
+        "key": "quantity",
+        "label": "Cantidad",
+        "kind": "decimal"
+      },
+      {
+        "key": "posting_date",
+        "label": "Fecha de registro",
+        "kind": "date"
+      },
+      {
+        "key": "warehouse_activity_id",
+        "label": "Preparación completada",
+        "kind": "select",
+        "source": "activities",
+        "value": "id"
+      }
+    ],
+    "selection": "transfers",
+    "recovery": "transfers",
+    "terminal": null
+  },
+  {
+    "id": "transfer-receive",
+    "label": "Recibir traslado",
+    "group": "row",
+    "path": "/v1/inventory/bulk-transfers/{id}/receive",
+    "fields": [
+      {
+        "key": "from_organization_id",
+        "label": "Origen",
+        "kind": "selected",
+        "hidden": true
+      },
+      {
+        "key": "to_organization_id",
+        "label": "Destino",
+        "kind": "selected",
+        "hidden": true
+      },
+      {
+        "key": "version",
+        "label": "Versión",
+        "kind": "version",
+        "hidden": true
+      },
+      {
+        "key": "request_id",
+        "label": "Solicitud",
+        "kind": "request",
+        "hidden": true
+      },
+      {
+        "key": "quantity",
+        "label": "Cantidad",
+        "kind": "decimal"
+      },
+      {
+        "key": "posting_date",
+        "label": "Fecha de registro",
+        "kind": "date"
+      }
+    ],
+    "selection": "transfers",
+    "recovery": "transfers",
+    "terminal": null
+  },
+  {
+    "id": "transfer-cancel",
+    "label": "Cancelar traslado",
+    "group": "row",
+    "path": "/v1/inventory/bulk-transfers/{id}/cancel",
+    "fields": [
+      {
+        "key": "from_organization_id",
+        "label": "Origen",
+        "kind": "selected",
+        "hidden": true
+      },
+      {
+        "key": "to_organization_id",
+        "label": "Destino",
+        "kind": "selected",
+        "hidden": true
+      },
+      {
+        "key": "version",
+        "label": "Versión",
+        "kind": "version",
+        "hidden": true
+      }
+    ],
+    "selection": "transfers",
+    "recovery": "transfers",
+    "terminal": "cancelled"
+  },
+  {
+    "id": "shipment",
+    "label": "Despachar pedido preparado",
+    "group": "ship",
+    "path": "/v1/inventory/warehouse/customer-shipments",
+    "fields": [
+      {
+        "key": "request_id",
+        "label": "Solicitud",
+        "kind": "request",
+        "hidden": true
+      },
+      {
+        "key": "organization_id",
+        "label": "Almacén",
+        "kind": "organization",
+        "hidden": true
+      },
+      {
+        "key": "order_id",
+        "label": "Pedido",
+        "kind": "select",
+        "source": "orders",
+        "value": "id"
+      },
+      {
+        "key": "warehouse_activity_id",
+        "label": "Preparación completada",
+        "kind": "select",
+        "source": "activities",
+        "value": "id"
+      },
+      {
+        "key": "posting_date",
+        "label": "Fecha de registro",
+        "kind": "date"
+      }
+    ],
+    "recovery": "shipments",
+    "requestRecovery": true
+  },
+  {
+    "id": "packaging",
+    "label": "Abrir o reunir bultos",
+    "group": "replenish",
+    "path": "/v1/inventory/bulk/handling-unit-conversions",
+    "fields": [
+      {
+        "key": "request_id",
+        "label": "Solicitud",
+        "kind": "request",
+        "hidden": true
+      },
+      {
+        "key": "organization_id",
+        "label": "Almacén",
+        "kind": "organization",
+        "hidden": true
+      },
+      {
+        "key": "item_id",
+        "label": "Artículo",
+        "kind": "select",
+        "source": "items",
+        "value": "id"
+      },
+      {
+        "key": "bin_id",
+        "label": "Ubicación",
+        "kind": "select",
+        "source": "bins",
+        "value": "id"
+      },
+      {
+        "key": "lot_id",
+        "label": "Lote",
+        "kind": "select",
+        "source": "balances",
+        "value": "lot_id",
+        "optional": true
+      },
+      {
+        "key": "operation",
+        "label": "Operación",
+        "kind": "choice",
+        "choices": [
+          "breakbulk",
+          "gather"
+        ]
+      },
+      {
+        "key": "from_uom",
+        "label": "Unidad de origen",
+        "kind": "select",
+        "source": "uoms",
+        "value": "code"
+      },
+      {
+        "key": "to_uom",
+        "label": "Unidad de destino",
+        "kind": "select",
+        "source": "uoms",
+        "value": "code"
+      },
+      {
+        "key": "from_quantity",
+        "label": "Cantidad en origen",
+        "kind": "decimal"
+      }
+    ],
+    "recovery": "packaging",
+    "requestRecovery": true
+  }
+]

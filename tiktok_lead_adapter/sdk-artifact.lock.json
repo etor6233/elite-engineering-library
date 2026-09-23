@@ -1,0 +1,24 @@
+{
+  "schema": "elite-python-sdk-artifact-lock/v1",
+  "provider": "TikTok Pte. Ltd.",
+  "distribution": "tiktok-business-api-sdk-official",
+  "version": "1.1.3",
+  "module_declared_version": "1.2.1",
+  "version_note": "The exact official wheel metadata declares distribution 1.1.3 while business_api_client.__version__ declares 1.2.1; both values are pinned and tested without asserting equivalence.",
+  "wheel": {
+    "filename": "tiktok_business_api_sdk_official-1.1.3-py3-none-any.whl",
+    "bytes": 678182,
+    "sha256": "663b4a1f2585c4b386144d968646f695befd733c464418bbaeeac41befff33b7",
+    "url": "https://files.pythonhosted.org/packages/ec/bd/1cf2faaa9fb43a4e81dec0cbe1076c1ffe0d2536611650ff7891a68a932b/tiktok_business_api_sdk_official-1.1.3-py3-none-any.whl"
+  },
+  "publisher_evidence": {
+    "pypi_author": "TikTok Pte. Ltd.",
+    "repository": "https://github.com/tiktok/tiktok-business-api-sdk",
+    "repository_commit": "f809c396520df2d7b201a9ccc5378d822b728ed3",
+    "provider_readme_recommends_distribution": true,
+    "lead_client_generated_by_provider": false
+  },
+  "api_version": "v1.3",
+  "license_expression": "MIT",
+  "automatic_business_write": false
+}

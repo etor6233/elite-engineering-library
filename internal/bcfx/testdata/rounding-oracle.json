@@ -1,0 +1,4205 @@
+{
+  "oracle": "Python decimal 200 digits, ROUND_HALF_UP, independent of Go math/big quotient/remainder",
+  "vectors": [
+    {
+      "numerator": "-123456789",
+      "denominator": "1",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-123456789",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-12345678900",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-12345678900",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "1",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-123456789000",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "1",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-123456789000000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "2",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-61728395",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-6172839450",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-6172839450",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "2",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-61728394500",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "2",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-61728394500000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "4",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-30864197",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-3086419725",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-3086419725",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "4",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-30864197250",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "4",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-30864197250000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "5",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-24691358",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-2469135780",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-2469135780",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "5",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-24691357800",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "5",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-24691357800000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "8",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-15432099",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-1543209863",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-1543209865",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "8",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-15432098625",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "8",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-15432098625000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "10",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-12345679",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-1234567890",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-1234567890",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "10",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-12345678900",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "10",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-12345678900000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "20",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-6172839",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-617283945",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-617283945",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "20",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-6172839450",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "20",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-6172839450000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "100",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-1234568",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-123456789",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-123456790",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "100",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-1234567900",
+      "overflow": false
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "100",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-1234567890000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "1",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-103",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-10300",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-10300",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "1",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-103000",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "1",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-103000000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "2",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-52",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-5150",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-5150",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "2",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-51500",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "2",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-51500000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "4",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-26",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-2575",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-2575",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "4",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-25750",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "4",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-25750000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "5",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-21",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-2060",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-2060",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "5",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-20600",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "5",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-20600000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "8",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-13",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-1288",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-1290",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "8",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-12875",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "8",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-12875000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "10",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-10",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-1030",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-1030",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "10",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-10300",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "10",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-10300000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "20",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-5",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-515",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-515",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "20",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-5150",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "20",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-5150000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "100",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-1",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-103",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-105",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "100",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-1025",
+      "overflow": false
+    },
+    {
+      "numerator": "-103",
+      "denominator": "100",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-1030000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "1",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-101",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-10100",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-10100",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "1",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-101000",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "1",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-101000000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "2",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-51",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-5050",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-5050",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "2",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-50500",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "2",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-50500000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "4",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-25",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-2525",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-2525",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "4",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-25250",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "4",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-25250000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "5",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-20",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-2020",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-2020",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "5",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-20200",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "5",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-20200000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "8",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-13",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-1263",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-1265",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "8",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-12625",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "8",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-12625000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "10",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-10",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-1010",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-1010",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "10",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-10100",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "10",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-10100000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "20",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-5",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-505",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-505",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "20",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-5050",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "20",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-5050000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "100",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-1",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-101",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-100",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "100",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-1000",
+      "overflow": false
+    },
+    {
+      "numerator": "-101",
+      "denominator": "100",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-1010000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "1",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-25",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-2500",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-2500",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "1",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-25000",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "1",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-25000000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "2",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-13",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-1250",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-1250",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "2",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-12500",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "2",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-12500000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "4",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-6",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-625",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-625",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "4",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-6250",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "4",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-6250000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "5",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-5",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-500",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-500",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "5",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-5000",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "5",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-5000000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "8",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-3",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-313",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-315",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "8",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-3125",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "8",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-3125000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "10",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-3",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-250",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-250",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "10",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-2500",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "10",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-2500000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "20",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-1",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-125",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-125",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "20",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-1250",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "20",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-1250000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "100",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-25",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-25",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "100",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-250",
+      "overflow": false
+    },
+    {
+      "numerator": "-25",
+      "denominator": "100",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-250000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "1",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-5",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-500",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-500",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "1",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-5000",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "1",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-5000000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "2",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-3",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-250",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-250",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "2",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-2500",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "2",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-2500000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "4",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-1",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-125",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-125",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "4",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-1250",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "4",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-1250000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "5",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-1",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-100",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-100",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "5",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-1000",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "5",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-1000000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "8",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-1",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-63",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-65",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "8",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-625",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "8",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-625000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "10",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-1",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-50",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-50",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "10",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-500",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "10",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-500000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "20",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-25",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-25",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "20",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-250",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "20",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-250000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "100",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-5",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-5",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "100",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-50",
+      "overflow": false
+    },
+    {
+      "numerator": "-5",
+      "denominator": "100",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-50000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "1",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-1",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-100",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-100",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "1",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-1000",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "1",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-1000000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "2",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-1",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-50",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-50",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "2",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-500",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "2",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-500000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "4",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-25",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-25",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "4",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-250",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "4",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-250000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "5",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-20",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-20",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "5",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-200",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "5",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-200000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "8",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-13",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-15",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "8",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-125",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "8",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-125000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "10",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-10",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-10",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "10",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-100",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "10",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-100000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "20",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-5",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "5",
+      "want": "-5",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "20",
+      "decimals": 3,
+      "precision": "25",
+      "want": "-50",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "20",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-50000000",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "100",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "1",
+      "want": "-1",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "5",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "100",
+      "decimals": 3,
+      "precision": "25",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "-1",
+      "denominator": "100",
+      "decimals": 9,
+      "precision": "1",
+      "want": "-10000000",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "1",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "5",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "1",
+      "decimals": 3,
+      "precision": "25",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "1",
+      "decimals": 9,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "2",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "5",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "2",
+      "decimals": 3,
+      "precision": "25",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "2",
+      "decimals": 9,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "4",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "5",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "4",
+      "decimals": 3,
+      "precision": "25",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "4",
+      "decimals": 9,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "5",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "5",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "5",
+      "decimals": 3,
+      "precision": "25",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "5",
+      "decimals": 9,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "8",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "5",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "8",
+      "decimals": 3,
+      "precision": "25",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "8",
+      "decimals": 9,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "10",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "5",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "10",
+      "decimals": 3,
+      "precision": "25",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "10",
+      "decimals": 9,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "20",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "5",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "20",
+      "decimals": 3,
+      "precision": "25",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "20",
+      "decimals": 9,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "100",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "5",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "100",
+      "decimals": 3,
+      "precision": "25",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "0",
+      "denominator": "100",
+      "decimals": 9,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "1",
+      "decimals": 0,
+      "precision": "1",
+      "want": "1",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "1",
+      "want": "100",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "5",
+      "want": "100",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "1",
+      "decimals": 3,
+      "precision": "25",
+      "want": "1000",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "1",
+      "decimals": 9,
+      "precision": "1",
+      "want": "1000000000",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "2",
+      "decimals": 0,
+      "precision": "1",
+      "want": "1",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "1",
+      "want": "50",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "5",
+      "want": "50",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "2",
+      "decimals": 3,
+      "precision": "25",
+      "want": "500",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "2",
+      "decimals": 9,
+      "precision": "1",
+      "want": "500000000",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "4",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "1",
+      "want": "25",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "5",
+      "want": "25",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "4",
+      "decimals": 3,
+      "precision": "25",
+      "want": "250",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "4",
+      "decimals": 9,
+      "precision": "1",
+      "want": "250000000",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "5",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "1",
+      "want": "20",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "5",
+      "want": "20",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "5",
+      "decimals": 3,
+      "precision": "25",
+      "want": "200",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "5",
+      "decimals": 9,
+      "precision": "1",
+      "want": "200000000",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "8",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "1",
+      "want": "13",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "5",
+      "want": "15",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "8",
+      "decimals": 3,
+      "precision": "25",
+      "want": "125",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "8",
+      "decimals": 9,
+      "precision": "1",
+      "want": "125000000",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "10",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "1",
+      "want": "10",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "5",
+      "want": "10",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "10",
+      "decimals": 3,
+      "precision": "25",
+      "want": "100",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "10",
+      "decimals": 9,
+      "precision": "1",
+      "want": "100000000",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "20",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "1",
+      "want": "5",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "5",
+      "want": "5",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "20",
+      "decimals": 3,
+      "precision": "25",
+      "want": "50",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "20",
+      "decimals": 9,
+      "precision": "1",
+      "want": "50000000",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "100",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "1",
+      "want": "1",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "5",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "100",
+      "decimals": 3,
+      "precision": "25",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "1",
+      "denominator": "100",
+      "decimals": 9,
+      "precision": "1",
+      "want": "10000000",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "1",
+      "decimals": 0,
+      "precision": "1",
+      "want": "5",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "1",
+      "want": "500",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "5",
+      "want": "500",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "1",
+      "decimals": 3,
+      "precision": "25",
+      "want": "5000",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "1",
+      "decimals": 9,
+      "precision": "1",
+      "want": "5000000000",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "2",
+      "decimals": 0,
+      "precision": "1",
+      "want": "3",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "1",
+      "want": "250",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "5",
+      "want": "250",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "2",
+      "decimals": 3,
+      "precision": "25",
+      "want": "2500",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "2",
+      "decimals": 9,
+      "precision": "1",
+      "want": "2500000000",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "4",
+      "decimals": 0,
+      "precision": "1",
+      "want": "1",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "1",
+      "want": "125",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "5",
+      "want": "125",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "4",
+      "decimals": 3,
+      "precision": "25",
+      "want": "1250",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "4",
+      "decimals": 9,
+      "precision": "1",
+      "want": "1250000000",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "5",
+      "decimals": 0,
+      "precision": "1",
+      "want": "1",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "1",
+      "want": "100",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "5",
+      "want": "100",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "5",
+      "decimals": 3,
+      "precision": "25",
+      "want": "1000",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "5",
+      "decimals": 9,
+      "precision": "1",
+      "want": "1000000000",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "8",
+      "decimals": 0,
+      "precision": "1",
+      "want": "1",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "1",
+      "want": "63",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "5",
+      "want": "65",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "8",
+      "decimals": 3,
+      "precision": "25",
+      "want": "625",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "8",
+      "decimals": 9,
+      "precision": "1",
+      "want": "625000000",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "10",
+      "decimals": 0,
+      "precision": "1",
+      "want": "1",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "1",
+      "want": "50",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "5",
+      "want": "50",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "10",
+      "decimals": 3,
+      "precision": "25",
+      "want": "500",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "10",
+      "decimals": 9,
+      "precision": "1",
+      "want": "500000000",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "20",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "1",
+      "want": "25",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "5",
+      "want": "25",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "20",
+      "decimals": 3,
+      "precision": "25",
+      "want": "250",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "20",
+      "decimals": 9,
+      "precision": "1",
+      "want": "250000000",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "100",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "1",
+      "want": "5",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "5",
+      "want": "5",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "100",
+      "decimals": 3,
+      "precision": "25",
+      "want": "50",
+      "overflow": false
+    },
+    {
+      "numerator": "5",
+      "denominator": "100",
+      "decimals": 9,
+      "precision": "1",
+      "want": "50000000",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "1",
+      "decimals": 0,
+      "precision": "1",
+      "want": "25",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "1",
+      "want": "2500",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "5",
+      "want": "2500",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "1",
+      "decimals": 3,
+      "precision": "25",
+      "want": "25000",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "1",
+      "decimals": 9,
+      "precision": "1",
+      "want": "25000000000",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "2",
+      "decimals": 0,
+      "precision": "1",
+      "want": "13",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "1",
+      "want": "1250",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "5",
+      "want": "1250",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "2",
+      "decimals": 3,
+      "precision": "25",
+      "want": "12500",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "2",
+      "decimals": 9,
+      "precision": "1",
+      "want": "12500000000",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "4",
+      "decimals": 0,
+      "precision": "1",
+      "want": "6",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "1",
+      "want": "625",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "5",
+      "want": "625",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "4",
+      "decimals": 3,
+      "precision": "25",
+      "want": "6250",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "4",
+      "decimals": 9,
+      "precision": "1",
+      "want": "6250000000",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "5",
+      "decimals": 0,
+      "precision": "1",
+      "want": "5",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "1",
+      "want": "500",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "5",
+      "want": "500",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "5",
+      "decimals": 3,
+      "precision": "25",
+      "want": "5000",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "5",
+      "decimals": 9,
+      "precision": "1",
+      "want": "5000000000",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "8",
+      "decimals": 0,
+      "precision": "1",
+      "want": "3",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "1",
+      "want": "313",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "5",
+      "want": "315",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "8",
+      "decimals": 3,
+      "precision": "25",
+      "want": "3125",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "8",
+      "decimals": 9,
+      "precision": "1",
+      "want": "3125000000",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "10",
+      "decimals": 0,
+      "precision": "1",
+      "want": "3",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "1",
+      "want": "250",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "5",
+      "want": "250",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "10",
+      "decimals": 3,
+      "precision": "25",
+      "want": "2500",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "10",
+      "decimals": 9,
+      "precision": "1",
+      "want": "2500000000",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "20",
+      "decimals": 0,
+      "precision": "1",
+      "want": "1",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "1",
+      "want": "125",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "5",
+      "want": "125",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "20",
+      "decimals": 3,
+      "precision": "25",
+      "want": "1250",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "20",
+      "decimals": 9,
+      "precision": "1",
+      "want": "1250000000",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "100",
+      "decimals": 0,
+      "precision": "1",
+      "want": "0",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "1",
+      "want": "25",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "5",
+      "want": "25",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "100",
+      "decimals": 3,
+      "precision": "25",
+      "want": "250",
+      "overflow": false
+    },
+    {
+      "numerator": "25",
+      "denominator": "100",
+      "decimals": 9,
+      "precision": "1",
+      "want": "250000000",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "1",
+      "decimals": 0,
+      "precision": "1",
+      "want": "101",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "1",
+      "want": "10100",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "5",
+      "want": "10100",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "1",
+      "decimals": 3,
+      "precision": "25",
+      "want": "101000",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "1",
+      "decimals": 9,
+      "precision": "1",
+      "want": "101000000000",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "2",
+      "decimals": 0,
+      "precision": "1",
+      "want": "51",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "1",
+      "want": "5050",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "5",
+      "want": "5050",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "2",
+      "decimals": 3,
+      "precision": "25",
+      "want": "50500",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "2",
+      "decimals": 9,
+      "precision": "1",
+      "want": "50500000000",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "4",
+      "decimals": 0,
+      "precision": "1",
+      "want": "25",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "1",
+      "want": "2525",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "5",
+      "want": "2525",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "4",
+      "decimals": 3,
+      "precision": "25",
+      "want": "25250",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "4",
+      "decimals": 9,
+      "precision": "1",
+      "want": "25250000000",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "5",
+      "decimals": 0,
+      "precision": "1",
+      "want": "20",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "1",
+      "want": "2020",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "5",
+      "want": "2020",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "5",
+      "decimals": 3,
+      "precision": "25",
+      "want": "20200",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "5",
+      "decimals": 9,
+      "precision": "1",
+      "want": "20200000000",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "8",
+      "decimals": 0,
+      "precision": "1",
+      "want": "13",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "1",
+      "want": "1263",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "5",
+      "want": "1265",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "8",
+      "decimals": 3,
+      "precision": "25",
+      "want": "12625",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "8",
+      "decimals": 9,
+      "precision": "1",
+      "want": "12625000000",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "10",
+      "decimals": 0,
+      "precision": "1",
+      "want": "10",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "1",
+      "want": "1010",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "5",
+      "want": "1010",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "10",
+      "decimals": 3,
+      "precision": "25",
+      "want": "10100",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "10",
+      "decimals": 9,
+      "precision": "1",
+      "want": "10100000000",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "20",
+      "decimals": 0,
+      "precision": "1",
+      "want": "5",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "1",
+      "want": "505",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "5",
+      "want": "505",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "20",
+      "decimals": 3,
+      "precision": "25",
+      "want": "5050",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "20",
+      "decimals": 9,
+      "precision": "1",
+      "want": "5050000000",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "100",
+      "decimals": 0,
+      "precision": "1",
+      "want": "1",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "1",
+      "want": "101",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "5",
+      "want": "100",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "100",
+      "decimals": 3,
+      "precision": "25",
+      "want": "1000",
+      "overflow": false
+    },
+    {
+      "numerator": "101",
+      "denominator": "100",
+      "decimals": 9,
+      "precision": "1",
+      "want": "1010000000",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "1",
+      "decimals": 0,
+      "precision": "1",
+      "want": "103",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "1",
+      "want": "10300",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "5",
+      "want": "10300",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "1",
+      "decimals": 3,
+      "precision": "25",
+      "want": "103000",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "1",
+      "decimals": 9,
+      "precision": "1",
+      "want": "103000000000",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "2",
+      "decimals": 0,
+      "precision": "1",
+      "want": "52",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "1",
+      "want": "5150",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "5",
+      "want": "5150",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "2",
+      "decimals": 3,
+      "precision": "25",
+      "want": "51500",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "2",
+      "decimals": 9,
+      "precision": "1",
+      "want": "51500000000",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "4",
+      "decimals": 0,
+      "precision": "1",
+      "want": "26",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "1",
+      "want": "2575",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "5",
+      "want": "2575",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "4",
+      "decimals": 3,
+      "precision": "25",
+      "want": "25750",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "4",
+      "decimals": 9,
+      "precision": "1",
+      "want": "25750000000",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "5",
+      "decimals": 0,
+      "precision": "1",
+      "want": "21",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "1",
+      "want": "2060",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "5",
+      "want": "2060",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "5",
+      "decimals": 3,
+      "precision": "25",
+      "want": "20600",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "5",
+      "decimals": 9,
+      "precision": "1",
+      "want": "20600000000",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "8",
+      "decimals": 0,
+      "precision": "1",
+      "want": "13",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "1",
+      "want": "1288",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "5",
+      "want": "1290",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "8",
+      "decimals": 3,
+      "precision": "25",
+      "want": "12875",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "8",
+      "decimals": 9,
+      "precision": "1",
+      "want": "12875000000",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "10",
+      "decimals": 0,
+      "precision": "1",
+      "want": "10",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "1",
+      "want": "1030",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "5",
+      "want": "1030",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "10",
+      "decimals": 3,
+      "precision": "25",
+      "want": "10300",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "10",
+      "decimals": 9,
+      "precision": "1",
+      "want": "10300000000",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "20",
+      "decimals": 0,
+      "precision": "1",
+      "want": "5",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "1",
+      "want": "515",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "5",
+      "want": "515",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "20",
+      "decimals": 3,
+      "precision": "25",
+      "want": "5150",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "20",
+      "decimals": 9,
+      "precision": "1",
+      "want": "5150000000",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "100",
+      "decimals": 0,
+      "precision": "1",
+      "want": "1",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "1",
+      "want": "103",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "5",
+      "want": "105",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "100",
+      "decimals": 3,
+      "precision": "25",
+      "want": "1025",
+      "overflow": false
+    },
+    {
+      "numerator": "103",
+      "denominator": "100",
+      "decimals": 9,
+      "precision": "1",
+      "want": "1030000000",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "1",
+      "decimals": 0,
+      "precision": "1",
+      "want": "123456789",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "1",
+      "want": "12345678900",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "1",
+      "decimals": 2,
+      "precision": "5",
+      "want": "12345678900",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "1",
+      "decimals": 3,
+      "precision": "25",
+      "want": "123456789000",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "1",
+      "decimals": 9,
+      "precision": "1",
+      "want": "123456789000000000",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "2",
+      "decimals": 0,
+      "precision": "1",
+      "want": "61728395",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "1",
+      "want": "6172839450",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "2",
+      "decimals": 2,
+      "precision": "5",
+      "want": "6172839450",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "2",
+      "decimals": 3,
+      "precision": "25",
+      "want": "61728394500",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "2",
+      "decimals": 9,
+      "precision": "1",
+      "want": "61728394500000000",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "4",
+      "decimals": 0,
+      "precision": "1",
+      "want": "30864197",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "1",
+      "want": "3086419725",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "4",
+      "decimals": 2,
+      "precision": "5",
+      "want": "3086419725",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "4",
+      "decimals": 3,
+      "precision": "25",
+      "want": "30864197250",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "4",
+      "decimals": 9,
+      "precision": "1",
+      "want": "30864197250000000",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "5",
+      "decimals": 0,
+      "precision": "1",
+      "want": "24691358",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "1",
+      "want": "2469135780",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "5",
+      "decimals": 2,
+      "precision": "5",
+      "want": "2469135780",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "5",
+      "decimals": 3,
+      "precision": "25",
+      "want": "24691357800",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "5",
+      "decimals": 9,
+      "precision": "1",
+      "want": "24691357800000000",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "8",
+      "decimals": 0,
+      "precision": "1",
+      "want": "15432099",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "1",
+      "want": "1543209863",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "8",
+      "decimals": 2,
+      "precision": "5",
+      "want": "1543209865",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "8",
+      "decimals": 3,
+      "precision": "25",
+      "want": "15432098625",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "8",
+      "decimals": 9,
+      "precision": "1",
+      "want": "15432098625000000",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "10",
+      "decimals": 0,
+      "precision": "1",
+      "want": "12345679",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "1",
+      "want": "1234567890",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "10",
+      "decimals": 2,
+      "precision": "5",
+      "want": "1234567890",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "10",
+      "decimals": 3,
+      "precision": "25",
+      "want": "12345678900",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "10",
+      "decimals": 9,
+      "precision": "1",
+      "want": "12345678900000000",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "20",
+      "decimals": 0,
+      "precision": "1",
+      "want": "6172839",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "1",
+      "want": "617283945",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "20",
+      "decimals": 2,
+      "precision": "5",
+      "want": "617283945",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "20",
+      "decimals": 3,
+      "precision": "25",
+      "want": "6172839450",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "20",
+      "decimals": 9,
+      "precision": "1",
+      "want": "6172839450000000",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "100",
+      "decimals": 0,
+      "precision": "1",
+      "want": "1234568",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "1",
+      "want": "123456789",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "100",
+      "decimals": 2,
+      "precision": "5",
+      "want": "123456790",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "100",
+      "decimals": 3,
+      "precision": "25",
+      "want": "1234567900",
+      "overflow": false
+    },
+    {
+      "numerator": "123456789",
+      "denominator": "100",
+      "decimals": 9,
+      "precision": "1",
+      "want": "1234567890000000",
+      "overflow": false
+    },
+    {
+      "numerator": "9223372036854775807",
+      "denominator": "1",
+      "decimals": 0,
+      "precision": "1",
+      "want": "9223372036854775807",
+      "overflow": false
+    },
+    {
+      "numerator": "-9223372036854775808",
+      "denominator": "1",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-9223372036854775808",
+      "overflow": false
+    },
+    {
+      "numerator": "18446744073709551615",
+      "denominator": "2",
+      "decimals": 0,
+      "precision": "1",
+      "want": "9223372036854775808",
+      "overflow": true
+    },
+    {
+      "numerator": "-18446744073709551617",
+      "denominator": "2",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-9223372036854775809",
+      "overflow": true
+    },
+    {
+      "numerator": "-123456789",
+      "denominator": "100000",
+      "decimals": 0,
+      "precision": "1",
+      "want": "-1235",
+      "overflow": false
+    }
+  ]
+}

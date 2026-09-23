@@ -1,0 +1,1 @@
+import{readSession}from"@/platform/auth/session";import{createFinanceGateway}from"@/platform/finance-vnext/gateway";import{financeConfig,financeTransport}from"@/platform/finance-vnext/server";export const runtime="nodejs";const handle=createFinanceGateway({session:readSession,config:financeConfig,transport:financeTransport});export const GET=handle;export const POST=handle;

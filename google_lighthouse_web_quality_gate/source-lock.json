@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0",
+  "verifiedAt": "2026-08-29",
+  "source": {
+    "owner": "GoogleChrome",
+    "repository": "lighthouse",
+    "tag": "v13.4.1",
+    "commit": "1d58f5b06d28e3419b38817a6c7488ec4413c67d",
+    "tree": "405d16b2cdaac5c3ba3823b720031386a618165d",
+    "commitSignatureVerified": false,
+    "releaseId": 356969559,
+    "publishedAt": "2026-07-20T20:10:47Z",
+    "archiveUrl": "https://github.com/GoogleChrome/lighthouse/archive/1d58f5b06d28e3419b38817a6c7488ec4413c67d.zip",
+    "archiveBytes": 73569399,
+    "archiveSha256": "f526c6719e496519fc85986226364ef4e6274b1b0e2d8f64a5b8e22fc51510e3",
+    "licenseExpression": "Apache-2.0",
+    "licenseUrl": "https://raw.githubusercontent.com/GoogleChrome/lighthouse/v13.4.1/LICENSE",
+    "licenseBytes": 11358,
+    "licenseSha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "packageManifestSha256": "9a2acb5f3c0908842aacec66eb0bdd8307edd73469098e7eb186b5b79dfad1cf"
+  },
+  "npm": {
+    "name": "lighthouse",
+    "version": "13.4.1",
+    "tarballUrl": "https://registry.npmjs.org/lighthouse/-/lighthouse-13.4.1.tgz",
+    "tarballBytes": 3562319,
+    "tarballSha256": "110759ba9e863c024e214e9b08ed2b0344d89b492286227235d4dfb990dc3e54",
+    "integrity": "sha512-fDu8lt3QLK/lTqIxtp1HkzQNJ32rsFHhbadYOepcMZFLgA8oINhxutMbMv8XXnpTOvZ0TXCo4JCk1LDTWaRLnA==",
+    "shasum": "40dedda9675b988ffd1b409678666a274977aff7",
+    "unpackedBytes": 18983250,
+    "nodeEngine": ">=22.19",
+    "attestationsUrl": "https://registry.npmjs.org/-/npm/v1/attestations/lighthouse@13.4.1",
+    "attestationsBytes": 14734,
+    "attestationsSha256": "b1bd42f081b45ae2c6929be8084452a6ddb6f8ac47832e869862fe6adc0641f7",
+    "attestationStatements": 2,
+    "attestedSha512Hex": "7c3bbc96ddd02cafe54ea231b69d4793340d277dabb051e16da75839ea5c31914b800f2820d871bad31b32ff175e7a533af6744d70a8e090a4d4b0d359a44b9c",
+    "resolvedProductionDependencies": 119,
+    "pnpmAudit": {"date": "2026-08-29", "vulnerabilities": 0}
+  },
+  "browserContract": {
+    "provider": "Microsoft Playwright",
+    "packageVersion": "1.62.1",
+    "browser": "Chromium",
+    "browserVersion": "151.0.7922.34",
+    "revision": "1234",
+    "executableSha256Windows": "409805a16d6416087e6b2f778df1cf8f7bbb267d6b99f6b5bb0a618eace234f2"
+  }
+}

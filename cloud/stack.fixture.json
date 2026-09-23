@@ -1,0 +1,483 @@
+{
+  "config": {
+    "arca": {
+      "bootstrap_command": [
+        "dotnet",
+        "/app/Elite.Cloud.ArcaLauncher.dll"
+      ],
+      "bootstrap_sha256": "7702b2622977fc0b77303db5bace17d9f43f102beb26a6a8d61547a64e87ee45",
+      "certificate_password_secret": "fixture-arca-password:1",
+      "certificate_secret": "fixture-arca-certificate:1",
+      "enabled": false,
+      "reason": "No fiscal account/certificate or target acceptance",
+      "socket": "/run/arca/wsfe.sock",
+      "store": "CurrentUser",
+      "thumbprint": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    },
+    "ci": {
+      "deploy_service_account": "fixture-deploy@fixture-project.iam.gserviceaccount.com",
+      "library_commit": "d2729ab31adcb82906413e0f5b9f9b228c851d0d",
+      "library_repository": "https://github.com/etor6233/elite-engineering-library.git",
+      "project_repository": "https://github.com/fixture-org/fixture-project",
+      "wif_principal": "principalSet://iam.googleapis.com/projects/123456789012/locations/global/workloadIdentityPools/fixture-pool/attribute.repository/fixture-org/fixture-project"
+    },
+    "cost_controller": {
+      "billing_table": "fixture-project.billing.export",
+      "budget_policy_ref": "target-evidence/budget-policy.json",
+      "budget_policy_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "cycle": {
+        "billing_account": "AAAAAA-BBBBBB-CCCCCC",
+        "billing_table": "fixture-project.billing.export",
+        "currency": "USD",
+        "environment": "development",
+        "fence_uri": "gs://fixture-controller/control/finops-intents",
+        "interval_seconds": 900,
+        "journal_uri": "gs://fixture-controller/control/billing.sqlite",
+        "limit_micros": 1000000,
+        "location": "US",
+        "max_age_seconds": 1800,
+        "max_state_bytes": 1048576,
+        "maximum_bytes_billed": 10000000,
+        "notification": {
+          "mode": "NONE"
+        },
+        "period_policy": "UTC_CURRENT_MONTH",
+        "production_authorized": false,
+        "project": "fixture-project",
+        "schema": "elite-finops-cycle/v403.1"
+      },
+      "cycle_owner_sha256": "35708a02289e662ed9037900c1ea198fe6db6c941d7b47f0210c383f84f67ec3",
+      "job_name": "fixture-finops",
+      "mounts": {
+        "approval": {
+          "secret_ref": "fixture-finops-approval:1",
+          "sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        },
+        "config": {
+          "secret_ref": "fixture-finops-config:1",
+          "sha256": "1988c45c660fef7e90cfaf14c108b44bd4ad2284ceddadfdca4eb387fe3d29a6"
+        },
+        "runner": {
+          "secret_ref": "fixture-finops-runner:1",
+          "sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        },
+        "tools": {
+          "secret_ref": "fixture-finops-tools:1",
+          "sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        }
+      },
+      "schedule": "*/15 * * * *",
+      "seed_receipt_ref": "target-evidence/finops-seed.json",
+      "seed_receipt_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "state_object": "control/state.json",
+      "timeout_seconds": 900
+    },
+    "database": {
+      "backup_time": "03:00",
+      "database": "fixture-app",
+      "instance": "fixture-db",
+      "migration_baseline": 0,
+      "migration_last": 84,
+      "migration_timeout_seconds": 600,
+      "password_secret": "fixture-db-password:1",
+      "retained_backups": 7,
+      "tier": "db-custom-2-7680",
+      "user": "fixture-app"
+    },
+    "documents": {
+      "automatic_persistence": false,
+      "mode": "REVIEW_ONLY",
+      "profile_ref": "target-evidence/document-profile.json",
+      "profile_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    },
+    "environment": "development",
+    "identity": {
+      "allowed_web_principals": [
+        "group:developers@example.invalid"
+      ],
+      "api_url": "https://fixture-api-123456789012.us-central1.run.app",
+      "audience": "fixture-api",
+      "browser_access": "IAP_DIRECT",
+      "controller_service_account": "fixture-controller@fixture-project.iam.gserviceaccount.com",
+      "issuer": "https://identity.example.test",
+      "migration_service_account": "fixture-migration@fixture-project.iam.gserviceaccount.com",
+      "scheduler_service_account": "fixture-scheduler@fixture-project.iam.gserviceaccount.com",
+      "session_secret": "fixture-session:1",
+      "web_url": "https://fixture-web-123456789012.us-central1.run.app"
+    },
+    "production_authorized": false,
+    "scheduler": {
+      "max_retry_seconds": 0,
+      "retention_schedule": "0 2 * * *",
+      "retry_count": 0,
+      "timezone": "Etc/UTC"
+    },
+    "schema": "elite-cloud-stack-config/v403.1",
+    "scope": "LIBRARY_INFRASTRUCTURE",
+    "source": {
+      "composition_sha256": "cfef001e2b36546ea7082cb699486feb98c9bd01e20cedeb2c1f6f25d626fae9",
+      "inventory_sha256": "d07c2607e9d329bb1749278cd67a4542751a419d5dc018f2a2198ec642376fcd",
+      "pack_count": 116,
+      "source_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "storage": {
+      "controller": {
+        "bucket": "fixture-controller",
+        "retention_days": 0,
+        "soft_delete_days": 7
+      },
+      "quarantine": {
+        "bucket": "fixture-quarantine",
+        "retention_days": 30,
+        "soft_delete_days": 7
+      },
+      "retained": {
+        "bucket": "fixture-retained",
+        "retention_days": 365,
+        "soft_delete_days": 7
+      }
+    },
+    "target": {
+      "network": "fixture-network",
+      "platform": "linux/amd64",
+      "project": "fixture-project",
+      "project_number": "123456789012",
+      "region": "us-central1",
+      "subnetwork": "fixture-subnet"
+    },
+    "web": {
+      "arguments": [],
+      "enabled": true,
+      "environment": {
+        "ENTERPRISE_ORGANIZATION_CODE": "fixture-store",
+        "ENTERPRISE_TENANT_CODE": "fixture-tenant",
+        "OIDC_CLIENT_ID": "fixture-web"
+      },
+      "image": "web",
+      "max_instances": 3,
+      "min_instances": 0,
+      "name": "fixture-web",
+      "reason": "Required web",
+      "secret_refs": {
+        "OIDC_CLIENT_SECRET": "fixture-oidc-client:1"
+      },
+      "service_account": "fixture-web@fixture-project.iam.gserviceaccount.com"
+    },
+    "workloads": {
+      "api": {
+        "arguments": [],
+        "enabled": false,
+        "environment": {},
+        "image": "workers",
+        "max_instances": 1,
+        "min_instances": 1,
+        "name": "fixture-reference-api",
+        "reason": "Deferred: provider credential/profile or explicit operator input remains absent",
+        "secret_refs": {
+          "DATABASE_URL": "fixture-database:1"
+        },
+        "service_account": "fixture-worker@fixture-project.iam.gserviceaccount.com"
+      },
+      "arca-fiscal-worker": {
+        "arguments": [],
+        "enabled": false,
+        "environment": {
+          "FISCAL_WORKER_ID": "arca-fiscal-worker"
+        },
+        "image": "workers",
+        "max_instances": 1,
+        "min_instances": 1,
+        "name": "fixture-arca-fiscal-worker",
+        "reason": "Deferred: provider credential/profile or explicit operator input remains absent",
+        "secret_refs": {
+          "DATABASE_URL": "fixture-database:1"
+        },
+        "service_account": "fixture-worker@fixture-project.iam.gserviceaccount.com"
+      },
+      "arca-parameter-worker": {
+        "arguments": [],
+        "enabled": false,
+        "environment": {
+          "FISCAL_PARAMETER_WORKER_ID": "arca-parameter-worker"
+        },
+        "image": "workers",
+        "max_instances": 1,
+        "min_instances": 1,
+        "name": "fixture-arca-parameter-worker",
+        "reason": "Deferred: provider credential/profile or explicit operator input remains absent",
+        "secret_refs": {
+          "DATABASE_URL": "fixture-database:1"
+        },
+        "service_account": "fixture-worker@fixture-project.iam.gserviceaccount.com"
+      },
+      "customer-survey-retention": {
+        "arguments": [
+          "--tenant",
+          "11111111-1111-4111-8111-111111111111",
+          "--organization",
+          "fixture-store",
+          "--limit",
+          "100"
+        ],
+        "enabled": true,
+        "environment": {},
+        "image": "workers",
+        "max_instances": 1,
+        "min_instances": 1,
+        "name": "fixture-customer-survey-retention",
+        "reason": "Required local composition",
+        "secret_refs": {
+          "DATABASE_URL": "fixture-database:1"
+        },
+        "service_account": "fixture-worker@fixture-project.iam.gserviceaccount.com"
+      },
+      "electromobility-api": {
+        "arguments": [],
+        "enabled": true,
+        "environment": {},
+        "image": "api",
+        "max_instances": 1,
+        "min_instances": 1,
+        "name": "fixture-api",
+        "reason": "Required local composition",
+        "secret_refs": {
+          "DATABASE_URL": "fixture-database:1"
+        },
+        "service_account": "fixture-api@fixture-project.iam.gserviceaccount.com"
+      },
+      "meta-lead-import": {
+        "arguments": [],
+        "enabled": false,
+        "environment": {},
+        "image": "workers",
+        "max_instances": 1,
+        "min_instances": 1,
+        "name": "fixture-meta-lead-import",
+        "reason": "Deferred: provider credential/profile or explicit operator input remains absent",
+        "secret_refs": {
+          "DATABASE_URL": "fixture-database:1"
+        },
+        "service_account": "fixture-worker@fixture-project.iam.gserviceaccount.com"
+      },
+      "meta-lead-webhook": {
+        "arguments": [],
+        "enabled": false,
+        "environment": {},
+        "image": "workers",
+        "max_instances": 1,
+        "min_instances": 1,
+        "name": "fixture-meta-lead-webhook",
+        "reason": "Deferred: provider credential/profile or explicit operator input remains absent",
+        "secret_refs": {
+          "DATABASE_URL": "fixture-database:1"
+        },
+        "service_account": "fixture-worker@fixture-project.iam.gserviceaccount.com"
+      },
+      "return-accounting-worker": {
+        "arguments": [],
+        "enabled": true,
+        "environment": {
+          "RETURN_ACCOUNTING_WORKER_ID": "return-accounting-worker"
+        },
+        "image": "workers",
+        "max_instances": 1,
+        "min_instances": 1,
+        "name": "fixture-return-accounting-worker",
+        "reason": "Required local composition",
+        "secret_refs": {
+          "DATABASE_URL": "fixture-database:1"
+        },
+        "service_account": "fixture-worker@fixture-project.iam.gserviceaccount.com"
+      },
+      "return-effect-worker": {
+        "arguments": [],
+        "enabled": true,
+        "environment": {
+          "RETURN_EFFECT_WORKER_ID": "return-effect-worker"
+        },
+        "image": "workers",
+        "max_instances": 1,
+        "min_instances": 1,
+        "name": "fixture-return-effect-worker",
+        "reason": "Required local composition",
+        "secret_refs": {
+          "DATABASE_URL": "fixture-database:1"
+        },
+        "service_account": "fixture-worker@fixture-project.iam.gserviceaccount.com"
+      },
+      "return-exchange-worker": {
+        "arguments": [],
+        "enabled": true,
+        "environment": {
+          "RETURN_EXCHANGE_WORKER_ID": "return-exchange-worker"
+        },
+        "image": "workers",
+        "max_instances": 1,
+        "min_instances": 1,
+        "name": "fixture-return-exchange-worker",
+        "reason": "Required local composition",
+        "secret_refs": {
+          "DATABASE_URL": "fixture-database:1"
+        },
+        "service_account": "fixture-worker@fixture-project.iam.gserviceaccount.com"
+      },
+      "return-fiscal-worker": {
+        "arguments": [],
+        "enabled": false,
+        "environment": {
+          "RETURN_FISCAL_WORKER_ID": "return-fiscal-worker"
+        },
+        "image": "workers",
+        "max_instances": 1,
+        "min_instances": 1,
+        "name": "fixture-return-fiscal-worker",
+        "reason": "Deferred: provider credential/profile or explicit operator input remains absent",
+        "secret_refs": {
+          "DATABASE_URL": "fixture-database:1"
+        },
+        "service_account": "fixture-worker@fixture-project.iam.gserviceaccount.com"
+      },
+      "social-publishing": {
+        "arguments": [],
+        "enabled": false,
+        "environment": {},
+        "image": "workers",
+        "max_instances": 1,
+        "min_instances": 1,
+        "name": "fixture-social-publishing",
+        "reason": "Deferred: provider credential/profile or explicit operator input remains absent",
+        "secret_refs": {
+          "DATABASE_URL": "fixture-database:1"
+        },
+        "service_account": "fixture-worker@fixture-project.iam.gserviceaccount.com"
+      },
+      "tiktok-lead-import": {
+        "arguments": [],
+        "enabled": false,
+        "environment": {},
+        "image": "workers",
+        "max_instances": 1,
+        "min_instances": 1,
+        "name": "fixture-tiktok-lead-import",
+        "reason": "Deferred: provider credential/profile or explicit operator input remains absent",
+        "secret_refs": {
+          "DATABASE_URL": "fixture-database:1"
+        },
+        "service_account": "fixture-worker@fixture-project.iam.gserviceaccount.com"
+      },
+      "warranty-profile": {
+        "arguments": [],
+        "enabled": false,
+        "environment": {},
+        "image": "workers",
+        "max_instances": 1,
+        "min_instances": 1,
+        "name": "fixture-warranty-profile",
+        "reason": "Deferred: provider credential/profile or explicit operator input remains absent",
+        "secret_refs": {
+          "DATABASE_URL": "fixture-database:1"
+        },
+        "service_account": "fixture-worker@fixture-project.iam.gserviceaccount.com"
+      }
+    }
+  },
+  "images": {
+    "artifacts": {
+      "api": {
+        "composition_sha256": "cfef001e2b36546ea7082cb699486feb98c9bd01e20cedeb2c1f6f25d626fae9",
+        "entrypoints": [
+          "/app/bin/electromobility-api",
+          "/app/bin/api",
+          "/app/bin/return-effect-worker",
+          "/app/bin/return-exchange-worker",
+          "/app/bin/return-accounting-worker",
+          "/app/bin/return-fiscal-worker",
+          "/app/bin/arca-fiscal-worker",
+          "/app/bin/arca-parameter-worker",
+          "/app/bin/social-publishing",
+          "/app/bin/meta-lead-webhook",
+          "/app/bin/customer-survey-retention",
+          "/app/bin/meta-lead-import",
+          "/app/bin/tiktok-lead-import",
+          "/app/bin/warranty-profile"
+        ],
+        "image": "us-central1-docker.pkg.dev/fixture-project/runtime/api@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "inventory_sha256": "d07c2607e9d329bb1749278cd67a4542751a419d5dc018f2a2198ec642376fcd",
+        "promoted_image": "us-central1-docker.pkg.dev/fixture-project/runtime/api@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_sha256": "bba14159fac4aa6867683354fbf12e485acfe396278ed1b503e7aa0cfd332b6c"
+      },
+      "arca": {
+        "composition_sha256": "cfef001e2b36546ea7082cb699486feb98c9bd01e20cedeb2c1f6f25d626fae9",
+        "entrypoints": [
+          "dotnet"
+        ],
+        "image": "us-central1-docker.pkg.dev/fixture-project/runtime/arca@sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "inventory_sha256": "d07c2607e9d329bb1749278cd67a4542751a419d5dc018f2a2198ec642376fcd",
+        "promoted_image": "us-central1-docker.pkg.dev/fixture-project/runtime/arca@sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "source_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_sha256": "bba14159fac4aa6867683354fbf12e485acfe396278ed1b503e7aa0cfd332b6c"
+      },
+      "controller": {
+        "composition_sha256": "cfef001e2b36546ea7082cb699486feb98c9bd01e20cedeb2c1f6f25d626fae9",
+        "entrypoints": [
+          "python3",
+          "/app/cloud/finops_cycle.py"
+        ],
+        "image": "us-central1-docker.pkg.dev/fixture-project/runtime/controller@sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "inventory_sha256": "d07c2607e9d329bb1749278cd67a4542751a419d5dc018f2a2198ec642376fcd",
+        "promoted_image": "us-central1-docker.pkg.dev/fixture-project/runtime/controller@sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "source_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_sha256": "bba14159fac4aa6867683354fbf12e485acfe396278ed1b503e7aa0cfd332b6c"
+      },
+      "migrations": {
+        "composition_sha256": "cfef001e2b36546ea7082cb699486feb98c9bd01e20cedeb2c1f6f25d626fae9",
+        "entrypoints": [
+          "psql"
+        ],
+        "image": "us-central1-docker.pkg.dev/fixture-project/runtime/migrations@sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "inventory_sha256": "d07c2607e9d329bb1749278cd67a4542751a419d5dc018f2a2198ec642376fcd",
+        "promoted_image": "us-central1-docker.pkg.dev/fixture-project/runtime/migrations@sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "source_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_sha256": "bba14159fac4aa6867683354fbf12e485acfe396278ed1b503e7aa0cfd332b6c"
+      },
+      "web": {
+        "composition_sha256": "cfef001e2b36546ea7082cb699486feb98c9bd01e20cedeb2c1f6f25d626fae9",
+        "entrypoints": [
+          "node"
+        ],
+        "image": "us-central1-docker.pkg.dev/fixture-project/runtime/web@sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "inventory_sha256": "d07c2607e9d329bb1749278cd67a4542751a419d5dc018f2a2198ec642376fcd",
+        "promoted_image": "us-central1-docker.pkg.dev/fixture-project/runtime/web@sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "source_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_sha256": "bba14159fac4aa6867683354fbf12e485acfe396278ed1b503e7aa0cfd332b6c"
+      },
+      "workers": {
+        "composition_sha256": "cfef001e2b36546ea7082cb699486feb98c9bd01e20cedeb2c1f6f25d626fae9",
+        "entrypoints": [
+          "/app/bin/electromobility-api",
+          "/app/bin/api",
+          "/app/bin/return-effect-worker",
+          "/app/bin/return-exchange-worker",
+          "/app/bin/return-accounting-worker",
+          "/app/bin/return-fiscal-worker",
+          "/app/bin/arca-fiscal-worker",
+          "/app/bin/arca-parameter-worker",
+          "/app/bin/social-publishing",
+          "/app/bin/meta-lead-webhook",
+          "/app/bin/customer-survey-retention",
+          "/app/bin/meta-lead-import",
+          "/app/bin/tiktok-lead-import",
+          "/app/bin/warranty-profile"
+        ],
+        "image": "us-central1-docker.pkg.dev/fixture-project/runtime/api@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "inventory_sha256": "d07c2607e9d329bb1749278cd67a4542751a419d5dc018f2a2198ec642376fcd",
+        "promoted_image": "us-central1-docker.pkg.dev/fixture-project/runtime/api@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "source_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "target_sha256": "bba14159fac4aa6867683354fbf12e485acfe396278ed1b503e7aa0cfd332b6c"
+      }
+    },
+    "method": "SIMULATED_ARTIFACTS",
+    "schema": "elite-cloud-stack-images/v403.1"
+  }
+}

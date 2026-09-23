@@ -1,0 +1,33 @@
+{
+  "status": "CANDIDATE_DATE_CALCULATOR_ONLY",
+  "source": {
+    "source_commit": "2eae56d704a1fd035d104f333602aea7091b7749",
+    "source_path": "src/Layers/W1/BaseApp/Service/Document/ServiceItemLine.Table.al",
+    "source_file_sha256": "32b4fcf60b25d363d31ef6a1927b1f051eb4ef4ef48d9ca6b2ecc04844a854ff",
+    "source_lines": [
+      1884,
+      1953
+    ],
+    "segment_sha256": "e46ec6bb958d2d3b946ef59a3833664dc2c8d13351dd6c876493a3980c5b95e0",
+    "claim": "Inclusive parts/labor warranty-date evaluation and propagation only to not-invoiced item/resource lines; fault exclusions remain explicit input owner. No target warranty duration or percent chosen.",
+    "unmapped_required": [
+      "activation from accepted handover and immutable sold terms",
+      "service work/parts/quality/acceptance/claim durable integration"
+    ],
+    "state": "SOURCE_IDENTIFIED_NOT_ADMITTED"
+  },
+  "source_expressions": {
+    "parts": "(Date >= \"Warranty Starting Date (Parts)\") and (Date <= \"Warranty Ending Date (Parts)\")",
+    "labor": "(Date >= \"Warranty Starting Date (Labor)\") and (Date <= \"Warranty Ending Date (Labor)\")",
+    "invalid_parts": "\"Warranty Starting Date (Parts)\" > \"Warranty Ending Date (Parts)\""
+  },
+  "oracle_kind": "Restricted AST evaluation of three extracted official AL comparisons; not AL runtime or full test suite",
+  "vectors": 1280,
+  "vector_sha256": "dd5c76d26f2ef7c02fa92fd3f5206ad9477968fd6b5db60472333c6c582c21f2",
+  "representation_deltas": [
+    "AL date becomes int32 ordinal day;0D preserved as0",
+    "AL Error transaction result becomes Go error without mutating value inputs",
+    "No event subscribers, validation side effects, percentages or DB line propagation in pure predicate"
+  ],
+  "integration_pending": true
+}

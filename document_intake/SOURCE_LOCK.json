@@ -1,0 +1,50 @@
+{
+  "schema": "elite-documents-source-lock/v1",
+  "revision": "V403-DOCS-FINAL-01",
+  "observed_at": "2026-09-22T14:36:47.506638+00:00",
+  "pdfjs": {
+    "owner": "mozilla/pdf.js",
+    "tag": "v6.3.289",
+    "commit": "1c8020a7d4e43668ac287a3ecf9a8dbea17e4c56",
+    "distribution": "https://registry.npmjs.org/pdfjs-dist/-/pdfjs-dist-6.3.289.tgz",
+    "integrity": "sha512-ZHjSVpDa3D6izMq8/04lvkhkATUmL9px6ChPaXc1k6nU2Mrhlg1/7F0bdUqCwUjw3NsPTfPZsMDUU6ZIcRaeQw==",
+    "archive_sha256": "06f25e887adc6489f04c9fcb14198c77e4e5623a59a0bba5c4cea5838a4f1241",
+    "license": "Apache-2.0",
+    "included": [
+      {
+        "path": "third_party/pdfjs/LICENSE",
+        "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+        "bytes": 10174
+      },
+      {
+        "path": "third_party/pdfjs/package.json",
+        "sha256": "3fcf6a22713e12b62ac8430e54bf00547d664b3248b618aa57915840c7f8b617",
+        "bytes": 710
+      },
+      {
+        "path": "third_party/pdfjs/pdf.min.mjs",
+        "sha256": "f80490490320511e5df18c580b9edd6b5db8058dceebaf6f161992e0a964b9e2",
+        "bytes": 458705
+      },
+      {
+        "path": "third_party/pdfjs/pdf.worker.min.mjs",
+        "sha256": "8ab0e5e30031b4a06ecfddd5ae9562f0227f830ee7ec9ed1a968b134243d2386",
+        "bytes": 1265413
+      }
+    ],
+    "source_tag_receipt_sha256": "efbd81474487e438664efded23f0855e552c02360b0cd589a6ca722ef529c496",
+    "advisories_receipt_sha256": "6dcf8cc8dc63012abbecefed72a2cf7646ea0a2569befb7b81d8abca5ccfcfda"
+  },
+  "existing_packs": [
+    {
+      "pack": "SECURE_EMAIL_MIME_QUARANTINE_CORE",
+      "sha256": "4904e7cf8db690df96ec0aaa3ecfc16ce7575a6c33ffcbbf90ba175779a9a335",
+      "owner_reused": true
+    },
+    {
+      "pack": "MICROSOFT_AVM_SECURE_SFTP_INTAKE",
+      "sha256": "63ab14f8a368c9a68240c74f67f0901b132ec20789f8400f29ba08904dae2b1b",
+      "owner_reused": true
+    }
+  ]
+}

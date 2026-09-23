@@ -1,0 +1,13 @@
+import "server-only";
+import {applicationBaseUrl} from "@/platform/auth/oidc-client";
+import {backendFetch} from "@/platform/backend/cloud-run-transport";
+import type {DocumentConfig,DocumentTransport} from "./gateway";
+export function documentConfig():DocumentConfig{
+ const e=process.env;if(e.DOCUMENTS_ENABLED!=="true"||!/^[a-f0-9]{64}$/u.test(e.DOCUMENTS_PROFILE_SHA256??"")||!e.DOCUMENTS_TENANT_ID||!e.DOCUMENTS_ORGANIZATION_ID||!["FIXTURE","PROVIDER","TYPED_FIXTURE"].includes(e.DOCUMENTS_MODE??""))throw new Error("Document scope not configured");
+ return {origin:applicationBaseUrl().origin,tenant:e.DOCUMENTS_TENANT_ID,organization:e.DOCUMENTS_ORGANIZATION_ID,profile:e.DOCUMENTS_PROFILE_SHA256!,mode:e.DOCUMENTS_MODE as DocumentConfig["mode"]};
+}
+export const documentTransport:DocumentTransport=async(session,path,request)=>{
+ const base=new URL(process.env.ENTERPRISE_API_BASE_URL??"");
+ if(!["http:","https:"].includes(base.protocol)||base.username||base.password||base.search||base.hash||!/^\/v1\/documents(?:\?(?:limit=\d+)(?:&cursor=[A-Za-z0-9%_.~-]+)?|\/classes|\/[a-f0-9-]{36}(?:\/(?:original|process|review|decision|evidence\/(?:security|provider|analysis)))?)$/u.test(path))throw new Error("Invalid document route");
+ return backendFetch(new URL(path,base),{method:request.method,...(request.body===undefined?{}:{body:request.body instanceof Uint8Array?new Uint8Array(request.body).buffer:request.body}),headers:{accept:"application/json",authorization:`Bearer ${session.accessToken}`,...request.headers},cache:"no-store",redirect:"error",signal:AbortSignal.timeout(path.endsWith("/process")?130000:7000)});
+};

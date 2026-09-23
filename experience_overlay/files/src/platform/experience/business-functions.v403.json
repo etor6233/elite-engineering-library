@@ -1,0 +1,1894 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "BUSINESS-FUNCTIONS-V403",
+  "scope": "LIBRARY_INFRASTRUCTURE",
+  "claim_scope": "FUNCTION_CONTRACT_SCAFFOLD",
+  "production_authorized": false,
+  "provenance": {
+    "classification": "AUTHORED",
+    "kind": "CONTRACT_AND_VALIDATOR_GLUE",
+    "upstream_code_copied": false,
+    "official_method_code_claim": false
+  },
+  "frontend_contract": {
+    "route_pattern": "#/functions/{id}",
+    "mode": "READ_ONLY_LIBRARY_CONSOLE",
+    "required_sections": [
+      "purpose",
+      "systems",
+      "tasks",
+      "permissions",
+      "allowed",
+      "prohibited",
+      "inputs",
+      "outputs",
+      "acceptance",
+      "implementation",
+      "sources",
+      "status",
+      "owners",
+      "resume"
+    ],
+    "external_effects_enabled": false
+  },
+  "owner_refs": {
+    "progress": "specs/library-extension/tasks.md",
+    "execution_state": "PROJECT_EXECUTION_STATE.json",
+    "execution_events": "PROJECT_EXECUTION_EVENTS.jsonl",
+    "failures": "PROJECT_FAILURE_LESSONS.md",
+    "dependency": "PROJECT_DEPENDENCY_UPDATE_RECORD.md",
+    "freshness": "PROJECT_AUTHORITY_FRESHNESS_RECORD.md"
+  },
+  "permission_policy": {
+    "track_is_auth_role": false,
+    "default": "DENY",
+    "effective_grants": [],
+    "requires": [
+      "authenticated_subject",
+      "explicit_product_permission",
+      "organization_scope",
+      "resource_scope",
+      "server_side_enforcement",
+      "audit_evidence"
+    ],
+    "unbound_permission_behavior": "BLOCK_PRODUCT_EFFECT",
+    "inherited_privilege_allowed": false
+  },
+  "done_policy": {
+    "scaffold": "All declared local checks PASS on fixed bytes; zero known open defects in this scaffold scope; exact frontend coverage independently checked.",
+    "product": "Target gates required before runtime/production claims. CONDITIONED and NOT_TESTED do not count as PASS.",
+    "galaxy": "Waiting for future event source does not block referenced current official methods; it blocks claims derived from that event."
+  },
+  "functions": [
+    {
+      "id": "grok-bot-101",
+      "track_name": "Grok Bot 101",
+      "function_kind": "LEARNING_TRACK",
+      "auth_role": false,
+      "purpose": "Aprender a delimitar una tarea, sus datos y la evidencia antes de delegarla a un agente.",
+      "systems": [
+        "Documentación oficial Grok",
+        "Contratos y ejemplos locales sin datos reales"
+      ],
+      "allowed": [
+        "Leer contratos, fuentes y evidencia local.",
+        "Preparar propuestas sin efectos externos dentro del scope aprobado."
+      ],
+      "prohibited": [
+        "Derivar privilegios del título o track.",
+        "Usar secretos o datos empresariales reales en el scaffold.",
+        "Enviar mensajes, publicar, gastar, modificar CRM o ejecutar efectos desde esta consola."
+      ],
+      "status": {
+        "specification_status": "SPEC_READY",
+        "method_admission": {
+          "status": "OFFICIAL_METHOD_REFERENCED",
+          "claim_scope": "DOCUMENTARY_METHOD_ONLY",
+          "source_refs": [
+            "XAI-GROK",
+            "MS-RBAC"
+          ],
+          "code_admission": "NONE"
+        },
+        "verification_status": {
+          "scaffold": "NOT_TESTED",
+          "target": "NOT_TESTED",
+          "evidence_refs": []
+        }
+      },
+      "source_refs": [
+        "XAI-GROK",
+        "MS-RBAC"
+      ],
+      "galaxy_admission": {
+        "status": "WAITING_GALAXY_ADMISSION",
+        "source_ref": null,
+        "applies_only_to": "FUTURE_EVENT_MATERIAL",
+        "content_invented": false,
+        "reopen_trigger": "Material oficial identificable del evento disponible y obtenido legalmente; fijar fecha/revisión/hash/términos/claim y ejecutar admisión aplicable antes de incorporarlo."
+      },
+      "owner_refs": {
+        "progress": "specs/library-extension/tasks.md",
+        "execution_state": "PROJECT_EXECUTION_STATE.json",
+        "execution_events": "PROJECT_EXECUTION_EVENTS.jsonl",
+        "failures": "PROJECT_FAILURE_LESSONS.md",
+        "dependency": "PROJECT_DEPENDENCY_UPDATE_RECORD.md",
+        "freshness": "PROJECT_AUTHORITY_FRESHNESS_RECORD.md"
+      },
+      "resume": {
+        "read_refs": [
+          "PROJECT_EXECUTION_STATE.json",
+          "PROJECT_EXECUTION_EVENTS.jsonl",
+          "specs/library-extension/tasks.md",
+          "PROJECT_FAILURE_LESSONS.md",
+          "roles/business-functions.v403.json"
+        ],
+        "rule": "Validar checkpoint y hashes; consultar los owners existentes; invalidar evidencia afectada por delta; registrar siguiente acción allí, sin backlog paralelo."
+      },
+      "implementation_binding": {
+        "status": "DOCUMENTED_ONLY",
+        "pack": null,
+        "evidence": null,
+        "action": null,
+        "kind": "NO_PRODUCT_RUNTIME",
+        "target_verified": false,
+        "v403_executes_binding": false
+      },
+      "open_requirement": {
+        "id": "TARGET-GROK-BOT-101",
+        "scope": "FUTURE_CONSUMER_ONLY",
+        "description": "Admitir el material oficial Galaxy cuando exista y se obtenga; una cuenta o runtime Grok queda fuera de este scaffold.",
+        "owner_ref": "specs/library-extension/tasks.md"
+      },
+      "tasks": [
+        {
+          "id": "grok-bot-101.delimit-learning-exercise",
+          "title": "Delimitar un ejercicio de aprendizaje",
+          "inputs": [
+            "Objetivo de práctica",
+            "ejemplo sintético",
+            "límites de datos y herramientas"
+          ],
+          "outputs": [
+            "Ficha de tarea y preguntas abiertas"
+          ],
+          "product_permission": {
+            "id": "learning:read",
+            "definition_kind": "PROPOSED_TARGET_REQUIREMENT",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/grok-bot-101",
+            "section": "tasks",
+            "task_id": "grok-bot-101.delimit-learning-exercise",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "grok-bot-101.AC1",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "Ejercicio sin credenciales, identidad ni efectos; distinguir explicación, simulación y resultado observado.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        },
+        {
+          "id": "grok-bot-101.review-agent-output",
+          "title": "Revisar la salida propuesta por un agente",
+          "inputs": [
+            "Ficha de tarea",
+            "salida sintética",
+            "criterio de revisión"
+          ],
+          "outputs": [
+            "Comparación con el objetivo y límite observado"
+          ],
+          "product_permission": {
+            "id": "learning:review",
+            "definition_kind": "PROPOSED_TARGET_REQUIREMENT",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/grok-bot-101",
+            "section": "tasks",
+            "task_id": "grok-bot-101.review-agent-output",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "grok-bot-101.AC2",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "Un texto convincente no se registra como efecto ejecutado ni como permiso.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        }
+      ],
+      "owner_binding_scope": "MAINTENANCE_FIXTURE"
+    },
+    {
+      "id": "engineering",
+      "track_name": "Engineering",
+      "function_kind": "BUSINESS_FUNCTION",
+      "auth_role": false,
+      "purpose": "Convertir un cambio acotado en implementación revisable y evidencia reproducible.",
+      "systems": [
+        "Spec Kit/owners de ejecución existentes",
+        "Packs y gates de biblioteca"
+      ],
+      "allowed": [
+        "Leer contratos, fuentes y evidencia local.",
+        "Preparar propuestas sin efectos externos dentro del scope aprobado."
+      ],
+      "prohibited": [
+        "Derivar privilegios del título o track.",
+        "Usar secretos o datos empresariales reales en el scaffold.",
+        "Enviar mensajes, publicar, gastar, modificar CRM o ejecutar efectos desde esta consola."
+      ],
+      "status": {
+        "specification_status": "SPEC_READY",
+        "method_admission": {
+          "status": "OFFICIAL_METHOD_REFERENCED",
+          "claim_scope": "DOCUMENTARY_METHOD_ONLY",
+          "source_refs": [
+            "DORA-BATCHES",
+            "MS-RBAC"
+          ],
+          "code_admission": "NONE"
+        },
+        "verification_status": {
+          "scaffold": "NOT_TESTED",
+          "target": "NOT_TESTED",
+          "evidence_refs": []
+        }
+      },
+      "source_refs": [
+        "DORA-BATCHES",
+        "MS-RBAC"
+      ],
+      "galaxy_admission": {
+        "status": "WAITING_GALAXY_ADMISSION",
+        "source_ref": null,
+        "applies_only_to": "FUTURE_EVENT_MATERIAL",
+        "content_invented": false,
+        "reopen_trigger": "Material oficial identificable del evento disponible y obtenido legalmente; fijar fecha/revisión/hash/términos/claim y ejecutar admisión aplicable antes de incorporarlo."
+      },
+      "owner_refs": {
+        "progress": "specs/library-extension/tasks.md",
+        "execution_state": "PROJECT_EXECUTION_STATE.json",
+        "execution_events": "PROJECT_EXECUTION_EVENTS.jsonl",
+        "failures": "PROJECT_FAILURE_LESSONS.md",
+        "dependency": "PROJECT_DEPENDENCY_UPDATE_RECORD.md",
+        "freshness": "PROJECT_AUTHORITY_FRESHNESS_RECORD.md"
+      },
+      "resume": {
+        "read_refs": [
+          "PROJECT_EXECUTION_STATE.json",
+          "PROJECT_EXECUTION_EVENTS.jsonl",
+          "specs/library-extension/tasks.md",
+          "PROJECT_FAILURE_LESSONS.md",
+          "roles/business-functions.v403.json"
+        ],
+        "rule": "Validar checkpoint y hashes; consultar los owners existentes; invalidar evidencia afectada por delta; registrar siguiente acción allí, sin backlog paralelo."
+      },
+      "implementation_binding": {
+        "status": "EXISTING_LIBRARY_REFERENCE",
+        "pack": "implementation_packs/ENGINEERING_EXECUTION_VALIDATOR.md",
+        "evidence": "reconstruction_evidence/LIBRARY_INFRA_READY_V402.md",
+        "action": "validate_execution_state.py --level resume; validate_project.py --level plan",
+        "kind": "CLI_CONTRACT",
+        "target_verified": false,
+        "v403_executes_binding": false
+      },
+      "open_requirement": {
+        "id": "TARGET-ENGINEERING",
+        "scope": "FUTURE_CONSUMER_ONLY",
+        "description": "El nuevo proyecto consumidor debe materializar su propio kit, manifest y checkpoint; esta vista no ejecuta gates de producto.",
+        "owner_ref": "specs/library-extension/tasks.md"
+      },
+      "tasks": [
+        {
+          "id": "engineering.define-change",
+          "title": "Delimitar cambio y aceptación",
+          "inputs": [
+            "Requisito",
+            "baseline",
+            "restricciones",
+            "riesgo"
+          ],
+          "outputs": [
+            "Delta trazable y criterios verificables"
+          ],
+          "product_permission": {
+            "id": "engineering:plan",
+            "definition_kind": "PROPOSED_TARGET_REQUIREMENT",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/engineering",
+            "section": "tasks",
+            "task_id": "engineering.define-change",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "engineering.AC1",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "Cada cambio conserva requisito, owner existente, pruebas afectadas y trigger de rollback.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        },
+        {
+          "id": "engineering.verify-change",
+          "title": "Verificar el cambio",
+          "inputs": [
+            "Delta",
+            "artefactos y pruebas del alcance"
+          ],
+          "outputs": [
+            "Receipt con revisión, comandos, resultados y límites"
+          ],
+          "product_permission": {
+            "id": "engineering:verify",
+            "definition_kind": "PROPOSED_TARGET_REQUIREMENT",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/engineering",
+            "section": "tasks",
+            "task_id": "engineering.verify-change",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "engineering.AC2",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "Un build no cierra autorización, integración, seguridad ni aceptación humana pendientes.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        }
+      ],
+      "owner_binding_scope": "MAINTENANCE_FIXTURE"
+    },
+    {
+      "id": "product-managers",
+      "track_name": "Product Managers",
+      "function_kind": "BUSINESS_FUNCTION",
+      "auth_role": false,
+      "purpose": "Relacionar problemas de usuarios con hipótesis, criterios de aceptación y feedback trazable.",
+      "systems": [
+        "Blueprint/spec/plan existentes",
+        "Evidencia de journeys y feedback"
+      ],
+      "allowed": [
+        "Leer contratos, fuentes y evidencia local.",
+        "Preparar propuestas sin efectos externos dentro del scope aprobado."
+      ],
+      "prohibited": [
+        "Derivar privilegios del título o track.",
+        "Usar secretos o datos empresariales reales en el scaffold.",
+        "Enviar mensajes, publicar, gastar, modificar CRM o ejecutar efectos desde esta consola."
+      ],
+      "status": {
+        "specification_status": "SPEC_READY",
+        "method_admission": {
+          "status": "OFFICIAL_METHOD_REFERENCED",
+          "claim_scope": "DOCUMENTARY_METHOD_ONLY",
+          "source_refs": [
+            "DORA-USER",
+            "DORA-BATCHES"
+          ],
+          "code_admission": "NONE"
+        },
+        "verification_status": {
+          "scaffold": "NOT_TESTED",
+          "target": "NOT_TESTED",
+          "evidence_refs": []
+        }
+      },
+      "source_refs": [
+        "DORA-USER",
+        "DORA-BATCHES"
+      ],
+      "galaxy_admission": {
+        "status": "WAITING_GALAXY_ADMISSION",
+        "source_ref": null,
+        "applies_only_to": "FUTURE_EVENT_MATERIAL",
+        "content_invented": false,
+        "reopen_trigger": "Material oficial identificable del evento disponible y obtenido legalmente; fijar fecha/revisión/hash/términos/claim y ejecutar admisión aplicable antes de incorporarlo."
+      },
+      "owner_refs": {
+        "progress": "specs/library-extension/tasks.md",
+        "execution_state": "PROJECT_EXECUTION_STATE.json",
+        "execution_events": "PROJECT_EXECUTION_EVENTS.jsonl",
+        "failures": "PROJECT_FAILURE_LESSONS.md",
+        "dependency": "PROJECT_DEPENDENCY_UPDATE_RECORD.md",
+        "freshness": "PROJECT_AUTHORITY_FRESHNESS_RECORD.md"
+      },
+      "resume": {
+        "read_refs": [
+          "PROJECT_EXECUTION_STATE.json",
+          "PROJECT_EXECUTION_EVENTS.jsonl",
+          "specs/library-extension/tasks.md",
+          "PROJECT_FAILURE_LESSONS.md",
+          "roles/business-functions.v403.json"
+        ],
+        "rule": "Validar checkpoint y hashes; consultar los owners existentes; invalidar evidencia afectada por delta; registrar siguiente acción allí, sin backlog paralelo."
+      },
+      "implementation_binding": {
+        "status": "EXISTING_LIBRARY_REFERENCE",
+        "pack": "implementation_packs/GO_CUSTOMER_SURVEY_API.md",
+        "evidence": "reconstruction_evidence/CONNECTED_CUSTOMER_SURVEYS_V400.md",
+        "action": "Referencia a encuesta y feedback del owner existente; no ejecución V403.",
+        "kind": "PACK_REFERENCE",
+        "target_verified": false,
+        "v403_executes_binding": false
+      },
+      "open_requirement": {
+        "id": "TARGET-PRODUCT-MANAGERS",
+        "scope": "FUTURE_CONSUMER_ONLY",
+        "description": "Validación con usuarios, métricas y decisión de prioridad del producto concreto; no hay motor universal de product management.",
+        "owner_ref": "specs/library-extension/tasks.md"
+      },
+      "tasks": [
+        {
+          "id": "product-managers.frame-user-problem",
+          "title": "Enmarcar problema y resultado",
+          "inputs": [
+            "Problema observado",
+            "usuario",
+            "contexto",
+            "restricciones"
+          ],
+          "outputs": [
+            "Hipótesis falsable y aceptación del journey"
+          ],
+          "product_permission": {
+            "id": "product:plan",
+            "definition_kind": "PROPOSED_TARGET_REQUIREMENT",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/product-managers",
+            "section": "tasks",
+            "task_id": "product-managers.frame-user-problem",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "product-managers.AC1",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "Separar evidencia observada de supuestos; el owner de negocio decide prioridades y umbrales materiales.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        },
+        {
+          "id": "product-managers.review-feedback",
+          "title": "Revisar feedback y decisión",
+          "inputs": [
+            "Evidencia de tarea",
+            "versión del producto",
+            "limitaciones"
+          ],
+          "outputs": [
+            "Decisión ligada al requisito y a la evidencia"
+          ],
+          "product_permission": {
+            "id": "product:review",
+            "definition_kind": "PROPOSED_TARGET_REQUIREMENT",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/product-managers",
+            "section": "tasks",
+            "task_id": "product-managers.review-feedback",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "product-managers.AC2",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "La métrica propuesta no se declara medida; una encuesta no demuestra causalidad.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        }
+      ],
+      "owner_binding_scope": "MAINTENANCE_FIXTURE"
+    },
+    {
+      "id": "founders",
+      "track_name": "Founders",
+      "function_kind": "BUSINESS_FUNCTION",
+      "auth_role": false,
+      "purpose": "Explicitar resultado empresarial, restricciones y decisiones que requieren un responsable humano.",
+      "systems": [
+        "Blueprint y authority map existentes",
+        "Intake y decisiones de alcance"
+      ],
+      "allowed": [
+        "Leer contratos, fuentes y evidencia local.",
+        "Preparar propuestas sin efectos externos dentro del scope aprobado."
+      ],
+      "prohibited": [
+        "Derivar privilegios del título o track.",
+        "Usar secretos o datos empresariales reales en el scaffold.",
+        "Enviar mensajes, publicar, gastar, modificar CRM o ejecutar efectos desde esta consola.",
+        "Suponer privilegios globales o aprobación de pagos por ser Founder."
+      ],
+      "status": {
+        "specification_status": "SPEC_READY",
+        "method_admission": {
+          "status": "OFFICIAL_METHOD_REFERENCED",
+          "claim_scope": "DOCUMENTARY_METHOD_ONLY",
+          "source_refs": [
+            "DORA-USER",
+            "DORA-BATCHES"
+          ],
+          "code_admission": "NONE"
+        },
+        "verification_status": {
+          "scaffold": "NOT_TESTED",
+          "target": "NOT_TESTED",
+          "evidence_refs": []
+        }
+      },
+      "source_refs": [
+        "DORA-USER",
+        "DORA-BATCHES"
+      ],
+      "galaxy_admission": {
+        "status": "WAITING_GALAXY_ADMISSION",
+        "source_ref": null,
+        "applies_only_to": "FUTURE_EVENT_MATERIAL",
+        "content_invented": false,
+        "reopen_trigger": "Material oficial identificable del evento disponible y obtenido legalmente; fijar fecha/revisión/hash/términos/claim y ejecutar admisión aplicable antes de incorporarlo."
+      },
+      "owner_refs": {
+        "progress": "specs/library-extension/tasks.md",
+        "execution_state": "PROJECT_EXECUTION_STATE.json",
+        "execution_events": "PROJECT_EXECUTION_EVENTS.jsonl",
+        "failures": "PROJECT_FAILURE_LESSONS.md",
+        "dependency": "PROJECT_DEPENDENCY_UPDATE_RECORD.md",
+        "freshness": "PROJECT_AUTHORITY_FRESHNESS_RECORD.md"
+      },
+      "resume": {
+        "read_refs": [
+          "PROJECT_EXECUTION_STATE.json",
+          "PROJECT_EXECUTION_EVENTS.jsonl",
+          "specs/library-extension/tasks.md",
+          "PROJECT_FAILURE_LESSONS.md",
+          "roles/business-functions.v403.json"
+        ],
+        "rule": "Validar checkpoint y hashes; consultar los owners existentes; invalidar evidencia afectada por delta; registrar siguiente acción allí, sin backlog paralelo."
+      },
+      "implementation_binding": {
+        "status": "DOCUMENTED_ONLY",
+        "pack": null,
+        "evidence": null,
+        "action": null,
+        "kind": "NO_PRODUCT_RUNTIME",
+        "target_verified": false,
+        "v403_executes_binding": false
+      },
+      "open_requirement": {
+        "id": "TARGET-FOUNDERS",
+        "scope": "FUTURE_CONSUMER_ONLY",
+        "description": "Decisiones de modelo de negocio, gasto y regulación pertenecen al proyecto consumidor y su owner real.",
+        "owner_ref": "specs/library-extension/tasks.md"
+      },
+      "tasks": [
+        {
+          "id": "founders.record-business-hypothesis",
+          "title": "Registrar hipótesis empresarial",
+          "inputs": [
+            "Problema",
+            "segmento propuesto",
+            "evidencia",
+            "restricciones"
+          ],
+          "outputs": [
+            "Hipótesis con incertidumbre y criterio de contraste"
+          ],
+          "product_permission": {
+            "id": "business:plan",
+            "definition_kind": "PROPOSED_TARGET_REQUIREMENT",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/founders",
+            "section": "tasks",
+            "task_id": "founders.record-business-hypothesis",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "founders.AC1",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "No inventar precios, obligaciones regulatorias, inversión ni autorización de gasto.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        },
+        {
+          "id": "founders.review-scope-decision",
+          "title": "Revisar decisión de alcance",
+          "inputs": [
+            "Opciones",
+            "costos conocidos",
+            "riesgos",
+            "evidencia"
+          ],
+          "outputs": [
+            "Decisión o pregunta material para owner real"
+          ],
+          "product_permission": {
+            "id": "business:review",
+            "definition_kind": "PROPOSED_TARGET_REQUIREMENT",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/founders",
+            "section": "tasks",
+            "task_id": "founders.review-scope-decision",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "founders.AC2",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "El título Founders no otorga admin, aprobación de pagos ni privilegios entre organizaciones.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        }
+      ],
+      "owner_binding_scope": "MAINTENANCE_FIXTURE"
+    },
+    {
+      "id": "sales-engineering",
+      "track_name": "Sales Engineering",
+      "function_kind": "BUSINESS_FUNCTION",
+      "auth_role": false,
+      "purpose": "Relacionar una necesidad comercial con capacidades técnicas demostradas y gaps explícitos.",
+      "systems": [
+        "Packs y evidencia local",
+        "Contratos de integración y demo"
+      ],
+      "allowed": [
+        "Leer contratos, fuentes y evidencia local.",
+        "Preparar propuestas sin efectos externos dentro del scope aprobado."
+      ],
+      "prohibited": [
+        "Derivar privilegios del título o track.",
+        "Usar secretos o datos empresariales reales en el scaffold.",
+        "Enviar mensajes, publicar, gastar, modificar CRM o ejecutar efectos desde esta consola."
+      ],
+      "status": {
+        "specification_status": "SPEC_READY",
+        "method_admission": {
+          "status": "OFFICIAL_METHOD_REFERENCED",
+          "claim_scope": "DOCUMENTARY_METHOD_ONLY",
+          "source_refs": [
+            "MS-SALES",
+            "DORA-USER"
+          ],
+          "code_admission": "NONE"
+        },
+        "verification_status": {
+          "scaffold": "NOT_TESTED",
+          "target": "NOT_TESTED",
+          "evidence_refs": []
+        }
+      },
+      "source_refs": [
+        "MS-SALES",
+        "DORA-USER"
+      ],
+      "galaxy_admission": {
+        "status": "WAITING_GALAXY_ADMISSION",
+        "source_ref": null,
+        "applies_only_to": "FUTURE_EVENT_MATERIAL",
+        "content_invented": false,
+        "reopen_trigger": "Material oficial identificable del evento disponible y obtenido legalmente; fijar fecha/revisión/hash/términos/claim y ejecutar admisión aplicable antes de incorporarlo."
+      },
+      "owner_refs": {
+        "progress": "specs/library-extension/tasks.md",
+        "execution_state": "PROJECT_EXECUTION_STATE.json",
+        "execution_events": "PROJECT_EXECUTION_EVENTS.jsonl",
+        "failures": "PROJECT_FAILURE_LESSONS.md",
+        "dependency": "PROJECT_DEPENDENCY_UPDATE_RECORD.md",
+        "freshness": "PROJECT_AUTHORITY_FRESHNESS_RECORD.md"
+      },
+      "resume": {
+        "read_refs": [
+          "PROJECT_EXECUTION_STATE.json",
+          "PROJECT_EXECUTION_EVENTS.jsonl",
+          "specs/library-extension/tasks.md",
+          "PROJECT_FAILURE_LESSONS.md",
+          "roles/business-functions.v403.json"
+        ],
+        "rule": "Validar checkpoint y hashes; consultar los owners existentes; invalidar evidencia afectada por delta; registrar siguiente acción allí, sin backlog paralelo."
+      },
+      "implementation_binding": {
+        "status": "EXISTING_LIBRARY_REFERENCE",
+        "pack": "implementation_packs/GO_FRANCHISE_CUSTOMER_JOURNEY_API.md",
+        "evidence": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.md",
+        "action": "Revisión de contratos del journey de referencia y su aceptación local firmada.",
+        "kind": "PACK_REFERENCE",
+        "target_verified": false,
+        "v403_executes_binding": false
+      },
+      "open_requirement": {
+        "id": "TARGET-SALES-ENGINEERING",
+        "scope": "FUTURE_CONSUMER_ONLY",
+        "description": "Mapeo técnico de un cliente concreto y validación de sus integraciones; no automatizar compromisos comerciales.",
+        "owner_ref": "specs/library-extension/tasks.md"
+      },
+      "tasks": [
+        {
+          "id": "sales-engineering.map-technical-fit",
+          "title": "Evaluar encaje técnico",
+          "inputs": [
+            "Necesidad del prospecto",
+            "restricciones",
+            "evidencia de capability"
+          ],
+          "outputs": [
+            "Matriz requisito-capacidad-gap"
+          ],
+          "product_permission": {
+            "id": "sales-engineering:assess",
+            "definition_kind": "PROPOSED_TARGET_REQUIREMENT",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/sales-engineering",
+            "section": "tasks",
+            "task_id": "sales-engineering.map-technical-fit",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "sales-engineering.AC1",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "Cada capacidad afirmada enlaza una prueba con alcance; las capacidades futuras quedan pendientes.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        },
+        {
+          "id": "sales-engineering.prepare-scoped-demo",
+          "title": "Preparar una demostración acotada",
+          "inputs": [
+            "Matriz de encaje",
+            "fixture permitido",
+            "recorrido y límites"
+          ],
+          "outputs": [
+            "Guion de demo reproducible y resultados esperados"
+          ],
+          "product_permission": {
+            "id": "sales-engineering:demo",
+            "definition_kind": "PROPOSED_TARGET_REQUIREMENT",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/sales-engineering",
+            "section": "tasks",
+            "task_id": "sales-engineering.prepare-scoped-demo",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "sales-engineering.AC2",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "Un fixture no se presenta como integración live, homologación, SLA ni aceptación del cliente.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        }
+      ],
+      "owner_binding_scope": "MAINTENANCE_FIXTURE"
+    },
+    {
+      "id": "sales",
+      "track_name": "Sales",
+      "function_kind": "BUSINESS_FUNCTION",
+      "auth_role": false,
+      "purpose": "Preparar una oportunidad y revisar una propuesta bajo reglas comerciales aprobadas.",
+      "systems": [
+        "CRM y cotización existentes",
+        "Aprobaciones y dominio transaccional"
+      ],
+      "allowed": [
+        "Leer contratos, fuentes y evidencia local.",
+        "Preparar propuestas sin efectos externos dentro del scope aprobado."
+      ],
+      "prohibited": [
+        "Derivar privilegios del título o track.",
+        "Usar secretos o datos empresariales reales en el scaffold.",
+        "Enviar mensajes, publicar, gastar, modificar CRM o ejecutar efectos desde esta consola."
+      ],
+      "status": {
+        "specification_status": "SPEC_READY",
+        "method_admission": {
+          "status": "OFFICIAL_METHOD_REFERENCED",
+          "claim_scope": "DOCUMENTARY_METHOD_ONLY",
+          "source_refs": [
+            "MS-SALES",
+            "MS-RBAC"
+          ],
+          "code_admission": "NONE"
+        },
+        "verification_status": {
+          "scaffold": "NOT_TESTED",
+          "target": "NOT_TESTED",
+          "evidence_refs": []
+        }
+      },
+      "source_refs": [
+        "MS-SALES",
+        "MS-RBAC"
+      ],
+      "galaxy_admission": {
+        "status": "WAITING_GALAXY_ADMISSION",
+        "source_ref": null,
+        "applies_only_to": "FUTURE_EVENT_MATERIAL",
+        "content_invented": false,
+        "reopen_trigger": "Material oficial identificable del evento disponible y obtenido legalmente; fijar fecha/revisión/hash/términos/claim y ejecutar admisión aplicable antes de incorporarlo."
+      },
+      "owner_refs": {
+        "progress": "specs/library-extension/tasks.md",
+        "execution_state": "PROJECT_EXECUTION_STATE.json",
+        "execution_events": "PROJECT_EXECUTION_EVENTS.jsonl",
+        "failures": "PROJECT_FAILURE_LESSONS.md",
+        "dependency": "PROJECT_DEPENDENCY_UPDATE_RECORD.md",
+        "freshness": "PROJECT_AUTHORITY_FRESHNESS_RECORD.md"
+      },
+      "resume": {
+        "read_refs": [
+          "PROJECT_EXECUTION_STATE.json",
+          "PROJECT_EXECUTION_EVENTS.jsonl",
+          "specs/library-extension/tasks.md",
+          "PROJECT_FAILURE_LESSONS.md",
+          "roles/business-functions.v403.json"
+        ],
+        "rule": "Validar checkpoint y hashes; consultar los owners existentes; invalidar evidencia afectada por delta; registrar siguiente acción allí, sin backlog paralelo."
+      },
+      "implementation_binding": {
+        "status": "EXISTING_LIBRARY_REFERENCE",
+        "pack": "implementation_packs/GO_FRANCHISE_CUSTOMER_JOURNEY_API.md",
+        "evidence": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.md",
+        "action": "Consultar el contrato existente de cotización/pedido y sus límites.",
+        "kind": "PACK_REFERENCE",
+        "target_verified": false,
+        "v403_executes_binding": false
+      },
+      "open_requirement": {
+        "id": "TARGET-SALES",
+        "scope": "FUTURE_CONSUMER_ONLY",
+        "description": "Permisos efectivos y reglas comerciales del target; los identificadores sales:* son requisitos propuestos, no una asignación existente.",
+        "owner_ref": "specs/library-extension/tasks.md"
+      },
+      "tasks": [
+        {
+          "id": "sales.review-opportunity",
+          "title": "Revisar oportunidad",
+          "inputs": [
+            "Necesidad y evidencia de lead",
+            "identidad y organización",
+            "política aprobada"
+          ],
+          "outputs": [
+            "Oportunidad con trazabilidad y siguiente paso propuesto"
+          ],
+          "product_permission": {
+            "id": "sales:read",
+            "definition_kind": "PROPOSED_TARGET_REQUIREMENT",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/sales",
+            "section": "tasks",
+            "task_id": "sales.review-opportunity",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "sales.AC1",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "La identidad procede del owner existente; no inferir contacto ni organización del texto del agente.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        },
+        {
+          "id": "sales.prepare-proposal",
+          "title": "Preparar propuesta",
+          "inputs": [
+            "Oportunidad",
+            "catálogo/versiones",
+            "política comercial y approval refs"
+          ],
+          "outputs": [
+            "Propuesta vinculada a su política y aceptación requerida"
+          ],
+          "product_permission": {
+            "id": "sales:request",
+            "definition_kind": "PROPOSED_TARGET_REQUIREMENT",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/sales",
+            "section": "tasks",
+            "task_id": "sales.prepare-proposal",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "sales.AC2",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "Sin política o autoridad, no inventar descuento, precio, disponibilidad ni compromiso contractual.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        }
+      ],
+      "owner_binding_scope": "MAINTENANCE_FIXTURE"
+    },
+    {
+      "id": "sdrs",
+      "track_name": "SDRs",
+      "function_kind": "BUSINESS_FUNCTION",
+      "auth_role": false,
+      "purpose": "Investigar y preparar el traspaso de un lead con procedencia y límites de contacto.",
+      "systems": [
+        "Ingress y promoción de leads existentes",
+        "Identidad/contacto y aprobación"
+      ],
+      "allowed": [
+        "Leer contratos, fuentes y evidencia local.",
+        "Preparar propuestas sin efectos externos dentro del scope aprobado."
+      ],
+      "prohibited": [
+        "Derivar privilegios del título o track.",
+        "Usar secretos o datos empresariales reales en el scaffold.",
+        "Enviar mensajes, publicar, gastar, modificar CRM o ejecutar efectos desde esta consola."
+      ],
+      "status": {
+        "specification_status": "SPEC_READY",
+        "method_admission": {
+          "status": "OFFICIAL_METHOD_REFERENCED",
+          "claim_scope": "DOCUMENTARY_METHOD_ONLY",
+          "source_refs": [
+            "MS-SALES",
+            "MS-RBAC"
+          ],
+          "code_admission": "NONE"
+        },
+        "verification_status": {
+          "scaffold": "NOT_TESTED",
+          "target": "NOT_TESTED",
+          "evidence_refs": []
+        }
+      },
+      "source_refs": [
+        "MS-SALES",
+        "MS-RBAC"
+      ],
+      "galaxy_admission": {
+        "status": "WAITING_GALAXY_ADMISSION",
+        "source_ref": null,
+        "applies_only_to": "FUTURE_EVENT_MATERIAL",
+        "content_invented": false,
+        "reopen_trigger": "Material oficial identificable del evento disponible y obtenido legalmente; fijar fecha/revisión/hash/términos/claim y ejecutar admisión aplicable antes de incorporarlo."
+      },
+      "owner_refs": {
+        "progress": "specs/library-extension/tasks.md",
+        "execution_state": "PROJECT_EXECUTION_STATE.json",
+        "execution_events": "PROJECT_EXECUTION_EVENTS.jsonl",
+        "failures": "PROJECT_FAILURE_LESSONS.md",
+        "dependency": "PROJECT_DEPENDENCY_UPDATE_RECORD.md",
+        "freshness": "PROJECT_AUTHORITY_FRESHNESS_RECORD.md"
+      },
+      "resume": {
+        "read_refs": [
+          "PROJECT_EXECUTION_STATE.json",
+          "PROJECT_EXECUTION_EVENTS.jsonl",
+          "specs/library-extension/tasks.md",
+          "PROJECT_FAILURE_LESSONS.md",
+          "roles/business-functions.v403.json"
+        ],
+        "rule": "Validar checkpoint y hashes; consultar los owners existentes; invalidar evidencia afectada por delta; registrar siguiente acción allí, sin backlog paralelo."
+      },
+      "implementation_binding": {
+        "status": "EXISTING_LIBRARY_REFERENCE",
+        "pack": "implementation_packs/GO_LEAD_CANDIDATE_PROMOTION.md",
+        "evidence": "reconstruction_evidence/LIBRARY_INFRA_READY_V402.md",
+        "action": "Consultar promoción gobernada de leads del pack existente.",
+        "kind": "PACK_REFERENCE",
+        "target_verified": false,
+        "v403_executes_binding": false
+      },
+      "open_requirement": {
+        "id": "TARGET-SDRS",
+        "scope": "FUTURE_CONSUMER_ONLY",
+        "description": "Admitir fuente/proveedor y criterios de calificación del target; vínculo de pack no prueba un CRM universal.",
+        "owner_ref": "specs/library-extension/tasks.md"
+      },
+      "tasks": [
+        {
+          "id": "sdrs.review-lead-evidence",
+          "title": "Revisar procedencia del lead",
+          "inputs": [
+            "Referencia de lead",
+            "fuente",
+            "consentimiento y propósito aplicables"
+          ],
+          "outputs": [
+            "Ficha de procedencia y restricciones de uso"
+          ],
+          "product_permission": {
+            "id": "lead:read",
+            "definition_kind": "PROPOSED_TARGET_REQUIREMENT",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/sdrs",
+            "section": "tasks",
+            "task_id": "sdrs.review-lead-evidence",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "sdrs.AC1",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "La existencia de un dato público no demuestra consentimiento, exactitud ni permiso de contacto.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        },
+        {
+          "id": "sdrs.prepare-qualified-handoff",
+          "title": "Preparar handoff comercial",
+          "inputs": [
+            "Ficha",
+            "criterios de calificación aprobados",
+            "owner receptor"
+          ],
+          "outputs": [
+            "Handoff propuesto con evidencia y gaps"
+          ],
+          "product_permission": {
+            "id": "lead:request",
+            "definition_kind": "PROPOSED_TARGET_REQUIREMENT",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/sdrs",
+            "section": "tasks",
+            "task_id": "sdrs.prepare-qualified-handoff",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "sdrs.AC2",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "No inventar scoring o criterios; no enviar mensajes ni promover automáticamente por nombre del track.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        }
+      ],
+      "owner_binding_scope": "MAINTENANCE_FIXTURE"
+    },
+    {
+      "id": "customer-support",
+      "track_name": "Customer Support",
+      "function_kind": "BUSINESS_FUNCTION",
+      "auth_role": false,
+      "purpose": "Clasificar una consulta y preparar una resolución o escalación comprobable.",
+      "systems": [
+        "Runtime conversacional existente",
+        "Owner de atención/handoff y dominio"
+      ],
+      "allowed": [
+        "Leer contratos, fuentes y evidencia local.",
+        "Preparar propuestas sin efectos externos dentro del scope aprobado."
+      ],
+      "prohibited": [
+        "Derivar privilegios del título o track.",
+        "Usar secretos o datos empresariales reales en el scaffold.",
+        "Enviar mensajes, publicar, gastar, modificar CRM o ejecutar efectos desde esta consola."
+      ],
+      "status": {
+        "specification_status": "SPEC_READY",
+        "method_admission": {
+          "status": "OFFICIAL_METHOD_REFERENCED",
+          "claim_scope": "DOCUMENTARY_METHOD_ONLY",
+          "source_refs": [
+            "MS-CASES",
+            "MS-RBAC"
+          ],
+          "code_admission": "NONE"
+        },
+        "verification_status": {
+          "scaffold": "NOT_TESTED",
+          "target": "NOT_TESTED",
+          "evidence_refs": []
+        }
+      },
+      "source_refs": [
+        "MS-CASES",
+        "MS-RBAC"
+      ],
+      "galaxy_admission": {
+        "status": "WAITING_GALAXY_ADMISSION",
+        "source_ref": null,
+        "applies_only_to": "FUTURE_EVENT_MATERIAL",
+        "content_invented": false,
+        "reopen_trigger": "Material oficial identificable del evento disponible y obtenido legalmente; fijar fecha/revisión/hash/términos/claim y ejecutar admisión aplicable antes de incorporarlo."
+      },
+      "owner_refs": {
+        "progress": "specs/library-extension/tasks.md",
+        "execution_state": "PROJECT_EXECUTION_STATE.json",
+        "execution_events": "PROJECT_EXECUTION_EVENTS.jsonl",
+        "failures": "PROJECT_FAILURE_LESSONS.md",
+        "dependency": "PROJECT_DEPENDENCY_UPDATE_RECORD.md",
+        "freshness": "PROJECT_AUTHORITY_FRESHNESS_RECORD.md"
+      },
+      "resume": {
+        "read_refs": [
+          "PROJECT_EXECUTION_STATE.json",
+          "PROJECT_EXECUTION_EVENTS.jsonl",
+          "specs/library-extension/tasks.md",
+          "PROJECT_FAILURE_LESSONS.md",
+          "roles/business-functions.v403.json"
+        ],
+        "rule": "Validar checkpoint y hashes; consultar los owners existentes; invalidar evidencia afectada por delta; registrar siguiente acción allí, sin backlog paralelo."
+      },
+      "implementation_binding": {
+        "status": "EXISTING_LIBRARY_REFERENCE",
+        "pack": "implementation_packs/GO_CONNECTED_CONVERSATION_RUNTIME.md",
+        "evidence": "reconstruction_evidence/AI_CONNECTED_REFERENCE_RELEASE_V402.md",
+        "action": "Run/Handoff del runtime existente; autorización, presupuesto y replay mantienen sus owners.",
+        "kind": "PACK_REFERENCE",
+        "target_verified": false,
+        "v403_executes_binding": false
+      },
+      "open_requirement": {
+        "id": "TARGET-CUSTOMER-SUPPORT",
+        "scope": "FUTURE_CONSUMER_ONLY",
+        "description": "Políticas/SLA y prueba del canal del consumidor; no representa ticketing universal ni aceptación del cliente.",
+        "owner_ref": "specs/library-extension/tasks.md"
+      },
+      "tasks": [
+        {
+          "id": "customer-support.triage-case",
+          "title": "Clasificar consulta",
+          "inputs": [
+            "Consulta permitida",
+            "identidad scoped",
+            "historial autorizado",
+            "política de soporte"
+          ],
+          "outputs": [
+            "Caso con categoría propuesta y owner de escalación"
+          ],
+          "product_permission": {
+            "id": "support:read",
+            "definition_kind": "PROPOSED_TARGET_REQUIREMENT",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/customer-support",
+            "section": "tasks",
+            "task_id": "customer-support.triage-case",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "customer-support.AC1",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "Sin identidad/contacto y acceso al objeto demostrados, no revelar historial ni datos de otras organizaciones.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        },
+        {
+          "id": "customer-support.prepare-resolution",
+          "title": "Preparar respuesta o escalación",
+          "inputs": [
+            "Caso",
+            "conocimiento vigente",
+            "política",
+            "evidencia de resultado"
+          ],
+          "outputs": [
+            "Respuesta propuesta o handoff con estado explícito"
+          ],
+          "product_permission": {
+            "id": "support:request",
+            "definition_kind": "PROPOSED_TARGET_REQUIREMENT",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/customer-support",
+            "section": "tasks",
+            "task_id": "customer-support.prepare-resolution",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "customer-support.AC2",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "Preparado/enviado/confirmado son estados distintos; no cerrar por texto generado ni prometer reembolso.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        }
+      ],
+      "owner_binding_scope": "MAINTENANCE_FIXTURE"
+    },
+    {
+      "id": "marketing-operations",
+      "track_name": "Marketing Operations",
+      "function_kind": "BUSINESS_FUNCTION",
+      "auth_role": false,
+      "purpose": "Preparar y revisar campañas con audiencia, consentimiento, aprobaciones y recuperación explícitos.",
+      "systems": [
+        "Campañas/agenda WhatsApp existentes",
+        "Aprobaciones/jobs/fence outbound existentes"
+      ],
+      "allowed": [
+        "Leer contratos, fuentes y evidencia local.",
+        "Preparar propuestas sin efectos externos dentro del scope aprobado."
+      ],
+      "prohibited": [
+        "Derivar privilegios del título o track.",
+        "Usar secretos o datos empresariales reales en el scaffold.",
+        "Enviar mensajes, publicar, gastar, modificar CRM o ejecutar efectos desde esta consola."
+      ],
+      "status": {
+        "specification_status": "SPEC_READY",
+        "method_admission": {
+          "status": "OFFICIAL_METHOD_REFERENCED",
+          "claim_scope": "DOCUMENTARY_METHOD_ONLY",
+          "source_refs": [
+            "HUBSPOT-CAMPAIGNS",
+            "MS-RBAC"
+          ],
+          "code_admission": "NONE"
+        },
+        "verification_status": {
+          "scaffold": "NOT_TESTED",
+          "target": "NOT_TESTED",
+          "evidence_refs": []
+        }
+      },
+      "source_refs": [
+        "HUBSPOT-CAMPAIGNS",
+        "MS-RBAC"
+      ],
+      "galaxy_admission": {
+        "status": "WAITING_GALAXY_ADMISSION",
+        "source_ref": null,
+        "applies_only_to": "FUTURE_EVENT_MATERIAL",
+        "content_invented": false,
+        "reopen_trigger": "Material oficial identificable del evento disponible y obtenido legalmente; fijar fecha/revisión/hash/términos/claim y ejecutar admisión aplicable antes de incorporarlo."
+      },
+      "owner_refs": {
+        "progress": "specs/library-extension/tasks.md",
+        "execution_state": "PROJECT_EXECUTION_STATE.json",
+        "execution_events": "PROJECT_EXECUTION_EVENTS.jsonl",
+        "failures": "PROJECT_FAILURE_LESSONS.md",
+        "dependency": "PROJECT_DEPENDENCY_UPDATE_RECORD.md",
+        "freshness": "PROJECT_AUTHORITY_FRESHNESS_RECORD.md"
+      },
+      "resume": {
+        "read_refs": [
+          "PROJECT_EXECUTION_STATE.json",
+          "PROJECT_EXECUTION_EVENTS.jsonl",
+          "specs/library-extension/tasks.md",
+          "PROJECT_FAILURE_LESSONS.md",
+          "roles/business-functions.v403.json"
+        ],
+        "rule": "Validar checkpoint y hashes; consultar los owners existentes; invalidar evidencia afectada por delta; registrar siguiente acción allí, sin backlog paralelo."
+      },
+      "implementation_binding": {
+        "status": "EXISTING_LIBRARY_REFERENCE",
+        "pack": "implementation_packs/GO_CONNECTED_WHATSAPP_CAMPAIGNS.md",
+        "evidence": "reconstruction_evidence/CAMPAIGN_CONNECTED_RELEASE_V402.md",
+        "action": "POST /v1/franchise/marketing/campaigns/prepare; GET /v1/franchise/marketing/campaigns/{id}",
+        "kind": "OBSERVED_API_ROUTE",
+        "target_verified": false,
+        "v403_executes_binding": false
+      },
+      "open_requirement": {
+        "id": "TARGET-MARKETING-OPERATIONS",
+        "scope": "FUTURE_CONSUMER_ONLY",
+        "description": "Provider/account/consent/template/costo del proyecto; la consola V403 sólo muestra el contrato y no llama esas rutas.",
+        "owner_ref": "specs/library-extension/tasks.md"
+      },
+      "tasks": [
+        {
+          "id": "marketing-operations.prepare-campaign-operations",
+          "title": "Preparar operación de campaña",
+          "inputs": [
+            "Audiencia permitida",
+            "propósito",
+            "template exacto",
+            "ventanas y presupuesto aprobados"
+          ],
+          "outputs": [
+            "Plan trazable de campaña y sus revisiones"
+          ],
+          "product_permission": {
+            "id": "marketing:request",
+            "definition_kind": "OBSERVED_EXISTING_OWNER_NAME",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/marketing-operations",
+            "section": "tasks",
+            "task_id": "marketing-operations.prepare-campaign-operations",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "marketing-operations.AC1",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "Conservar fuente/consentimiento; separar solicitud y aprobación; no activar por el track.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        },
+        {
+          "id": "marketing-operations.review-campaign-state",
+          "title": "Revisar estado y recuperación",
+          "inputs": [
+            "ID y revisión de campaña",
+            "recibos",
+            "pasos confirmados/inciertos"
+          ],
+          "outputs": [
+            "Estado observado y siguiente paso seguro"
+          ],
+          "product_permission": {
+            "id": "marketing:read",
+            "definition_kind": "OBSERVED_EXISTING_OWNER_NAME",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/marketing-operations",
+            "section": "tasks",
+            "task_id": "marketing-operations.review-campaign-state",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "marketing-operations.AC2",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "No repetir efecto incierto; preparación parcial se reanuda desde owners existentes.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        }
+      ],
+      "owner_binding_scope": "MAINTENANCE_FIXTURE"
+    },
+    {
+      "id": "post-sales",
+      "track_name": "Post-Sales",
+      "function_kind": "BUSINESS_FUNCTION",
+      "auth_role": false,
+      "purpose": "Revisar entrega, onboarding y necesidades posteriores a la venta conservando el estado real.",
+      "systems": [
+        "Journey cliente/entrega/devolución existentes",
+        "Agenda y aprobación de dominio existentes"
+      ],
+      "allowed": [
+        "Leer contratos, fuentes y evidencia local.",
+        "Preparar propuestas sin efectos externos dentro del scope aprobado."
+      ],
+      "prohibited": [
+        "Derivar privilegios del título o track.",
+        "Usar secretos o datos empresariales reales en el scaffold.",
+        "Enviar mensajes, publicar, gastar, modificar CRM o ejecutar efectos desde esta consola."
+      ],
+      "status": {
+        "specification_status": "SPEC_READY",
+        "method_admission": {
+          "status": "OFFICIAL_METHOD_REFERENCED",
+          "claim_scope": "DOCUMENTARY_METHOD_ONLY",
+          "source_refs": [
+            "MS-SERVICE",
+            "MS-CASES"
+          ],
+          "code_admission": "NONE"
+        },
+        "verification_status": {
+          "scaffold": "NOT_TESTED",
+          "target": "NOT_TESTED",
+          "evidence_refs": []
+        }
+      },
+      "source_refs": [
+        "MS-SERVICE",
+        "MS-CASES"
+      ],
+      "galaxy_admission": {
+        "status": "WAITING_GALAXY_ADMISSION",
+        "source_ref": null,
+        "applies_only_to": "FUTURE_EVENT_MATERIAL",
+        "content_invented": false,
+        "reopen_trigger": "Material oficial identificable del evento disponible y obtenido legalmente; fijar fecha/revisión/hash/términos/claim y ejecutar admisión aplicable antes de incorporarlo."
+      },
+      "owner_refs": {
+        "progress": "specs/library-extension/tasks.md",
+        "execution_state": "PROJECT_EXECUTION_STATE.json",
+        "execution_events": "PROJECT_EXECUTION_EVENTS.jsonl",
+        "failures": "PROJECT_FAILURE_LESSONS.md",
+        "dependency": "PROJECT_DEPENDENCY_UPDATE_RECORD.md",
+        "freshness": "PROJECT_AUTHORITY_FRESHNESS_RECORD.md"
+      },
+      "resume": {
+        "read_refs": [
+          "PROJECT_EXECUTION_STATE.json",
+          "PROJECT_EXECUTION_EVENTS.jsonl",
+          "specs/library-extension/tasks.md",
+          "PROJECT_FAILURE_LESSONS.md",
+          "roles/business-functions.v403.json"
+        ],
+        "rule": "Validar checkpoint y hashes; consultar los owners existentes; invalidar evidencia afectada por delta; registrar siguiente acción allí, sin backlog paralelo."
+      },
+      "implementation_binding": {
+        "status": "EXISTING_LIBRARY_REFERENCE",
+        "pack": "implementation_packs/GO_FRANCHISE_CUSTOMER_JOURNEY_API.md",
+        "evidence": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.md",
+        "action": "Contratos existentes de checklist/entrega/devolución; límites por dominio.",
+        "kind": "PACK_REFERENCE",
+        "target_verified": false,
+        "v403_executes_binding": false
+      },
+      "open_requirement": {
+        "id": "TARGET-POST-SALES",
+        "scope": "FUTURE_CONSUMER_ONLY",
+        "description": "Acuerdo de servicio y aceptación target; Customer Success, renovación y garantías no son capacidades universales de este vínculo.",
+        "owner_ref": "specs/library-extension/tasks.md"
+      },
+      "tasks": [
+        {
+          "id": "post-sales.review-delivery-onboarding",
+          "title": "Revisar entrega y onboarding",
+          "inputs": [
+            "Pedido/servicio scoped",
+            "acuerdo",
+            "checklist y evidencia vigente"
+          ],
+          "outputs": [
+            "Checklist y gaps vinculados al estado real"
+          ],
+          "product_permission": {
+            "id": "post-sales:read",
+            "definition_kind": "PROPOSED_TARGET_REQUIREMENT",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/post-sales",
+            "section": "tasks",
+            "task_id": "post-sales.review-delivery-onboarding",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "post-sales.AC1",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "Preparación local no equivale a entrega física, instalación ni aceptación del cliente.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        },
+        {
+          "id": "post-sales.prepare-follow-up",
+          "title": "Preparar seguimiento o escalación",
+          "inputs": [
+            "Estado de entrega",
+            "consulta",
+            "política de garantía/devolución"
+          ],
+          "outputs": [
+            "Seguimiento propuesto con owner y aceptación pendiente"
+          ],
+          "product_permission": {
+            "id": "post-sales:request",
+            "definition_kind": "PROPOSED_TARGET_REQUIREMENT",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/post-sales",
+            "section": "tasks",
+            "task_id": "post-sales.prepare-follow-up",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "post-sales.AC2",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "No inventar garantía, renovación, fiscalidad ni devolución de dinero; usar el owner de dominio.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        }
+      ],
+      "owner_binding_scope": "MAINTENANCE_FIXTURE"
+    },
+    {
+      "id": "marketing",
+      "track_name": "Marketing",
+      "function_kind": "BUSINESS_FUNCTION",
+      "auth_role": false,
+      "purpose": "Relacionar mensaje, audiencia y activos con una hipótesis y revisión de campaña.",
+      "systems": [
+        "Contenido y campañas existentes",
+        "Fuentes y reportes gobernados"
+      ],
+      "allowed": [
+        "Leer contratos, fuentes y evidencia local.",
+        "Preparar propuestas sin efectos externos dentro del scope aprobado."
+      ],
+      "prohibited": [
+        "Derivar privilegios del título o track.",
+        "Usar secretos o datos empresariales reales en el scaffold.",
+        "Enviar mensajes, publicar, gastar, modificar CRM o ejecutar efectos desde esta consola."
+      ],
+      "status": {
+        "specification_status": "SPEC_READY",
+        "method_admission": {
+          "status": "OFFICIAL_METHOD_REFERENCED",
+          "claim_scope": "DOCUMENTARY_METHOD_ONLY",
+          "source_refs": [
+            "HUBSPOT-CAMPAIGNS",
+            "DORA-USER"
+          ],
+          "code_admission": "NONE"
+        },
+        "verification_status": {
+          "scaffold": "NOT_TESTED",
+          "target": "NOT_TESTED",
+          "evidence_refs": []
+        }
+      },
+      "source_refs": [
+        "HUBSPOT-CAMPAIGNS",
+        "DORA-USER"
+      ],
+      "galaxy_admission": {
+        "status": "WAITING_GALAXY_ADMISSION",
+        "source_ref": null,
+        "applies_only_to": "FUTURE_EVENT_MATERIAL",
+        "content_invented": false,
+        "reopen_trigger": "Material oficial identificable del evento disponible y obtenido legalmente; fijar fecha/revisión/hash/términos/claim y ejecutar admisión aplicable antes de incorporarlo."
+      },
+      "owner_refs": {
+        "progress": "specs/library-extension/tasks.md",
+        "execution_state": "PROJECT_EXECUTION_STATE.json",
+        "execution_events": "PROJECT_EXECUTION_EVENTS.jsonl",
+        "failures": "PROJECT_FAILURE_LESSONS.md",
+        "dependency": "PROJECT_DEPENDENCY_UPDATE_RECORD.md",
+        "freshness": "PROJECT_AUTHORITY_FRESHNESS_RECORD.md"
+      },
+      "resume": {
+        "read_refs": [
+          "PROJECT_EXECUTION_STATE.json",
+          "PROJECT_EXECUTION_EVENTS.jsonl",
+          "specs/library-extension/tasks.md",
+          "PROJECT_FAILURE_LESSONS.md",
+          "roles/business-functions.v403.json"
+        ],
+        "rule": "Validar checkpoint y hashes; consultar los owners existentes; invalidar evidencia afectada por delta; registrar siguiente acción allí, sin backlog paralelo."
+      },
+      "implementation_binding": {
+        "status": "EXISTING_LIBRARY_REFERENCE",
+        "pack": "implementation_packs/GO_CONNECTED_WHATSAPP_CAMPAIGNS.md",
+        "evidence": "reconstruction_evidence/CAMPAIGN_CONNECTED_RELEASE_V402.md",
+        "action": "Campaña existente y observación quote/order sin fórmula de atribución causal.",
+        "kind": "PACK_REFERENCE",
+        "target_verified": false,
+        "v403_executes_binding": false
+      },
+      "open_requirement": {
+        "id": "TARGET-MARKETING",
+        "scope": "FUTURE_CONSUMER_ONLY",
+        "description": "Publicación/canales/activos y medición del target; no se crea integración HubSpot ni autorización de publicación.",
+        "owner_ref": "specs/library-extension/tasks.md"
+      },
+      "tasks": [
+        {
+          "id": "marketing.prepare-campaign-brief",
+          "title": "Preparar brief de campaña",
+          "inputs": [
+            "Objetivo",
+            "evidencia de audiencia",
+            "restricciones",
+            "claims con fuentes"
+          ],
+          "outputs": [
+            "Brief y activos propuestos con revisión"
+          ],
+          "product_permission": {
+            "id": "marketing:request",
+            "definition_kind": "OBSERVED_EXISTING_OWNER_NAME",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/marketing",
+            "section": "tasks",
+            "task_id": "marketing.prepare-campaign-brief",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "marketing.AC1",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "No inventar beneficios, testimonios, claims regulatorios ni autoridad de publicación.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        },
+        {
+          "id": "marketing.review-campaign-learning",
+          "title": "Revisar aprendizaje de campaña",
+          "inputs": [
+            "Objetivo",
+            "definición de métrica",
+            "período/fuente",
+            "resultados observados"
+          ],
+          "outputs": [
+            "Informe con incertidumbres y siguiente hipótesis"
+          ],
+          "product_permission": {
+            "id": "marketing:read",
+            "definition_kind": "OBSERVED_EXISTING_OWNER_NAME",
+            "granted": false,
+            "subject_binding": "REQUIRES_TARGET_CONFIGURATION",
+            "organization_scope": "REQUIRED",
+            "resource_scope": "REQUIRED",
+            "enforcement": "EXISTING_PRODUCT_OWNER_OR_TARGET_GAP",
+            "policy_ref": "SECURITY_SRE_CLOUD_INFRASTRUCTURE.md"
+          },
+          "frontend": {
+            "route": "#/functions/marketing",
+            "section": "tasks",
+            "task_id": "marketing.review-campaign-learning",
+            "interaction": "READ_CONTRACT",
+            "effect_enabled": false
+          },
+          "acceptance": [
+            {
+              "id": "marketing.AC2",
+              "claim_scope": "CONTRACT_SPECIFICATION",
+              "criterion": "Separar observación de atribución causal; no afirmar ROI sin fórmula/política y datos admitidos.",
+              "test_ref": "roles/tests/test_business_functions.py",
+              "evidence_refs": [],
+              "target_status": "NOT_TESTED"
+            }
+          ],
+          "owner_ref": "specs/library-extension/tasks.md"
+        }
+      ],
+      "owner_binding_scope": "MAINTENANCE_FIXTURE"
+    }
+  ],
+  "owner_binding": {
+    "scope": "MAINTENANCE_FIXTURE",
+    "project_id": "library-extension-v403",
+    "require_existing_refs": true,
+    "fixture_owners_must_not_be_inherited": true,
+    "resume_gate": "implementation_packs/ENGINEERING_EXECUTION_VALIDATOR.md",
+    "consumer_integration": "bind_consumer_owners.py resolves explicit existing owners inside the consumer root, rejects maintenance state/owners, resets claims. Run the consumer execution validator before resuming."
+  },
+  "actions_disabled_in_catalog": [
+    "SEND_MESSAGE",
+    "PUBLISH",
+    "SPEND",
+    "MUTATE_CRM",
+    "RUN_PRODUCT_EFFECT"
+  ],
+  "catalog_restriction_scope": "READ_ONLY_LIBRARY_CONSOLE_ONLY",
+  "consumer_authorization": "Consumer product applies its own explicitly authorized policy and existing enforcement; catalog restrictions do not prohibit separately authorized consumer operations."
+}

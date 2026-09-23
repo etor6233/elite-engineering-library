@@ -1,0 +1,36 @@
+{
+  "schema": "elite.source-derivation.v1",
+  "classification": "MIXED; isolated ADAPTED commercial functions and AUTHORED IPC/representation",
+  "source_commit": "99edb6dd82b7b560930c00b03b694ba700785370",
+  "functions": [
+    {
+      "destination": "filtered_issuance",
+      "source": "upstream/addons/sale_loyalty/models/sale_order.py",
+      "start_line": 1138,
+      "end_line": 1140,
+      "file_sha256": "6de1aeed8f1fc80268025f13bff2a56b57211b6a82ce9df950a8b08a623e3a06",
+      "segment_sha256": "4e4d39ae35bb2054a98105a0bfc4816aa6d5069217c844ec36830ecf104878d6",
+      "delta": "ORM binding replaced by narrow arguments/returned immutable receipt; Decimal arithmetic; no history deletion; precondition binding explicit"
+    },
+    {
+      "destination": "reverse_point_change",
+      "source": "upstream/addons/sale_loyalty/models/sale_order.py",
+      "start_line": 200,
+      "end_line": 200,
+      "file_sha256": "6de1aeed8f1fc80268025f13bff2a56b57211b6a82ce9df950a8b08a623e3a06",
+      "segment_sha256": "81feb0138f881626972be740b99fa270b46c7b9e554e5d692adb73a0b2e6b620",
+      "delta": "ORM binding replaced by narrow arguments/returned immutable receipt; Decimal arithmetic; no history deletion; precondition binding explicit"
+    },
+    {
+      "destination": "reward_required_points",
+      "source": "upstream/addons/sale_loyalty/models/sale_order.py",
+      "start_line": 1034,
+      "end_line": 1035,
+      "file_sha256": "6de1aeed8f1fc80268025f13bff2a56b57211b6a82ce9df950a8b08a623e3a06",
+      "segment_sha256": "da3963fd19636dd46beec8dfa76cef6e43c8194f996b37f15fda1c93762e8b66",
+      "delta": "ORM binding replaced by narrow arguments/returned immutable receipt; Decimal arithmetic; no history deletion; precondition binding explicit"
+    }
+  ],
+  "rounding_delta": "Returned monetary value normalized by the same currency HALF-UP rounding representation before exact minor-unit conversion; reference currency 2 digits. Non-integral/overflow points storage rejected. Not tax calculation.",
+  "journal_delta": "Odoo mutates Float points and removes cancel history. Candidate uses Decimal and append-only inverse entries. Balance may become negative after reversing spent issuance; no cancellation-generated new credit."
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "elite-marketplace-contract-lock/v1",
+  "observed_at": "2026-09-13T03:58:03.128909+00:00",
+  "provenance": "AUTHORED HTTP contract mapping; no Mercado Libre source code copied",
+  "sources": [
+    {
+      "id": "publish",
+      "url": "https://developers.mercadolibre.com.ar/es_ar/publica-productos",
+      "status": 200,
+      "bytes": 337519,
+      "sha256": "81afd38a0b2129bdbee94a94b7a4c5c70d8d655e0f30064d6c31681959b22237"
+    },
+    {
+      "id": "updates",
+      "url": "https://developers.mercadolibre.com.ar/es_ar/producto-sincroniza-modifica-publicaciones",
+      "status": 200,
+      "bytes": 284334,
+      "sha256": "fd65167d83faf26d90e3b716dc59e97be9d8b651e2a8c355836046333d0b83c0"
+    },
+    {
+      "id": "prices",
+      "url": "https://developers.mercadolibre.com.ar/es_ar/api-de-precios",
+      "status": 200,
+      "bytes": 209009,
+      "sha256": "a55b9cc9640770e3aaea3c4455e1bdb587fe8cdf22ba5b9af4c60fc535d7c764"
+    },
+    {
+      "id": "stock",
+      "url": "https://developers.mercadolibre.com.ar/en_us/distributed-stock",
+      "status": 200,
+      "bytes": 163126,
+      "sha256": "ccc83823912518a919c48f02bb507e5a0eb44408f302d3fdaf51fe36848c9770"
+    },
+    {
+      "id": "search",
+      "url": "https://developers.mercadolibre.com.ar/items-y-busquedas",
+      "status": 200,
+      "bytes": 282492,
+      "sha256": "8c469657bc8c01e210f51c132d19ac13e7d662fcc31ec41ad4082233975b4272"
+    },
+    {
+      "id": "user-products",
+      "url": "https://developers.mercadolibre.com.ar/es_ar/user-products",
+      "status": 200,
+      "bytes": 209787,
+      "sha256": "465aba2731d7d7e4ac08cf368d881364c72a8aa90877421621666f2d8136d6b6"
+    },
+    {
+      "id": "automation",
+      "url": "https://developers.mercadolibre.com.ar/automatizaciones-de-precios",
+      "status": 200,
+      "bytes": 363840,
+      "sha256": "59ae4836ea4eecb5fa632a2a9808a864960d6eeeab30685bbec6187f78381caa",
+      "observed_at": "2026-09-13T04:23:23.921123+00:00"
+    },
+    {
+      "id": "pictures",
+      "url": "https://developers.mercadolibre.com.ar/es_ar/saldo-de-la-cuenta/trabajar-con-imagenes",
+      "sha256": "2e85a485a52fa1311b7e8aaa1391fb18df140dc16b880dd723b5705f43fbe695",
+      "bytes": 207091,
+      "status": 200,
+      "observed_at": "2026-09-13T05:00:47.432677+00:00"
+    }
+  ],
+  "revalidation": "At provider activation or official contract/advisory change. A mismatch fails closed and reopens provider admission."
+}

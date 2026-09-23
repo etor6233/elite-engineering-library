@@ -1,0 +1,20 @@
+{
+  "name": "elite-microsoft-playwright-browser-gate",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test:runtime": "playwright test tests/runtime.spec.mjs",
+    "test:enterprise-web": "playwright test tests/enterprise-web.spec.mjs tests/nonce-csp.spec.mjs",
+    "test:help": "playwright test tests/journey-help.spec.mjs",
+    "test:workspace": "playwright test tests/role-workspace.spec.mjs",
+    "test:admin-reads": "playwright test tests/role-workspace.spec.mjs -g \"admin reads preserve independent grants\""
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1"
+  }
+}

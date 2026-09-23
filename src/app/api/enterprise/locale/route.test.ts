@@ -1,0 +1,10 @@
+import{it,expect,vi,afterEach}from"vitest";import{NextRequest}from"next/server";import{createHash}from"node:crypto";
+const m=vi.hoisted(()=>({session:vi.fn()}));
+vi.mock("@/platform/auth/session",()=>({readSession:m.session}));
+vi.mock("@/platform/auth/oidc-client",()=>({applicationBaseUrl:()=>new URL("https://portal.example.test")}));
+vi.mock("@/platform/i18n/load-private-locale",()=>({privateLocaleCookieName:(s:{tenantId:string;subject:string})=>"elite_locale_"+createHash("sha256").update(JSON.stringify([s.tenantId,s.subject])).digest("hex")}));
+import{POST}from"./route";afterEach(()=>vi.clearAllMocks());
+const req=(body:BodyInit,origin="https://portal.example.test")=>new NextRequest("https://portal.example.test/api/enterprise/locale",{method:"POST",headers:{origin,"content-type":"application/json"},body,duplex:"half"as const});
+it("authenticates before reading and rejects cross-origin preference writes",async()=>{m.session.mockResolvedValue(null);const r=req('{"language":"en"}');expect((await POST(r)).status).toBe(401);expect(r.bodyUsed).toBe(false);expect((await POST(req('{"language":"en"}',"https://other.test"))).status).toBe(403)});
+it("allows only one bounded display language and no actor/policy field",async()=>{m.session.mockResolvedValue({tenantId:"t",subject:"user"});for(const body of['{"language":"fr"}','{"language":"en","language":"es"}','{"language":"en","tenantId":"other"}',"x".repeat(65)])expect((await POST(req(body))).status).toBe(400)});
+it("preference cookie is private and differs by authenticated subject and tenant",async()=>{const names=[];for(const [tenantId,subject]of[["t","a"],["t","b"],["other","a"]]){m.session.mockResolvedValue({tenantId,subject});const response=await POST(req('{"language":"en"}'));expect(response.status).toBe(200);const cookie=response.headers.get("set-cookie")!;expect(cookie).toContain("HttpOnly");expect(cookie).toContain("SameSite=lax");expect(response.headers.get("cache-control")).toContain("no-store");names.push(cookie.split("=")[0])}expect(new Set(names).size).toBe(3)});

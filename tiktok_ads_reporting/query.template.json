@@ -1,0 +1,10 @@
+{
+  "schema": "elite-tiktok-integrated-report-query/v1",
+  "report_type": "BASIC",
+  "data_level": "AUCTION_CAMPAIGN",
+  "dimensions": ["campaign_id", "stat_time_day"],
+  "metrics": ["spend", "impressions", "clicks"],
+  "start_date": "2026-08-01",
+  "end_date": "2026-08-02",
+  "page_size": 1000
+}

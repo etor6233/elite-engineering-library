@@ -1,0 +1,244 @@
+{
+  "schema": "elite-arca-local-source-admission/v1",
+  "scope": "LIBRARY_INFRASTRUCTURE_LOCAL_FIXTURES",
+  "state": "LOCAL_CONDITIONS_SATISFIED",
+  "corporate_authorship_claim": false,
+  "original_tool": {
+    "id": "dotnet-svcutil",
+    "version": "8.0.0",
+    "sha256": "b889780662e42d0e132e91c1821d1dcf810728a3775af226a1c8cca0ea6a2d8a",
+    "bytes": 17915141,
+    "repository": "https://github.com/dotnet/wcf",
+    "revision": "f0f500d91854533ec5a0223c0df693f1040f947b"
+  },
+  "dependency_patches": [
+    {
+      "name": "NuGet.Common",
+      "version": "6.12.5",
+      "archive": "nuget.common.6.12.5.nupkg",
+      "url": "https://api.nuget.org/v3-flatcontainer/nuget.common/6.12.5/nuget.common.6.12.5.nupkg",
+      "sha256": "ce6388abd817f29be5fb5183544a03d209518b1b4bb9c88b62cfc195eb52a6a6",
+      "sha512": "AQl6orTBqvGZhf3Xv6q6MSOFITX8JGCV4LB65f/exH1c7gY8TzigeM5SEmp4KAScBC2dMS3SR52DjHlqU2Yd4g==",
+      "bytes": 198920,
+      "member": "lib/netstandard2.0/NuGet.Common.dll",
+      "dll_sha256": "b7c7a302253019ae45ed0984f621628c1dd8e4a4617c7897f2ab975b124e7022",
+      "assembly_identity": {
+        "assemblyVersion": "6.12.5.1",
+        "fileVersion": "6.12.5.1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/NuGet/NuGet.Client",
+        "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "NuGet.Configuration",
+      "version": "6.12.5",
+      "archive": "nuget.configuration.6.12.5.nupkg",
+      "url": "https://api.nuget.org/v3-flatcontainer/nuget.configuration/6.12.5/nuget.configuration.6.12.5.nupkg",
+      "sha256": "68805fc5aa8c1b70a87819f63c061108154d67d4c5ddebe7e8097429bd1aa2c3",
+      "sha512": "mvgbfg3TtD9EIHtwPFB/RUdnReweK5Evto2bnioOhZ/okUnNfezzm9nngs7zXxO1XhN6Mwyg/TtBZHqiaXAM1Q==",
+      "bytes": 237762,
+      "member": "lib/netstandard2.0/NuGet.Configuration.dll",
+      "dll_sha256": "1a4413da8adc9de2c7cf5ad4a61a6aaff5c064c17ff61682f29caceb13d8ef98",
+      "assembly_identity": {
+        "assemblyVersion": "6.12.5.1",
+        "fileVersion": "6.12.5.1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/NuGet/NuGet.Client",
+        "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "NuGet.DependencyResolver.Core",
+      "version": "6.12.5",
+      "archive": "nuget.dependencyresolver.core.6.12.5.nupkg",
+      "url": "https://api.nuget.org/v3-flatcontainer/nuget.dependencyresolver.core/6.12.5/nuget.dependencyresolver.core.6.12.5.nupkg",
+      "sha256": "a3caffbca8ce66d028a4be195929ee4dc381bf33a41557548e2739a9cd8d5fa4",
+      "sha512": "01wQEQ3gE2NIIefCKDYHSZyjv/Li1m1PibGqtPxiASy/8LZKzE5YP4kMPETDTadZE7wgYBR0SaBboK9TSL3Fcw==",
+      "bytes": 224338,
+      "member": "lib/net5.0/NuGet.DependencyResolver.Core.dll",
+      "dll_sha256": "8b48fa8984b9d20c79d22345aae8babc6538d772e1911854e1a2bd7e18f25080",
+      "assembly_identity": {
+        "assemblyVersion": "6.12.5.1",
+        "fileVersion": "6.12.5.1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/NuGet/NuGet.Client",
+        "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "NuGet.Frameworks",
+      "version": "6.12.5",
+      "archive": "nuget.frameworks.6.12.5.nupkg",
+      "url": "https://api.nuget.org/v3-flatcontainer/nuget.frameworks/6.12.5/nuget.frameworks.6.12.5.nupkg",
+      "sha256": "0ebc6d8a7a5ed87b11eb038a33f01abd3c987d5359c7ec56691d816160007fc4",
+      "sha512": "TUYyZjrgmpVsaHQhQTJVwcwJk3gQDj5EGlVEDF1stZeygaBGBqpMYjrBDnbXWJ5SREto0qB+89Tgf69iEJMlkQ==",
+      "bytes": 187590,
+      "member": "lib/netstandard2.0/NuGet.Frameworks.dll",
+      "dll_sha256": "2f15d8ffa9d89249408576fbbd33b3ba95d843f3e005d68b2df3b38883d6018a",
+      "assembly_identity": {
+        "assemblyVersion": "6.12.5.1",
+        "fileVersion": "6.12.5.1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/NuGet/NuGet.Client",
+        "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "NuGet.LibraryModel",
+      "version": "6.12.5",
+      "archive": "nuget.librarymodel.6.12.5.nupkg",
+      "url": "https://api.nuget.org/v3-flatcontainer/nuget.librarymodel/6.12.5/nuget.librarymodel.6.12.5.nupkg",
+      "sha256": "1e4e4fb53e20645230c7c5922f74e8cf6b3c03fdad4ef46252266644c8e136cc",
+      "sha512": "vvKxyXght56LMo490Azxo0rDN8Ol3VK/CZRMols3+e0teX4Mg+jNbYWRZsVMrn72ccHX5RyZLcpiFPf/Ze5/kw==",
+      "bytes": 122771,
+      "member": "lib/netstandard2.0/NuGet.LibraryModel.dll",
+      "dll_sha256": "57f53f6eab386e2c9750ebb8928cdd850bca0d19b95882119283f85f22f2f7c6",
+      "assembly_identity": {
+        "assemblyVersion": "6.12.5.1",
+        "fileVersion": "6.12.5.1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/NuGet/NuGet.Client",
+        "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "NuGet.Packaging",
+      "version": "6.12.5",
+      "archive": "nuget.packaging.6.12.5.nupkg",
+      "url": "https://api.nuget.org/v3-flatcontainer/nuget.packaging/6.12.5/nuget.packaging.6.12.5.nupkg",
+      "sha256": "055f46a4b6b188eabf9a1ea2593779ab7456c2202c1ab7442feedf4735fa8de0",
+      "sha512": "saME99gCPEcKmWfTYAMlhAAdqNIK3EC2H9zeTarmw+xM2QWfe3bFs8sKU+TK7zFXsTjb740QxJl0cFb+zpeGHg==",
+      "bytes": 978104,
+      "member": "lib/net5.0/NuGet.Packaging.dll",
+      "dll_sha256": "cb9fb410ecca1aa3a7866a9843e724888e0d4ca89c16939602d9ead9a583a7af",
+      "assembly_identity": {
+        "assemblyVersion": "6.12.5.1",
+        "fileVersion": "6.12.5.1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/NuGet/NuGet.Client",
+        "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "NuGet.ProjectModel",
+      "version": "6.12.5",
+      "archive": "nuget.projectmodel.6.12.5.nupkg",
+      "url": "https://api.nuget.org/v3-flatcontainer/nuget.projectmodel/6.12.5/nuget.projectmodel.6.12.5.nupkg",
+      "sha256": "fed1f2e465fe58bca189022a13f3a326460244503a0c8bab7975e0cc8482507b",
+      "sha512": "cHs/kM/kLwxFtD3nsJhPOfP46Jf8NnLyPSGuHjeKUSnv75Omc9fD43dat19QNVFakN9XiG0eIJJn51n//xf4Sw==",
+      "bytes": 431059,
+      "member": "lib/net5.0/NuGet.ProjectModel.dll",
+      "dll_sha256": "cf0fc7ff6460041f7b1a59c49f6cdf96458214693331253b31346a8ea28d07f6",
+      "assembly_identity": {
+        "assemblyVersion": "6.12.5.1",
+        "fileVersion": "6.12.5.1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/NuGet/NuGet.Client",
+        "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "NuGet.Protocol",
+      "version": "6.12.5",
+      "archive": "nuget.protocol.6.12.5.nupkg",
+      "url": "https://api.nuget.org/v3-flatcontainer/nuget.protocol/6.12.5/nuget.protocol.6.12.5.nupkg",
+      "sha256": "8ba5cece263e1c08c88da2b2a8ee9a6aab1bb9096fc500bd9a63ed1b83362c9f",
+      "sha512": "GjaXqS0khbWj2tE/+VtC8wSZb6gzI+3btIas/BqUb7n9cqGxW31FSdnoCZyIksJ9mkWCRVSiu87bY390raAzyw==",
+      "bytes": 1103641,
+      "member": "lib/net5.0/NuGet.Protocol.dll",
+      "dll_sha256": "ebd7fa89ff74dd9e319ff665fb2745c1b35257343646cf1b8ab0cb8d1d153fd2",
+      "assembly_identity": {
+        "assemblyVersion": "6.12.5.1",
+        "fileVersion": "6.12.5.1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/NuGet/NuGet.Client",
+        "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+      },
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "NuGet.Versioning",
+      "version": "6.12.5",
+      "archive": "nuget.versioning.6.12.5.nupkg",
+      "url": "https://api.nuget.org/v3-flatcontainer/nuget.versioning/6.12.5/nuget.versioning.6.12.5.nupkg",
+      "sha256": "be84bf180f5b73f756f13c662500193129353bd1b152995a3903e75633055e6e",
+      "sha512": "G1Yn/eTPoySAcE3gaq+269TMhmT5u2E5v+dJCOBoXVORt9JOj1I0bJ+mrPwB0zDIfh1jR6oWYakzFz5KuwZJgA==",
+      "bytes": 141735,
+      "member": "lib/netstandard2.0/NuGet.Versioning.dll",
+      "dll_sha256": "d5a12b276b0a0d0ed96ef9e333d4903fe03657e523ee0735fc5b40dfdea2187f",
+      "assembly_identity": {
+        "assemblyVersion": "6.12.5.1",
+        "fileVersion": "6.12.5.1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/NuGet/NuGet.Client",
+        "commit": "c92125011405028c945371a89e1a1eb0e735456d"
+      },
+      "license": "Apache-2.0"
+    }
+  ],
+  "generated_clients": {
+    "schema": "elite-arca-generated-client/v3",
+    "environment": "Homologation",
+    "contracts": [
+      {
+        "service": "wsaa",
+        "url": "https://wsaahomo.afip.gov.ar/ws/services/LoginCms?WSDL",
+        "wsdl_sha256": "c8910060052496f248b125e676085db689e0f21b2f32728417725c376b97b4b3",
+        "generated_sha256": "910a9e267718e663424972d2dd10d1f757e14f617e8a0d1afab8580bd6c450ea"
+      },
+      {
+        "service": "wsfev1",
+        "url": "https://wswhomo.afip.gov.ar/wsfev1/service.asmx?WSDL",
+        "wsdl_sha256": "16f5b8450c35a2cfc0187f07d6236162bb57b663954a1e1f0267e71afe90af24",
+        "generated_sha256": "e4608d9e113f293945a0fadf7a8c5f018ae0a2e19568ea450772be8bd1ec9d61"
+      }
+    ],
+    "dotnet_sdk": "10.0.400",
+    "dotnet_svcutil": "8.0.0",
+    "generator_provenance": "ADAPTED_RUNTIME_COMPOSITION",
+    "generator_inventory_sha256": "6cd7b6c492565f4ccf90f3a703fc59220c0b72614b5c09dbf649e278c79c5bc8",
+    "sca_state": "NOT_RUN_OFFLINE_RELEASE_SCA_REQUIRED",
+    "production_admitted": false
+  },
+  "gates": {
+    "G0": "Required local fiscal boundary, no credentials or real fiscal rules inferred",
+    "G1": "Official public WSDL, original fixed signed svcutil and signed fixed NuGet patches; only pinned local WSDL mode qualified",
+    "G2": "Exact upstream identities/source commits in locks; original archive preserved; tool composition is ADAPTED and assembly/build glue AUTHORED",
+    "G3": "MIT/Apache originals, package notices and .NET notices retained; no company attribution to glue",
+    "G4": "Two independent fresh-cache generations reproduce both fixed clients;8adverse trust cases,5dotnet test projects and real84migration HTTP/Go/UDS/.NET/CMS fixture",
+    "G5": "Exact OSV2.5.1,12explicit manifests including31package generator projection,zero findings;21file DevSkim26findings individually reviewed,zero unresolved",
+    "G6": "Actual440file portable fiscal build plus connected replay/reconciliation,original+credit,7parameters and PostgreSQL restart;4shipped-process startup refusals",
+    "G7": "Deterministic fixed source/assembly/SDK/runtime/NuGet inventories; no raw pnpm, no secret material or vulnerable original generator in artifact",
+    "G8": "Canonical owner promotion limited to demonstrated local fixture contracts; final full franchise independent builds/signature/durable acceptance are separate T2810 gates"
+  },
+  "runtime_condition": "CONDITIONED_USER_CREDENTIALS_FOR_HOMOLOGATION",
+  "production_admitted": false,
+  "production_constraints": "Fiscal policy/authorization/target acceptance belongs to future materialized project; fixture proof is not live certification",
+  "daybreak": "OUT_OF_SCOPE_DEFERRED_NO_INVESTIGATION"
+}

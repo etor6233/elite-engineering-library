@@ -1,0 +1,29 @@
+{
+  "schema": "elite-python-sdk-artifact-lock/v1",
+  "provider": "Google",
+  "distribution": "google-ads",
+  "version": "31.4.0",
+  "requires_python": "<3.15,>=3.9",
+  "release_level": "Production/Stable",
+  "wheel": {
+    "filename": "google_ads-31.4.0-py3-none-any.whl",
+    "bytes": 23712034,
+    "sha256": "210a7f6a7b5d40ef544090216dceeb90c9d2e7fba51c72329a690c9e5bb94474",
+    "url": "https://files.pythonhosted.org/packages/5d/59/27f19973bee9d6ae64e052d20767e2f586067b8237dd935254927f9009b5/google_ads-31.4.0-py3-none-any.whl"
+  },
+  "source": {
+    "repository": "https://github.com/googleads/google-ads-python",
+    "tag": "31.4.0",
+    "commit": "b8eb80ae277920d56fef467617795a7360c492fb",
+    "commit_signature_verified": true
+  },
+  "resolved_environment": {
+    "python": "3.14.4",
+    "platform": "Windows x86-64",
+    "pip": "26.0.1",
+    "dependency_count": 24,
+    "resolved_at": "2026-09-04"
+  },
+  "api_version": "v25",
+  "automatic_business_write": false
+}

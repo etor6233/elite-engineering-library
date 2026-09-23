@@ -1,0 +1,75 @@
+{
+  "provenance": "AUTHORED glue / DEPENDENCY_PIN official SDK; no adapted domain algorithm",
+  "sdk_commit": "788f363d15b1269ab5efb7cd00fb5e3b133cd99b",
+  "sources": [
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/788f363d15b1269ab5efb7cd00fb5e3b133cd99b/LICENSE",
+      "bytes": 1035,
+      "sha256": "48d97b3c936203a750a3288c2b924327769d62327383a1060244b3d3c05ad01f"
+    },
+    {
+      "path": "facebook_business/adobjects/page.py",
+      "url": "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/788f363d15b1269ab5efb7cd00fb5e3b133cd99b/facebook_business/adobjects/page.py",
+      "bytes": 222734,
+      "sha256": "0d08e317fe078de5ad2805ab5501423fe51fea39ef90ae4a0160122a5914ee51"
+    },
+    {
+      "path": "facebook_business/adobjects/pagepost.py",
+      "url": "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/788f363d15b1269ab5efb7cd00fb5e3b133cd99b/facebook_business/adobjects/pagepost.py",
+      "bytes": 26704,
+      "sha256": "b0b2009a0667ad57914423284877b104068dca1af4bdfb7f6543b0bec41f0b16"
+    },
+    {
+      "path": "facebook_business/api.py",
+      "url": "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/788f363d15b1269ab5efb7cd00fb5e3b133cd99b/facebook_business/api.py",
+      "bytes": 30015,
+      "sha256": "2f2e537354859758faba0d89a910b2212b478e0b2aaee771bb1c239abf4c2c72"
+    },
+    {
+      "path": "facebook_business/session.py",
+      "url": "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/788f363d15b1269ab5efb7cd00fb5e3b133cd99b/facebook_business/session.py",
+      "bytes": 2319,
+      "sha256": "72dd2e43efacc27728222d6c176202f6ff8919a85ba19811ac71fa357bc01587"
+    },
+    {
+      "path": "facebook_business/adobjects/objectparser.py",
+      "url": "https://raw.githubusercontent.com/facebook/facebook-python-business-sdk/788f363d15b1269ab5efb7cd00fb5e3b133cd99b/facebook_business/adobjects/objectparser.py",
+      "bytes": 3661,
+      "sha256": "9634dee1363b3930469b74942a5b5f58a53bfef5f21bd91519a2e9a25f1de9be"
+    }
+  ],
+  "claims": [
+    {
+      "path": "facebook_business/adobjects/page.py",
+      "symbol": "Page.create_feed",
+      "line": 2222,
+      "end_line": 2363
+    },
+    {
+      "path": "facebook_business/adobjects/pagepost.py",
+      "symbol": "PagePost.api_get",
+      "line": 140,
+      "end_line": 170
+    },
+    {
+      "path": "facebook_business/adobjects/pagepost.py",
+      "symbol": "PagePost.api_delete",
+      "line": 110,
+      "end_line": 138
+    },
+    {
+      "path": "facebook_business/api.py",
+      "symbol": "FacebookAdsApi.call",
+      "line": 236,
+      "end_line": 339
+    },
+    {
+      "path": "facebook_business/adobjects/objectparser.py",
+      "symbol": "ObjectParser.parse_single",
+      "line": 43,
+      "end_line": 88
+    }
+  ],
+  "declared_delta": "Revoke uses FacebookAdsApi.call DELETE node envelope because ObjectParser.parse_single intentionally discards success; success is True is mandatory. No retry, queue, moderation, scheduling or permission-approval implementation is claimed."
+}

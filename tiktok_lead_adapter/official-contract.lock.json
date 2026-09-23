@@ -1,0 +1,26 @@
+{
+  "schema": "elite-tiktok-lead-official-contract/v1",
+  "provider": "TikTok Business API",
+  "observed_at": "2026-09-04",
+  "documentation_revision_publicly_exposed": false,
+  "lead_get": {
+    "documentation": "https://business-api.tiktok.com/portal/docs/get-an-instant-form-lead-or-a-direct-message-lead/v1.3",
+    "method": "GET",
+    "path": "/open_api/v1.3/lead/get/",
+    "header": "Access-Token",
+    "lead_sources": ["INSTANT_FORM", "DIRECT_MESSAGE"]
+  },
+  "subscription_create": {
+    "documentation": "https://business-api.tiktok.com/portal/docs/create-a-subscription/v1.3",
+    "method": "POST",
+    "path": "/open_api/v1.3/subscription/subscribe/",
+    "subscribe_entity": "LEAD",
+    "response_field": "subscription_id"
+  },
+  "webhook": {
+    "delivery_semantics": "AT_LEAST_ONCE",
+    "duplicate_delivery_possible": true,
+    "public_signature_mechanism_demonstrated": false,
+    "automatic_persistence_allowed": false
+  }
+}

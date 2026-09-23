@@ -1,0 +1,10 @@
+begin;
+drop table sales.delivery_handover;
+drop table sales.quotation;
+drop table crm.appointment;
+drop trigger enforce_lead_transition on crm.lead;
+drop function crm.enforce_lead_transition();
+drop index crm.lead_org_updated_idx;
+alter table crm.lead drop column version, drop column assigned_subject;
+drop table org.public_location;
+commit;

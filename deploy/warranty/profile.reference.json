@@ -1,0 +1,20 @@
+{
+  "schema": "elite-warranty-profile/v1",
+  "scope": "MATERIALIZED_PROFILE",
+  "algorithm": "bc-inclusive-fixed-terms",
+  "algorithm_revision": 1,
+  "tenant_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+  "organization_id": "store",
+  "factory_organization_id": "factory",
+  "policy_id": "reference-service-warranty",
+  "terms_version": "reference-fixture-v1",
+  "terms_text": "Fixture local de servicio: intervalos configurados de piezas y mano de obra, revisión humana de causa, calidad, aceptación del cliente y comprobante interno. Estos datos de referencia no certifican términos legales de un país.",
+  "business_time_zone": "America/Argentina/Buenos_Aires",
+  "parts_duration_days": 365,
+  "labor_duration_days": 365,
+  "work_reservation_seconds": 3600,
+  "fault_exclusions": ["fixture-exclusion"],
+  "settlement": "INTERNAL_WARRANTY_SERVICE_ACKNOWLEDGEMENT",
+  "authority_reference": "reference-fixture-terms",
+  "decision_reference": "reference-fixture-selection"
+}

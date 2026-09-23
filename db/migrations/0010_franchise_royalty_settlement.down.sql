@@ -1,0 +1,11 @@
+drop trigger if exists royalty_reconciliation_immutable on royalty.reconciliation;
+drop trigger if exists royalty_line_immutable on royalty.settlement_line;
+drop trigger if exists royalty_accrual_immutable on royalty.accrual;
+drop trigger if exists royalty_policy_immutable on royalty.policy;
+drop function if exists royalty.prevent_financial_history_mutation();
+drop table if exists royalty.reconciliation;
+drop table if exists royalty.settlement_line;
+drop table if exists royalty.settlement_run;
+drop table if exists royalty.accrual;
+drop table if exists royalty.policy;
+drop schema if exists royalty;

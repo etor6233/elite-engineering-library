@@ -1,0 +1,8 @@
+import{describe,it,expect}from"vitest";
+import{returnOutcome,formatReturnMoney,returnStageLabel}from"./outcome";
+const fixture=()=>({authorization_id:"auth",organization_id:"store",order_id:"order",disposition_id:"disp",remedy:"refund",observed_at:"2026-09-14T12:00:00Z",stages:["inventory","refund","accounting","fiscal"].map(kind=>({request_id:kind,kind,status:"requested",attempts:0,updated_at:"2026-09-14T12:00:00Z"}))});
+describe("commercial care saved outcomes",()=>{
+ it("accepts only a complete coherent read model",()=>{expect(returnOutcome.safeParse(fixture()).success).toBe(true);for(const v of [{...fixture(),stages:fixture().stages.slice(1)},{...fixture(),stages:fixture().stages.map(s=>({...s,status:"succeeded"}))},{...fixture(),tenant_id:"browser"}])expect(returnOutcome.safeParse(v).success).toBe(false)});
+ it("distinguishes requested from a worker-confirmed refund",()=>{const pending=returnOutcome.parse(fixture()).stages[1]!;expect(returnStageLabel(pending)).toBe("En espera");const complete={...pending,status:"succeeded" as const,result_sha256:"a".repeat(64),owner:{state:"succeeded",reference:"refund",amount_minor_units:"10000",currency:"ARS"}};expect(returnStageLabel(complete)).toBe("Reintegro confirmado");const v=fixture();v.stages[1]=complete;expect(returnOutcome.safeParse(v).success).toBe(true)});
+ it("formats exact amounts beyond Number precision",()=>{expect(formatReturnMoney("9007199254740993","ARS","en-US")).toContain("90,071,992,547,409.93");expect(formatReturnMoney("123","JPY","en-US")).toContain("123");expect(formatReturnMoney("12345","ARS","es-AR")).toContain("123,45")});
+});

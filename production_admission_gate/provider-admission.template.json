@@ -1,0 +1,15 @@
+{
+  "schema": "elite-provider-admission/v1",
+  "project_id": "replace-me",
+  "environment": "production",
+  "release_digest": "sha256:replace-me",
+  "evaluated_at": "replace-me",
+  "expires_at": "replace-me",
+  "executor_ref": "replace-me",
+  "target": {
+    "system_url": "https://replace-me.invalid",
+    "jurisdiction": "replace-me"
+  },
+  "providers": [],
+  "output": "evidence/providers-control.json"
+}

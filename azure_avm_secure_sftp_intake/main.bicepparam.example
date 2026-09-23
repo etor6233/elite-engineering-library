@@ -1,0 +1,12 @@
+using './main.bicep'
+
+param storageAccountName = 'replacewithgloballyunique'
+param location = 'eastus2'
+param quarantineContainerName = 'sftp-quarantine'
+param sftpUserName = 'supplier-upload'
+param sshPublicKey = 'ssh-ed25519 REPLACE_WITH_PROJECT_OWNED_PUBLIC_KEY'
+param privateEndpointSubnetResourceId = '/subscriptions/REPLACE/resourceGroups/REPLACE/providers/Microsoft.Network/virtualNetworks/REPLACE/subnets/REPLACE'
+param privateDnsZoneResourceId = '/subscriptions/REPLACE/resourceGroups/REPLACE/providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net'
+param logAnalyticsWorkspaceResourceId = '/subscriptions/REPLACE/resourceGroups/REPLACE/providers/Microsoft.OperationalInsights/workspaces/REPLACE'
+param softDeleteRetentionDays = 30
+

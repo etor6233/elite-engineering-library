@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "verified_at": "2026-08-28",
+  "azure_verified_modules": {
+    "repository": "Azure/bicep-registry-modules",
+    "commit": "32f1df57c75a48b5f0519083b7048f8fc00c33d8",
+    "commit_signature": "verified",
+    "storage_account_module": "br/public:avm/res/storage/storage-account:0.33.0",
+    "local_user_module": "br/public:avm/res/storage/storage-account/local-user:0.1.0",
+    "license": "MIT"
+  },
+  "bicep_cli": {
+    "version": "0.46.1",
+    "asset": "bicep-win-x64.exe",
+    "url": "https://github.com/Azure/bicep/releases/download/v0.46.1/bicep-win-x64.exe",
+    "size": 117685696,
+    "sha256": "441d3d6094513acaa8a9be0b96b754d174bc0c19064c7be04e35b87e67b66250"
+  },
+  "official_constraints": {
+    "versioning_with_hierarchical_namespace": "unsupported",
+    "immutable_storage_while_sftp_enabled": "unsupported",
+    "private_endpoint_sftp": "supported",
+    "sftp_port": 22,
+    "sftp_uploaded_content_md5_default": null
+  }
+}
+

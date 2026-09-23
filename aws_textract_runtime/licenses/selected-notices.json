@@ -1,0 +1,181 @@
+{
+  "schema": "elite-textract-selected-license-lock/v1",
+  "modules": [
+    {
+      "module": "github.com/aws/aws-sdk-go-v2",
+      "version": "v1.44.0",
+      "notices": [
+        {
+          "filename": "LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "materialized_path": "aws_textract_runtime/licenses/aws-sdk-go-LICENSE.txt"
+        },
+        {
+          "filename": "NOTICE.txt",
+          "sha256": "a6e830174d62dafad3a718384772ea1f4c0e27989f050932dc442a5e3ddad080",
+          "materialized_path": "aws_textract_runtime/licenses/aws-sdk-go-NOTICE.txt"
+        }
+      ]
+    },
+    {
+      "module": "github.com/aws/aws-sdk-go-v2/config",
+      "version": "v1.32.38",
+      "notices": [
+        {
+          "filename": "LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "materialized_path": "aws_textract_runtime/licenses/aws-sdk-go-LICENSE.txt"
+        }
+      ]
+    },
+    {
+      "module": "github.com/aws/aws-sdk-go-v2/credentials",
+      "version": "v1.19.37",
+      "notices": [
+        {
+          "filename": "LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "materialized_path": "aws_textract_runtime/licenses/aws-sdk-go-LICENSE.txt"
+        }
+      ]
+    },
+    {
+      "module": "github.com/aws/aws-sdk-go-v2/feature/ec2/imds",
+      "version": "v1.18.38",
+      "notices": [
+        {
+          "filename": "LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "materialized_path": "aws_textract_runtime/licenses/aws-sdk-go-LICENSE.txt"
+        }
+      ]
+    },
+    {
+      "module": "github.com/aws/aws-sdk-go-v2/internal/configsources",
+      "version": "v1.4.40",
+      "notices": [
+        {
+          "filename": "LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "materialized_path": "aws_textract_runtime/licenses/aws-sdk-go-LICENSE.txt"
+        }
+      ]
+    },
+    {
+      "module": "github.com/aws/aws-sdk-go-v2/internal/endpoints/v2",
+      "version": "v2.7.40",
+      "notices": [
+        {
+          "filename": "LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "materialized_path": "aws_textract_runtime/licenses/aws-sdk-go-LICENSE.txt"
+        }
+      ]
+    },
+    {
+      "module": "github.com/aws/aws-sdk-go-v2/internal/v4a",
+      "version": "v1.4.39",
+      "notices": [
+        {
+          "filename": "LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "materialized_path": "aws_textract_runtime/licenses/aws-sdk-go-LICENSE.txt"
+        }
+      ]
+    },
+    {
+      "module": "github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding",
+      "version": "v1.13.17",
+      "notices": [
+        {
+          "filename": "LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "materialized_path": "aws_textract_runtime/licenses/aws-sdk-go-LICENSE.txt"
+        }
+      ]
+    },
+    {
+      "module": "github.com/aws/aws-sdk-go-v2/service/internal/presigned-url",
+      "version": "v1.13.38",
+      "notices": [
+        {
+          "filename": "LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "materialized_path": "aws_textract_runtime/licenses/aws-sdk-go-LICENSE.txt"
+        }
+      ]
+    },
+    {
+      "module": "github.com/aws/aws-sdk-go-v2/service/signin",
+      "version": "v1.5.7",
+      "notices": [
+        {
+          "filename": "LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "materialized_path": "aws_textract_runtime/licenses/aws-sdk-go-LICENSE.txt"
+        }
+      ]
+    },
+    {
+      "module": "github.com/aws/aws-sdk-go-v2/service/sso",
+      "version": "v1.33.7",
+      "notices": [
+        {
+          "filename": "LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "materialized_path": "aws_textract_runtime/licenses/aws-sdk-go-LICENSE.txt"
+        }
+      ]
+    },
+    {
+      "module": "github.com/aws/aws-sdk-go-v2/service/ssooidc",
+      "version": "v1.38.7",
+      "notices": [
+        {
+          "filename": "LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "materialized_path": "aws_textract_runtime/licenses/aws-sdk-go-LICENSE.txt"
+        }
+      ]
+    },
+    {
+      "module": "github.com/aws/aws-sdk-go-v2/service/sts",
+      "version": "v1.45.7",
+      "notices": [
+        {
+          "filename": "LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "materialized_path": "aws_textract_runtime/licenses/aws-sdk-go-LICENSE.txt"
+        }
+      ]
+    },
+    {
+      "module": "github.com/aws/aws-sdk-go-v2/service/textract",
+      "version": "v1.45.0",
+      "notices": [
+        {
+          "filename": "LICENSE.txt",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "materialized_path": "aws_textract_runtime/licenses/aws-sdk-go-LICENSE.txt"
+        }
+      ]
+    },
+    {
+      "module": "github.com/aws/smithy-go",
+      "version": "v1.28.1",
+      "notices": [
+        {
+          "filename": "LICENSE",
+          "sha256": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b",
+          "materialized_path": "aws_textract_runtime/licenses/smithy-go-LICENSE.txt"
+        },
+        {
+          "filename": "NOTICE",
+          "sha256": "d4290ed64c2edd0fce1d84e3f9dfb2881240fe534def76b8cd29ed6af683e287",
+          "materialized_path": "aws_textract_runtime/licenses/smithy-go-NOTICE.txt"
+        }
+      ]
+    }
+  ],
+  "claim": "Exact original module LICENSE/NOTICE bytes from Go checksum-verified official module cache; each source/version is fixed. Glue remains local AUTHORS; SDK and original notices retain their actual authors."
+}

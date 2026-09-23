@@ -1,0 +1,159 @@
+{
+  "provenance": "AUTHORED glue; third-party methods are references, not corporate attribution",
+  "schema": "elite-cloud-sources/v403.1",
+  "sources": [
+    {
+      "bytes": 240285,
+      "id": "cloudrun-cpu",
+      "observed_at": "2026-09-13",
+      "purpose": "official metadata/method reference; no product code copied",
+      "sha256": "beb9e1fc85bf3883bab22e5711152b972e72512449c1d498d3263fc58b6cff26",
+      "snapshot": "sources/cloudrun-cpu.snapshot",
+      "url": "https://docs.cloud.google.com/run/docs/configuring/billing-settings"
+    },
+    {
+      "bytes": 261292,
+      "id": "cloudrun-scaling",
+      "observed_at": "2026-09-13",
+      "purpose": "official metadata/method reference; no product code copied",
+      "sha256": "aad776457bddc49c3d5aaac77b2eeec3460eaafcb0b5ae7420629f04e6ebb503",
+      "snapshot": "sources/cloudrun-scaling.snapshot",
+      "url": "https://docs.cloud.google.com/run/docs/configuring/services/manual-scaling"
+    },
+    {
+      "bytes": 293417,
+      "id": "cloudrun-container",
+      "observed_at": "2026-09-13",
+      "purpose": "official metadata/method reference; no product code copied",
+      "sha256": "fe795491e57982a0b13d15c29f504812a4cf31be536eef4a3f3365e4484749e3",
+      "snapshot": "sources/cloudrun-container.snapshot",
+      "url": "https://docs.cloud.google.com/run/docs/configuring/services/containers"
+    },
+    {
+      "bytes": 239394,
+      "id": "cloudrun-deploy",
+      "observed_at": "2026-09-13",
+      "purpose": "official metadata/method reference; no product code copied",
+      "sha256": "e732a93aa83b17c22abfcf2f5efa213c94d9158e68c2ae7666716e05911fa87a",
+      "snapshot": "sources/cloudrun-deploy.snapshot",
+      "url": "https://docs.cloud.google.com/sdk/gcloud/reference/run/deploy"
+    },
+    {
+      "bytes": 177303,
+      "id": "cloudrun-traffic",
+      "observed_at": "2026-09-13",
+      "purpose": "official metadata/method reference; no product code copied",
+      "sha256": "0c3e8f011effa28d291e83977336778708fa1055bae1f9946ab7b50f44ba0ee9",
+      "snapshot": "sources/cloudrun-traffic.snapshot",
+      "url": "https://docs.cloud.google.com/sdk/gcloud/reference/run/services/update-traffic"
+    },
+    {
+      "bytes": 232736,
+      "id": "sql-stop",
+      "observed_at": "2026-09-13",
+      "purpose": "official metadata/method reference; no product code copied",
+      "sha256": "5d58178dbe937f9c184366d1962cf227841c869a350ed8ba0b14f6458534438a",
+      "snapshot": "sources/sql-stop.snapshot",
+      "url": "https://docs.cloud.google.com/sql/docs/postgres/start-stop-restart-instance"
+    },
+    {
+      "bytes": 248725,
+      "id": "budgets",
+      "observed_at": "2026-09-13",
+      "purpose": "official metadata/method reference; no product code copied",
+      "sha256": "d1e5c4cdfeb4f275418573e19a13cbfe14960edb21f139a5105521810e3b607c",
+      "snapshot": "sources/budgets.snapshot",
+      "url": "https://docs.cloud.google.com/billing/docs/how-to/budgets"
+    },
+    {
+      "bytes": 299823,
+      "id": "billing-export",
+      "observed_at": "2026-09-13",
+      "purpose": "official metadata/method reference; no product code copied",
+      "sha256": "2c86f987fb0a29a5c9a5d8e1bccf4348a2d6ec98ac1dbc323a2f2dfb40cfdfed",
+      "snapshot": "sources/billing-export.snapshot",
+      "url": "https://docs.cloud.google.com/billing/docs/how-to/export-data-bigquery-tables/standard-usage"
+    },
+    {
+      "bytes": 213557,
+      "id": "gcs-cas",
+      "observed_at": "2026-09-13",
+      "purpose": "official metadata/method reference; no product code copied",
+      "sha256": "d29b09a48994156f04c57b1de83813f6ea6bc6e8a2181990b25919f7146669ee",
+      "snapshot": "sources/gcs-cas.snapshot",
+      "url": "https://docs.cloud.google.com/storage/docs/request-preconditions"
+    },
+    {
+      "bytes": 468756,
+      "id": "github-security",
+      "observed_at": "2026-09-13",
+      "purpose": "official metadata/method reference; no product code copied",
+      "sha256": "30f0d19398c08ab8faf9af2b0f107a98e07e445b52f9414eec3921608adf32b1",
+      "snapshot": "sources/github-security.snapshot",
+      "url": "https://docs.github.com/en/actions/reference/security/secure-use"
+    },
+    {
+      "bytes": 2211180,
+      "id": "go-release",
+      "observed_at": "2026-09-13",
+      "purpose": "official metadata/method reference; no product code copied",
+      "sha256": "1ed915f72633d0a72eaa2f462740153db4fe347cb56f7d1e25ec44868568f13e",
+      "snapshot": "sources/go-release.snapshot",
+      "url": "https://go.dev/dl/?mode=json&include=all"
+    },
+    {
+      "bytes": 3171,
+      "id": "node-release",
+      "observed_at": "2026-09-13",
+      "purpose": "official metadata/method reference; no product code copied",
+      "sha256": "c614a913a302d35d1c3a1348d07d84c52e28dceb0b97fd91e4ade05906ca2bd7",
+      "snapshot": "sources/node-release.snapshot",
+      "url": "https://nodejs.org/dist/v24.20.0/SHASUMS256.txt"
+    },
+    {
+      "bytes": 58926,
+      "id": "pwsh-release",
+      "observed_at": "2026-09-13",
+      "purpose": "official metadata/method reference; no product code copied",
+      "sha256": "27af302b3bf504c3be6540911c6e5545b890851790f4c6ab270f4033e80535f2",
+      "snapshot": "sources/pwsh-release.snapshot",
+      "url": "https://api.github.com/repos/PowerShell/PowerShell/releases/tags/v7.6.6"
+    },
+    {
+      "bytes": 1044416,
+      "id": "dotnet-release",
+      "observed_at": "2026-09-13",
+      "purpose": "official metadata/method reference; no product code copied",
+      "sha256": "28e304ea0982d2ad11e14278ca597dbb443c6f8d27480b3ef7319192d9879b6b",
+      "snapshot": "sources/dotnet-release.snapshot",
+      "url": "https://builds.dotnet.microsoft.com/dotnet/release-metadata/10.0/releases.json"
+    },
+    {
+      "bytes": 240754,
+      "id": "gcloud-release",
+      "observed_at": "2026-09-13",
+      "purpose": "official metadata/method reference; no product code copied",
+      "sha256": "6fb766b95872534fcd1a036a4f3e55994ef402762e8779482ad7fe1278cf031f",
+      "snapshot": "sources/gcloud-release.snapshot",
+      "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/components-2.json"
+    },
+    {
+      "id": "dotnet-pkcs12",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.x509certificates.x509certificateloader.loadpkcs12fromfile?view=net-10.0",
+      "snapshot": "sources/dotnet-pkcs12.snapshot",
+      "bytes": 75052,
+      "sha256": "c74e5ace45ff3819e9024ccab898ef831254f5d22496124dd08734ac90d40642",
+      "observed_at": "2026-09-14",
+      "purpose": "official API method reference; AUTHORED glue, no copied external source"
+    },
+    {
+      "id": "dotnet-x509store",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.x509certificates.x509store.add?view=net-10.0",
+      "snapshot": "sources/dotnet-x509store.snapshot",
+      "bytes": 65780,
+      "sha256": "3d87149348ff608d22e1a227b2d167809330e6f7cdc82da461ab95ff7a9ae485",
+      "observed_at": "2026-09-14",
+      "purpose": "official API method reference; AUTHORED glue, no copied external source"
+    }
+  ]
+}

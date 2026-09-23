@@ -1,0 +1,35 @@
+import {describe,it,expect,beforeEach,afterEach,vi} from "vitest";
+import {NextRequest} from "next/server";
+import {campaignHumanState,campaignPermissions,campaignSelection,type CampaignStatus} from "./contract";
+import {GET,POST} from "@/app/api/enterprise/franchise/campaigns/route";
+const mocks=vi.hoisted(()=>({session:vi.fn(),get:vi.fn(),post:vi.fn()}));
+vi.mock("@/platform/auth/session",()=>({readSession:mocks.session}));
+vi.mock("@/platform/auth/oidc-client",()=>({applicationBaseUrl:()=>new URL("https://app.example.test")}));
+vi.mock("@/platform/backend/protected-client",()=>({protectedGet:mocks.get,protectedPost:mocks.post}));
+const permissions=["marketing:read","notification:read","marketing:request","notification:request","lead:read"];
+const session={subject:"operator",tenantId:"tenant",organizations:["store"],permissions,accessToken:"synthetic"};
+const id="campaign-fixture-01",sha="a".repeat(64);
+const selection={campaign_id:id,lead_ids:["lead-1"],steps:[{template_name:"order_update",language_code:"es_AR",body_parameters:["Consulta"],not_before:"2026-09-16T12:00:00Z",expires_at:"2026-09-16T13:00:00Z"}]};
+const batch={campaign_id:id,campaign_sha256:sha,complete:true,items:[{lead_id:"lead-1",step:1,delivery_key:"fixture",state:"prepared"}]};
+const post=(body:unknown,origin="https://app.example.test")=>new NextRequest("https://app.example.test/api/enterprise/franchise/campaigns",{method:"POST",headers:{origin,"content-type":"application/json"},body:typeof body==="string"?body:JSON.stringify(body)});
+beforeEach(()=>{vi.stubEnv("CAMPAIGN_WORKSPACE_ENABLED","true");vi.clearAllMocks();mocks.session.mockResolvedValue(session);mocks.post.mockResolvedValue(batch)});
+afterEach(()=>vi.unstubAllEnvs());
+describe("campaign BFF actor, bounds and exact owner forwarding",()=>{
+ it("does not expose an uninstalled route",async()=>{vi.stubEnv("CAMPAIGN_WORKSPACE_ENABLED","false");expect((await GET(new NextRequest("https://app.example.test/?kind=campaigns"))).status).toBe(404);expect(mocks.session).not.toHaveBeenCalled()});
+ it("requires the original two read permissions, not a Galaxy function name",async()=>{mocks.session.mockResolvedValue({...session,permissions:["Founders","marketing:read"]});expect((await GET(new NextRequest("https://app.example.test/?kind=campaigns"))).status).toBe(403);expect(mocks.get).not.toHaveBeenCalled()});
+ it.each(["kind=campaigns&kind=audience","kind=status&id=bad/route","kind=templates&after=lead-1","kind=campaigns&id=campaign-fixture-01","kind=audience&after=bad%2Fcursor"])("rejects query %s",async(q)=>{expect((await GET(new NextRequest("https://app.example.test/?"+q))).status).toBe(400);expect(mocks.get).not.toHaveBeenCalled()});
+ it("rejects cross-origin writes before reading the session",async()=>{expect((await POST(post({},"https://attacker.example"))).status).toBe(403);expect(mocks.session).not.toHaveBeenCalled()});
+ it("bounds actual UTF-8 bytes even with no Content-Length",async()=>{expect((await POST(post(JSON.stringify({text:"é".repeat(18000)})))).status).toBe(413);expect(mocks.post).not.toHaveBeenCalled()});
+ it("does not accept recipient injection into a server selection",async()=>{expect((await POST(post({action:"create",selection:{...selection,recipient:"549111111111"},campaign_sha256:sha}))).status).toBe(400);expect(mocks.post).not.toHaveBeenCalled()});
+ it("forwards the selected IDs and original digest once",async()=>{expect((await POST(post({action:"create",selection,campaign_sha256:sha}))).status).toBe(200);expect(mocks.post).toHaveBeenCalledExactlyOnceWith(session,"/v1/franchise/marketing/campaigns/workspace/create",{selection,campaign_sha256:sha})});
+ it("does not promote a malformed backend receipt",async()=>{mocks.post.mockResolvedValue({complete:true});const r=await POST(post({action:"create",selection,campaign_sha256:sha}));expect(r.status).toBe(409);expect(await r.json()).toEqual({code:"CONSULT_STATE_BEFORE_RETRY"});expect(mocks.post).toHaveBeenCalledTimes(1)});
+ it("review and cancellation have distinct owner permissions",async()=>{expect((await POST(post({action:"decision",campaign_id:id,campaign_sha256:sha,approve:true,reason:"Revisado"}))).status).toBe(403);expect((await POST(post({action:"stop",campaign_id:id,campaign_sha256:sha,reason:"Detener"}))).status).toBe(403);expect(mocks.post).not.toHaveBeenCalled()});
+ it("does not invent business roles or acceptance from permissionless metadata",()=>{expect(campaignPermissions(["Marketing","Grok Bot 101"]).read).toBe(false);expect(campaignSelection.safeParse({...selection,lead_ids:Array(21).fill("lead-1")}).success).toBe(false)});
+});
+describe("campaign delivery labels follow the actual durable owner",()=>{
+ const item=(extra:Record<string,unknown>):CampaignStatus["items"][number]=>({lead_id:"lead-1",step:1,delivery_key:"fixture",preparation:"PREPARED",schedule:{approval_state:"approved",delivery_state:"",outcome:"",cancelled:false,job_completed:false,...extra}});
+ it("accepted is not delivered",()=>expect(campaignHumanState(item({delivery_state:"accepted",outcome:"ACCEPTED"}))).toBe("Aceptado por WhatsApp"));
+ it("uses delivery_status from the actual notification owner",()=>expect(campaignHumanState(item({notification:{delivery_status:"delivered"}}))).toBe("Entregado"));
+ it("preserves an uncertain result",()=>expect(campaignHumanState(item({outcome:"RECONCILIATION_REQUIRED"}))).toBe("Resultado por confirmar"));
+ it("stopped is not a successful send",()=>expect(campaignHumanState(item({cancelled:true}))).toBe("Detenido"));
+});

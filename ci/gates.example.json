@@ -1,0 +1,9 @@
+{
+  "schema_version": "elite.ci-gates.v1",
+  "required_categories": ["format", "unit", "static", "build", "security", "supply-chain", "integration", "recovery"],
+  "fail_fast": true,
+  "max_output_bytes": 131072,
+  "gates": [
+    {"id": "replace-format", "category": "format", "argv": ["replace-me"], "cwd": ".", "timeout_seconds": 300, "required": true}
+  ]
+}

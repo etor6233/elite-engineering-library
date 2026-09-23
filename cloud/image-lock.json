@@ -1,0 +1,117 @@
+{
+  "images": [
+    {
+      "admission": "PINNED_CANDIDATE",
+      "digest": "sha256:659cc38c1a394eeb4dd7e31fff6df128bd33444dcc7afd70e3bed5225749dbc0",
+      "executed": "NOT_RUN",
+      "id": "go-builder",
+      "index_digest": "sha256:e8c859f5632dcfde7b32d2012b4351728f6437930887c2f6a91ea242459e5514",
+      "observed_tag": "1.26.7-bookworm",
+      "reference": "docker.io/library/golang@sha256:659cc38c1a394eeb4dd7e31fff6df128bd33444dcc7afd70e3bed5225749dbc0",
+      "repository": "docker.io/library/golang",
+      "required": [
+        "layer inventory and notices",
+        "SCA on exact image",
+        "OCI build and native runtime",
+        "target graceful stop/restore/security"
+      ]
+    },
+    {
+      "admission": "PINNED_CANDIDATE",
+      "digest": "sha256:6642ef280aebc09c4541bee0b15c9f89f0f3f3c247ddee79ae1d37eddfdcbbaa",
+      "executed": "NOT_RUN",
+      "id": "node-runtime",
+      "index_digest": "sha256:ba849c60be29959425b8734d57b8b4b7d56f98edd9504c9af091d5281095a71e",
+      "observed_tag": "24.20.0-bookworm-slim",
+      "reference": "docker.io/library/node@sha256:6642ef280aebc09c4541bee0b15c9f89f0f3f3c247ddee79ae1d37eddfdcbbaa",
+      "repository": "docker.io/library/node",
+      "required": [
+        "layer inventory and notices",
+        "SCA on exact image",
+        "OCI build and native runtime",
+        "target graceful stop/restore/security"
+      ]
+    },
+    {
+      "admission": "PINNED_CANDIDATE",
+      "digest": "sha256:52dcfbabb7457ea47c82f6e13af8c8a4a1d9f7b0145142b3ecab20f2b888411d",
+      "executed": "NOT_RUN",
+      "id": "go-runtime",
+      "index_digest": "sha256:afa5c872c891853ca7fcf1f12c3edb23f7eeef36189728842dd51042ff57f7ab",
+      "observed_tag": "nonroot",
+      "reference": "gcr.io/distroless/static-debian12@sha256:52dcfbabb7457ea47c82f6e13af8c8a4a1d9f7b0145142b3ecab20f2b888411d",
+      "repository": "gcr.io/distroless/static-debian12",
+      "required": [
+        "layer inventory and notices",
+        "SCA on exact image",
+        "OCI build and native runtime",
+        "target graceful stop/restore/security"
+      ]
+    },
+    {
+      "admission": "PINNED_CANDIDATE",
+      "digest": "sha256:60a2b2230a0d052bc54c0d453e97e331219ed503c5411470ee226859420e693c",
+      "executed": "NOT_RUN",
+      "id": "dotnet-sdk",
+      "index_digest": "sha256:2fa828c68761b1b8c23d7662dc134421b9d3b59fe1425fdbc80804e390cdb24d",
+      "observed_tag": "10.0.401-noble",
+      "reference": "mcr.microsoft.com/dotnet/sdk@sha256:60a2b2230a0d052bc54c0d453e97e331219ed503c5411470ee226859420e693c",
+      "repository": "mcr.microsoft.com/dotnet/sdk",
+      "required": [
+        "layer inventory and notices",
+        "SCA on exact image",
+        "OCI build and native runtime",
+        "target graceful stop/restore/security"
+      ]
+    },
+    {
+      "admission": "PINNED_CANDIDATE",
+      "digest": "sha256:900c2dd83cc0cef53db0aaf786f12fe766ee075b6334750a664c9e77e7a7c0c5",
+      "executed": "NOT_RUN",
+      "id": "dotnet-runtime",
+      "index_digest": "sha256:6a94333d37514e385650a3c81a55e5350b67253dbe136e9cf17e499c35606a8c",
+      "observed_tag": "10.0.12-noble",
+      "reference": "mcr.microsoft.com/dotnet/aspnet@sha256:900c2dd83cc0cef53db0aaf786f12fe766ee075b6334750a664c9e77e7a7c0c5",
+      "repository": "mcr.microsoft.com/dotnet/aspnet",
+      "required": [
+        "layer inventory and notices",
+        "SCA on exact image",
+        "OCI build and native runtime",
+        "target graceful stop/restore/security"
+      ]
+    },
+    {
+      "id": "postgres-client",
+      "repository": "docker.io/library/postgres",
+      "observed_tag": "18.6-bookworm",
+      "digest": "sha256:a10c981235b4f635e65df0cfb66a5598064628128505dbc6a3ed4ca303717521",
+      "index_digest": "sha256:1c59e2c3c818eaa0f0628f695b36e7c9e362d6b219b36a54a32df645cbd7e1af",
+      "reference": "docker.io/library/postgres@sha256:a10c981235b4f635e65df0cfb66a5598064628128505dbc6a3ed4ca303717521",
+      "admission": "PINNED_CANDIDATE",
+      "executed": "NOT_RUN",
+      "required": [
+        "exact layers/license/SCA",
+        "Linux migration and recovery runtime"
+      ]
+    },
+    {
+      "id": "gcloud-runtime",
+      "repository": "gcr.io/google.com/cloudsdktool/google-cloud-cli",
+      "observed_tag": "584.0.0-stable",
+      "digest": "sha256:eaf8bb2f73461897fe3791f10b23ffb98ce3ff4c588a76fd9cc97737fc283392",
+      "index_digest": "sha256:2f2d80f4be75ffb2dc99d2048bd67248b830d1e52eb6a09ac1fa4b05e6e53a91",
+      "reference": "gcr.io/google.com/cloudsdktool/google-cloud-cli@sha256:eaf8bb2f73461897fe3791f10b23ffb98ce3ff4c588a76fd9cc97737fc283392",
+      "admission": "PINNED_CANDIDATE",
+      "executed": "NOT_RUN",
+      "required": [
+        "exact layers/license/SCA",
+        "gcloud and bq individual launcher/runtime G0-G8",
+        "nonroot Python/SQLite/state-volume runtime",
+        "Cloud Scheduler/Job billing-export/dispatch evidence"
+      ],
+      "official_document": "https://docs.cloud.google.com/sdk/docs/downloads-docker"
+    }
+  ],
+  "platform": "linux/amd64",
+  "schema": "elite-cloud-images/v403.1"
+}

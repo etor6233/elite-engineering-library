@@ -1,0 +1,151 @@
+[
+  {
+    "name": "offer",
+    "payload": {
+      "quote_id": "quote",
+      "quote_version": "1",
+      "profile_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "canonical": "{\"profile_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"quote_id\":\"quote\",\"quote_version\":\"1\"}",
+    "sha256": "b8b0eab55f3643cdeb85b74ee3bc7f2881723a60266955bc9054dcbca3f4b504"
+  },
+  {
+    "name": "acknowledge",
+    "payload": {
+      "quote_id": "quote",
+      "quote_version": "2",
+      "profile_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "evidence_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "canonical": "{\"evidence_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"profile_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"quote_id\":\"quote\",\"quote_version\":\"2\"}",
+    "sha256": "589926c9ba55da6d4b68f8869f445af1bec991010d921a65dbaeb2b021e83d05"
+  },
+  {
+    "name": "activate",
+    "payload": {
+      "handover_id": "delivery"
+    },
+    "canonical": "{\"handover_id\":\"delivery\"}",
+    "sha256": "fedffebef6066e493ed048207a0992800221a70beb825c37ca4511228fc14dac"
+  },
+  {
+    "name": "open",
+    "payload": {
+      "case_id": "case",
+      "handover_id": "delivery",
+      "appointment_id": "appointment",
+      "severity": "medium",
+      "description": "Falla á <&>   interior",
+      "evidence_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "canonical": "{\"appointment_id\":\"appointment\",\"case_id\":\"case\",\"description\":\"Falla á \\u003c\\u0026\\u003e \\u2028 interior\",\"evidence_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"handover_id\":\"delivery\",\"severity\":\"medium\"}",
+    "sha256": "7860f9b2bd1c9fe0a883e4a136d9e2af41ca46c2deca1accd5c3297ec4ff9fbe"
+  },
+  {
+    "name": "diagnose",
+    "payload": {
+      "case_id": "case",
+      "command_id": "command",
+      "expected_version": "9007199254740993",
+      "fault_code": "brake",
+      "description": "Diagnóstico <&>   interior",
+      "evidence_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "canonical": "{\"case_id\":\"case\",\"command_id\":\"command\",\"description\":\"Diagnóstico \\u003c\\u0026\\u003e \\u2029 interior\",\"evidence_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"expected_version\":\"9007199254740993\",\"fault_code\":\"brake\"}",
+    "sha256": "3f19f73f1ba0c2cbd6ce16974992676baa986dd2a58266e1348c265216e013a8"
+  },
+  {
+    "name": "plan",
+    "payload": {
+      "case_id": "case",
+      "command_id": "command",
+      "expected_version": "9007199254740993",
+      "labor_work": "Trabajo sintético",
+      "parts": [
+        {
+          "line_id": "part-line",
+          "item_id": "part",
+          "bin_id": "bin",
+          "lot_id": "lot",
+          "quantity": "7"
+        }
+      ]
+    },
+    "canonical": "{\"case_id\":\"case\",\"command_id\":\"command\",\"expected_version\":\"9007199254740993\",\"labor_work\":\"Trabajo sintético\",\"parts\":[{\"bin_id\":\"bin\",\"item_id\":\"part\",\"line_id\":\"part-line\",\"lot_id\":\"lot\",\"quantity\":\"7\"}]}",
+    "sha256": "cf4117e410e5288f7694a577d3bceacbc1238f740ef006518d2dc7ad20326a83"
+  },
+  {
+    "name": "decide",
+    "payload": {
+      "case_id": "case",
+      "command_id": "command",
+      "expected_version": "9007199254740993",
+      "payload_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "approved": true,
+      "reason": "Revisión explícita"
+    },
+    "canonical": "{\"approved\":true,\"case_id\":\"case\",\"command_id\":\"command\",\"expected_version\":\"9007199254740993\",\"payload_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"reason\":\"Revisión explícita\"}",
+    "sha256": "6752f1a357050813bdd22406966e1926f34161892c99cf0d43099951c77428f7"
+  },
+  {
+    "name": "work",
+    "payload": {
+      "case_id": "case",
+      "command_id": "command",
+      "expected_version": "9007199254740993",
+      "evidence_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "canonical": "{\"case_id\":\"case\",\"command_id\":\"command\",\"evidence_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"expected_version\":\"9007199254740993\"}",
+    "sha256": "a09f07c9bb818e7d40720f09d51b934d7af648ab983d54c8c42c163f40ccea76"
+  },
+  {
+    "name": "quality",
+    "payload": {
+      "case_id": "case",
+      "command_id": "command",
+      "expected_version": "9007199254740993",
+      "passed": false,
+      "work_evidence_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "evidence_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "correction_evidence_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "canonical": "{\"case_id\":\"case\",\"command_id\":\"command\",\"correction_evidence_sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"evidence_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"expected_version\":\"9007199254740993\",\"passed\":false,\"work_evidence_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}",
+    "sha256": "c99ebe42a71c8d36eb69565dd4ed1933aa4b7dc02a2f9c9ce4a6416933355714"
+  },
+  {
+    "name": "accept",
+    "payload": {
+      "case_id": "case",
+      "command_id": "command",
+      "expected_version": "9007199254740993",
+      "quality_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "evidence_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "canonical": "{\"case_id\":\"case\",\"command_id\":\"command\",\"evidence_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"expected_version\":\"9007199254740993\",\"quality_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}",
+    "sha256": "e85554ddeaf259c9d32a519e16fe2faa1e05f4696e85b3fa3a4af6f8f5c64034"
+  },
+  {
+    "name": "reconcile",
+    "payload": {
+      "case_id": "case",
+      "command_id": "command",
+      "expected_version": "9007199254740993",
+      "acceptance_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "evidence_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "canonical": "{\"acceptance_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"case_id\":\"case\",\"command_id\":\"command\",\"evidence_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"expected_version\":\"9007199254740993\"}",
+    "sha256": "ff26411fbca58b6ac6408f962963cf588bf308a2e084ab1aaa4406f5fc83e4ea"
+  },
+  {
+    "name": "cancel",
+    "payload": {
+      "case_id": "case",
+      "command_id": "command",
+      "expected_version": "9007199254740993",
+      "reason": "Cancelación explícita",
+      "evidence_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "canonical": "{\"case_id\":\"case\",\"command_id\":\"command\",\"evidence_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"expected_version\":\"9007199254740993\",\"reason\":\"Cancelación explícita\"}",
+    "sha256": "210987fa3f278f3bfcc206443cc987c75327db0fad975a80f0f31fca324f3777"
+  }
+]

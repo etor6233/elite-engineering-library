@@ -1,0 +1,6 @@
+{
+  "schema": "elite-catalog-feed/v1",
+  "receiver_id": "fixture-receiver",
+  "base_url": "http://127.0.0.1:4199",
+  "mode": "fixture"
+}

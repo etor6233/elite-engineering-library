@@ -1,0 +1,32 @@
+{
+  "schema": "elite-identity-authorization-admission/v1",
+  "project_id": "",
+  "environment": "production",
+  "release_digest": "",
+  "evaluated_at": "",
+  "expires_at": "",
+  "executor_ref": "",
+  "tool": {
+    "name": "OpenID Foundation Conformance Suite",
+    "version": "5.2.4",
+    "source": "https://gitlab.com/openid/conformance-suite/-/releases/release-v5.2.4"
+  },
+  "target": {
+    "issuer_url": "",
+    "client_id": "",
+    "audience": "",
+    "conformance_profile": "",
+    "application_url": "",
+    "tenant_ids": [],
+    "role_ids": []
+  },
+  "policy": "",
+  "runs": [
+    {"kind":"OIDC_CONFORMANCE", "execution_receipt":"", "observation":"", "expected_arguments":[]},
+    {"kind":"ROLE_POSITIVE_JOURNEYS", "execution_receipt":"", "observation":"", "expected_arguments":[]},
+    {"kind":"UNAUTHORIZED_NEGATIVE_JOURNEYS", "execution_receipt":"", "observation":"", "expected_arguments":[]},
+    {"kind":"TENANT_ISOLATION", "execution_receipt":"", "observation":"", "expected_arguments":[]},
+    {"kind":"SESSION_REVOCATION_ROTATION", "execution_receipt":"", "observation":"", "expected_arguments":[]}
+  ],
+  "output": ""
+}

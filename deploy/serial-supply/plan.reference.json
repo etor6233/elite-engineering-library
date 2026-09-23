@@ -1,0 +1,15 @@
+{
+  "purchase_order_id": "replace-with-existing-draft-po",
+  "command_id": "plan-1",
+  "factory_organization_id": "replace-with-factory-org",
+  "demand_reference": "synthetic-reference-demand",
+  "policy_code": "strict-serial-reference/v1",
+  "evidence_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "lines": [
+    {
+      "id": "line-a",
+      "variant_id": "replace-with-active-variant",
+      "quantity": 3
+    }
+  ]
+}

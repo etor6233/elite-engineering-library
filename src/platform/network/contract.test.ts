@@ -1,0 +1,8 @@
+import {it,expect} from "vitest";
+import {readFileSync} from "node:fs";
+import {networkCommand,networkReference,networkMatches,networkPayload} from "./contract";
+import {catalogCanonical} from "@/platform/catalog/authoring";
+const rows=JSON.parse(readFileSync("deploy/network/role-goldens.json","utf8"))as{command:unknown;canonical:string;sha256:string}[];
+for(const row of rows)it("matches Go typed command "+String((row.command as {action:string}).action),async()=>{const c=networkCommand.parse(row.command);expect(catalogCanonical(networkPayload(c))).toBe(row.canonical);expect((await networkReference(c)).request_sha256).toBe(row.sha256)});
+it("rejects wrong scope, schema codes, overflow and invalid date order",()=>{for(const change of [{scope_organization_id:"foreign"},{version:"9223372036854775807"},{version:"01"}])expect(networkCommand.safeParse({...rows[2]!.command as object,...change}).success).toBe(false);expect(networkCommand.safeParse({...rows[0]!.command as object,code:"UPPER"}).success).toBe(false);expect(networkCommand.safeParse({...rows[1]!.command as object,ends_on:"2025-01-01"}).success).toBe(false)});
+it("binds recovered result to actor scope entity and exact effect",async()=>{const c=networkCommand.parse(rows[2]!.command),p=await networkReference(c),v={command_id:p.command_id,action:p.action,scope_organization_id:p.scope_organization_id,actor:"actor",request_sha256:p.request_sha256,entity:{kind:"organization"as const,id:p.entity_id,organization_id:p.entity_id,version:p.version,state:p.state},recorded_at:"2026-09-12T00:00:00Z",replay:true};expect(networkMatches(v,p,"actor")).toBe(true);expect(networkMatches(v,p,"other")).toBe(false);expect(networkMatches({...v,entity:{...v.entity,version:"2"}},p,"actor")).toBe(false)});

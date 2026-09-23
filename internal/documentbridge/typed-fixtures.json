@@ -1,0 +1,980 @@
+{
+  "schema": "document-class-catalog/v1",
+  "mode": "TYPED_FIXTURE",
+  "profile_sha256": "164ea4e9fd822b8d81c0ed3c723678f01b53c9cb6db18edbb172e26a671b2247",
+  "classes": [
+    {
+      "class_id": "supplier-invoice",
+      "schema_version": "1",
+      "label_es": "Facturas de proveedor",
+      "task_id": "purchasing.invoice-review",
+      "fields": [
+        {
+          "key": "invoice_number",
+          "label_es": "Factura",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "vendor",
+          "label_es": "Proveedor",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "total",
+          "label_es": "Total",
+          "type": "decimal",
+          "max_length": 64
+        },
+        {
+          "key": "currency",
+          "label_es": "Moneda",
+          "type": "currency",
+          "max_length": 64
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "76d8288f4ed116c4108d2889e51cc11d8d8db4fa91cc85c320706c42343d2603",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMjY1ID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChzdXBwbGllci1pbnZvaWNlKSBUaiAwIC0xNiBUZCAoaW52b2ljZV9udW1iZXI6IEZJWFRVUkUtMDEtaW52b2ljZV9udW1iZXIpIFRqIDAgLTE2IFRkICh2ZW5kb3I6IEZJWFRVUkUtMDEtdmVuZG9yKSBUaiAwIC0xNiBUZCAodG90YWw6IDEyMy40NSkgVGogMCAtMTYgVGQgKGN1cnJlbmN5OiBVU0QpIFRqIEVUCmVuZHN0cmVhbQplbmRvYmoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDA5IDAwMDAwIG4gCjAwMDAwMDAwNTggMDAwMDAgbiAKMDAwMDAwMDExNSAwMDAwMCBuIAowMDAwMDAwMjQxIDAwMDAwIG4gCjAwMDAwMDAzMTEgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA2IC9Sb290IDEgMCBSID4+CnN0YXJ0eHJlZgo2MjcKJSVFT0YK",
+      "suggested": {
+        "invoice_number": "FIXTURE-01-invoice_number",
+        "vendor": "FIXTURE-01-vendor",
+        "total": "123.45",
+        "currency": "USD"
+      }
+    },
+    {
+      "class_id": "receipt",
+      "schema_version": "1",
+      "label_es": "Recibos",
+      "task_id": "finance.receipt-review",
+      "fields": [
+        {
+          "key": "receipt_number",
+          "label_es": "Recibo",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "merchant",
+          "label_es": "Comercio",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "amount",
+          "label_es": "Importe",
+          "type": "decimal",
+          "max_length": 64
+        },
+        {
+          "key": "currency",
+          "label_es": "Moneda",
+          "type": "currency",
+          "max_length": 64
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "4fd26b911aaba505b2782afd019b655ab6e89a933e185ae3bd940bca6c29b372",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMjYxID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChyZWNlaXB0KSBUaiAwIC0xNiBUZCAocmVjZWlwdF9udW1iZXI6IEZJWFRVUkUtMDItcmVjZWlwdF9udW1iZXIpIFRqIDAgLTE2IFRkIChtZXJjaGFudDogRklYVFVSRS0wMi1tZXJjaGFudCkgVGogMCAtMTYgVGQgKGFtb3VudDogMTIzLjQ1KSBUaiAwIC0xNiBUZCAoY3VycmVuY3k6IFVTRCkgVGogRVQKZW5kc3RyZWFtCmVuZG9iagp4cmVmCjAgNgowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMDkgMDAwMDAgbiAKMDAwMDAwMDA1OCAwMDAwMCBuIAowMDAwMDAwMTE1IDAwMDAwIG4gCjAwMDAwMDAyNDEgMDAwMDAgbiAKMDAwMDAwMDMxMSAwMDAwMCBuIAp0cmFpbGVyCjw8IC9TaXplIDYgL1Jvb3QgMSAwIFIgPj4Kc3RhcnR4cmVmCjYyMwolJUVPRgo=",
+      "suggested": {
+        "receipt_number": "FIXTURE-02-receipt_number",
+        "merchant": "FIXTURE-02-merchant",
+        "amount": "123.45",
+        "currency": "USD"
+      }
+    },
+    {
+      "class_id": "proforma-invoice",
+      "schema_version": "1",
+      "label_es": "Proformas",
+      "task_id": "purchasing.proforma-review",
+      "fields": [
+        {
+          "key": "proforma_number",
+          "label_es": "Proforma",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "supplier",
+          "label_es": "Proveedor",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "valid_until",
+          "label_es": "Vigencia",
+          "type": "date",
+          "max_length": 64
+        },
+        {
+          "key": "total",
+          "label_es": "Total",
+          "type": "decimal",
+          "max_length": 64
+        },
+        {
+          "key": "currency",
+          "label_es": "Moneda",
+          "type": "currency",
+          "max_length": 64
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "901163f693e74a5a990e271dfca6ad11be866740584ceeb1605d382c6612680c",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMzA5ID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChwcm9mb3JtYS1pbnZvaWNlKSBUaiAwIC0xNiBUZCAocHJvZm9ybWFfbnVtYmVyOiBGSVhUVVJFLTAzLXByb2Zvcm1hX251bWJlcikgVGogMCAtMTYgVGQgKHN1cHBsaWVyOiBGSVhUVVJFLTAzLXN1cHBsaWVyKSBUaiAwIC0xNiBUZCAodmFsaWRfdW50aWw6IDIwMjYtMDktMTQpIFRqIDAgLTE2IFRkICh0b3RhbDogMTIzLjQ1KSBUaiAwIC0xNiBUZCAoY3VycmVuY3k6IFVTRCkgVGogRVQKZW5kc3RyZWFtCmVuZG9iagp4cmVmCjAgNgowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMDkgMDAwMDAgbiAKMDAwMDAwMDA1OCAwMDAwMCBuIAowMDAwMDAwMTE1IDAwMDAwIG4gCjAwMDAwMDAyNDEgMDAwMDAgbiAKMDAwMDAwMDMxMSAwMDAwMCBuIAp0cmFpbGVyCjw8IC9TaXplIDYgL1Jvb3QgMSAwIFIgPj4Kc3RhcnR4cmVmCjY3MQolJUVPRgo=",
+      "suggested": {
+        "proforma_number": "FIXTURE-03-proforma_number",
+        "supplier": "FIXTURE-03-supplier",
+        "valid_until": "2026-09-14",
+        "total": "123.45",
+        "currency": "USD"
+      }
+    },
+    {
+      "class_id": "commercial-invoice",
+      "schema_version": "1",
+      "label_es": "Facturas comerciales",
+      "task_id": "trade.invoice-review",
+      "fields": [
+        {
+          "key": "invoice_number",
+          "label_es": "Factura",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "exporter",
+          "label_es": "Exportador",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "importer",
+          "label_es": "Importador",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "total",
+          "label_es": "Total",
+          "type": "decimal",
+          "max_length": 64
+        },
+        {
+          "key": "currency",
+          "label_es": "Moneda",
+          "type": "currency",
+          "max_length": 64
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "bcd08dc2b2472cc0fefeca07a01ab94f5ec9df53338a140bc1e2333e58def2ee",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMzE1ID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChjb21tZXJjaWFsLWludm9pY2UpIFRqIDAgLTE2IFRkIChpbnZvaWNlX251bWJlcjogRklYVFVSRS0wNC1pbnZvaWNlX251bWJlcikgVGogMCAtMTYgVGQgKGV4cG9ydGVyOiBGSVhUVVJFLTA0LWV4cG9ydGVyKSBUaiAwIC0xNiBUZCAoaW1wb3J0ZXI6IEZJWFRVUkUtMDQtaW1wb3J0ZXIpIFRqIDAgLTE2IFRkICh0b3RhbDogMTIzLjQ1KSBUaiAwIC0xNiBUZCAoY3VycmVuY3k6IFVTRCkgVGogRVQKZW5kc3RyZWFtCmVuZG9iagp4cmVmCjAgNgowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMDkgMDAwMDAgbiAKMDAwMDAwMDA1OCAwMDAwMCBuIAowMDAwMDAwMTE1IDAwMDAwIG4gCjAwMDAwMDAyNDEgMDAwMDAgbiAKMDAwMDAwMDMxMSAwMDAwMCBuIAp0cmFpbGVyCjw8IC9TaXplIDYgL1Jvb3QgMSAwIFIgPj4Kc3RhcnR4cmVmCjY3NwolJUVPRgo=",
+      "suggested": {
+        "invoice_number": "FIXTURE-04-invoice_number",
+        "exporter": "FIXTURE-04-exporter",
+        "importer": "FIXTURE-04-importer",
+        "total": "123.45",
+        "currency": "USD"
+      }
+    },
+    {
+      "class_id": "packing-list",
+      "schema_version": "1",
+      "label_es": "Listas de empaque",
+      "task_id": "receiving.packing-review",
+      "fields": [
+        {
+          "key": "packing_number",
+          "label_es": "Lista",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "shipper",
+          "label_es": "Remitente",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "packages",
+          "label_es": "Bultos",
+          "type": "integer",
+          "max_length": 64
+        },
+        {
+          "key": "gross_weight",
+          "label_es": "Peso bruto",
+          "type": "decimal",
+          "max_length": 64
+        },
+        {
+          "key": "weight_unit",
+          "label_es": "Unidad de peso",
+          "type": "text",
+          "max_length": 512
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "cf92cc6455eba75388a5ecd3d7a28ecdd98457c6aacb952ce1ea6914d4e0b0b0",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMjk4ID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChwYWNraW5nLWxpc3QpIFRqIDAgLTE2IFRkIChwYWNraW5nX251bWJlcjogRklYVFVSRS0wNS1wYWNraW5nX251bWJlcikgVGogMCAtMTYgVGQgKHNoaXBwZXI6IEZJWFRVUkUtMDUtc2hpcHBlcikgVGogMCAtMTYgVGQgKHBhY2thZ2VzOiAyKSBUaiAwIC0xNiBUZCAoZ3Jvc3Nfd2VpZ2h0OiAxMjMuNDUpIFRqIDAgLTE2IFRkICh3ZWlnaHRfdW5pdDoga2cpIFRqIEVUCmVuZHN0cmVhbQplbmRvYmoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDA5IDAwMDAwIG4gCjAwMDAwMDAwNTggMDAwMDAgbiAKMDAwMDAwMDExNSAwMDAwMCBuIAowMDAwMDAwMjQxIDAwMDAwIG4gCjAwMDAwMDAzMTEgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA2IC9Sb290IDEgMCBSID4+CnN0YXJ0eHJlZgo2NjAKJSVFT0YK",
+      "suggested": {
+        "packing_number": "FIXTURE-05-packing_number",
+        "shipper": "FIXTURE-05-shipper",
+        "packages": "2",
+        "gross_weight": "123.45",
+        "weight_unit": "kg"
+      }
+    },
+    {
+      "class_id": "purchase-order",
+      "schema_version": "1",
+      "label_es": "Órdenes de compra",
+      "task_id": "purchasing.order-review",
+      "fields": [
+        {
+          "key": "order_number",
+          "label_es": "Orden",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "buyer",
+          "label_es": "Comprador",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "supplier",
+          "label_es": "Proveedor",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "line_summary",
+          "label_es": "Detalle de artículos",
+          "type": "text",
+          "max_length": 512
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "23a342f9a7dfec4e78d8709d08ac8d7656b51b60af67c29d4fdcf44a54d92cf6",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMjk3ID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChwdXJjaGFzZS1vcmRlcikgVGogMCAtMTYgVGQgKG9yZGVyX251bWJlcjogRklYVFVSRS0wNi1vcmRlcl9udW1iZXIpIFRqIDAgLTE2IFRkIChidXllcjogRklYVFVSRS0wNi1idXllcikgVGogMCAtMTYgVGQgKHN1cHBsaWVyOiBGSVhUVVJFLTA2LXN1cHBsaWVyKSBUaiAwIC0xNiBUZCAobGluZV9zdW1tYXJ5OiBGSVhUVVJFLTA2LWxpbmVfc3VtbWFyeSkgVGogRVQKZW5kc3RyZWFtCmVuZG9iagp4cmVmCjAgNgowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMDkgMDAwMDAgbiAKMDAwMDAwMDA1OCAwMDAwMCBuIAowMDAwMDAwMTE1IDAwMDAwIG4gCjAwMDAwMDAyNDEgMDAwMDAgbiAKMDAwMDAwMDMxMSAwMDAwMCBuIAp0cmFpbGVyCjw8IC9TaXplIDYgL1Jvb3QgMSAwIFIgPj4Kc3RhcnR4cmVmCjY1OQolJUVPRgo=",
+      "suggested": {
+        "order_number": "FIXTURE-06-order_number",
+        "buyer": "FIXTURE-06-buyer",
+        "supplier": "FIXTURE-06-supplier",
+        "line_summary": "FIXTURE-06-line_summary"
+      }
+    },
+    {
+      "class_id": "purchase-order-confirmation",
+      "schema_version": "1",
+      "label_es": "Confirmaciones de compra",
+      "task_id": "purchasing.confirmation-review",
+      "fields": [
+        {
+          "key": "confirmation_number",
+          "label_es": "Confirmación",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "order_number",
+          "label_es": "Orden",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "supplier",
+          "label_es": "Proveedor",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "promised_date",
+          "label_es": "Fecha prevista",
+          "type": "date",
+          "max_length": 64
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "317281facd4e421704f699218ee05177609778e1c1f8a7bade4a0b9def12fff7",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMzI2ID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChwdXJjaGFzZS1vcmRlci1jb25maXJtYXRpb24pIFRqIDAgLTE2IFRkIChjb25maXJtYXRpb25fbnVtYmVyOiBGSVhUVVJFLTA3LWNvbmZpcm1hdGlvbl9udW1iZXIpIFRqIDAgLTE2IFRkIChvcmRlcl9udW1iZXI6IEZJWFRVUkUtMDctb3JkZXJfbnVtYmVyKSBUaiAwIC0xNiBUZCAoc3VwcGxpZXI6IEZJWFRVUkUtMDctc3VwcGxpZXIpIFRqIDAgLTE2IFRkIChwcm9taXNlZF9kYXRlOiAyMDI2LTA5LTE0KSBUaiBFVAplbmRzdHJlYW0KZW5kb2JqCnhyZWYKMCA2CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAwOSAwMDAwMCBuIAowMDAwMDAwMDU4IDAwMDAwIG4gCjAwMDAwMDAxMTUgMDAwMDAgbiAKMDAwMDAwMDI0MSAwMDAwMCBuIAowMDAwMDAwMzExIDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNiAvUm9vdCAxIDAgUiA+PgpzdGFydHhyZWYKNjg4CiUlRU9GCg==",
+      "suggested": {
+        "confirmation_number": "FIXTURE-07-confirmation_number",
+        "order_number": "FIXTURE-07-order_number",
+        "supplier": "FIXTURE-07-supplier",
+        "promised_date": "2026-09-14"
+      }
+    },
+    {
+      "class_id": "bill-of-lading-airway-bill",
+      "schema_version": "1",
+      "label_es": "Documentos de transporte",
+      "task_id": "logistics.transport-review",
+      "fields": [
+        {
+          "key": "transport_number",
+          "label_es": "Documento",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "carrier",
+          "label_es": "Transportista",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "consignor",
+          "label_es": "Remitente",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "consignee",
+          "label_es": "Destinatario",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "packages",
+          "label_es": "Bultos",
+          "type": "integer",
+          "max_length": 64
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "03d395f329bf8c82fc622a46132505d69ac4bb91f491aae361c588ff37985d81",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMzQzID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChiaWxsLW9mLWxhZGluZy1haXJ3YXktYmlsbCkgVGogMCAtMTYgVGQgKHRyYW5zcG9ydF9udW1iZXI6IEZJWFRVUkUtMDgtdHJhbnNwb3J0X251bWJlcikgVGogMCAtMTYgVGQgKGNhcnJpZXI6IEZJWFRVUkUtMDgtY2FycmllcikgVGogMCAtMTYgVGQgKGNvbnNpZ25vcjogRklYVFVSRS0wOC1jb25zaWdub3IpIFRqIDAgLTE2IFRkIChjb25zaWduZWU6IEZJWFRVUkUtMDgtY29uc2lnbmVlKSBUaiAwIC0xNiBUZCAocGFja2FnZXM6IDIpIFRqIEVUCmVuZHN0cmVhbQplbmRvYmoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDA5IDAwMDAwIG4gCjAwMDAwMDAwNTggMDAwMDAgbiAKMDAwMDAwMDExNSAwMDAwMCBuIAowMDAwMDAwMjQxIDAwMDAwIG4gCjAwMDAwMDAzMTEgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA2IC9Sb290IDEgMCBSID4+CnN0YXJ0eHJlZgo3MDUKJSVFT0YK",
+      "suggested": {
+        "transport_number": "FIXTURE-08-transport_number",
+        "carrier": "FIXTURE-08-carrier",
+        "consignor": "FIXTURE-08-consignor",
+        "consignee": "FIXTURE-08-consignee",
+        "packages": "2"
+      }
+    },
+    {
+      "class_id": "delivery-note",
+      "schema_version": "1",
+      "label_es": "Remitos",
+      "task_id": "receiving.delivery-review",
+      "fields": [
+        {
+          "key": "delivery_number",
+          "label_es": "Remito",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "supplier",
+          "label_es": "Proveedor",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "order_number",
+          "label_es": "Orden",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "delivered_on",
+          "label_es": "Fecha de entrega",
+          "type": "date",
+          "max_length": 64
+        },
+        {
+          "key": "line_summary",
+          "label_es": "Detalle de artículos",
+          "type": "text",
+          "max_length": 512
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "821df723a265cd31b0bb1c8346cd77aaf31210f475b09b88b32eaa37f10b93c1",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMzU1ID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChkZWxpdmVyeS1ub3RlKSBUaiAwIC0xNiBUZCAoZGVsaXZlcnlfbnVtYmVyOiBGSVhUVVJFLTA5LWRlbGl2ZXJ5X251bWJlcikgVGogMCAtMTYgVGQgKHN1cHBsaWVyOiBGSVhUVVJFLTA5LXN1cHBsaWVyKSBUaiAwIC0xNiBUZCAob3JkZXJfbnVtYmVyOiBGSVhUVVJFLTA5LW9yZGVyX251bWJlcikgVGogMCAtMTYgVGQgKGRlbGl2ZXJlZF9vbjogMjAyNi0wOS0xNCkgVGogMCAtMTYgVGQgKGxpbmVfc3VtbWFyeTogRklYVFVSRS0wOS1saW5lX3N1bW1hcnkpIFRqIEVUCmVuZHN0cmVhbQplbmRvYmoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDA5IDAwMDAwIG4gCjAwMDAwMDAwNTggMDAwMDAgbiAKMDAwMDAwMDExNSAwMDAwMCBuIAowMDAwMDAwMjQxIDAwMDAwIG4gCjAwMDAwMDAzMTEgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA2IC9Sb290IDEgMCBSID4+CnN0YXJ0eHJlZgo3MTcKJSVFT0YK",
+      "suggested": {
+        "delivery_number": "FIXTURE-09-delivery_number",
+        "supplier": "FIXTURE-09-supplier",
+        "order_number": "FIXTURE-09-order_number",
+        "delivered_on": "2026-09-14",
+        "line_summary": "FIXTURE-09-line_summary"
+      }
+    },
+    {
+      "class_id": "certificate-of-origin",
+      "schema_version": "1",
+      "label_es": "Certificados de origen",
+      "task_id": "trade.origin-review",
+      "fields": [
+        {
+          "key": "certificate_number",
+          "label_es": "Certificado",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "exporter",
+          "label_es": "Exportador",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "country_of_origin",
+          "label_es": "País de origen",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "goods",
+          "label_es": "Mercadería",
+          "type": "text",
+          "max_length": 512
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "44185b40dc8fc805880424ad1626e7cceddc607f44f7dc26a49f40fc876addbe",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMzI2ID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChjZXJ0aWZpY2F0ZS1vZi1vcmlnaW4pIFRqIDAgLTE2IFRkIChjZXJ0aWZpY2F0ZV9udW1iZXI6IEZJWFRVUkUtMTAtY2VydGlmaWNhdGVfbnVtYmVyKSBUaiAwIC0xNiBUZCAoZXhwb3J0ZXI6IEZJWFRVUkUtMTAtZXhwb3J0ZXIpIFRqIDAgLTE2IFRkIChjb3VudHJ5X29mX29yaWdpbjogRklYVFVSRS0xMC1jb3VudHJ5X29mX29yaWdpbikgVGogMCAtMTYgVGQgKGdvb2RzOiBGSVhUVVJFLTEwLWdvb2RzKSBUaiBFVAplbmRzdHJlYW0KZW5kb2JqCnhyZWYKMCA2CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAwOSAwMDAwMCBuIAowMDAwMDAwMDU4IDAwMDAwIG4gCjAwMDAwMDAxMTUgMDAwMDAgbiAKMDAwMDAwMDI0MSAwMDAwMCBuIAowMDAwMDAwMzExIDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNiAvUm9vdCAxIDAgUiA+PgpzdGFydHhyZWYKNjg4CiUlRU9GCg==",
+      "suggested": {
+        "certificate_number": "FIXTURE-10-certificate_number",
+        "exporter": "FIXTURE-10-exporter",
+        "country_of_origin": "FIXTURE-10-country_of_origin",
+        "goods": "FIXTURE-10-goods"
+      }
+    },
+    {
+      "class_id": "quality-inspection-certificate",
+      "schema_version": "1",
+      "label_es": "Inspección y calidad",
+      "task_id": "quality.certificate-review",
+      "fields": [
+        {
+          "key": "certificate_number",
+          "label_es": "Certificado",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "inspector",
+          "label_es": "Inspector",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "inspection_date",
+          "label_es": "Fecha",
+          "type": "date",
+          "max_length": 64
+        },
+        {
+          "key": "result",
+          "label_es": "Resultado informado",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "reference",
+          "label_es": "Referencia",
+          "type": "text",
+          "max_length": 512
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "e4d33298addca805d49ae3fbd0e7b1ae72d4474c33a7f4c5b0c7b81d295e65f0",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMzY1ID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChxdWFsaXR5LWluc3BlY3Rpb24tY2VydGlmaWNhdGUpIFRqIDAgLTE2IFRkIChjZXJ0aWZpY2F0ZV9udW1iZXI6IEZJWFRVUkUtMTEtY2VydGlmaWNhdGVfbnVtYmVyKSBUaiAwIC0xNiBUZCAoaW5zcGVjdG9yOiBGSVhUVVJFLTExLWluc3BlY3RvcikgVGogMCAtMTYgVGQgKGluc3BlY3Rpb25fZGF0ZTogMjAyNi0wOS0xNCkgVGogMCAtMTYgVGQgKHJlc3VsdDogRklYVFVSRS0xMS1yZXN1bHQpIFRqIDAgLTE2IFRkIChyZWZlcmVuY2U6IEZJWFRVUkUtMTEtcmVmZXJlbmNlKSBUaiBFVAplbmRzdHJlYW0KZW5kb2JqCnhyZWYKMCA2CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAwOSAwMDAwMCBuIAowMDAwMDAwMDU4IDAwMDAwIG4gCjAwMDAwMDAxMTUgMDAwMDAgbiAKMDAwMDAwMDI0MSAwMDAwMCBuIAowMDAwMDAwMzExIDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNiAvUm9vdCAxIDAgUiA+PgpzdGFydHhyZWYKNzI3CiUlRU9GCg==",
+      "suggested": {
+        "certificate_number": "FIXTURE-11-certificate_number",
+        "inspector": "FIXTURE-11-inspector",
+        "inspection_date": "2026-09-14",
+        "result": "FIXTURE-11-result",
+        "reference": "FIXTURE-11-reference"
+      }
+    },
+    {
+      "class_id": "customs-declaration-clearance",
+      "schema_version": "1",
+      "label_es": "Documentos aduaneros",
+      "task_id": "trade.customs-review",
+      "fields": [
+        {
+          "key": "declaration_number",
+          "label_es": "Declaración",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "declarant",
+          "label_es": "Declarante",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "jurisdiction",
+          "label_es": "Jurisdicción",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "declaration_date",
+          "label_es": "Fecha",
+          "type": "date",
+          "max_length": 64
+        },
+        {
+          "key": "status_reported",
+          "label_es": "Estado informado",
+          "type": "text",
+          "max_length": 512
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "729e21be73f9a4e27916b52c8ff0241080e73fe4a2552a6b19377cb681b00510",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMzg5ID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChjdXN0b21zLWRlY2xhcmF0aW9uLWNsZWFyYW5jZSkgVGogMCAtMTYgVGQgKGRlY2xhcmF0aW9uX251bWJlcjogRklYVFVSRS0xMi1kZWNsYXJhdGlvbl9udW1iZXIpIFRqIDAgLTE2IFRkIChkZWNsYXJhbnQ6IEZJWFRVUkUtMTItZGVjbGFyYW50KSBUaiAwIC0xNiBUZCAoanVyaXNkaWN0aW9uOiBGSVhUVVJFLTEyLWp1cmlzZGljdGlvbikgVGogMCAtMTYgVGQgKGRlY2xhcmF0aW9uX2RhdGU6IDIwMjYtMDktMTQpIFRqIDAgLTE2IFRkIChzdGF0dXNfcmVwb3J0ZWQ6IEZJWFRVUkUtMTItc3RhdHVzX3JlcG9ydGVkKSBUaiBFVAplbmRzdHJlYW0KZW5kb2JqCnhyZWYKMCA2CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAwOSAwMDAwMCBuIAowMDAwMDAwMDU4IDAwMDAwIG4gCjAwMDAwMDAxMTUgMDAwMDAgbiAKMDAwMDAwMDI0MSAwMDAwMCBuIAowMDAwMDAwMzExIDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNiAvUm9vdCAxIDAgUiA+PgpzdGFydHhyZWYKNzUxCiUlRU9GCg==",
+      "suggested": {
+        "declaration_number": "FIXTURE-12-declaration_number",
+        "declarant": "FIXTURE-12-declarant",
+        "jurisdiction": "FIXTURE-12-jurisdiction",
+        "declaration_date": "2026-09-14",
+        "status_reported": "FIXTURE-12-status_reported"
+      }
+    },
+    {
+      "class_id": "insurance-freight-document",
+      "schema_version": "1",
+      "label_es": "Seguro y flete",
+      "task_id": "logistics.insurance-review",
+      "fields": [
+        {
+          "key": "policy_number",
+          "label_es": "Póliza",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "insurer",
+          "label_es": "Aseguradora",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "shipment",
+          "label_es": "Envío",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "coverage_amount",
+          "label_es": "Cobertura informada",
+          "type": "decimal",
+          "max_length": 64
+        },
+        {
+          "key": "currency",
+          "label_es": "Moneda",
+          "type": "currency",
+          "max_length": 64
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "578283ad68b0cab023a5d534e912d1a790151eda4d08369c83c4aa7badb8b222",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMzI5ID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChpbnN1cmFuY2UtZnJlaWdodC1kb2N1bWVudCkgVGogMCAtMTYgVGQgKHBvbGljeV9udW1iZXI6IEZJWFRVUkUtMTMtcG9saWN5X251bWJlcikgVGogMCAtMTYgVGQgKGluc3VyZXI6IEZJWFRVUkUtMTMtaW5zdXJlcikgVGogMCAtMTYgVGQgKHNoaXBtZW50OiBGSVhUVVJFLTEzLXNoaXBtZW50KSBUaiAwIC0xNiBUZCAoY292ZXJhZ2VfYW1vdW50OiAxMjMuNDUpIFRqIDAgLTE2IFRkIChjdXJyZW5jeTogVVNEKSBUaiBFVAplbmRzdHJlYW0KZW5kb2JqCnhyZWYKMCA2CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAwOSAwMDAwMCBuIAowMDAwMDAwMDU4IDAwMDAwIG4gCjAwMDAwMDAxMTUgMDAwMDAgbiAKMDAwMDAwMDI0MSAwMDAwMCBuIAowMDAwMDAwMzExIDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNiAvUm9vdCAxIDAgUiA+PgpzdGFydHhyZWYKNjkxCiUlRU9GCg==",
+      "suggested": {
+        "policy_number": "FIXTURE-13-policy_number",
+        "insurer": "FIXTURE-13-insurer",
+        "shipment": "FIXTURE-13-shipment",
+        "coverage_amount": "123.45",
+        "currency": "USD"
+      }
+    },
+    {
+      "class_id": "price-list-quotation",
+      "schema_version": "1",
+      "label_es": "Precios y cotizaciones",
+      "task_id": "purchasing.quote-review",
+      "fields": [
+        {
+          "key": "quotation_number",
+          "label_es": "Cotización",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "vendor",
+          "label_es": "Proveedor",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "valid_until",
+          "label_es": "Vigencia",
+          "type": "date",
+          "max_length": 64
+        },
+        {
+          "key": "total",
+          "label_es": "Total",
+          "type": "decimal",
+          "max_length": 64
+        },
+        {
+          "key": "currency",
+          "label_es": "Moneda",
+          "type": "currency",
+          "max_length": 64
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "00c3ea42c3e3fafdbaa066bd3c00f91e38d7e32398918ddd56e378368f7a03b9",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMzExID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChwcmljZS1saXN0LXF1b3RhdGlvbikgVGogMCAtMTYgVGQgKHF1b3RhdGlvbl9udW1iZXI6IEZJWFRVUkUtMTQtcXVvdGF0aW9uX251bWJlcikgVGogMCAtMTYgVGQgKHZlbmRvcjogRklYVFVSRS0xNC12ZW5kb3IpIFRqIDAgLTE2IFRkICh2YWxpZF91bnRpbDogMjAyNi0wOS0xNCkgVGogMCAtMTYgVGQgKHRvdGFsOiAxMjMuNDUpIFRqIDAgLTE2IFRkIChjdXJyZW5jeTogVVNEKSBUaiBFVAplbmRzdHJlYW0KZW5kb2JqCnhyZWYKMCA2CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAwOSAwMDAwMCBuIAowMDAwMDAwMDU4IDAwMDAwIG4gCjAwMDAwMDAxMTUgMDAwMDAgbiAKMDAwMDAwMDI0MSAwMDAwMCBuIAowMDAwMDAwMzExIDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNiAvUm9vdCAxIDAgUiA+PgpzdGFydHhyZWYKNjczCiUlRU9GCg==",
+      "suggested": {
+        "quotation_number": "FIXTURE-14-quotation_number",
+        "vendor": "FIXTURE-14-vendor",
+        "valid_until": "2026-09-14",
+        "total": "123.45",
+        "currency": "USD"
+      }
+    },
+    {
+      "class_id": "product-specification-catalog",
+      "schema_version": "1",
+      "label_es": "Fichas técnicas y catálogos",
+      "task_id": "catalog.specification-review",
+      "fields": [
+        {
+          "key": "product_reference",
+          "label_es": "Producto",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "revision",
+          "label_es": "Revisión",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "manufacturer",
+          "label_es": "Fabricante",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "specification",
+          "label_es": "Especificación",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "units",
+          "label_es": "Unidades",
+          "type": "text",
+          "max_length": 512
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "751660f204efbca63ea8e6982dc7754d8405bafd57e24742e9ab5cc411604bd0",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMzYyID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChwcm9kdWN0LXNwZWNpZmljYXRpb24tY2F0YWxvZykgVGogMCAtMTYgVGQgKHByb2R1Y3RfcmVmZXJlbmNlOiBGSVhUVVJFLTE1LXByb2R1Y3RfcmVmZXJlbmNlKSBUaiAwIC0xNiBUZCAocmV2aXNpb246IEZJWFRVUkUtMTUtcmV2aXNpb24pIFRqIDAgLTE2IFRkIChtYW51ZmFjdHVyZXI6IEZJWFRVUkUtMTUtbWFudWZhY3R1cmVyKSBUaiAwIC0xNiBUZCAoc3BlY2lmaWNhdGlvbjogRklYVFVSRS0xNS1zcGVjaWZpY2F0aW9uKSBUaiAwIC0xNiBUZCAodW5pdHM6IG1tKSBUaiBFVAplbmRzdHJlYW0KZW5kb2JqCnhyZWYKMCA2CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAwOSAwMDAwMCBuIAowMDAwMDAwMDU4IDAwMDAwIG4gCjAwMDAwMDAxMTUgMDAwMDAgbiAKMDAwMDAwMDI0MSAwMDAwMCBuIAowMDAwMDAwMzExIDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNiAvUm9vdCAxIDAgUiA+PgpzdGFydHhyZWYKNzI0CiUlRU9GCg==",
+      "suggested": {
+        "product_reference": "FIXTURE-15-product_reference",
+        "revision": "FIXTURE-15-revision",
+        "manufacturer": "FIXTURE-15-manufacturer",
+        "specification": "FIXTURE-15-specification",
+        "units": "mm"
+      }
+    },
+    {
+      "class_id": "contract-addendum",
+      "schema_version": "1",
+      "label_es": "Contratos y anexos",
+      "task_id": "agreements.document-review",
+      "fields": [
+        {
+          "key": "contract_number",
+          "label_es": "Contrato",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "parties",
+          "label_es": "Partes",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "effective_date",
+          "label_es": "Fecha de vigencia",
+          "type": "date",
+          "max_length": 64
+        },
+        {
+          "key": "amendment",
+          "label_es": "Anexo",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "summary",
+          "label_es": "Alcance informado",
+          "type": "text",
+          "max_length": 512
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "de18aa1b5a1c3cc06e0015815a784a77efa93c0d9ca461076b52916a2bea8320",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMzQzID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChjb250cmFjdC1hZGRlbmR1bSkgVGogMCAtMTYgVGQgKGNvbnRyYWN0X251bWJlcjogRklYVFVSRS0xNi1jb250cmFjdF9udW1iZXIpIFRqIDAgLTE2IFRkIChwYXJ0aWVzOiBGSVhUVVJFLTE2LXBhcnRpZXMpIFRqIDAgLTE2IFRkIChlZmZlY3RpdmVfZGF0ZTogMjAyNi0wOS0xNCkgVGogMCAtMTYgVGQgKGFtZW5kbWVudDogRklYVFVSRS0xNi1hbWVuZG1lbnQpIFRqIDAgLTE2IFRkIChzdW1tYXJ5OiBGSVhUVVJFLTE2LXN1bW1hcnkpIFRqIEVUCmVuZHN0cmVhbQplbmRvYmoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDA5IDAwMDAwIG4gCjAwMDAwMDAwNTggMDAwMDAgbiAKMDAwMDAwMDExNSAwMDAwMCBuIAowMDAwMDAwMjQxIDAwMDAwIG4gCjAwMDAwMDAzMTEgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA2IC9Sb290IDEgMCBSID4+CnN0YXJ0eHJlZgo3MDUKJSVFT0YK",
+      "suggested": {
+        "contract_number": "FIXTURE-16-contract_number",
+        "parties": "FIXTURE-16-parties",
+        "effective_date": "2026-09-14",
+        "amendment": "FIXTURE-16-amendment",
+        "summary": "FIXTURE-16-summary"
+      }
+    },
+    {
+      "class_id": "bank-payment-statement",
+      "schema_version": "1",
+      "label_es": "Comprobantes y extractos",
+      "task_id": "finance.payment-evidence-review",
+      "fields": [
+        {
+          "key": "statement_reference",
+          "label_es": "Comprobante",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "institution",
+          "label_es": "Entidad",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "amount",
+          "label_es": "Importe informado",
+          "type": "decimal",
+          "max_length": 64
+        },
+        {
+          "key": "currency",
+          "label_es": "Moneda",
+          "type": "currency",
+          "max_length": 64
+        },
+        {
+          "key": "document_date",
+          "label_es": "Fecha",
+          "type": "date",
+          "max_length": 64
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "0bed215e106c04bc5089a8fe2061de9aa2378bd6b8f9d1bd57019d15a4e16cdf",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMzMyID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChiYW5rLXBheW1lbnQtc3RhdGVtZW50KSBUaiAwIC0xNiBUZCAoc3RhdGVtZW50X3JlZmVyZW5jZTogRklYVFVSRS0xNy1zdGF0ZW1lbnRfcmVmZXJlbmNlKSBUaiAwIC0xNiBUZCAoaW5zdGl0dXRpb246IEZJWFRVUkUtMTctaW5zdGl0dXRpb24pIFRqIDAgLTE2IFRkIChhbW91bnQ6IDEyMy40NSkgVGogMCAtMTYgVGQgKGN1cnJlbmN5OiBVU0QpIFRqIDAgLTE2IFRkIChkb2N1bWVudF9kYXRlOiAyMDI2LTA5LTE0KSBUaiBFVAplbmRzdHJlYW0KZW5kb2JqCnhyZWYKMCA2CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAwOSAwMDAwMCBuIAowMDAwMDAwMDU4IDAwMDAwIG4gCjAwMDAwMDAxMTUgMDAwMDAgbiAKMDAwMDAwMDI0MSAwMDAwMCBuIAowMDAwMDAwMzExIDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNiAvUm9vdCAxIDAgUiA+PgpzdGFydHhyZWYKNjk0CiUlRU9GCg==",
+      "suggested": {
+        "statement_reference": "FIXTURE-17-statement_reference",
+        "institution": "FIXTURE-17-institution",
+        "amount": "123.45",
+        "currency": "USD",
+        "document_date": "2026-09-14"
+      }
+    },
+    {
+      "class_id": "warranty-service-claim",
+      "schema_version": "1",
+      "label_es": "Garantías y servicio",
+      "task_id": "service.claim-review",
+      "fields": [
+        {
+          "key": "claim_reference",
+          "label_es": "Reclamo",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "serial",
+          "label_es": "Serie",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "claimant_reference",
+          "label_es": "Referencia del solicitante",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "issue",
+          "label_es": "Motivo",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "claim_date",
+          "label_es": "Fecha",
+          "type": "date",
+          "max_length": 64
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "098e81adb0958165e7faafe11fbcf81ea668232ed7d5897ea8292cc4168e8672",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMzU2ID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkICh3YXJyYW50eS1zZXJ2aWNlLWNsYWltKSBUaiAwIC0xNiBUZCAoY2xhaW1fcmVmZXJlbmNlOiBGSVhUVVJFLTE4LWNsYWltX3JlZmVyZW5jZSkgVGogMCAtMTYgVGQgKHNlcmlhbDogRklYVFVSRS0xOC1zZXJpYWwpIFRqIDAgLTE2IFRkIChjbGFpbWFudF9yZWZlcmVuY2U6IEZJWFRVUkUtMTgtY2xhaW1hbnRfcmVmZXJlbmNlKSBUaiAwIC0xNiBUZCAoaXNzdWU6IEZJWFRVUkUtMTgtaXNzdWUpIFRqIDAgLTE2IFRkIChjbGFpbV9kYXRlOiAyMDI2LTA5LTE0KSBUaiBFVAplbmRzdHJlYW0KZW5kb2JqCnhyZWYKMCA2CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAwOSAwMDAwMCBuIAowMDAwMDAwMDU4IDAwMDAwIG4gCjAwMDAwMDAxMTUgMDAwMDAgbiAKMDAwMDAwMDI0MSAwMDAwMCBuIAowMDAwMDAwMzExIDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNiAvUm9vdCAxIDAgUiA+PgpzdGFydHhyZWYKNzE4CiUlRU9GCg==",
+      "suggested": {
+        "claim_reference": "FIXTURE-18-claim_reference",
+        "serial": "FIXTURE-18-serial",
+        "claimant_reference": "FIXTURE-18-claimant_reference",
+        "issue": "FIXTURE-18-issue",
+        "claim_date": "2026-09-14"
+      }
+    },
+    {
+      "class_id": "identity-regulatory-document",
+      "schema_version": "1",
+      "label_es": "Identidad y habilitaciones",
+      "task_id": "identity.regulatory-review",
+      "fields": [
+        {
+          "key": "document_reference",
+          "label_es": "Documento",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "issuer",
+          "label_es": "Emisor",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "subject_reference",
+          "label_es": "Referencia del titular",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "jurisdiction",
+          "label_es": "Jurisdicción",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "valid_until",
+          "label_es": "Vigencia",
+          "type": "date",
+          "max_length": 64
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "7266a935cd91e1a29589cca01edd4ec2c3525aaf23af5005681fa48a9d49ccfd",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMzgxID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChpZGVudGl0eS1yZWd1bGF0b3J5LWRvY3VtZW50KSBUaiAwIC0xNiBUZCAoZG9jdW1lbnRfcmVmZXJlbmNlOiBGSVhUVVJFLTE5LWRvY3VtZW50X3JlZmVyZW5jZSkgVGogMCAtMTYgVGQgKGlzc3VlcjogRklYVFVSRS0xOS1pc3N1ZXIpIFRqIDAgLTE2IFRkIChzdWJqZWN0X3JlZmVyZW5jZTogRklYVFVSRS0xOS1zdWJqZWN0X3JlZmVyZW5jZSkgVGogMCAtMTYgVGQgKGp1cmlzZGljdGlvbjogRklYVFVSRS0xOS1qdXJpc2RpY3Rpb24pIFRqIDAgLTE2IFRkICh2YWxpZF91bnRpbDogMjAyNi0wOS0xNCkgVGogRVQKZW5kc3RyZWFtCmVuZG9iagp4cmVmCjAgNgowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMDkgMDAwMDAgbiAKMDAwMDAwMDA1OCAwMDAwMCBuIAowMDAwMDAwMTE1IDAwMDAwIG4gCjAwMDAwMDAyNDEgMDAwMDAgbiAKMDAwMDAwMDMxMSAwMDAwMCBuIAp0cmFpbGVyCjw8IC9TaXplIDYgL1Jvb3QgMSAwIFIgPj4Kc3RhcnR4cmVmCjc0MwolJUVPRgo=",
+      "suggested": {
+        "document_reference": "FIXTURE-19-document_reference",
+        "issuer": "FIXTURE-19-issuer",
+        "subject_reference": "FIXTURE-19-subject_reference",
+        "jurisdiction": "FIXTURE-19-jurisdiction",
+        "valid_until": "2026-09-14"
+      }
+    },
+    {
+      "class_id": "multi-document-package",
+      "schema_version": "1",
+      "label_es": "Paquetes de documentos",
+      "task_id": "documents.package-review",
+      "fields": [
+        {
+          "key": "package_reference",
+          "label_es": "Paquete",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "document_count",
+          "label_es": "Cantidad de documentos",
+          "type": "integer",
+          "max_length": 64
+        },
+        {
+          "key": "contained_classes",
+          "label_es": "Clases informadas",
+          "type": "text",
+          "max_length": 512
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "b304e83c99d18e8a2887d0b964355e81802fbb2451892b4b0e4ab8a009716af7",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMjc2ID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChtdWx0aS1kb2N1bWVudC1wYWNrYWdlKSBUaiAwIC0xNiBUZCAocGFja2FnZV9yZWZlcmVuY2U6IEZJWFRVUkUtMjAtcGFja2FnZV9yZWZlcmVuY2UpIFRqIDAgLTE2IFRkIChkb2N1bWVudF9jb3VudDogMikgVGogMCAtMTYgVGQgKGNvbnRhaW5lZF9jbGFzc2VzOiBzdXBwbGllci1pbnZvaWNlLHBhY2tpbmctbGlzdCkgVGogRVQKZW5kc3RyZWFtCmVuZG9iagp4cmVmCjAgNgowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwMDkgMDAwMDAgbiAKMDAwMDAwMDA1OCAwMDAwMCBuIAowMDAwMDAwMTE1IDAwMDAwIG4gCjAwMDAwMDAyNDEgMDAwMDAgbiAKMDAwMDAwMDMxMSAwMDAwMCBuIAp0cmFpbGVyCjw8IC9TaXplIDYgL1Jvb3QgMSAwIFIgPj4Kc3RhcnR4cmVmCjYzOAolJUVPRgo=",
+      "suggested": {
+        "package_reference": "FIXTURE-20-package_reference",
+        "document_count": "2",
+        "contained_classes": "supplier-invoice,packing-list"
+      }
+    },
+    {
+      "class_id": "other-named-class",
+      "schema_version": "1",
+      "label_es": "Otra clase identificada",
+      "task_id": "documents.class-definition",
+      "fields": [
+        {
+          "key": "class_name",
+          "label_es": "Nombre de clase",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "document_reference",
+          "label_es": "Referencia",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "issuer",
+          "label_es": "Emisor",
+          "type": "text",
+          "max_length": 512
+        },
+        {
+          "key": "summary",
+          "label_es": "Contenido informado",
+          "type": "text",
+          "max_length": 512
+        }
+      ],
+      "extraction_method": "HASH_LOCKED_TYPED_FIXTURE",
+      "automatic_storage_authorized": false,
+      "fixture_sha256": "da27f99297e69c6b9f3232d6924d6972f81ed6a2e24a94bc48a236b3841ae6f9",
+      "fixture_base64": "JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvUmVzb3VyY2VzIDw8IC9Gb250IDw8IC9GMSA0IDAgUiA+PiA+PiAvQ29udGVudHMgNSAwIFIgPj4KZW5kb2JqCjQgMCBvYmoKPDwgL1R5cGUgL0ZvbnQgL1N1YnR5cGUgL1R5cGUxIC9CYXNlRm9udCAvSGVsdmV0aWNhID4+CmVuZG9iago1IDAgb2JqCjw8IC9MZW5ndGggMzA4ID4+CnN0cmVhbQpCVCAvRjEgMTAgVGYgMzAgNzYwIFRkIChTWU5USEVUSUMgTE9DQUwgRklYVFVSRSAtIE5PVCBBIENPTU1FUkNJQUwgRE9DVU1FTlQpIFRqIDAgLTE2IFRkIChvdGhlci1uYW1lZC1jbGFzcykgVGogMCAtMTYgVGQgKGNsYXNzX25hbWU6IEZJWFRVUkUtMjEtY2xhc3NfbmFtZSkgVGogMCAtMTYgVGQgKGRvY3VtZW50X3JlZmVyZW5jZTogRklYVFVSRS0yMS1kb2N1bWVudF9yZWZlcmVuY2UpIFRqIDAgLTE2IFRkIChpc3N1ZXI6IEZJWFRVUkUtMjEtaXNzdWVyKSBUaiAwIC0xNiBUZCAoc3VtbWFyeTogRklYVFVSRS0yMS1zdW1tYXJ5KSBUaiBFVAplbmRzdHJlYW0KZW5kb2JqCnhyZWYKMCA2CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAwOSAwMDAwMCBuIAowMDAwMDAwMDU4IDAwMDAwIG4gCjAwMDAwMDAxMTUgMDAwMDAgbiAKMDAwMDAwMDI0MSAwMDAwMCBuIAowMDAwMDAwMzExIDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNiAvUm9vdCAxIDAgUiA+PgpzdGFydHhyZWYKNjcwCiUlRU9GCg==",
+      "suggested": {
+        "class_name": "FIXTURE-21-class_name",
+        "document_reference": "FIXTURE-21-document_reference",
+        "issuer": "FIXTURE-21-issuer",
+        "summary": "FIXTURE-21-summary"
+      }
+    }
+  ]
+}

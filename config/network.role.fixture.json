@@ -1,0 +1,334 @@
+{
+  "schemaVersion": "1.0.0",
+  "business": {
+    "id": "electric-mobility-network",
+    "name": "Electric Mobility Network",
+    "defaultLocale": "es-AR",
+    "defaultMarket": "AR",
+    "supportEmail": "soporte@example.invalid"
+  },
+  "markets": [
+    {
+      "code": "AR",
+      "name": "Argentina",
+      "currency": "ARS",
+      "locales": [
+        "es-AR"
+      ],
+      "timeZone": "America/Argentina/Buenos_Aires",
+      "taxMode": "external"
+    }
+  ],
+  "organizationTypes": [
+    {
+      "id": "hq",
+      "label": "Casa central",
+      "allowedParents": []
+    },
+    {
+      "id": "franchise",
+      "label": "Franquicia",
+      "allowedParents": [
+        "hq"
+      ]
+    },
+    {
+      "id": "branch",
+      "label": "Sucursal",
+      "allowedParents": [
+        "franchise",
+        "hq"
+      ]
+    },
+    {
+      "id": "factory",
+      "label": "Fábrica",
+      "allowedParents": [
+        "hq"
+      ]
+    },
+    {
+      "id": "supplier",
+      "label": "Proveedor",
+      "allowedParents": [
+        "hq"
+      ]
+    }
+  ],
+  "roles": [
+    {
+      "id": "hq_admin",
+      "label": "Administrador central",
+      "permissions": [
+        "*"
+      ]
+    },
+    {
+      "id": "branch_manager",
+      "label": "Responsable de sucursal",
+      "permissions": [
+        "admin:read",
+        "lead:read",
+        "lead:assign",
+        "lead:update",
+        "quote:write",
+        "catalog:write",
+        "pricing:write",
+        "order:create",
+        "order:write",
+        "inventory:allocate",
+        "payment:create",
+        "payment:write",
+        "service:write",
+        "communication:write"
+      ]
+    },
+    {
+      "id": "sales",
+      "label": "Ventas",
+      "permissions": [
+        "admin:read",
+        "lead:read",
+        "lead:assign",
+        "lead:update",
+        "quote:write",
+        "catalog:write",
+        "order:create",
+        "order:write",
+        "payment:create"
+      ]
+    },
+    {
+      "id": "factory_operator",
+      "label": "Operador de fábrica",
+      "permissions": [
+        "factory:read",
+        "procurement:write",
+        "factory:write",
+        "inventory:write",
+        "logistics:write"
+      ]
+    },
+    {
+      "id": "customer",
+      "label": "Cliente",
+      "permissions": [
+        "customer:self"
+      ]
+    }
+  ],
+  "modules": {
+    "catalog": {
+      "enabled": true
+    },
+    "crm": {
+      "enabled": true
+    },
+    "procurement": {
+      "enabled": true
+    },
+    "inventory": {
+      "enabled": true
+    },
+    "orders": {
+      "enabled": true
+    },
+    "payments": {
+      "enabled": true
+    },
+    "fulfillment": {
+      "enabled": true
+    },
+    "service": {
+      "enabled": true
+    },
+    "documents": {
+      "enabled": true
+    },
+    "integrations": {
+      "enabled": true
+    }
+  },
+  "workflows": {
+    "lead": {
+      "initial": "new",
+      "states": [
+        "new",
+        "contacted",
+        "qualified",
+        "converted",
+        "lost"
+      ],
+      "transitions": [
+        {
+          "from": "new",
+          "to": "contacted",
+          "permission": "lead:update"
+        },
+        {
+          "from": "contacted",
+          "to": "qualified",
+          "permission": "lead:update"
+        },
+        {
+          "from": "qualified",
+          "to": "converted",
+          "permission": "lead:update"
+        },
+        {
+          "from": "contacted",
+          "to": "lost",
+          "permission": "lead:update"
+        },
+        {
+          "from": "qualified",
+          "to": "lost",
+          "permission": "lead:update"
+        }
+      ]
+    },
+    "order": {
+      "initial": "draft",
+      "states": [
+        "draft",
+        "placed",
+        "confirmed",
+        "paid",
+        "allocated",
+        "delivered",
+        "cancelled"
+      ],
+      "transitions": [
+        {
+          "from": "draft",
+          "to": "placed",
+          "permission": "order:create"
+        },
+        {
+          "from": "placed",
+          "to": "confirmed",
+          "permission": "order:transition"
+        },
+        {
+          "from": "confirmed",
+          "to": "paid",
+          "permission": "payment:reconcile"
+        },
+        {
+          "from": "paid",
+          "to": "allocated",
+          "permission": "inventory:reserve"
+        },
+        {
+          "from": "allocated",
+          "to": "delivered",
+          "permission": "order:transition"
+        },
+        {
+          "from": "draft",
+          "to": "cancelled",
+          "permission": "order:transition"
+        },
+        {
+          "from": "placed",
+          "to": "cancelled",
+          "permission": "order:transition"
+        }
+      ]
+    }
+  },
+  "customFields": {
+    "lead": [
+      {
+        "id": "preferred_vehicle_use",
+        "label": "Uso principal",
+        "type": "select",
+        "required": false,
+        "options": [
+          "urban",
+          "delivery",
+          "recreation",
+          "fleet"
+        ]
+      }
+    ],
+    "catalog_model": [
+      {
+        "id": "estimated_range_km",
+        "label": "Autonomía estimada (km)",
+        "type": "number",
+        "required": true
+      }
+    ]
+  },
+  "integrations": [
+    {
+      "id": "mercado_pago",
+      "provider": "mercado_pago",
+      "enabled": false,
+      "mode": "sandbox",
+      "capabilities": [
+        "payments"
+      ],
+      "credentialRefEnv": "MERCADO_PAGO_CREDENTIAL_REF"
+    },
+    {
+      "id": "amazon_sp_api",
+      "provider": "amazon_sp_api",
+      "enabled": false,
+      "mode": "sandbox",
+      "capabilities": [
+        "catalog",
+        "orders",
+        "fulfillment"
+      ],
+      "credentialRefEnv": "AMAZON_SP_API_CREDENTIAL_REF"
+    },
+    {
+      "id": "mercado_libre",
+      "provider": "mercado_libre",
+      "enabled": false,
+      "mode": "sandbox",
+      "capabilities": [
+        "catalog",
+        "orders",
+        "fulfillment"
+      ],
+      "credentialRefEnv": "MERCADO_LIBRE_CREDENTIAL_REF"
+    },
+    {
+      "id": "google_ads",
+      "provider": "google_ads",
+      "enabled": false,
+      "mode": "sandbox",
+      "capabilities": [
+        "ads",
+        "conversions"
+      ],
+      "credentialRefEnv": "GOOGLE_ADS_CREDENTIAL_REF"
+    },
+    {
+      "id": "meta_ads",
+      "provider": "meta_ads",
+      "enabled": false,
+      "mode": "sandbox",
+      "capabilities": [
+        "ads",
+        "conversions"
+      ],
+      "credentialRefEnv": "META_ADS_CREDENTIAL_REF"
+    }
+  ],
+  "features": {
+    "public_catalog": true,
+    "lead_capture": true,
+    "customer_portal": true,
+    "factory_portal": true,
+    "vehicle_telemetry": false,
+    "training_portal": false,
+    "catalog_editor": false,
+    "supply_portal": false,
+    "warranty_portal": false,
+    "network_portal": true
+  }
+}

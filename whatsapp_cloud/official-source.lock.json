@@ -1,0 +1,18 @@
+{
+  "schema": "elite-adapted-source-lock/v1",
+  "source_id": "meta-whatsapp-api-examples",
+  "repository": "fbsamples/whatsapp-api-examples",
+  "commit": "de70ee908a67026e642aaee3703d20464e2a9466",
+  "commit_signature_verified": true,
+  "archive_bytes": 348229,
+  "archive_sha256": "38d183a0d041d116dcf51356dd840c96690015f34c14c74b20681dd626ca9a7c",
+  "license_expression": "LicenseRef-Meta-Platform-API-Only",
+  "license_sha256": "ef5c10eeba318e71ebf81a7300fc7c97a115e230dcb4647dc597946976069300",
+  "files": [
+    {"packaged_path": "upstream/LICENSE", "upstream_path": "LICENSE", "upstream_sha256": "ef5c10eeba318e71ebf81a7300fc7c97a115e230dcb4647dc597946976069300", "sha256": "48d97b3c936203a750a3288c2b924327769d62327383a1060244b3d3c05ad01f", "provenance": "ADAPTED_FINAL_NEWLINE_ONLY"},
+    {"packaged_path": "upstream/signature_validation_app.py", "upstream_path": "signature-validation-with-webhooks-payloads/app.py", "sha256": "6c052c136a0be059faee9e9ad93ff056b05b7086b819fce067ebd27c8ef2412c", "provenance": "VERBATIM_REFERENCE_ONLY"},
+    {"packaged_path": "upstream/message_helper.py", "upstream_path": "send-messages-flight-app-python/message_helper.py", "sha256": "fef1aa035aa2fad4769a08edbe4a347a87dac475394a821bc71b301d1ef45702", "provenance": "VERBATIM_REFERENCE_ONLY"},
+    {"packaged_path": "upstream/incomingWebhook.js", "upstream_path": "template-for-ecommerce-js/routes/incomingWebhook.js", "sha256": "a92a62bff637b8d5b0a3fbd3ce82dbd08c67904edff8df9adeb1be0e2d92330f", "provenance": "VERBATIM_REFERENCE_ONLY"}
+  ],
+  "verified_at": "2026-08-26"
+}

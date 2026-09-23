@@ -1,0 +1,110 @@
+/* AUTHORED admin presentation. Every color resolves to the single V403 token authority. */
+.workspace { min-width: 0; color: var(--ink); }
+.workspace [hidden], .detail[hidden], .split > [hidden] { display: none !important; }
+.sectionHeading { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
+.sectionHeading h2 { font-size: 1.5rem; letter-spacing: -.035em; margin: 0; font-weight: 650; }
+.split { display: grid; grid-template-columns: minmax(260px, .9fr) minmax(320px, 1.3fr); align-items: start; gap: 1.5rem; }
+.list { min-width: 0; }
+.filters { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+.search { position: relative; flex: 1 1 155px; min-width: 0; }
+.search svg { position: absolute; inset-inline-start: .8rem; top: 50%; transform: translateY(-50%); width: 17px; height: 17px; fill: none; stroke: var(--muted); stroke-width: 1.6; }
+.search input { padding: .7rem .75rem .7rem 2.4rem; min-height: 44px; border: 1px solid var(--line); border-radius: 10px; color: var(--ink); background: var(--surface); font-size: .9rem; }
+.statusFilter { flex: 0 1 185px; }
+.statusFilter select { min-height: 44px; border-radius: 10px; background: var(--surface); color: var(--ink); font-size: .85rem; padding: .65rem; }
+.count { color: var(--muted); font-size: .78rem; margin: .9rem .1rem .4rem; }
+.rows { list-style: none; margin: 0; padding: 0; }
+.rows li { margin: 0; padding: 0; border-bottom: 1px solid var(--muted-bg); }
+.row { display: flex; align-items: center; gap: .8rem; width: 100%; text-align: start; background: transparent; color: var(--ink); border: 1px solid transparent; border-radius: 10px; padding: 1rem .8rem; cursor: pointer; min-height: 76px; }
+.row:hover, .row[aria-current=true] { background: var(--panel); }
+.row[aria-current=true] { border-color: var(--line); }
+.recordIcon { display: inline-flex; width: 34px; height: 34px; border-radius: 9px; background: var(--muted-bg); color: var(--muted); align-items: center; justify-content: center; flex-shrink: 0; }
+.recordIcon svg, .rowEnd > svg, .back svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.65; }
+.rowMain { display: grid; gap: .32rem; flex: 1; min-width: 0; }
+.rowMain strong { font-size: .9rem; font-weight: 600; overflow-wrap: anywhere; }
+.rowMain > span { font-size: .76rem; color: var(--muted); overflow-wrap: anywhere; }
+.rowEnd { display: flex; align-items: center; gap: .5rem; flex-shrink: 0; }
+.rowEnd > svg { width: 14px; color: var(--muted); }
+.state { display: inline-flex; align-items: center; border-radius: 6px; font-size: .7rem; font-weight: 550; line-height: 1.5; padding: .25rem .48rem; color: var(--muted); background: var(--muted-bg); }
+.detail { min-width: 0; background: var(--panel); border: 1px solid var(--muted-bg); border-radius: 16px; padding: 1.5rem; }
+.detailHeading { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; margin: 1.1rem 0 .5rem; }
+.detailHeading h3 { font-size: 1.4rem; font-weight: 620; letter-spacing: -.035em; margin: 0; overflow-wrap: anywhere; }
+.detailHeading h3:focus { outline: none; }
+.back, .secondary { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; background: transparent; color: var(--muted); border: 1px solid var(--line); border-radius: 8px; padding: .65rem .8rem; min-height: 44px; font-size: .82rem; font-weight: 550; cursor: pointer; }
+.back { border: 0; padding: .25rem 0; justify-content: flex-start; }
+.back:hover, .secondary:hover { color: var(--ink); background: var(--muted-bg); }
+.reference { color: var(--muted); font-size: .75rem; margin-bottom: 1.2rem; }
+.reference summary { cursor: pointer; min-height: 30px; }
+.reference code { display: block; overflow-wrap: anywhere; padding: .65rem; margin-top: .3rem; }
+.detailBody { display: grid; gap: 1rem; }
+.detailBody p { font-size: .87rem; line-height: 1.55; margin: .25rem 0; overflow-wrap: anywhere; }
+.detailBody > article { min-width: 0; }
+.detailBody :global(.card) { border: 0; box-shadow: none; padding: 0; border-radius: 0; background: transparent; }
+.detailBody h3 { font-size: 1.1rem; }
+.detailBody h4 { font-size: .95rem; font-weight: 600; }
+.detailBody details, .checklist details { font-size: .85rem; color: var(--muted); }
+.detailBody summary, .checklist summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; }
+.detailBody summary::before, .checklist summary::before { content: "+"; padding-inline-end: .65rem; }
+.detailBody details[open] > summary::before, .checklist details[open] > summary::before { content: "−"; }
+.empty { border: 1px dashed var(--line); border-radius: 14px; padding: 2rem 1.5rem; color: var(--muted); text-align: center; }
+.placeholder { min-height: 305px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .4rem; color: var(--muted); background: var(--panel); border: 1px solid var(--muted-bg); border-radius: 16px; text-align: center; padding: 2rem; }
+.placeholder h3 { color: var(--ink); font-size: 1.15rem; font-weight: 600; margin: .5rem 0; }
+.placeholder p { margin: 0; max-width: 27ch; font-size: .85rem; }
+.steps { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: .45rem; padding: 0; margin: .3rem 0 1.5rem; }
+.steps li { padding-top: .7rem; border-top: 2px solid var(--line); color: var(--muted); font-size: .68rem; }
+.steps li[aria-current=step] { border-color: var(--ink); color: var(--ink); }
+.contextState { border: 1px solid var(--line); border-radius: 12px; padding: 1.2rem; margin: 1rem 0; color: var(--muted); }
+.contextState[data-state=forbidden], .contextState[data-state=error] { color: var(--warning); }
+.contextState p { margin: 0 0 .8rem; }
+.actions { display: flex; flex-wrap: wrap; gap: .65rem; align-items: center; }
+.actions button { font-size: .85rem; min-height: 44px; }
+.message { font-size: .85rem; color: var(--warning); padding-block: .7rem; }
+.message:empty { display: none; }
+.success { padding: .9rem 1rem; border-radius: 10px; background: var(--success-bg); color: var(--success); font-size: .85rem; }
+.checklist { min-width: 0; }
+.checklist fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.checklist legend { font-size: 1.1rem; font-weight: 650; margin: .25rem 0 1.25rem; }
+.checklist form { gap: 1.3rem; }
+.checklist label, .fields label { font-size: .88rem; font-weight: 550; }
+.checklist input:not([type=checkbox]), .checklist select, .checklist textarea, .fields input:not([type=checkbox]), .fields select { color: var(--ink); border: 1px solid var(--line); background: var(--surface); min-height: 46px; border-radius: 9px; }
+.checklist input[type=checkbox], .fields input[type=checkbox] { width: 19px; height: 19px; flex-shrink: 0; accent-color: var(--accent); }
+.fields { display: grid; gap: 1.2rem; }
+.fieldItems { display: grid; gap: 1.2rem; padding-block: .25rem; }
+.checkRow { display: flex; gap: .75rem; align-items: flex-start; line-height: 1.5; padding: .85rem; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+.checkRow input { margin: .12rem 0 0; }
+.fieldHelp { font-size: .75rem; color: var(--muted); line-height: 1.5; font-weight: 400; }
+.formActions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; }
+.checklist button { min-height: 44px; }
+.workspace button:focus-visible, .workspace input:focus-visible, .workspace select:focus-visible, .workspace summary:focus-visible, .checklist button:focus-visible, .checklist summary:focus-visible, .back:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.workspace button:disabled, .checklist button:disabled { cursor: not-allowed; }
+.srOnly { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+@media (max-width: 1120px) { .split { grid-template-columns: minmax(225px, .85fr) minmax(280px, 1.15fr); gap: 1rem; } .row { padding-inline: .55rem; } .rowEnd { flex-direction: column; align-items: flex-end; } .rowEnd > svg { display: none; } }
+@media (max-width: 800px) { .split { display: block; } .split[data-detail-open=true] > .listColumn { display: none; } .placeholder { display: none; } .detail { padding: 1.1rem; border-radius: 13px; } .row { padding: .95rem .7rem; } .rowEnd { flex-direction: row; align-items: center; } .rowEnd > svg { display: block; } .sectionHeading { margin-bottom: 1rem; } .listColumn { margin-bottom: 1rem; } .detailHeading h3 { font-size: 1.3rem; } }
+@media (max-width: 420px) { .rowEnd .state { max-width: 100px; text-align: center; } .statusFilter { flex-basis: 100%; } .detail { padding: 1rem; } }
+
+/* NEXT-VISUAL-02: hierarchy refinement. Passive separators are not control boundaries. */
+.split{grid-template-columns:minmax(280px,.84fr) minmax(0,1.25fr);gap:36px}
+.detail{background:transparent;border:0;border-left:1px solid var(--muted-bg);border-radius:0;padding:8px 0 16px 32px}
+.placeholder{background:transparent;border:0;border-left:1px solid var(--muted-bg);border-radius:0;min-height:340px;padding:40px 28px}
+.placeholder h3{font-size:.94rem;font-weight:500}.placeholder p{font-size:.8rem;max-width:25ch}
+.row{border:0;border-radius:8px;padding:17px 12px;gap:12px;min-height:80px}.row[aria-current=true]{border:0;background:var(--muted-bg)}
+.rowMain strong{font-size:.875rem;font-weight:550}.rowMain>span{font-size:.75rem}.recordIcon{background:var(--panel);color:var(--muted);width:36px;height:36px}
+.state{background:transparent;padding:2px 0;color:var(--muted);font-size:.72rem;font-weight:450}
+.detailHeading{margin:12px 0 24px}.detailHeading h3{font-size:1.25rem;font-weight:550}.detailHeading .state{margin-left:auto}
+.reference{border:0!important;border-radius:0!important;padding:0!important;margin:0 0 24px;font-size:.72rem}
+.reference summary{min-height:32px;font-weight:400}.reference code{padding:8px 0}
+.detailBody details,.checklist details{border:0;border-top:1px solid var(--muted-bg);border-radius:0;padding:14px 0;margin:12px 0}
+.detailBody summary,.checklist summary{font-size:.8rem;min-height:36px;font-weight:450}
+.empty{border:0;border-radius:0;padding:44px 12px}.contextState{border-color:var(--muted-bg);border-radius:8px;background:var(--panel)}
+.sectionHeading{justify-content:flex-end;margin:0 0 20px}.secondary{border-color:transparent;padding:8px 10px;min-height:36px;font-weight:450}.secondary:hover{background:var(--panel)}
+.detailBody :global(.button),.formActions :global(.button){font-size:.83rem;font-weight:550;padding:10px 16px;border-radius:8px;min-height:42px}
+.detailBody label,.fields label,.checklist label{font-weight:450;font-size:.83rem}.checkRow{border:0;border-bottom:1px solid var(--muted-bg);background:transparent;border-radius:0;padding:14px 0}
+.workspace>:global(details){border:0;border-top:1px solid var(--muted-bg);border-radius:0;padding:14px 0;margin-top:32px;font-size:.8rem}.workspace>:global(details)>summary{font-weight:450;min-height:36px}
+@media(max-width:1120px){.split{grid-template-columns:minmax(240px,.85fr) minmax(0,1.15fr);gap:24px}.detail{padding-left:24px}}
+@media(max-width:900px){.split{display:block}.split[data-detail-open=true]>.listColumn{display:none}.placeholder{display:none}.detail{border:0;padding:0}.row{min-height:80px;padding:18px 10px}.sectionHeading{margin-bottom:16px}.secondary,.detailBody :global(.button),.formActions :global(.button){min-height:44px}.detailHeading{margin:14px 0 24px}}
+
+/* Order detail uses one coherent surface; legacy .card rules cannot restyle it. */
+.orderBody{background:transparent;padding:0;margin:0;border:0;min-width:0}
+.orderLines{display:grid;gap:24px;margin-bottom:32px}.orderLine{display:grid;gap:8px}.orderLine>div:first-child{display:flex;justify-content:space-between;gap:16px;font-size:.9rem}.orderLine strong{font-weight:550}.orderLine form{margin-top:12px;max-width:400px}
+.quiet{color:var(--muted);font-size:.78rem!important;font-weight:400}.orderFacts{display:grid;gap:20px;padding:24px 0;margin:0;border-block:1px solid var(--muted-bg)}.orderFacts>div{display:flex;justify-content:space-between;gap:20px;font-size:.84rem}.orderFacts dt{color:var(--muted)}.orderFacts dd{margin:0;text-align:right}
+.paymentAction{padding:28px 0 12px}.paymentAction>p{margin-top:12px}.paymentAction>[role=status]:empty{display:none}.relatedReferences{margin-top:24px!important}.relatedReferences li{font-size:.78rem;overflow-wrap:anywhere}
+@media(max-width:900px){.paymentAction>:global(.button){width:100%}.orderFacts{padding:24px 0}.orderLines{margin-bottom:28px}}

@@ -1,0 +1,142 @@
+{
+  "schema": "elite-arca-nuget-runtime/v1",
+  "packages": [
+    {
+      "name": "Microsoft.Extensions.ObjectPool",
+      "version": "10.0.0",
+      "archive": "microsoft.extensions.objectpool.10.0.0.nupkg",
+      "sha256": "ffd91f85d7efb4ce58c515c8437e4dad425fb255d8a92465f37c60c22e6d0960",
+      "bytes": 88175,
+      "signed_content_hash": "bpeCq0IYmVLACyEUMzFIOQX+zZUElG1t+nu1lSxthe7B+1oNYking7b91305+jNB6iwojp9fqTY9O+Nh7ULQxg==",
+      "url": "https://api.nuget.org/v3-flatcontainer/microsoft.extensions.objectpool/10.0.0/microsoft.extensions.objectpool.10.0.0.nupkg",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/dotnet/dotnet",
+        "commit": "b0f34d51fccc69fd334253924abd8d6853fad7aa"
+      },
+      "license": "MIT",
+      "legal": [
+        {
+          "member": "THIRD-PARTY-NOTICES.TXT",
+          "sha256": "307d014f65d8482314f1400ddeae7a0cbabb96c2207bcc77f6233cc10588e5d9"
+        }
+      ],
+      "supplemental_legal": {
+        "file": "ObjectPool-LICENSE.txt",
+        "url": "https://raw.githubusercontent.com/dotnet/dotnet/b0f34d51fccc69fd334253924abd8d6853fad7aa/src/aspnetcore/LICENSE.txt",
+        "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310",
+        "bytes": 1116,
+        "provenance": "VERBATIM",
+        "input": "runtime-legal/ObjectPool-LICENSE.txt"
+      }
+    },
+    {
+      "name": "System.Security.Cryptography.Pkcs",
+      "version": "10.0.11",
+      "archive": "system.security.cryptography.pkcs.10.0.11.nupkg",
+      "sha256": "f8be992fbffd55ec8c94e24370d8d5fd16fb14cc5772d2de91f591394d2d3083",
+      "bytes": 1142475,
+      "signed_content_hash": "8IV+rI3xN/Mkq9MsSX7VZTv9T9Wt+tyhHLwBX9VNZBk8m8kknEs1JeTSjI2x9M2L/fSja+c2WSE5n5Yy0GXdoQ==",
+      "url": "https://api.nuget.org/v3-flatcontainer/system.security.cryptography.pkcs/10.0.11/system.security.cryptography.pkcs.10.0.11.nupkg",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/dotnet/dotnet",
+        "commit": "e2f47b0110ed922f21a1522da67279133ce28f32"
+      },
+      "license": "MIT",
+      "legal": [
+        {
+          "member": "THIRD-PARTY-NOTICES.TXT",
+          "sha256": "6d15e10a101c6bfff2ab4429ed061bf76c456fc4b23ad6b03e0d0f8377148a21"
+        }
+      ],
+      "supplemental_legal": {
+        "file": "Runtime-LICENSE.TXT",
+        "url": "https://raw.githubusercontent.com/dotnet/dotnet/e2f47b0110ed922f21a1522da67279133ce28f32/src/runtime/LICENSE.TXT",
+        "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310",
+        "bytes": 1116,
+        "provenance": "VERBATIM",
+        "input": "runtime-legal/Runtime-LICENSE.TXT"
+      }
+    },
+    {
+      "name": "System.Security.Cryptography.Xml",
+      "version": "10.0.11",
+      "archive": "system.security.cryptography.xml.10.0.11.nupkg",
+      "sha256": "a07b8b68cb70e0fb746f067c84398cd13a4ba7170fa0a0fe80ee27148dc0987d",
+      "bytes": 476741,
+      "signed_content_hash": "TokfVsaU2fmcwvsU6ihLCkseVfwhLX6Tmbl3qh3nOBIqHSX4yqFllpslA+PuHERH/ENu3kwqo4deZiyT0Wvh3Q==",
+      "url": "https://api.nuget.org/v3-flatcontainer/system.security.cryptography.xml/10.0.11/system.security.cryptography.xml.10.0.11.nupkg",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/dotnet/dotnet",
+        "commit": "e2f47b0110ed922f21a1522da67279133ce28f32"
+      },
+      "license": "MIT",
+      "legal": [
+        {
+          "member": "THIRD-PARTY-NOTICES.TXT",
+          "sha256": "6d15e10a101c6bfff2ab4429ed061bf76c456fc4b23ad6b03e0d0f8377148a21"
+        }
+      ],
+      "supplemental_legal": {
+        "file": "Runtime-LICENSE.TXT",
+        "url": "https://raw.githubusercontent.com/dotnet/dotnet/e2f47b0110ed922f21a1522da67279133ce28f32/src/runtime/LICENSE.TXT",
+        "sha256": "cfc21f5e8bd655ae997eec916138b707b1d290b83272c02a95c9f821b8c87310",
+        "bytes": 1116,
+        "provenance": "VERBATIM",
+        "input": "runtime-legal/Runtime-LICENSE.TXT"
+      }
+    },
+    {
+      "name": "System.ServiceModel.Http",
+      "version": "10.0.652802",
+      "archive": "system.servicemodel.http.10.0.652802.nupkg",
+      "sha256": "78475b94576c9afdcb6fa895a71ad6b4f8fb0e1a745f09e2ae7b10ef43d93b79",
+      "bytes": 447216,
+      "signed_content_hash": "G02XZvmccf42QCU5MjviBIg69MSMAVHwL1inVPsNSpfp5g+t5BkQM3DyvWRLN4qmeFDWSF/mA1rIYONIDu/6Dg==",
+      "url": "https://api.nuget.org/v3-flatcontainer/system.servicemodel.http/10.0.652802/system.servicemodel.http.10.0.652802.nupkg",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/dotnet/wcf",
+        "commit": "e9d8c1c2a051618689bc22ab263f6ff0f2493d64"
+      },
+      "license": "MIT",
+      "legal": [
+        {
+          "member": "THIRD-PARTY-NOTICES.TXT",
+          "sha256": "208d31ba373d2017a0bad0a5593f3050952abd3a1f6a29df85c33494c48d2885"
+        },
+        {
+          "member": "LICENSE.TXT",
+          "sha256": "d7a68596ab69b06f51ca278a6545148e4269a9381c26d597c13df5d88e08cf5b"
+        }
+      ]
+    },
+    {
+      "name": "System.ServiceModel.Primitives",
+      "version": "10.0.652802",
+      "archive": "system.servicemodel.primitives.10.0.652802.nupkg",
+      "sha256": "1de4d98b6a09264abd1a97c0601a7c800d1c2d988a98527afec8edaaf5e30822",
+      "bytes": 2405338,
+      "signed_content_hash": "ULfGNl75BNXkpF42wNV2CDXJ64dUZZEa8xO2mBsc4tqbW9QjruxjEB6bAr4Z/T1rNU+leOztIjCJQYsBGFWYlw==",
+      "url": "https://api.nuget.org/v3-flatcontainer/system.servicemodel.primitives/10.0.652802/system.servicemodel.primitives.10.0.652802.nupkg",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/dotnet/wcf",
+        "commit": "e9d8c1c2a051618689bc22ab263f6ff0f2493d64"
+      },
+      "license": "MIT",
+      "legal": [
+        {
+          "member": "THIRD-PARTY-NOTICES.TXT",
+          "sha256": "208d31ba373d2017a0bad0a5593f3050952abd3a1f6a29df85c33494c48d2885"
+        },
+        {
+          "member": "LICENSE.TXT",
+          "sha256": "d7a68596ab69b06f51ca278a6545148e4269a9381c26d597c13df5d88e08cf5b"
+        }
+      ]
+    }
+  ]
+}

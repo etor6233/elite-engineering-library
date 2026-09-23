@@ -1,0 +1,62 @@
+{
+  "revision": "99edb6dd82b7b560930c00b03b694ba700785370",
+  "source_receipt_sha256": "7e581370505c7b28debdb8da31c61a1963d8a4eeae42930ddee3b2c358e658b5",
+  "license": "LGPL-3.0-only",
+  "functions": [
+    {
+      "name": "_get_point_changes",
+      "source_path": "addons/sale_loyalty/models/sale_order.py",
+      "source_file_sha256": "6de1aeed8f1fc80268025f13bff2a56b57211b6a82ce9df950a8b08a623e3a06",
+      "source_lines": [
+        768,
+        781
+      ],
+      "source_segment_sha256": "9c813522e920d7880dd7eb5a5a0e8b831893ca48e6e6d9cd0c72c5bc6fe6728b",
+      "adaptation": "Dedent methods; binary 0.0 literals become Decimal; same control flow. ORM protocol is supplied by declared local glue; float_round binding is exact Decimal rounding."
+    },
+    {
+      "name": "_get_real_points_for_coupon",
+      "source_path": "addons/sale_loyalty/models/sale_order.py",
+      "source_file_sha256": "6de1aeed8f1fc80268025f13bff2a56b57211b6a82ce9df950a8b08a623e3a06",
+      "source_lines": [
+        783,
+        799
+      ],
+      "source_segment_sha256": "308749a1cd0fa23fea6de627dcaa88f782ebffca21e69902cdc15c430edf8162",
+      "adaptation": "Dedent methods; binary 0.0 literals become Decimal; same control flow. ORM protocol is supplied by declared local glue; float_round binding is exact Decimal rounding."
+    },
+    {
+      "name": "_program_check_compute_points",
+      "source_path": "addons/sale_loyalty/models/sale_order.py",
+      "source_file_sha256": "6de1aeed8f1fc80268025f13bff2a56b57211b6a82ce9df950a8b08a623e3a06",
+      "source_lines": [
+        1238,
+        1375
+      ],
+      "source_segment_sha256": "b5d16594d709a313ee56758a963818c34b070b39ba1e6cc8db95ab9c845f73ee",
+      "adaptation": "Dedent methods; binary 0.0 literals become Decimal; same control flow. ORM protocol is supplied by declared local glue; float_round binding is exact Decimal rounding."
+    },
+    {
+      "name": "reward_from_bound_amounts",
+      "source_path": "addons/sale_loyalty/models/sale_order.py",
+      "source_file_sha256": "6de1aeed8f1fc80268025f13bff2a56b57211b6a82ce9df950a8b08a623e3a06",
+      "source_lines": [
+        579,
+        601
+      ],
+      "source_segment_sha256": "d26d2bdf390118da818ba9fcfc052d51ac6cf68f123bac93bf94e300b3effa17",
+      "adaptation": "Same-currency preconditions and discountable amount are supplied by bound order owner; only upstream cap/cost block is adapted. Infinity becomes Decimal; return serializes existing values. No tax calculation, FX, discount allocation, random code or fiscal product mapping copied."
+    }
+  ],
+  "runtime_glue": [
+    "orm_contract.py",
+    "protocol.py"
+  ],
+  "not_claimed": [
+    "Odoo ORM/runtime integration suite",
+    "fiscal rules",
+    "foreign currency conversion",
+    "full Odoo payment workflows",
+    "immutable upstream history"
+  ]
+}

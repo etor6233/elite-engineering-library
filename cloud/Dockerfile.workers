@@ -1,0 +1,7 @@
+# AUTHORED packaging glue for every selected Go cmd package.
+ARG GO_RUNTIME
+FROM ${GO_RUNTIME}
+WORKDIR /app
+COPY --chown=65532:65532 build/bin/ /app/bin/
+USER 65532:65532
+ENTRYPOINT ["/app/bin/electromobility-api"]

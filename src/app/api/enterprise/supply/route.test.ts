@@ -1,0 +1,14 @@
+import {NextRequest} from "next/server";
+import {it,expect,vi,afterEach} from "vitest";
+const m=vi.hoisted(()=>({get:vi.fn(),post:vi.fn(),session:vi.fn()}));
+vi.mock("@/platform/auth/session",()=>({readSession:m.session,allowed:(s:{permissions:string[]},p:string)=>s.permissions.includes(p)}));
+vi.mock("@/platform/auth/oidc-client",()=>({applicationBaseUrl:()=>new URL("https://portal.example.test")}));
+vi.mock("@/platform/backend/protected-client",()=>({protectedGet:m.get,protectedPost:m.post}));
+vi.mock("@/platform/config/load",()=>({loadBusinessConfig:async()=>({features:{supply_portal:true}})}));
+import {GET,POST} from "./route";
+afterEach(()=>vi.clearAllMocks());
+const req=(body:BodyInit)=>new NextRequest("https://portal.example.test/api/enterprise/supply",{method:"POST",body,headers:{origin:"https://portal.example.test","content-type":"application/json"},duplex:"half" as const});
+it("authenticates before consuming an unbounded body",async()=>{m.session.mockResolvedValue(null);const r=req("{}");expect((await POST(r)).status).toBe(401);expect(r.bodyUsed).toBe(false);expect(m.post).not.toHaveBeenCalled()});
+it("cancels oversized chunked bodies before downstream",async()=>{m.session.mockResolvedValue({subject:"buyer",permissions:["supply:plan","supply:read"],organizations:["store"]});let cancelled=false;const stream=new ReadableStream<Uint8Array>({pull(c){c.enqueue(new Uint8Array(32769))},cancel(){cancelled=true}});expect((await POST(req(stream))).status).toBe(413);expect(cancelled).toBe(true);expect(m.post).not.toHaveBeenCalled()});
+it("does not let a factory writer use franchise operations or foreign organization",async()=>{m.session.mockResolvedValue({subject:"maker",permissions:["supply:factory","supply:factory-read"],organizations:["factory"]});const c={kind:"submit",organization_id:"factory",purchase_order_id:"po",command_id:"cmd",evidence_sha256:"a".repeat(64),expected_version:"1"};expect((await POST(req(JSON.stringify(c)))).status).toBe(403);expect(m.post).not.toHaveBeenCalled()});
+it("rejects duplicate page/scope inputs and never recovers another actor's command",async()=>{m.session.mockResolvedValue({subject:"buyer",permissions:["supply:read"],organizations:["store"]});const base="https://portal.example.test/api/enterprise/supply?organization_id=store&purchase_order_id=po&surface=franchise";expect((await GET(new NextRequest(base+"&after_unit=a&after_unit=b"))).status).toBe(403);expect(m.get).not.toHaveBeenCalled();m.get.mockResolvedValue({purchase_order_id:"po",command_id:"cmd",kind:"planned",version:"1",actor:"other",request_sha256:"a".repeat(64),payload_sha256:"b".repeat(64),payload:{},recorded_at:"2026-09-12T00:00:00Z",replay:false});expect((await GET(new NextRequest(base+"&command_id=cmd"))).status).toBe(409);expect(m.post).not.toHaveBeenCalled()});

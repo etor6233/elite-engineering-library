@@ -1,0 +1,16 @@
+{
+  "schema": "elite-google-ads-reporting-profile/v1",
+  "provider": "Google Ads API",
+  "sdk": "google-ads==31.4.0",
+  "api_version": "v25",
+  "decision": "BLOCKED_ACCESS_AND_QUERY_APPROVAL_REQUIRED",
+  "authentication": "GoogleAdsClient.load_from_env",
+  "developer_token_access": "NOT_PROVIDED",
+  "oauth_identity_reference": "",
+  "customer_id": "",
+  "login_customer_id": "",
+  "query_allowlist": [],
+  "data_retention": "",
+  "cost_and_quota_approved": false,
+  "automatic_business_write": false
+}

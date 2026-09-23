@@ -1,0 +1,25 @@
+{
+  "cpu_always": true,
+  "database_instance": "fixture-db",
+  "database_policy": "RETAIN_BACKUP_PITR",
+  "environment": "staging",
+  "environment_values": {
+    "OIDC_AUDIENCE": "fixture-api",
+    "OIDC_ISSUER": "https://identity.example.test"
+  },
+  "max_instances": 3,
+  "min_instances": 1,
+  "platform": "linux/amd64",
+  "private_url": true,
+  "production_authorized": false,
+  "project": "fixture-project",
+  "region": "us-central1",
+  "runtime_identity": "fixture-runtime@fixture-project.iam.gserviceaccount.com",
+  "schema": "elite-cloud-target/v403.1",
+  "secrets": {
+    "DATABASE_URL": "fixture-database:1"
+  },
+  "service": "fixture-api",
+  "state_backend": "GCS_GENERATION_CAS",
+  "state_uri": "gs://fixture-retained/control/budget.json"
+}

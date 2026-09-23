@@ -1,0 +1,721 @@
+{
+  "authority_locks": {
+    "AGENT_SYSTEM_START.md": "fb2072c9eb53cac3868163dc54b3990dc048d5e237e8a22887bc5a8f97ecd38d",
+    "INSTALL_AGENT_BRIDGE.ps1": "fe32bf216ea48e9f218dbcf3075161bef445a82bd498bea3f14429d172a12a4b",
+    "implementation_packs/CONTAINER_PACKAGING_CORE.md": "5a0c7e29320a93e542b0d974f714966fd6e847cc8d5ba0881d432e89fc591830",
+    "implementation_packs/GO_FINOPS_CORE.md": "9c5a700c8a11cc59f88cf0496ce81217ad1e19ca8758e61488e33cc8798f84cb",
+    "implementation_packs/MARKDOWN_COMPOSITOR_CORE.md": "f0f024d0faf8960bbfd72c42aff649c95e07e8f3fbe0ce30e8c8926a73c64029",
+    "implementation_packs/PORTABLE_CI_QUALITY_GATE_RUNNER.md": "cfa50fb671da3c85441c35c1890dcfecbfe741b2c52ced844aa5961ae2c098e7",
+    "implementation_packs/PROJECT_OPERATING_CONNECTION.md": "4e3f4257793e019afffc51c0c55eee532e3fcce03b7659d2eaf42dc1056baa9f",
+    "implementation_packs/SECURE_OPERATIONS_DELIVERY_CORE.md": "3dc0b1179c3659d5803a63482ed6ac808cbcf9d8ce8910ba88992be24fdde697",
+    "markdown_system/FRANCHISE_PROJECT_OPERATING_PROTOCOL.md": "c75f874b67adba632d8c0aa47300814e1f8c6c8dc40f5231c782247046f4d2b3",
+    "materialize_markdown_pack.ps1": "544309f93002effea5144bc41750af6fc943ca354eb447a744fabc7e8d4e5010"
+  },
+  "pack_locks": [
+    {
+      "packId": "PG-TX-FOUNDATION",
+      "path": "implementation_packs/POSTGRES_TRANSACTIONAL_FOUNDATION.md",
+      "sha256": "a5493e4fe3e67b3f8c4cbb7d119528dfa2041477f1b10bd97545060f17381e82",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-ENTERPRISE-BACKEND",
+      "path": "implementation_packs/GO_ENTERPRISE_BACKEND_CORE.md",
+      "sha256": "4d1429a14e59fdb131234b79801675a91245ada206225ae9b58c0548a0e66941",
+      "version": "0.4.8"
+    },
+    {
+      "packId": "ELECTROMOBILITY-FRANCHISE-MODULES",
+      "path": "implementation_packs/ELECTROMOBILITY_FRANCHISE_MODULES.md",
+      "sha256": "b785fa084df65c5672ee93a9a9f3055543b469cc0522c7001c6efbb6dd785b6f",
+      "version": "0.1.2"
+    },
+    {
+      "packId": "GO-RELIABLE-ASYNC-WORKERS",
+      "path": "implementation_packs/GO_RELIABLE_ASYNC_WORKERS.md",
+      "sha256": "8ab8136709da437dba73e7335805a349fd1dcb9cd61622165362b899ee087aad",
+      "version": "0.3.1"
+    },
+    {
+      "packId": "GO-ELECTROMOBILITY-PUBLIC-CRM-API",
+      "path": "implementation_packs/GO_ELECTROMOBILITY_PUBLIC_CRM_API.md",
+      "sha256": "4758116d714a304dbd3af138f42ad7dc2c84266486023f260854087784514350",
+      "version": "0.4.0"
+    },
+    {
+      "packId": "GO-SUPPLY-FACTORY-INVENTORY-API",
+      "path": "implementation_packs/GO_SUPPLY_FACTORY_INVENTORY_API.md",
+      "sha256": "39bbb229f05b3539f1c43f083d22239c67d84bb0a320a3aa917916fda3cd37dc",
+      "version": "0.18.0"
+    },
+    {
+      "packId": "GO-BC-EXACT-AMOUNT-ADAPTER",
+      "path": "implementation_packs/GO_BC_EXACT_AMOUNT_ADAPTER.md",
+      "sha256": "d08b9f5c676286b460340a493902d43024a8e4eac8e83ae41c65d8d02b5cbbd2",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-BC-SALES-CONTRACT-ADAPTER",
+      "path": "implementation_packs/GO_BC_SALES_CONTRACT_ADAPTER.md",
+      "sha256": "e69a2f7162f07d399d1073692ba80826326ecf0cfdcdace504e4fa75e360446b",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-COMMERCE-PRICING-PAYMENT-API",
+      "path": "implementation_packs/GO_COMMERCE_PRICING_PAYMENT_API.md",
+      "sha256": "481fc092c9f954636f4c380fac3fb03df81f071ff9ababbfad3631271237742c",
+      "version": "0.8.0"
+    },
+    {
+      "packId": "GO-FULFILLMENT-SERVICE-FRANCHISE-API",
+      "path": "implementation_packs/GO_FULFILLMENT_SERVICE_FRANCHISE_API.md",
+      "sha256": "6eb707b069aebec5615957f39769d4c32b5b7aa74fb027378154b9369ceaebbb",
+      "version": "0.6.0"
+    },
+    {
+      "packId": "GO-ENTERPRISE-QUERY-API",
+      "path": "implementation_packs/GO_ENTERPRISE_QUERY_API.md",
+      "sha256": "1fae1628a5663f8780126ee298e497035dc73e2c1f52a50a24179657f48f9f5a",
+      "version": "0.3.0"
+    },
+    {
+      "packId": "GO-FRANCHISE-CUSTOMER-JOURNEY-API",
+      "path": "implementation_packs/GO_FRANCHISE_CUSTOMER_JOURNEY_API.md",
+      "sha256": "c4989e27c5ad7881362819ede39b8127019b119c4a5509e9c3d22d26b4d0cc78",
+      "version": "0.10.21"
+    },
+    {
+      "packId": "GO-RETURN-EFFECT-EXECUTION-WORKER",
+      "path": "implementation_packs/GO_RETURN_EFFECT_EXECUTION_WORKER.md",
+      "sha256": "f5b3074f2b6fbf032dc3b2c980a20ed77fb3bbc869ca6efc6a99623387f97aee",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-OFFICIAL-RETURN-REFUND-WORKER",
+      "path": "implementation_packs/GO_OFFICIAL_RETURN_REFUND_WORKER.md",
+      "sha256": "64cbc8f96c95c5b42a58e24516741bdc9cf42ce3ab46c2912c112725a1fff460",
+      "version": "0.1.6"
+    },
+    {
+      "packId": "GO-RETURN-EXCHANGE-FULFILLMENT-WORKER",
+      "path": "implementation_packs/GO_RETURN_EXCHANGE_FULFILLMENT_WORKER.md",
+      "sha256": "8df3153196f0bc3fde85578ff8ec761248443d07ebdc615b49ecbb9e05e8f128",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-RETURN-ACCOUNTING-REVERSAL-WORKER",
+      "path": "implementation_packs/GO_RETURN_ACCOUNTING_REVERSAL_WORKER.md",
+      "sha256": "41dfcbb88de3da9b8316c08ab8f9e7d0be24d5c2f0a3f4da2c22dbf96b886502",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-RETURN-FISCAL-CREDIT-NOTE-WORKER",
+      "path": "implementation_packs/GO_RETURN_FISCAL_CREDIT_NOTE_WORKER.md",
+      "sha256": "2480ff8512893aa51e40cf43d1f6fa54870132f02d9c8bfa51fbae753c1d32d7",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-FRANCHISE-ROYALTY-SETTLEMENT-API",
+      "path": "implementation_packs/GO_FRANCHISE_ROYALTY_SETTLEMENT_API.md",
+      "sha256": "2650b3f00e9430afb14cd1fdae5e58af9cc991897706e5fad0bb6bcd00b9f8bc",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-ENTERPRISE-ACCOUNTING-LEDGER-API",
+      "path": "implementation_packs/GO_ENTERPRISE_ACCOUNTING_LEDGER_API.md",
+      "sha256": "3698884c6fb65068d2d4210e8b4d1dce416d6e7dbb37acbfc7a2c271bc039813",
+      "version": "0.1.2"
+    },
+    {
+      "packId": "MICROSOFT-ARCA-WSFE-GENERATED-CLIENT",
+      "path": "implementation_packs/MICROSOFT_ARCA_WSFE_GENERATED_CLIENT.md",
+      "sha256": "fe5dd819c0986cc6faa24e983b2da572afd7f6ef088aea001f8a52943e419d79",
+      "version": "0.2.2"
+    },
+    {
+      "packId": "MICROSOFT-ARCA-WSAA-CREDENTIAL-CORE",
+      "path": "implementation_packs/MICROSOFT_ARCA_WSAA_CREDENTIAL_CORE.md",
+      "sha256": "dac7cb81de3f4fb26a84339e60cf6b9a014fa7b242a8afc8b27261f8830fa7b7",
+      "version": "0.1.1"
+    },
+    {
+      "packId": "MICROSOFT-ARCA-WSFE-SOAP-ADAPTER",
+      "path": "implementation_packs/MICROSOFT_ARCA_WSFE_SOAP_ADAPTER.md",
+      "sha256": "7527b4dd7d44f6530880f34d93eeb5e417d3d837fe084fc0aea3d5d421bdf18a",
+      "version": "0.3.1"
+    },
+    {
+      "packId": "GO-ARCA-FISCAL-ISSUANCE-API",
+      "path": "implementation_packs/GO_ARCA_FISCAL_ISSUANCE_API.md",
+      "sha256": "03ba7fff6c2e10d38be96f1c65a5b0916d502ce6c785c569270bad2f3ed88682",
+      "version": "0.6.1"
+    },
+    {
+      "packId": "ARCA-WSFE-UDS-WORKER",
+      "path": "implementation_packs/ARCA_WSFE_UDS_WORKER.md",
+      "sha256": "2a77970842e6a80372862fe17a6efcb34c139fd49bf29eab2152481064748e49",
+      "version": "0.3.1"
+    },
+    {
+      "packId": "GO-PROVIDER-INTEGRATION-CORE",
+      "path": "implementation_packs/GO_PROVIDER_INTEGRATION_CORE.md",
+      "sha256": "8f34a9b5e6296ab34f82a59e644c3e3fe9317c1adbb726577936190d7494dd02",
+      "version": "0.1.3"
+    },
+    {
+      "packId": "GO-ELECTROMOBILITY-APPLICATION",
+      "path": "implementation_packs/GO_ELECTROMOBILITY_APPLICATION.md",
+      "sha256": "a39a602fcbbfbd70f2a025e96a21ca8ba3bc54a10b46acd0c4230aecb98376de",
+      "version": "1.22.3"
+    },
+    {
+      "packId": "SECURE-OPS-DELIVERY-CORE",
+      "path": "implementation_packs/SECURE_OPERATIONS_DELIVERY_CORE.md",
+      "sha256": "3dc0b1179c3659d5803a63482ed6ac808cbcf9d8ce8910ba88992be24fdde697",
+      "version": "1.1.4"
+    },
+    {
+      "packId": "PORTABLE-CI-GATE-RUNNER",
+      "path": "implementation_packs/PORTABLE_CI_QUALITY_GATE_RUNNER.md",
+      "sha256": "cfa50fb671da3c85441c35c1890dcfecbfe741b2c52ced844aa5961ae2c098e7",
+      "version": "0.1.9"
+    },
+    {
+      "packId": "DEPENDENCY-LICENSE-EVIDENCE-CORE",
+      "path": "implementation_packs/DEPENDENCY_LICENSE_EVIDENCE_CORE.md",
+      "sha256": "dd7bfd28b822c81cf191c334990637ac18df7e3765b0662d9f685d8bdf312975",
+      "version": "0.1.1"
+    },
+    {
+      "packId": "PG-BACKUP-RESTORE-CORE",
+      "path": "implementation_packs/POSTGRES_BACKUP_RESTORE_CORE.md",
+      "sha256": "ea00bb70c6bb2851cfcc2a6bc88634a4b75f61cded061e9dc72b1176b4fe5879",
+      "version": "0.1.1"
+    },
+    {
+      "packId": "CONTAINER-PACKAGING-CORE",
+      "path": "implementation_packs/CONTAINER_PACKAGING_CORE.md",
+      "sha256": "5a0c7e29320a93e542b0d974f714966fd6e847cc8d5ba0881d432e89fc591830",
+      "version": "0.1.2"
+    },
+    {
+      "packId": "GO-ML-AI-FOUNDATION",
+      "path": "implementation_packs/GO_ML_AI_FOUNDATION.md",
+      "sha256": "3b2499c4ec170ae617e8bb29e718d905795654310cc17c6a789754c7f20f65d4",
+      "version": "0.2.1"
+    },
+    {
+      "packId": "GO-SEARCH-CORE",
+      "path": "implementation_packs/GO_SEARCH_CORE.md",
+      "sha256": "e58163b599179b3c2fd133b3cbebee61ef1348d4dd0472b8d3bd0a2fced803a4",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-CACHE-CORE",
+      "path": "implementation_packs/GO_CACHE_CORE.md",
+      "sha256": "f533013a21cf78e092c714aee71e13fa9f635d906939a67ac3e06fac7454fef0",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-DATA-ANALYTICS-CORE",
+      "path": "implementation_packs/GO_DATA_ANALYTICS_CORE.md",
+      "sha256": "ff2fbb2147c984b9b5eb20323cd76e5406d0d4c12491bde5f5228f29c37c3acb",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "TS-GO-API-WEB-BRIDGE",
+      "path": "implementation_packs/TYPESCRIPT_GO_API_WEB_BRIDGE.md",
+      "sha256": "2747c056e4b5035e6a2a99e0bd43b0762c3c3866bc883c8fac8ccb434cc67697",
+      "version": "0.15.2"
+    },
+    {
+      "packId": "TS-OIDC-PORTAL-ADAPTER",
+      "path": "implementation_packs/TYPESCRIPT_OIDC_PORTAL_ADAPTER.md",
+      "sha256": "e2c2a15bb1b8c939ba98b91cdef79451cbe329e55b446e2bfa3ba42065f75e9e",
+      "version": "0.3.1"
+    },
+    {
+      "packId": "TS-FRANCHISE-JOURNEY-PORTALS",
+      "path": "implementation_packs/TYPESCRIPT_FRANCHISE_JOURNEY_PORTALS.md",
+      "sha256": "0a8b0186336b01e6d4019c9072cc8dccae6699a4b964a29bfee494d6abfe7b55",
+      "version": "0.21.0"
+    },
+    {
+      "packId": "MICROSOFT-PLAYWRIGHT-BROWSER-GATE",
+      "path": "implementation_packs/MICROSOFT_PLAYWRIGHT_BROWSER_GATE.md",
+      "sha256": "f3d2d68eb073a2417549f40087c2897a38299047bd224c4c96bb24ba8fd8c74e",
+      "version": "0.1.37"
+    },
+    {
+      "packId": "GOOGLE-LIGHTHOUSE-WEB-QUALITY-GATE",
+      "path": "implementation_packs/GOOGLE_LIGHTHOUSE_WEB_QUALITY_GATE.md",
+      "sha256": "2d9f4742402dcbdcf6aecd49cb55eb0697998417bd3797cbf5a9c2d6f00221f5",
+      "version": "0.1.5"
+    },
+    {
+      "packId": "GO-CONVERSATION-TOOLS",
+      "path": "implementation_packs/GO_CONVERSATION_TOOLS.md",
+      "sha256": "ad58fda99bd5ca2ff13eac0491f20608848d67f25330d06c52893e63cee7ad57",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-CONVERSATIONAL-AGENT",
+      "path": "implementation_packs/GO_CONVERSATIONAL_AGENT.md",
+      "sha256": "992c2e2f8cbad0ae6b6d16b7c7087a4edfd051f5fc4458fab63a4657ae8be1ab",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-LLM-ECONOMY-CORE",
+      "path": "implementation_packs/GO_LLM_ECONOMY_CORE.md",
+      "sha256": "cde3ebad7202f4830a066a2106e17a4a4fcdb48f776173029bc6ac58ec27de80",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-FINOPS-CORE",
+      "path": "implementation_packs/GO_FINOPS_CORE.md",
+      "sha256": "9c5a700c8a11cc59f88cf0496ce81217ad1e19ca8758e61488e33cc8798f84cb",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-HUMAN-APPROVAL-CORE",
+      "path": "implementation_packs/GO_HUMAN_APPROVAL_CORE.md",
+      "sha256": "6178e784df86332e67e4d89adee850358ec7e7852673b234f84f659ad6ef6792",
+      "version": "0.9.1"
+    },
+    {
+      "packId": "GO-LLM-OPENAI-ADAPTER",
+      "path": "implementation_packs/GO_LLM_OPENAI_ADAPTER.md",
+      "sha256": "98e99f787b764773d58e85e33bc45b76f0f96ee2912a963643723ebd0d758bb7",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-OPENAI-RESPONSES-TOOL-ADAPTER",
+      "path": "implementation_packs/GO_OPENAI_RESPONSES_TOOL_ADAPTER.md",
+      "sha256": "fce5da86164409d5d7a30d67544c4150c90bf040df6f1a93eb9331dc16b20863",
+      "version": "0.1.2"
+    },
+    {
+      "packId": "GO-CHANNELS-CORE",
+      "path": "implementation_packs/GO_CHANNELS_CORE.md",
+      "sha256": "a191a1e0d5649889b5f7f2f64eba1cf018ed7889feb0fc8c5e6b831af920974d",
+      "version": "0.4.0"
+    },
+    {
+      "packId": "GO-AGENT-DOMAIN-BINDING",
+      "path": "implementation_packs/GO_AGENT_DOMAIN_BINDING.md",
+      "sha256": "6ee40bd7b5c9e10b7c8c33149953a00e67e3970e622d49b44f97369acaff635a",
+      "version": "0.4.1"
+    },
+    {
+      "packId": "GO-CONNECTED-CONVERSATION-RUNTIME",
+      "path": "implementation_packs/GO_CONNECTED_CONVERSATION_RUNTIME.md",
+      "sha256": "8bbbe6f46e3f2af027ad9724d9abce4a2ecaf10fc7c3310c20f8daa36fddf288",
+      "version": "0.1.2"
+    },
+    {
+      "packId": "GO-PG-CONTACT-CHANNEL-IDENTITY",
+      "path": "implementation_packs/GO_PG_CONTACT_CHANNEL_IDENTITY.md",
+      "sha256": "31f068544928a47f4682aa0bf9f2015467b8644c7025bb42abeb808c31f2a149",
+      "version": "0.1.1"
+    },
+    {
+      "packId": "GO-PG-OUTBOUND-DELIVERY-FENCE",
+      "path": "implementation_packs/GO_PG_OUTBOUND_DELIVERY_FENCE.md",
+      "sha256": "0f03fc9282f2acb47e3ae5f7d54f8486566de35c6dfd363faa3087e6a8acfdd4",
+      "version": "0.2.1"
+    },
+    {
+      "packId": "GO-MERCADOLIBRE-QUESTION-OUTBOUND",
+      "path": "implementation_packs/GO_MERCADOLIBRE_QUESTION_OUTBOUND.md",
+      "sha256": "45f39471a47db8eb03c4e7ed865b4a4cb9ca73c53696753598a15ca92edb364f",
+      "version": "0.1.1"
+    },
+    {
+      "packId": "GO-APP-WIRING",
+      "path": "implementation_packs/GO_APP_WIRING.md",
+      "sha256": "169a6bae9256ea7de4a997684bd26560e362c9279508ebe841a96c825b97dab7",
+      "version": "0.2.1"
+    },
+    {
+      "packId": "GO-OMNICHANNEL-LEAD-INGRESS",
+      "path": "implementation_packs/GO_OMNICHANNEL_LEAD_INGRESS.md",
+      "sha256": "5ff3325a3d1e2e33f79f80034b92fd771e97c104416e96d67e902b64c8ebc242",
+      "version": "0.2.0"
+    },
+    {
+      "packId": "GO-MERCADOLIBRE-MARKETPLACE-ADAPTER",
+      "path": "implementation_packs/GO_MERCADOLIBRE_MARKETPLACE_ADAPTER.md",
+      "sha256": "85e9774f8bf5f48c1a5b741d7de4779d00ed4d7525a39db4d4bfe6754c5b294c",
+      "version": "0.2.0"
+    },
+    {
+      "packId": "GO-META-LEAD-WEBHOOK-SIGNAL",
+      "path": "implementation_packs/GO_META_LEAD_WEBHOOK_SIGNAL.md",
+      "sha256": "01e5785450ebc2b7db1ae5dfbc785c81c63a05df59297978c17f5fe2663ab043",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-LEAD-CANDIDATE-PROMOTION",
+      "path": "implementation_packs/GO_LEAD_CANDIDATE_PROMOTION.md",
+      "sha256": "d04bbef352bcd931fbda523f5f139b6d7765a131f62c772dcc55dc753d83d92e",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-META-LEAD-EVIDENCE-IMPORT",
+      "path": "implementation_packs/GO_META_LEAD_EVIDENCE_IMPORT.md",
+      "sha256": "027cf0d9307f8c9d1c34616e5b63c0398e762b3d93d5b48aa05b4755fd44eeef",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "PYTHON-META-LEAD-RECONCILIATION-ADAPTER",
+      "path": "implementation_packs/PYTHON_META_LEAD_RECONCILIATION_ADAPTER.md",
+      "sha256": "ccddcc1aaef4d0cd06e71497c70a1f003a9da0ba77c3231617ab98a040fcb0e0",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "PYTHON-META-WHATSAPP-CLOUD-ADAPTER",
+      "path": "implementation_packs/PYTHON_META_WHATSAPP_CLOUD_ADAPTER.md",
+      "sha256": "46ab3b4e880ebcdea37a022fee0312c3972c3e9dc77643f240498f55f7334893",
+      "version": "0.15.0"
+    },
+    {
+      "packId": "PYTHON-GOOGLE-ADS-REPORTING-ADAPTER",
+      "path": "implementation_packs/PYTHON_GOOGLE_ADS_REPORTING_ADAPTER.md",
+      "sha256": "73c45924a25da4bdd305ead1e46859db2a6f1e57df707b9b25bed412d26cf729",
+      "version": "0.2.0"
+    },
+    {
+      "packId": "PYTHON-META-ADS-REPORTING-ADAPTER",
+      "path": "implementation_packs/PYTHON_META_ADS_REPORTING_ADAPTER.md",
+      "sha256": "2ed2981302f3c7c6caf69eaead0205cd9cf2e54b6799b719664241cb6339e53f",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "PYTHON-TIKTOK-ADS-REPORTING-ADAPTER",
+      "path": "implementation_packs/PYTHON_TIKTOK_ADS_REPORTING_ADAPTER.md",
+      "sha256": "8804c81cfe58e25a062830f5f75f8f664b6bb1b097565f5d3201cbf01056b787",
+      "version": "0.2.0"
+    },
+    {
+      "packId": "PYTHON-TIKTOK-LEAD-ADAPTER",
+      "path": "implementation_packs/PYTHON_TIKTOK_LEAD_ADAPTER.md",
+      "sha256": "628d1119946f149e6c967513ea0efa258c9135f84ce7e9aa03748b67f1bd2bd0",
+      "version": "0.2.0"
+    },
+    {
+      "packId": "GO-TIKTOK-LEAD-DURABLE-IMPORT",
+      "path": "implementation_packs/GO_TIKTOK_LEAD_DURABLE_IMPORT.md",
+      "sha256": "34ce860d497225c899f2a1856ed40214194adb103dcee5cd5e71f7095e82742a",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "PYTHON-GOOGLE-MERCHANT-PRODUCT-SYNC-ADAPTER",
+      "path": "implementation_packs/PYTHON_GOOGLE_MERCHANT_PRODUCT_SYNC_ADAPTER.md",
+      "sha256": "7e7155d8e38e29172a8f18abc3c872c43d530f3c91ed38389739636c407180ec",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "MICROSOFT-DEVSKIM-ADAPTED-SAST-GATE",
+      "path": "implementation_packs/MICROSOFT_DEVSKIM_ADAPTED_SAST_GATE.md",
+      "sha256": "ce8ec5ca2a06b342623bc8567163d447febe9be7af4fa55dd52d9e9b86ca824c",
+      "version": "0.1.1"
+    },
+    {
+      "packId": "PORTABLE-SIGNED-RELEASE-EVIDENCE-GATE",
+      "path": "implementation_packs/PORTABLE_SIGNED_RELEASE_EVIDENCE_GATE.md",
+      "sha256": "e3b90ec4a94d79910e004c621c6e7e4b0958f2998bbd3aedcf6ad4d08d5dbf2c",
+      "version": "0.2.3"
+    },
+    {
+      "packId": "TS-MULTIROLE-ONBOARDING",
+      "path": "implementation_packs/TS_MULTIROLE_ONBOARDING.md",
+      "sha256": "22becd350c49cead505c7830173ddbc08ad62b408d7c99cbffd43b0c54cabb19",
+      "version": "0.2.1"
+    },
+    {
+      "packId": "GO-CUSTOMER-SURVEY-API",
+      "path": "implementation_packs/GO_CUSTOMER_SURVEY_API.md",
+      "sha256": "7638176e48ddd88f90a08c92108eb976e9e5bb770ebebcc77fc4ce78b619ade7",
+      "version": "0.2.1"
+    },
+    {
+      "packId": "TS-CUSTOMER-SURVEY-PORTAL",
+      "path": "implementation_packs/TS_CUSTOMER_SURVEY_PORTAL.md",
+      "sha256": "2c4e73922094c26fd76dc7c81c0d5a87dbc0d011b5bb458282b452e85db2dafc",
+      "version": "0.1.2"
+    },
+    {
+      "packId": "GO-OFFICIAL-PAYMENT-WEBHOOK-ADAPTERS",
+      "path": "implementation_packs/GO_OFFICIAL_PAYMENT_WEBHOOK_ADAPTERS.md",
+      "sha256": "56e2885783f2daebcd5444a2325828d1272a0b8d81ad8b7a8781eca204c61347",
+      "version": "0.3.2"
+    },
+    {
+      "packId": "GO-PAYMENT-CHECKOUT-RUNTIME",
+      "path": "implementation_packs/GO_PAYMENT_CHECKOUT_RUNTIME.md",
+      "sha256": "6a2b9d59c9f37c78bbf907a4faf5d1e3890249f382f9caabb0e348b76945ebee",
+      "version": "0.3.0"
+    },
+    {
+      "packId": "GO-INITIAL-HANDOVER-API",
+      "path": "implementation_packs/GO_INITIAL_HANDOVER_API.md",
+      "sha256": "ea2e19bbd3cc6811954d3ee213a67c4c72bc94e659fa6a954aef13552bee4ed9",
+      "version": "0.4.0"
+    },
+    {
+      "packId": "GO-BUSINESS-POLICY-PROFILE",
+      "path": "implementation_packs/GO_BUSINESS_POLICY_PROFILE.md",
+      "sha256": "14dacedf7157c3ab326938e82e389bd1ae3b53d1c43e5fd18b6e6619b24027c4",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "TS-PAYMENT-CHECKOUT-PORTAL",
+      "path": "implementation_packs/TYPESCRIPT_PAYMENT_CHECKOUT_PORTAL.md",
+      "sha256": "e62966a753a92e6f6f741136b0214a695b78044ad780640ec015dea9dcb8a621",
+      "version": "0.1.1"
+    },
+    {
+      "packId": "GO-EXACT-FX-SNAPSHOT-ACCOUNTING",
+      "path": "implementation_packs/GO_EXACT_FX_SNAPSHOT_ACCOUNTING.md",
+      "sha256": "5e8d50ff1493244e13049f5b02fd5d47b544b0dec4ce372433b525235421a37d",
+      "version": "0.2.0"
+    },
+    {
+      "packId": "GO-OIDC-SERVICE-TOKEN-BROKER",
+      "path": "implementation_packs/GO_OIDC_SERVICE_TOKEN_BROKER.md",
+      "sha256": "2c381603023c06751c0fb3a9e6a89000570a46adf034099a4638bb9ea78052dd",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-CONNECTED-WHATSAPP-HOST",
+      "path": "implementation_packs/GO_CONNECTED_WHATSAPP_HOST.md",
+      "sha256": "4b3a1a74bd72e061e98a8022b90eda7193c37e6b81038a794b658a77c63b1b50",
+      "version": "0.3.1"
+    },
+    {
+      "packId": "PYTHON-OFFICIAL-META-PAGE-WRITE-ADAPTER",
+      "path": "implementation_packs/PYTHON_OFFICIAL_META_PAGE_WRITE_ADAPTER.md",
+      "sha256": "d5a9722f93493c62dcbb43f9aa937bcf05e9c8dc461e1b5fed5d0c40a2cb52e7",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-META-PAGE-PUBLISHING-INFRASTRUCTURE",
+      "path": "implementation_packs/GO_META_PAGE_PUBLISHING_INFRASTRUCTURE.md",
+      "sha256": "cb691e5f7b474055859560205ce7d13e3ac1bc137d91c1dd469a0d2259861fb7",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "PYTHON-ODOO-STORED-VALUE-CALCULATOR",
+      "path": "implementation_packs/PYTHON_ODOO_STORED_VALUE_CALCULATOR.md",
+      "sha256": "31fa9a95a38916df0f9022f8e1e19a7eb5b7396f976f90daf0ee5fd66c3e2543",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-APPROVED-STORED-VALUE-TENDER",
+      "path": "implementation_packs/GO_APPROVED_STORED_VALUE_TENDER.md",
+      "sha256": "af5b80600fd8ac7879fef302fb0e6de6024ddbf46d2fc0d91b45e4e740537ee4",
+      "version": "0.2.1"
+    },
+    {
+      "packId": "GO-CONNECTED-WARRANTY-CLAIM",
+      "path": "implementation_packs/GO_CONNECTED_WARRANTY_CLAIM.md",
+      "sha256": "1495e25cc834bb0ca312afd465f6861b8ce4f70a517714213ebb9477b6842bac",
+      "version": "0.2.0"
+    },
+    {
+      "packId": "GO-BC-WARRANTY-COVERAGE-ADAPTER",
+      "path": "implementation_packs/GO_BC_WARRANTY_COVERAGE_ADAPTER.md",
+      "sha256": "4ba51dfee2e23dbbcb79c0741d9c79d851f1d00e288c89018640a1c56d503cca",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-CONNECTED-SERIAL-SUPPLY",
+      "path": "implementation_packs/GO_CONNECTED_SERIAL_SUPPLY.md",
+      "sha256": "d839eeef98b3d9313084139262dbc0626d2262217a2bc7d9370fb245fd0bd9d6",
+      "version": "0.2.0"
+    },
+    {
+      "packId": "TYPESCRIPT-PUBLISHED-CATALOG-STOREFRONT",
+      "path": "implementation_packs/TYPESCRIPT_PUBLISHED_CATALOG_STOREFRONT.md",
+      "sha256": "cee25e05f98c78da8337c71dd442622d808deec700e974cf2428aed36e96896a",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-CONNECTED-CATALOG-PUBLICATION",
+      "path": "implementation_packs/GO_CONNECTED_CATALOG_PUBLICATION.md",
+      "sha256": "0e10d88755424e8c909bb1bf19b1e0450b9a0cfa7ea25fe5d2c1bdbc40699ac6",
+      "version": "0.2.0"
+    },
+    {
+      "packId": "TS-CONNECTED-TRAINING-PORTAL",
+      "path": "implementation_packs/TYPESCRIPT_CONNECTED_TRAINING_PORTAL.md",
+      "sha256": "2a08630e9fe58f67e52f47294aa7ca0e659d894bd55e0c54742d93ac202c83ea",
+      "version": "0.2.0"
+    },
+    {
+      "packId": "GO-CONNECTED-HUMAN-TRAINING",
+      "path": "implementation_packs/GO_CONNECTED_HUMAN_TRAINING.md",
+      "sha256": "f691026dd06e39818559be860d231bc58f984c14134e6ab8bdf94049273245bc",
+      "version": "0.2.0"
+    },
+    {
+      "packId": "TS-CATALOG-AUTHORING-PORTAL",
+      "path": "implementation_packs/TYPESCRIPT_CATALOG_AUTHORING_PORTAL.md",
+      "sha256": "bd6d49a7a774c59142dd09548445a84b1e6dda9890dcd0854da250ac3dec84d1",
+      "version": "0.1.2"
+    },
+    {
+      "packId": "GO-CONNECTED-CATALOG-AUTHORING",
+      "path": "implementation_packs/GO_CONNECTED_CATALOG_AUTHORING.md",
+      "sha256": "a36d82ea20c193021047a3b728e45184191851d183048fabbffc2019ebdb75a4",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "TS-SERIAL-SUPPLY-PORTAL",
+      "path": "implementation_packs/TYPESCRIPT_SERIAL_SUPPLY_PORTAL.md",
+      "sha256": "4e504495700f637abc58196e18eb2de94df0b12a714e25404aeec5c52cc61890",
+      "version": "0.1.2"
+    },
+    {
+      "packId": "GO-CONNECTED-SUPPLY-CREATION",
+      "path": "implementation_packs/GO_CONNECTED_SUPPLY_CREATION.md",
+      "sha256": "a76cf3626f92741594159d4340cc6dcc066abb39ae6520b8733f2e9c4864ce54",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "TS-WARRANTY-ROLE-PORTAL",
+      "path": "implementation_packs/TYPESCRIPT_WARRANTY_ROLE_PORTAL.md",
+      "sha256": "f93139931fa68ea53d5946b01cf86490230d140360cc37d037380128aeb6f9de",
+      "version": "0.1.2"
+    },
+    {
+      "packId": "GO-WARRANTY-ROLE-VIEW",
+      "path": "implementation_packs/GO_WARRANTY_ROLE_VIEW.md",
+      "sha256": "c423b427af8b3ae2452a55c222774cf1f323fb0280b6a0821d780e38b61c60d5",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "TS-NETWORK-ROLE-PORTAL",
+      "path": "implementation_packs/TYPESCRIPT_NETWORK_ROLE_PORTAL.md",
+      "sha256": "02dce04877bbd45edf4a53de1449fc062d4aaf39a91ebeb4c1adf783edf1674a",
+      "version": "0.2.0"
+    },
+    {
+      "packId": "GO-NETWORK-ROLE-COMPOSITION",
+      "path": "implementation_packs/GO_NETWORK_ROLE_COMPOSITION.md",
+      "sha256": "e16d4cc04718a1ac4355bd137b4dd398b15fe9e42f688d53111f010602cebf9d",
+      "version": "0.2.0"
+    },
+    {
+      "packId": "TS-CONNECTED-HELP-CMS-PORTAL",
+      "path": "implementation_packs/TYPESCRIPT_CONNECTED_HELP_CMS_PORTAL.md",
+      "sha256": "3a07bb47b751e453b0d5be68ff36238e3ae9de2951d9caf57c1766e61f31e315",
+      "version": "0.1.1"
+    },
+    {
+      "packId": "GO-HELP-CENTER-CORE",
+      "path": "implementation_packs/GO_HELP_CENTER_CORE.md",
+      "sha256": "e76c5ec1a88dc84882e446af4448c60ac04163aa6d1e6a076b5836161bc79082",
+      "version": "0.2.0"
+    },
+    {
+      "packId": "GO-CONNECTED-HELP-CMS",
+      "path": "implementation_packs/GO_CONNECTED_HELP_CMS.md",
+      "sha256": "9cfd19f5202b23f705d1b7dc68d0a82c9d8277637e5bf97d7fd50f1ce60a9eb7",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-CONNECTED-ROLE-METRICS-PROOF",
+      "path": "implementation_packs/GO_CONNECTED_ROLE_METRICS_PROOF.md",
+      "sha256": "a3565c19a7fc239ad749ba23a4350db5b131cc6a19ea7913a8dce8edbec786c4",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-CONNECTED-PRIVATE-LOCALE-PROOF",
+      "path": "implementation_packs/GO_CONNECTED_PRIVATE_LOCALE_PROOF.md",
+      "sha256": "f0083f892c5f7e111898128807e2590d22c83dede77da0e71db4a42d6838530c",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-CONNECTED-MARKETPLACE-MUTATION",
+      "path": "implementation_packs/GO_CONNECTED_MARKETPLACE_MUTATION.md",
+      "sha256": "ba30daedf3a27233349b04ef0252834103324c1869d5efafc784029251ac33d4",
+      "version": "0.3.0"
+    },
+    {
+      "packId": "GO-CONNECTED-GOOGLE-MERCHANT",
+      "path": "implementation_packs/GO_CONNECTED_GOOGLE_MERCHANT.md",
+      "sha256": "1e2b239b12d7ada18c6995ce593adcc94f6d8ef14a270547ae73a7bc3b2d77b7",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-CONNECTED-SCHEDULED-WHATSAPP",
+      "path": "implementation_packs/GO_CONNECTED_SCHEDULED_WHATSAPP.md",
+      "sha256": "2a554bb99b6323c2bff7f171743eaa4a3873f735876577c3c022762dc2d125da",
+      "version": "0.2.0"
+    },
+    {
+      "packId": "GO-CONNECTED-WHATSAPP-CAMPAIGNS",
+      "path": "implementation_packs/GO_CONNECTED_WHATSAPP_CAMPAIGNS.md",
+      "sha256": "d3b0aef726f76fe44b0b74a990760bbbc57a635ba39e402ce8669cc652e28788",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-OIDC-PORTAL-SESSION",
+      "path": "implementation_packs/GO_OIDC_PORTAL_SESSION.md",
+      "sha256": "c26e7e8f32c9440d6da9ca8dd238e183dc2eab8fd35e9802318332079d544ce9",
+      "version": "0.1.1"
+    },
+    {
+      "packId": "GO-AWS-TEXTRACT-DOCUMENT-RUNTIME",
+      "path": "implementation_packs/GO_AWS_TEXTRACT_DOCUMENT_RUNTIME.md",
+      "sha256": "71ca1493b949c5b29a6304d0bda7ada22422bab071666ad97014b1ed5178650a",
+      "version": "0.2.1"
+    },
+    {
+      "packId": "SECURE-LOCAL-FILE-INGESTION-GATE",
+      "path": "implementation_packs/SECURE_LOCAL_FILE_INGESTION_GATE.md",
+      "sha256": "981f69eaebaf690300831bf1130fb3b02517d029e3ea1151bf044ff46632258c",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "MICROSOFT-AZURE-DOCUMENT-INTELLIGENCE-OFFICIAL-INVOICE-SAMPLE",
+      "path": "implementation_packs/MICROSOFT_AZURE_DOCUMENT_INTELLIGENCE_OFFICIAL_INVOICE_SAMPLE.md",
+      "sha256": "e5788a6149b2e7b9c4d3e3520658b6c626b91b490893437ea24504a471856456",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-CONNECTED-DOCUMENT-REFERENCE",
+      "path": "implementation_packs/GO_CONNECTED_DOCUMENT_REFERENCE.md",
+      "sha256": "994ed3954ffaa79cf22ec696353e606e7b4fd174b26c8cb3daf1bdd6732046a9",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "PNPM-ARTIFACT-SELECTION-GATE",
+      "path": "implementation_packs/PNPM_ARTIFACT_SELECTION_GATE.md",
+      "sha256": "8a16a52ee7ed0795505765c81bf0509d40846101c790694a4f87010f479734b2",
+      "version": "0.9.0"
+    },
+    {
+      "packId": "WINDOWS-REFERENCE-TELEMETRY-RUNTIME",
+      "path": "implementation_packs/WINDOWS_REFERENCE_TELEMETRY_RUNTIME.md",
+      "sha256": "82aa19096bb60a60ac834a33185f2dea6d79637bfdf9d009b76427131ca22ecd",
+      "version": "0.1.0"
+    },
+    {
+      "packId": "GO-HTTP-METRICS-REFERENCE",
+      "path": "implementation_packs/GO_HTTP_METRICS_REFERENCE.md",
+      "sha256": "00aad47aec6767fcc2e125822e5a5dc261edcd4f8014e24910fabd3b0aa7cded",
+      "version": "0.1.16"
+    }
+  ],
+  "production_authorized": false,
+  "schema": "elite-cloud-composition/v403.1",
+  "scope": "LIBRARY_INFRASTRUCTURE",
+  "selection": {
+    "meaning": "complete V402 source composition, not serverless subset; overlay V403 uses separate owner plan",
+    "pack_count": 116,
+    "path": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+    "sha256": "4aaa1fb70a613dace854645c2d053097c6d8b3173cb8c2f6db80aedb9e04e672"
+  }
+}

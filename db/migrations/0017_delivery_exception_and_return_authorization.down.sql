@@ -1,0 +1,16 @@
+begin;
+drop index if exists sales.delivery_exception_customer_idx;
+drop index if exists sales.delivery_exception_org_state_idx;
+drop trigger if exists return_authorization_immutable on sales.return_authorization;
+drop trigger if exists delivery_exception_resolution_immutable on sales.delivery_exception_resolution;
+drop function if exists sales.prevent_delivery_resolution_mutation();
+drop trigger if exists delivery_exception_lifecycle on sales.delivery_exception;
+drop function if exists sales.enforce_delivery_exception_lifecycle();
+drop table if exists sales.delivery_exception_resolution;
+drop table if exists sales.return_authorization;
+drop table if exists sales.delivery_exception;
+drop index if exists sales.delivery_handover_one_successor_uq;
+alter table sales.delivery_handover drop constraint if exists delivery_handover_not_self_superseding_ck;
+alter table sales.delivery_handover drop constraint if exists delivery_handover_supersedes_fk;
+alter table sales.delivery_handover drop column if exists supersedes_handover_id;
+commit;

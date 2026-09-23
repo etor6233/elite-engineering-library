@@ -1,0 +1,47 @@
+{
+  "method_status": "CONFIGURATION_FIXTURE_ONLY_TARGET_NOT_RUN",
+  "observations": [
+    {
+      "bytes": 295642,
+      "content_type": "text/html; charset=utf-8",
+      "document_last_updated": "2026-09-04",
+      "effective_url": "https://docs.cloud.google.com/run/docs/securing/identity-aware-proxy-cloud-run",
+      "http_status": 200,
+      "license": "Google documentation CC BY 4.0; samples Apache-2.0; no sample copied",
+      "local_path": "official-docs/iap-direct.html",
+      "method": "OFFICIAL_PUBLIC_DOCUMENT_BYTES",
+      "observed_at": "2026-09-14T03:17:54.133311+00:00",
+      "sha256": "24b09f32f0234df63ea464c9aba1379553c01489000d1fdcf9cfda6611df60b2",
+      "url": "https://docs.cloud.google.com/run/docs/securing/identity-aware-proxy-cloud-run"
+    },
+    {
+      "bytes": 165763,
+      "content_type": "text/html; charset=utf-8",
+      "document_last_updated": "2026-07-14",
+      "effective_url": "https://docs.cloud.google.com/sdk/gcloud/reference/iap/web/add-iam-policy-binding",
+      "http_status": 200,
+      "license": "Google documentation CC BY 4.0; samples Apache-2.0; no sample copied",
+      "local_path": "official-docs/iap-policy.html",
+      "method": "OFFICIAL_PUBLIC_DOCUMENT_BYTES",
+      "observed_at": "2026-09-14T03:17:55.380145+00:00",
+      "sha256": "613c540ca3b898e6ce60e5b1ad11d6c1f8d8e9343d95266db5f5352085277cf4",
+      "url": "https://docs.cloud.google.com/sdk/gcloud/reference/iap/web/add-iam-policy-binding"
+    },
+    {
+      "bytes": 227728,
+      "content_type": "text/html; charset=utf-8",
+      "document_last_updated": "2026-06-30",
+      "effective_url": "https://docs.cloud.google.com/sdk/gcloud/reference/run/services/update",
+      "http_status": 200,
+      "license": "Google documentation CC BY 4.0; samples Apache-2.0; no sample copied",
+      "local_path": "official-docs/run-update.html",
+      "method": "OFFICIAL_PUBLIC_DOCUMENT_BYTES",
+      "observed_at": "2026-09-14T03:17:55.997915+00:00",
+      "sha256": "ae3b3a7d08da549054c3a44f851a2b202d842d24ab4d0f2b56b515566515c9f2",
+      "url": "https://docs.cloud.google.com/sdk/gcloud/reference/run/services/update"
+    }
+  ],
+  "provenance": "AUTHORED",
+  "provider_executed": false,
+  "schema": "elite-stack-method-sources/v403.1"
+}

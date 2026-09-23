@@ -1,0 +1,44 @@
+{
+  "schema": "elite-official-meta-lead-webhook-source-lock/v1",
+  "observed_at": "2026-09-04",
+  "sources": [
+    {
+      "repository": "fbsamples/messenger-platform-samples",
+      "commit": "354ee221ac1d081cc6105a1515a8468cc44f6710",
+      "tree": "a711d923d3797d202cdeaf415d7de088da0ee424",
+      "archive_bytes": 7674719,
+      "archive_sha256": "65fc927d030d97ba7b8cc8f891fc5369a89b820e73326ee12703b9052af5202c",
+      "license": "LicenseRef-Meta-Platform-API-Only",
+      "license_path": "LICENSE",
+      "license_bytes": 1045,
+      "license_sha256": "b274a3f84cf720f8250784b4f8b8758d019626d4496f67a8870424a5924a9894",
+      "focal_artifacts": [
+        {"path": "messenger-api/messenger-api-and-webhooks/app.py", "bytes": 2765, "sha256": "8aa10d7b370d8e9eed9f05c4259b06b4ee48cf115cc98e2d8063964924608d42"},
+        {"path": "messenger-api/messenger-api-and-webhooks/tests/test_webhook_security.py", "bytes": 8919, "sha256": "120e8a742b2eb1da66dd8b3029e045b464de3e04a3a4bd42aa449280fb95d4e2"}
+      ],
+      "claim": "raw-body X-Hub-Signature-256 HMAC verification, constant-time comparison, GET subscription verification and security regressions"
+    },
+    {
+      "repository": "fbsamples/lead-ads-webhook-sample",
+      "commit": "c0843165ad0f6acd82731e0c9da96a22b4162b35",
+      "tree": "93c3556abd9bee22bb92db66673e75d67e0f2449",
+      "archive_bytes": 7604183,
+      "archive_sha256": "8da8485a8df58aa7ebf9e004e9ab3ebb44e019bc426be6b535ab0646785a67c8",
+      "license": "MIT",
+      "license_path": "LICENSE",
+      "license_bytes": 1085,
+      "license_sha256": "a80c79b8f80e824c8ea0612b7abadb9c92c48673cf0adc20b2a7f43e2b19faa0",
+      "focal_artifacts": [
+        {"path": "prjFBLeadAds/Controllers/WebhooksController.cs", "bytes": 5516, "sha256": "12dcdf4561318eb39d2e2ff1ffc0cf7620627d35a2ff7f5815e54b06c911d26b"},
+        {"path": "postman/FB Lead Ads (Part 1 - The Webhook).postman_collection.json", "bytes": 10686, "sha256": "3d2a5516949fcab8203af1d9cb65b7596fd3034504635b139892ae304dde10a4"}
+      ],
+      "claim": "official page/entry/changes/leadgen notification envelope and leadgen_id retrieval handoff"
+    }
+  ],
+  "limitations": [
+    "Both repositories are official samples, not production certification.",
+    "lead-ads-webhook-sample is archived and its controller is not adopted as a security boundary.",
+    "messenger-platform-samples code may be used only with Meta/Facebook platform APIs.",
+    "Live permissions, Page/form ownership, subscription, delivery and Graph API retrieval remain project gates."
+  ]
+}

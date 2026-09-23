@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "library_baseline_revision": 337,
+  "bindings": {
+    "engineering": {
+      "pack": "implementation_packs/ENGINEERING_EXECUTION_VALIDATOR.md",
+      "evidence": "reconstruction_evidence/LIBRARY_INFRA_READY_V402.md",
+      "pack_sha256": "368c4f9d0c328353634e3dc0738e0d300f225013b9c7a769628b971d0c854808",
+      "evidence_sha256": "97c433e986c3beb29b183dc30c5ccdf7b0721156268bfcaab8a559554b46b883",
+      "claim_scope": "EXISTING_LIBRARY_REFERENCE_ONLY",
+      "target_verified": false
+    },
+    "product-managers": {
+      "pack": "implementation_packs/GO_CUSTOMER_SURVEY_API.md",
+      "evidence": "reconstruction_evidence/CONNECTED_CUSTOMER_SURVEYS_V400.md",
+      "pack_sha256": "7638176e48ddd88f90a08c92108eb976e9e5bb770ebebcc77fc4ce78b619ade7",
+      "evidence_sha256": "29970739d1d1e8d77a22c12619677f4fd0dcb491a6149b2c07ddcb394c4f2ca9",
+      "claim_scope": "EXISTING_LIBRARY_REFERENCE_ONLY",
+      "target_verified": false
+    },
+    "sales-engineering": {
+      "pack": "implementation_packs/GO_FRANCHISE_CUSTOMER_JOURNEY_API.md",
+      "evidence": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.md",
+      "pack_sha256": "c4989e27c5ad7881362819ede39b8127019b119c4a5509e9c3d22d26b4d0cc78",
+      "evidence_sha256": "fd98b23c028f7ee84da423460d6e51252196b4154282e9243371f466dc095bdf",
+      "claim_scope": "EXISTING_LIBRARY_REFERENCE_ONLY",
+      "target_verified": false
+    },
+    "sales": {
+      "pack": "implementation_packs/GO_FRANCHISE_CUSTOMER_JOURNEY_API.md",
+      "evidence": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.md",
+      "pack_sha256": "c4989e27c5ad7881362819ede39b8127019b119c4a5509e9c3d22d26b4d0cc78",
+      "evidence_sha256": "fd98b23c028f7ee84da423460d6e51252196b4154282e9243371f466dc095bdf",
+      "claim_scope": "EXISTING_LIBRARY_REFERENCE_ONLY",
+      "target_verified": false
+    },
+    "sdrs": {
+      "pack": "implementation_packs/GO_LEAD_CANDIDATE_PROMOTION.md",
+      "evidence": "reconstruction_evidence/LIBRARY_INFRA_READY_V402.md",
+      "pack_sha256": "d04bbef352bcd931fbda523f5f139b6d7765a131f62c772dcc55dc753d83d92e",
+      "evidence_sha256": "97c433e986c3beb29b183dc30c5ccdf7b0721156268bfcaab8a559554b46b883",
+      "claim_scope": "EXISTING_LIBRARY_REFERENCE_ONLY",
+      "target_verified": false
+    },
+    "customer-support": {
+      "pack": "implementation_packs/GO_CONNECTED_CONVERSATION_RUNTIME.md",
+      "evidence": "reconstruction_evidence/AI_CONNECTED_REFERENCE_RELEASE_V402.md",
+      "pack_sha256": "8bbbe6f46e3f2af027ad9724d9abce4a2ecaf10fc7c3310c20f8daa36fddf288",
+      "evidence_sha256": "5352c625aa0dffa700a559ba3b4f9d2795ab7d9816cebf8045747cd0954759ca",
+      "claim_scope": "EXISTING_LIBRARY_REFERENCE_ONLY",
+      "target_verified": false
+    },
+    "marketing-operations": {
+      "pack": "implementation_packs/GO_CONNECTED_WHATSAPP_CAMPAIGNS.md",
+      "evidence": "reconstruction_evidence/CAMPAIGN_CONNECTED_RELEASE_V402.md",
+      "pack_sha256": "d3b0aef726f76fe44b0b74a990760bbbc57a635ba39e402ce8669cc652e28788",
+      "evidence_sha256": "4fc7deec96b3ddc0442e04adffe5c00263e0c5597eb2398e83233728e61e611d",
+      "claim_scope": "EXISTING_LIBRARY_REFERENCE_ONLY",
+      "target_verified": false
+    },
+    "post-sales": {
+      "pack": "implementation_packs/GO_FRANCHISE_CUSTOMER_JOURNEY_API.md",
+      "evidence": "reconstruction_evidence/LIBRARY_SIGNED_REFERENCE_ACCEPTANCE_V402.md",
+      "pack_sha256": "c4989e27c5ad7881362819ede39b8127019b119c4a5509e9c3d22d26b4d0cc78",
+      "evidence_sha256": "fd98b23c028f7ee84da423460d6e51252196b4154282e9243371f466dc095bdf",
+      "claim_scope": "EXISTING_LIBRARY_REFERENCE_ONLY",
+      "target_verified": false
+    },
+    "marketing": {
+      "pack": "implementation_packs/GO_CONNECTED_WHATSAPP_CAMPAIGNS.md",
+      "evidence": "reconstruction_evidence/CAMPAIGN_CONNECTED_RELEASE_V402.md",
+      "pack_sha256": "d3b0aef726f76fe44b0b74a990760bbbc57a635ba39e402ce8669cc652e28788",
+      "evidence_sha256": "4fc7deec96b3ddc0442e04adffe5c00263e0c5597eb2398e83233728e61e611d",
+      "claim_scope": "EXISTING_LIBRARY_REFERENCE_ONLY",
+      "target_verified": false
+    }
+  },
+  "new_v403_product_execution": false
+}

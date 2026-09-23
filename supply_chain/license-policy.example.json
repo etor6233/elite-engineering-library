@@ -1,0 +1,15 @@
+{
+  "allowed_expressions": [
+    "0BSD",
+    "Apache-2.0",
+    "BSD-3-Clause",
+    "CC-BY-4.0",
+    "ISC",
+    "MIT"
+  ],
+  "acknowledged_expressions": {},
+  "denied_expressions": [
+    "AGPL-3.0-only",
+    "AGPL-3.0-or-later"
+  ]
+}

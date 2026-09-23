@@ -1,0 +1,12 @@
+# AUTHORED packaging glue, references official Node image fixed in image-lock.json.
+# Build Next standalone using the selected source profile on Linux first.
+ARG NODE_RUNTIME
+FROM ${NODE_RUNTIME}
+WORKDIR /app
+ENV NODE_ENV=production PORT=8080 HOSTNAME=0.0.0.0 NEXT_TELEMETRY_DISABLED=1
+COPY --chown=65532:65532 .next/standalone/ ./
+COPY --chown=65532:65532 .next/static/ ./.next/static/
+COPY --chown=65532:65532 public/ ./public/
+USER 65532:65532
+EXPOSE 8080
+CMD ["node", "server.js"]

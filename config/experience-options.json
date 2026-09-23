@@ -1,0 +1,336 @@
+{
+  "schema_version": "1",
+  "tenants": {
+    "tenant": {
+      "organization_labels": {
+        "store": "Sucursal Centro"
+      },
+      "organizations": {
+        "store": {
+          "variants": [
+            {
+              "value": "variant-v403",
+              "label": "Modelo de referencia",
+              "allowed_subjects": [
+                "operator"
+              ]
+            },
+            {
+              "value": "private",
+              "label": "No autorizado",
+              "allowed_subjects": [
+                "another-subject"
+              ]
+            }
+          ],
+          "priceBooks": [
+            {
+              "value": "retail-v403",
+              "label": "Venta minorista",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "assignees": [
+            {
+              "value": "operator",
+              "label": "Operador de referencia",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "resources": [
+            {
+              "value": "resource-v403",
+              "label": "Equipo de entrega",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "availabilityReasons": [
+            {
+              "value": "maintenance",
+              "label": "Mantenimiento programado",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "appointmentReasons": [
+            {
+              "value": "customer-request",
+              "label": "Solicitud del cliente",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "evidence": [
+            {
+              "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "label": "Inspecci\u00f3n t\u00e9cnica verificada",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "catalogModels": [
+            {
+              "value": "catalogModels-v403",
+              "label": "Referencia aprobada de catalogModels",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "catalogMedia": [
+            {
+              "value": "catalogMedia-v403",
+              "label": "Referencia aprobada de catalogMedia",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "catalogBooks": [
+            {
+              "value": "catalogBooks-v403",
+              "label": "Referencia aprobada de catalogBooks",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "catalogDrafts": [
+            {
+              "value": "catalogDrafts-v403",
+              "label": "Referencia aprobada de catalogDrafts",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "customerReasons": [
+            {
+              "value": "customerReasons-v403",
+              "label": "Referencia aprobada de customerReasons",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "resourcePrincipals": [
+            {
+              "value": "resourcePrincipals-v403",
+              "label": "Referencia aprobada de resourcePrincipals",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "helpOrganizations": [
+            {
+              "value": "helpOrganizations-v403",
+              "label": "Referencia aprobada de helpOrganizations",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "networkOrganizations": [
+            {
+              "value": "networkOrganizations-v403",
+              "label": "Referencia aprobada de networkOrganizations",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "networkTerritories": [
+            {
+              "value": "networkTerritories-v403",
+              "label": "Referencia aprobada de networkTerritories",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "networkTerms": [
+            {
+              "value": "networkTerms-v403",
+              "label": "Referencia aprobada de networkTerms",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "networkEntities": [
+            {
+              "value": "networkEntities-v403",
+              "label": "Referencia aprobada de networkEntities",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "metricReferences": [
+            {
+              "value": "metricReferences-v403",
+              "label": "Referencia aprobada de metricReferences",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "storedOrders": [
+            {
+              "value": "storedOrders-v403",
+              "label": "Referencia aprobada de storedOrders",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "storedAccounts": [
+            {
+              "value": "storedAccounts-v403",
+              "label": "Referencia aprobada de storedAccounts",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "storedOperations": [
+            {
+              "value": "storedOperations-v403",
+              "label": "Referencia aprobada de storedOperations",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "supplySuppliers": [
+            {
+              "value": "supplySuppliers-v403",
+              "label": "Referencia aprobada de supplySuppliers",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "supplyFactories": [
+            {
+              "value": "supplyFactories-v403",
+              "label": "Referencia aprobada de supplyFactories",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "supplyVariants": [
+            {
+              "value": "supplyVariants-v403",
+              "label": "Referencia aprobada de supplyVariants",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "supplyOrders": [
+            {
+              "value": "supplyOrders-v403",
+              "label": "Referencia aprobada de supplyOrders",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "warrantyQuotes": [
+            {
+              "value": "warrantyQuotes-v403",
+              "label": "Referencia aprobada de warrantyQuotes",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "warrantyHandovers": [
+            {
+              "value": "warrantyHandovers-v403",
+              "label": "Referencia aprobada de warrantyHandovers",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "warrantyAppointments": [
+            {
+              "value": "warrantyAppointments-v403",
+              "label": "Referencia aprobada de warrantyAppointments",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "warrantyClaims": [
+            {
+              "value": "warrantyClaims-v403",
+              "label": "Referencia aprobada de warrantyClaims",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "warrantyFaults": [
+            {
+              "value": "warrantyFaults-v403",
+              "label": "Referencia aprobada de warrantyFaults",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "warrantyParts": [
+            {
+              "value": "warrantyParts-v403",
+              "label": "Referencia aprobada de warrantyParts",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "warrantyBins": [
+            {
+              "value": "warrantyBins-v403",
+              "label": "Referencia aprobada de warrantyBins",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "warrantyLots": [
+            {
+              "value": "warrantyLots-v403",
+              "label": "Referencia aprobada de warrantyLots",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ],
+          "warrantyReceipts": [
+            {
+              "value": "warrantyReceipts-v403",
+              "label": "Referencia aprobada de warrantyReceipts",
+              "allowed_subjects": [
+                "operator"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

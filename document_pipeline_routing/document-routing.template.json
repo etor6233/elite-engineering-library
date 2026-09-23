@@ -1,0 +1,32 @@
+{
+  "schema": "elite-document-pipeline-routing/v1",
+  "project": "",
+  "owner": "",
+  "security_owner": "",
+  "data_owner": "",
+  "review_operations_owner": "",
+  "automatic_storage_authorized": false,
+  "classes": [
+    {"id": "supplier-invoice", "decision": "AWAITING_USER"},
+    {"id": "receipt", "decision": "AWAITING_USER"},
+    {"id": "proforma-invoice", "decision": "AWAITING_USER"},
+    {"id": "commercial-invoice", "decision": "AWAITING_USER"},
+    {"id": "packing-list", "decision": "AWAITING_USER"},
+    {"id": "purchase-order", "decision": "AWAITING_USER"},
+    {"id": "purchase-order-confirmation", "decision": "AWAITING_USER"},
+    {"id": "bill-of-lading-airway-bill", "decision": "AWAITING_USER"},
+    {"id": "delivery-note", "decision": "AWAITING_USER"},
+    {"id": "certificate-of-origin", "decision": "AWAITING_USER"},
+    {"id": "quality-inspection-certificate", "decision": "AWAITING_USER"},
+    {"id": "customs-declaration-clearance", "decision": "AWAITING_USER"},
+    {"id": "insurance-freight-document", "decision": "AWAITING_USER"},
+    {"id": "price-list-quotation", "decision": "AWAITING_USER"},
+    {"id": "product-specification-catalog", "decision": "AWAITING_USER"},
+    {"id": "contract-addendum", "decision": "AWAITING_USER"},
+    {"id": "bank-payment-statement", "decision": "AWAITING_USER"},
+    {"id": "warranty-service-claim", "decision": "AWAITING_USER"},
+    {"id": "identity-regulatory-document", "decision": "AWAITING_USER"},
+    {"id": "multi-document-package", "decision": "AWAITING_USER"},
+    {"id": "other-named-class", "decision": "AWAITING_USER"}
+  ]
+}

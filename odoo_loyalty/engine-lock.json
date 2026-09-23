@@ -1,0 +1,165 @@
+{
+  "schema": "elite.odoo-derived-source-lock.v1",
+  "files": [
+    {
+      "path": "COPYRIGHT",
+      "bytes": 433,
+      "sha256": "86e49232d2162708d05405ed5ff6dc5594b73ef4b0f25d2749cfae13493b620c"
+    },
+    {
+      "path": "DERIVATION.json",
+      "bytes": 2828,
+      "sha256": "26d841355c73e08cd9e99fd855c9fba0a69b6681b53b23275621c4741fa58fe2"
+    },
+    {
+      "path": "DERIVATION_CONNECTED.json",
+      "bytes": 2245,
+      "sha256": "ff5774ce6a226582d179f12b69a04d96ca4eabfe4d7c48db6e9df643a37ae5ce"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 43529,
+      "sha256": "abc09dad5f84a76e1b0279237053cae16c03228ab27d8d467677054c2bd17eeb"
+    },
+    {
+      "path": "engine.py",
+      "bytes": 13177,
+      "sha256": "7c0bfe5065d94eac389484b40fa3842b43504864655d475c4c053af0d9209e73"
+    },
+    {
+      "path": "orm_contract.py",
+      "bytes": 8004,
+      "sha256": "7528cca6cdf442c838ec52393512e2cb8cf8e7382885035c1b2957da77a581b2"
+    },
+    {
+      "path": "protocol.py",
+      "bytes": 12914,
+      "sha256": "5c0ae67ca00d31f41085b70258716043faac5e0a20953de3646b7e3559083941"
+    },
+    {
+      "path": "run.py",
+      "bytes": 1980,
+      "sha256": "2101f3e889607a8da2fd22722d64c20fd481fa2c38882e1495aeffd72bb3387e"
+    },
+    {
+      "path": "upstream/COPYRIGHT",
+      "bytes": 433,
+      "sha256": "86e49232d2162708d05405ed5ff6dc5594b73ef4b0f25d2749cfae13493b620c"
+    },
+    {
+      "path": "upstream/LICENSE",
+      "bytes": 43529,
+      "sha256": "abc09dad5f84a76e1b0279237053cae16c03228ab27d8d467677054c2bd17eeb"
+    },
+    {
+      "path": "upstream/addons/loyalty/__manifest__.py",
+      "bytes": 1754,
+      "sha256": "03537054d1786db61c364262242eff900c6b104c2e1e5c8df3a60cd2b1e403f5"
+    },
+    {
+      "path": "upstream/addons/loyalty/models/loyalty_card.py",
+      "bytes": 8800,
+      "sha256": "9eead538d45b3ad32a0f2eddc6b146d2a0ab5cc4d40de19bdea58aa70908ba83"
+    },
+    {
+      "path": "upstream/addons/loyalty/models/loyalty_history.py",
+      "bytes": 885,
+      "sha256": "c480709def3ad815fe6b306dac534785f24cf10b7432276a0276dcd5646bb8a5"
+    },
+    {
+      "path": "upstream/addons/loyalty/models/loyalty_program.py",
+      "bytes": 27848,
+      "sha256": "3ed5484b4404120c73afe810653c2b25915d50d4211158005f684d9290e08096"
+    },
+    {
+      "path": "upstream/addons/loyalty/models/loyalty_reward.py",
+      "bytes": 15597,
+      "sha256": "ec0aa37a9a5f12c01e4a860738afcc1b6ede113e4a3f4aa9d08966194936955c"
+    },
+    {
+      "path": "upstream/addons/loyalty/models/loyalty_rule.py",
+      "bytes": 6779,
+      "sha256": "955eafbc11279154ba30b4986fa2198c683d4c4519253f5ee0fd84daa39f2a66"
+    },
+    {
+      "path": "upstream/addons/loyalty/tests/test_loyalty.py",
+      "bytes": 14565,
+      "sha256": "39c7660a20b402f80fafab7e6534c9bbcd2e52abd847088c0263004fe33092c3"
+    },
+    {
+      "path": "upstream/addons/sale_loyalty/__manifest__.py",
+      "bytes": 1039,
+      "sha256": "284a427b610067bac9c82ae6e3cac37cb1ad51c3dee5617fc5b93d62b13ee083"
+    },
+    {
+      "path": "upstream/addons/sale_loyalty/models/loyalty_card.py",
+      "bytes": 2147,
+      "sha256": "67a9501daf1b48bffbf10e34d11b7503df920a0048545affd38e86f08f2be712"
+    },
+    {
+      "path": "upstream/addons/sale_loyalty/models/loyalty_program.py",
+      "bytes": 1030,
+      "sha256": "2f1bbcfb4419d8bd6149eac02e963670c342470dd2007eaa02e31b095704e658"
+    },
+    {
+      "path": "upstream/addons/sale_loyalty/models/sale_order.py",
+      "bytes": 78182,
+      "sha256": "6de1aeed8f1fc80268025f13bff2a56b57211b6a82ce9df950a8b08a623e3a06"
+    },
+    {
+      "path": "upstream/addons/sale_loyalty/models/sale_order_coupon_points.py",
+      "bytes": 676,
+      "sha256": "81a49606130beed878aaa93c503970c8e4e9b4645b63f2b097999ccb99c4eeb2"
+    },
+    {
+      "path": "upstream/addons/sale_loyalty/models/sale_order_line.py",
+      "bytes": 7181,
+      "sha256": "4aba6673de316b9cb78def3c1d4e31d456ce170524c84d5f8dca93b2a8f18d93"
+    },
+    {
+      "path": "upstream/addons/sale_loyalty/tests/common.py",
+      "bytes": 12605,
+      "sha256": "ab2f2ef3334a82a642178427f24e8316e3ee2d4f91c63dede8712304d3c53db5"
+    },
+    {
+      "path": "upstream/addons/sale_loyalty/tests/test_buy_gift_card.py",
+      "bytes": 3202,
+      "sha256": "f724115af4e50776f152bb933b01999bef7e800aec4eea0c43ad38f9916bb3e8"
+    },
+    {
+      "path": "upstream/addons/sale_loyalty/tests/test_loyalty.py",
+      "bytes": 55159,
+      "sha256": "b2e97e780f49b8303b1930cdc7b6687338bcdf0cd48039e747144eddd14db47e"
+    },
+    {
+      "path": "upstream/addons/sale_loyalty/tests/test_loyalty_history.py",
+      "bytes": 8005,
+      "sha256": "291cee97246ffe07b39d77b4c0bdaa3c3addb7cec321aa2235827ab92515775d"
+    },
+    {
+      "path": "upstream/addons/sale_loyalty/tests/test_pay_with_gift_card.py",
+      "bytes": 10659,
+      "sha256": "9ecd12f97ddb7dcdcb8147d38752a1155c21583977e2ce048e40e653b4468f47"
+    },
+    {
+      "path": "upstream/addons/sale_loyalty/tests/test_program_multi_company.py",
+      "bytes": 4963,
+      "sha256": "d338ab072168bacfa342f7a5a0011063d47f41f19ef1221a4adf0a70cb90a32b"
+    },
+    {
+      "path": "upstream/addons/sale_loyalty/tests/test_program_numbers.py",
+      "bytes": 97516,
+      "sha256": "845f5b205b1ac941280905bfa308ed15d7142d3069997b6545f5cc0e46b0c918"
+    },
+    {
+      "path": "upstream/addons/sale_loyalty/tests/test_program_rules.py",
+      "bytes": 21582,
+      "sha256": "f28fa822aa5d7116816f20f2010c2c3f94f926477de024b768ed52d44c3cbce1"
+    },
+    {
+      "path": "upstream/odoo/tools/float_utils.py",
+      "bytes": 19196,
+      "sha256": "ab7d51a44033792414dc63f598517ee76b922f76b2de9fa3eeb977ab78d7a962"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "elite-aws-textract-document-profile/v2",
+  "provider": "Amazon Textract",
+  "sdk": "github.com/aws/aws-sdk-go-v2/service/textract@v1.45.0",
+  "region": "CONFIGURATION_REQUIRED",
+  "classes": [
+    {"id":"supplier-invoice","decision":"CONFIGURATION_REQUIRED","operation":"AnalyzeExpense","features":[],"queries":[],"adapter_id":"","adapter_version":"","response_schema_version":"CONFIGURATION_REQUIRED","automatic_storage":false},
+    {"id":"expense-receipt","decision":"BLOCKED_EVALUATION_REQUIRED","operation":"AnalyzeExpense","features":[],"queries":[],"adapter_id":"","adapter_version":"","response_schema_version":"CONFIGURATION_REQUIRED","automatic_storage":false},
+    {"id":"commercial-invoice","decision":"BLOCKED_EVALUATION_REQUIRED","operation":"AnalyzeExpense","features":[],"queries":[],"adapter_id":"","adapter_version":"","response_schema_version":"CONFIGURATION_REQUIRED","automatic_storage":false},
+    {"id":"proforma-invoice","decision":"BLOCKED_QUERIES_ADAPTER_REQUIRED","operation":"AnalyzeDocument","features":["QUERIES"],"queries":[],"adapter_id":"","adapter_version":"","response_schema_version":"CONFIGURATION_REQUIRED","automatic_storage":false},
+    {"id":"purchase-order","decision":"BLOCKED_QUERIES_ADAPTER_REQUIRED","operation":"AnalyzeDocument","features":["TABLES","FORMS","QUERIES"],"queries":[],"adapter_id":"","adapter_version":"","response_schema_version":"CONFIGURATION_REQUIRED","automatic_storage":false},
+    {"id":"packing-list","decision":"BLOCKED_QUERIES_ADAPTER_REQUIRED","operation":"AnalyzeDocument","features":["TABLES","FORMS","QUERIES"],"queries":[],"adapter_id":"","adapter_version":"","response_schema_version":"CONFIGURATION_REQUIRED","automatic_storage":false},
+    {"id":"bill-of-lading","decision":"BLOCKED_QUERIES_ADAPTER_REQUIRED","operation":"AnalyzeDocument","features":["TABLES","FORMS","QUERIES"],"queries":[],"adapter_id":"","adapter_version":"","response_schema_version":"CONFIGURATION_REQUIRED","automatic_storage":false},
+    {"id":"delivery-note","decision":"BLOCKED_QUERIES_ADAPTER_REQUIRED","operation":"AnalyzeDocument","features":["TABLES","FORMS","QUERIES"],"queries":[],"adapter_id":"","adapter_version":"","response_schema_version":"CONFIGURATION_REQUIRED","automatic_storage":false},
+    {"id":"certificate-of-origin","decision":"BLOCKED_QUERIES_ADAPTER_REQUIRED","operation":"AnalyzeDocument","features":["FORMS","QUERIES"],"queries":[],"adapter_id":"","adapter_version":"","response_schema_version":"CONFIGURATION_REQUIRED","automatic_storage":false},
+    {"id":"quality-inspection-certificate","decision":"BLOCKED_QUERIES_ADAPTER_REQUIRED","operation":"AnalyzeDocument","features":["TABLES","FORMS","QUERIES"],"queries":[],"adapter_id":"","adapter_version":"","response_schema_version":"CONFIGURATION_REQUIRED","automatic_storage":false},
+    {"id":"customs-declaration","decision":"BLOCKED_QUERIES_ADAPTER_REQUIRED","operation":"AnalyzeDocument","features":["TABLES","FORMS","QUERIES"],"queries":[],"adapter_id":"","adapter_version":"","response_schema_version":"CONFIGURATION_REQUIRED","automatic_storage":false}
+  ]
+}

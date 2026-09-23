@@ -1,0 +1,8 @@
+{
+  "schema": "elite-meta-ads-insights-query/v1",
+  "fields": ["campaign_id", "campaign_name", "date_start", "date_stop", "impressions", "clicks", "spend"],
+  "level": "campaign",
+  "since": "2026-08-01",
+  "until": "2026-08-02",
+  "limit": 100
+}

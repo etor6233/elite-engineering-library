@@ -1,0 +1,34 @@
+{
+  "schema": "elite-official-image-observation/v403.1",
+  "method": "ANONYMOUS_OFFICIAL_REGISTRY_MANIFESTS",
+  "sources": {
+    "controller-image-index.snapshot": "2f2d80f4be75ffb2dc99d2048bd67248b830d1e52eb6a09ac1fa4b05e6e53a91",
+    "controller-image-manifest.snapshot": "eaf8bb2f73461897fe3791f10b23ffb98ce3ff4c588a76fd9cc97737fc283392",
+    "controller-image-config.snapshot": "c98b9bed3d186ae885330597ef84111401976b278c38b0e4b7d9275a49a281af"
+  },
+  "image": {
+    "id": "gcloud-runtime",
+    "repository": "gcr.io/google.com/cloudsdktool/google-cloud-cli",
+    "observed_tag": "584.0.0-stable",
+    "digest": "sha256:eaf8bb2f73461897fe3791f10b23ffb98ce3ff4c588a76fd9cc97737fc283392",
+    "index_digest": "sha256:2f2d80f4be75ffb2dc99d2048bd67248b830d1e52eb6a09ac1fa4b05e6e53a91",
+    "reference": "gcr.io/google.com/cloudsdktool/google-cloud-cli@sha256:eaf8bb2f73461897fe3791f10b23ffb98ce3ff4c588a76fd9cc97737fc283392",
+    "admission": "PINNED_CANDIDATE",
+    "executed": "NOT_RUN",
+    "required": [
+      "exact layers/license/SCA",
+      "gcloud and bq individual launcher/runtime G0-G8",
+      "nonroot Python/SQLite/state-volume runtime",
+      "Cloud Scheduler/Job billing-export/dispatch evidence"
+    ],
+    "official_document": "https://docs.cloud.google.com/sdk/docs/downloads-docker"
+  },
+  "oci_execution": "NOT_RUN",
+  "license_layers_sca": "NOT_RUN",
+  "portable_sdk_python_observation": {
+    "method": "EXECUTED_LINUX_WSL_PORTABLE_ARCHIVE_ONLY_NOT_OCI",
+    "version": "3.14.7",
+    "sqlite": "3.53.1",
+    "archive_sha256": "02f0a54a1c5f9e582c568cd8da8258e22275b8ab033532fa03fd46bd9f7a3398"
+  }
+}

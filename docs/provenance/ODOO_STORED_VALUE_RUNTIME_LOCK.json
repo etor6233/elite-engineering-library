@@ -1,0 +1,11 @@
+{
+  "schema": "elite.stored-value-activation-lock.v1",
+  "source_commit": "99edb6dd82b7b560930c00b03b694ba700785370",
+  "files": {
+    "odoo_loyalty/engine-lock.json": "d39918d5c4479af0d961fa9b3b61f3fb8b00e997d03be958083debad627657da",
+    "odoo_loyalty/run.py": "2101f3e889607a8da2fd22722d64c20fd481fa2c38882e1495aeffd72bb3387e",
+    "deploy/stored-value/profile.reference.json": "db96a3558474e1dd57448d4fd25af9753cdef7238faabac13b1f17727994e727"
+  },
+  "python": "Project-admitted CPython runtime, absolute path; launcher uses -I -S -B; reference tested3.14.4",
+  "activation": "Explicit STORED_VALUE_ENABLED=true; tenant and organization must match the selected profile; source/profile hashes are configuration bindings after verification, not proof of provenance by themselves"
+}

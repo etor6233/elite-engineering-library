@@ -1,0 +1,17 @@
+{
+  "offer_id": "SKU12345",
+  "content_language": "en",
+  "feed_label": "AR",
+  "title": "REPLACE_WITH_APPROVED_TITLE",
+  "description": "REPLACE_WITH_APPROVED_DESCRIPTION",
+  "link": "https://example.invalid/products/SKU12345",
+  "image_link": "https://example.invalid/images/SKU12345.jpg",
+  "availability": "IN_STOCK",
+  "condition": "NEW",
+  "price": {
+    "amount_micros": 1000000,
+    "currency_code": "ARS"
+  },
+  "brand": "",
+  "gtins": []
+}

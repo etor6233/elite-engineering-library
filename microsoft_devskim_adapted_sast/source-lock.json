@@ -1,0 +1,56 @@
+{
+  "schema": "elite-microsoft-devskim-adapted-sast-lock/v1",
+  "verified_at": "2026-09-05",
+  "source": {
+    "owner": "Microsoft",
+    "repository": "microsoft/DevSkim",
+    "commit": "a452aa506f80928b611c4c7bfe306b8115821aae",
+    "tree": "f6be283e73f106afdb1345c4123539a7a2f9a136",
+    "commit_signature_verified": true,
+    "archive_url": "https://github.com/microsoft/DevSkim/archive/a452aa506f80928b611c4c7bfe306b8115821aae.zip",
+    "commit_api_url": "https://api.github.com/repos/microsoft/DevSkim/commits/a452aa506f80928b611c4c7bfe306b8115821aae",
+    "archive_transport_observations": [
+      {"bytes": 935159, "sha256": "2e75a048dcf3e3db97e4551207b0a912d3bc504e2d2689d21d82e48dfcd89410"},
+      {"bytes": 949833, "sha256": "c3b77fb88ff293e4d9f94ccb312a1bd65e65fa18847169d1217ece8fa04ec922"}
+    ],
+    "archive_file_entries": 268,
+    "archive_root_observations": ["microsoft-DevSkim-a452aa5", "DevSkim-a452aa506f80928b611c4c7bfe306b8115821aae"],
+    "canonical_file_tree_sha256": "4914ee46a553ee3c80b7e4849cbbcc349f1deab99951373229f177c88ad43ecb",
+    "license_expression": "MIT",
+    "license_path": "LICENSE.txt",
+    "license_sha256": "ad0cf28f3381ca9bb0bf101d127402d44c17bfa0991e1a00bff7ae6679e9dada",
+    "notice_path": "NOTICE.txt",
+    "notice_sha256": "78535e301bab95ed0c86398020fbcc1654a4be55db2f48e4d1ba1eb8368b1947",
+    "library_project_path": "DevSkim-DotNet/Microsoft.DevSkim/Microsoft.DevSkim.csproj",
+    "library_project_sha256": "f2f557bfba82cb4dc605915136fb717d891d0ae4ecbb9d0a87740dbc4b55ad99",
+    "cli_project_path": "DevSkim-DotNet/Microsoft.DevSkim.CLI/Microsoft.DevSkim.CLI.csproj",
+    "cli_project_sha256": "7a44fb2969c7b42d0278f9cb33587e9401da889bb67c5288134b3477154c3a55",
+    "test_project_path": "DevSkim-DotNet/Microsoft.DevSkim.Tests/Microsoft.DevSkim.Tests.csproj"
+  },
+  "adaptation": {
+    "classification": "ADAPTED",
+    "description": "Add a direct SharpCompress 0.48.0 reference to the Microsoft.DevSkim library and CLI projects so NuGet direct-dependency-wins removes the affected transitive 0.40.0 runtime.",
+    "sharpcompress_version": "0.48.0",
+    "fixed_minimum_for_ghsa_6c8g_7p36_r338": "0.48.0",
+    "library_project_patched_sha256": "a5439c44f6d5dafae269185dfd090816c43f37c08f81d9283432f20b913b6016",
+    "cli_project_patched_sha256": "9ffdc50a3fb44861d5cd6987ce805f3f4ef250b610ffe5339c47c3892e71a085",
+    "package_url": "https://api.nuget.org/v3-flatcontainer/sharpcompress/0.48.0/sharpcompress.0.48.0.nupkg",
+    "package_bytes": 9262981,
+    "package_sha256": "d8c5da8a76d325eb81c1103a78953e025513f22ade36b5b11d8342324146f0b7",
+    "package_repository_commit": "6e59c7d7bbf8c19a8a92c3c382599906684bb93d",
+    "license_expression": "MIT",
+    "license_url": "https://raw.githubusercontent.com/adamhathcock/sharpcompress/6e59c7d7bbf8c19a8a92c3c382599906684bb93d/LICENSE.txt",
+    "license_bytes": 1081,
+    "license_sha256": "b7ca2b6174cee11afe41d78b48527e3d7659a4435c25019a4a5e072299a2f8ed"
+  },
+  "verified_lane": {
+    "os": "Windows x64",
+    "dotnet_sdk": "10.0.400",
+    "target_framework": "net10.0",
+    "official_tests_passed": 300,
+    "nuget_vulnerability_findings": 0,
+    "typescript_fixture_rule": "DS189424",
+    "go_fixture_rule": "DS112852",
+    "clean_fixture_findings": 0
+  }
+}

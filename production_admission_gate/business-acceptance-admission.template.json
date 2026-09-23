@@ -1,0 +1,21 @@
+{
+  "schema": "elite-business-acceptance-admission/v1",
+  "project_id": "",
+  "environment": "production",
+  "release_digest": "",
+  "evaluated_at": "",
+  "expires_at": "",
+  "executor_ref": "",
+  "tool": {
+    "name": "Microsoft Playwright",
+    "version": "1.62.1",
+    "source": "https://github.com/microsoft/playwright/releases/tag/v1.62.1"
+  },
+  "target": {},
+  "specification": "",
+  "playwright_run": {},
+  "approvals": "",
+  "defects": "",
+  "owner_signoff": "",
+  "output": ""
+}

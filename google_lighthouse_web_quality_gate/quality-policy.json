@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0",
+  "expectedLighthouseVersion": "13.4.1",
+  "numberOfRuns": 5,
+  "maxRunWarnings": 0,
+  "minimumAuditCount": 140,
+  "categories": {
+    "performance": {"median": 0.90, "minimum": 0.85},
+    "accessibility": {"median": 1.00, "minimum": 1.00},
+    "best-practices": {"median": 0.90, "minimum": 0.90},
+    "seo": {"median": 1.00, "minimum": 1.00}
+  }
+}

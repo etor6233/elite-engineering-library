@@ -1,0 +1,10 @@
+begin;
+drop index if exists franchise.agreement_territory_status_idx;
+drop index if exists org.organization_parent_status_idx;
+drop trigger if exists franchise_territory_non_overlap on franchise.agreement;
+drop function if exists franchise.enforce_active_territory_non_overlap();
+drop trigger if exists organization_hierarchy_guard on org.organization;
+drop function if exists org.enforce_organization_hierarchy();
+alter table franchise.agreement drop column if exists updated_at, drop column if exists version;
+alter table org.organization drop column if exists version;
+commit;

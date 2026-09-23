@@ -1,0 +1,24 @@
+{
+  "graph_api_version": "v26.0",
+  "retrieval_mode": "LIVE",
+  "rows": [
+    {
+      "ad_id": "ad-1",
+      "adset_id": "adset-1",
+      "campaign_id": "campaign-1",
+      "created_time": "2026-09-04T12:00:00+0000",
+      "field_data": [
+        {
+          "name": "email",
+          "values": [
+            "person@example.test"
+          ]
+        }
+      ],
+      "form_id": "123456789",
+      "id": "meta-cross-language-1",
+      "platform": "facebook"
+    }
+  ],
+  "truncated_by_local_bound": false
+}

@@ -1,0 +1,19 @@
+# Container execution is outside the Windows local reference admission.
+# Select and admit immutable image digests before using this template.
+ARG GO_IMAGE
+ARG RUNTIME_IMAGE
+
+FROM ${GO_IMAGE} AS build
+WORKDIR /src
+COPY . ./
+RUN --mount=type=cache,target=/go/pkg/mod,sharing=locked go mod download
+ARG TARGETOS=linux
+ARG TARGETARCH=amd64
+RUN --mount=type=cache,target=/go/pkg/mod,sharing=locked --mount=type=cache,target=/root/.cache/go-build,sharing=locked CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -trimpath -buildvcs=false -ldflags="-s -w -buildid=" -o /out/electromobility-api ./cmd/electromobility-api
+
+FROM ${RUNTIME_IMAGE} AS runtime
+WORKDIR /
+COPY --from=build --chown=nonroot:nonroot /out/electromobility-api /electromobility-api
+USER nonroot:nonroot
+EXPOSE 8080
+ENTRYPOINT ["/electromobility-api"]

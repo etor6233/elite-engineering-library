@@ -1,0 +1,31 @@
+{
+  "revision": "V403-cloud-iam-2",
+  "base_package_sha256": "acc4e4bd62c13cf48e071e933266d82d067cab849f92474d71a533ebf6508951",
+  "overlay_engine_sha256": "934306327735dbb064039b4096ef29b8b94695bd35987ceb65992b3ff965a717",
+  "files": [
+    {
+      "target": "src/platform/backend/protected-client.ts",
+      "bundle_path": "files/src/platform/backend/protected-client.ts",
+      "before_sha256": "4f9a6dcb7ccc7d9becd161fd2feb8b8951c5b61d804a18dbd74fdd2d2482b90c",
+      "after_sha256": "adf7767aac1332c8db2c74941163fb4a4707dc85a16bfbe9ca0d0f8bd4c77608"
+    },
+    {
+      "target": "src/platform/backend/public-client.ts",
+      "bundle_path": "files/src/platform/backend/public-client.ts",
+      "before_sha256": "c8372a0245b5822fbf2094c71374c12397ffa0fd49dd6102e2a260ce386b72ee",
+      "after_sha256": "1d3900d73278c58713b5162e9c6885284738acaf7eacc1aeb08581d0714585f1"
+    },
+    {
+      "target": "src/platform/backend/catalog-client.ts",
+      "bundle_path": "files/src/platform/backend/catalog-client.ts",
+      "before_sha256": "1136cd61981c41b8b7d7357f6fbb15db1a984047e38caa2adbb61177f67224cd",
+      "after_sha256": "b9f60cc287c0def95815cc8fa0119e3ade587d99380d50900e718fb6983581ec"
+    },
+    {
+      "target": "src/platform/backend/cloud-run-transport.ts",
+      "bundle_path": "files/src/platform/backend/cloud-run-transport.ts",
+      "before_sha256": null,
+      "after_sha256": "2297b6952432796dc75f3eb13cfbb32c939769d7683173bc14f104248b72910a"
+    }
+  ]
+}

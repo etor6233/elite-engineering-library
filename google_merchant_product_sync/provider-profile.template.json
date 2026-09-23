@@ -1,0 +1,23 @@
+{
+  "schema": "elite-google-merchant-product-sync-profile/v1",
+  "provider": "Google Merchant API",
+  "sdk": "google-shopping-merchant-products==1.8.0",
+  "api": "Products v1",
+  "decision": "BLOCKED_ACCOUNT_AND_EXTERNAL_WRITE_APPROVAL_REQUIRED",
+  "cloud_project_reference": "",
+  "merchant_account_id": "",
+  "data_source_name": "",
+  "data_source_type": "API_PRIMARY_NOT_PROVEN",
+  "merchant_api_enabled": false,
+  "billing_approved": false,
+  "adc_identity_reference": "",
+  "account_access_proven": false,
+  "test_account_contract_proven": false,
+  "external_product_write_approved": false,
+  "approved_offer_ids": [],
+  "quota_and_cost_approved": false,
+  "refresh_cadence_days": 30,
+  "reconciliation_owner": "",
+  "evidence_retention": "",
+  "automatic_local_business_write": false
+}

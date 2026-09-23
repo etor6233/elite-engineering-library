@@ -1,0 +1,8 @@
+allowBuilds:
+  # Vitest/tsx depend on esbuild. This exact package is intentionally allowlisted.
+  esbuild: true
+minimumReleaseAgeExclude:
+  - '@types/react-dom@19.2.5'
+ignoredOptionalDependencies:
+  # Next declares sharp optional; runtime image optimization is disabled.
+  - sharp

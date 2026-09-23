@@ -1,0 +1,89 @@
+{
+  "schema": "elite.stored-value-profile.v1",
+  "tenant_id": "11111111-1111-4111-8111-111111111111",
+  "organization_id": "franchise-1",
+  "amounts_mode": "bound_gross_inclusive",
+  "review": "one_distinct_human",
+  "issuance_states": [
+    "confirmed",
+    "paid",
+    "allocated",
+    "delivered"
+  ],
+  "redemption_states": [
+    "placed",
+    "confirmed",
+    "allocated"
+  ],
+  "programs": [
+    {
+      "calculation": {
+        "id": "reference-gift_card",
+        "kind": "gift_card",
+        "currency": "ARS",
+        "currency_digits": 2,
+        "applies_on": "future",
+        "nominative": false,
+        "trigger": "auto",
+        "trigger_product_ids": [
+          "gift-50"
+        ],
+        "rules": [
+          {
+            "id": "reference-gift_card-rule",
+            "mode": "money",
+            "points": "1",
+            "split": true,
+            "minimum_qty": "1",
+            "minimum_amount": "0",
+            "tax_mode": "incl",
+            "product_ids": [
+              "gift-50"
+            ],
+            "code_required": false
+          }
+        ]
+      },
+      "reward": {
+        "mode": "per_point",
+        "discount": "1",
+        "required_points": "1",
+        "max_amount": "0",
+        "clear_wallet": false
+      }
+    },
+    {
+      "calculation": {
+        "id": "reference-loyalty",
+        "kind": "loyalty",
+        "currency": "ARS",
+        "currency_digits": 2,
+        "applies_on": "both",
+        "nominative": true,
+        "trigger": "auto",
+        "trigger_product_ids": [],
+        "rules": [
+          {
+            "id": "reference-loyalty-rule",
+            "mode": "money",
+            "points": "1",
+            "split": false,
+            "minimum_qty": "1",
+            "minimum_amount": "0",
+            "tax_mode": "incl",
+            "product_ids": [],
+            "code_required": false
+          }
+        ]
+      },
+      "reward": {
+        "mode": "percent",
+        "discount": "5",
+        "required_points": "200",
+        "max_amount": "0",
+        "clear_wallet": false
+      }
+    }
+  ],
+  "reservation_seconds": 900
+}
