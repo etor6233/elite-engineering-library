@@ -1353,7 +1353,11 @@ src/app/sitemap.ts
 src/platform/seo/public-indexing.ts
 src/platform/seo/public-indexing.test.ts
 docs/ENTERPRISE_WEB_BFF.md
+docs/slices/IDENTITY_SECURITY_COMPOSE.md
+ci/fixtures/identity_authz_scenarios.json
+ci/verify_identity_security_fixture.py
+ci/test_verify_identity_security_fixture.py
 
 (178 archivos SQL bajo `db/migrations/`; listar con `ls db/migrations` o buscar por número.)
 
-Total indexado: 1317.
+Total indexado: 1321.

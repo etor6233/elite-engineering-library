@@ -1,0 +1,40 @@
+{
+  "schema": "elite.identity-authz-fixture/v1",
+  "scope": "LOCAL_FIXTURES",
+  "live_effects": false,
+  "tenants": ["north", "south"],
+  "unauthorized_scenarios": [
+    "unauthenticated",
+    "expired_token",
+    "wrong_issuer",
+    "wrong_audience",
+    "insufficient_role",
+    "object_ownership"
+  ],
+  "tenant_actions": ["read", "write", "list"],
+  "session_cases": [
+    "logout_revocation",
+    "token_revocation",
+    "signing_key_rotation",
+    "session_expiry",
+    "replay_rejection"
+  ],
+  "invariants": {
+    "data_disclosed": false,
+    "mutation_observed": false,
+    "old_credential_accepted": false
+  },
+  "doors": [
+    "markdown_system/PACK_PER_CLAIM_INDEX.md",
+    "implementation_packs/GO_OIDC_SERVICE_TOKEN_BROKER.md",
+    "implementation_packs/GO_OIDC_PORTAL_SESSION.md",
+    "implementation_packs/TYPESCRIPT_OIDC_PORTAL_ADAPTER.md",
+    "implementation_packs/SECURE_OPERATIONS_DELIVERY_CORE.md",
+    "implementation_packs/MICROSOFT_DEVSKIM_ADAPTED_SAST_GATE.md",
+    "production_admission_gate/validate_identity_authorization_admission.py",
+    "docs/PORTAL_IDENTITY_LIFECYCLE.md",
+    "docs/J5_IDP_ACCESS_CONTRACT.md",
+    "ci/local_identity_fixture.cjs",
+    "internal/platform/identity/oidc.go"
+  ]
+}
