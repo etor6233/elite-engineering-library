@@ -13,7 +13,7 @@ Orden de puertas (una sola tabla):
 | 1 | [`README.md`](README.md) (este archivo) | Contexto de biblioteca vs producto |
 | 2 | [`AGENTS.md`](AGENTS.md) | Router compacto por agente |
 | 3 | [`markdown_system/USE_LIBRARY_V403.md`](markdown_system/USE_LIBRARY_V403.md) | Uso, búsqueda y retoma |
-| 4 | [`markdown_system/LIBRARY_HEALTH_CHECK.md`](markdown_system/LIBRARY_HEALTH_CHECK.md) | Salud, wiring y GAPs honestos |
+| 4 | [`markdown_system/LIBRARY_HEALTH_CHECK.md`](markdown_system/LIBRARY_HEALTH_CHECK.md) | Salud, wiring y GAPs honestos (huérfanos tip: QR/`GO_QR_CORE`, leads; GTM/SDR pack FALTA) |
 | 5 | [`START_FRANCHISE.md`](START_FRANCHISE.md) | Nueva franquicia / consumidor desde la copia elegida |
 | 6 | [`reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md`](reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md) | Gate canónico biblioteca vs producto |
 | 7 | [`qualification/FINAL_LIBRARY_READY_V402.json`](qualification/FINAL_LIBRARY_READY_V402.json) | Recibo de cierre V402 (solo evidencia) |
