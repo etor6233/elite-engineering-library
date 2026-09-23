@@ -1,24 +1,29 @@
 {
   "schema": "elite-slice-fixture-evidence/v1",
   "slice_id": "CRM_HISTORY",
-  "tip_sha": "42d9f83ee6fa1536bcb59d66e6c7850b01ddd9b0",
+  "tip_sha": "227c6e0033eaab96cb42fa809ac6c37b758f84f4",
   "status": "LOCAL_FIXTURES_INDEXED",
   "production_authorized": false,
-  "claim": "Single PostgreSQL CRM owner with customer profile, consent/lead rows, append-only appointment transition history, and customer-scoped journey timeline projection.",
+  "claim": "Single PostgreSQL CRM owner with customer profile, consent/lead rows, append-only appointment transition history, customer-scoped journey timeline projection, and documented Customer 360 read-model compose plan over existing APIs.",
   "architecture_contract_cites_read_only": [
     {
       "path": "docs/FRANCHISE_ARCHITECTURE.md",
-      "tip_sha": "42d9f83ee6fa1536bcb59d66e6c7850b01ddd9b0",
+      "tip_sha": "227c6e0033eaab96cb42fa809ac6c37b758f84f4",
       "section": "3. Customers + history / CRM",
       "status": "PARCIAL"
     },
     {
       "path": "docs/ROADMAP.md",
-      "tip_sha": "42d9f83ee6fa1536bcb59d66e6c7850b01ddd9b0",
+      "tip_sha": "227c6e0033eaab96cb42fa809ac6c37b758f84f4",
       "section": "FRANCHISE / COMPANY DOMAINS → Customers + history / CRM",
       "status": "PARCIAL"
     }
   ],
+  "proposed_pack_plan": {
+    "path": "markdown_system/CUSTOMER_360_READ_MODEL_PACK_PLAN.md",
+    "status": "PLAN_ONLY",
+    "note": "Query composition over journey + CRM APIs; not a HECHO implementation pack; not in selected 116/120 JSON"
+  },
   "selected_composition_source": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
   "pack_id_filename_aliases": [
     {
@@ -72,12 +77,33 @@
       "role": "customer_journey_and_history"
     },
     {
+      "packId": "GO-PG-CONTACT-CHANNEL-IDENTITY",
+      "version": "0.1.1",
+      "path": "implementation_packs/GO_PG_CONTACT_CHANNEL_IDENTITY.md",
+      "role": "channel_identity_binding"
+    },
+    {
       "packId": "GO-ELECTROMOBILITY-APPLICATION",
       "version": "1.22.3",
       "path": "implementation_packs/GO_ELECTROMOBILITY_APPLICATION.md",
       "role": "runtime_wiring"
     }
   ],
+  "customer_360_read_model": {
+    "status": "PLAN_ONLY",
+    "plan_path": "markdown_system/CUSTOMER_360_READ_MODEL_PACK_PLAN.md",
+    "unified_http_endpoint": "FALTA",
+    "compose_spine": "GET /v1/customer/journey",
+    "primary_selected_paths": [
+      "implementation_packs/GO_ELECTROMOBILITY_PUBLIC_CRM_API.md",
+      "implementation_packs/GO_FRANCHISE_CUSTOMER_JOURNEY_API.md",
+      "implementation_packs/GO_PG_CONTACT_CHANNEL_IDENTITY.md"
+    ],
+    "adjacent_reads": [
+      "GET /v1/customer/orders",
+      "GET /v1/customer/service-cases"
+    ]
+  },
   "adjacent_ingress_not_sdr": [
     {
       "packId": "GO-OMNICHANNEL-LEAD-INGRESS",
@@ -110,6 +136,12 @@
       "schema": "crm",
       "table": "consent_evidence",
       "note": "append-only consent decisions referenced by leads and promotions"
+    },
+    {
+      "schema": "communication",
+      "table": "contact_channel_binding",
+      "note": "versioned channel identity; HMAC external id; operator 360 facet only",
+      "migration": "db/migrations/0047_contact_channel_identity.up.sql"
     }
   ],
   "fixtures": [
@@ -135,6 +167,11 @@
     },
     {
       "kind": "sql",
+      "path": "db/tests/0047_contact_channel_identity.test.sql",
+      "proves": "channel binding immutability and no raw external id leak (360 channel facet)"
+    },
+    {
+      "kind": "sql",
       "path": "db/tests/0045_lead_candidate_promotion.test.sql",
       "proves": "adjacent ingress promotion immutability (not SDR)",
       "optional": true
@@ -143,6 +180,11 @@
       "kind": "go_integration",
       "path": "internal/platform/postgres/franchisejourney_integration_test.go",
       "proves": "CustomerJourney repeatable-read projection and ErrConflict on incoherent links"
+    },
+    {
+      "kind": "go_integration",
+      "path": "internal/platform/postgres/contact_identity_integration_test.go",
+      "proves": "contact channel binding resolver and decision ledger"
     },
     {
       "kind": "go_http",
@@ -157,11 +199,18 @@
       "kind": "reconstruction_evidence",
       "path": "reconstruction_evidence/APPOINTMENT_CONFIRMATION_BFF_POSTGRES_V262.md",
       "proves": "connected confirmation gate with SQL-verified timeline ownership"
+    },
+    {
+      "kind": "reconstruction_evidence",
+      "path": "reconstruction_evidence/GO_PG_CONTACT_CHANNEL_IDENTITY_2026-09-04_V237.md",
+      "proves": "channel identity pack admission receipt"
     }
   ],
   "verify_commands": [
     "psql \"$TEST_DATABASE_URL\" -v ON_ERROR_STOP=1 -f db/tests/0089_crm_customer_timeline_fixture.test.sql",
+    "psql \"$TEST_DATABASE_URL\" -v ON_ERROR_STOP=1 -f db/tests/0047_contact_channel_identity.test.sql",
     "go test ./internal/platform/postgres -run CustomerJourney -count=1 -timeout=5m",
+    "go test ./internal/platform/postgres -run ContactIdentity -count=1 -timeout=5m",
     "go test ./internal/platform/httpapi -run TestCustomerJourneyReadFailure -count=1"
   ],
   "public_pattern_gaps_cite_only": [
@@ -172,6 +221,9 @@
   ],
   "explicit_non_claims": [
     "No named SDR or GTM pack",
+    "No GO-CUSTOMER-360 HECHO implementation pack",
+    "CUSTOMER_360_READ_MODEL_PACK_PLAN.md is plan only — not in selected 116/120 JSON",
+    "No unified GET /v1/customer/360 HTTP endpoint",
     "Not HISTORY-MODEL-TRAINING pipeline history",
     "Not production or REVESTEX authorization",
     "Did not edit docs/ROADMAP.md or docs/FRANCHISE_ARCHITECTURE.md"

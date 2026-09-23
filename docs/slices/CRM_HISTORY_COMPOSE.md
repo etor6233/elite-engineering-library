@@ -1,18 +1,19 @@
 # CRM / CUSTOMERS + HISTORY — tangible slice compose
 
-Tip pin: `42d9f83ee6fa1536bcb59d66e6c7850b01ddd9b0`
+Tip pin: `227c6e0033eaab96cb42fa809ac6c37b758f84f4`
 
 Status: **PARCIAL → tangible slice** (local fixtures + selected composition only). **Not** production, **not** REVESTEX, **not** a named SDR or GTM pack.
 
-## 0. Architecture contract (read-only cites @ tip `42d9f83`)
+## 0. Architecture contract (read-only cites @ tip `227c6e0`)
 
 This slice doc does **not** edit the architecture doors; it aligns with them:
 
-| Door | Path @ `42d9f83` | CRM / history row |
+| Door | Path @ `227c6e0` | CRM / history row |
 | --- | --- | --- |
 | Domain architecture | [`docs/FRANCHISE_ARCHITECTURE.md`](FRANCHISE_ARCHITECTURE.md) § **3. Customers + history / CRM** | **PARCIAL** — compose + fixtures; no standalone segmentation / Customer-360 pack |
 | Build-order matrix | [`docs/ROADMAP.md`](ROADMAP.md) § **FRANCHISE / COMPANY DOMAINS** → Customers + history / CRM | **PARCIAL** — cite selected packs with full `implementation_packs/<NAME>.md` paths below; segmentation/360 **FALTA** |
 | Selected JSON | [`markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md`](../markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md) | Exact `packId` + `path` + `version` per row — no shorthand filenames |
+| Customer 360 compose plan | [`markdown_system/CUSTOMER_360_READ_MODEL_PACK_PLAN.md`](../markdown_system/CUSTOMER_360_READ_MODEL_PACK_PLAN.md) | **PLAN ONLY** — BFF query composition over journey + CRM APIs; not a HECHO pack |
 
 Lead ingress remains adjacent per [`docs/FRANCHISE_ARCHITECTURE.md`](FRANCHISE_ARCHITECTURE.md) layer **4 — CRM + leads**; no named SDR pack (`markdown_system/PACK_PER_CLAIM_INDEX.md`).
 
@@ -80,7 +81,7 @@ See `markdown_system/PACK_PER_CLAIM_INDEX.md` (SDR row: **PARCIAL**, **FALTA** p
 
 ## 3. Compose recipe
 
-1. **Pin** tip `42d9f83ee6fa1536bcb59d66e6c7850b01ddd9b0`; walk doors 1–7 in [`docs/FRANCHISE_PLAYBOOK.md`](../FRANCHISE_PLAYBOOK.md) before composing.
+1. **Pin** tip `227c6e0033eaab96cb42fa809ac6c37b758f84f4`; walk doors 1–7 in [`docs/FRANCHISE_PLAYBOOK.md`](../FRANCHISE_PLAYBOOK.md) before composing.
 2. **Select** the pack rows in §2 from [`markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md`](../markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md); do not add undeclared packIds; resolve filenames via the alias table (§2), not shorthand.
 3. **Materialize** with the library compositor / franchise protocol in [`START_FRANCHISE.md`](../START_FRANCHISE.md) into an empty consumer tree (or use this repo’s already-materialized paths under `internal/`, `db/`, `cmd/electromobility-api/`).
 4. **Apply migrations** in order through journey/history owners at minimum:
@@ -201,9 +202,22 @@ Also see `markdown_system/BUSINESS_FUNCTION_OPERATING_CONTRACT_V403.md` and `rol
 - `HISTORY-MODEL-TRAINING-PIPELINE` / chat corpus training is a **different** “history” contract (`markdown_system/PROJECT_HISTORY_MODEL_TRAINING_CONTRACT.md`) — out of scope here.
 - A PASS on these fixtures is **not** cloud CI, live IdP, provider accounts, or production CRM.
 
-## 8. Evidence cross-links
+## 8. Customer 360 read model (compose plan — not HECHO)
+
+Architecture proposes [`markdown_system/CUSTOMER_360_READ_MODEL_PACK_PLAN.md`](../markdown_system/CUSTOMER_360_READ_MODEL_PACK_PLAN.md) as the honest closure path for the **segmentation/360 FALTA** row. That document is a **plan only**:
+
+- **Spine (PROVEN_LOCAL):** `GET /v1/customer/journey` from `GO-FRANCHISE-CUSTOMER-JOURNEY-API` — fixtures in §4–§5 above.
+- **Capture lane:** `GO-ELECTROMOBILITY-PUBLIC-CRM-API` → `crm.lead` + `crm.consent_evidence`.
+- **Channel facet:** `GO-PG-CONTACT-CHANNEL-IDENTITY` → `communication.contact_channel_binding` — verify `db/tests/0047_contact_channel_identity.test.sql`; **FALTA** customer-facing merged HTTP.
+- **Adjacent reads (optional BFF merge):** `GET /v1/customer/orders`, `GET /v1/customer/service-cases` (`GO-ENTERPRISE-QUERY-API`).
+
+No elite `GET /v1/customer/360` exists @ `227c6e0`. Consumer BFF merges parallel GETs per the pack plan; Microsoft [prospect-to-quote](https://learn.microsoft.com/en-us/dynamics365/guidance/business-processes/prospect-to-quote-overview) and [case-to-resolution](https://learn.microsoft.com/en-us/dynamics365/guidance/business-processes/case-to-resolution-introduction) cite remaining gaps only.
+
+## 9. Evidence cross-links
 
 - `reconstruction_evidence/GO_ELECTROMOBILITY_PUBLIC_CRM_API_2026-08-24_V2.md` — public lead idempotency
 - `reconstruction_evidence/FRANCHISE_CUSTOMER_JOURNEY_2026-08-29_V114.md` — journey vertical slice
+- `reconstruction_evidence/GO_PG_CONTACT_CHANNEL_IDENTITY_2026-09-04_V237.md` — channel identity binding
 - `reconstruction_evidence/APPOINTMENT_CONFIRMATION_BFF_POSTGRES_V262.md` — timeline readback after confirmation
 - `docs/electromobility-api-runtime.md` — runtime route surface including `/v1/customer/journey`
+- `markdown_system/CUSTOMER_360_READ_MODEL_PACK_PLAN.md` — Customer 360 read-model compose recipe (plan only)
