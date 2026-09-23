@@ -15,6 +15,7 @@ Orden de puertas (alineado con README):
 | 5 | `START_FRANCHISE.md` | Nueva franquicia / consumidor |
 | 6 | `reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md` | Gate canónico biblioteca vs producto |
 | 7 | `qualification/FINAL_LIBRARY_READY_V402.json` | Recibo V402 (evidencia; no abre implementación) |
+| - | `docs/ROADMAP.md` / `docs/FRANCHISE_PLAYBOOK.md` | Roadmap Nightly + franchise assemble playbook (tip pin) |
 | — | `START_REFERENCE_V402.md` | Solo operadores ZIP V402 / referencia local (después de las puertas 1–7) |
 
 Dentro del ciclo del agente:

@@ -17,6 +17,7 @@ Orden de puertas (una sola tabla):
 | 5 | [`START_FRANCHISE.md`](START_FRANCHISE.md) | Nueva franquicia / consumidor desde la copia elegida |
 | 6 | [`reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md`](reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md) | Gate canónico biblioteca vs producto |
 | 7 | [`qualification/FINAL_LIBRARY_READY_V402.json`](qualification/FINAL_LIBRARY_READY_V402.json) | Recibo de cierre V402 (solo evidencia) |
+| - | [`docs/ROADMAP.md`](docs/ROADMAP.md) / [`docs/FRANCHISE_PLAYBOOK.md`](docs/FRANCHISE_PLAYBOOK.md) | Roadmap matriz Nightly + playbook de armado de franquicia (tip pin) |
 | — | [`START_REFERENCE_V402.md`](START_REFERENCE_V402.md) | **Después** de lo anterior: operadores de ZIP V402 / referencia local (no es la puerta de franquicia) |
 
 No abras `implementation_packs/UNIFIED_REFERENCE_V403_R4.md` dentro del contexto del agente: transporta 2147 fuentes y se materializa con el comando de [`markdown_system/START_V403_LOCAL.md`](markdown_system/START_V403_LOCAL.md).
