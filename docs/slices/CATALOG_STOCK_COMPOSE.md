@@ -1,6 +1,6 @@
 # CATALOG / STOCK / PI-PL — franchise compose slice
 
-Tip pin: `477358d0d7090f2c39467abe5634d81f38afae7f`
+Tip pin: `42d9f83ee6fa1536bcb59d66e6c7850b01ddd9b0`
 
 **Scope:** tangible local slice for catalog master data → serialized stock → pricing (PI) and procurement document classes proforma-invoice / packing-list (PL). Library infrastructure / local fixtures only — not production, not REVESTEX product.
 
