@@ -8,7 +8,7 @@ Para reutilizar exactamente el perfil aceptado, extraer el ZIP de biblioteca dis
 
 El Preflight genérico permanece BLOCKED por pnpm general rechazado y Docker ausente. La referencia V402 se probó con el instalador restringido y PostgreSQL nativo admitidos. Live y aceptación del target siguen pendientes; ARCA está completa en infraestructura/fixtures y espera credenciales para conectarse. Daybreak/libxml2 sigue diferido. El checklist de cuentas queda vacío: no se pide ningún secreto en este pulido.
 
-En la instalación local, abrir `Desktop/Elite Franchise Reference V402/START_REFERENCE_V402.md` y `qualification/FINAL_LIBRARY_READY_V402.json` dentro de esa carpeta. La [separación de gates](reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md) explica FAIL384 y las fuentes. Ningún paso siguiente obliga a reabrir el mantenimiento337 ya completo; aplica al proyecto consumidor y a la revisión que elija.
+En la instalación local, desde la raíz de la copia de biblioteca elegida (`$libraryPath`, o `$env:ELITE_LIBRARY_ROOT` / `ELITE_LIBRARY_ROOT` si está definido), abrir `START_REFERENCE_V402.md` y `qualification/FINAL_LIBRARY_READY_V402.json` cuando existan en esa copia. La [separación de gates](reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md) explica FAIL384 y las fuentes. Ningún paso siguiente obliga a reabrir el mantenimiento337 ya completo; aplica al proyecto consumidor y a la revisión que elija.
 
 La ampliación de experiencia, funciones de negocio y preparación cloud se encuentra en
 [LIBRARY_EXPERIENCE_CLOUD_EXTENSION_V403](markdown_system/LIBRARY_EXPERIENCE_CLOUD_EXTENSION_V403.md).
