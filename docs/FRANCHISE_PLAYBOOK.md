@@ -4,11 +4,19 @@
 
 Assemble a **franchise consumer** from **elite-engineering-library** at tip:
 
-`0d9c258cc66a6748cd86dd8b38050b1cb5c2a0b6`
+`477358d0d7090f2c39467abe5634d81f38afae7f`
 
 This library is infrastructure + local fixtures evidence — **not** a live franchise, **not** production authorization, **not** REVESTEX product code.
 
-Roadmap matrix: [`docs/ROADMAP.md`](ROADMAP.md).
+**Scope split (course correction):**
+
+| Doc | Scope |
+|---|---|
+| [`docs/FRANCHISE_ARCHITECTURE.md`](FRANCHISE_ARCHITECTURE.md) | **Full franchise / company domains** — identity, catalog, CRM, sales, channels, logistics, brand, admin, leads, QR, Galaxy; HECHO/PARCIAL/NO with path cites |
+| [`docs/ROADMAP.md`](ROADMAP.md) | Same domains in matrix form + **`LIBRARY_INFRASTRUCTURE`** Nightly wiring (local fixtures only) |
+| This playbook §3 CAN/CANNOT | **Library infrastructure / local-fixtures** — **not** the franchise product architecture surface |
+
+Roadmap matrix: [`docs/ROADMAP.md`](ROADMAP.md). Domain architecture: [`docs/FRANCHISE_ARCHITECTURE.md`](FRANCHISE_ARCHITECTURE.md).
 
 ## 2. Door order
 
@@ -25,6 +33,8 @@ Follow doors in order (same table as README / AGENTS):
 After 1–7, optional operators: `START_REFERENCE_V402.md` (ZIP / local reference / portable firma+verify).
 
 ## 3. CAN / CANNOT
+
+> **Not franchise product scope.** This list answers “what can the **library** compose and verify locally?” For end-to-end business domains (catalog, CRM, payments, multi-site, channels, fiscal, …), use [`docs/FRANCHISE_ARCHITECTURE.md`](FRANCHISE_ARCHITECTURE.md) — not this section alone.
 
 ### CAN
 
