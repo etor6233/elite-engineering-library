@@ -1,0 +1,132 @@
+{
+  "schema": "elite-slice-fixture-evidence/v1",
+  "slice_id": "CRM_HISTORY",
+  "tip_sha": "477358d0d7090f2c39467abe5634d81f38afae7f",
+  "status": "LOCAL_FIXTURES_INDEXED",
+  "production_authorized": false,
+  "claim": "Single PostgreSQL CRM owner with customer profile, consent/lead rows, append-only appointment transition history, and customer-scoped journey timeline projection.",
+  "selected_composition_source": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+  "packs": [
+    {
+      "packId": "ELECTROMOBILITY-FRANCHISE-MODULES",
+      "version": "0.1.2",
+      "path": "implementation_packs/ELECTROMOBILITY_FRANCHISE_MODULES.md",
+      "role": "crm_schema_owner"
+    },
+    {
+      "packId": "GO-ELECTROMOBILITY-PUBLIC-CRM-API",
+      "version": "0.4.0",
+      "path": "implementation_packs/GO_ELECTROMOBILITY_PUBLIC_CRM_API.md",
+      "role": "public_lead_capture"
+    },
+    {
+      "packId": "GO-FRANCHISE-CUSTOMER-JOURNEY-API",
+      "version": "0.10.21",
+      "path": "implementation_packs/GO_FRANCHISE_CUSTOMER_JOURNEY_API.md",
+      "role": "customer_journey_and_history"
+    },
+    {
+      "packId": "GO-ELECTROMOBILITY-APPLICATION",
+      "version": "1.22.3",
+      "path": "implementation_packs/GO_ELECTROMOBILITY_APPLICATION.md",
+      "role": "runtime_wiring"
+    }
+  ],
+  "adjacent_ingress_not_sdr": [
+    {
+      "packId": "GO-OMNICHANNEL-LEAD-INGRESS",
+      "version": "0.2.0",
+      "path": "implementation_packs/GO_OMNICHANNEL_LEAD_INGRESS.md",
+      "note": "Durable candidate only; not CRM promotion by receipt"
+    },
+    {
+      "packId": "GO-LEAD-CANDIDATE-PROMOTION",
+      "version": "0.1.0",
+      "path": "implementation_packs/GO_LEAD_CANDIDATE_PROMOTION.md",
+      "note": "Explicit promotion to crm.lead; not a named *SDR* pack"
+    }
+  ],
+  "timeline_endpoint": {
+    "method": "GET",
+    "path": "/v1/customer/journey",
+    "scope": "customer:self",
+    "collections": ["appointments", "quotes", "handovers", "delivery_exceptions"],
+    "max_rows_per_collection": 100
+  },
+  "history_tables": [
+    {
+      "schema": "crm",
+      "table": "appointment_transition",
+      "immutability_trigger": "appointment_transition_immutable",
+      "migration": "db/migrations/0015_franchise_availability_and_appointment_audit.up.sql"
+    },
+    {
+      "schema": "crm",
+      "table": "consent_evidence",
+      "note": "append-only consent decisions referenced by leads and promotions"
+    }
+  ],
+  "fixtures": [
+    {
+      "kind": "sql",
+      "path": "db/tests/0003_electromobility_franchise_modules.test.sql",
+      "proves": "crm schema tables and constraints from ELECTROMOBILITY-FRANCHISE-MODULES"
+    },
+    {
+      "kind": "sql",
+      "path": "db/tests/0005_franchise_customer_journey.test.sql",
+      "proves": "customer profile, lead, appointment, quote, handover seed graph"
+    },
+    {
+      "kind": "sql",
+      "path": "db/tests/0015_franchise_availability_and_appointment_audit.test.sql",
+      "proves": "appointment_transition table and immutability trigger present"
+    },
+    {
+      "kind": "sql",
+      "path": "db/tests/0088_crm_customer_timeline_fixture.test.sql",
+      "proves": "customer-scoped timeline counts, transition ledger append-only, organization isolation"
+    },
+    {
+      "kind": "sql",
+      "path": "db/tests/0045_lead_candidate_promotion.test.sql",
+      "proves": "adjacent ingress promotion immutability (not SDR)",
+      "optional": true
+    },
+    {
+      "kind": "go_integration",
+      "path": "internal/platform/postgres/franchisejourney_integration_test.go",
+      "proves": "CustomerJourney repeatable-read projection and ErrConflict on incoherent links"
+    },
+    {
+      "kind": "go_http",
+      "path": "internal/platform/httpapi/franchisejourney_test.go",
+      "tests": [
+        "TestCustomerJourneyReadFailureIsRedactedAndRecoverable",
+        "TestAppointmentConfirmationBFFPostgres"
+      ],
+      "proves": "redacted failure surface; BFF confirmation with owner timeline readback"
+    },
+    {
+      "kind": "reconstruction_evidence",
+      "path": "reconstruction_evidence/APPOINTMENT_CONFIRMATION_BFF_POSTGRES_V262.md",
+      "proves": "connected confirmation gate with SQL-verified timeline ownership"
+    }
+  ],
+  "verify_commands": [
+    "psql \"$TEST_DATABASE_URL\" -v ON_ERROR_STOP=1 -f db/tests/0088_crm_customer_timeline_fixture.test.sql",
+    "go test ./internal/platform/postgres -run CustomerJourney -count=1 -timeout=5m",
+    "go test ./internal/platform/httpapi -run TestCustomerJourneyReadFailure -count=1"
+  ],
+  "public_pattern_gaps_cite_only": [
+    "https://learn.microsoft.com/en-us/dynamics365/guidance/business-processes/prospect-to-quote-overview",
+    "https://learn.microsoft.com/en-us/dynamics365/guidance/business-processes/case-to-resolution-introduction",
+    "https://learn.microsoft.com/en-us/dynamics365/customer-service/overview",
+    "https://learn.microsoft.com/en-us/dynamics365/sales/create-edit-leads"
+  ],
+  "explicit_non_claims": [
+    "No named SDR or GTM pack",
+    "Not HISTORY-MODEL-TRAINING pipeline history",
+    "Not production or REVESTEX authorization"
+  ]
+}
