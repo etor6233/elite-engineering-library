@@ -1,8 +1,10 @@
-# A–G — infraestructura de biblioteca V402 lista para usar
+# START_REFERENCE_V402 — operadores ZIP V402 / referencia local
+
+> **Alcance:** guía para operadores de la instantánea ZIP V402 y de una carpeta de referencia local. **No** es la puerta de franquicia (usar [`START_FRANCHISE.md`](START_FRANCHISE.md)). Raíz portable: `$libraryPath` / `$env:ELITE_LIBRARY_ROOT` / `ELITE_LIBRARY_ROOT`.
 
 ## Aclaración post-pulido: qué está listo / qué NO está listo
 
-El cierre337 de biblioteca sigue READY_FOR_LIBRARY_USE, local/fixtures; el gate de producto sigue DISCOVERY/BLOCK y production_authorized=false. Este documento es una guía viva fuera de los artefactos firmados. El [expediente de separación de gates](LIBRARY_VS_PRODUCT_GATE_V402.md) enlaza las fuentes y explica FAIL384 como CONTAINED_LIBRARY_USE.
+El cierre337 de biblioteca sigue READY_FOR_LIBRARY_USE, local/fixtures; el gate de producto sigue DISCOVERY/BLOCK y production_authorized=false. Este documento es una guía viva fuera de los artefactos firmados. El [expediente de separación de gates](reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md) enlaza las fuentes y explica FAIL384 como CONTAINED_LIBRARY_USE.
 
 **árbol post-pulido ≠ bytes del ZIP de cierre; el ZIP sigue siendo la instantánea canónica del READY original**. Los packs V402 ya están publicados en GitHub. La corrección [0496ab7](https://github.com/etor6233/elite-engineering-library/commit/0496ab75f6e11ab56740d35f1ff88d67e3274e4c) conserva los bytes protegidos del cierre y aclara los gates. Un checkout nuevo conserva los 300 SHA protegidos y materializa los 1653 archivos exactos. [Verificación de publicación](qualification/grok-publish-review/FINAL_PUBLICATION_REVIEW_V402.json). La aprobación sigue limitada a biblioteca local/fixtures.
 
@@ -15,9 +17,9 @@ El cierre337 de biblioteca sigue READY_FOR_LIBRARY_USE, local/fixtures; el gate 
 
 [ZIP de biblioteca portable](elite-library-v402-source330-meta331-distribution336.zip) · [ZIP de producto firmado](signed-release-v402-r330/artifact.zip) · [Recibo original de cierre](qualification/FINAL_LIBRARY_READY_V402.json).
 
-Ubicación exacta: `C:\Users\NL\Desktop\Elite Franchise Reference V402`. El [README canónico protegido](<../Public Elite Codes/README.md>) permanece intacto; [START_FRANCHISE](<../Public Elite Codes/START_FRANCHISE.md>) contiene las aclaraciones actuales de publicación. Usar bridge → START_FRANCHISE → verify desde la copia exacta elegida; los comandos de firma están más abajo.
+Ubicación exacta: la raíz de la copia de biblioteca o de referencia local elegida (`$libraryPath`, o `$env:ELITE_LIBRARY_ROOT` / `ELITE_LIBRARY_ROOT` si está definido). El [README canónico](README.md) permanece intacto; [START_FRANCHISE](START_FRANCHISE.md) contiene las aclaraciones actuales de publicación. Usar bridge → START_FRANCHISE → verify desde la copia exacta elegida; los comandos de firma están más abajo.
 
-El Preflight genérico conserva BLOCKED: pnpm general rechazado por admisión y Docker ausente. La referencia ya fue probada con el instalador restringido y PostgreSQL nativo. Live sigue condicionado; ARCA tiene infraestructura/fixtures completos y Daybreak/libxml2 sigue diferido. El [checklist de cuentas](<../Public Elite Codes/reconstruction_evidence/LIBRARY_CREDENTIALS_CHECKLIST_V402.md>) continúa vacío. No se solicita ningún secreto ni se afirma BENCH01 o una franquicia en menos de una semana.
+El Preflight genérico conserva BLOCKED: pnpm general rechazado por admisión y Docker ausente. La referencia ya fue probada con el instalador restringido y PostgreSQL nativo. Live sigue condicionado; ARCA tiene infraestructura/fixtures completos y Daybreak/libxml2 sigue diferido. El [checklist de cuentas](reconstruction_evidence/LIBRARY_CREDENTIALS_CHECKLIST_V402.md) continúa vacío. No se solicita ningún secreto ni se afirma BENCH01 o una franquicia en menos de una semana.
 
 Las secciones A–G siguientes conservan el informe original de la aceptación local. Los dos ZIPs, sus SHA, la carpeta signed-release y los recibos337 no cambian.
 
@@ -49,7 +51,7 @@ Payroll/POS/promociones generales/referrals/reviews públicas/waitlist conservan
 
 ## D) Destino durable y verify
 
-Destino: `C:\Users\NL\Desktop\Elite Franchise Reference V402`.
+Destino: `$libraryPath` (raíz de la copia de referencia local / ZIP extraído; p. ej. `$env:ELITE_LIBRARY_ROOT`).
 
 - `reference-staging`: fuente lista con herramientas y perfiles locales.
 - `artifact-v402-r330`: producto exacto extraído y arrancado con PASS.
@@ -62,8 +64,11 @@ ZIP firmado de producto SHA256: `dba7978d04d08dc2eedb112524708e220ba18cccf86c3a2
 Para verificar desde PowerShell7:
 
 ```powershell
-$referencePath = 'C:\Users\NL\Desktop\Elite Franchise Reference V402'
-$publicTrustPath = 'C:\Users\NL\AppData\Local\EliteEngineeringSecrets\library-reference-v402\allowed_signers'
+# Desde la raíz de la copia de referencia / biblioteca elegida.
+$referencePath = if ($env:ELITE_LIBRARY_ROOT) { $env:ELITE_LIBRARY_ROOT } else { (Get-Location).ProviderPath }
+if (-not (Test-Path -LiteralPath (Join-Path $referencePath 'START_REFERENCE_V402.md') -PathType Leaf)) { throw 'Abrir PowerShell en la raiz de la referencia/biblioteca' }
+# Política de firmantes: ruta local de confianza del operador (fuera del producto). Ejemplo de nombre lógico:
+$publicTrustPath = Join-Path $env:LOCALAPPDATA 'EliteEngineeringSecrets/library-reference-v402/allowed_signers'
 & "$referencePath\reference-staging\portable_release_evidence_gate\verify_release.ps1" -ReleaseRoot "$referencePath\signed-release-v402-r330" -TrustedAllowedSigners $publicTrustPath -SshKeygen 'C:\Windows\System32\OpenSSH\ssh-keygen.exe'
 ```
 
@@ -99,7 +104,7 @@ Checklist de cuentas vacío: `LIBRARY_CREDENTIALS_CHECKLIST_V402.md`. La aceptac
 
 Execution337 COMPLETE. Todas las comprobaciones ejecutadas de Preflight, archivo portable, materialización NEW desde ZIP y rechazo EXISTING sin cambios: PASS. El diagnóstico general de herramientas conserva BLOCKED: pnpm general rechazado por admisión de seguridad y Docker ausente. La composición local usa el instalador restringido y PostgreSQL nativo admitidos, probados en los builds y ensayos actuales; no se declara PASS del diagnóstico general. Todos los bytes públicos del archivo coinciden con la carpeta canónica después del cierre.
 
-Archivo: `C:\Users\NL\Desktop\Elite Franchise Reference V402\elite-library-v402-source330-meta331-distribution336.zip`
+Archivo: `$libraryPath/elite-library-v402-source330-meta331-distribution336.zip` (o el mismo nombre relativo bajo `ELITE_LIBRARY_ROOT`)
 
 SHA256: `cd24757744d01dbc37b666495d659f76824a8a680015eee469187e975542591f`
 

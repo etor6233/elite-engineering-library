@@ -6,11 +6,18 @@ Este repositorio es la **biblioteca de ingeniería**, no un producto desplegado.
 
 ## Empezar aquí
 
-| Rol | Entrada |
-|---|---|
-| **Agentes** (Codex, Claude, Grok, Cursor, …) | [`AGENTS.md`](AGENTS.md) — router compacto |
-| **Uso, búsqueda y retoma** | [`markdown_system/USE_LIBRARY_V403.md`](markdown_system/USE_LIBRARY_V403.md) |
-| **Salud, wiring y GAPs honestos** | [`markdown_system/LIBRARY_HEALTH_CHECK.md`](markdown_system/LIBRARY_HEALTH_CHECK.md) |
+Orden de puertas (una sola tabla):
+
+| # | Puerta | Para qué |
+|---|---|---|
+| 1 | [`README.md`](README.md) (este archivo) | Contexto de biblioteca vs producto |
+| 2 | [`AGENTS.md`](AGENTS.md) | Router compacto por agente |
+| 3 | [`markdown_system/USE_LIBRARY_V403.md`](markdown_system/USE_LIBRARY_V403.md) | Uso, búsqueda y retoma |
+| 4 | [`markdown_system/LIBRARY_HEALTH_CHECK.md`](markdown_system/LIBRARY_HEALTH_CHECK.md) | Salud, wiring y GAPs honestos |
+| 5 | [`START_FRANCHISE.md`](START_FRANCHISE.md) | Nueva franquicia / consumidor desde la copia elegida |
+| 6 | [`reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md`](reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md) | Gate canónico biblioteca vs producto |
+| 7 | [`qualification/FINAL_LIBRARY_READY_V402.json`](qualification/FINAL_LIBRARY_READY_V402.json) | Recibo de cierre V402 (solo evidencia) |
+| — | [`START_REFERENCE_V402.md`](START_REFERENCE_V402.md) | **Después** de lo anterior: operadores de ZIP V402 / referencia local (no es la puerta de franquicia) |
 
 No abras `implementation_packs/UNIFIED_REFERENCE_V403_R4.md` dentro del contexto del agente: transporta 2147 fuentes y se materializa con el comando de [`markdown_system/START_V403_LOCAL.md`](markdown_system/START_V403_LOCAL.md).
 
@@ -28,7 +35,7 @@ Abrí solo la ruta que coincide; no cargues el índice entero ni el corpus.
 |---|---|
 | Persona (tres gráficos; no certifican implementación) | [`markdown_system/LIBRARY_HUMAN_GRAPH.md`](markdown_system/LIBRARY_HUMAN_GRAPH.md) |
 | Un pack por claim acotado | [`markdown_system/PACK_PER_CLAIM_INDEX.md`](markdown_system/PACK_PER_CLAIM_INDEX.md) |
-| Nueva franquicia desde una copia | [`START_FRANCHISE.md`](START_FRANCHISE.md) |
+| Nueva franquicia desde una copia | [`START_FRANCHISE.md`](START_FRANCHISE.md) (puerta 5) |
 | Arquitectura (6 `CANDIDATE_PACK`) | [`architecture_packs/`](architecture_packs/) |
 | Implementación materializable | [`implementation_packs/`](implementation_packs/) |
 
