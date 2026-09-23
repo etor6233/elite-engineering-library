@@ -1,6 +1,6 @@
 # Library health check — agent & franchise wiring
 
-**Commit audited:** `71a0a4c3a6a9661060e0fdef6a8da54cec95221a` (`fix: restore library index as repo front door`)
+**Commit audited:** `57f77b03773fbbaeb160ec7ee68bf19ea0f9befe` (`fix: restore library index as repo front door`)
 
 **Scope:** entrypoints, indexes, cross-links, and domain findability. Not a production or cloud certification.
 
