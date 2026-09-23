@@ -81,6 +81,54 @@ Live provider credentials, cloud CI, physical devices, and production admission 
 
 ---
 
+## Nightly Domain Matrix READY @ `477358d` (PM confirmation)
+
+**Franchise-domain compose 116→120** (`markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md` + `FRANCHISE_COMPLETE_EXTENSION_PACK_PLAN_V403.md`) — full `LOCAL_FIXTURES` library scope, **not** three features. `production_authorized: false` (`qualification/FINAL_LIBRARY_READY_V402.json`). Architecture docs = library compose claims only — **no REVESTEX product**.
+
+### HECHO
+
+| Domain | Cite @ `477358d` |
+|---|---|
+| **Catalog / stock** | `implementation_packs/ELECTROMOBILITY_FRANCHISE_MODULES.md`, `db/migrations/0003_electromobility_franchise_modules.up.sql`, `GO_SUPPLY_FACTORY_INVENTORY_API.md`, `GO_CONNECTED_CATALOG_AUTHORING.md`, `GO_CONNECTED_CATALOG_PUBLICATION.md`, `GO_CONNECTED_SERIAL_SUPPLY.md`, `GO_CONNECTED_SUPPLY_CREATION.md`, `TYPESCRIPT_CATALOG_AUTHORING_PORTAL.md`, `TYPESCRIPT_PUBLISHED_CATALOG_STOREFRONT.md` |
+| **Sales / orders** | `GO_FRANCHISE_CUSTOMER_JOURNEY_API.md`, `GO_COMMERCE_PRICING_PAYMENT_API.md`, `GO_INITIAL_HANDOVER_API.md`, `GO_RETURN_*` workers; `reconstruction_evidence/FRANCHISE_QUOTE_TO_ORDER_2026-08-29_V116.md` |
+| **Payments (+ BC exact)** | `GO_BC_EXACT_AMOUNT_ADAPTER.md`, `GO_BC_SALES_CONTRACT_ADAPTER.md`, `GO_PAYMENT_CHECKOUT_RUNTIME.md`, `GO_OFFICIAL_PAYMENT_WEBHOOK_ADAPTERS.md`, `TYPESCRIPT_PAYMENT_CHECKOUT_PORTAL.md`, `GO_EXACT_FX_SNAPSHOT_ACCOUNTING.md` |
+| **AI / conversation** | `GO_CONVERSATIONAL_AGENT.md`, `GO_CONVERSATION_TOOLS.md`, `GO_CONNECTED_CONVERSATION_RUNTIME.md`, `GO_APP_WIRING.md`, `GO_AGENT_DOMAIN_BINDING.md`, `GO_OPENAI_RESPONSES_TOOL_ADAPTER.md` (provider keys **CONDITIONED**) |
+| **Signed release** | `implementation_packs/PORTABLE_SIGNED_RELEASE_EVIDENCE_GATE.md`, `START_REFERENCE_V402.md` |
+
+### PARCIAL
+
+| Domain | Cite @ `477358d` | Public pattern (cite only) |
+|---|---|---|
+| **Identity / security** | `GO_OIDC_SERVICE_TOKEN_BROKER.md`, `GO_OIDC_PORTAL_SESSION.md`, `TYPESCRIPT_OIDC_PORTAL_ADAPTER.md`, `MICROSOFT_DEVSKIM_ADAPTED_SAST_GATE.md`, `SECURE_OPERATIONS_DELIVERY_CORE.md`; `reconstruction_evidence/IDENTITY_J5_RELEASE_V402.md` | [NIST SP 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html); [OIDC Core 1.0](https://openid.net/specs/openid-connect-core-1_0.html) |
+| **CRM** | `GO_ELECTROMOBILITY_PUBLIC_CRM_API.md`, `GO_FRANCHISE_CUSTOMER_JOURNEY_API.md`, `GO_PG_CONTACT_CHANNEL_IDENTITY.md`, `GO_CUSTOMER_SURVEY_API.md` — compose + fixtures; no standalone segmentation/360 pack | [Microsoft prospect-to-quote](https://learn.microsoft.com/en-us/dynamics365/guidance/business-processes/prospect-to-quote-overview) |
+| **Analytics** | `GO_DATA_ANALYTICS_CORE.md`, `GO_HTTP_METRICS_REFERENCE.md`, `GO_CONNECTED_ROLE_METRICS_PROOF.md`; disk **not selected:** `GO_DASHBOARDS_CORE.md` | [Google SRE Book — monitoring](https://sre.google/sre-book/monitoring-distributed-systems/) |
+| **Multi-site** | `GO_NETWORK_ROLE_COMPOSITION.md`, `GO_FRANCHISE_ROYALTY_SETTLEMENT_API.md`, `TYPESCRIPT_NETWORK_ROLE_PORTAL.md`; site CMS/IaC thin | [AWS Control Tower](https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html) |
+| **Channels** | `GO_OMNICHANNEL_LEAD_INGRESS.md`, Meta/TikTok/WA/ML packs in selected 116; live creds **CONDITIONED** (`FRANCHISE_GAP_MAP.md` T2805) | Lead ingress ≠ GTM |
+| **Logistics** | `GO_FULFILLMENT_SERVICE_FRANCHISE_API.md`, `GO_CONNECTED_SUPPLY_CREATION.md`, `GO_CONNECTED_SERIAL_SUPPLY.md`; `docs/inventory/MICROSOFT_BC_*_DERIVATION.md` — compose PROVEN_LOCAL; cross-entity DOM / live carrier thin | [Amazon SP-API Fulfillment Outbound](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-api) |
+| **Brand / DAM** | `TYPESCRIPT_PUBLISHED_CATALOG_STOREFRONT.md`, V403 `TS-PUBLIC-WEB-EXPERIENCE-V403` (visual PENDING); **FALTA** dedicated DAM pack | [Material Design](https://m3.material.io/); [Fluent 2](https://fluent2.microsoft.design/); [Adobe Spectrum](https://spectrum.adobe.com/) |
+| **Admin UX** | `markdown_system/ADMIN_OPS_EXPERIENCE_PACK_PLAN_V403.md` → `TYPESCRIPT_ADMIN_OPS_EXPERIENCE_V403.md` — on disk, **not** in 116/120 JSON | Same design-system refs (method only) |
+| **ARCA live** | ARCA stack in selected 116 (`MICROSOFT_ARCA_*`, `GO_ARCA_FISCAL_ISSUANCE_API.md`); `FRANCHISE_GAP_MAP.md` (`ARCA_INFRA` PROVEN_LOCAL); live creds pending | [AFIP WSFE documentation](https://www.afip.gob.ar/ws/documentacion/ws-factura-electronica.asp) |
+
+### NO (do not invent)
+
+| Gap | Cite @ `477358d` | Public pattern (cite only) |
+|---|---|---|
+| **GTM Tag Manager** | No `*GTM*` pack — `markdown_system/LIBRARY_HEALTH_CHECK.md`, `PACK_PER_CLAIM_INDEX.md` | [Google server-side GTM](https://developers.google.com/tag-platform/tag-manager/server-side/intro) |
+| **Named `*SDR*` pack** | Function only: `GO_OMNICHANNEL_LEAD_INGRESS.md`, `GO_LEAD_CANDIDATE_PROMOTION.md`, `BUSINESS_FUNCTION_OPERATING_CONTRACT_V403.md` | — |
+| **Production live** | `qualification/FINAL_LIBRARY_READY_V402.json` (`production_authorized: false`) | `reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md` |
+| **V403 successor READY** | `unified-experience-next/markdown_system/SUCCESSOR_AUTHORITY_ROUTER.md` (IN_PROGRESS) | — |
+| **Desktop V3 from Git** | `docs/ROADMAP.md` (UNKNOWN_NEVER_PUSHED) | — |
+| **Galaxy franchise e2e** | `docs/FRANCHISE_PLAYBOOK.md` §5 — `etor6233/grok-bot-galaxy@f8546c3`; 0 `franchise` hits | Field guide only |
+
+### QR (special row)
+
+| Surface | Status | Cite @ `477358d` |
+|---|---|---|
+| **QR identity** | **PARCIAL** — door-wired, **not** in selected JSON | `implementation_packs/GO_QR_CORE.md`, `internal/qr/`; no `GO-QR-CORE` in `FRANCHISE_COMPLETE_PACK_PLAN.md` |
+| **QR capture** | **PARCIAL** / pack **FALTA** | `qr_capture/` reference only; `markdown_system/LIBRARY_HEALTH_CHECK.md` |
+
+---
+
 ## Nightly Audit Engineer inventory @ `477358d`
 
 Verified against on-disk paths at tip. Architecture PR = **library compose claims only** — no REVESTEX product until N L says **ESTAMOS LISTOS**.
@@ -161,7 +209,7 @@ Verified against on-disk paths at tip. Architecture PR = **library compose claim
 
 | Status | Selected 116 | Primary paths @ `477358d` | Notes |
 |---|---|---|---|
-| **HECHO** | Yes | `GO-ELECTROMOBILITY-PUBLIC-CRM-API`, `GO-FRANCHISE-CUSTOMER-JOURNEY-API`, `GO-PG-CONTACT-CHANNEL-IDENTITY`; `GO-CUSTOMER-SURVEY-API`, `TS-CUSTOMER-SURVEY-PORTAL`; `reconstruction_evidence/FRANCHISE_CUSTOMER_JOURNEY_2026-08-29_V114.md` | CRM history via journey + channel identity; not a standalone Salesforce-class CRM pack. |
+| **PARCIAL** | Yes | `GO-ELECTROMOBILITY-PUBLIC-CRM-API`, `GO-FRANCHISE-CUSTOMER-JOURNEY-API`, `GO-PG-CONTACT-CHANNEL-IDENTITY`; `GO-CUSTOMER-SURVEY-API`, `TS-CUSTOMER-SURVEY-PORTAL`; `reconstruction_evidence/FRANCHISE_CUSTOMER_JOURNEY_2026-08-29_V114.md` | PM matrix: CRM compose + fixtures; no standalone segmentation / Customer-360 pack. |
 | **PARCIAL** | Disk | `implementation_packs/GO_ONBOARDING_CORE.md`, `GO_APPLICANT_ONBOARDING_CORE.md` | On disk only; onboarding in selected set uses `TS-MULTIROLE-ONBOARDING`. |
 
 **Research:** [Microsoft prospect-to-quote](https://learn.microsoft.com/en-us/dynamics365/guidance/business-processes/prospect-to-quote-overview); [Microsoft case-to-resolution](https://learn.microsoft.com/en-us/dynamics365/guidance/business-processes/case-to-resolution-introduction).
@@ -232,8 +280,7 @@ Verified against on-disk paths at tip. Architecture PR = **library compose claim
 
 | Status | Selected 116 | Primary paths @ `477358d` | Notes |
 |---|---|---|---|
-| **HECHO** | Yes | `GO-FULFILLMENT-SERVICE-FRANCHISE-API`, `GO-CONNECTED-SUPPLY-CREATION`, `GO-CONNECTED-SERIAL-SUPPLY`, `GO-SUPPLY-FACTORY-INVENTORY-API`; `docs/inventory/MICROSOFT_BC_*_DERIVATION.md`, `docs/logistics/MICROSOFT_BC_AMAZON_CONNECTED_CARRIER_DERIVATION.md`; `reconstruction_evidence/FRANCHISE_HANDOVER_SERVER_EVIDENCE_2026-08-30_V136.md` | Receiving + handover connected in local fixtures. |
-| **PARCIAL** | — | Distributed order management across many legal entities | No DOM-equivalent pack; BC derivations are pattern docs. |
+| **PARCIAL** | Yes | `GO-FULFILLMENT-SERVICE-FRANCHISE-API`, `GO-CONNECTED-SUPPLY-CREATION`, `GO-CONNECTED-SERIAL-SUPPLY`, `GO-SUPPLY-FACTORY-INVENTORY-API`; `docs/inventory/MICROSOFT_BC_*_DERIVATION.md`, `docs/logistics/MICROSOFT_BC_AMAZON_CONNECTED_CARRIER_DERIVATION.md`; `reconstruction_evidence/FRANCHISE_HANDOVER_SERVER_EVIDENCE_2026-08-30_V136.md` | PM matrix: compose PROVEN_LOCAL; cross-entity DOM / live carrier integration thin — no DOM-equivalent admitted pack. |
 
 **Research:** [Amazon SP-API Fulfillment Outbound](https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-api); [Microsoft Distributed Order Management](https://learn.microsoft.com/en-us/dynamics365/commerce/dom).
 

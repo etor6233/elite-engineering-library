@@ -13,6 +13,17 @@
 
 Full domain map, dependencies, gap research, and proposed elite additions: **[`docs/FRANCHISE_ARCHITECTURE.md`](FRANCHISE_ARCHITECTURE.md)**.
 
+### Nightly Domain Matrix READY @ `477358d` (PM confirmation)
+
+Compose profile **116→120** = full franchise-domain `LOCAL_FIXTURES` — not three features. Detail: [`docs/FRANCHISE_ARCHITECTURE.md`](FRANCHISE_ARCHITECTURE.md#nightly-domain-matrix-ready--477358d-pm-confirmation).
+
+| Status | Domains |
+|---|---|
+| **HECHO** | Catalog/stock · Sales/orders · Payments (+ BC exact) · AI/conversation · Signed release |
+| **PARCIAL** | Identity/security · CRM · Analytics · Multi-site · Channels · Logistics · Brand/DAM · Admin UX · ARCA live |
+| **NO** | GTM · Named `*SDR*` pack · Production live · V403 successor READY · Desktop V3 from Git · Galaxy franchise e2e |
+| **QR** | `GO-QR-CORE` door-wired (`GO_QR_CORE.md`, `internal/qr/`) — **absent** from selected `packId` JSON; capture `qr_capture/` ref-only |
+
 ### Nightly Audit Engineer inventory @ `477358d`
 
 | # | Status | Claim | Cite |
@@ -42,27 +53,33 @@ Legend: **HECHO** = selected 116/120 packs + findable reference; **PARCIAL** = c
 | Domain | Status | Cite (paths @ tip) |
 |---|---|---|
 | Identity / security / authz / audit | **PARCIAL** | Selected: `implementation_packs/GO_OIDC_SERVICE_TOKEN_BROKER.md`, `GO_OIDC_PORTAL_SESSION.md`, `TYPESCRIPT_OIDC_PORTAL_ADAPTER.md`, `MICROSOFT_DEVSKIM_ADAPTED_SAST_GATE.md`, `SECURE_OPERATIONS_DELIVERY_CORE.md`, `GO_HUMAN_APPROVAL_CORE.md`; evidence `reconstruction_evidence/IDENTITY_J5_RELEASE_V402.md`; disk-only: `GO_PCI_DSS_SCOPE_CORE.md`, `GO_GDPR_CONSENT_ERASURE_CORE.md` |
-| Catalog / stock / PI-PL / costs / fiscal (ARCA) | **HECHO** compose / **PARCIAL** live | `ELECTROMOBILITY_FRANCHISE_MODULES.md`, `db/migrations/0003_electromobility_franchise_modules.up.sql`, `GO_SUPPLY_FACTORY_INVENTORY_API.md`, `GO_CONNECTED_CATALOG_*`, `GO_BC_EXACT_AMOUNT_ADAPTER.md`, `GO_EXACT_FX_SNAPSHOT_ACCOUNTING.md`; ARCA stack PROVEN_LOCAL (`FRANCHISE_GAP_MAP.md`); live creds **CONDITIONED** |
-| Customers + history / CRM | **HECHO** | `GO_ELECTROMOBILITY_PUBLIC_CRM_API.md`, `GO_FRANCHISE_CUSTOMER_JOURNEY_API.md`, `GO_PG_CONTACT_CHANNEL_IDENTITY.md`, `GO_CUSTOMER_SURVEY_API.md` |
-| Sales / quotes / orders / payments | **HECHO** / **PARCIAL** live | `GO_COMMERCE_PRICING_PAYMENT_API.md`, `GO_FRANCHISE_CUSTOMER_JOURNEY_API.md`, `GO_PAYMENT_CHECKOUT_RUNTIME.md`, `GO_OFFICIAL_PAYMENT_WEBHOOK_ADAPTERS.md`, `GO_INITIAL_HANDOVER_API.md`, `GO_RETURN_*` workers; `reconstruction_evidence/FRANCHISE_QUOTE_TO_ORDER_2026-08-29_V116.md` |
+| Fiscal (ARCA live) | **PARCIAL** | ARCA stack in selected 116; `FRANCHISE_GAP_MAP.md` (`ARCA_INFRA` PROVEN_LOCAL); live creds pending — [AFIP WSFE](https://www.afip.gob.ar/ws/documentacion/ws-factura-electronica.asp) |
+| Catalog / stock | **HECHO** | `ELECTROMOBILITY_FRANCHISE_MODULES.md`, `GO_SUPPLY_FACTORY_INVENTORY_API.md`, `GO_CONNECTED_CATALOG_*`, `GO_CONNECTED_SERIAL_SUPPLY.md` |
+| Customers + history / CRM | **PARCIAL** | `GO_ELECTROMOBILITY_PUBLIC_CRM_API.md`, `GO_FRANCHISE_CUSTOMER_JOURNEY_API.md`, `GO_PG_CONTACT_CHANNEL_IDENTITY.md` — compose; segmentation/360 **FALTA** |
+| Sales / quotes / orders | **HECHO** | `GO_FRANCHISE_CUSTOMER_JOURNEY_API.md`, `GO_COMMERCE_PRICING_PAYMENT_API.md`, `GO_INITIAL_HANDOVER_API.md`, `GO_RETURN_*`; `FRANCHISE_QUOTE_TO_ORDER_2026-08-29_V116.md` |
+| Payments (+ BC exact) | **HECHO** | `GO_BC_EXACT_AMOUNT_ADAPTER.md`, `GO_PAYMENT_CHECKOUT_RUNTIME.md`, `GO_OFFICIAL_PAYMENT_WEBHOOK_ADAPTERS.md`, `GO_EXACT_FX_SNAPSHOT_ACCOUNTING.md` |
 | Analytics / dashboards / CRM segmentation | **PARCIAL** | Cores: `GO_DATA_ANALYTICS_CORE.md`, `GO_CONNECTED_ROLE_METRICS_PROOF.md`; disk **FALTA** select: `GO_DASHBOARDS_CORE.md` |
 | Brand / DAM | **PARCIAL** / DAM **FALTA** | Storefront + V403 public overlay; no dedicated DAM pack |
 | Admin UX | **PARCIAL** | `TYPESCRIPT_ADMIN_OPS_EXPERIENCE_V403.md` + plan on disk; **not** in 116/120 JSON — gap-gate |
 | Multi-site / multi-sede | **PARCIAL** | Hierarchy/royalty compose: `GO_NETWORK_ROLE_COMPOSITION.md`, `GO_FRANCHISE_ROYALTY_SETTLEMENT_API.md`; site CMS/IaC thin; Galaxy = field guide only |
-| Channels — WhatsApp / leads / ML | **HECHO** fixtures / **PARCIAL** live | Nightly #5 cluster; `GO_OMNICHANNEL_LEAD_INGRESS.md`, WA/Meta/TikTok/ML packs; creds **CONDITIONED** |
+| Channels (WA / leads / Meta / TikTok / ML) | **PARCIAL** | Selected cluster in 116; `GO_OMNICHANNEL_LEAD_INGRESS.md`, WA/Meta/TikTok/ML packs; live creds **CONDITIONED** |
 | Channels — Messenger / Instagram | **PARCIAL** | **Disk only (not selected 116):** `GO_MESSAGING_CHANNEL_ADAPTERS.md`; `internal/msgchannels/metagraph.go` (no outbound IG/Messenger claim) |
 | Channels — ads / email / web leads | **PARCIAL** | Leads: `GO_OMNICHANNEL_LEAD_INGRESS.md`, Meta/TikTok lead packs; ads reporting: `PYTHON_*_ADS_REPORTING_*`; email: `GO_CHANNELS_CORE.md`, `GO_PG_OUTBOUND_DELIVERY_FENCE.md`; disk: `AWS_SES_IMMUTABLE_EMAIL_RECEIVER.md` |
 | Channels — GTM Tag Manager | **NO** | GAP — no `*GTM*` pack (`markdown_system/LIBRARY_HEALTH_CHECK.md`, `PACK_PER_CLAIM_INDEX.md`) |
-| Logistics / fulfillment / receiving | **HECHO** | `GO_FULFILLMENT_SERVICE_FRANCHISE_API.md`, `GO_CONNECTED_SUPPLY_CREATION.md`, `GO_CONNECTED_SERIAL_SUPPLY.md`; `docs/inventory/MICROSOFT_BC_*_DERIVATION.md` |
+| Logistics / fulfillment / receiving | **PARCIAL** | `GO_FULFILLMENT_SERVICE_FRANCHISE_API.md`, `GO_CONNECTED_SUPPLY_CREATION.md`, `GO_CONNECTED_SERIAL_SUPPLY.md`; compose PROVEN_LOCAL; DOM/live carrier thin |
 | Brand / public web / publish gates | **PARCIAL** | `TYPESCRIPT_PUBLISHED_CATALOG_STOREFRONT.md`, V403 `TS-PUBLIC-WEB-EXPERIENCE-V403` (visual **PENDING**); disk SEO: `GO_SEO_CORE.md` |
 | Admin / ops / governance / agent doors | **HECHO** doors / **PARCIAL** admin UX | `START_FRANCHISE.md`, `FRANCHISE_PROJECT_OPERATING_PROTOCOL.md`, `BUSINESS_FUNCTION_OPERATING_V403.md` (in 120); admin overlay separate expediente |
 | Lead ingress / promotion | **HECHO** ingress / **NO** named SDR pack | `GO_OMNICHANNEL_LEAD_INGRESS.md`, `GO_LEAD_CANDIDATE_PROMOTION.md`; SDR function via `BUSINESS_FUNCTION_OPERATING_CONTRACT_V403.md` only |
 | QR identity | **PARCIAL** | `implementation_packs/GO_QR_CORE.md`, `internal/qr/` — **not** in selected 116 JSON |
 | QR capture | **PARCIAL** / pack **NO** | `qr_capture/` reference only; **FALTA** admitted capture pack |
 | Galaxy fleet orchestration | **PARCIAL** how-tos / **NO** e2e | `docs/FRANCHISE_PLAYBOOK.md` §5 — `etor6233/grok-bot-galaxy@f8546c3`; 0 `franchise` hits |
-| Conversational agent runtime | **HECHO** / **PARCIAL** keys | Nightly #7: `GO_CONVERSATIONAL_AGENT.md`, `GO_CONNECTED_CONVERSATION_RUNTIME.md`, `GO_APP_WIRING.md`; provider keys **CONDITIONED** |
+| AI / conversation | **HECHO** | `GO_CONVERSATIONAL_AGENT.md`, `GO_CONNECTED_CONVERSATION_RUNTIME.md`, `GO_APP_WIRING.md` (+ tools); keys **CONDITIONED** |
+| Signed release | **HECHO** | `PORTABLE_SIGNED_RELEASE_EVIDENCE_GATE.md`, `START_REFERENCE_V402.md` |
 | Document intelligence | **PARCIAL** | `GO_CONNECTED_DOCUMENT_REFERENCE.md`, Textract/Azure samples, T2806 PROVEN_LOCAL |
-| Production / franchise live | **NO** | `qualification/FINAL_LIBRARY_READY_V402.json` (`production_authorized: false`) |
+| Production live | **NO** | `qualification/FINAL_LIBRARY_READY_V402.json` (`production_authorized: false`) |
+| V403 successor READY | **NO** | `unified-experience-next/markdown_system/SUCCESSOR_AUTHORITY_ROUTER.md` (IN_PROGRESS) |
+| Desktop V3 from Git | **NO** | `docs/ROADMAP.md` (UNKNOWN_NEVER_PUSHED) |
+| Galaxy franchise e2e | **NO** | `docs/FRANCHISE_PLAYBOOK.md` §5 — 0 `franchise` hits at pin |
 
 ### Recommended build order (summary)
 
