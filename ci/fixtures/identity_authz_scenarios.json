@@ -24,11 +24,34 @@
     "mutation_observed": false,
     "old_credential_accepted": false
   },
+  "audit_obligation_fields": [
+    "tenant_id",
+    "event_id",
+    "actor_subject",
+    "action",
+    "resource_type",
+    "resource_id",
+    "decision"
+  ],
+  "audit_owners": [
+    "markdown_system/AUDIT_EVENT_PACK_PLAN.md",
+    "implementation_packs/POSTGRES_TRANSACTIONAL_FOUNDATION.md",
+    "implementation_packs/GO_HUMAN_APPROVAL_CORE.md",
+    "db/migrations/0001_platform_foundation.up.sql",
+    "production_admission_gate/validate_identity_authorization_admission.py"
+  ],
+  "audit_invariants": {
+    "append_only": true,
+    "tenant_scoped": true,
+    "live_effects": false
+  },
   "doors": [
     "markdown_system/PACK_PER_CLAIM_INDEX.md",
+    "markdown_system/AUDIT_EVENT_PACK_PLAN.md",
     "implementation_packs/GO_OIDC_SERVICE_TOKEN_BROKER.md",
     "implementation_packs/GO_OIDC_PORTAL_SESSION.md",
     "implementation_packs/TYPESCRIPT_OIDC_PORTAL_ADAPTER.md",
+    "implementation_packs/GO_HUMAN_APPROVAL_CORE.md",
     "implementation_packs/SECURE_OPERATIONS_DELIVERY_CORE.md",
     "implementation_packs/MICROSOFT_DEVSKIM_ADAPTED_SAST_GATE.md",
     "production_admission_gate/validate_identity_authorization_admission.py",

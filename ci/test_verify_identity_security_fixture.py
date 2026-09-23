@@ -35,6 +35,18 @@ class VerifyIdentitySecurityFixtureTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             load_fixture_from_dict(data)
 
+    def test_audit_obligation_fields_required(self) -> None:
+        data = json.loads(FIXTURE.read_text(encoding="utf-8"))
+        data["audit_obligation_fields"] = ["tenant_id"]
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as handle:
+            handle.write(json.dumps(data))
+            path = Path(handle.name)
+        try:
+            errors = validate_fixture(data)
+            self.assertTrue(any("audit_obligation_fields" in item for item in errors))
+        finally:
+            path.unlink(missing_ok=True)
+
     def test_extra_fixture_field_rejected(self) -> None:
         data = json.loads(FIXTURE.read_text(encoding="utf-8"))
         data["description"] = "unsupported extra"
