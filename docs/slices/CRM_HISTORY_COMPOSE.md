@@ -93,7 +93,7 @@ GET /v1/customer/journey (scoped projection, max 100 rows/collection)
 | --- | --- | --- |
 | SQL journey seed | `db/tests/0005_franchise_customer_journey.test.sql` | customer profile, lead, appointment, quote, handover rows coexist |
 | SQL history immutability | `db/tests/0015_franchise_availability_and_appointment_audit.test.sql` | `crm.appointment_transition` + immutability trigger |
-| SQL timeline projection | `db/tests/0088_crm_customer_timeline_fixture.test.sql` | customer-scoped counts, transition ledger, org isolation |
+| SQL timeline projection | `db/tests/0089_crm_customer_timeline_fixture.test.sql` | customer-scoped counts, transition ledger, org isolation |
 | SQL lead promotion (ingress) | `db/tests/0045_lead_candidate_promotion.test.sql` | promotion row immutability; adjacent to CRM, not SDR |
 | Go repository journey | `internal/platform/postgres/franchisejourney_integration_test.go` | `CustomerJourney` repeatable-read snapshot; conflict on incoherent handover links |
 | Go HTTP redaction | `internal/platform/httpapi/franchisejourney_test.go` (`TestCustomerJourneyReadFailureIsRedactedAndRecoverable`) | failed projection → redacted 503, no partial leak |
@@ -117,7 +117,7 @@ Run against a **disposable** PostgreSQL 18 database (`TEST_DATABASE_URL`); never
 for f in db/tests/0003_electromobility_franchise_modules.test.sql \
          db/tests/0005_franchise_customer_journey.test.sql \
          db/tests/0015_franchise_availability_and_appointment_audit.test.sql \
-         db/tests/0088_crm_customer_timeline_fixture.test.sql; do
+         db/tests/0089_crm_customer_timeline_fixture.test.sql; do
   psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f "$f"
 done
 ```

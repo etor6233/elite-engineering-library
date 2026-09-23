@@ -84,7 +84,7 @@
     },
     {
       "kind": "sql",
-      "path": "db/tests/0088_crm_customer_timeline_fixture.test.sql",
+      "path": "db/tests/0089_crm_customer_timeline_fixture.test.sql",
       "proves": "customer-scoped timeline counts, transition ledger append-only, organization isolation"
     },
     {
@@ -114,7 +114,7 @@
     }
   ],
   "verify_commands": [
-    "psql \"$TEST_DATABASE_URL\" -v ON_ERROR_STOP=1 -f db/tests/0088_crm_customer_timeline_fixture.test.sql",
+    "psql \"$TEST_DATABASE_URL\" -v ON_ERROR_STOP=1 -f db/tests/0089_crm_customer_timeline_fixture.test.sql",
     "go test ./internal/platform/postgres -run CustomerJourney -count=1 -timeout=5m",
     "go test ./internal/platform/httpapi -run TestCustomerJourneyReadFailure -count=1"
   ],
