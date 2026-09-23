@@ -141,14 +141,14 @@ Verified against on-disk paths at tip. Architecture PR = **library compose claim
 | 2 | V402 READY receipt + **READY_WITH_CAVEATS** + `production_authorized: false` | `qualification/FINAL_LIBRARY_READY_V402.json` (`library_readiness`: `READY_FOR_LIBRARY_USE`, `scope`: `LIBRARY_INFRASTRUCTURE`, `production_authorized`: false); `docs/ROADMAP.md` (`READY_WITH_CAVEATS` = local-fixtures framing) |
 | 3 | Multi-domain transactional model (catalog / CRM / inventory / pricing / payment / logistics / franchise schemas) | `implementation_packs/ELECTROMOBILITY_FRANCHISE_MODULES.md` (`ELECTROMOBILITY-FRANCHISE-MODULES` in selected 116); `db/migrations/0003_electromobility_franchise_modules.up.sql` |
 | 4 | Payments cluster | Selected: `implementation_packs/GO_BC_EXACT_AMOUNT_ADAPTER.md`, `GO_PAYMENT_CHECKOUT_RUNTIME.md`, `GO_OFFICIAL_PAYMENT_WEBHOOK_ADAPTERS.md`, `GO_EXACT_FX_SNAPSHOT_ACCOUNTING.md`, `TYPESCRIPT_PAYMENT_CHECKOUT_PORTAL.md`, `GO_COMMERCE_PRICING_PAYMENT_API.md` |
-| 5 | Channels: Lead Form + Meta/TikTok + WA + ML (**CONDITIONED** live creds) | `GO_OMNICHANNEL_LEAD_INGRESS.md`, `GO_META_LEAD_*`, `PYTHON_TIKTOK_LEAD_ADAPTER.md`, `GO_TIKTOK_LEAD_DURABLE_IMPORT.md`, `PYTHON_META_WHATSAPP_CLOUD_ADAPTER.md`, `GO_CONNECTED_WHATSAPP_*`, `GO_MERCADOLIBRE_*`, `GO_CONNECTED_MARKETPLACE_MUTATION.md`; `markdown_system/FRANCHISE_GAP_MAP.md` (T2805 PROVEN_LOCAL, live creds pending) |
-| 6 | Signed release / verify | `implementation_packs/PORTABLE_SIGNED_RELEASE_EVIDENCE_GATE.md` (`PORTABLE-SIGNED-RELEASE-EVIDENCE-GATE` in selected 116); `START_REFERENCE_V402.md` |
-| 7 | AI / conversation selected cluster (**CONDITIONED** provider keys) | `GO_CONVERSATIONAL_AGENT.md`, `GO_CONVERSATION_TOOLS.md`, `GO_CONNECTED_CONVERSATION_RUNTIME.md`, `GO_APP_WIRING.md`, `GO_AGENT_DOMAIN_BINDING.md`, `GO_OPENAI_RESPONSES_TOOL_ADAPTER.md` (all in selected 116) |
+| 5 | Signed release / verify | `implementation_packs/PORTABLE_SIGNED_RELEASE_EVIDENCE_GATE.md` (`PORTABLE-SIGNED-RELEASE-EVIDENCE-GATE` in selected 116); `START_REFERENCE_V402.md` |
+| 6 | AI / conversation selected cluster (**CONDITIONED** provider keys) | `GO_CONVERSATIONAL_AGENT.md`, `GO_CONVERSATION_TOOLS.md`, `GO_CONNECTED_CONVERSATION_RUNTIME.md`, `GO_APP_WIRING.md`, `GO_AGENT_DOMAIN_BINDING.md`, `GO_OPENAI_RESPONSES_TOOL_ADAPTER.md` (all in selected 116) |
 
 ### PARCIAL
 
 | # | Claim | Cite @ `477358d` |
 |---|---|---|
+| 5 | Channels: Lead Form + Meta/TikTok + WA + ML (compose in 116; live creds **CONDITIONED**) | `GO_OMNICHANNEL_LEAD_INGRESS.md`, `GO_META_LEAD_*`, `PYTHON_TIKTOK_LEAD_ADAPTER.md`, `GO_TIKTOK_LEAD_DURABLE_IMPORT.md`, `PYTHON_META_WHATSAPP_CLOUD_ADAPTER.md`, `GO_CONNECTED_WHATSAPP_*`, `GO_MERCADOLIBRE_*`, `GO_CONNECTED_MARKETPLACE_MUTATION.md`; `markdown_system/FRANCHISE_GAP_MAP.md` (T2805 PROVEN_LOCAL, live creds pending) |
 | 8 | QR **identity**: door-wired; **absent** from selected `packId` JSON | `implementation_packs/GO_QR_CORE.md`, `internal/qr/`; **no** `GO-QR-CORE` in `FRANCHISE_COMPLETE_PACK_PLAN.md` |
 | 9 | QR **capture**: `qr_capture/` ref-only → **FALTA** admitted pack | `qr_capture/`; `markdown_system/LIBRARY_HEALTH_CHECK.md` |
 | 10 | Analytics dashboards / CRM segmentation / brand DAM / admin UX — compose **cores** exist; gap-gate catalog packs or document **FALTA** | **Selected cores:** `GO_DATA_ANALYTICS_CORE.md`, `GO_CONNECTED_ROLE_METRICS_PROOF.md`; **disk / separate expediente (not selected 116/120 JSON):** `implementation_packs/GO_DASHBOARDS_CORE.md`, `implementation_packs/TYPESCRIPT_ADMIN_OPS_EXPERIENCE_V403.md` + `markdown_system/ADMIN_OPS_EXPERIENCE_PACK_PLAN_V403.md`; brand: `TYPESCRIPT_PUBLISHED_CATALOG_STOREFRONT.md`, V403 `TS-PUBLIC-WEB-EXPERIENCE-V403` (visual PENDING) — no dedicated DAM pack |
@@ -257,6 +257,8 @@ Verified against on-disk paths at tip. Architecture PR = **library compose claim
 
 ### 7. Channels (WhatsApp, Messenger, Instagram, ads, email, web lead ingress)
 
+PM matrix rolls up **channels** as **PARCIAL** (compose in selected 116; live provider creds **CONDITIONED**). Sub-rows below are fixture-level detail.
+
 | Sub-channel | Status | Selected 116 | Primary paths @ `477358d` | Notes |
 |---|---|---|---|---|
 | WhatsApp Cloud | **HECHO** | Yes | `PYTHON-META-WHATSAPP-CLOUD-ADAPTER`, `GO-CONNECTED-WHATSAPP-HOST`, `GO-CONNECTED-SCHEDULED-WHATSAPP`, `GO-CONNECTED-WHATSAPP-CAMPAIGNS`; `docs/whatsapp-connected-host.md` | T2805 PROVEN_LOCAL wiring; live token pending. |
@@ -316,7 +318,7 @@ Verified against on-disk paths at tip. Architecture PR = **library compose claim
 
 | Status | Selected 116 | Primary paths @ `477358d` | Notes |
 |---|---|---|---|
-| **HECHO** | Yes (ingress + promotion) | `GO-OMNICHANNEL-LEAD-INGRESS`, `GO-LEAD-CANDIDATE-PROMOTION`, Meta/TikTok lead packs (§7) | Nightly #5 cluster; LOCAL_FIXTURES path. |
+| **PARCIAL** | Yes (ingress + promotion compose) | `GO-OMNICHANNEL-LEAD-INGRESS`, `GO-LEAD-CANDIDATE-PROMOTION`, Meta/TikTok lead packs (§7) | Channels PARCIAL per PM matrix; LOCAL_FIXTURES compose. |
 | **PARCIAL** | Yes (function only) | `markdown_system/BUSINESS_FUNCTION_OPERATING_CONTRACT_V403.md` → `#/functions/sdrs` → `GO_LEAD_CANDIDATE_PROMOTION.md` | SDR **function** without named pack. |
 | **NO** | — | Named `*SDR*` workflow pack | Nightly #14 — **FALTA**; do not invent. |
 

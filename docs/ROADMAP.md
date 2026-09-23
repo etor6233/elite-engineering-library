@@ -32,7 +32,7 @@ Compose profile **116→120** = full franchise-domain `LOCAL_FIXTURES` — not t
 | 2 | **HECHO** | V402 READY + READY_WITH_CAVEATS + `production_authorized: false` | `qualification/FINAL_LIBRARY_READY_V402.json` |
 | 3 | **HECHO** | Multi-domain transactional model | `ELECTROMOBILITY_FRANCHISE_MODULES.md`, `db/migrations/0003_electromobility_franchise_modules.up.sql` |
 | 4 | **HECHO** | Payments | `GO_BC_EXACT_AMOUNT_ADAPTER.md`, `GO_PAYMENT_CHECKOUT_RUNTIME.md`, `GO_OFFICIAL_PAYMENT_WEBHOOK_ADAPTERS.md`, `GO_EXACT_FX_SNAPSHOT_ACCOUNTING.md` |
-| 5 | **HECHO** / **PARCIAL** live | Channels: Lead Form + Meta/TikTok + WA + ML | `GO_OMNICHANNEL_LEAD_INGRESS.md`, Meta/TikTok/WA/ML packs in selected 116; creds **CONDITIONED** |
+| 5 | **PARCIAL** | Channels: Lead Form + Meta/TikTok + WA + ML (compose in 116; live creds **CONDITIONED**) | `GO_OMNICHANNEL_LEAD_INGRESS.md`, Meta/TikTok/WA/ML packs in selected 116; `FRANCHISE_GAP_MAP.md` T2805 |
 | 6 | **HECHO** | Signed release / verify | `PORTABLE_SIGNED_RELEASE_EVIDENCE_GATE.md`, `START_REFERENCE_V402.md` |
 | 7 | **HECHO** / **PARCIAL** keys | AI / conversation cluster | `GO_CONVERSATIONAL_AGENT.md`, `GO_CONNECTED_CONVERSATION_RUNTIME.md`, `GO_APP_WIRING.md` (+ tools/adapters) |
 | 8 | **PARCIAL** | QR identity door-wired; absent from selected JSON | `GO_QR_CORE.md`, `internal/qr/` |
@@ -69,7 +69,7 @@ Legend: **HECHO** = selected 116/120 packs + findable reference; **PARCIAL** = c
 | Logistics / fulfillment / receiving | **PARCIAL** | `GO_FULFILLMENT_SERVICE_FRANCHISE_API.md`, `GO_CONNECTED_SUPPLY_CREATION.md`, `GO_CONNECTED_SERIAL_SUPPLY.md`; compose PROVEN_LOCAL; DOM/live carrier thin |
 | Brand / public web / publish gates | **PARCIAL** | `TYPESCRIPT_PUBLISHED_CATALOG_STOREFRONT.md`, V403 `TS-PUBLIC-WEB-EXPERIENCE-V403` (visual **PENDING**); disk SEO: `GO_SEO_CORE.md` |
 | Admin / ops / governance / agent doors | **HECHO** doors / **PARCIAL** admin UX | `START_FRANCHISE.md`, `FRANCHISE_PROJECT_OPERATING_PROTOCOL.md`, `BUSINESS_FUNCTION_OPERATING_V403.md` (in 120); admin overlay separate expediente |
-| Lead ingress / promotion | **HECHO** ingress / **NO** named SDR pack | `GO_OMNICHANNEL_LEAD_INGRESS.md`, `GO_LEAD_CANDIDATE_PROMOTION.md`; SDR function via `BUSINESS_FUNCTION_OPERATING_CONTRACT_V403.md` only |
+| Lead ingress / promotion | **PARCIAL** / **NO** named SDR pack | `GO_OMNICHANNEL_LEAD_INGRESS.md`, `GO_LEAD_CANDIDATE_PROMOTION.md` (channels compose); SDR function via `BUSINESS_FUNCTION_OPERATING_CONTRACT_V403.md`; named `*SDR*` pack **FALTA** |
 | QR identity | **PARCIAL** | `implementation_packs/GO_QR_CORE.md`, `internal/qr/` — **not** in selected 116 JSON |
 | QR capture | **PARCIAL** / pack **NO** | `qr_capture/` reference only; **FALTA** admitted capture pack |
 | Galaxy fleet orchestration | **PARCIAL** how-tos / **NO** e2e | `docs/FRANCHISE_PLAYBOOK.md` §5 — `etor6233/grok-bot-galaxy@f8546c3`; 0 `franchise` hits |
