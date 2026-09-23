@@ -21,6 +21,12 @@
 | outbox / CDC / inbox | `SYSTEMS_ENGINEERING_MASTER_MAP.md` | `implementation_packs/DEBEZIUM_POSTGRES_OUTBOX_RUNTIME.md` |
 | identidad y autorización | `SYSTEMS_ENGINEERING_MASTER_MAP.md` | `implementation_packs/GO_OIDC_SERVICE_TOKEN_BROKER.md` |
 | web BFF / portales | `SYSTEMS_ENGINEERING_MASTER_MAP.md` | `implementation_packs/TYPESCRIPT_GO_API_WEB_BRIDGE.md` |
+| SEO público (robots/sitemap/meta) | `SYSTEMS_ENGINEERING_MASTER_MAP.md` | `implementation_packs/GO_SEO_CORE.md` (+ `src/app/sitemap.ts`, `src/app/robots.ts`, `src/platform/seo/public-indexing.ts` en árbol V403) |
+| calidad web automatizada (Lighthouse) | `SYSTEMS_ENGINEERING_MASTER_MAP.md` | `implementation_packs/GOOGLE_LIGHTHOUSE_WEB_QUALITY_GATE.md` |
+| latencia / HTTP SLI / métricas | `SYSTEMS_ENGINEERING_MASTER_MAP.md` | `implementation_packs/GO_HTTP_METRICS_REFERENCE.md` |
+| función SDR (handoff comercial) | `SYSTEMS_ENGINEERING_MASTER_MAP.md` | `markdown_system/BUSINESS_FUNCTION_OPERATING_CONTRACT_V403.md` → `implementation_packs/GO_LEAD_CANDIDATE_PROMOTION.md` (**PARCIAL** — sin pack `*SDR*`) |
+| GTM / tag manager web | `SYSTEMS_ENGINEERING_MASTER_MAP.md` | — (**GAP** — sin pack; ver `markdown_system/LIBRARY_HEALTH_CHECK.md`) |
+| captura QR / mobile browser | `AI_ENGINEERING_MASTER_MAP.md` | `qr_capture/` (**GAP** pack admitido; código de referencia sólo) |
 | franquicia / electromovilidad backend | `SYSTEMS_ENGINEERING_MASTER_MAP.md` | `implementation_packs/GO_ENTERPRISE_BACKEND_CORE.md` |
 | fiscal argentino / ARCA | `SYSTEMS_ENGINEERING_MASTER_MAP.md` | `implementation_packs/MICROSOFT_ARCA_WSFE_SOAP_ADAPTER.md` |
 | pagos / marketplaces / ads | `SYSTEMS_ENGINEERING_MASTER_MAP.md` | `implementation_packs/PYTHON_AMAZON_SPAPI_CATALOG_ADAPTER.md` |
