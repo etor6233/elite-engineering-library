@@ -21,6 +21,10 @@ Este directorio define cómo convertir el corpus en código materializable por C
 | `AUTHORITY_FRESHNESS_AND_SELF_CORRECTION_CONTRACT.md` | detección de información obsoleta, contradicción, supersession y corrección trazable |
 | `PROJECT_AUTHORITY_FRESHNESS_TEMPLATE.md` | registro copiable de fuentes, vigencia y correcciones del agente |
 | `ELITE_PUBLIC_AGENT_METHODS.md` | comparación de metodologías públicas y base adoptada |
+| `LIBRARY_HEALTH_CHECK.md` | wiring de entrypoints, matriz de dominios y GAPs honestos |
+| `USE_LIBRARY_V403.md` | una página para usar o retomar la revisión |
+| `LIBRARY_HUMAN_GRAPH.md` | tres gráficos para personas (no corpus de agente) |
+| `LIBRARY_SEARCH_INDEX.md` | índice completo para `rg` |
 | `AGENT_AUTONOMY_CONTRACT.md` | autonomía por defecto y únicos motivos materiales de pausa |
 | `PROJECT_START_READINESS_GATE.md` | intake, accesos, corpus, plataforma y evidencia obligatorios antes de implementar |
 | `PROJECT_READINESS_RECORD_TEMPLATE.md` | registro copiable de rondas, 48 superficies, accesos, sources y cálculo de readiness |

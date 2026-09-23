@@ -8,7 +8,7 @@ Una persona lee estos tres gráficos. Un agente no los usa como corpus: busca un
 rg -n -F "término" markdown_system/LIBRARY_SEARCH_INDEX.md
 ```
 
-El índice nombra cada manual, pack y evidencia. Nada queda fuera de la búsqueda. El detalle sigue en su archivo.
+El índice nombra cada manual, pack, evidencia y rutas de código de referencia. Nada queda fuera de la búsqueda. El detalle sigue en su archivo. Para wiring agente/franquicia y GAPs honestos (GTM, SDR, QR), ver `LIBRARY_HEALTH_CHECK.md`.
 
 ## 01. De la biblioteca al sistema
 

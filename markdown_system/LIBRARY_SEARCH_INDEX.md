@@ -128,6 +128,8 @@ markdown_system/HISTORY_MODEL_TRAINING_PACK_PLAN.md
 markdown_system/HTTP_METRICS_REFERENCE_PACK_PLAN.md
 markdown_system/LIBRARY_EXPERIENCE_CLOUD_EXTENSION_V403.md
 markdown_system/LIBRARY_FAILURE_LEARNING_LEDGER.md
+markdown_system/LIBRARY_HEALTH_CHECK.md
+markdown_system/LIBRARY_HUMAN_GRAPH.md
 markdown_system/MARKDOWN_SYSTEM_READINESS.md
 markdown_system/MARKITDOWN_LOCAL_RUNTIME_PACK_PLAN.md
 markdown_system/MERCADOLIBRE_MARKETPLACE_PACK_PLAN.md
@@ -170,6 +172,8 @@ markdown_system/PUBLIC_WEB_EXPERIENCE_PACK_PLAN_V403.md
 markdown_system/README.md
 markdown_system/REVESTEX_ELITE_PUBLIC_CODE_ADMISSION_LEDGER.md
 markdown_system/SECURE_LOCAL_FILE_INGESTION_PACK_PLAN.md
+markdown_system/START_V403_LOCAL.md
+markdown_system/USE_LIBRARY_V403.md
 markdown_system/STRICT_DOCUMENT_FIELD_EVALUATION_PACK_PLAN.md
 markdown_system/TESSERA_POSIX_EVIDENCE_LOG_PACK_PLAN.md
 markdown_system/TIKTOK_ADS_REPORTING_PACK_PLAN.md
@@ -1329,4 +1333,26 @@ reconstruction_evidence/XERJ_MCP_WIRING_V403.md
 reconstruction_evidence/YARN_EMBEDDED_ASSET_PROVENANCE_V364.md
 reconstruction_evidence/ZERO_COST_VULNERABILITY_MONITORING_2026-08-25_V1.md
 
-Total indexado: 1296.
+## Código de referencia local (V403 body)
+
+Conecta packs materializados con el árbol recuperado en `7dbf39c`. No sustituye admisión ni producción.
+
+db/migrations/0001_platform_foundation.up.sql
+db/migrations/0094_finance_command_receipt.up.sql
+qr_capture/browser-capture.mjs
+qr_capture/client.py
+qr_capture/install_runtime.py
+qr_capture/requirements.windows-py314.lock
+qr_capture/runtime-file-lock.json
+qr_capture/runtime-package-lock.json
+qr_capture/verify_runtime.py
+qr_capture/worker.py
+qr_capture/ZXING_LICENSE.txt
+src/app/robots.ts
+src/app/sitemap.ts
+src/platform/seo/public-indexing.ts
+src/platform/seo/public-indexing.test.ts
+
+(178 archivos SQL bajo `db/migrations/`; listar con `ls db/migrations` o buscar por número.)
+
+Total indexado: 1316.

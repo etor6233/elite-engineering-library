@@ -2,12 +2,16 @@
 
 Router breve para Grok Build. El corpus completo permanece en disco; carga por capas.
 
+Para usar, buscar o retomar esta revisión, leé sólo `markdown_system/USE_LIBRARY_V403.md`. Para wiring y GAPs, `markdown_system/LIBRARY_HEALTH_CHECK.md`. Para reconstruir la referencia local, seguí `markdown_system/START_V403_LOCAL.md`. No cargues `implementation_packs/UNIFIED_REFERENCE_V403_R4.md`.
+
 ## Orden de descubrimiento
 
 1. `.grok/skills/elite-engineering-library/SKILL.md` (tras `INSTALL_AGENT_BRIDGE.ps1 -Agent Grok`)
+1b. Persona: `markdown_system/LIBRARY_HUMAN_GRAPH.md`. Búsqueda: `rg -n -F "<término>" markdown_system/LIBRARY_SEARCH_INDEX.md`. No leas el índice entero.
 2. Este archivo
 3. `AGENTS.md` (índice; no es lectura obligatoria del corpus)
-4. **Un** mapa de autoridad + **un** pack (ver abajo)
+4. `markdown_system/USE_LIBRARY_V403.md` si la tarea es usar o reconstruir la biblioteca
+5. **Un** mapa de autoridad + **un** pack (ver abajo)
 
 ## Buscar primero; escalar si falta
 

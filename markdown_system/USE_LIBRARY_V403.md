@@ -1,6 +1,6 @@
 # Usar la biblioteca sin perder el hilo
 
-**Un punto de entrada para personas y agentes.** La biblioteca es una base de ingeniería; cada proyecto tiene negocio, datos y aceptación propios. El [recibo de la revisión](../reconstruction_evidence/UNIFIED_REFERENCE_V403_R4.md) separa reconstrucción, ejecución local y pendientes externos. Ningún inventario equivale a producción.
+**Un punto de entrada para personas y agentes.** La biblioteca es una base de ingeniería; cada proyecto tiene negocio, datos y aceptación propios. El [recibo de la revisión](../reconstruction_evidence/UNIFIED_REFERENCE_V403_R4.md) separa reconstrucción, ejecución local y pendientes externos. Ningún inventario equivale a producción. Para wiring, dominios y GAPs honestos (GTM, SDR, QR), ver [LIBRARY_HEALTH_CHECK](LIBRARY_HEALTH_CHECK.md).
 
 ## Empezar o retomar
 
