@@ -3,7 +3,13 @@
 **Tip SHA:** `0d9c258cc66a6748cd86dd8b38050b1cb5c2a0b6`  
 **Scope:** biblioteca / infrastructure / local fixtures. **No** production. **No** REVESTEX product code.
 
-Re-sign Nightly: **READY_RECONFIRMED** for `LIBRARY_INFRASTRUCTURE` / local-fixtures only (`qualification/FINAL_LIBRARY_READY_V402.json`). Not production. Not “every orphan in selected JSON”.
+Re-sign Nightly: **READY_WITH_CAVEATS** for `LIBRARY_INFRASTRUCTURE` / local-fixtures only (`qualification/FINAL_LIBRARY_READY_V402.json`), same tip `0d9c258`. Not production. Not “every orphan in selected JSON”.
+
+Nightly caveats (delta vs READY_RECONFIRMED wording):
+
+1. QR identity is door-wired (`GO-QR-CORE` + `internal/qr/`) but **not** in selected 116/120 packId JSON.
+2. Intentional **FALTA**: GTM Tag Manager pack, named SDR pack, QR capture admitted pack.
+3. `production_authorized: false` in FINAL_LIBRARY_READY + generic preflight remains **BLOCKED** (local fixtures only).
 
 Nightly signed sources cited below: `qualification/FINAL_LIBRARY_READY_V402.json`, `markdown_system/LIBRARY_HEALTH_CHECK.md`, `markdown_system/PACK_PER_CLAIM_INDEX.md`, `markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md` (selected **116**; **GO-QR-CORE** still **not** in packId list), `markdown_system/FRANCHISE_COMPLETE_EXTENSION_PACK_PLAN_V403.md` (+4 → **120**), `START_FRANCHISE.md`, `START_REFERENCE_V402.md`, `LIBRARY_VS_PRODUCT_GATE_V402.md` (stub → `reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md`), `unified-experience-next/markdown_system/SUCCESSOR_AUTHORITY_ROUTER.md`, and `implementation_packs/*.md` on disk (catalog ≠ selected).
 
@@ -28,6 +34,7 @@ See also: [`docs/FRANCHISE_PLAYBOOK.md`](FRANCHISE_PLAYBOOK.md).
 | Production / franchise live | **NO** | `production_authorized: false` in FINAL_LIBRARY_READY receipt |
 | Desktop V3 via Git | **NO** | UNKNOWN_NEVER_PUSHED — do not assume recoverable from Git |
 | V403 successor closed READY | **NO** | SUCCESSOR = **IN_PROGRESS** |
+| Galaxy franchise fleet orchestration | **PARCIAL** (how-tos / demo fleets) / **NO** for franchise e2e | `etor6233/grok-bot-galaxy@f8546c3` — 0 `franchise` hits; no provisioning IaC; Duplicate/Marketplace ≠ e2e |
 
 ## Honest bounds
 
@@ -35,4 +42,5 @@ See also: [`docs/FRANCHISE_PLAYBOOK.md`](FRANCHISE_PLAYBOOK.md).
 - Lead Form ≠ GTM Tag Manager.
 - `qr_capture/` ≠ selected admitted pack; identity uses `GO_QR_CORE` (CONDITIONED / not in selected JSON).
 - Do not invent a named SDR pack or GTM pack.
+- Galaxy pin = orchestration field guide only — not franchise e2e, not installable packs/IaC.
 - Stop line for product work: see playbook — no REVESTEX product until N L says **ESTAMOS LISTOS**.

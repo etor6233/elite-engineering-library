@@ -46,6 +46,7 @@ After 1–7, optional operators: `START_REFERENCE_V402.md` (ZIP / local referenc
 - Assume Desktop ***V3*** recoverable from Git (`UNKNOWN_NEVER_PUSHED`).
 - Confuse catalog pack count on disk with selected **116** / extension **120**.
 - Treat V403 NEXT as closed library-ready.
+- Treat Galaxy how-tos / Duplicate / Marketplace as franchise e2e or installable fleet packs.
 
 ## 4. Assemble steps
 
@@ -56,16 +57,36 @@ After 1–7, optional operators: `START_REFERENCE_V402.md` (ZIP / local referenc
 5. Verify local receipts/fixtures only; record CONDITIONED live gates (creds, providers, IdP) as open — not PASS.
 6. Keep consumer blueprint / state / secrets in the **consumer**; reusable owners stay in the library.
 
-## 5. Galaxy fleet pin (orchestration only)
+## 5. Galaxy — fleet orchestration (survey truth)
 
-Fleet orchestration surface pin:
+Fleet orchestration surface pin (full tip):
 
-`etor6233/grok-bot-galaxy@f8546c3`
+`etor6233/grok-bot-galaxy@f8546c3990a165be8d17a178880a364aeeb3ac80`
+
+(short: `f8546c3`)
+
+**What it is:** a historical field guide / KB for operating bot fleets. Reading `llms.txt` (or any Galaxy how-to) **≠** installing bots, connectors, or routines.
+
+**Exists at tip (cite doors, do not invent members):**
+
+- `ROUTES` / `INDEX` (navigation)
+- how-tos / demos: `why-a-fleet-of-bots`, `flylo-engineering-fleet`, `operate-a-bot-team`, `share-duplicate-marketplace`, `agent-to-agent`
+- `validate.yml` = **KB QA only** (not franchise e2e, not provisioning)
+
+**Gaps (honest):**
+
+- `franchise` string hits = **0** at tip
+- no installable packs / provisioning IaC
+- no multi-tenant franchise fleet product
+- Desktop **Elite Franchise V402** is **unlinked** from galaxy (do not assume a wire)
+- Duplicate / Marketplace share patterns ≠ franchise e2e
 
 If a local/galaxy survey is not available in this checkout: cite that pin and treat **fleet evidence = repo doors at that pin**. **Do not invent bots**, agents, or fleet members.
+
+Optional ops artifact (Desktop only; **not** required in this library repo): `REVESTEX/galaxy-franchise-fleet-survey.md`.
 
 ## 6. Stop line
 
 **No REVESTEX product** work from this library until N L says **ESTAMOS LISTOS**.
 
-READY_RECONFIRMED applies to library infrastructure / local fixtures only — never to production admission.
+READY_WITH_CAVEATS applies to library infrastructure / local fixtures only — never to production admission.
