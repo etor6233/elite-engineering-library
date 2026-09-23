@@ -11,7 +11,7 @@ Orden de puertas (alineado con README):
 | 1 | `README.md` | Contexto biblioteca vs producto |
 | 2 | `AGENTS.md` (este índice) | Router compacto |
 | 3 | `markdown_system/USE_LIBRARY_V403.md` | Uso, búsqueda y retoma |
-| 4 | `markdown_system/LIBRARY_HEALTH_CHECK.md` | Salud / wiring / GAPs honestos |
+| 4 | `markdown_system/LIBRARY_HEALTH_CHECK.md` | Salud / wiring / GAPs honestos (QR identity=`GO_QR_CORE` vs capture=`qr_capture/`; GTM/SDR `*pack*` FALTA) |
 | 5 | `START_FRANCHISE.md` | Nueva franquicia / consumidor |
 | 6 | `reconstruction_evidence/LIBRARY_VS_PRODUCT_GATE_V402.md` | Gate canónico biblioteca vs producto |
 | 7 | `qualification/FINAL_LIBRARY_READY_V402.json` | Recibo V402 (evidencia; no abre implementación) |
