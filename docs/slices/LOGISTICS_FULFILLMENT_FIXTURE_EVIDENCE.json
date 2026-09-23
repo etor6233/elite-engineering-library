@@ -1,0 +1,383 @@
+{
+  "schema": "elite-slice-fixture-evidence/v1",
+  "slice_id": "LOGISTICS_FULFILLMENT",
+  "tip_sha": "0397b2ff7d65049143b0736bfde56f76654a2599",
+  "status": "LOCAL_FIXTURES_INDEXED",
+  "production_authorized": false,
+  "claim": "Selected fulfillment + serialized supply + role supply creation + handover boundary + return-exchange adjacency compose with honest disk-only Amazon adapter and DOM FALTA rows.",
+  "architecture_contract_cites_read_only": [
+    {
+      "path": "docs/FRANCHISE_ARCHITECTURE.md",
+      "tip_sha": "0397b2ff7d65049143b0736bfde56f76654a2599",
+      "section": "8. Logistics / fulfillment / receiving",
+      "status": "PARCIAL"
+    },
+    {
+      "path": "docs/FRANCHISE_ARCHITECTURE.md",
+      "tip_sha": "0397b2ff7d65049143b0736bfde56f76654a2599",
+      "section": "PARCIAL → Logistics",
+      "status": "PARCIAL"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "tip_sha": "0397b2ff7d65049143b0736bfde56f76654a2599",
+      "section": "FRANCHISE / COMPANY DOMAINS → Logistics / fulfillment / receiving",
+      "status": "PARCIAL"
+    }
+  ],
+  "compose_doc": {
+    "path": "docs/slices/LOGISTICS_FULFILLMENT_COMPOSE.md",
+    "status": "SLICE_COMPOSE",
+    "note": "Tangible PARCIAL closer over selected 116 logistics owners; not a HECHO implementation pack"
+  },
+  "selected_composition_source": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+  "pack_id_filename_aliases": [
+    {
+      "packId": "PG-TX-FOUNDATION",
+      "path": "implementation_packs/POSTGRES_TRANSACTIONAL_FOUNDATION.md",
+      "reject": [
+        "POSTGRES-TRANSACTIONAL-FOUNDATION.md",
+        "PG-TX-FOUNDATION.md",
+        "POSTGRES_TRANSACTIONAL_FOUNDATION.md"
+      ]
+    },
+    {
+      "packId": "GO-ENTERPRISE-BACKEND",
+      "path": "implementation_packs/GO_ENTERPRISE_BACKEND_CORE.md",
+      "reject": [
+        "GO_ENTERPRISE_BACKEND.md",
+        "GO-ENTERPRISE-BACKEND-CORE.md",
+        "GO_ENTERPRISE_BACKEND_CORE.md"
+      ]
+    }
+  ],
+  "packs": [
+    {
+      "packId": "PG-TX-FOUNDATION",
+      "version": "0.1.0",
+      "path": "implementation_packs/POSTGRES_TRANSACTIONAL_FOUNDATION.md",
+      "role": "postgresql_foundation"
+    },
+    {
+      "packId": "ELECTROMOBILITY-FRANCHISE-MODULES",
+      "version": "0.1.2",
+      "path": "implementation_packs/ELECTROMOBILITY_FRANCHISE_MODULES.md",
+      "role": "multi_domain_schema_including_logistics"
+    },
+    {
+      "packId": "GO-ENTERPRISE-BACKEND",
+      "version": "0.4.8",
+      "path": "implementation_packs/GO_ENTERPRISE_BACKEND_CORE.md",
+      "role": "backend_shell"
+    },
+    {
+      "packId": "GO-SUPPLY-FACTORY-INVENTORY-API",
+      "version": "0.18.0",
+      "path": "implementation_packs/GO_SUPPLY_FACTORY_INVENTORY_API.md",
+      "role": "supply_factory_inventory_spine"
+    },
+    {
+      "packId": "GO-FULFILLMENT-SERVICE-FRANCHISE-API",
+      "version": "0.6.0",
+      "path": "implementation_packs/GO_FULFILLMENT_SERVICE_FRANCHISE_API.md",
+      "role": "customer_shipment_carrier_franchise_network"
+    },
+    {
+      "packId": "GO-CONNECTED-SERIAL-SUPPLY",
+      "version": "0.2.0",
+      "path": "implementation_packs/GO_CONNECTED_SERIAL_SUPPLY.md",
+      "role": "serialized_supply_receiving_quarantine_release"
+    },
+    {
+      "packId": "GO-CONNECTED-SUPPLY-CREATION",
+      "version": "0.1.0",
+      "path": "implementation_packs/GO_CONNECTED_SUPPLY_CREATION.md",
+      "role": "role_supply_order_creation_receipt"
+    },
+    {
+      "packId": "TS-SERIAL-SUPPLY-PORTAL",
+      "version": "0.1.2",
+      "path": "implementation_packs/TYPESCRIPT_SERIAL_SUPPLY_PORTAL.md",
+      "role": "supply_role_portal_bff"
+    },
+    {
+      "packId": "GO-INITIAL-HANDOVER-API",
+      "version": "0.4.0",
+      "path": "implementation_packs/GO_INITIAL_HANDOVER_API.md",
+      "role": "commercial_handover_boundary"
+    },
+    {
+      "packId": "GO-RETURN-EXCHANGE-FULFILLMENT-WORKER",
+      "version": "0.1.0",
+      "path": "implementation_packs/GO_RETURN_EXCHANGE_FULFILLMENT_WORKER.md",
+      "role": "return_exchange_physical_effect"
+    },
+    {
+      "packId": "GO-COMMERCE-PRICING-PAYMENT-API",
+      "version": "0.8.0",
+      "path": "implementation_packs/GO_COMMERCE_PRICING_PAYMENT_API.md",
+      "role": "order_spine_upstream"
+    },
+    {
+      "packId": "GO-FRANCHISE-CUSTOMER-JOURNEY-API",
+      "version": "0.10.21",
+      "path": "implementation_packs/GO_FRANCHISE_CUSTOMER_JOURNEY_API.md",
+      "role": "journey_handover_adjacency"
+    }
+  ],
+  "bc_derivation_docs": [
+    {
+      "path": "docs/inventory/MICROSOFT_BC_DERIVATION.md",
+      "topic": "inventory_posting_model"
+    },
+    {
+      "path": "docs/inventory/MICROSOFT_BC_WAREHOUSE_DERIVATION.md",
+      "topic": "warehouse_operations"
+    },
+    {
+      "path": "docs/inventory/MICROSOFT_BC_CUSTOMER_SHIPMENT_DERIVATION.md",
+      "topic": "customer_shipment_posting"
+    },
+    {
+      "path": "docs/logistics/MICROSOFT_BC_AMAZON_CONNECTED_CARRIER_DERIVATION.md",
+      "topic": "connected_carrier_amazon"
+    }
+  ],
+  "disk_only_not_selected_116": [
+    {
+      "packId": "PYTHON-AMAZON-SPAPI-SHIPPING-TRACKING-ADAPTER",
+      "path": "implementation_packs/PYTHON_AMAZON_SPAPI_SHIPPING_TRACKING_ADAPTER.md",
+      "plan_path": "markdown_system/AMAZON_SPAPI_SHIPPING_TRACKING_PACK_PLAN.md",
+      "selected_json": "FALTA",
+      "note": "Live creds CONDITIONED"
+    },
+    {
+      "packId": "PYTHON-AMAZON-SPAPI-FULFILLMENT-DELIVERY-EVIDENCE-ADAPTER",
+      "path": "implementation_packs/PYTHON_AMAZON_SPAPI_FULFILLMENT_DELIVERY_EVIDENCE_ADAPTER.md",
+      "plan_path": "markdown_system/AMAZON_SPAPI_FULFILLMENT_DELIVERY_EVIDENCE_PACK_PLAN.md",
+      "selected_json": "FALTA",
+      "note": "Evidence fetch only; not commercial acceptance"
+    },
+    {
+      "packId": "PYTHON-AMAZON-SPAPI-EASYSHIP-HANDOVER-ADAPTER",
+      "path": "implementation_packs/PYTHON_AMAZON_SPAPI_EASYSHIP_HANDOVER_ADAPTER.md",
+      "plan_path": "markdown_system/AMAZON_SPAPI_EASYSHIP_HANDOVER_PACK_PLAN.md",
+      "selected_json": "FALTA",
+      "note": "PickedUp is provider report; not journey handover"
+    },
+    {
+      "packId": "PYTHON-AMAZON-SPAPI-EXTERNAL-FULFILLMENT-INVENTORY-ADAPTER",
+      "path": "implementation_packs/PYTHON_AMAZON_SPAPI_EXTERNAL_FULFILLMENT_INVENTORY_ADAPTER.md",
+      "plan_path": "markdown_system/AMAZON_SPAPI_EXTERNAL_FULFILLMENT_INVENTORY_PACK_PLAN.md",
+      "selected_json": "FALTA",
+      "note": "External fulfillment inventory lane"
+    },
+    {
+      "packId": "PYTHON-AMAZON-SPAPI-SUPPLY-SOURCES-ADAPTER",
+      "path": "implementation_packs/PYTHON_AMAZON_SPAPI_SUPPLY_SOURCES_ADAPTER.md",
+      "selected_json": "FALTA",
+      "note": "Supply source mapping; not promoted"
+    }
+  ],
+  "proposed_plan_only": [
+    {
+      "name": "FULFILLMENT_SOURCE_SELECTION_PACK_PLAN.md",
+      "status": "PROPOSED_NAME_ONLY",
+      "cite": "docs/FRANCHISE_ARCHITECTURE.md §8",
+      "note": "DOM-equivalent rule engine spec — not on disk as admitted pack"
+    }
+  ],
+  "owner_boundaries": {
+    "fulfillment_transport": "GO-FULFILLMENT-SERVICE-FRANCHISE-API",
+    "commercial_handover": "GO-INITIAL-HANDOVER-API",
+    "journey_presentation": "GO-FRANCHISE-CUSTOMER-JOURNEY-API",
+    "rule": "Provider pickup/delivery never auto-accepts sales.delivery_handover"
+  },
+  "logistics_schema": [
+    {
+      "schema": "sales",
+      "table": "customer_shipment",
+      "migration": "db/migrations/0038_customer_sales_shipment.up.sql",
+      "note": "posted shipment spine for carrier connection"
+    },
+    {
+      "schema": "logistics",
+      "table": "carrier_delivery_report",
+      "migration": "db/migrations/0039_connected_carrier_delivery.up.sql",
+      "note": "immutable provider reports; idempotent by provider_event_id"
+    },
+    {
+      "schema": "inventory",
+      "table": "stock_unit",
+      "migration": "db/migrations/0003_electromobility_franchise_modules.up.sql",
+      "note": "serial/lot stock; quarantine excludes ATP until release"
+    }
+  ],
+  "fixtures": [
+    {
+      "kind": "sql",
+      "path": "db/tests/0003_electromobility_franchise_modules.test.sql",
+      "proves": "multi-domain schema including logistics tables"
+    },
+    {
+      "kind": "sql",
+      "path": "db/tests/0038_customer_sales_shipment.test.sql",
+      "proves": "customer shipment posting invariants"
+    },
+    {
+      "kind": "sql",
+      "path": "db/tests/0039_connected_carrier_delivery.test.sql",
+      "proves": "connected carrier delivery immutability and idempotency"
+    },
+    {
+      "kind": "sql",
+      "path": "db/tests/0008_franchise_network_admin.test.sql",
+      "proves": "franchise network hierarchy guards"
+    },
+    {
+      "kind": "sql",
+      "path": "db/tests/0021_return_exchange_fulfillment.test.sql",
+      "proves": "return exchange fulfillment schema"
+    },
+    {
+      "kind": "sql",
+      "path": "db/tests/0016_versioned_delivery_checklist.test.sql",
+      "proves": "versioned delivery checklist lane"
+    },
+    {
+      "kind": "sql",
+      "path": "db/tests/0017_delivery_exception_and_return_authorization.test.sql",
+      "proves": "delivery exception and return authorization"
+    },
+    {
+      "kind": "go_unit",
+      "path": "internal/fulfillment/service_test.go",
+      "proves": "policy rejects skipped states; transport rejects invented provider completion"
+    },
+    {
+      "kind": "go_integration",
+      "path": "internal/platform/postgres/fulfillment_integration_test.go",
+      "proves": "fulfillment service franchise shipment durable flow"
+    },
+    {
+      "kind": "go_integration",
+      "path": "internal/platform/postgres/fulfillment_transport_integration_test.go",
+      "proves": "connected carrier idempotent concurrent delivery; never accepts handover"
+    },
+    {
+      "kind": "go_http",
+      "path": "internal/platform/httpapi/fulfillment_test.go",
+      "proves": "fulfillment HTTP authz and scope"
+    },
+    {
+      "kind": "go_integration",
+      "path": "internal/platform/postgres/serial_supply_connected_integration_test.go",
+      "proves": "serialized supply J2 reference: demand through quarantine to release"
+    },
+    {
+      "kind": "go_integration",
+      "path": "internal/platform/postgres/serial_supply_create_integration_test.go",
+      "proves": "atomic role supply order creation and recovery"
+    },
+    {
+      "kind": "go_integration",
+      "path": "internal/platform/postgres/serial_supply_http_integration_test.go",
+      "proves": "serial supply HTTP connected proof"
+    },
+    {
+      "kind": "go_integration",
+      "path": "internal/platform/postgres/serial_supply_role_browser_integration_test.go",
+      "proves": "Next/BFF/Go/PG supply role browser connected proof",
+      "optional": true,
+      "env": "ELITE_SUPPLY_ROLE_BROWSER=1"
+    },
+    {
+      "kind": "go_integration",
+      "path": "internal/platform/postgres/handover_preparation_integration_test.go",
+      "proves": "initial handover connected postgres boundary"
+    },
+    {
+      "kind": "go_integration",
+      "path": "internal/platform/postgres/returnexchange_integration_test.go",
+      "proves": "return exchange atomic reservation; no stock retry"
+    },
+    {
+      "kind": "fixture_config",
+      "path": "config/supply.role.fixture.json",
+      "proves": "local supply role panel flags for disposable runs"
+    },
+    {
+      "kind": "fixture_policy",
+      "path": "deploy/serial-supply/plan.reference.json",
+      "proves": "explicit serialized reference policy hash"
+    },
+    {
+      "kind": "reconstruction_evidence",
+      "path": "reconstruction_evidence/SERIAL_SUPPLY_CONNECTED_RELEASE_V402.md",
+      "proves": "GO-CONNECTED-SERIAL-SUPPLY T2802 J2 PROVEN_LOCAL receipt"
+    },
+    {
+      "kind": "reconstruction_evidence",
+      "path": "reconstruction_evidence/SUPPLY_ROLE_RELEASE_V402.md",
+      "proves": "GO-CONNECTED-SUPPLY-CREATION T2804 J2 PROVEN_LOCAL receipt"
+    },
+    {
+      "kind": "reconstruction_evidence",
+      "path": "reconstruction_evidence/GO_FULFILLMENT_SERVICE_FRANCHISE_API_2026-08-24_V1.md",
+      "proves": "GO-FULFILLMENT-SERVICE-FRANCHISE-API admission receipt"
+    },
+    {
+      "kind": "reconstruction_evidence",
+      "path": "reconstruction_evidence/FRANCHISE_HANDOVER_SERVER_EVIDENCE_2026-08-30_V136.md",
+      "proves": "handover trust boundary; server-computed evidence hash"
+    },
+    {
+      "kind": "doc",
+      "path": "docs/SERIAL_SUPPLY_REFERENCE.md",
+      "proves": "operator reference for serialized supply lane"
+    },
+    {
+      "kind": "doc",
+      "path": "docs/SUPPLY_ROLE_REFERENCE.md",
+      "proves": "operator reference for supply role lane"
+    }
+  ],
+  "verify_commands": [
+    "psql \"$TEST_DATABASE_URL\" -v ON_ERROR_STOP=1 -f db/tests/0003_electromobility_franchise_modules.test.sql",
+    "psql \"$TEST_DATABASE_URL\" -v ON_ERROR_STOP=1 -f db/tests/0038_customer_sales_shipment.test.sql",
+    "psql \"$TEST_DATABASE_URL\" -v ON_ERROR_STOP=1 -f db/tests/0039_connected_carrier_delivery.test.sql",
+    "psql \"$TEST_DATABASE_URL\" -v ON_ERROR_STOP=1 -f db/tests/0021_return_exchange_fulfillment.test.sql",
+    "go test ./internal/fulfillment/... -count=1",
+    "go test ./internal/platform/postgres -run 'Fulfillment|SerialSupply|Handover|ReturnExchange' -count=1 -timeout=5m",
+    "go test ./internal/platform/httpapi -run Fulfillment -count=1 -timeout=5m"
+  ],
+  "conditioned_live_gates": [
+    "carrier_provider_credentials",
+    "webhook_polling_ingress",
+    "amazon_spapi_live_adapters_disk_only",
+    "dom_source_selection_falta",
+    "cross_location_fulfillment",
+    "production_authorized_false"
+  ],
+  "public_pattern_gaps_cite_only": [
+    "https://developer-docs.amazon.com/sp-api/docs/fulfillment-outbound-api",
+    "https://learn.microsoft.com/en-us/dynamics365/commerce/dom",
+    "https://learn.microsoft.com/en-us/dynamics365/supply-chain/inventory/inventory-visibility",
+    "https://learn.microsoft.com/en-us/dynamics365/business-central/ui-post-sales"
+  ],
+  "galaxy_ops_bounds": {
+    "pin": "etor6233/grok-bot-galaxy@f8546c3",
+    "cite": "docs/FRANCHISE_PLAYBOOK.md §5",
+    "franchise_hits_at_pin": 0,
+    "note": "Field guide only — not franchise logistics e2e or installable carrier/WMS IaC"
+  },
+  "explicit_non_claims": [
+    "No named SDR, GTM, DOM, WMS, or carrier invented packs",
+    "No LOGISTICS_FULFILLMENT HECHO implementation pack added to selected 116/120 JSON",
+    "Disk-only Amazon SP-API adapters not promoted into selected JSON",
+    "FULFILLMENT_SOURCE_SELECTION_PACK_PLAN.md is proposed name only — not on disk",
+    "No live carrier integration HECHO claim",
+    "Not production or REVESTEX authorization",
+    "production_authorized remains false"
+  ]
+}
