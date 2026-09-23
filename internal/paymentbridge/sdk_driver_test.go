@@ -14,6 +14,7 @@ import (
 	"testing"
 	"time"
 
+	"elite.local/enterprise/internal/bcamounts"
 	"elite.local/enterprise/internal/providerintegration"
 	"github.com/stripe/stripe-go/v86"
 	stripewebhook "github.com/stripe/stripe-go/v86/webhook"
@@ -191,6 +192,84 @@ func TestSDKDriverMercadoPagoProbesAccountBeforeHostedCheckout(t *testing.T) {
 }
 
 var _ Driver = (*SDKDriver)(nil)
+
+func TestExactBCAmountCheckoutWebhookFixture(t *testing.T) {
+	const unitPriceMinor = int64(41_789)
+	const quantity = int64(3)
+	expectedMinor, err := bcamounts.LineAmount(quantity, unitPriceMinor, 0)
+	if err != nil || expectedMinor != 125_367 {
+		t.Fatalf("bcamounts oracle: got=%d err=%v want=125367", expectedMinor, err)
+	}
+	var mu sync.Mutex
+	account := "acct_fixture"
+	expires := time.Now().Add(time.Hour).UTC().Truncate(time.Second)
+	client := fixtureHTTPClient(t, "api.stripe.com", func(w http.ResponseWriter, r *http.Request) {
+		mu.Lock()
+		defer mu.Unlock()
+		w.Header().Set("Content-Type", "application/json")
+		if r.Header.Get("Authorization") != "Bearer sk_test_fixture" {
+			t.Error("missing fixture credential")
+		}
+		switch r.URL.Path {
+		case "/v1/account":
+			fmt.Fprintf(w, `{"id":%q}`, account)
+		case "/v1/checkout/sessions", "/v1/checkout/sessions/cs_test_fixture":
+			if r.Method == "POST" {
+				r.ParseForm()
+				if r.Form.Get("line_items[0][price_data][unit_amount]") != strconv.FormatInt(expectedMinor, 10) {
+					t.Errorf("checkout unit_amount=%s want=%d", r.Form.Get("line_items[0][price_data][unit_amount]"), expectedMinor)
+				}
+			}
+			fmt.Fprintf(w, `{"id":"cs_test_fixture","object":"checkout.session","mode":"payment","amount_total":%d,"currency":"ars","client_reference_id":"attempt-1","metadata":{"order_id":"order-1","payment_attempt_id":"attempt-1"},"status":"open","payment_status":"unpaid","livemode":false,"url":"https://checkout.stripe.com/c/pay/cs_test_fixture","payment_intent":"pi_fixture","expires_at":%d}`, expectedMinor, expires.Unix())
+		case "/v1/payment_intents/pi_fixture":
+			if r.Method != "GET" || r.URL.Query().Get("expand[0]") != "latest_charge" {
+				t.Error("payment observation is not expanded GET")
+			}
+			fmt.Fprintf(w, `{"id":"pi_fixture","amount":%d,"amount_received":%d,"currency":"ars","status":"succeeded","metadata":{"order_id":"order-1","payment_attempt_id":"attempt-1"},"latest_charge":{"id":"ch_fixture","amount":%d,"amount_captured":%d,"amount_refunded":0,"currency":"ars","captured":true,"disputed":false}}`, expectedMinor, expectedMinor, expectedMinor, expectedMinor)
+		default:
+			t.Errorf("unexpected path %s", r.URL.Path)
+			w.WriteHeader(500)
+		}
+	})
+	scope := Scope{TenantID: "tenant", OrganizationID: "store", ConnectionID: "connection", ProviderCode: "stripe", AccountRef: account, Currency: "ARS", MinorUnitExponent: 2}
+	driver, err := NewSDKDriver(SDKDriverConfig{Scope: scope, SuccessURL: "https://shop.example.test/return", CancelURL: "https://shop.example.test/cancel", DisplayName: "Order"}, "sk_test_fixture", client)
+	if err != nil {
+		t.Fatal(err)
+	}
+	req := Request{TenantID: scope.TenantID, OrganizationID: scope.OrganizationID, ProviderCode: scope.ProviderCode, Currency: scope.Currency, PaymentAttemptID: "attempt-1", OrderID: "order-1", CustomerSubject: "customer", AmountMinor: expectedMinor, CheckoutExpiresAt: expires}
+	created, err := driver.CreateCheckout(context.Background(), req)
+	if err != nil || created.AmountMinor != expectedMinor {
+		t.Fatalf("checkout %+v err=%v", created, err)
+	}
+	inbox := &fixtureInbox{records: map[string]providerintegration.Receipt{}}
+	webhook, err := NewWebhook(WebhookConfig{TenantID: scope.TenantID, ConnectionID: scope.ConnectionID, ProviderCode: "stripe", Tolerance: time.Minute, MaxConcurrent: 1, Secrets: fixtureSecret{}, Inbox: inbox})
+	if err != nil {
+		t.Fatal(err)
+	}
+	body := []byte(fmt.Sprintf(`{"id":"evt_exact","object":"event","api_version":%q,"type":"checkout.session.completed","livemode":false,"data":{"object":{"id":"cs_test_fixture","object":"checkout.session"}}}`, stripe.APIVersion))
+	signed := stripewebhook.GenerateTestSignedPayload(&stripewebhook.UnsignedPayload{Payload: body, Secret: "whsec_fixture", Timestamp: time.Now()})
+	callback := httptest.NewRequest("POST", "https://api.example.test/payment-webhook", strings.NewReader(string(body)))
+	callback.Header.Set("Content-Type", "application/json")
+	callback.Header.Set("Stripe-Signature", signed.Header)
+	response := httptest.NewRecorder()
+	webhook.ServeHTTP(response, callback)
+	if response.Code != 200 {
+		t.Fatalf("webhook status=%d body=%s", response.Code, response.Body.String())
+	}
+	var payload InboxPayload
+	if json.Unmarshal(inbox.records["evt_exact"].Payload, &payload) != nil || payload.Notification.ResourceType != "checkout_session" {
+		t.Fatal("durable webhook notice mismatch")
+	}
+	observedCheckout, err := driver.RetrieveCheckout(context.Background(), payload.Notification.ProviderReference)
+	if err != nil || observedCheckout.AmountMinor != expectedMinor {
+		t.Fatalf("checkout GET %+v err=%v", observedCheckout, err)
+	}
+	paid, err := driver.RetrievePayment(context.Background(), observedCheckout.PaymentReference)
+	if err != nil || paid.ReceivedMinor != expectedMinor {
+		t.Fatalf("payment GET %+v err=%v", paid, err)
+	}
+	t.Logf("PAYMENT_EXACT_BC_AMOUNT_WEBHOOK_FIXTURE_PASS amount_minor=%d quantity=%d unit_price_minor=%d bcamounts_oracle=true webhook_inbox=true production_claim=false", expectedMinor, quantity, unitPriceMinor)
+}
 
 func TestSDKDriverRejectsMismatchedStripeCredentialModeBeforeHTTP(t *testing.T) {
 	config := SDKDriverConfig{Scope: Scope{TenantID: "tenant", OrganizationID: "store", ConnectionID: "connection", ProviderCode: "stripe", AccountRef: "acct_fixture", Currency: "ARS", MinorUnitExponent: 2}, SuccessURL: "https://shop.example.test/return", CancelURL: "https://shop.example.test/cancel", DisplayName: "Order"}
