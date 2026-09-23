@@ -1,0 +1,78 @@
+{
+  "state": "COMPLETE",
+  "library_readiness": "READY_FOR_LIBRARY_USE",
+  "scope": "LIBRARY_INFRASTRUCTURE",
+  "execution_revision": 337,
+  "source_revision": 330,
+  "metadata_revision": 331,
+  "tests_passed": 48,
+  "tests_failed": 0,
+  "product_root": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\artifact-v402-r330",
+  "source_root": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\reference-staging",
+  "signed_release_root": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\signed-release-v402-r330",
+  "library_archive": {
+    "path": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\elite-library-v402-source330-meta331-distribution336.zip",
+    "sha256": "cd24757744d01dbc37b666495d659f76824a8a680015eee469187e975542591f",
+    "bytes": 58881955,
+    "files": 1264,
+    "manifest_sha256": "8b831fe6ec0dec14c05992e361efa62979d69c05ff3615b08d192458caf33935",
+    "extracted_root": "C:\\Users\\NL\\Desktop\\Elite Franchise Reference V402\\portable-v402-smoke336\\Elite Engineering Library",
+    "no_local_approvals_or_secrets": true
+  },
+  "verification": [
+    {
+      "check": "evidence",
+      "exit_code": 0,
+      "log_sha256": "493735f2c72206b33f232ccef90b001823fc8864942f9c136e3c7025a7ea589d"
+    },
+    {
+      "check": "complete",
+      "exit_code": 0,
+      "log_sha256": "779f81c332bd182a008ab1964e47649458cb0d96550c784203d16895ed14995e"
+    },
+    {
+      "check": "readiness",
+      "exit_code": 0,
+      "log_sha256": "2c9a2840c9c8c3efd431cd2bbaf27b756d7e66adceca890b5542a93c83932702"
+    }
+  ],
+  "preflight_scope_assessment": {
+    "status": "PASS_SELECTED_LIBRARY_INFRASTRUCTURE",
+    "generic_preflight_status": "BLOCKED",
+    "executed_checks_passed": 164,
+    "executed_checks_failed": 0,
+    "missing_or_rejected_global_tools": {
+      "pnpm-11.25.0": {
+        "id": "pnpm-11.25.0",
+        "required_for": "web/BFF frozen install",
+        "path": "C:\\Users\\NL\\AppData\\Roaming\\npm\\pnpm.ps1",
+        "version": null,
+        "available": false,
+        "admission": "BLOCKED",
+        "reason": "V401: published pnpm affected by GHSA-vwc7-r8mq-g2x9; ZIP-disabled candidate only has scoped evidence. Exact runtime admission required."
+      },
+      "docker": {
+        "id": "docker",
+        "required_for": "PostgreSQL integration/recovery and optional Business Central Windows-container gates",
+        "path": null,
+        "version": "",
+        "available": false
+      }
+    },
+    "pnpm_resolution": "General installed pnpm remains security-admission BLOCKED. The exact restricted private installer is separately admitted and was used in both successful current builds; no general pnpm admission or redistribution is inferred.",
+    "docker_resolution": "Docker is absent. This selected local reference uses the admitted native PostgreSQL runtime, with actual migration/replay/activation/rollback/recovery receipts; optional container targets are outside the selected blueprint.",
+    "qualification_receipt_sha256": {
+      "durable-inputs326.json": "0e20b1a355e46fb6cf072a45d13e34df4a75bd1499d513352a4570a029060004",
+      "durable-operational-inputs329.json": "6331ad79cf4b120d18a91d220f58582dfce67bd0a2f0110586dbca36de5b721a",
+      "signed-release330-result.json": "3714dac97da24c4cd103430e4b2b39028543b562a0101634e8c328df11907e54",
+      "independent-verification330.json": "ee1369eb6586d3892c2fbb5e2964a0696a951a64880ad34eaf25a84bf6b951d9",
+      "activation330/result.json": "0f5bc23405e58e4a0dc1d1be680522f2a829a8f7b0e1fa5101554152a1c51032"
+    },
+    "generic_preflight_is_not_a_PASS": true,
+    "no_check_relaxed": true
+  },
+  "production_authorized": false,
+  "public_archive_still_exact": true,
+  "state_sha256": "f4a215624dd7cfe301b06514683fca416e2dcb7c4d8f5000fe7fbce6395c3eff",
+  "events_sha256": "e288eddfc6b18b5553a690b35748194ea30c794ee676cc8624a5f741eb549827"
+}
