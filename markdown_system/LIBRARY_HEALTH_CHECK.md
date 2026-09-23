@@ -1,6 +1,6 @@
 # Library health check — agent & franchise wiring
 
-**Commit audited:** `7dbf39c1d16b0c3eb493d2cac19bb1eff2e7f9fc` (`sync: recover full verified-r4 library body into public corpus`)
+**Commit audited:** `71a0a4c3a6a9661060e0fdef6a8da54cec95221a` (`fix: restore library index as repo front door`)
 
 **Scope:** entrypoints, indexes, cross-links, and domain findability. Not a production or cloud certification.
 
@@ -56,7 +56,8 @@ Checked relative links in entrypoints and navigation files listed above.
 | Item | Status |
 |---|---|
 | `MATERIALIZATION_RECORD.md` (repo root) | Listed in search index prose count but not as a dedicated line before this polish — add if agents need it |
-| `README.md` (repo root) | **BFF project README**, not library index — agents must use `AGENTS.md`, not assume root README |
+| `README.md` (repo root) | **Library index** — agents and visitors start at root README → `AGENTS.md` / `USE_LIBRARY_V403` / this file |
+| `docs/ENTERPRISE_WEB_BFF.md` | BFF operational readme relocated from root; linked from library README |
 | `AGENTS.md` @ 7dbf39c (pre-fix) | **Corrupted** (mojibake, single line) — **restored** in this PR from `1ce96be` + health wiring |
 | `GROK_AGENT_ENTRY.md` @ 7dbf39c (pre-fix) | **Truncated** — **restored** persona/search lines from `1ce96be` |
 | `qr_capture/`, `db/migrations/`, `src/platform/seo/` | Were **missing from search index** before this polish — added under **Código de referencia local** |

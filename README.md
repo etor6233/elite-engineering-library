@@ -1,29 +1,60 @@
-# Enterprise Web BFF
+# Elite Engineering Library
 
-Frontend y BFF opcional para el perfil empresarial Go/PostgreSQL. No contiene migrations, acceso SQL, persistencia, workers ni reglas transaccionales.
+Biblioteca Markdown portable para que Codex, Claude Code, Grok Build, Cursor u otro agente diseñe, componga y materialice sistemas verificables **sin** imponer un backend TypeScript ni copiar código público sin admisión auditada.
 
-## Composición
+Este repositorio es la **biblioteca de ingeniería**, no un producto desplegado. Contiene mapas de autoridad, contratos, implementation packs materializables, código de referencia local y evidencia de reconstrucción. Un PASS de fixtures locales no equivale a cloud, CI alojada, proveedor live, dispositivo físico, aprobación visual ni producción.
 
-Se materializa con `TS-OIDC-PORTAL-ADAPTER`; el backend debe exponer las APIs públicas y las queries protegidas declaradas por el perfil empresarial.
+## Empezar aquí
 
-Configuración no secreta: `BUSINESS_CONFIG_FILE`, `APP_BASE_URL`, `OIDC_ISSUER`, `OIDC_CLIENT_ID`, `ENTERPRISE_API_BASE_URL`, `ENTERPRISE_TENANT_CODE` y `ENTERPRISE_ORGANIZATION_CODE`. `AUTH_SESSION_SECRET` y `OIDC_CLIENT_SECRET` se entregan mediante el mecanismo de secretos elegido, nunca en el repositorio.
+| Rol | Entrada |
+|---|---|
+| **Agentes** (Codex, Claude, Grok, Cursor, …) | [`AGENTS.md`](AGENTS.md) — router compacto |
+| **Uso, búsqueda y retoma** | [`markdown_system/USE_LIBRARY_V403.md`](markdown_system/USE_LIBRARY_V403.md) |
+| **Salud, wiring y GAPs honestos** | [`markdown_system/LIBRARY_HEALTH_CHECK.md`](markdown_system/LIBRARY_HEALTH_CHECK.md) |
 
-## Verificación
+No abras `implementation_packs/UNIFIED_REFERENCE_V403_R4.md` dentro del contexto del agente: transporta 2147 fuentes y se materializa con el comando de [`markdown_system/START_V403_LOCAL.md`](markdown_system/START_V403_LOCAL.md).
 
-```powershell
-pnpm install --frozen-lockfile --offline
-pnpm typecheck
-pnpm test
-pnpm build
-pnpm licenses:report
+## Encontrar cualquier archivo
+
+```bash
+rg -n -F "término" markdown_system/LIBRARY_SEARCH_INDEX.md
 ```
 
-La composición genera un nonce impredecible por request mediante `src/proxy.ts`, fuerza render dinámico y aplica una política CSP sin `unsafe-inline` ni `unsafe-eval` en producción. Google CSP Evaluator 1.1.8 verifica la política y Microsoft Playwright comprueba en cuatro navegadores que cada script lleva el nonce de su respuesta y que el siguiente request recibe otro valor.
+Abrí solo la ruta que coincide; no cargues el índice entero ni el corpus.
 
-Producción sigue condicionada al IdP, HTTPS/edge, comportamiento del CDN/WAF, protección CSRF donde corresponda, antiabuso distribuido, accesibilidad con navegador/AT, carga representativa, observabilidad y rollout/rollback del proyecto. El gate local no sustituye la repetición sobre el edge productivo.
+## Índices principales
 
-## Imágenes
+| Necesidad | Ruta |
+|---|---|
+| Persona (tres gráficos; no certifican implementación) | [`markdown_system/LIBRARY_HUMAN_GRAPH.md`](markdown_system/LIBRARY_HUMAN_GRAPH.md) |
+| Un pack por claim acotado | [`markdown_system/PACK_PER_CLAIM_INDEX.md`](markdown_system/PACK_PER_CLAIM_INDEX.md) |
+| Nueva franquicia desde una copia | [`START_FRANCHISE.md`](START_FRANCHISE.md) |
+| Arquitectura (6 `CANDIDATE_PACK`) | [`architecture_packs/`](architecture_packs/) |
+| Implementación materializable | [`implementation_packs/`](implementation_packs/) |
 
-Esta referencia no transforma imágenes en runtime. `next.config.ts` establece `images.unoptimized: true`; `pnpm-workspace.yaml` excluye la dependencia opcional `sharp` y el lock congelado conserva esa selección. `/_next/image` responde404, comprobado en el recorrido de agenda con cuatro navegadores.
+## Integrar en un proyecto
 
-Antes de agregar optimización de imágenes, admitir la canalización elegida, versiones exactas, componentes nativos, licencias, avisos de seguridad y pruebas de rendimiento. Quitar estas dos opciones no equivale a admitir el grafo anterior. La omisión de Sharp no sustituye los gates del resto de dependencias ni la aceptación del proyecto.
+Si la biblioteca no es la raíz del proyecto, instalá el bridge desde su raíz:
+
+```powershell
+pwsh -NoProfile -File .\INSTALL_AGENT_BRIDGE.ps1 -ProjectRoot .\ruta\al\proyecto -Agent Both
+```
+
+Abrí el agente en la **raíz exacta del proyecto consumidor**, no solo en la biblioteca vendorizada. Detalle completo: [`AGENTS.md`](AGENTS.md) y [`START_ANY_PROJECT.md`](START_ANY_PROJECT.md).
+
+## Verificar una copia
+
+```powershell
+pwsh -NoProfile -File .\VERIFY_LIBRARY.ps1
+pwsh -NoProfile -File .\VERIFY_EXECUTABLE_LIBRARY.ps1 -Mode Preflight
+```
+
+En Linux/macOS usá `./` en lugar de `.\`. `Preflight` nunca convierte toolchains o cuentas ausentes en PASS.
+
+## Referencia local opcional (TypeScript web BFF)
+
+El árbol `src/` incluye un BFF/frontend de referencia para el perfil Go/PostgreSQL. Su readme operativo está en [`docs/ENTERPRISE_WEB_BFF.md`](docs/ENTERPRISE_WEB_BFF.md); no es la entrada de la biblioteca.
+
+## Estado vigente
+
+Consultá [`markdown_system/MARKDOWN_SYSTEM_READINESS.md`](markdown_system/MARKDOWN_SYSTEM_READINESS.md). `READY_FOR_PROJECT_BOOTSTRAP` significa que la biblioteca puede iniciar y acelerar un proyecto; la admisión productiva depende del país, reglas de negocio, proveedor, IdP, infraestructura y artefacto concreto del destino.

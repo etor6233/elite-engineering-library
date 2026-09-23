@@ -1352,7 +1352,8 @@ src/app/robots.ts
 src/app/sitemap.ts
 src/platform/seo/public-indexing.ts
 src/platform/seo/public-indexing.test.ts
+docs/ENTERPRISE_WEB_BFF.md
 
 (178 archivos SQL bajo `db/migrations/`; listar con `ls db/migrations` o buscar por número.)
 
-Total indexado: 1316.
+Total indexado: 1317.
