@@ -28,6 +28,17 @@ REQUIRED_SESSION = {
     "session_expiry",
     "replay_rejection",
 }
+ALLOWED_FIXTURE_FIELDS = {
+    "schema",
+    "scope",
+    "live_effects",
+    "tenants",
+    "unauthorized_scenarios",
+    "tenant_actions",
+    "session_cases",
+    "invariants",
+    "doors",
+}
 
 
 def load_fixture(path: Path) -> dict[str, Any]:
@@ -38,11 +49,17 @@ def load_fixture(path: Path) -> dict[str, Any]:
         raise ValueError("fixture scope must be LOCAL_FIXTURES")
     if data.get("live_effects") is not False:
         raise ValueError("fixture live_effects must be false")
+    extra = set(data) - ALLOWED_FIXTURE_FIELDS
+    if extra:
+        raise ValueError(f"fixture has unsupported fields: {', '.join(sorted(extra))}")
     return data
 
 
 def validate_fixture(data: dict[str, Any]) -> list[str]:
     errors: list[str] = []
+    missing = ALLOWED_FIXTURE_FIELDS - set(data)
+    if missing:
+        errors.append("fixture missing required fields: " + ", ".join(sorted(missing)))
     tenants = data.get("tenants")
     if not isinstance(tenants, list) or len(tenants) < 2 or len(set(tenants)) != len(tenants):
         errors.append("tenants: need at least two unique tenant ids")

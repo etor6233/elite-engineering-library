@@ -2,9 +2,7 @@
   "schema": "elite.identity-authz-fixture/v1",
   "scope": "LOCAL_FIXTURES",
   "live_effects": false,
-  "description": "Synthetic authz scenarios for library-side fail-closed verification. Not a production IdP matrix.",
   "tenants": ["north", "south"],
-  "roles": ["admin", "seller"],
   "unauthorized_scenarios": [
     "unauthenticated",
     "expired_token",
@@ -21,10 +19,6 @@
     "session_expiry",
     "replay_rejection"
   ],
-  "required_status_codes": {
-    "unauthorized": [401, 403, 404],
-    "cross_tenant": [403, 404]
-  },
   "invariants": {
     "data_disclosed": false,
     "mutation_observed": false,

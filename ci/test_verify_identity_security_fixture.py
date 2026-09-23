@@ -35,6 +35,18 @@ class VerifyIdentitySecurityFixtureTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             load_fixture_from_dict(data)
 
+    def test_extra_fixture_field_rejected(self) -> None:
+        data = json.loads(FIXTURE.read_text(encoding="utf-8"))
+        data["description"] = "unsupported extra"
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as handle:
+            handle.write(json.dumps(data))
+            path = Path(handle.name)
+        try:
+            with self.assertRaises(ValueError):
+                load_fixture(path)
+        finally:
+            path.unlink(missing_ok=True)
+
     def test_cli_passes_on_workspace(self) -> None:
         completed = subprocess.run(
             [sys.executable, str(ROOT / "ci" / "verify_identity_security_fixture.py"), "--workspace", str(ROOT), "--skip-go"],
