@@ -1,0 +1,270 @@
+{
+  "schema": "elite-slice-fixture-evidence/v1",
+  "slice_id": "ANALYTICS_DASHBOARDS",
+  "tip_sha": "5bc34a1fcf485895283ca530b2ccdc27dd8fa443",
+  "status": "LOCAL_FIXTURES_INDEXED",
+  "production_authorized": false,
+  "claim": "Selected analytics core ingest/metrics, connected role-metrics operational dashboards, disk-only GO-DASHBOARDS-CORE honesty, and documented CRM segmentation adjacency via PLAN ONLY Customer 360 read-model compose.",
+  "architecture_contract_cites_read_only": [
+    {
+      "path": "docs/FRANCHISE_ARCHITECTURE.md",
+      "tip_sha": "5bc34a1fcf485895283ca530b2ccdc27dd8fa443",
+      "section": "PARCIAL → Analytics",
+      "status": "PARCIAL"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "tip_sha": "5bc34a1fcf485895283ca530b2ccdc27dd8fa443",
+      "section": "FRANCHISE / COMPANY DOMAINS → Analytics / dashboards / CRM segmentation",
+      "status": "PARCIAL"
+    }
+  ],
+  "proposed_pack_plan": {
+    "path": "markdown_system/ANALYTICS_DASHBOARDS_PACK_PLAN.md",
+    "status": "PLAN_ONLY",
+    "note": "Compose recipe over selected analytics cores + role-metrics proof; not a HECHO implementation pack; not in selected 116/120 JSON"
+  },
+  "selected_composition_source": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
+  "pack_id_filename_aliases": [
+    {
+      "packId": "PG-TX-FOUNDATION",
+      "path": "implementation_packs/POSTGRES_TRANSACTIONAL_FOUNDATION.md",
+      "reject": [
+        "POSTGRES-TRANSACTIONAL-FOUNDATION.md",
+        "PG-TX-FOUNDATION.md",
+        "POSTGRES_TRANSACTIONAL_FOUNDATION.md"
+      ]
+    },
+    {
+      "packId": "GO-ENTERPRISE-BACKEND",
+      "path": "implementation_packs/GO_ENTERPRISE_BACKEND_CORE.md",
+      "reject": [
+        "GO_ENTERPRISE_BACKEND.md",
+        "GO-ENTERPRISE-BACKEND-CORE.md",
+        "GO_ENTERPRISE_BACKEND_CORE.md"
+      ]
+    }
+  ],
+  "packs": [
+    {
+      "packId": "PG-TX-FOUNDATION",
+      "version": "0.1.0",
+      "path": "implementation_packs/POSTGRES_TRANSACTIONAL_FOUNDATION.md",
+      "role": "postgresql_foundation"
+    },
+    {
+      "packId": "GO-ENTERPRISE-BACKEND",
+      "version": "0.4.8",
+      "path": "implementation_packs/GO_ENTERPRISE_BACKEND_CORE.md",
+      "role": "backend_shell"
+    },
+    {
+      "packId": "GO-DATA-ANALYTICS-CORE",
+      "version": "0.1.0",
+      "path": "implementation_packs/GO_DATA_ANALYTICS_CORE.md",
+      "role": "analytics_ingest_and_semantic_metrics"
+    },
+    {
+      "packId": "GO-CONNECTED-ROLE-METRICS-PROOF",
+      "version": "0.1.0",
+      "path": "implementation_packs/GO_CONNECTED_ROLE_METRICS_PROOF.md",
+      "role": "operational_dashboards_twelve_families"
+    },
+    {
+      "packId": "GO-HTTP-METRICS-REFERENCE",
+      "version": "0.1.16",
+      "path": "implementation_packs/GO_HTTP_METRICS_REFERENCE.md",
+      "role": "http_observability_reference_adjacent"
+    },
+    {
+      "packId": "GO-ENTERPRISE-QUERY-API",
+      "version": "0.3.0",
+      "path": "implementation_packs/GO_ENTERPRISE_QUERY_API.md",
+      "role": "reporting_host_role_metrics_reader"
+    },
+    {
+      "packId": "GO-ELECTROMOBILITY-APPLICATION",
+      "version": "1.22.3",
+      "path": "implementation_packs/GO_ELECTROMOBILITY_APPLICATION.md",
+      "role": "runtime_wiring"
+    },
+    {
+      "packId": "TS-OIDC-PORTAL-ADAPTER",
+      "version": "0.3.1",
+      "path": "implementation_packs/TYPESCRIPT_OIDC_PORTAL_ADAPTER.md",
+      "role": "portal_bff_reporting_client"
+    },
+    {
+      "packId": "TS-GO-API-WEB-BRIDGE",
+      "version": "0.15.2",
+      "path": "implementation_packs/TYPESCRIPT_GO_API_WEB_BRIDGE.md",
+      "role": "typed_backend_client"
+    },
+    {
+      "packId": "TS-FRANCHISE-JOURNEY-PORTALS",
+      "version": "0.21.0",
+      "path": "implementation_packs/TYPESCRIPT_FRANCHISE_JOURNEY_PORTALS.md",
+      "role": "dashboard_ui_role_metrics_panel"
+    }
+  ],
+  "disk_only_not_selected_116": [
+    {
+      "packId": "GO-DASHBOARDS-CORE",
+      "version": "0.1.2",
+      "path": "implementation_packs/GO_DASHBOARDS_CORE.md",
+      "status": "REBUILD_VERIFIED_ON_DISK",
+      "selected_json": "FALTA",
+      "note": "Isolated pure KPI calculator; role metrics use domain owners instead — not promoted by this slice"
+    },
+    {
+      "packId": "TS-ADMIN-OPS-EXPERIENCE-V403",
+      "version": "0.1.0",
+      "path": "implementation_packs/TYPESCRIPT_ADMIN_OPS_EXPERIENCE_V403.md",
+      "plan_path": "markdown_system/ADMIN_OPS_EXPERIENCE_PACK_PLAN_V403.md",
+      "selected_json": "FALTA",
+      "note": "Admin UX overlay; visual PENDING"
+    }
+  ],
+  "crm_segmentation_adjacency": {
+    "status": "PLAN_ONLY",
+    "plan_path": "markdown_system/CUSTOMER_360_READ_MODEL_PACK_PLAN.md",
+    "unified_http_endpoint": "FALTA",
+    "standalone_segmentation_pack": "FALTA",
+    "compose_spine": "GET /v1/customer/journey",
+    "note": "Do not fake Customer 360 HECHO; BFF merge documented only"
+  },
+  "reporting_endpoint": {
+    "method": "GET",
+    "path": "/v1/reporting/operations/{kind}",
+    "query": "organization_id",
+    "kinds_count": 12,
+    "max_groups": 100,
+    "cache_control": "private, no-store",
+    "reference": "docs/ROLE_METRICS_REFERENCE.md"
+  },
+  "portal_dashboard": {
+    "path": "/dashboard",
+    "feature_flag": "features.role_workspace=true",
+    "fixture_config": "config/role.metrics.fixture.json",
+    "note": "Local fixture enables panel; not production authorization"
+  },
+  "analytics_schema": [
+    {
+      "schema": "analytics",
+      "table": "landing_record",
+      "migration": "db/migrations/0041_data_analytics.up.sql",
+      "note": "immutable identity/payload; mutable state enum only"
+    },
+    {
+      "schema": "analytics",
+      "table": "metric_definition",
+      "migration": "db/migrations/0041_data_analytics.up.sql",
+      "note": "immutable per tenant/code/version"
+    },
+    {
+      "schema": "analytics",
+      "table": "metric_snapshot",
+      "migration": "db/migrations/0041_data_analytics.up.sql",
+      "note": "freshness + reconciliation target"
+    }
+  ],
+  "fixtures": [
+    {
+      "kind": "sql",
+      "path": "db/tests/0041_data_analytics.test.sql",
+      "proves": "analytics DDL, replay dedup, metric version, snapshot reconciliation"
+    },
+    {
+      "kind": "sql",
+      "path": "db/tests/0087_analytics_immutability.test.sql",
+      "proves": "runtime mutation rejection; owner retention procedure; guard re-enable"
+    },
+    {
+      "kind": "go_unit",
+      "path": "internal/analytics/analytics_test.go",
+      "proves": "ingest Fresh, late-data bound, metric reconcile"
+    },
+    {
+      "kind": "go_unit",
+      "path": "internal/rolemetrics/contract_test.go",
+      "proves": "metric kind permissions and wire contract bounds"
+    },
+    {
+      "kind": "go_integration",
+      "path": "internal/platform/postgres/role_metrics_connected_integration_test.go",
+      "proves": "twelve families, exact sums above JS safe integer, unavailable distinct from zero"
+    },
+    {
+      "kind": "go_integration",
+      "path": "internal/platform/postgres/role_metrics_leads_integration_test.go",
+      "proves": "converted/lost lead exclusion (FAIL868 regression)"
+    },
+    {
+      "kind": "go_integration",
+      "path": "internal/platform/postgres/role_metrics_browser_integration_test.go",
+      "proves": "Chromium + JWE/JWKS + BFF + PG connected dashboard",
+      "optional": true,
+      "env": "ELITE_ROLE_METRICS_BROWSER=1"
+    },
+    {
+      "kind": "go_http",
+      "path": "internal/platform/httpapi/role_metrics.go",
+      "proves": "authz before read; 4s deadline; Cache-Control private no-store"
+    },
+    {
+      "kind": "playwright",
+      "path": "microsoft_playwright_browser_gate/tests/role-metrics-connected.spec.mjs",
+      "proves": "browser gate connected role-metrics spec"
+    },
+    {
+      "kind": "fixture_config",
+      "path": "config/role.metrics.fixture.json",
+      "proves": "local panel and survey flags for disposable dashboard runs"
+    },
+    {
+      "kind": "reconstruction_evidence",
+      "path": "reconstruction_evidence/GO_DATA_ANALYTICS_CORE_2026-09-02_V179.md",
+      "proves": "GO-DATA-ANALYTICS-CORE admission receipt"
+    },
+    {
+      "kind": "reconstruction_evidence",
+      "path": "reconstruction_evidence/ROLE_METRICS_RELEASE_V402.md",
+      "proves": "T2804 connected role-metrics PROVEN_LOCAL receipt"
+    },
+    {
+      "kind": "reconstruction_evidence",
+      "path": "reconstruction_evidence/GO_DASHBOARDS_CORE_2026-09-02_V207.md",
+      "proves": "disk-only GO-DASHBOARDS-CORE receipt — not selected 116"
+    },
+    {
+      "kind": "doc",
+      "path": "docs/analytics/immutability-and-retention.md",
+      "proves": "0087 guard contract and owner retention procedure"
+    }
+  ],
+  "verify_commands": [
+    "psql \"$TEST_DATABASE_URL\" -v ON_ERROR_STOP=1 -f db/tests/0041_data_analytics.test.sql",
+    "psql \"$TEST_DATABASE_URL\" -v ON_ERROR_STOP=1 -f db/tests/0087_analytics_immutability.test.sql",
+    "go test ./internal/analytics/... -count=1",
+    "go test ./internal/rolemetrics/... -count=1",
+    "go test ./internal/platform/postgres -run RoleMetricsConnected -count=1 -timeout=5m",
+    "go test ./internal/platform/httpapi -run RoleMetrics -count=1 -timeout=5m"
+  ],
+  "public_pattern_gaps_cite_only": [
+    "https://sre.google/sre-book/monitoring-distributed-systems/",
+    "https://developers.google.com/tag-platform/tag-manager/server-side/intro",
+    "https://learn.microsoft.com/en-us/dynamics365/guidance/business-processes/prospect-to-quote-overview"
+  ],
+  "explicit_non_claims": [
+    "No named SDR, GTM, or Cotizador pack",
+    "No GO-ANALYTICS-DASHBOARDS HECHO implementation pack",
+    "ANALYTICS_DASHBOARDS_PACK_PLAN.md is plan only — not in selected 116/120 JSON",
+    "GO-DASHBOARDS-CORE not promoted into selected JSON",
+    "No unified analytics+segmentation HTTP endpoint",
+    "CUSTOMER_360_READ_MODEL_PACK_PLAN.md adjacency is PLAN ONLY — not HECHO 360",
+    "No marketing segmentation engine pack",
+    "Not production or REVESTEX authorization",
+    "Did not edit docs/ROADMAP.md or docs/FRANCHISE_ARCHITECTURE.md",
+    "Did not invent selected-116 packIds"
+  ]
+}
