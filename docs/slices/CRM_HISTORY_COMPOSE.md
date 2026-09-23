@@ -1,6 +1,6 @@
 # CRM / CUSTOMERS + HISTORY — tangible slice compose
 
-Tip pin: `477358d0d7090f2c39467abe5634d81f38afae7f`
+Tip pin: `42d9f83ee6fa1536bcb59d66e6c7850b01ddd9b0`
 
 Status: **PARCIAL → tangible slice** (local fixtures + selected composition only). **Not** production, **not** REVESTEX, **not** a named SDR or GTM pack.
 
@@ -61,7 +61,7 @@ See `markdown_system/PACK_PER_CLAIM_INDEX.md` (SDR row: **PARCIAL**, **FALTA** p
 
 ## 3. Compose recipe
 
-1. **Pin** tip `477358d0d7090f2c39467abe5634d81f38afae7f`; walk doors 1–7 in `docs/FRANCHISE_PLAYBOOK.md` before composing.
+1. **Pin** tip `42d9f83ee6fa1536bcb59d66e6c7850b01ddd9b0`; walk doors 1–7 in `docs/FRANCHISE_PLAYBOOK.md` before composing.
 2. **Select** the pack rows in §2 from `markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md`; do not add undeclared packIds.
 3. **Materialize** with the library compositor / franchise protocol in `START_FRANCHISE.md` into an empty consumer tree (or use this repo’s already-materialized paths under `internal/`, `db/`, `cmd/electromobility-api/`).
 4. **Apply migrations** in order through journey/history owners at minimum:

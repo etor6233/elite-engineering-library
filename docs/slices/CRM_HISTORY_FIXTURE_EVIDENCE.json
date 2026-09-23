@@ -1,7 +1,7 @@
 {
   "schema": "elite-slice-fixture-evidence/v1",
   "slice_id": "CRM_HISTORY",
-  "tip_sha": "477358d0d7090f2c39467abe5634d81f38afae7f",
+  "tip_sha": "42d9f83ee6fa1536bcb59d66e6c7850b01ddd9b0",
   "status": "LOCAL_FIXTURES_INDEXED",
   "production_authorized": false,
   "claim": "Single PostgreSQL CRM owner with customer profile, consent/lead rows, append-only appointment transition history, and customer-scoped journey timeline projection.",
