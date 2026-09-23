@@ -2,7 +2,7 @@
 
 ## Tip pin
 
-Elite library tip: `477358d0d7090f2c39467abe5634d81f38afae7f`
+Elite library tip: `42d9f83ee6fa1536bcb59d66e6c7850b01ddd9b0`
 
 This slice documents how the **selected 116** franchise composition materializes the sales journey from CRM lead through server-priced quotation to a durable `placed` customer order. It is **HECHO-first local fixture evidence** — not production authorization, not live payments, not REVESTEX product code.
 
