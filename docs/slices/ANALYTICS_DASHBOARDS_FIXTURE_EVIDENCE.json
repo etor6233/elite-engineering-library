@@ -1,29 +1,47 @@
 {
   "schema": "elite-slice-fixture-evidence/v1",
   "slice_id": "ANALYTICS_DASHBOARDS",
-  "tip_sha": "5bc34a1fcf485895283ca530b2ccdc27dd8fa443",
+  "tip_sha": "45035406fb7e5c996e39a2cfda7ed0195260a9ed",
   "status": "LOCAL_FIXTURES_INDEXED",
   "production_authorized": false,
   "claim": "Selected analytics core ingest/metrics, connected role-metrics operational dashboards, disk-only GO-DASHBOARDS-CORE honesty, and documented CRM segmentation adjacency via PLAN ONLY Customer 360 read-model compose.",
   "architecture_contract_cites_read_only": [
     {
       "path": "docs/FRANCHISE_ARCHITECTURE.md",
-      "tip_sha": "5bc34a1fcf485895283ca530b2ccdc27dd8fa443",
+      "tip_sha": "45035406fb7e5c996e39a2cfda7ed0195260a9ed",
+      "section": "5. Analytics / reporting / dashboards / CRM segmentation",
+      "status": "PARCIAL"
+    },
+    {
+      "path": "docs/FRANCHISE_ARCHITECTURE.md",
+      "tip_sha": "45035406fb7e5c996e39a2cfda7ed0195260a9ed",
       "section": "PARCIAL → Analytics",
       "status": "PARCIAL"
     },
     {
       "path": "docs/ROADMAP.md",
-      "tip_sha": "5bc34a1fcf485895283ca530b2ccdc27dd8fa443",
+      "tip_sha": "45035406fb7e5c996e39a2cfda7ed0195260a9ed",
       "section": "FRANCHISE / COMPANY DOMAINS → Analytics / dashboards / CRM segmentation",
       "status": "PARCIAL"
     }
   ],
-  "proposed_pack_plan": {
-    "path": "markdown_system/ANALYTICS_DASHBOARDS_PACK_PLAN.md",
-    "status": "PLAN_ONLY",
-    "note": "Compose recipe over selected analytics cores + role-metrics proof; not a HECHO implementation pack; not in selected 116/120 JSON"
+  "compose_doc": {
+    "path": "docs/slices/ANALYTICS_DASHBOARDS_COMPOSE.md",
+    "status": "SLICE_COMPOSE",
+    "note": "Tangible PARCIAL closer over selected 116 analytics owners; not a HECHO implementation pack"
   },
+  "plan_only_adjacency": [
+    {
+      "path": "markdown_system/ANALYTICS_DASHBOARDS_PACK_PLAN.md",
+      "status": "PLAN_ONLY",
+      "note": "Compose recipe; not in selected 116/120 JSON"
+    },
+    {
+      "path": "markdown_system/CUSTOMER_360_READ_MODEL_PACK_PLAN.md",
+      "status": "PLAN_ONLY",
+      "note": "CRM segmentation BFF merge; not HECHO 360"
+    }
+  ],
   "selected_composition_source": "markdown_system/FRANCHISE_COMPLETE_PACK_PLAN.md",
   "pack_id_filename_aliases": [
     {
@@ -240,6 +258,11 @@
       "kind": "doc",
       "path": "docs/analytics/immutability-and-retention.md",
       "proves": "0087 guard contract and owner retention procedure"
+    },
+    {
+      "kind": "doc",
+      "path": "docs/ROLE_METRICS_REFERENCE.md",
+      "proves": "operator reference for role-metrics dashboard lane"
     }
   ],
   "verify_commands": [
@@ -250,21 +273,33 @@
     "go test ./internal/platform/postgres -run RoleMetricsConnected -count=1 -timeout=5m",
     "go test ./internal/platform/httpapi -run RoleMetrics -count=1 -timeout=5m"
   ],
+  "conditioned_live_gates": [
+    "live_idp_https_issuer",
+    "warehouse_lakehouse_spec_only",
+    "observability_backend_delivery",
+    "marketing_segmentation_falta",
+    "gtm_sgta_falta",
+    "production_authorized_false"
+  ],
   "public_pattern_gaps_cite_only": [
     "https://sre.google/sre-book/monitoring-distributed-systems/",
     "https://developers.google.com/tag-platform/tag-manager/server-side/intro",
     "https://learn.microsoft.com/en-us/dynamics365/guidance/business-processes/prospect-to-quote-overview"
   ],
+  "galaxy_ops_bounds": {
+    "pin": "etor6233/grok-bot-galaxy@f8546c3",
+    "cite": "docs/FRANCHISE_PLAYBOOK.md §5",
+    "franchise_hits_at_pin": 0,
+    "note": "Field guide only — not franchise analytics e2e or installable BI/warehouse IaC"
+  },
   "explicit_non_claims": [
     "No named SDR, GTM, or Cotizador pack",
-    "No GO-ANALYTICS-DASHBOARDS HECHO implementation pack",
-    "ANALYTICS_DASHBOARDS_PACK_PLAN.md is plan only — not in selected 116/120 JSON",
+    "No GO-ANALYTICS-DASHBOARDS HECHO implementation pack added to selected 116/120 JSON",
     "GO-DASHBOARDS-CORE not promoted into selected JSON",
     "No unified analytics+segmentation HTTP endpoint",
     "CUSTOMER_360_READ_MODEL_PACK_PLAN.md adjacency is PLAN ONLY — not HECHO 360",
     "No marketing segmentation engine pack",
     "Not production or REVESTEX authorization",
-    "Did not edit docs/ROADMAP.md or docs/FRANCHISE_ARCHITECTURE.md",
-    "Did not invent selected-116 packIds"
+    "production_authorized remains false"
   ]
 }
